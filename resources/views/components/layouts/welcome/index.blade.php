@@ -18,7 +18,7 @@
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
     <nav @class(['w-full bg-black p-4   '])>
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center bg-gray-900 rounded-2xl p-4">
+            <div class="flex justify-between items-center bg-gray-600 rounded-2xl p-4">
                 <a href="/" @class(['text-xl font-semibold text-gray-200'])>
                     MyApp's
                 </a>
@@ -47,26 +47,40 @@
                         [
                             'label' => 'Empleados',
                             'route' => 'employees.login',
-                        ]
+                        ],
                     ];
                 @endphp
                 <nav class="hidden lg:flex space-x-4 text-sm font-semibold">
                     @foreach ($items as $item)
-                    <a href="{{ route($item['route']) }}" 
-                        @class(['text-gray-400 hover:text-gray-100'])>
-                        {{ $item['label'] }}
-                    </a>
+                        <a href="{{ route($item['route']) }}" @class(['text-gray-400 hover:text-gray-100'])>
+                            {{ $item['label'] }}
+                        </a>
                     @endforeach
                 </nav>
                 <div class="flex lg:hidden text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 6l16 0" />
-                        <path d="M4 12l16 0" />
-                        <path d="M4 18l16 0" />
-                    </svg>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button
+                                class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 6l16 0" />
+                                    <path d="M4 12l16 0" />
+                                    <path d="M4 18l16 0" />
+                                </svg>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            @foreach ($items as $item)
+                                <x-dropdown-link :href="route($item['route'])">
+                                    {{ $item['label'] }}
+                                </x-dropdown-link>
+                            @endforeach
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
         </div>
@@ -77,7 +91,8 @@
     <footer class="w-full bg-gray-300">
         <div class="max-w-7xl mx-auto">
 
-            <ul class="px-4 py-2 text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
+            <ul
+                class="px-4 py-2 text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
                 <li class="font-bold">
                     &copy; {{ date('Y') }} MyApp. All rights reserved.
                 </li>

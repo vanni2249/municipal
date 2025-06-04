@@ -52,7 +52,7 @@
                 @endphp
                 <nav class="hidden lg:flex space-x-4 text-sm font-semibold">
                     @foreach ($items as $item)
-                        <a href="{{ route($item['route']) }}" @class(['text-gray-400 hover:text-gray-100'])>
+                        <a href="{{ route($item['route']) }}" @class(['text-gray-300 hover:text-gray-100'])>
                             {{ $item['label'] }}
                         </a>
                     @endforeach

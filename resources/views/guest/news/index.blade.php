@@ -6,14 +6,14 @@
             </header>
 
             @for ($i = 0; $i < 12; $i++)
-                <div class="col-span-full md:col-span-6 bg-white rounded flex flex-col space-x-4">
-                    <div class="bg-gray-400 w-full h-64 lg:h-86 rounded-t"></div>
+                <a href="{{ route('news.show', ['new' => 1]) }}" class="col-span-full md:col-span-4 bg-white hover:shadow rounded-xl flex flex-col space-x-4">
+                    <div class="bg-gray-400 w-full h-64 lg:h-56 rounded-t-xl"></div>
                     <div class="flex flex-col space-y-4 p-4">
 
-                        <a href="{{ route('news.show', ['new' => 1]) }}" class="text-xl font-bold text-gray-800">
+                        <p class="text-md font-bold text-gray-800">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sunt.
-                        </a>
-                        <div class="uppercase text-xs flex items-center text-blue-700 space-x-2">
+                        </p>
+                        <div class="uppercase text-xs flex items-center text-gray-600 space-x-2">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -39,7 +39,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </a>
             @endfor
         </div>
     </main>

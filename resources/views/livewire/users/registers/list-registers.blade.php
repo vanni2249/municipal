@@ -1,6 +1,6 @@
 <div>
     <div class="space-y-2">
-        <a href="{{ route('users.registers.show' , ['register' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 flex w-full p-4 rounded-xl">
+        <a href="{{ route('citizens.registers.show' , ['register' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 flex w-full p-4 rounded-xl">
             <div class="flex w-full justify-between items-start">
                 <div class="grow p-2">
                     <ul class="text-sm">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{ route('users.registers.show' , ['register' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 flex w-full p-4 rounded-xl">
+        <a href="{{ route('citizens.registers.show' , ['register' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 flex w-full p-4 rounded-xl">
             <div class="flex w-full justify-between items-start">
                 <div class="grow p-2">
                     <ul class="text-sm">

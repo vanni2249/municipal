@@ -16,10 +16,16 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
-    <nav @class(['w-full bg-black p-4   '])>
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center bg-gray-600 rounded-2xl p-4">
-                <a href="/" @class(['text-xl font-semibold text-gray-200'])>
+    <nav @class(['w-full',
+        ' bg-black' => request()->routeIs('welcome')])>
+        <div class="max-w-7xl mx-auto p-4">
+            <div  @class(['flex justify-between items-center rounded-2xl p-4',
+            'bg-gray-800' => request()->routeIs('welcome'),
+            'bg-white' => !request()->routeIs('welcome')])
+            class="">
+                <a href="/" @class(['text-xl font-semibold',
+                'text-gray-200' => request()->routeIs('welcome'),
+                'text-gray-800' => !request()->routeIs('welcome')])>
                     MyApp's
                 </a>
                 @php
@@ -52,7 +58,9 @@
                 @endphp
                 <nav class="hidden lg:flex space-x-4 text-sm font-semibold">
                     @foreach ($items as $item)
-                        <a href="{{ route($item['route']) }}" @class(['text-gray-300 hover:text-gray-100'])>
+                        <a href="{{ route($item['route']) }}" 
+                        @class(['text-gray-300 hover:text-gray-100' => request()->routeIs('welcome'),
+                        'text-gray-700 hover:text-gray-900' => !request()->routeIs('welcome')])>
                             {{ $item['label'] }}
                         </a>
                     @endforeach

@@ -28,7 +28,7 @@
                 </x-card>
             </div>
             <div class="col-span-full lg:col-span-4">
-                @include('users.partials.sidebar-box')
+                @include('users.citizens.partials.sidebar-box')
             </div>
         </div>
     </div>

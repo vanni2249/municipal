@@ -1,4 +1,4 @@
-<x-layouts.welcome>
+<x-layouts.guest>
     
     <!-- Hero -->
     <section class="bg-black h-[30rem] border-0">
@@ -47,7 +47,7 @@
                     'key' => 'citizen',
                     'name' => 'Servicios al ciudadano',
                     'query' => App\Data\Services\User::items(),
-                    'route' => 'users.login',
+                    'route' => 'citizens.login',
                 ],
                 [
                     'key' => 'merchant',
@@ -114,12 +114,12 @@
         </div>
         @endforeach
     </section>
-
     <!-- public announcement -->
     <section class="bg-gray-300 py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
             <header id="public-announcement" class="col-span-full pt-4">
-                <h2 class="font-bold text-xl text-gray-900">Anuncios publicos
+                <h2 class="font-bold text-xl text-gray-900">
+                    Anuncios publicos
                 </h2>
             </header>
 
@@ -143,7 +143,7 @@
                     </h2>
                     <div class="text-xs flex flex-col lg:flex-row lg:justify-between space-x-2">
                         <span class="whitespace-nowrap text-gray-600">
-                            Contrato: 123456789
+                            123456789
                         </span>
                     </div>
 
@@ -249,7 +249,6 @@
             </footer>
         </div>
     </section>
-   
     <!-- press release -->
     <section class=" py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
@@ -407,5 +406,4 @@
             </div>
         </footer>
     </section>
-
-</x-layouts.welcome>
+</x-layouts.guest>

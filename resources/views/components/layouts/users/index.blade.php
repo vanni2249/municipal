@@ -20,38 +20,38 @@
         <div class="bg-white rounded-xl py-4 px-4 md:px-6 h-full">
             <div class=" flex justify-between items-center h-full">
                 <div>
-                    <a href="{{ route('users.dashboard') }}" class="text-xl font-bold">MyApp's</a>
+                    <a href="{{ route('citizens.dashboard') }}" class="text-xl font-bold">MyApp's</a>
                 </div>
                 @php
                     $items = [
                         [
                             'key' => 'Servicios',
-                            'route' => 'users.services.index',
+                            'route' => 'citizens.services.index',
                             'active' => 'services' 
                         ],
                         [
                             'key' => 'Solicitudes',
-                            'route' => 'users.applications.index',
+                            'route' => 'citizens.applications.index',
                             'active' => 'applications' 
                         ],
                         [
                             'key' => 'Rentas',
-                            'route' => 'users.rents.index',
+                            'route' => 'citizens.rents.index',
                             'active' => 'rents'
                         ],
                         [
                             'key' => 'Radicaciones',
-                            'route' => 'users.settlements.index',
+                            'route' => 'citizens.settlements.index',
                             'active' => 'settlements'
                         ],
                         [
                             'key' => 'Registros',
-                            'route' => 'users.registers.index',
+                            'route' => 'citizens.registers.index',
                             'active' => 'registers'
                         ],
                         [
                             'key' => 'Noticias',
-                            'route' => 'users.news.index',
+                            'route' => 'citizens.news.index',
                             'active' => 'news'
                         ],
                 ];

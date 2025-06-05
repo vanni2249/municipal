@@ -6,10 +6,10 @@
             </header>
             @for ($i = 0; $i < 4; $i++)
                 <a href="{{ route('releases.show', ['release' => 1]) }}"
-                    class="col-span-full lg:col-span-6 bg-white p-8 rounded flex flex-row space-x-4">
+                    class="col-span-full lg:col-span-6 bg-white p-4 md:p-6 lg:p-8 rounded flex flex-row space-x-4">
                     <div class=" flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                             stroke-linejoin="round"
                             class="icon icon-tabler text-gray-600 icons-tabler-outline icon-tabler-file-description">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

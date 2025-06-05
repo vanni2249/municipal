@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__.'/guest.php';
-require __DIR__.'/users.php';
+require __DIR__.'/citizens.php';
 require __DIR__.'/merchants.php';
 require __DIR__.'/accountants.php';
 require __DIR__.'/contractors.php';

@@ -1,7 +1,7 @@
 <div>
     <div class="space-y-2">
         @for ($i = 0; $i < 5; $i++) 
-        <a href="{{ route('users.applications.show' , ['application' => $i]) }}"
+        <a href="{{ route('citizens.applications.show' , ['application' => $i]) }}"
             class="bg-gray-100 hover:bg-gray-200 flex w-full p-4 rounded-xl">
             <div class="flex w-full justify-between items-start">
                 <div class="grow flex items-center space-x-4 p-2">

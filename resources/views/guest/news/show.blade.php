@@ -1,14 +1,14 @@
 <x-layouts.guest>
-    <main class="max-w-7xl mx-auto py-8 lg:py-8 px-4 min-h-96">
+    <main class="max-w-7xl mx-auto pb-4 px-4 min-h-96">
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-full lg:col-span-8">
-                <div class="bg-white rounded p-4 space-y-4">
-                    <div class="bg-gray-400 h-96 rounded"></div>
+                <div class="bg-white rounded-xl p-4 space-y-4">
+                    <div class="bg-gray-400 h-96 rounded-xl"></div>
                     <h2 class="text-xl font-bold text-gray-800">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sunt.
                     </h2>
                     <div class="uppercase text-xs flex flex-col lg:flex-row lg:justify-between space-x-2">
-                        <span class="font-bold text-blue-700">
+                        <span class="font-bold text-gray-600">
                             25/04/20225
                         </span>
                     </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-span-full lg:col-span-4">
-                <div class=" rounded bg-white">
+                <div class=" rounded-xl bg-white">
                     <header class="p-4">
                         <h2 class="uppercase text-sm font-bold text-gray-700">Mas noticias</h2>
                     </header>

@@ -10,8 +10,8 @@
 
                 @for ($i = 0; $i < 14; $i++)
                     <a href="{{ route('events.show', ['event' => 1]) }}"
-                        class="col-span-full md:col-span-6 bg-white hover:shadow p-8 rounded flex flex-col space-y-8">
-                        <div class="uppercase text-xs font-bold text-blue-700 flex items-center space-x-2">
+                        class="col-span-full md:col-span-6 bg-white hover:shadow p-4 md:p-6 lg:p-8 rounded-xl flex flex-col space-y-8">
+                        <div class="uppercase text-xs font-bold text-gray-800 flex items-center space-x-2">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

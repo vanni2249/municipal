@@ -1,10 +1,10 @@
 <x-layouts.guest>
-     <main class="max-w-7xl mx-auto py-8 lg:py-8 px-4 min-h-96">
+     <main class="max-w-7xl mx-auto pb-4 px-4 min-h-96">
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-full lg:col-span-8">
-                <div class="bg-white rounded p-4 space-y-4">
-                    <div class="bg-gray-400 h-45 lg:h-96 rounded"></div>
-                    <div class="uppercase text-xs font-bold text-blue-700 flex items-center space-x-2">
+                <div class="bg-white rounded-xl p-4 space-y-4">
+                    <div class="bg-gray-400 h-45 lg:h-96 rounded-xl"></div>
+                    <div class="uppercase text-xs font-bold text-gray-600 flex items-center space-x-2">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-span-full lg:col-span-4">
-                <div class=" rounded bg-white">
+                <div class="rounded-xl bg-white">
                     <header class="p-4">
                         <h2 class="uppercase text-sm font-bold text-gray-700">Mas eventoss</h2>
                     </header>

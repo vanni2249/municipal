@@ -1,14 +1,14 @@
 <x-layouts.guest>
-     <main class="max-w-7xl mx-auto py-8 lg:py-8 px-4 min-h-96">
-        <div class="grid grid-cols-12 gap-4">
+     <main class="max-w-7xl mx-auto px-4 min-h-96">
+        <div class="grid grid-cols-12 gap-4 pb-4">
             <div class="col-span-full lg:col-span-8">
-                <div class="bg-white rounded p-4 space-y-4">
-                    <div class="uppercase text-xs flex flex-col lg:flex-row lg:justify-between space-x-2">
-                        <span class="font-bold text-blue-700">
-                            fecha de publicacion:25/04/20225
+                <div class="bg-white rounded-xl p-4 space-y-4">
+                    <div class="uppercase text-xs flex flex-row justify-between space-x-2">
+                        <span class="font-bold text-gray-600">
+                            25/04/20225
                         </span>
                         <span class="text-gray-700">
-                            Contrato: 123456789
+                            123456789
                         </span>
                     </div>
                     <h2 class="text-xl font-bold text-gray-800">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-span-full lg:col-span-4">
-                <div class=" rounded bg-white">
+                <div class=" rounded-xl bg-white">
                     <header class="p-4">
                         <h2 class="uppercase text-sm font-bold text-gray-700">Mas anuncios</h2>
                     </header>

@@ -12,7 +12,7 @@
                     <div class="col-span-full">
                         <div class="grid grid-cols-12 gap-4">
                             @for ($i = 0; $i < 8; $i++)
-                            <a href="{{ route('users.news.show', ['new' => $i]) }}" class="col-span-6 md:col-span-4 lg:col-span-3">
+                            <a href="{{ route('citizens.news.show', ['new' => $i]) }}" class="col-span-6 md:col-span-4 lg:col-span-3">
                                 <div class="bg-gray-100 hover:bg-gray-200 rounded-xl p-2">
                                     <div class="bg-gray-300 h-48 rounded-xl"></div>
                                     <div class="p-2">

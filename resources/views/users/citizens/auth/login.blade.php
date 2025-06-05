@@ -22,7 +22,7 @@
             </x-button>
         </div>
         <div class="mt-6">
-            <p class="mt-4 text-xs text-gray-600">¿No tienes una cuenta? <a href="{{ route('users.register') }}" class="text-blue-500">Regístrate</a></p>
+            <p class="mt-4 text-xs text-gray-600">¿No tienes una cuenta? <a href="{{ route('citizens.register') }}" class="text-blue-500">Regístrate</a></p>
         </div>
     </div>
 </x-layouts.auth>

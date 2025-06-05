@@ -26,7 +26,7 @@
                             Servicios al ciudadano
                         </h2>
                         <div>
-                            <a href="{{ route('users.services.index') }}" 
+                            <a href="{{ route('citizens.services.index') }}" 
                                 class="text-xs text-gray-700">
                                 Ver todos
                             </a>
@@ -85,7 +85,7 @@
                         @endfor
                     </div>
                 </x-card> --}}
-                @include('users.partials.sidebar-box')
+                @include('users.citizens.partials.sidebar-box')
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@
             </x-button>
         </div>
         <div class="mt-6">
-            <p class="mt-4 text-xs text-gray-600">¿Ya tienes una cuenta? <a href="{{ route('users.login') }}"
+            <p class="mt-4 text-xs text-gray-600">¿Ya tienes una cuenta? <a href="{{ route('citizens.login') }}"
                     class="text-blue-500">Inicia sesión</a></p>
         </div>
     </div>

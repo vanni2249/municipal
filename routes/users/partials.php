@@ -9,9 +9,9 @@ Route::prefix(in_array(request()->segment(1), ['visitors', 'citizens', 'merchant
             return view('users.dashboard.index');
         })->name('dashboard');
 
-        Route::get('/notifications', function () {
-            return view('users.notifications.index');
-        })->name('notifications');
+        // Route::get('/notifications', function () {
+        //     return view('users.notifications.index');
+        // })->name('notifications');
 
         Route::get('/profile', function () {
             return view('users.profile.index');

@@ -1,1 +1,0 @@
-<x-layouts.accountants></x-layouts.accountants>

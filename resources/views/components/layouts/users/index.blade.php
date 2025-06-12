@@ -117,7 +117,7 @@
                 <!-- Notifications & Profile -->
                 <menu class="flex space-x-6 md:space-x-8">
                     <li class="inline-block">
-                        <a href="{{ route(request()->segment(1) . '.notifications.index') }}">
+                        <a href="{{ route(request()->segment(1) . '.notifications.index') }}" class="text-gray-800 hover:text-gray-600">
                             <img src="{{ asset('icons/bell.svg') }}" class="cursor-pointer" alt="bell">
                         </a>
                     </li>

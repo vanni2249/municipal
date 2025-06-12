@@ -11,7 +11,7 @@
                     </header>
                     <div class="col-span-full space-y-2">
                         @for ($i = 0; $i < 3; $i++) 
-                        <a href="{{ route(request()->segment(1) . '.merchants.show', ['merchant' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
                             <header class="flex justify-between items-center">
                                 <small class=" text-gray-600">
                                     Mensaje respondido

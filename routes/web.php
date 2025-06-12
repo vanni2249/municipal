@@ -16,10 +16,16 @@ require __DIR__.'/auth/contractors.php';
 require __DIR__.'/auth/suppliers.php';
 require __DIR__.'/auth/employees.php';
 
+if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'contractors', 'suppliers'])) {
+/*
+** Partial Routes
+*/
+
+require __DIR__.'/partials/notifications.php';
+
 /*
 ** Users Routes
 */
-if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'contractors', 'suppliers'])) {
     require __DIR__.'/users/partials.php';
     require __DIR__.'/users/services.php';
     require __DIR__.'/users/applications.php';
@@ -29,12 +35,12 @@ if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'co
     require __DIR__.'/users/rents.php';
     require __DIR__.'/users/merchants.php';
     require __DIR__.'/users/businesses.php';
-    require __DIR__.'/users/notifications.php';
 }
 
 /*
 ** Agencies Routes
 */
+
 $array = [
     'it-office', 
     'mayors-office', 

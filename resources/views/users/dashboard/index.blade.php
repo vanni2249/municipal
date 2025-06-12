@@ -113,7 +113,7 @@
                     @foreach (collect(\App\Data\Service::items())->filter(function ($item) {
                         return in_array(request()->segment(1), $item['users']);
                     })->take(8) as $item)
-                        <a href="#"
+                        <a href="{{ route($item['route']) }}"
                             class="flex flex-col space-y-1 col-span-6 md:col-span-4 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                             @if (isset($item['img']))
                                 <div>

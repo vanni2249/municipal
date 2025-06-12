@@ -1,6 +1,6 @@
 <div class="grid grid-cols-12 border border-gray-300 rounded">
     <div class="col-span-full overflow-x-auto">
-        <table class="col-span-1 table-auto w-full text-xs">
+        <table class="col-span-1 table-auto w-full text-sm">
             <thead class="text-left border-b-1 border-gray-300 text-xs uppercase">
                 {{ $head }}
             </thead>

@@ -9,22 +9,22 @@ class Merchant
         return [
             [
                 'name' => 'Inicio',
-                'route' => 'merchants.dashboard',
+                'route' => '#',
                 'path' => 'dashboard',
             ],
             [
                 'name' => 'Comercios',
-                'route' => 'merchants.businesses.index',
+                'route' => '#',
                 'path' => 'businesses',
             ],
             [
                 'name' => 'Patentes',
-                'route' => 'merchants.patents.index',
+                'route' => '#',
                 'path' => 'patents',
             ],
             [
                 'name' => 'Permisos',
-                'route' => 'merchants.permits.index',
+                'route' => '#',
                 'path' => 'permits',
             ],
         ];

@@ -3,7 +3,7 @@
         [
             'agencies' => [
                 'it-office',
-                'mayors-office',
+                'mayor-office',
                 'finance-department'
             ],
             'title' => 'Interacciones',

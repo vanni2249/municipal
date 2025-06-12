@@ -19,79 +19,65 @@
     </x-slot>
     <x-slot name="sidebarSubtitle">
         @switch(request()->segment(1))
-        @case('public-works')
-            Obras-publicas
-        @break
-        @case('citizens-help')
-            Oficina de Ayuda al ciudadano
-        @break
-        @case('recreation-sports')
-            Departemento de Recreacion y Deportes
-        @break
-        @case('emergency-management')
-            Departament de Manejo de Emergencia
-        @break
-        @case('city-police')
-            Policia Municipal
-        @break
-        @case('city-administrator')
-            Administrador de la ciudad
-        @break
-        @case('mayors-office')
-            Oficina del Alcalde
-        @break
-        @case('city-legislature')
-            Legislatura de la ciudad
-        @break
-        @case('human-resources')
-        Recursos Humanos
-        @break
-        @case('it-office')
-            Oficina de IT
-        @break
-        @case('press-office')
-            Oficina de Prensa
-        @break
-        @case('finances')
-            Finanzas
-        @break
-        @default
-            xxxxx
+            @case('public-works')
+                Obras-publicas
+            @break
+
+            @case('citizens-help')
+                Oficina de Ayuda al ciudadano
+            @break
+
+            @case('recreation-sports')
+                Departemento de Recreacion y Deportes
+            @break
+
+            @case('emergency-management')
+                Departament de Manejo de Emergencia
+            @break
+
+            @case('city-police')
+                Policia Municipal
+            @break
+
+            @case('city-administrator')
+                Administrador de la ciudad
+            @break
+
+            @case('mayors-office')
+                Oficina del Alcalde
+            @break
+
+            @case('city-legislature')
+                Legislatura de la ciudad
+            @break
+
+            @case('human-resources')
+                Recursos Humanos
+            @break
+
+            @case('it-office')
+                Oficina de IT
+            @break
+
+            @case('press-office')
+                Oficina de Prensa
+            @break
+
+            @case('finance-department')
+                Departamento de Finanzas
+            @break
+
+            @default
+                xxxxx
         @endswitch
     </x-slot>
     <x-slot name="sidebarLinks">
-        @php
-            $items = [];
-            switch (request()->segment(1)) {
-                case 'finances':
-                    $items = App\Data\Links\Sidebar\Finance::items();
-                    break;
-                case 'help-citizen':
-                    $items = App\Data\Links\Sidebar\HelpCitizen::items();
-                    break;
-                case 'it-office':
-                    $items = App\Data\Links\Sidebar\ItOffice::items();
-                    break;
-                case 'mayors-office':
-                    $items = App\Data\Links\Sidebar\MayorOffice::items();
-                    break;
-                case 'public-works':
-                    $items = App\Data\Links\Sidebar\PublicWork::items();
-                    break;
-                case 'recreation-sports':
-                    $items = App\Data\Links\Sidebar\RecreationSport::items();
-                    break;
-
-                default:
-                $items = [];
-                break;
-            }
-        @endphp
-        @foreach ($items as $item)
-        <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800'=> request()->segment(3) ==
-            $item['path']])>
-            {{ $item['name'] }}
-        </x-layouts.sidebar-link>
+        @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
+            @if (in_array(request()->segment(1), $item['agencies']))
+                <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
+                    {{ $item['name'] }}
+                </x-layouts.sidebar-link>
+            @endif
         @endforeach
     </x-slot>
 

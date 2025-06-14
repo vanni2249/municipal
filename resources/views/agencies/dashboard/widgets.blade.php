@@ -56,7 +56,7 @@
         ],
         [
             'agencies' => [
-                'it-office',
+                // 'it-office',
                 'mayors-office',
                 'finance-department',
             ],
@@ -104,7 +104,8 @@
 
 @foreach ($collection as $item)
    @if (in_array(request()->segment(1), $item['agencies']))
-    <x-card class="flex-shrink-0 w-48 md:w-56 rounded-xl">
+    {{-- <x-card class="flex-shrink-0 2xl:flex-shrink-1 w-48 md:w-56 lg:w-64 rounded-xl"> --}}
+    <x-card class="col-span-6 md:col-span-4 2xl:col-span-2 rounded-xl">
         <small class="text-gray-800">
             {{ $item['title'] }}
         </small>

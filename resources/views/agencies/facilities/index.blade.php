@@ -28,26 +28,26 @@
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                            <th class="p-2 w-1/5">Categoria</th>
-                            <th class="p-2 w-1/5">Nombre</th>
-                            <th class="p-2 w-1/5">Direccion</th>
-                            <th class="p-2 w-1/5">Telefono</th>
-                            <th class="p-2 w-1/5">Status</th>
-                            <th class="p-2 w-14">Accion</th>
+                            <th class="p-4 w-1/5">Categoria</th>
+                            <th class="p-4 w-1/5">Nombre</th>
+                            <th class="p-4 w-1/5">Direccion</th>
+                            <th class="p-4 w-1/5">Telefono</th>
+                            <th class="p-4 w-1/5">Status</th>
+                            <th class="p-4 w-14">Accion</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
                         @foreach (App\Data\Facility::items() as $item)
                             
                         <tr class="border-t border-gray-200">
-                            <td class="px-2 py-1">{{ $item['category'] }}</td>
-                            <td class="px-2 py-1">{{ $item['name'] }}</td>
-                            <td class="px-2 py-1">{{ $item['address'] }}</td>
-                            <td class="px-2 py-1">{{ $item['phone'] }}</td>
-                            <td class="px-2 py-1">
+                            <td class="px-4 py-1">{{ $item['category'] }}</td>
+                            <td class="px-4 py-1">{{ $item['name'] }}</td>
+                            <td class="px-4 py-1">{{ $item['address'] }}</td>
+                            <td class="px-4 py-1">{{ $item['phone'] }}</td>
+                            <td class="px-4 py-1">
                                 <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
                             </td>
-                            <td class="px-2 py-1 flex">
+                            <td class="px-4 py-1 flex justify-end">
                                 <x-icon-link href="#" icon="eye" />
                             </td>
                         </tr>

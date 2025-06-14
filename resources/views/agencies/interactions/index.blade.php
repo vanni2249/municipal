@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 px-4">
         <!-- Table -->
         <div class="col-span-full lg:col-span-full">
-            <x-card class="h-full rounded-xl p-4">
+            <x-card class="h-full rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h1 class="text-lg font-bold">Interracciones</h1>
                 </header>
@@ -28,13 +28,13 @@
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                            <th class="p-2 w-1/6">Fecha</th>
-                            <th class="p-2 w-1/6">Categoria</th>
-                            <th class="p-2 w-1/6">Sub-Categoria</th>
-                            <th class="p-2 w-1/6">Remitente</th>
-                            <th class="p-2 w-1/6">Destinatario</th>
-                            <th class="p-2 w-1/6">Status</th>
-                            <th class="p-2 w-14">Accion</th>
+                            <th class="p-4 w-1/6">Fecha</th>
+                            <th class="p-4 w-1/6">Categoria</th>
+                            <th class="p-4 w-1/6">Sub-Categoria</th>
+                            <th class="p-4 w-1/6">Remitente</th>
+                            <th class="p-4 w-1/6">Destinatario</th>
+                            <th class="p-4 w-1/6">Status</th>
+                            <th class="p-4 w-14">Accion</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
@@ -42,21 +42,21 @@
 
                             @foreach (App\Data\Interaction::items() as $item)
                                 <tr class="border-t border-gray-200">
-                                    <td class="px-2 py-1">hace {{ $item['date'] }} dias</td>
-                                    <td class="px-2 py-1">{{ $item['category'] }}</td>
-                                    <td class="px-2 py-1">{{ $item['sub-category'] }}</td>
-                                    <td class="px-2 py-1">
+                                    <td class="px-4 py-1">hace {{ $item['date'] }} dias</td>
+                                    <td class="px-4 py-1">{{ $item['category'] }}</td>
+                                    <td class="px-4 py-1">{{ $item['sub-category'] }}</td>
+                                    <td class="px-4 py-1">
                                         <span>
                                             {{ $item['sender'] }}
                                         </span>
                                         <br>
                                         <span class="text-xs text-gray-500">{{ $item['sender_category'] }}</span>
                                     </td>
-                                    <td class="px-2 py-1">{{ $item['receiver'] }}</td>
-                                    <td class="px-2 py-1">
+                                    <td class="px-4 py-1">{{ $item['receiver'] }}</td>
+                                    <td class="px-4 py-1">
                                         <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
                                     </td>
-                                    <td class="px-2 py-1 flex">
+                                    <td class="px-4 py-1 flex justify-end">
                                         @if ($item['category'] === 'Mensaje')
                                             <x-icon-link
                                                 href="{{ route(request()->segment(1) . '.interactions.messages.show', ['message' => 1]) }}"

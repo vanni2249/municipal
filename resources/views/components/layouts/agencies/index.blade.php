@@ -106,9 +106,32 @@
         <div class="px-4 pt-4">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
-                    <button id="sidebar-toggle" class="cursor-pointer">
-                        <img src="{{ asset('icons/menu-2.svg') }}" alt="">
-                    </button>
+                    <div class="flex space-x-4">
+                            <div class="hidden lg:flex items-center justify-center">
+                                <button id="sidebar-toggle" class="cursor-pointer">
+                                    <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
+                                </button>
+                            </div>
+                            <div class="lg:hidden flex items-center justify-center">
+                                <x-dropdown align="left">
+                                    <x-slot name="trigger">
+                                        <button class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
+                                            <img src="{{ asset('icons/menu-2.svg') }}" alt="dropdown" />
+                                        </button>
+                                    </x-slot>
+                                    <x-slot name="content">
+                                        @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
+                                            @if (in_array(request()->segment(1), $item['agencies']))
+                                                <x-dropdown-link href="{{ route($item['route']) }}">
+                                                    {{ $item['name'] }}
+                                                </x-dropdown-link>
+                                            @endif
+                                        @endforeach
+                                    </x-slot>
+                                </x-dropdown>
+                            </div>
+                        <a href="" class="font-bold lg:hidden">MyApps</a>
+                    </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">
                             <a href="" class="text-gray-800 hover:text-gray-600">

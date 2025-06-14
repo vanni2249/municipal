@@ -1,30 +1,11 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Mensaje" />
-            <div>
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <x-button size="sm" class="flex items-center space-x-2">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg>
-                        </x-button>
-                    </x-slot>
-                    <x-slot name="content">
-                        <x-dropdown-link href="#">Accion 1</x-dropdown-link>
-                        <x-dropdown-link href="#">Accion 2</x-dropdown-link>
-                        <x-dropdown-link href="#">Accion 3</x-dropdown-link>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-        </header>
+    <div class="grid grid-cols-12 gap-4 px-4">
         <div class="col-span-full md:col-span-full">
-            <x-card class="rounded p-4 h-full">
-                <header class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-                    <h2 class="text-sm font-bold text-gray-800">
-                        Mensaje
-                    </h2>
+            <x-card class="rounded-xl p-4 h-full">
+               <header class="flex justify-between items-center mb-4">
+                    <h1 class="text-lg font-bold">Mensaje</h1>
                 </header>
-                <ul class="py-4 text-xs text-gray-600 space-y-1">
+                <ul class="pb-4 text-sm text-gray-600 space-y-1">
                     <li>
                         Fecha: <b>11/23/2025</b>
                     </li>

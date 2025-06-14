@@ -1,25 +1,12 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Interacciones" />
-            <div>
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <x-button size="sm" class="flex items-center space-x-2">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg>
-                        </x-button>
-                    </x-slot>
-                    <x-slot name="content">
-                        <x-dropdown-link href="{{ route(request()->segment(1) . '.interactions.messages.index') }}">Mensajes</x-dropdown-link>
-                        <x-dropdown-link href="{{ route(request()->segment(1) . '.interactions.calls.index') }}">Llamadas</x-dropdown-link>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-        </header>
+    <div class="grid grid-cols-12 px-4">
         <!-- Table -->
-        <div class="col-span-full lg:col-span-9">
-            <x-card class="h-full">
-                <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
+        <div class="col-span-full lg:col-span-full">
+            <x-card class="h-full rounded-xl p-4">
+                <header class="flex justify-between items-center mb-4">
+                    <h1 class="text-lg font-bold">Interracciones</h1>
+                </header>
+                <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="">
                         <x-input placeholder="Buscar" class="w-full" />
                     </div>
@@ -37,7 +24,7 @@
                             <x-button variant="light">Filtro</x-button>
                         </div>
                     </div>
-                </header>
+                </div>
                 <x-table>
                     <x-slot name="head">
                         <tr>
@@ -52,34 +39,36 @@
                     </x-slot>
                     <x-slot name="body">
                         @for ($i = 0; $i < 10; $i++)
-                            
-                        @foreach (App\Data\Interaction::items() as $item)
-    
-                        <tr class="border-t border-gray-200">
-                            <td class="px-2 py-1">hace {{ $item['date'] }} dias</td>
-                            <td class="px-2 py-1">{{ $item['category'] }}</td>
-                            <td class="px-2 py-1">{{ $item['sub-category'] }}</td>
-                            <td class="px-2 py-1">
-                                <span>
-                                    {{ $item['sender'] }}
-                                </span>
-                                <br>
-                                <span class="text-xs text-gray-500">{{ $item['sender_category'] }}</span>
-                            </td>
-                            <td class="px-2 py-1">{{ $item['receiver'] }}</td>
-                            <td class="px-2 py-1">
-                                <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
-                            </td>
-                            <td class="px-2 py-1 flex">
-                                @if ($item['category'] === 'Mensaje')
-                                    <x-icon-link href="{{ route(request()->segment(1) . '.interactions.messages.show', ['message' => 1]) }}" icon="eye" />
-                                @else
-                                    <x-icon-link href="{{ route(request()->segment(1) . '.interactions.calls.show', ['call' => 1]) }}" icon="eye" />
 
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
+                            @foreach (App\Data\Interaction::items() as $item)
+                                <tr class="border-t border-gray-200">
+                                    <td class="px-2 py-1">hace {{ $item['date'] }} dias</td>
+                                    <td class="px-2 py-1">{{ $item['category'] }}</td>
+                                    <td class="px-2 py-1">{{ $item['sub-category'] }}</td>
+                                    <td class="px-2 py-1">
+                                        <span>
+                                            {{ $item['sender'] }}
+                                        </span>
+                                        <br>
+                                        <span class="text-xs text-gray-500">{{ $item['sender_category'] }}</span>
+                                    </td>
+                                    <td class="px-2 py-1">{{ $item['receiver'] }}</td>
+                                    <td class="px-2 py-1">
+                                        <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
+                                    </td>
+                                    <td class="px-2 py-1 flex">
+                                        @if ($item['category'] === 'Mensaje')
+                                            <x-icon-link
+                                                href="{{ route(request()->segment(1) . '.interactions.messages.show', ['message' => 1]) }}"
+                                                icon="eye" />
+                                        @else
+                                            <x-icon-link
+                                                href="{{ route(request()->segment(1) . '.interactions.calls.show', ['call' => 1]) }}"
+                                                icon="eye" />
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endfor
 
                     </x-slot>
@@ -88,7 +77,7 @@
         </div>
         <!-- Widgets -->
         <div class="col-span-full lg:col-span-3">
-            <x-card>
+            {{-- <x-card>
                 <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="flex space-x-2">
                         <div class="bg-gray-200 rounded-md p-1">
@@ -156,7 +145,7 @@
                         </ul>
                     </div>
                 </div>
-            </x-card>
+            </x-card> --}}
         </div>
 
     </div>

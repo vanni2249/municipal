@@ -1,31 +1,13 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Solicitudes" />
-            <div>
-                <x-dropdown align="right" width="72">
-                    <x-slot name="trigger">
-                        <x-button size="sm" class="flex items-center space-x-2">
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg>
-                        </x-button>
-                    </x-slot>
-                    <x-slot name="content">
-                        {{-- @if (in_array(request()->segment(1), [
-                            'it-office',
-                            'mayors-office',
-                            'public-works-department',
-                            ]))
-                            <x-dropdown-link href="{{ route( request()->segment(1) . '.applications.collect-debris.create') }}">Solicitar recogido de escombro</x-dropdown-link>
-                            <x-dropdown-link href="{{ route( request()->segment(1) . '.applications.collect-debris.create') }}">Solicitar uso de la facilidad deportiva</x-dropdown-link>
-                        @endif --}}
-                    </x-slot>
-                </x-dropdown>
-            </div>
-        </header>
+    <div class="grid grid-cols-12 gap-4 px-4">
         <!-- Table -->
-        <div class="col-span-full lg:col-span-9">
-            <x-card class="h-full">
-                <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
+        <div class="col-span-full lg:col-span-full">
+            <x-card class="h-full rounded-xl">
+                <header class="flex justify-between items-center mb-4">
+                   <h1 class="text-lg font-bold">Solicitudes</h1> 
+
+                </header>
+                <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="">
                         <x-input placeholder="Buscar" class="w-full" />
                     </div>
@@ -43,7 +25,7 @@
                             <x-button variant="light">Filtro</x-button>
                         </div>
                     </div>
-                </header>
+                </div>
                 <x-table>
                     <x-slot name="head">
                         <tr>
@@ -78,7 +60,7 @@
             </x-card>
         </div>
         <!-- Sidebar -->
-        <div class="col-span-full lg:col-span-3">
+        {{-- <div class="col-span-full lg:col-span-3">
             <x-card>
                 <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="flex space-x-2">
@@ -142,6 +124,6 @@
                     </div>
                 </div>
             </x-card>
-        </div>
+        </div> --}}
     </div>
 </x-layouts.agencies>

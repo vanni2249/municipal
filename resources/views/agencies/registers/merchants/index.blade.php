@@ -1,12 +1,13 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Comerciantes" />
-        </header>
+    <div class="grid grid-cols-12 gap-4 px-4">
         <!-- Table -->
         <div class="col-span-full lg:col-span-full">
-            <x-card class="h-full">
-                <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
+            <x-card class="h-full rounded-xl">
+                <header class="flex justify-between items-center mb-4">
+                   <h1 class="text-lg font-bold">Comerciante</h1> 
+
+                </header>
+                <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="">
                         <x-input placeholder="Buscar" class="w-full" />
                     </div>
@@ -24,7 +25,7 @@
                             <x-button variant="light">Filtro</x-button>
                         </div>
                     </div>
-                </header>
+                </div>
                 <x-table>
                     <x-slot name="head">
                         <tr>

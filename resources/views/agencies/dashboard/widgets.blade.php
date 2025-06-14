@@ -104,12 +104,12 @@
 
 @foreach ($collection as $item)
    @if (in_array(request()->segment(1), $item['agencies']))
-   <x-card class="col-span-6 md:col-span-4 lg:col-span-2">
-       <small class="text-gray-800 font-bold text-xs">
-           {{ $item['title'] }}
+    <x-card class="flex-shrink-0 w-48 md:w-56 rounded-xl">
+        <small class="text-gray-800">
+            {{ $item['title'] }}
         </small>
         <div class="flex items-baseline space-x-1">
-            <h2 class="text-3xl font-bold text-gray-900">
+            <h2 class="text-lg font-bold text-gray-900">
                 {{ $item['value'] }}
             </h2>
             <span class="text-xs font-bold text-gray-500">
@@ -118,7 +118,7 @@
                 </small>
             </span>
         </div>
-        <div class="text-xs text-gray-500">
+        <div class="text-xs text-gray-500 line-clamp-1">
             <span class="font-bold">
                 {{ $item['percentage'] }}%
             </span> de {{ $item['percentage_key'] }}

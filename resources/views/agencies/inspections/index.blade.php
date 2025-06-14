@@ -1,11 +1,12 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Inspecciones" />
-        </header>
-        <div class="col-span-full lg:col-span-9">
-            <x-card class="col-span-full">
-                <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
+    <div class="grid grid-cols-12 gap-4 px-4">
+        <div class="col-span-full lg:col-span-full">
+            <x-card class="col-span-full rounded-xl p-4">
+                <header class="flex justify-between items-center mb-4">
+                   <h1 class="text-lg font-bold">Inspecciones</h1> 
+
+                </header>
+                <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="">
                         <x-input placeholder="Buscar" class="w-full" />
                     </div>
@@ -23,34 +24,34 @@
                             <x-button variant="light">Filtro</x-button>
                         </div>
                     </div>
-                </header>
+                </div>
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                            <th class="p-2 w-1/7">Fecha</th>
-                            <th class="p-2 w-1/7">Numero</th>
-                            <th class="p-2 w-2/7">Categoria</th>
-                            <th class="p-2 w-1/7">Ruta</th>
-                            <th class="p-2 w-1/7">Status</th>
-                            <th class="p-2 w-1/7">Creado por</th>
-                            <th class="p-2 w-14">Accion</th>
+                            <th class="p-4 w-1/7">Fecha</th>
+                            <th class="p-4 w-1/7">Numero</th>
+                            <th class="p-4 w-2/7">Categoria</th>
+                            <th class="p-4 w-1/7">Ruta</th>
+                            <th class="p-4 w-1/7">Status</th>
+                            <th class="p-4 w-1/7">Creado por</th>
+                            <th class="p-4 w-14">Accion</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
                         @foreach (App\Data\Inspection::items() as $item)
                             
                         <tr class="border-t border-gray-200">
-                            <td class="px-2 py-1">hace {{ $item['date'] }} dias</td>
-                            <td class="px-2 py-1">{{ $item['number'] }}</td>
-                            <td class="px-2 py-1">{{ $item['category'] }}</td>
-                            <td class="px-2 py-1">
+                            <td class="px-4">hace {{ $item['date'] }} dias</td>
+                            <td class="px-4">{{ $item['number'] }}</td>
+                            <td class="px-4">{{ $item['category'] }}</td>
+                            <td class="px-4">
                                 {{ $item['route'] ? $item['route'] : 'N/A' }}
                             </td>
-                            <td class="px-2 py-1">
+                            <td class="px-4">
                                 <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
                             </td>
-                            <td class="px-2 py-1">{{ $item['created_by'] }}</td>
-                            <td class="px-2 py-1 flex">
+                            <td class="px-4">{{ $item['created_by'] }}</td>
+                            <td class="px-4 py-1 flex justify-end">
                                 <x-icon-link href="#" icon="eye" />
                             </td>
                         </tr>
@@ -59,7 +60,7 @@
                 </x-table>
             </x-card>
         </div>
-        <div class="col-span-full lg:col-span-3">
+        {{-- <div class="col-span-full lg:col-span-3">
             <x-card>
                 <header class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="flex space-x-2">
@@ -122,6 +123,6 @@
                     </div>
                 </div>
             </x-card>
-        </div>
+        </div> --}}
     </div>
 </x-layouts.agencies>

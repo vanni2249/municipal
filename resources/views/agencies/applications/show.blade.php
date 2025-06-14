@@ -2,66 +2,47 @@
     <div class="grid grid-cols-12 gap-4 px-4">
             <div class="col-span-full">
                 <x-card class="rounded-xl p-4 h-full">
-                    <header class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0 mb-6">
+                    <header
+                        class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
                         <h2 class="text-lg font-bold text-gray-900">
-                           Radicacion
+                            Solicitud
                         </h2>
                     </header>
-                    <div class="col-span-full">
+                    <div class="col-span-full py-4">
                         @php
                             $items = [
                                 [
-                                    'key' => 'Tipo de radicacion',
-                                    'value' => 'Permiso de construccion',
-                                ],
-                                [
-                                    'key' => 'Lugar de construccion radicado',
-                                    'value' => 'Converse',
-                                ],
-                                [
-                                    'key' => 'Tipo de construccion',
-                                    'value' => 'Edificio',
-                                ],
-                                [
-                                    'key' => 'Direccion de construccion',
-                                    'value' => 'Calle Falsa 123',
-                                ],
-                                [
-                                    'key' => 'Fecha de radicacion',
+                                    'key' => 'Fecha de creacion',
                                     'value' => 'Viernes 01 de enero de 2025',
+                                ],
+                                [
+                                    'key' => 'Tipo de servicio',
+                                    'value' => 'Recogido de escombros',
                                 ],
                                 [
                                     'key' => 'Estado de la solicitud',
                                     'value' => 'En proceso de evaluacion',
                                 ],
                                 [
-                                    'key' => 'Observaciones',
-                                    'value' => 'Ninguna',
-                                ],
-                                [
-                                    'key' => 'Inspector antes de la construccion',
-                                    'value' => 'No',
-                                ],
-                                [
-                                    'key' => 'Fecha de inspeccion',
+                                    'key' => 'Fecha de recogido',
                                     'value' => 'Viernes 01 de enero de 2025',
                                 ],
                                 [
-                                    'key' => 'Observaciones',
-                                    'value' => 'Ninguna',
-                                ],
-                                [
-                                    'key' => 'Inspector despues de la construccion',
-                                    'value' => 'No',
-                                ],
-                                [
-                                    'key' => 'Fecha de inspeccion',
+                                    'key' => 'Fecha de entrega',
                                     'value' => 'Viernes 01 de enero de 2025',
                                 ],
                                 [
+                                    'key' => 'Direccion de recogido',
+                                    'value' => 'Calle 123, Ciudad, Estado',
+                                ],
+                                [
+                                    'key' => 'Direccion de entrega',
+                                    'value' => 'Calle 456, Ciudad, Estado',
+                                ],
+                                [
                                     'key' => 'Observaciones',
                                     'value' => 'Ninguna',
-                        ],
+                                ],
                                 [
                                     'key' => 'Costo estimado',
                                     'value' => '$100.00',

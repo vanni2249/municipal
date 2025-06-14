@@ -52,7 +52,7 @@
                             </td>
                             <td class="px-4">{{ $item['created_by'] }}</td>
                             <td class="px-4 py-1 flex justify-end">
-                                <x-icon-link href="#" icon="eye" />
+                                <x-icon-link href="{{ route(request()->segment(1) . '.inspections.show', ['inspection' => 1]) }}" icon="eye" />
                             </td>
                         </tr>
                         @endforeach

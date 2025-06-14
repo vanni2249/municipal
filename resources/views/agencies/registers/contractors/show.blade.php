@@ -38,9 +38,9 @@
                 </ul>
             </x-card>
         </div>
-        <div class="col-span-full lg:col-span-full">
+        {{-- <div class="col-span-full lg:col-span-full">
             <x-card>
             </x-card>
-        </div>
+        </div> --}}
     </div>
 </x-layouts.agencies>

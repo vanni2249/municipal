@@ -9,5 +9,8 @@ Route::prefix(in_array(request()->segment(1), ['it-office', 'mayors-office']) ? 
             Route::get('/', function () {
                 return view('agencies.rents.index');
             })->name('index');
+            Route::get('/{rent}', function () {
+                return view('agencies.rents.show');
+            })->name('show');
         });
     });

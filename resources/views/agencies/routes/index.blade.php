@@ -41,7 +41,7 @@
                         @foreach (App\Data\Route::items() as $item)
     
                         <tr class="border-t border-gray-200">
-                            <td class="px-4 py-1">{{ $item['date'] }}</td>
+                            <td class="px-4 py-1">hace {{ $item['date'] }} dias</td>
                             <td class="px-4 py-1">{{ $item['number'] }}</td>
                             <td class="px-4 py-1">{{ $item['category'] }}</td>
                             <td class="px-4 py-1">
@@ -50,7 +50,7 @@
                             <td class="px-4 py-1">{{ $item['created_by'] }}</td>
                             <td class="px-4 py-1">{{ $item['created_at'] }}</td>
                             <td class="px-4 py-1 flex justify-end">
-                                <x-icon-link href="#" icon="eye" />
+                                <x-icon-link href="{{ route(request()->segment(1) . '.routes.show', ['route' => 1]) }}" icon="eye" />
                             </td>
                         </tr>
                         @endforeach

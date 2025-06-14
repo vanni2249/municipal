@@ -1,12 +1,9 @@
 <x-layouts.agencies>
-    <div class="grid grid-cols-12 gap-4 p-4">
-        <header class="col-span-full flex items-center justify-between">
-            <x-title title="Ciudadano" />
-        </header>
+    <div class="grid grid-cols-12 gap-4 px-4">
         <div class="col-span-full lg:col-span-full">
-            <x-card>
+            <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h3 class="font-bold text-gray-800">Detalles del Ciudadano</h3>
+                    <h3 class="text-lg font-bold text-gray-800">Detalles del Ciudadano</h3>
                 </header>
                 @php
                     $items = [

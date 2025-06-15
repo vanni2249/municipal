@@ -11,8 +11,7 @@
     </div>
     <div class="grid grid-cols-12 gap-2 px-4">
         @for ($i = 0; $i < 2; $i++)
-            
-        <x-card class="col-span-12 lg:col-span-6 space-y-2 rounded-xl">
+        <x-card class="col-span-12 md:col-span-6 space-y-2 rounded-xl">
             <header class="flex justify-between items-center mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
                     {{ \Illuminate\Support\Str::random(16) }}
@@ -21,7 +20,7 @@
             </header>
             @for ($x = 0; $x < 5; $x++)
                 
-            <div class="bg-gray-100 p-2 rounded flex items-center justify-between">
+            <div class="bg-gray-100 p-2 rounded-xl flex items-center justify-between">
                 <div>
                     <span class="text-sm ">
                         {{ \Illuminate\Support\Str::random(24) }}
@@ -52,7 +51,7 @@
             </header>
              @for ($x = 0; $x < rand(2,5); $x++)
                 
-            <div class="bg-gray-100 p-2 text-sm rounded flex items-center justify-between">
+            <div class="bg-gray-100 p-2 text-sm rounded-xl flex items-center justify-between">
                 <span>
                     {{ \Illuminate\Support\Str::random(16) }}
                 </span>

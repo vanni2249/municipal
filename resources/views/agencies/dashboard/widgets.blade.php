@@ -110,23 +110,23 @@
                     </div>
                 </div>
                 <div>
-                    @if ($item['percentage'] >= 75)
+                    @if ($item['percentage'] >= 95)
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up text-green-400">
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-check text-green-400">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 17l6 -6l4 4l8 -8" />
-                            <path d="M14 7l7 0l0 7" />
+                            <path d="M5 12l5 5l10 -10" />
                         </svg>
                     @else
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-down text-red-400">
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-down text-red-400">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 7l6 6l4 -4l8 8" />
-                            <path d="M21 10l0 7l-7 0" />
+                            <path d="M12 5l0 14" />
+                            <path d="M16 15l-4 4" />
+                            <path d="M8 15l4 4" />
                         </svg>
                     @endif
                 </div>

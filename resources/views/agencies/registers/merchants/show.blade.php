@@ -1,7 +1,7 @@
 <x-layouts.agencies>
     <div class="grid grid-cols-12 gap-4 px-4">
         <div class="col-span-full lg:col-span-full">
-            <x-card class="rounded-xl">
+            <x-card class="rounded-xl max-h-96 overflow-hidden  ">
                 <header class="flex justify-between items-center">
                     <h3 class="font-bold text-lg text-gray-800">Detalles del Comerciante</h3>
                 </header>

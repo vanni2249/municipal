@@ -52,7 +52,7 @@
             </header>
              @for ($x = 0; $x < rand(2,5); $x++)
                 
-            <div class="bg-gray-100 p-2 text-xs rounded flex items-center justify-between">
+            <div class="bg-gray-100 p-2 text-sm rounded flex items-center justify-between">
                 <span>
                     {{ \Illuminate\Support\Str::random(16) }}
                 </span>

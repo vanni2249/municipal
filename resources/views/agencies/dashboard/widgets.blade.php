@@ -1,11 +1,7 @@
 @php
     $collection = collect([
         [
-            'agencies' => [
-                'it-office',
-                'mayor-office',
-                'finance-department'
-            ],
+            'agencies' => ['it-office', 'mayor-office', 'finance-department'],
             'title' => 'Interacciones',
             'value' => '1,234',
             'completed' => '1,230',
@@ -14,12 +10,7 @@
             'span' => 'full',
         ],
         [
-            'agencies' => [
-                'it-office',
-                'mayors-office',
-                'finance-department',
-                'citizen-help-office'
-            ],
+            'agencies' => ['it-office', 'mayors-office', 'finance-department', 'citizen-help-office'],
             'title' => 'Registros',
             'value' => '123',
             'completed' => '115',
@@ -28,11 +19,7 @@
             'span' => 1,
         ],
         [
-            'agencies' => [
-                'it-office',
-                'mayors-office',
-                'recreation-sports-department'
-            ],
+            'agencies' => ['it-office', 'mayors-office', 'recreation-sports-department'],
             'title' => 'Solicitudes',
             'value' => '56',
             'completed' => '56',
@@ -41,12 +28,7 @@
             'span' => 1,
         ],
         [
-            'agencies' => [
-                'it-office',
-                'mayors-office',
-                'finance-department',
-                'public-works-department'
-            ],
+            'agencies' => ['it-office', 'mayors-office', 'finance-department', 'public-works-department'],
             'title' => 'Radicaciones',
             'value' => '256',
             'completed' => '225',
@@ -74,7 +56,7 @@
                 'finance-department',
                 'public-works-department',
                 'recreation-sports-department',
-                'citizen-help-office'
+                'citizen-help-office',
             ],
             'title' => 'Inspecciones',
             'value' => '148',
@@ -90,7 +72,7 @@
                 'finance-department',
                 'public-works-department',
                 'recreation-sports-department',
-                'citizen-help-office'
+                'citizen-help-office',
             ],
             'title' => 'Rutas',
             'value' => '58',
@@ -103,27 +85,52 @@
 @endphp
 
 @foreach ($collection as $item)
-   @if (in_array(request()->segment(1), $item['agencies']))
-    {{-- <x-card class="flex-shrink-0 2xl:flex-shrink-1 w-48 md:w-56 lg:w-64 rounded-xl"> --}}
-    <x-card class="col-span-6 md:col-span-4 xl:col-span-2 rounded-xl">
-        <small class="text-gray-800">
-            {{ $item['title'] }}
-        </small>
-        <div class="flex items-baseline space-x-1">
-            <h2 class="text-lg font-bold text-gray-900">
-                {{ $item['value'] }}
-            </h2>
-            <span class="text-xs font-bold text-gray-500">
-                <small>/
-                    {{ $item['completed'] }}
-                </small>
-            </span>
-        </div>
-        <div class="text-xs text-gray-500 line-clamp-1">
-            <span class="font-bold">
-                {{ $item['percentage'] }}%
-            </span> de {{ $item['percentage_key'] }}
-        </div>
-    </x-card>
-    @endif 
+    @if (in_array(request()->segment(1), $item['agencies']))
+        {{-- <x-card class="flex-shrink-0 2xl:flex-shrink-1 w-48 md:w-56 lg:w-64 rounded-xl"> --}}
+        <x-card class="col-span-6 md:col-span-4 xl:col-span-2 rounded-xl">
+            <div class="flex justify-between items-center">
+                <div>
+                    <small class="text-gray-800">
+                        {{ $item['title'] }}
+                    </small>
+                    <div class="flex items-baseline space-x-1">
+                        <h2 class="text-lg font-bold text-gray-900">
+                            {{ $item['value'] }}
+                        </h2>
+                        <span class="text-xs font-bold text-gray-500">
+                            <small>/
+                                {{ $item['completed'] }}
+                            </small>
+                        </span>
+                    </div>
+                    <div class="text-xs text-gray-500 line-clamp-1">
+                        <span class="font-bold">
+                            {{ $item['percentage'] }}%
+                        </span> de {{ $item['percentage_key'] }}
+                    </div>
+                </div>
+                <div>
+                    @if ($item['percentage'] >= 75)
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up text-green-400">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 17l6 -6l4 4l8 -8" />
+                            <path d="M14 7l7 0l0 7" />
+                        </svg>
+                    @else
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-down text-red-400">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 7l6 6l4 -4l8 8" />
+                            <path d="M21 10l0 7l-7 0" />
+                        </svg>
+                    @endif
+                </div>
+            </div>
+        </x-card>
+    @endif
 @endforeach

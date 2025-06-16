@@ -3,7 +3,8 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h3 class="font-bold text-lg text-gray-800">Detalles del Suplidor</h3>
+                    <h3 class="font-bold text-lg text-gray-800">Detalles del suplidor</h3>
+                        <x-icon-link href="{{ route(request()->segment(1) . '.registers.suppliers.edit' , ['supplier' => 1]) }}"></x-icon-link>
                 </header>
                 @php
                     $items = [

@@ -3,7 +3,10 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h3 class="font-bold text-lg text-gray-800">Detalles de la Persona Mayor</h3>
+                    <h3 class="font-bold text-lg text-gray-800">Detalles de la persona mayor</h3>
+                    <x-icon-link
+                        href="{{ route(request()->segment(1) . '.registers.seniors.edit', ['senior' => 1]) }}"></x-icon-link>
+
                 </header>
                 @php
                     $items = [
@@ -20,14 +23,13 @@
                 @endphp
                 <ul class="grid grid-cols-4 text-sm text-gray-600 space-y-4 py-4">
                     @foreach ($items as $item)
-                    <li class="col-span-4 md:col-span-2 lg:col-span-1">
-                        <small class="font-bold">{{ $item['label'] }}</small>
-                        <br>
-                        <span>
-                            {!! $item['value'] !!}
-                        </span>
-                    </li>
-                        
+                        <li class="col-span-4 md:col-span-2 lg:col-span-1">
+                            <small class="font-bold">{{ $item['label'] }}</small>
+                            <br>
+                            <span>
+                                {!! $item['value'] !!}
+                            </span>
+                        </li>
                     @endforeach
                 </ul>
             </x-card>

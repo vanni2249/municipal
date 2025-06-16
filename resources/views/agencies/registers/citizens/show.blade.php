@@ -4,6 +4,8 @@
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
                     <h3 class="text-lg font-bold text-gray-800">Detalles del Ciudadano</h3>
+                        <x-icon-link href="{{ route(request()->segment(1) . '.registers.citizens.edit' , ['citizen' => 1]) }}"></x-icon-link>
+
                 </header>
                 @php
                     $items = [

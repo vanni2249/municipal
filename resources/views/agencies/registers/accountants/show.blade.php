@@ -3,7 +3,9 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h3 class="font-bold text-lg text-gray-800">Detalles del Contable</h3>
+                    <h3 class="font-bold text-lg text-gray-800">Detalles del contable</h3>
+                        <x-icon-link href="{{ route(request()->segment(1) . '.registers.accountants.edit' , ['accountant' => 1]) }}"></x-icon-link>
+
                 </header>
                 @php
                     $items = [

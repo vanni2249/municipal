@@ -4,6 +4,7 @@
             <x-card class="rounded-xl max-h-96 overflow-hidden  ">
                 <header class="flex justify-between items-center">
                     <h3 class="font-bold text-lg text-gray-800">Detalles del Comerciante</h3>
+                        <x-icon-link href="{{ route(request()->segment(1) . '.registers.merchants.edit' , ['merchant' => 1]) }}"></x-icon-link>
                 </header>
                 @php
                     $items = [

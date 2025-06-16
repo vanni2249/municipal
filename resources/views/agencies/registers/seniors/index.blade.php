@@ -4,7 +4,8 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="h-full rounded-xl">
                 <header class="flex justify-between items-center mb-4">
-                   <h1 class="text-lg font-bold">Personas por Mayores</h1> 
+                   <h1 class="text-lg font-bold">Personas mayores</h1> 
+                    <x-icon-link href="{{ route(request()->segment(1) . '.registers.seniors.create') }}" icon="plus" />
 
                 </header>
                 <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">

@@ -5,6 +5,7 @@
             <x-card class="h-full rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                    <h1 class="text-lg font-bold">Comerciante</h1> 
+                    <x-icon-link href="{{ route(request()->segment(1) . '.registers.merchants.create') }}" icon="plus" />
 
                 </header>
                 <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">

@@ -29,6 +29,10 @@
             <x-label for="phone" class="mt-4" value="Teléfono" />
             <x-input id="phone" class="w-full" type="text" name="phone" placeholder="Ingrese su teléfono" required />
         </div>
+        <div class="mt-2">
+            <x-label for="phone" class="mt-4" value="Numero de comerciante" />
+            <x-input id="phone" class="w-full" type="text" name="phone" placeholder="Ingrese su numero de comerciante" required />
+        </div>
         <div class="mt-2 flex items-center space-x-2">
             <div class="pt-1">
                 <x-checkbox id="terms" name="terms" value="1" />

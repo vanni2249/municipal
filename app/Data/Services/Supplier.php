@@ -14,6 +14,9 @@ class Supplier
             [
                 'title' => 'Acceso a lista de suplidos',
             ],
+             [
+                'title' => 'Solicitar registro de suplidor',
+            ],
             [
                 'title' => 'Someter propuesta de suplido',
             ],

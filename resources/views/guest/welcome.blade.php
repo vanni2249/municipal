@@ -47,43 +47,49 @@
                     'key' => 'citizen',
                     'name' => 'Servicios al ciudadano',
                     'query' => App\Data\Services\User::items(),
-                    'route' => 'citizens.login',
+                    'route' => 'users.login',
                 ],
                 [
                     'key' => 'merchant',
                     'name' => 'Servicios al comerciante',
                     'query' => App\Data\Services\Merchant::items(),
-                    'route' => 'merchants.login',
-
+                    'route' => 'users.login',
+                    
                 ],
                 [
                     'key' => 'accountant',
                     'name' => 'Servicios al contador',
                     'query' => App\Data\Services\Accountant::items(),
-                    'route' => 'accountants.login',
-
+                    'route' => 'users.login',
+                    
                 ],
-                // [   
-                //     'key' => 'contractor',
-                //     'name' => 'Servicios al contratista',
-                //     'query' => App\Data\Services\Contractor::items(),
-                //     'route' => 'contractors.login',
-
-                // ],
-                // [
-                //     'key' => 'supplier',
-                //     'name' => 'Servicios al Supplidor',
-                //     'query' => App\Data\Services\Supplier::items(),
-                //     'route' => 'suppliers.login',
-
-                // ],
+                [   
+                    'key' => 'contractor',
+                    'name' => 'Servicios al contratista',
+                    'query' => App\Data\Services\Contractor::items(),
+                    'route' => 'users.login',
+                    
+                ],
                 [
-                    'key' => 'employee',
-                    'name' => 'Servicios al empleado',
-                    'query' => App\Data\Services\User::items(),
-                    'route' => 'employees.login',
-
+                    'key' => 'supplier',
+                    'name' => 'Servicios al Supplidor',
+                    'query' => App\Data\Services\Supplier::items(),
+                    'route' => 'users.login',
+                    
                 ],
+                [
+                    'key' => 'visitors',
+                    'name' => 'Servicios al visitante',
+                    'query' => App\Data\Services\Visitor::items(),
+                    'route' => 'users.login',
+                ],
+                // [
+                //     'key' => 'employee',
+                //     'name' => 'Servicios al empleado',
+                //     'query' => App\Data\Services\User::items(),
+                //     'route' => 'admin.login',
+
+                // ],
 
             ];
         @endphp     
@@ -106,7 +112,7 @@
             </ul>
             @endif
             <footer class="flex justify-center">
-                <a href="{{ route($service['route']) }}"
+                <a href="{{ route($service['route'], ['role' => $service['key']]) }}"
                     class="border border-gray-300 font-bold text-gray-600 hover:text-gray-800 transition-all hover:bg-gray-200 w-full text-center text-xs py-2 rounded-full">
                     Acceder a los servicios
                 </a>

@@ -36,23 +36,23 @@
                         ],
                         [
                             'label' => 'Comerciante',
-                            'route' => 'merchants.login',
+                            'route' => 'users.login',
                         ],
                         [
                             'label' => 'Contador',
-                            'route' => 'accountants.login',
+                            'route' => 'users.login',
                         ],
                         [
                             'label' => 'Contratista',
-                            'route' => 'contractors.login',
+                            'route' => 'users.login',
                         ],
                         [
                             'label' => 'Supplidor',
-                            'route' => 'suppliers.login',
+                            'route' => 'users.login',
                         ],
                         [
                             'label' => 'Empleados',
-                            'route' => 'employees.login',
+                            'route' => 'admin.login',
                         ],
                     ];
                 @endphp

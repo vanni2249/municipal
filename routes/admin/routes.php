@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/routes')->name('routes.')->group(function () {
     Route::get('/', function () {
-        return view('agencies.routes.index');
+        return view('admin.routes.index');
     })->name('index');
     Route::get('/{route}', function () {
-        return view('agencies.routes.show');
+        return view('admin.routes.show');
     })->name('show');
 });

@@ -14,18 +14,6 @@
                 <h2 class="text-2xl font-bold text-white">
                     Juan del Pueblo
                 </h2>
-                {{-- <header class="flex justify-between items-start">
-                    <div>
-                        <span class="text-xs font-bold text-gray-200">Bienvenidos</span>
-                    </div>
-                    <div>
-                        <div>
-                            <span class="text-xs text-gray-200  font-bold">
-                                Ciudadano
-                            </span>
-                        </div>
-                    </div>
-                </header> --}}
             </x-card>
             <!-- Interaction box -->
             {{-- @if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants'])) --}}

@@ -32,33 +32,39 @@
                     $items = [
                         [
                             'label' => 'Ciudadano',
-                            'route' => 'citizens.login',
+                            'route' => 'users.login',
+                            'role' => 'citizen'
                         ],
                         [
                             'label' => 'Comerciante',
-                            'route' => 'merchants.login',
+                            'route' => 'users.login',
+                            'role' => 'merchant'
                         ],
                         [
                             'label' => 'Contador',
-                            'route' => 'accountants.login',
+                            'route' => 'users.login',
+                            'role' => 'accountant'
                         ],
                         [
                             'label' => 'Contratista',
-                            'route' => 'contractors.login',
+                            'route' => 'users.login',
+                            'role' => 'contractor'
                         ],
                         [
                             'label' => 'Supplidor',
-                            'route' => 'suppliers.login',
+                            'route' => 'users.login',
+                            'role' => 'supplier'
                         ],
                         [
-                            'label' => 'Empleados',
-                            'route' => 'employees.login',
+                            'label' => 'Visitante',
+                            'route' => 'users.login',
+                            'role' => 'visitor'
                         ],
                     ];
                 @endphp
                 <nav class="hidden lg:flex space-x-4 text-sm font-semibold">
                     @foreach ($items as $item)
-                        <a href="{{ route($item['route']) }}" 
+                        <a href="{{ route($item['route'], ['role' => strtolower($item['role'])]) }}" 
                         @class(['text-gray-300 hover:text-gray-100' => request()->routeIs('welcome'),
                         'text-gray-700 hover:text-gray-900' => !request()->routeIs('welcome')])>
                             {{ $item['label'] }}
@@ -83,7 +89,7 @@
                         </x-slot>
                         <x-slot name="content">
                             @foreach ($items as $item)
-                                <x-dropdown-link :href="route($item['route'])">
+                                <x-dropdown-link :href="route($item['route'], ['role' => strtolower($item['role'])])">
                                     {{ $item['label'] }}
                                 </x-dropdown-link>
                             @endforeach
@@ -100,7 +106,7 @@
         <div class=" bg-gray-300 p-4 rounded-2xl">
 
             <ul
-                class="px-4 py-2 text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
+                class=" text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
                 <li class="font-bold">
                     &copy; {{ date('Y') }} MyApp. All rights reserved.
                 </li>

@@ -14,6 +14,11 @@ class User
                 'path' => 'dashboard',
             ],
             [
+                'name' => 'Servicios',
+                'route' => 'users.services.index',
+                'path' => 'services',
+            ],
+            [
                 'name' => 'Comerciantes',
                 'route' => 'users.merchants.index',
                 'path' => 'merchants',

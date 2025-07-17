@@ -128,7 +128,7 @@
                     </header>
                     <div class="col-span-full space-y-2">
                         @for ($i = 0; $i < 2; $i++) 
-                        <a href="{{  route('accountants.merchants.businesses.patents.periods.show', ['merchant' => 1, 'business' => 1, 'patent' => 1, 'period' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
+                        <a href="{{  route('users.merchants.businesses.patents.periods.show', ['merchant' => 1, 'business' => 1, 'patent' => 1, 'period' => 1]) }}" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
                             <header class="flex justify-between items-center">
                                 <small class=" text-gray-600">
                                     {{ rand(10000, 99999) }}

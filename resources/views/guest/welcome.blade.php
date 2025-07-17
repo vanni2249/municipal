@@ -34,8 +34,8 @@
             </div>
         </div>
     </section>
-    <section class="grid grid-cols-12 gap-4 py-8 lg:py-16  max-w-7xl px-4 mx-auto">
-        <header id="services" class="col-span-full pt-4">
+    <section class="grid grid-cols-12 gap-2 lg:gap-4 pt-4  max-w-7xl px-4 mx-auto">
+        <header id="services" class="col-span-full pt-4 px-2">
             <h2 class="font-bold text-xl text-gray-800">
                 Servicios municipales
             </h2>
@@ -63,20 +63,20 @@
                     'route' => 'accountants.login',
 
                 ],
-                [   
-                    'key' => 'contractor',
-                    'name' => 'Servicios al contratista',
-                    'query' => App\Data\Services\Contractor::items(),
-                    'route' => 'contractors.login',
+                // [   
+                //     'key' => 'contractor',
+                //     'name' => 'Servicios al contratista',
+                //     'query' => App\Data\Services\Contractor::items(),
+                //     'route' => 'contractors.login',
 
-                ],
-                [
-                    'key' => 'supplier',
-                    'name' => 'Servicios al Supplidor',
-                    'query' => App\Data\Services\Supplier::items(),
-                    'route' => 'suppliers.login',
+                // ],
+                // [
+                //     'key' => 'supplier',
+                //     'name' => 'Servicios al Supplidor',
+                //     'query' => App\Data\Services\Supplier::items(),
+                //     'route' => 'suppliers.login',
 
-                ],
+                // ],
                 [
                     'key' => 'employee',
                     'name' => 'Servicios al empleado',
@@ -89,7 +89,7 @@
         @endphp     
         @foreach ($services as $service)
             
-        <div class="bg-white col-span-full md:col-span-4 lg:col-span-4 px-4 py-6 md:p-6 lg:p-8 rounded-xl flex flex-col space-y-6">
+        <div class="bg-white col-span-full md:col-span-6 lg:col-span-4 px-4 py-6 md:p-6 lg:p-8 rounded-xl flex flex-col space-y-6">
             <header class="flex items-center justify-between">
                 <h2 class="text-lg font-bold text-gray-700 leading-3">
                     {{ $service['name'] }}
@@ -115,7 +115,7 @@
         @endforeach
     </section>
     <!-- public announcement -->
-    <section class="bg-gray-300 py-8 lg:py-16">
+    {{-- <section class="bg-gray-300 py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
             <header id="public-announcement" class="col-span-full pt-4">
                 <h2 class="font-bold text-xl text-gray-900">
@@ -159,9 +159,9 @@
                 </div>
             </footer>
         </div>
-    </section>
+    </section> --}}
     <!-- News -->
-    <section class="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-4 py-8 lg:py-16">
+    {{-- <section class="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-4 py-8 lg:py-16">
         <header id="news" class="col-span-full">
             <h2 class="font-bold text-xl text-black pt-4">Noticias</h2>
         </header>
@@ -191,9 +191,9 @@
                     </a>
                 </div>
             </footer>
-    </section>
+    </section> --}}
     <!-- Events -->
-    <section class="bg-gray-300 py-8 lg:py-16">
+    {{-- <section class="bg-gray-300 py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
             <header id="events" class="col-span-full pt-4">
                 <h2 class="font-bold text-xl text-black">Eventos</h2>
@@ -248,9 +248,9 @@
                 </div>
             </footer>
         </div>
-    </section>
+    </section> --}}
     <!-- press release -->
-    <section class=" py-8 lg:py-16">
+    {{-- <section class=" py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
             <header id="press-release" class="col-span-full pt-4">
                 <h2 class="font-bold text-xl text-black">
@@ -293,9 +293,9 @@
                     </div>
                 </footer>
         </div>
-    </section>
+    </section> --}}
      <!-- Agencies municipilitiy -->
-    <section class="bg-gray-300 py-8 lg:py-16">
+    {{-- <section class="bg-gray-300 py-8 lg:py-16">
         <div class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto">
         <header id="agency" class="col-span-full">
             <h2 class="font-bold text-xl text-black pt-4">
@@ -348,9 +348,9 @@
             </div>
         </footer>
         </div>
-    </section>
+    </section> --}}
     <!-- Facilidaties -->
-    <section class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto py-8 lg:py-16">
+    {{-- <section class="grid grid-cols-12 gap-4 max-w-7xl px-4 mx-auto py-8 lg:py-16">
         <header id="city-hall" class="col-span-full">
             <h2 class="font-bold text-xl text-black pt-4">
                 Facilidadades del gobierno municipal
@@ -405,5 +405,5 @@
                 </a>
             </div>
         </footer>
-    </section>
+    </section> --}}
 </x-layouts.guest>

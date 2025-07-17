@@ -1,7 +1,7 @@
 <x-layouts.users>
     <div class="max-w-7xl mx-auto p-4 space-y-4">
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-full md:col-span-8">
+            <div class="col-span-full md:col-span-full">
                 <x-card class="rounded-xl p-4 h-full">
                     <header class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0 mb-6">
                         <h2 class="text-md font-bold text-gray-900">
@@ -89,7 +89,7 @@
                                 ],
                             ];
                         @endphp
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach ($items as $item)
                                 <ul>
                                     <li class="text-xs font-bold text-gray-500">{{ $item['key'] }}</li>
@@ -100,9 +100,9 @@
                     </div>
                 </x-card>
             </div>
-            <div class="col-span-full md:col-span-4">
+            {{-- <div class="col-span-full md:col-span-4">
                 @include('users.partials.sidebar-box')
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-layouts.users>

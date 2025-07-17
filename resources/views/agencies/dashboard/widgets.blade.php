@@ -1,7 +1,6 @@
 @php
     $collection = collect([
         [
-            'agencies' => ['it-office', 'mayor-office', 'finance-department'],
             'title' => 'Interacciones',
             'value' => '1,234',
             'completed' => '1,230',
@@ -10,7 +9,6 @@
             'span' => 'full',
         ],
         [
-            'agencies' => ['it-office', 'mayors-office', 'finance-department', 'citizen-help-office'],
             'title' => 'Registros',
             'value' => '123',
             'completed' => '115',
@@ -19,7 +17,6 @@
             'span' => 1,
         ],
         [
-            'agencies' => ['it-office', 'mayors-office', 'recreation-sports-department'],
             'title' => 'Solicitudes',
             'value' => '56',
             'completed' => '56',
@@ -28,7 +25,6 @@
             'span' => 1,
         ],
         [
-            'agencies' => ['it-office', 'mayors-office', 'finance-department', 'public-works-department'],
             'title' => 'Radicaciones',
             'value' => '256',
             'completed' => '225',
@@ -37,11 +33,6 @@
             'span' => 'full',
         ],
         [
-            'agencies' => [
-                // 'it-office',
-                'mayors-office',
-                'finance-department',
-            ],
             'title' => 'Rentas',
             'value' => '12',
             'completed' => '12',
@@ -50,14 +41,6 @@
             'span' => 1,
         ],
         [
-            'agencies' => [
-                'it-office',
-                'mayors-office',
-                'finance-department',
-                'public-works-department',
-                'recreation-sports-department',
-                'citizen-help-office',
-            ],
             'title' => 'Inspecciones',
             'value' => '148',
             'completed' => '144',
@@ -66,15 +49,15 @@
             'span' => 1,
         ],
         [
-            'agencies' => [
-                'it-office',
-                'mayors-office',
-                'finance-department',
-                'public-works-department',
-                'recreation-sports-department',
-                'citizen-help-office',
-            ],
             'title' => 'Rutas',
+            'value' => '58',
+            'completed' => '54',
+            'percentage' => 93,
+            'percentage_key' => 'rutas',
+            'span' => 1,
+        ],
+        [
+            'title' => 'Conexiones',
             'value' => '58',
             'completed' => '54',
             'percentage' => 93,
@@ -85,9 +68,7 @@
 @endphp
 
 @foreach ($collection as $item)
-    @if (in_array(request()->segment(1), $item['agencies']))
-        {{-- <x-card class="flex-shrink-0 2xl:flex-shrink-1 w-48 md:w-56 lg:w-64 rounded-xl"> --}}
-        <x-card class="col-span-6 md:col-span-4 xl:col-span-2 rounded-xl">
+        <x-card class="col-span-6 md:col-span-4 xl:col-span-3 rounded-xl">
             <div class="flex justify-between items-center">
                 <div>
                     <small class="text-gray-800">
@@ -132,5 +113,4 @@
                 </div>
             </div>
         </x-card>
-    @endif
 @endforeach

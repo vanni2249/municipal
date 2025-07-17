@@ -19,7 +19,7 @@
                                     <x-dropdown-link href="">
                                         Editar comerciante
                                     </x-dropdown-link>
-                                    <x-dropdown-link href="{{ route('accountants.merchants.businesses.create', ['merchant' => 1]) }}">
+                                    <x-dropdown-link href="{{ route('users.merchants.businesses.create', ['merchant' => 1]) }}">
                                         Crear nuevo comercio
                                     </x-dropdown-link>
                                 </x-slot>
@@ -78,7 +78,7 @@
                     </header>
                     <div class="col-span-full space-y-2">
                         @for ($i = 0; $i < 2; $i++) 
-                        <a href="{{ route('accountants.merchants.businesses.show', ['merchant' => 1, 'business' => 2]) }}" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
+                        <a href="{{ route('users.merchants.businesses.show', ['merchant' => 1, 'business' => 2]) }}" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
                             <header class="flex justify-between">
                                 <small class="text-gray-600">
                                     Venta por mayorista

@@ -37,9 +37,14 @@
                 </ul>
             </x-card>
         </div>
-        {{-- <div class="col-span-full lg:col-span-full">
+        <div class="col-span-full lg:col-span-full">
             <x-card>
+                <header class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Comerciantes</h3>
+                </header>
+                @livewire('agencies.merchants.list-merchants', ['show' => 5,])
+
             </x-card>
-        </div> --}}
+        </div>
     </div>
 </x-layouts.agencies>

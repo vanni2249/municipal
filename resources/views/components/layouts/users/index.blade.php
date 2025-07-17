@@ -15,8 +15,102 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
-    <nav class="max-w-7xl mx-auto px-4 pt-4 w-full">
+<body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
+    <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4 overflow-auto">
+        <aside class="bg-black rounded-xl w-full h-full overflow-auto">
+            <header class="h-16 border-b border-gray-900 flex items-center text-white px-6">
+                <div class="flex justify-between items-center w-full">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-gray-200">
+                            MyCity
+                        </span>
+                        <span class="text-xs font-extrabold text-gray-600">
+                        </span>
+                    </div>
+                    <button class="cursor-pointer lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler text-gray-400 icons-tabler-outline icon-tabler-x">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 6l-12 12" />
+                            <path d="M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <ul class="p-4 text-xs font-bold uppercase space-y-1">
+                @foreach (App\Data\Sidebar\User::items() as $item)
+                    <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
+                        {{ $item['name'] }}
+                    </x-layouts.sidebar-link>
+                @endforeach
+            </ul>
+        </aside>
+    </div>
+    <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
+        <div class="px-4 pt-4">
+            <nav class="bg-white h-16 px-4 w-full rounded-xl">
+                <div class="flex justify-between items-center h-full">
+                    <div class="flex space-x-4">
+                        <div class="hidden lg:flex items-center justify-center">
+                            <button id="sidebar-toggle" class="cursor-pointer">
+                                <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
+                            </button>
+                        </div>
+                        <div class="lg:hidden flex items-center justify-center">
+                            <x-dropdown align="left">
+                                <x-slot name="trigger">
+                                    <button
+                                        class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
+                                        <img src="{{ asset('icons/menu-2.svg') }}" alt="dropdown" />
+                                    </button>
+                                </x-slot>
+                                <x-slot name="content">
+                                    {{-- @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
+                                        <x-dropdown-link href="{{ route($item['route']) }}">
+                                            {{ $item['name'] }}
+                                        </x-dropdown-link>
+                                    @endforeach --}}
+                                </x-slot>
+                            </x-dropdown>
+                        </div>
+                        <a href="" class="font-bold lg:hidden">MyCity</a>
+                    </div>
+                    <ul class="flex space-x-6 md:space-x-8">
+                        <li class="inline-block">
+                            <a href="" class="text-gray-800 hover:text-gray-600">
+                                <img src="{{ asset('icons/bell.svg') }}" alt="bell">
+                            </a>
+                        </li>
+                        <li class="inline-block">
+                            <a href="" class="text-gray-800 hover:text-gray-600">
+                                <img src="{{ asset('icons/user-circle.svg') }}" alt="user">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <main class="flex-grow min-h-96">
+            {{ $slot }}
+        </main>
+        <footer class="mx-auto px-4 pb-4 w-full ">
+            <div class="bg-gray-300 rounded-xl">
+
+                <ul
+                    class="px-4 py-4 text-sm text-gray-800 flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center space-y-1">
+                    <li class="font-bold">
+                        &copy; {{ date('Y') }} MyApp. All rights reserved.
+                    </li>
+                    <li class="text-gray-700 text-xs">
+                        Hecho con ❤️ en Puerto Rico
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    {{-- <nav class="max-w-7xl mx-auto px-4 pt-4 w-full">
         <div class="bg-white rounded-xl py-4 px-4 md:px-6 h-full">
             <div class=" flex justify-between items-center h-full">
                 @php
@@ -94,7 +188,7 @@
                         </x-dropdown>
                     </div>
                     <div>
-                        <a href="{{ route(request()->segment(1) .'.dashboard') }}" class="text-xl font-bold">MyApp's</a>
+                        <a href="{{ route('users.dashboard') }}" class="text-xl font-bold">MyApp's</a>
                     </div>
                 </div>
                 <!-- Menu -->
@@ -158,7 +252,7 @@
                 </li>
             </ul>
         </div>
-    </footer>
+    </footer> --}}
     @stack('scripts')
     @livewireScripts
 </body>

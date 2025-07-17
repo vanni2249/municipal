@@ -1,53 +1,35 @@
 <x-layouts.users>
-    <div class="max-w-7xl mx-auto p-4">
+    <div class="p-4">
         <div class="grid grid-cols-12 gap-4">
             <!-- Profile box -->
-            <x-card class="col-span-full p-4 lg:p-8 rounded-xl" color="bg-black">
-                <header class="flex justify-between items-start">
+            <x-card class="col-span-full lg:col-span-3 p-4 rounded-xl" color="bg-black">
+                <header class="flex justify-between items-center text-gray-200 mb-4">
+                    <h2 class="text-lg font-bold">
+                        Bienvenido
+                    </h2>
+                    <small class="text-xs">
+                        Ciudadano
+                    </small>
+                </header>
+                <h2 class="text-2xl font-bold text-white">
+                    Juan del Pueblo
+                </h2>
+                {{-- <header class="flex justify-between items-start">
                     <div>
                         <span class="text-xs font-bold text-gray-200">Bienvenidos</span>
-                        <h2 class="text-2xl font-bold text-white">
-                            Juan del Pueblo
-                        </h2>
                     </div>
                     <div>
                         <div>
-                            <span href="#" class="text-xs text-gray-200  font-bold">
-                                @switch(request()->segment(1))
-                                    @case('visitors')
-                                        Visitante
-                                    @break
-
-                                    @case('citizens')
-                                        Ciudadano
-                                    @break
-
-                                    @case('merchants')
-                                        Comerciante
-                                    @break
-
-                                    @case('accountants')
-                                        Contador
-                                    @break
-
-                                    @case('contractors')
-                                        Contratista
-                                    @break
-
-                                    @case('suppliers')
-                                        Proveedor
-                                    @break
-
-                                    @default
-                                @endswitch
+                            <span class="text-xs text-gray-200  font-bold">
+                                Ciudadano
                             </span>
                         </div>
                     </div>
-                </header>
+                </header> --}}
             </x-card>
             <!-- Interaction box -->
-            @if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants']))
-                <x-card class="col-span-full p-4 lg:p-8 rounded-xl">
+            {{-- @if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants'])) --}}
+                <x-card class="col-span-full lg:col-span-9   p-4 rounded-xl">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                         <div>
                             <h2 class="text-lg text-gray-800 font-bold">Solicitar interaccion</h2>
@@ -96,9 +78,9 @@
                         </div>
                     </div>
                 </x-card>
-            @endif
+            {{-- @endif --}}
             <!-- Services box -->
-            <x-card class="col-span-full p-4 lg:p-8 h-full rounded-xl">
+            <x-card class="col-span-full p-4 h-full rounded-xl">
                 <header class="flex justify-between items-start mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Servicios
@@ -110,15 +92,13 @@
                     </div>
                 </header>
                 <div class="grid grid-cols-12 gap-2">
-                    @foreach (collect(\App\Data\Service::items())->filter(function ($item) {
-                        return in_array(request()->segment(1), $item['users']);
-                    })->take(8) as $item)
+                    @foreach (collect(\App\Data\Service::items())->take(8) as $item)
                         <a href="{{ route($item['route']) }}"
                             class="flex flex-col space-y-1 col-span-6 md:col-span-4 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                             @if (isset($item['img']))
-                                <div>
+                                {{-- <div>
                                     <img src="{{ asset($item['img']) }}" class="rounded-t-xl" alt="">
-                                </div>
+                                </div> --}}
                             @endif
                             <div class="p-2 lg:p-4">
                                 <span class="text-sm text-gray-700 font-bold">

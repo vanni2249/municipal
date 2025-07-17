@@ -1,7 +1,7 @@
 <x-layouts.users>
-    <div class="max-w-7xl mx-auto p-4 space-y-4">
+    <div class=" p-4 space-y-4">
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-full lg:col-span-8">
+            <div class="col-span-full lg:col-span-full">
                 <x-card class="rounded-xl p-4 h-full">
                     <header class="flex flex-row justify-between items-center space-x-4 mb-4">
                         <h2 class="text-lg font-bold text-gray-900">
@@ -111,9 +111,9 @@
                     </div>
                 </x-card>
             </div>
-            <div class="col-span-full lg:col-span-4">
+            {{-- <div class="col-span-full lg:col-span-4">
                 @include('users.partials.sidebar-box')
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-layouts.users>

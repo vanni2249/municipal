@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('merchants')
-    ->name('merchants.')
-    ->group(function () {
-        Route::prefix('/businesses')->name('businesses.')->group(function (){
+// Route::prefix('merchants')
+//     ->name('merchants.')
+//     ->group(function () {
+        Route::prefix('/businesses')->name('users.businesses.')->group(function (){
             Route::get('/', function () {
                 return view('users.businesses.index');
             })->name('index');
@@ -70,4 +70,4 @@ Route::prefix('merchants')
             });
 
         });
-    });
+    // });

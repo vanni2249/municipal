@@ -3,66 +3,75 @@
 /*
 ** Guest Routes
 */
-require __DIR__.'/guest.php';
+
+use Illuminate\Support\Facades\Route;
+
+require __DIR__ . '/guest.php';
 
 
 /*
 ** Auth Routes
 */
-require __DIR__.'/auth/citizens.php';
-require __DIR__.'/auth/merchants.php';
-require __DIR__.'/auth/accountants.php';
-require __DIR__.'/auth/contractors.php';
-require __DIR__.'/auth/suppliers.php';
-require __DIR__.'/auth/employees.php';
+require __DIR__ . '/auth/citizens.php';
+require __DIR__ . '/auth/merchants.php';
+require __DIR__ . '/auth/accountants.php';
+require __DIR__ . '/auth/contractors.php';
+require __DIR__ . '/auth/suppliers.php';
+require __DIR__ . '/auth/employees.php';
 
-if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'contractors', 'suppliers'])) {
+// if (in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'contractors', 'suppliers'])) {
 /*
 ** Partial Routes
 */
 
-require __DIR__.'/partials/notifications.php';
+require __DIR__ . '/partials/notifications.php';
 
 /*
 ** Users Routes
 */
-    require __DIR__.'/users/partials.php';
-    require __DIR__.'/users/services.php';
-    require __DIR__.'/users/applications.php';
-    require __DIR__.'/users/interactions.php';
-    require __DIR__.'/users/registers.php';
-    require __DIR__.'/users/settlements.php';
-    require __DIR__.'/users/rents.php';
-    require __DIR__.'/users/merchants.php';
-    require __DIR__.'/users/businesses.php';
-}
+
+Route::prefix('users')->group(function () {
+    require __DIR__ . '/users/partials.php';
+    require __DIR__ . '/users/services.php';
+    require __DIR__ . '/users/applications.php';
+    require __DIR__ . '/users/interactions.php';
+    require __DIR__ . '/users/registers.php';
+    require __DIR__ . '/users/settlements.php';
+    require __DIR__ . '/users/rents.php';
+    require __DIR__ . '/users/merchants.php';
+    require __DIR__ . '/users/businesses.php';
+});
+// }
 
 /*
-** Agencies Routes
+** Admin Routes
 */
 
-$array = [
-    'it-office', 
-    'mayors-office', 
-    'finance-department',
-    'citizen-help-office',
-    'public-works-department',
-    'public-works-department',
-    'recreation-sports-department',
-];
-if (in_array(request()->segment(1), $array)) {
+// $array = [
+//     'it-office', 
+//     'mayors-office', 
+//     'finance-department',
+//     'citizen-help-office',
+//     'public-works-department',
+//     'public-works-department',
+//     'recreation-sports-department',
+// ];
+// if (in_array(request()->segment(1), $array)) {
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    require __DIR__ . '/admin/dashboard.php';
+    require __DIR__ . '/admin/interactions.php';
+    require __DIR__ . '/admin/registers.php';
+    require __DIR__ . '/admin/applications.php';
+    require __DIR__ . '/admin/settlements.php';
+    require __DIR__ . '/admin/rents.php';
+    require __DIR__ . '/admin/inspections.php';
+    require __DIR__ . '/admin/routes.php';
+    require __DIR__ . '/admin/facilities.php';
+    require __DIR__ . '/admin/equipments.php';
+});
     
-    require __DIR__.'/agencies/dashboard.php';
-    require __DIR__.'/agencies/interactions.php';
-    require __DIR__.'/agencies/registers.php';
-    require __DIR__.'/agencies/applications.php';
-    require __DIR__.'/agencies/settlements.php';
-    require __DIR__.'/agencies/rents.php';
-    require __DIR__.'/agencies/inspections.php';
-    require __DIR__.'/agencies/routes.php';
-    require __DIR__.'/agencies/facilities.php';
-    require __DIR__.'/agencies/equipments.php';
-}
+// }
 
 // require __DIR__.'/users/citizens.php';
 // require __DIR__.'/users/merchants.php';

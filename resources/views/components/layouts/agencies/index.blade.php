@@ -22,66 +22,15 @@
                 <div class="flex justify-between items-center w-full">
                     <div class="flex flex-col">
                         <span class="text-sm font-semibold text-gray-200">
-                            MyApps
+                            MyCity
                         </span>
                         <span class="text-xs font-extrabold text-gray-600">
-                            @switch(request()->segment(1))
-                                @case('public-works')
-                                    Obras-publicas
-                                @break
-
-                                @case('citizens-help')
-                                    Oficina de Ayuda al ciudadano
-                                @break
-
-                                @case('recreation-sports')
-                                    Departemento de Recreacion y Deportes
-                                @break
-
-                                @case('emergency-management')
-                                    Departament de Manejo de Emergencia
-                                @break
-
-                                @case('city-police')
-                                    Policia Municipal
-                                @break
-
-                                @case('city-administrator')
-                                    Administrador de la ciudad
-                                @break
-
-                                @case('mayors-office')
-                                    Oficina del Alcalde
-                                @break
-
-                                @case('city-legislature')
-                                    Legislatura de la ciudad
-                                @break
-
-                                @case('human-resources')
-                                    Recursos Humanos
-                                @break
-
-                                @case('it-office')
-                                    Oficina de IT
-                                @break
-
-                                @case('press-office')
-                                    Oficina de Prensa
-                                @break
-
-                                @case('finance-department')
-                                    Departamento de Finanzas
-                                @break
-
-                                @default
-                                    xxxxx
-                            @endswitch
                         </span>
                     </div>
                     <button class="cursor-pointer lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"
                             class="icon icon-tabler text-gray-400 icons-tabler-outline icon-tabler-x">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M18 6l-12 12" />
@@ -92,11 +41,9 @@
             </header>
             <ul class="p-4 text-xs font-bold uppercase space-y-1">
                 @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
-                    @if (in_array(request()->segment(1), $item['agencies']))
-                        <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
-                            {{ $item['name'] }}
-                        </x-layouts.sidebar-link>
-                    @endif
+                    <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
+                        {{ $item['name'] }}
+                    </x-layouts.sidebar-link>
                 @endforeach
             </ul>
         </aside>
@@ -107,30 +54,29 @@
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
-                            <div class="hidden lg:flex items-center justify-center">
-                                <button id="sidebar-toggle" class="cursor-pointer">
-                                    <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
-                                </button>
-                            </div>
-                            <div class="lg:hidden flex items-center justify-center">
-                                <x-dropdown align="left">
-                                    <x-slot name="trigger">
-                                        <button class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
-                                            <img src="{{ asset('icons/menu-2.svg') }}" alt="dropdown" />
-                                        </button>
-                                    </x-slot>
-                                    <x-slot name="content">
-                                        @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
-                                            @if (in_array(request()->segment(1), $item['agencies']))
-                                                <x-dropdown-link href="{{ route($item['route']) }}">
-                                                    {{ $item['name'] }}
-                                                </x-dropdown-link>
-                                            @endif
-                                        @endforeach
-                                    </x-slot>
-                                </x-dropdown>
-                            </div>
-                        <a href="" class="font-bold lg:hidden">MyApps</a>
+                        <div class="hidden lg:flex items-center justify-center">
+                            <button id="sidebar-toggle" class="cursor-pointer">
+                                <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
+                            </button>
+                        </div>
+                        <div class="lg:hidden flex items-center justify-center">
+                            <x-dropdown align="left">
+                                <x-slot name="trigger">
+                                    <button
+                                        class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
+                                        <img src="{{ asset('icons/menu-2.svg') }}" alt="dropdown" />
+                                    </button>
+                                </x-slot>
+                                <x-slot name="content">
+                                    @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
+                                        <x-dropdown-link href="{{ route($item['route']) }}">
+                                            {{ $item['name'] }}
+                                        </x-dropdown-link>
+                                    @endforeach
+                                </x-slot>
+                            </x-dropdown>
+                        </div>
+                        <a href="" class="font-bold lg:hidden">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">
@@ -168,4 +114,5 @@
     @stack('scripts')
     @livewireScripts
 </body>
+
 </html>

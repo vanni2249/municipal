@@ -1,7 +1,7 @@
 <x-layouts.users>
-    <div class="max-w-7xl mx-auto p-4 space-y-4">
+    <div class="p-4 space-y-4">
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-full lg:col-span-8">
+            <div class="col-span-full lg:col-span-full">
                 <x-card class="rounded-xl p-4 h-full">
                     <header class="flex flex-row justify-between items-center space-x-4 mb-4">
                         <h2 class="text-lg font-bold text-gray-900">
@@ -23,21 +23,24 @@
                                     </x-button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    <x-dropdown-link
+                                    <x-dropdown-button>
+                                        Radicar permiso de construccion
+                                    </x-dropdown-button>
+                                    {{-- <x-dropdown-link
                                         href="{{ route(request()->segment(1) . '.settlements.building-permit.create') }}">
                                         Radicacion de permiso de construccion
                                     </x-dropdown-link>
                                     <x-dropdown-link
                                         href="{{ route(request()->segment(1) . '.settlements.use-permit.create') }}">
                                         Radicacion de permiso de uso
-                                    </x-dropdown-link>
+                                    </x-dropdown-link> --}}
                                 </x-slot>
                             </x-dropdown>
                         </div>
                     </header>
                     <div class="col-span-full space-y-2">
                         @for ($i = 0; $i < 4; $i++)
-                            <a href="{{ route(request()->segment(1) . '.settlements.show', ['settlement' => 1]) }}"
+                            <a href="{{ route('users.settlements.show', ['settlement' => 1]) }}"
                                 class="bg-gray-100 hover:bg-gray-200 block p-2 md:p-4 rounded-xl">
                                 <header class="flex justify-between items-center">
                                     <small class=" text-gray-600">
@@ -102,9 +105,9 @@
                     </div>
                 </x-card>
             </div>
-            <div class="col-span-full lg:col-span-4">
-                @include('users.partials.sidebar-box')
-            </div>
+            {{-- <div class="col-span-full lg:col-span-4"> --}}
+                {{-- @include('users.partials.sidebar-box') --}}
+            {{-- </div> --}}
         </div>
     </div>
 </x-layouts.users>

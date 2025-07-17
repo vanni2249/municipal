@@ -96,8 +96,8 @@
     <main class="flex-grow min-h-96">
         {{ $slot }}
     </main>
-    <footer class="w-full bg-gray-300">
-        <div class="max-w-7xl mx-auto">
+    <footer class="max-w-7xl mx-auto p-4 w-full">
+        <div class=" bg-gray-300 p-4 rounded-2xl">
 
             <ul
                 class="px-4 py-2 text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">

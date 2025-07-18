@@ -34,9 +34,5 @@
                 </ul>
             </x-card>
         </div>
-        {{-- <div class="col-span-full lg:col-span-full">
-            <x-card>
-            </x-card>
-        </div> --}}
     </div>
 </x-layouts.admin>

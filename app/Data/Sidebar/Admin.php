@@ -10,52 +10,77 @@ class Admin
         return [
             [
                 'name' => 'Tablero',
-                'route' => request()->segment(1) . '.dashboard',
+                'route' => 'admin.dashboard',
                 'path' => 'dashboard',
             ],
             [
                 'name' => 'Iterracciones',
-                'route' => request()->segment(1) . '.interactions.index',
+                'route' => 'admin.interactions.index',
                 'path' => 'interactions',
             ],
             [
+                'name' => 'Usuarios',
+                'route' => 'admin.registers.index',
+                'path' => 'users',
+            ],
+            [
                 'name' => 'Registros',
-                'route' => request()->segment(1) . '.registers.index',
+                'route' => 'admin.registers.index',
                 'path' => 'registers',
             ],
             [
+                'name' => 'Empleados',
+                'route' => 'admin.employees.index',
+                'path' => 'employees',
+            ],
+            [
+                'name' => 'Ciudadanos',
+                'route' => 'admin.citizens.index',
+                'path' => 'citizens',
+            ],
+            [
+                'name' => 'Comerciantes',
+                'route' => 'admin.merchants.index',
+                'path' => 'merchants',
+            ],
+            [
                 'name' => 'Solicitudes',
-                'route' => request()->segment(1) . '.applications.index',
+                'route' => 'admin.applications.index',
                 'path' => 'applications',
             ],
             [
                 'name' => 'Radicaciones',
-                'route' => request()->segment(1) . '.settlements.index',
+                'route' => 'admin.settlements.index',
                 'path' => 'settlements',
             ],
             [
                 'name' => 'Rents',
-                'route' => request()->segment(1) . '.rents.index',
+                'route' => 'admin.rents.index',
                 'path' => 'rents',
             ],
             [
+                'name' => 'Facturas',
+                'route' => 'admin.registers.index',
+                'path' => 'invoices',
+            ],
+            [
                 'name' => 'Inspecciones',
-                'route' => request()->segment(1) . '.inspections.index',
+                'route' => 'admin.inspections.index',
                 'path' => 'inspections',
             ],
             [
                 'name' => 'Rutas',
-                'route' => request()->segment(1) . '.routes.index',
+                'route' => 'admin.routes.index',
                 'path' => 'routes',
             ],
             [
                 'name' => 'Facilidades',
-                'route' => request()->segment(1) . '.facilities.index',
+                'route' => 'admin.facilities.index',
                 'path' => 'facilities',
             ],
             [
                 'name' => 'Equipos',
-                'route' => request()->segment(1) . '.equipments.index',
+                'route' => 'admin.equipments.index',
                 'path' => 'equipments',         
             ]
         ];

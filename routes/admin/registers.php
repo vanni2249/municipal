@@ -7,49 +7,57 @@ Route::prefix('/registers')->name('registers.')->group(function () {
         return view('admin.registers.index');
     })->name('index');
 
-    Route::prefix('/employees')->name('employees.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.registers.employees.index');
-        })->name('index');
-        Route::get('/create', function () {
-            return view('admin.registers.employees.create');
-        })->name('create');
-        Route::get('/{employee}', function () {
-            return view('admin.registers.employees.show');
-        })->name('show');
-        Route::get('/{employee}/edit', function () {
-            return view('admin.registers.employees.edit');
-        })->name('edit');
-    });
+    Route::get('/create', function () {
+        return view('admin.registers.create');
+    })->name('create');
 
-    Route::prefix('/citizens')->name('citizens.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.registers.citizens.index');
-        })->name('index');
-        Route::get('/create', function () {
-            return view('admin.registers.citizens.create');
-        })->name('create');
-        Route::get('/{citizen}', function () {
-            return view('admin.registers.citizens.show');
-        })->name('show');
-        Route::get('/{citizen}/edit', function () {
-            return view('admin.registers.citizens.edit');
-        })->name('edit');
-    });
+    Route::get('/{register}', function () {
+        return view('admin.registers.show');
+    })->name('show');
+
+    // Route::prefix('/employees')->name('employees.')->group(function () {
+    //     Route::get('/', function () {
+    //         return view('admin.registers.employees.index');
+    //     })->name('index');
+    //     Route::get('/create', function () {
+    //         return view('admin.registers.employees.create');
+    //     })->name('create');
+    //     Route::get('/{employee}', function () {
+    //         return view('admin.registers.employees.show');
+    //     })->name('show');
+    //     Route::get('/{employee}/edit', function () {
+    //         return view('admin.registers.employees.edit');
+    //     })->name('edit');
+    // });
+
+    // Route::prefix('/citizens')->name('citizens.')->group(function () {
+    //     Route::get('/', function () {
+    //         return view('admin.registers.citizens.index');
+    //     })->name('index');
+    //     Route::get('/create', function () {
+    //         return view('admin.registers.citizens.create');
+    //     })->name('create');
+    //     Route::get('/{citizen}', function () {
+    //         return view('admin.registers.citizens.show');
+    //     })->name('show');
+    //     Route::get('/{citizen}/edit', function () {
+    //         return view('admin.registers.citizens.edit');
+    //     })->name('edit');
+    // });
 
     Route::prefix('/merchants')->name('merchants.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.registers.merchants.index');
-        })->name('index');
-        Route::get('/create', function () {
-            return view('admin.registers.merchants.create');
-        })->name('create');
-        Route::get('/{merchant}', function ($merchant) {
-            return view('admin.registers.partials.merchants.show', ['merchant' => $merchant]);
-        })->name('show');
-        Route::get('/{merchant}/edit', function () {
-            return view('admin.registers.merchants.edit');
-        })->name('edit');
+        // Route::get('/', function () {
+        //     return view('admin.registers.merchants.index');
+        // })->name('index');
+        // Route::get('/create', function () {
+        //     return view('admin.registers.merchants.create');
+        // })->name('create');
+        // Route::get('/{merchant}', function ($merchant) {
+        //     return view('admin.registers.partials.merchants.show', ['merchant' => $merchant]);
+        // })->name('show');
+        // Route::get('/{merchant}/edit', function () {
+        //     return view('admin.registers.merchants.edit');
+        // })->name('edit');
 
         Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
             Route::get('/{business}', function ($merchant, $business) {

@@ -45,6 +45,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     require __DIR__ . '/admin/dashboard.php';
     require __DIR__ . '/admin/interactions.php';
     require __DIR__ . '/admin/registers.php';
+    require __DIR__ . '/admin/employees.php';
+    require __DIR__ . '/admin/citizens.php';
+    require __DIR__ . '/admin/merchants.php';
     require __DIR__ . '/admin/applications.php';
     require __DIR__ . '/admin/settlements.php';
     require __DIR__ . '/admin/rents.php';

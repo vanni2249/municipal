@@ -51,23 +51,9 @@
                     <td class="px-2 py-1">12/08/2026</td>
                     <td class="px-2 py-1">hace {{ rand(5, 30) }} dias</td>
                     <td class="px-2 py-1 flex justify-end">
-                        @if (request()->segment(3) == 'a')
-                        @endif
-                        @switch(request()->segment(3))
-                            @case('merchants')
                                 <x-icon-link
-                                    href="{{ route(request()->segment(1) . '.registers.merchants.show', ['merchant' => 1]) }}"
+                                    href="{{ route('admin.merchants.show', ['merchant' => 1]) }}"
                                     icon="eye" />
-                            @break
-
-                            @case('accountants')
-                                <x-icon-link
-                                    href="{{ route(request()->segment(1) . '.registers.accountants.merchants.show', ['accountant' => 1, 'merchant' => 1]) }}"
-                                    icon="eye" />
-                            @break
-
-                            @default
-                        @endswitch
                     </td>
                 </tr>
             @endfor

@@ -3,9 +3,9 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h1 class="text-lg font-bold text-gray-800">Detalles del empleado</h1>
+                    <h1 class="text-lg font-bold text-gray-800">Detalles del comerciante</h1>
                     <div class="flex items-center space-x-2">
-                        <x-icon-link href="{{ route(request()->segment(1) . '.registers.employees.edit' , ['employee' => 1]) }}"></x-icon-link>
+                        <x-icon-link href="{{ route('admin.merchants.edit' , ['merchant' => 1]) }}"></x-icon-link>
                     </div>
                 </header>
                 @php
@@ -37,9 +37,5 @@
                 </ul>
             </x-card>
         </div>
-        {{-- <div class="col-span-full lg:col-span-full">
-            <x-card>
-            </x-card>
-        </div> --}}
     </div>
 </x-layouts.admin>

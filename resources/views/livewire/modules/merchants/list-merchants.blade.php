@@ -34,7 +34,8 @@
                 </tr>
             </x-slot>
             <x-slot name="body">
-                @for ($i = 0; $i < 20; $i++) <tr class="bg-white border-t border-gray-200 hover:bg-gray-50">
+                @for ($i = 0; $i < 20; $i++) 
+                <tr class="bg-white border-t border-gray-200 hover:bg-gray-50">
                     <td class="p-2">Geovanni Colon Barrios</td>
                     <td class="p-2">210-665-6749</td>
                     <td class="p-2">vanni2249@gmail.com</td>
@@ -53,22 +54,13 @@
                     </td>
                     <td class="p-2 w-14">
                         <div class="flex justify-end space-x-1.5">
-                            @if (request()->segment(1) == 'accountants')
                             <x-icon-link
-                                href="{{ route('accountants.merchants.show', ['merchant' => 1]) }}"
+                                href="{{ route('admin.merchants.show', ['merchant' => 1]) }}"
                                 icon="eye" />
-
-                            @else
-                            <x-icon-link
-                                href="{{ route(''.request()->segment(1).'.merchants.show', ['merchant' => 1]) }}"
-                                icon="eye" />
-
-                            @endif
                         </div>
-
                     </td>
-                    </tr>
-                    @endfor
+                </tr>
+                @endfor
             </x-slot>
         </x-table>
     </x-card>

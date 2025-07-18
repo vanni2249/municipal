@@ -4,9 +4,8 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="h-full rounded-xl">
                 <header class="flex justify-between items-center mb-4">
-                   <h1 class="text-lg font-bold">Ciudadanos</h1> 
-                    <x-icon-link href="{{ route(request()->segment(1) . '.registers.citizens.create') }}" icon="plus" />
-
+                   <h1 class="text-lg font-bold">Empleados</h1> 
+                    <x-icon-link href="{{ route('admin.employees.create') }}" icon="plus" />
                 </header>
                 <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
                     <div class="">
@@ -58,7 +57,7 @@
                             <td class="px-2 py-1">12/08/2026</td>
                             <td class="px-2 py-1">hace {{ rand(5, 30) }} dias</td>
                             <td class="px-2 py-1 flex justify-end">
-                                <x-icon-link href="{{ route(request()->segment(1) . '.registers.citizens.show', ['citizen' => 1]) }}" icon="eye" />
+                                <x-icon-link href="{{ route('admin.employees.show', ['employee' => 1]) }}" icon="eye" />
                             </td>
                         </tr>
                         @endfor

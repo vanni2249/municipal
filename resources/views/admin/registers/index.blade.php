@@ -1,9 +1,9 @@
 <x-layouts.admin>
     @php
         $registers = [
-            ['title' => 'Empleados', 'route' => request()->segment(1) . '.registers.employees.index', 'count' => 10],
-            ['title' => 'Ciudadanos', 'route' => request()->segment(1) . '.registers.citizens.index', 'count' => 10],
-            ['title' => 'Comerciantes', 'route' => request()->segment(1) . '.registers.merchants.index', 'count' => 5],
+            // ['title' => 'Empleados', 'route' => request()->segment(1) . '.registers.employees.index', 'count' => 10],
+            // ['title' => 'Ciudadanos', 'route' => request()->segment(1) . '.registers.citizens.index', 'count' => 10],
+            // ['title' => 'Comerciantes', 'route' => request()->segment(1) . '.registers.merchants.index', 'count' => 5],
             ['title' => 'Contables', 'route' => request()->segment(1) . '.registers.accountants.index', 'count' => 3],
             ['title' => 'Contratistas', 'route' => request()->segment(1) . '.registers.contractors.index', 'count' => 2],
             ['title' => 'Supplidores', 'route' => request()->segment(1) . '.registers.suppliers.index','count' => 1],
@@ -65,7 +65,7 @@
                             <th class="p-4">Fecha</th>
                             <th class="p-4">Categoria</th>
                             <th class="p-4">Nombre</th>
-                            <th class="p-4">Conexion</th>
+                            <th class="p-4">Dirreccion</th>
                             <th class="p-4">Estado</th>
                             <th class="p-4 w-14">Accion</th>
                         </tr>
@@ -77,15 +77,13 @@
                                 <td class="px-4 py-1 w-1/5">{{ $item['category'] }}</td>
                                 <td class="px-4 py-1 w-1/5">{{ $item['name'] }}</td>
                                 <td class="px-4 py-1 w-1/5">
-                                    <x-badge color="{{ $item['connection_color'] }}" class="capitalize">
-                                        {{ $item['connection'] }}
-                                    </x-badge>
+                                   {{ $item['address'] ?? 'No disponible' }}
                                 </td>
                                 <td class="px-4 py-1 w-1/5">
                                     <x-badge color="{{ $item['status_color'] }}">{{ $item['status'] }}</x-badge>
                                 </td>
                                 <td class="px-4 py-1 flex justify-end">
-                                    <x-icon-link href="#" icon="eye" />
+                                    <x-icon-link href="{{ route('admin.registers.show', ['register' => 2]) }}" icon="eye" />
                                 </td>
                             </tr>
                         @endforeach
@@ -93,51 +91,6 @@
                 </x-table>
             </x-card>
         </div>
-        <!-- Sidebar -->
-        {{-- <div class="col-span-full lg:col-span-3">
-            <x-card>
-                <div class="grid grid-cols-2 gap-2">
-                    @php
-                        $items = [['title' => 'Totales', 'value' => '1,234', 'span' => 'full']];
-                    @endphp
-                    @foreach ($items as $item)
-                        <div class="bg-gray-100 col-span-{{ $item['span'] }} rounded p-2">
-                            <small class="text-gray-600 text-xs">{{ $item['title'] }}</small>
-                            <div class="flex items-baseline space-x-1">
-                                <h2 class="text-xl font-bold text-gray-900">
-                                    {{ $item['value'] }}
-                                </h2>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="bg-gray-100 col-span-2 rounded-md">
-                        <header class=" p-2">
-                            <h3 class="font-bold text-gray-800">Registros mas sometidos</h3>
-                        </header>
-
-                        <ul class="text-xs text-gray-600">
-                            @foreach ($registers as $register)
-                                <li class="flex justify-between items-center border-t border-gray-200 p-2">
-                                    <span>
-                                        @if (isset($register['route']))
-                                            <a href="{{ route($register['route']) }}"
-                                                class="flex text-blue-600 hover:underline">
-                                                {{ $register['title'] }}
-                                            </a>
-                                        @else
-                                            <span class="text-gray-800">
-                                                {{ $register['title'] }}
-                                            </span>
-                                        @endif
-                                    </span>
-                                    <span class="text-xs text-gray-500">{{ $register['count'] }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </x-card>
-        </div> --}}
 
     </div>
 </x-layouts.admin>

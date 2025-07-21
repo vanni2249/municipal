@@ -68,7 +68,7 @@
 @endphp
 
 @foreach ($collection as $item)
-        <x-card class="col-span-6 md:col-span-4 xl:col-span-3 rounded-xl">
+        <x-card class="col-span-6 md:col-span-6 xl:col-span-3 rounded-xl">
             <div class="flex justify-between items-center">
                 <div>
                     <small class="text-gray-800">

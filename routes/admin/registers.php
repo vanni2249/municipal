@@ -59,88 +59,88 @@ Route::prefix('/registers')->name('registers.')->group(function () {
         //     return view('admin.registers.merchants.edit');
         // })->name('edit');
 
-        Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
-            Route::get('/{business}', function ($merchant, $business) {
-                return view('admin.registers.partials.businesses.show', ['merchant' => $merchant, 'business' => $business]);
-            })->name('show');
+        // Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
+        //     Route::get('/{business}', function ($merchant, $business) {
+        //         return view('admin.registers.partials.businesses.show', ['merchant' => $merchant, 'business' => $business]);
+        //     })->name('show');
 
-            Route::prefix('/{business}/patents')->name('patents.')->group(function () {
-                Route::get('/{patent}', function ($merchant, $business, $patent) {
-                    return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
-                })->name('show');
+        //     Route::prefix('/{business}/patents')->name('patents.')->group(function () {
+        //         Route::get('/{patent}', function ($merchant, $business, $patent) {
+        //             return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
+        //         })->name('show');
 
-                Route::prefix('/{patent}/periods')->name('patents.')->group(function () {
-                    Route::get('/{period}', function ($merchant, $patent, $period) {
-                        return view('admin.registers.partials.periods.show', ['merchant' => $merchant, 'patent' => $patent, 'period' => $period]);
-                    })->name('show');
-                });
-            });
-            Route::prefix('/{business}/permits')->name('permits.')->group(function () {
-                Route::get('/{permit}', function ($merchant, $business, $permit) {
-                    return view('admin.registers.partials.permits.show', ['merchant' => $merchant, 'business' => $business, 'permit' => $permit]);
-                })->name('show');
-            });
-            Route::prefix('/{business}/settlements')->name('settlements.')->group(function () {
-                Route::get('/{settlement}', function ($merchant, $business, $settlement) {
-                    return view('admin.registers.partials.settlements.show', ['merchant' => $merchant, 'business' => $business, 'settlement' => $settlement]);
-                })->name('show');
-            });
-        });
+        //         Route::prefix('/{patent}/periods')->name('patents.')->group(function () {
+        //             Route::get('/{period}', function ($merchant, $patent, $period) {
+        //                 return view('admin.registers.partials.periods.show', ['merchant' => $merchant, 'patent' => $patent, 'period' => $period]);
+        //             })->name('show');
+        //         });
+        //     });
+        //     Route::prefix('/{business}/permits')->name('permits.')->group(function () {
+        //         Route::get('/{permit}', function ($merchant, $business, $permit) {
+        //             return view('admin.registers.partials.permits.show', ['merchant' => $merchant, 'business' => $business, 'permit' => $permit]);
+        //         })->name('show');
+        //     });
+        //     Route::prefix('/{business}/settlements')->name('settlements.')->group(function () {
+        //         Route::get('/{settlement}', function ($merchant, $business, $settlement) {
+        //             return view('admin.registers.partials.settlements.show', ['merchant' => $merchant, 'business' => $business, 'settlement' => $settlement]);
+        //         })->name('show');
+        //     });
+        // });
     });
 
-    Route::prefix('/accountants')->name('accountants.')->group(function () {
-        Route::get('/', function () {
-            return view('admin.registers.accountants.index');
-        })->name('index');
-        Route::get('/create', function () {
-            return view('admin.registers.accountants.create');
-        })->name('create');
-        Route::get('/{accountant}', function () {
-            return view('admin.registers.accountants.show');
-        })->name('show');
-        Route::get('/{accountant}/edit', function () {
-            return view('admin.registers.accountants.edit');
-        })->name('edit');
+    // Route::prefix('/accountants')->name('accountants.')->group(function () {
+    //     Route::get('/', function () {
+    //         return view('admin.registers.accountants.index');
+    //     })->name('index');
+    //     Route::get('/create', function () {
+    //         return view('admin.registers.accountants.create');
+    //     })->name('create');
+    //     Route::get('/{accountant}', function () {
+    //         return view('admin.registers.accountants.show');
+    //     })->name('show');
+    //     Route::get('/{accountant}/edit', function () {
+    //         return view('admin.registers.accountants.edit');
+    //     })->name('edit');
 
-        Route::prefix('{accountant}/merchants')->name('merchants.')->group(function () {
-            Route::get('/{merchant}', function ($accountant, $merchant) {
-                return view('admin.registers.partials.merchants.show', ['accountant' => $accountant, 'merchant' => $merchant]);
-            })->name('show');
+    //     Route::prefix('{accountant}/merchants')->name('merchants.')->group(function () {
+    //         Route::get('/{merchant}', function ($accountant, $merchant) {
+    //             return view('admin.registers.partials.merchants.show', ['accountant' => $accountant, 'merchant' => $merchant]);
+    //         })->name('show');
 
-            Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
-                Route::get('/{business}', function ($merchant, $business) {
-                    return view('admin.registers.partials.businesses.show', ['merchant' => $merchant, 'business' => $business]);
-                })->name('show');
+    //         Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
+    //             Route::get('/{business}', function ($merchant, $business) {
+    //                 return view('admin.registers.partials.businesses.show', ['merchant' => $merchant, 'business' => $business]);
+    //             })->name('show');
 
-                Route::prefix('/{business}/patents')->name('patents.')->group(function () {
-                    Route::get('/{patent}', function ($merchant, $business, $patent) {
-                        return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
-                    })->name('show');
-                });
-                Route::prefix('/{business}/patents')->name('patents.')->group(function () {
-                    Route::get('/{patent}', function ($merchant, $business, $patent) {
-                        return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
-                    })->name('show');
+    //             Route::prefix('/{business}/patents')->name('patents.')->group(function () {
+    //                 Route::get('/{patent}', function ($merchant, $business, $patent) {
+    //                     return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
+    //                 })->name('show');
+    //             });
+    //             Route::prefix('/{business}/patents')->name('patents.')->group(function () {
+    //                 Route::get('/{patent}', function ($merchant, $business, $patent) {
+    //                     return view('admin.registers.partials.patents.show', ['merchant' => $merchant, 'business' => $business, 'patent' => $patent]);
+    //                 })->name('show');
 
-                    Route::prefix('/{patent}/periods')->name('patents.')->group(function () {
-                        Route::get('/{period}', function ($merchant, $patent, $period) {
-                            return view('admin.registers.partials.periods.show', ['merchant' => $merchant, 'patent' => $patent, 'period' => $period]);
-                        })->name('show');
-                    });
-                });
-                Route::prefix('/{business}/permits')->name('permits.')->group(function () {
-                    Route::get('/{permit}', function ($merchant, $business, $permit) {
-                        return view('admin.registers.partials.permits.show', ['merchant' => $merchant, 'business' => $business, 'permit' => $permit]);
-                    })->name('show');
-                });
-                Route::prefix('/{business}/settlements')->name('settlements.')->group(function () {
-                    Route::get('/{settlement}', function ($merchant, $business, $settlement) {
-                        return view('admin.registers.partials.settlements.show', ['merchant' => $merchant, 'business' => $business, 'settlement' => $settlement]);
-                    })->name('show');
-                });
-            });
-        });
-    });
+    //                 Route::prefix('/{patent}/periods')->name('patents.')->group(function () {
+    //                     Route::get('/{period}', function ($merchant, $patent, $period) {
+    //                         return view('admin.registers.partials.periods.show', ['merchant' => $merchant, 'patent' => $patent, 'period' => $period]);
+    //                     })->name('show');
+    //                 });
+    //             });
+    //             Route::prefix('/{business}/permits')->name('permits.')->group(function () {
+    //                 Route::get('/{permit}', function ($merchant, $business, $permit) {
+    //                     return view('admin.registers.partials.permits.show', ['merchant' => $merchant, 'business' => $business, 'permit' => $permit]);
+    //                 })->name('show');
+    //             });
+    //             Route::prefix('/{business}/settlements')->name('settlements.')->group(function () {
+    //                 Route::get('/{settlement}', function ($merchant, $business, $settlement) {
+    //                     return view('admin.registers.partials.settlements.show', ['merchant' => $merchant, 'business' => $business, 'settlement' => $settlement]);
+    //                 })->name('show');
+    //             });
+    //         });
+    //     });
+    // });
 
     Route::prefix('/contractors')->name('contractors.')->group(function () {
         Route::get('/', function () {

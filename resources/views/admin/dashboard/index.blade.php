@@ -43,7 +43,7 @@
                 ],
             ];
         @endphp
-            <x-card class="col-span-12 md:col-span-6 space-y-2 rounded-xl">
+            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Solicitudes recientes
@@ -53,7 +53,7 @@
                 @foreach ($applications as $item)
                     <div class="bg-gray-100 p-2 rounded-xl flex items-center justify-between">
                         <div>
-                            <span class="text-sm ">
+                            <span class="text-sm">
                                 {{ $item['title'] }}
                             </span>
                             <br>
@@ -62,7 +62,7 @@
                             </small>
                         </div>
                         <div>
-                            <x-badge color="{{ $item['color'] }}" label="" value="">
+                            <x-badge color="{{ $item['color'] }}" class="whitespace-nowrap" label="" value="">
                                 {{ $item['status'] }}
                             </x-badge>
                         </div>
@@ -103,7 +103,7 @@
                 ],
             ];
         @endphp
-            <x-card class="col-span-12 md:col-span-6 space-y-2 rounded-xl">
+            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Radicaciones recientes
@@ -113,7 +113,7 @@
                 @foreach ($applications as $item)
                     <div class="bg-gray-100 p-2 rounded-xl flex items-center justify-between">
                         <div>
-                            <span class="text-sm ">
+                            <span class="text-sm">
                                 {{ $item['title'] }}
                             </span>
                             <br>
@@ -122,7 +122,67 @@
                             </small>
                         </div>
                         <div>
-                            <x-badge color="{{ $item['color'] }}" label="" value="">
+                            <x-badge color="{{ $item['color'] }}" class="whitespace-nowrap" label="" value="">
+                                {{ $item['status'] }}
+                            </x-badge>
+                        </div>
+                    </div>
+                @endforeach
+            </x-card>
+            @php
+            $applications = [
+                [
+                    'title' => 'Renta uso multiples norte',
+                    'days' => '4',
+                    'color' => 'blue',
+                    'status' => 'En proceso',
+                ],
+                [
+                    'title' => 'Renta uso multiples sureste',
+                    'days' => '2',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+                [
+                    'title' => 'Renta uso multiples oeste',
+                    'days' => '1',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+                [
+                    'title' => 'Renta uso multiples sur',
+                    'days' => '3',
+                    'color' => 'red',
+                    'status' => 'Rechazado',
+                ],
+                [
+                    'title' => 'Renta uso multiples este',
+                    'days' => '5',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+            ];
+        @endphp
+            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
+                <header class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-gray-900">
+                        Rentas recientes
+                    </h2>
+                    <a href="#" class="text-xs">Ver mas</a>
+                </header>
+                @foreach ($applications as $item)
+                    <div class="bg-gray-100 p-2 rounded-xl flex items-center justify-between">
+                        <div>
+                            <span class="text-sm">
+                                {{ $item['title'] }}
+                            </span>
+                            <br>
+                            <small class="text-xs text-gray-500">
+                                hace {{ $item['days'] }} dias
+                            </small>
+                        </div>
+                        <div>
+                            <x-badge color="{{ $item['color'] }}" class="whitespace-nowrap" label="" value="">
                                 {{ $item['status'] }}
                             </x-badge>
                         </div>

@@ -3,10 +3,9 @@
         <div class="col-span-full lg:col-span-full">
             <x-card class="rounded-xl">
                 <header class="flex justify-between items-center">
-                    <h1 class="text-lg font-bold text-gray-800">Comerciante</h1>
-                    <div class="flex items-center space-x-2">
-                        <x-icon-link href="{{ route('admin.merchants.edit' , ['merchant' => 1]) }}"></x-icon-link>
-                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Contratista</h3>
+                        {{-- <x-icon-link href="{{ route('admin.accountants.edit' , ['accountant' => 1]) }}"></x-icon-link> --}}
+
                 </header>
                 @php
                     $items = [
@@ -14,7 +13,8 @@
                         ['label' => 'Email', 'value' => 'vanni2249@gmail.com'],
                         ['label' => 'Telefono', 'value' => '210-665-6749'],
                         ['label' => 'Estado', 'value' => '<x-badge color="green" class="capitalize">Activo</x-badge>'],
-                        ['label' => 'ID de Empleado', 'value' => 'xrl1e4'],
+                        ['label' => 'ID de Ciudadano', 'value' => 'xrl1e4'],
+                        ['label' => 'Tipo de Ciudadano', 'value' => 'Ciudadano'],
                         ['label' => 'Fecha de nacimiento', 'value' => '01/01/1990'],
                         ['label' => 'Genero', 'value' => 'Masculino'],
                         ['label' => 'Fecha de registro', 'value' => '12/08/2026'],
@@ -35,13 +35,6 @@
                         
                     @endforeach
                 </ul>
-            </x-card>
-        </div>
-        <div class="col-span-full lg:col-span-full">
-            <x-card class="rounded-xl">
-                <header class="flex justify-between items-center">
-                    <h1 class="text-lg font-bold text-gray-800">Comercios</h1>
-                </header>
             </x-card>
         </div>
     </div>

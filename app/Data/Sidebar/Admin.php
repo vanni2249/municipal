@@ -20,18 +20,8 @@ class Admin
             ],
             [
                 'name' => 'Usuarios',
-                'route' => 'admin.registers.index',
+                'route' => 'admin.users.index',
                 'path' => 'users',
-            ],
-            [
-                'name' => 'Registros',
-                'route' => 'admin.registers.index',
-                'path' => 'registers',
-            ],
-            [
-                'name' => 'Empleados',
-                'route' => 'admin.employees.index',
-                'path' => 'employees',
             ],
             [
                 'name' => 'Ciudadanos',
@@ -42,6 +32,31 @@ class Admin
                 'name' => 'Comerciantes',
                 'route' => 'admin.merchants.index',
                 'path' => 'merchants',
+            ],
+            [
+                'name' => 'Contadores',
+                'route' => 'admin.accountants.index',
+                'path' => 'accountants',
+            ],
+            [
+                'name' => 'Contratistas',
+                'route' => 'admin.contractors.index',
+                'path' => 'contractors',
+            ],
+            [
+                'name' => 'Suplidores',
+                'route' => 'admin.suppliers.index',
+                'path' => 'suppliers',
+            ],
+            [
+                'name' => 'Registros',
+                'route' => 'admin.registers.index',
+                'path' => 'registers',
+            ],
+            [
+                'name' => 'Empleados',
+                'route' => 'admin.employees.index',
+                'path' => 'employees',
             ],
             [
                 'name' => 'Solicitudes',
@@ -60,7 +75,7 @@ class Admin
             ],
             [
                 'name' => 'Facturas',
-                'route' => 'admin.registers.index',
+                'route' => 'admin.invoices.index',
                 'path' => 'invoices',
             ],
             [

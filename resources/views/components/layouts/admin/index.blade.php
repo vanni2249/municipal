@@ -16,8 +16,39 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
-    <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4 overflow-auto">
-        <aside class="bg-black rounded-xl w-full h-full overflow-auto">
+    <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4">
+        <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-hidden">
+            <header class="h-16 flex items-center text-white px-6 border-b border-gray-900">
+                <div class="flex justify-between items-center w-full">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-gray-200">
+                            MyCity
+                        </span>
+                        <span class="text-xs font-extrabold text-gray-600">
+                        </span>
+                    </div>
+                    <button class="cursor-pointer lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler text-gray-400 icons-tabler-outline icon-tabler-x">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 6l-12 12" />
+                            <path d="M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <ul class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
+                @foreach (App\Data\Sidebar\Admin::items() as $item)
+                    <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
+                        {{ $item['name'] }}
+                    </x-layouts.sidebar-link>
+                @endforeach
+            </ul>
+            <footer class="h-32 border-t border-gray-900"></footer>
+        </aside>
+        {{-- <aside class="bg-black rounded-xl w-full h-full overflow-auto no-scrollbar">
             <header class="h-16 border-b border-gray-900 flex items-center text-white px-6">
                 <div class="flex justify-between items-center w-full">
                     <div class="flex flex-col">
@@ -46,7 +77,8 @@
                     </x-layouts.sidebar-link>
                 @endforeach
             </ul>
-        </aside>
+            <footer class="h-36"></footer>
+        </aside> --}}
     </div>
 
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">

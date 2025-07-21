@@ -4,7 +4,7 @@
             // ['title' => 'Empleados', 'route' => request()->segment(1) . '.registers.employees.index', 'count' => 10],
             // ['title' => 'Ciudadanos', 'route' => request()->segment(1) . '.registers.citizens.index', 'count' => 10],
             // ['title' => 'Comerciantes', 'route' => request()->segment(1) . '.registers.merchants.index', 'count' => 5],
-            ['title' => 'Contables', 'route' => request()->segment(1) . '.registers.accountants.index', 'count' => 3],
+            // ['title' => 'Contables', 'route' => request()->segment(1) . '.registers.accountants.index', 'count' => 3],
             ['title' => 'Contratistas', 'route' => request()->segment(1) . '.registers.contractors.index', 'count' => 2],
             ['title' => 'Supplidores', 'route' => request()->segment(1) . '.registers.suppliers.index','count' => 1],
             ['title' => 'Personas mayor', 'route' => request()->segment(1) . '.registers.seniors.index', 'count' => 1],

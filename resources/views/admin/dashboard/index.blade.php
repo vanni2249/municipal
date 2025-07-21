@@ -43,7 +43,7 @@
                 ],
             ];
         @endphp
-            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
+            <x-card class="col-span-12 lg:col-span-6 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Solicitudes recientes
@@ -69,7 +69,7 @@
                     </div>
                 @endforeach
             </x-card>
-            @php
+        @php
             $applications = [
                 [
                     'title' => 'Radicacion de patente provincial',
@@ -103,7 +103,7 @@
                 ],
             ];
         @endphp
-            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
+            <x-card class="col-span-12 lg:col-span-6 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Radicaciones recientes
@@ -129,7 +129,7 @@
                     </div>
                 @endforeach
             </x-card>
-            @php
+        @php
             $applications = [
                 [
                     'title' => 'Renta uso multiples norte',
@@ -163,10 +163,70 @@
                 ],
             ];
         @endphp
-            <x-card class="col-span-12 lg:col-span-4 space-y-2 rounded-xl">
+            <x-card class="col-span-12 lg:col-span-6 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Rentas recientes
+                    </h2>
+                    <a href="#" class="text-xs">Ver mas</a>
+                </header>
+                @foreach ($applications as $item)
+                    <div class="bg-gray-100 p-2 rounded-xl flex items-center justify-between">
+                        <div>
+                            <span class="text-sm">
+                                {{ $item['title'] }}
+                            </span>
+                            <br>
+                            <small class="text-xs text-gray-500">
+                                hace {{ $item['days'] }} dias
+                            </small>
+                        </div>
+                        <div>
+                            <x-badge color="{{ $item['color'] }}" class="whitespace-nowrap" label="" value="">
+                                {{ $item['status'] }}
+                            </x-badge>
+                        </div>
+                    </div>
+                @endforeach
+            </x-card>
+        @php
+            $applications = [
+                [
+                    'title' => 'Fatura de patente provincial',
+                    'days' => '4',
+                    'color' => 'blue',
+                    'status' => 'En proceso',
+                ],
+                [
+                    'title' => 'Factura de patente oficial',
+                    'days' => '2',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+                [
+                    'title' => 'Factura de permiso de construccion',
+                    'days' => '1',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+                [
+                    'title' => 'Factura de renta uso multiples',
+                    'days' => '3',
+                    'color' => 'red',
+                    'status' => 'Cancelado',
+                ],
+                [
+                    'title' => 'Factura de recogido de basura',
+                    'days' => '5',
+                    'color' => 'green',
+                    'status' => 'Completado',
+                ],
+            ];
+        @endphp
+            <x-card class="col-span-12 lg:col-span-6 space-y-2 rounded-xl">
+                <header class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-gray-900">
+                        Facturas recientes
                     </h2>
                     <a href="#" class="text-xs">Ver mas</a>
                 </header>

@@ -9,7 +9,7 @@
                         </h2>
                     </header>
                     <div class="">
-                        @livewire('merchants.interactions.calls.create-call')
+                        {{-- @livewire('merchants.interactions.calls.create-call') --}}
                     </div>
                 </x-card>
             </div>

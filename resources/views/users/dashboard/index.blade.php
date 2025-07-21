@@ -100,11 +100,50 @@
                     @endforeach
                 </div>
             </x-card>
-            <!-- Sidebar box -->
-            {{-- <div class="col-span-full md:col-span-4">
-                @include('users.partials.sidebar-box')
-            </div> --}}
-
+            <!-- Activity -->
+            <x-card class="col-span-full">
+                <header class="flex justify-between items-start mb-4">
+                    <h2 class="text-lg font-bold text-gray-900">
+                        Historial de actividades
+                    </h2>
+                    <div>
+                        <a href="{{ route(request()->segment(1) . '.services.index') }}" class="text-xs text-gray-700">
+                            Ver mas
+                        </a>
+                    </div>
+                </header>
+                @php
+                    $activities = collect([
+                        ['date' => '2023-10-01', 'model' => 'Comerciante', 'description' => 'Anadio el comerciante con el nombre Juan del Pueblo'],
+                        ['date' => '2023-10-02', 'model' => 'Comercio', 'description' => 'Creacion de Comercio con el nombre de Comercio 1'],
+                        ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el comerciante Juan del Pueblo'],
+                        ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el comerciante Juan del Pueblo'],
+                        ['date' => '2023-10-05', 'model' => 'Patente', 'description' => 'Patente generada para el comerciante Juan del Pueblo'],
+                    ]);
+                @endphp
+                <x-table>
+                    <x-slot name="head">
+                        <tr>
+                            <th class="p-4 w-64">Fecha</th>
+                            <th class="p-4 w-64">Modelo</th>
+                            <th class="p-4">Descripcion</th>
+                            <th class="p-4 w-24 text-right">Accion</th>
+                        </tr>
+                    </x-slot>
+                    <x-slot name="body">
+                        @foreach ($activities as $item)
+                            <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                <td class="p-4">{{ $item['date'] }}</td>
+                                <td class="p-4">{{ $item['model'] }}</td>
+                                <td class="p-4">{{ $item['description'] }}</td>
+                                <td class="flex justify-end items-center px-4 py-2">
+                                    <x-icon-link href="#" icon="eye"></x-icon-link>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </x-slot>
+                </x-table>
+            </x-card>
         </div>
     </div>
 

@@ -4,6 +4,8 @@
 ** Guest Routes
 */
 
+use App\Http\Middleware\AuthAdmin;
+use App\Http\Middleware\AuthUser;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/guest.php';
@@ -25,7 +27,7 @@ require __DIR__ . '/partials/notifications.php';
 ** Users Routes
 */
 
-Route::prefix('users')->group(function () {
+Route::prefix('users')->middleware(AuthUser::class)->group(function () {
     require __DIR__ . '/users/partials.php';
     require __DIR__ . '/users/services.php';
     require __DIR__ . '/users/applications.php';
@@ -41,7 +43,7 @@ Route::prefix('users')->group(function () {
 ** Admin Routes
 */
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(AuthAdmin::class)->name('admin.')->group(function () {
     require __DIR__ . '/admin/dashboard.php';
     require __DIR__ . '/admin/interactions.php';
     require __DIR__ . '/admin/registers.php';

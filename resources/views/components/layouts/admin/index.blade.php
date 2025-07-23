@@ -48,37 +48,6 @@
             </ul>
             <footer class="h-32 border-t border-gray-900"></footer>
         </aside>
-        {{-- <aside class="bg-black rounded-xl w-full h-full overflow-auto no-scrollbar">
-            <header class="h-16 border-b border-gray-900 flex items-center text-white px-6">
-                <div class="flex justify-between items-center w-full">
-                    <div class="flex flex-col">
-                        <span class="text-sm font-semibold text-gray-200">
-                            MyCity
-                        </span>
-                        <span class="text-xs font-extrabold text-gray-600">
-                        </span>
-                    </div>
-                    <button class="cursor-pointer lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="icon icon-tabler text-gray-400 icons-tabler-outline icon-tabler-x">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M18 6l-12 12" />
-                            <path d="M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </header>
-            <ul class="p-4 text-xs font-bold uppercase space-y-1">
-                @foreach (App\Data\Sidebar\Admin::items() as $item)
-                    <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
-                        {{ $item['name'] }}
-                    </x-layouts.sidebar-link>
-                @endforeach
-            </ul>
-            <footer class="h-36"></footer>
-        </aside> --}}
     </div>
 
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
@@ -117,9 +86,19 @@
                             </a>
                         </li>
                         <li class="inline-block">
-                            <a href="" class="text-gray-800 hover:text-gray-600">
-                                <img src="{{ asset('icons/user-circle.svg') }}" alt="user">
-                            </a>
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <img src="{{ asset('icons/user-circle.svg') }}" alt="user" class="cursor-pointer">
+                                </x-slot>
+                                <x-slot name="content">
+                                    <x-dropdown-link href="">
+                                        Mi Perfil
+                                    </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('admin.logout') }}">
+                                        Salir
+                                    </x-dropdown-link>
+                                </x-slot>
+                            </x-dropdown>
                         </li>
                     </ul>
                 </div>

@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Models;
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -19,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
     ];
 
@@ -46,28 +45,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function citizen()
-    {
-        return $this->hasOne(Citizen::class);
-    }
-
-    public function merchant()
-    {
-        return $this->hasOne(Merchant::class);
-    }
-
-    public function accountant()
-    {
-        return $this->hasOne(Accountant::class);
-    }
-
-    public function contractor()
-    {
-        return $this->hasOne(Contractor::class);
-    }
-
-    public function supplier()
-    {
-        return $this->hasOne(Supplier::class);
-    }
 }

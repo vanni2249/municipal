@@ -60,6 +60,8 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
+        $this->setLastLogin();
+
         $this->redirectIntended(default: route('users.dashboard', absolute: false), navigate: true);
     }
 
@@ -91,6 +93,19 @@ class Login extends Component
     {
         return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
     }
+
+    protected function setLastLogin(): void
+    {
+       $user = Auth::user();
+       if ($user instanceof \App\Models\User) {
+           $user->last_login_at = now();
+           $user->save();
+       }
+    }
+
+    /**
+     * Get the view or component name for the Livewire component.
+     */
 
     public function render()
     {

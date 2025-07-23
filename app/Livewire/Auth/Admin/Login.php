@@ -41,6 +41,8 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
+        $this->setLastLogin();
+
         $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
     }
 
@@ -71,6 +73,15 @@ class Login extends Component
     protected function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->username).'|'.request()->ip());
+    }
+
+    protected function setLastLogin(): void
+    {
+       $user = Auth::guard('admin')->user();
+      if ($user instanceof \App\Models\Admin) {
+           $user->last_login_at = now();
+           $user->save();
+       }
     }
     public function render()
     {

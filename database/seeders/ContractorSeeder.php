@@ -33,10 +33,10 @@ class ContractorSeeder extends Seeder
         }
 
         $users = [
-            ['user_category_id' => 4, 'name' => 'Contractor User 1', 'email' => 'contractor1@example.com', 'password' => bcrypt('password'), 'approved_at' => null],
-            ['user_category_id' => 4, 'name' => 'Contractor User 2', 'email' => 'contractor2@example.com', 'password' => bcrypt('password'), 'approved_at' => now()],
-            ['user_category_id' => 4, 'name' => 'Contractor User 3', 'email' => 'contractor3@example.com', 'password' => bcrypt('password'), 'approved_at' => null],
-            ['user_category_id' => 4, 'name' => 'Contractor User 4', 'email' => 'contractor4@example.com', 'password' => bcrypt('password'), 'approved_at' => now()],
+            ['user_category_id' => 4, 'name' => 'Contractor User 1', 'email' => 'contractor1@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => null],
+            ['user_category_id' => 4, 'name' => 'Contractor User 2', 'email' => 'contractor2@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => now()],
+            ['user_category_id' => 4, 'name' => 'Contractor User 3', 'email' => 'contractor3@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => null],
+            ['user_category_id' => 4, 'name' => 'Contractor User 4', 'email' => 'contractor4@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => now()],
         ];
 
         foreach ($users as $user) {

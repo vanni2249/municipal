@@ -46,6 +46,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function category()
+    {
+        return $this->belongsTo(UserCategory::class, 'user_category_id');
+    }
+
     public function citizen()
     {
         return $this->hasOne(Citizen::class);
@@ -70,4 +75,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Supplier::class);
     }
+
+    public function getLastLogin(): ?string
+    {
+        return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+    }
+
 }

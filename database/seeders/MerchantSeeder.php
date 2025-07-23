@@ -33,10 +33,10 @@ class MerchantSeeder extends Seeder
         }
 
         $users = [
-            ['user_category_id' => 2, 'name' => 'Merchant User 1', 'email' => 'merchant1@example.com', 'password' => bcrypt('password'), 'approved_at' => null],
-            ['user_category_id' => 2, 'name' => 'Merchant User 2', 'email' => 'merchant2@example.com', 'password' => bcrypt('password'), 'approved_at' => now()],
-            ['user_category_id' => 2, 'name' => 'Merchant User 3', 'email' => 'merchant3@example.com', 'password' => bcrypt('password'), 'approved_at' => null],
-            ['user_category_id' => 2, 'name' => 'Merchant User 4', 'email' => 'merchant4@example.com', 'password' => bcrypt('password'), 'approved_at' => now()],
+            ['user_category_id' => 2, 'name' => 'Merchant User 1', 'email' => 'merchant1@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => null],
+            ['user_category_id' => 2, 'name' => 'Merchant User 2', 'email' => 'merchant2@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => now()],
+            ['user_category_id' => 2, 'name' => 'Merchant User 3', 'email' => 'merchant3@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => null],
+            ['user_category_id' => 2, 'name' => 'Merchant User 4', 'email' => 'merchant4@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890', 'approved_at' => now()],
         ];
 
         foreach ($users as $user) {

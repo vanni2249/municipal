@@ -33,10 +33,10 @@ class CitizenSeeder extends Seeder
         }
 
         $users = [
-            ['user_category_id' => 1, 'name' => 'Citizen User 1', 'email' => 'citizen1@example.com', 'password' => bcrypt('password')],
-            ['user_category_id' => 1, 'name' => 'Citizen User 2', 'email' => 'citizen2@example.com', 'password' => bcrypt('password')],
-            ['user_category_id' => 1, 'name' => 'Citizen User 3', 'email' => 'citizen3@example.com', 'password' => bcrypt('password')],
-            ['user_category_id' => 1, 'name' => 'Citizen User 4', 'email' => 'citizen4@example.com', 'password' => bcrypt('password')],
+            ['user_category_id' => 1, 'name' => 'Citizen User 1', 'email' => 'citizen1@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890'],
+            ['user_category_id' => 1, 'name' => 'Citizen User 2', 'email' => 'citizen2@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890'],
+            ['user_category_id' => 1, 'name' => 'Citizen User 3', 'email' => 'citizen3@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890'],
+            ['user_category_id' => 1, 'name' => 'Citizen User 4', 'email' => 'citizen4@example.com', 'password' => bcrypt('password'), 'phone' => '123-456-7890'],
         ];
 
         foreach ($users as $user) {

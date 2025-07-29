@@ -1,5 +1,5 @@
 <x-layouts.users>
-    <div class="max-w-7xl mx-auto p-4 space-y-4">
+    <div class="p-4 space-y-4">
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-full lg:col-span-full space-y-4">
                 <!-- Print Permit -->

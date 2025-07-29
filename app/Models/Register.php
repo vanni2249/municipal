@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Merchant extends Model
+class Register extends Model
 {
     protected $fillable = [
         'user_id',
-        'code',
         'number',
+        'code',
         'name',
         'email',
         'phone',
@@ -18,6 +18,11 @@ class Merchant extends Model
         'state',
         'postal_code',
         'date_of_birth',
+        'company_name',
+        'comercial_number',
+        'is_veteran',
+        'is_disabled',
+        'is_senior',
     ];
 
     public function user()

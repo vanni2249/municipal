@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('postal_code')->nullable();
-            $table->string('country')->default('USA');
+            $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });
     }

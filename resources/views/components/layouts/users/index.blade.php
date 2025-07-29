@@ -40,7 +40,10 @@
                 </div>
             </header>
             <ul class="p-4 text-xs font-bold uppercase space-y-1">
-                @foreach (App\Data\Sidebar\User::items() as $item)
+                 @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
+                    return in_array(Auth::user()->category->en_name, $item['users'] ?? []);
+                    })->take(8) as $item)
+                {{-- @foreach (App\Data\Sidebar\User::items() as $item) --}}
                     <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
                         {{ $item['name'] }}
                     </x-layouts.sidebar-link>
@@ -78,12 +81,6 @@
                         <a href="" class="font-bold lg:hidden">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
-                        <li class="text-xs">
-                            @auth
-                                {{ auth()->user()->name }}
-                                {{ auth()->user()->approved_at ? 'Approved' : '' }}
-                            @endauth
-                        </li>
                         <li class="inline-block">
                             <a href="" class="text-gray-800 hover:text-gray-600">
                                 <img src="{{ asset('icons/bell.svg') }}" alt="bell">
@@ -95,6 +92,11 @@
                                     <img src="{{ asset('icons/user-circle.svg') }}" alt="user" class="cursor-pointer">
                                 </x-slot>
                                 <x-slot name="content">
+                                    <div>
+                                        <div class="px-4 py-2 font-bold text-xs text-gray-700">
+                                            {{ auth()->user()->name }}
+                                        </div>
+                                    </div>
                                     <x-dropdown-link href="">
                                         Mi Perfil
                                     </x-dropdown-link>

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ContractorSeeder::class,
             SupplierSeeder::class,
             AdminSeeder::class,
+            RegisterCategorySeeder::class,
             // Add other seeders here as needed
         ]);
 

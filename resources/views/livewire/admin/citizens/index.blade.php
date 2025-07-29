@@ -2,8 +2,11 @@
     <x-card class="h-full rounded-xl">
         <header class="flex justify-between items-center mb-4">
             <h1 class="text-lg font-bold">Ciudadanos</h1>
-            <x-icon-link href="{{ route('admin.citizens.create') }}" icon="plus" />
-
+            {{-- <x-icon-link href="{{ route('admin.citizens.create') }}" icon="plus" /> --}}
+            <x-icon-button @click="$dispatch('open-modal', 'create-citizen-modal')" icon="plus" />
+            <x-modal name="create-citizen-modal" title="Crear Ciudadano" size="md">
+                @include('admin.citizens.form')
+            </x-modal>
         </header>
         <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
             <div class="">

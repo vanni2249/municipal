@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->onDelete('set null');
-            $table->string('code')->unique();
-            $table->string('number')->unique()->nullable();
+            $table->string('code')->nullable();
+            $table->string('number')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('postal_code')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('company_name')->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ class Accountant extends Model
         'city',
         'state',
         'postal_code',
-        'country',
+        'date_of_birth',
+        'company_name',
     ];
 
     protected $casts = [

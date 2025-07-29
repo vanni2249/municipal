@@ -42,9 +42,16 @@ class Login extends Component
 
         $user = User::where('email', $this->email)->first();
 
-        if ($user && ($user->blocked_at !== null || $user->approved_at === null)) {
+        if ($user && $user->blocked_at !== null ) {
             throw ValidationException::withMessages([
-                'email' => __('Your account is either blocked or not approved.'),
+                'email' => ['Your account is either blocked.'],
+            ]);
+            return;
+        }
+        
+        if ($user && $user->approved_at === null) {
+            throw ValidationException::withMessages([
+                'email' => ['Your account is not approved.'],
             ]);
             return;
         }

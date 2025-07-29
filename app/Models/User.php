@@ -19,8 +19,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'user_category_id',
         'email',
+        'phone',
         'password',
+        'approved_at',
+        'approved_by',
+        'blocked_at',
+        'blocked_by',
+        'blocked_reason',
+        'last_login_at',
     ];
 
     /**
@@ -51,6 +59,11 @@ class User extends Authenticatable
         return $this->belongsTo(UserCategory::class, 'user_category_id');
     }
 
+    public function register()
+    {
+        return $this->hasOne(Register::class);
+    }
+
     public function citizen()
     {
         return $this->hasOne(Citizen::class);
@@ -79,6 +92,16 @@ class User extends Authenticatable
     public function getLastLogin(): ?string
     {
         return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+    }
+
+    public function approvedBy()
+    {
+        return $this->belongsTo(Admin::class, 'approved_by');
+    }
+
+    public function blockedBy()
+    {
+        return $this->belongsTo(Admin::class, 'blocked_by');
     }
 
 }

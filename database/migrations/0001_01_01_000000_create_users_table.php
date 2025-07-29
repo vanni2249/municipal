@@ -23,9 +23,9 @@ return new class extends Migration
             $table->timestamp('blocked_at')->nullable();
             $table->string('blocked_by')->nullable();
             $table->string('blocked_reason')->nullable();
-            $table->timestamp('approved_at')->nullable()->default(today());
-            $table->timestamp('approved_by')->nullable();
-            $table->timestamp('last_login_at')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->string('last_login_at')->nullable();
             $table->timestamps();
         });
 

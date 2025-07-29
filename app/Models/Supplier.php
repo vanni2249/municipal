@@ -15,6 +15,8 @@ class Supplier extends Model
         'address',
         'city',
         'postal_code',
+        'date_of_birth',
+        'company_name',
     ];
 
     public function user()

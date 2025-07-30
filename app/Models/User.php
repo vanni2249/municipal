@@ -66,36 +66,6 @@ class User extends Authenticatable
         return $this->belongsTo(UserCategory::class, 'user_category_id');
     }
 
-    public function register()
-    {
-        return $this->hasOne(Register::class);
-    }
-
-    public function citizen()
-    {
-        return $this->hasOne(Citizen::class);
-    }
-
-    public function merchant()
-    {
-        return $this->hasOne(Merchant::class);
-    }
-
-    public function accountant()
-    {
-        return $this->hasOne(Accountant::class);
-    }
-
-    public function contractor()
-    {
-        return $this->hasOne(Contractor::class);
-    }
-
-    public function supplier()
-    {
-        return $this->hasOne(Supplier::class);
-    }
-
     public function getLastLogin(): ?string
     {
         return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';

@@ -18,6 +18,8 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'email',
+        'phone',
         'username',
         'password',
     ];
@@ -43,6 +45,31 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getLastLogin(): ?string
+    {
+        return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+    }
+
+    public function getCreatedAt(): string
+    {
+        return \Carbon\Carbon::parse($this->created_at)->format('d/m/Y H:i:s');
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return \Carbon\Carbon::parse($this->updated_at)->format('d/m/Y H:i:s');
+    }
+
+    public function getBlocked(): string
+    {
+        return $this->blocked_at ? 'Si' : 'No';
+    }
+
+    public function getBlockedAt(): string
+    {
+        return $this->blocked_at ? \Carbon\Carbon::parse($this->blocked_at)->format('d/m/Y') : '...';
     }
 
 }

@@ -6,8 +6,50 @@ use Livewire\Component;
 
 class Show extends Component
 {
+    public $employee;
+    public $name;
+    public $email;
+    public $phone;
+
+    public function mount($employee)
+    {
+        $this->employee = $employee;
+        $this->name = $employee->name;
+        $this->email = $employee->email;
+        $this->phone = $employee->phone;
+    }
+
+    public function items()
+    {
+        return [
+            ['label' => 'ID de Empleado', 'value' => $this->employee->id],
+            ['label' => 'Nombre', 'value' => $this->employee->name],
+            ['label' => 'Email', 'value' => $this->employee->email],
+            ['label' => 'Email', 'value' => $this->employee->username],
+            ['label' => 'Telefono', 'value' => $this->employee->phone],
+            ['label' => 'Fecha de registro', 'value' => $this->employee->getCreatedAt()],
+            ['label' => 'Fecha de actualizacion', 'value' => $this->employee->getUpdatedAt()],
+            ['label' => 'Ultima conexion', 'value' => $this->employee->getLastLogin()],
+            ['label' => 'Bloqueado', 'value' => $this->employee->getBlocked()],
+            ['label' => 'Fecha de bloqueo', 'value' => $this->employee->getBlockedAt()],
+        ];
+    }
+
+    public function updateEmployee()
+    {
+        $this->employee->update([
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+        ]);
+
+        $this->dispatch('close-modal', 'edit-employee-modal');
+    }
+
     public function render()
     {
-        return view('livewire.admin.employees.show');
+        return view('livewire.admin.employees.show', [
+            'items' => $this->items(),
+        ]);
     }
 }

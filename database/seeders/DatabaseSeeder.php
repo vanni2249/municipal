@@ -18,13 +18,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserCategorySeeder::class,
+            UserSeeder::class,
+            AdminSeeder::class,
+            RegisterSeeder::class,
             // CitizenSeeder::class,
             // MerchantSeeder::class,
             // AccountantSeeder::class,
             // ContractorSeeder::class,
             // SupplierSeeder::class,
-            AdminSeeder::class,
-            RegisterCategorySeeder::class,
+            // RegisterCategorySeeder::class,
             // Add other seeders here as needed
         ]);
 

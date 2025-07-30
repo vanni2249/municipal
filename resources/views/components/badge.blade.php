@@ -14,7 +14,7 @@
     ];
 @endphp
 
-<span {{ $attributes->merge(['class' => "px-3 py-0.5 rounded-full text-xs font-semibold " . ($colors[$color] ?? $colors['gray'])]) }}>
+<span {{ $attributes->merge(['class' => "px-3 py-0.5 rounded text-xs font-semibold " . ($colors[$color] ?? $colors['gray'])]) }}>
     {{ $slot }}
     {{ $label ?? '' }}
     {{ $value ?? '' }}

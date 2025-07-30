@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserCategorySeeder::class,
-            CitizenSeeder::class,
-            MerchantSeeder::class,
-            AccountantSeeder::class,
-            ContractorSeeder::class,
-            SupplierSeeder::class,
+            // CitizenSeeder::class,
+            // MerchantSeeder::class,
+            // AccountantSeeder::class,
+            // ContractorSeeder::class,
+            // SupplierSeeder::class,
             AdminSeeder::class,
             RegisterCategorySeeder::class,
             // Add other seeders here as needed

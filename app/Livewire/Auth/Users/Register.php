@@ -107,37 +107,49 @@ class Register extends Component
         ]);
 
         $this->user = User::create([
+            'user_category_id' => UserCategory::where('en_name', $this->role)->first()->id ?? null,
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'phone' => $this->phone,
-            'user_category_id' => UserCategory::where('en_name', $this->role)->first()->id ?? null,
+            'company_name' => $this->company_name,
+            'number' => $this->number,
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'date_of_birth' => $this->date_of_birth,
             'approved_at' => $this->approved_at,
         ]);
 
-        switch ($this->role) {
-            case 'citizen':
-                $this->citizen();
-                break;
-            case 'merchant':
-                $this->merchant();
-                break;
-            case 'accountant':
-                $this->accountant();
-                break;
-            case 'contractor':
-                $this->contractor();
-                break;
-            case 'supplier':
-                $this->supplier();
-                break;
-            case 'visitor':
-                $this->visitor();
-                break;
-            default:
-                session()->flash('error', 'Rol no reconocido.');
-                return;
+        if ($this->user->approved_at) {
+            $this->login();
+        }else{
+            redirect()->route('users.verify', ['role' => $this->role]);
         }
+
+        // switch ($this->role) {
+        //     case 'citizen':
+        //         $this->citizen();
+        //         break;
+        //     case 'merchant':
+        //         $this->merchant();
+        //         break;
+        //     case 'accountant':
+        //         $this->accountant();
+        //         break;
+        //     case 'contractor':
+        //         $this->contractor();
+        //         break;
+        //     case 'supplier':
+        //         $this->supplier();
+        //         break;
+        //     case 'visitor':
+        //         $this->visitor();
+        //         break;
+        //     default:
+        //         session()->flash('error', 'Rol no reconocido.');
+        //         return;
+        // }
     }
 
     public function citizen()

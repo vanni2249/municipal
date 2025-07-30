@@ -23,31 +23,31 @@ class Admin
                 'route' => 'admin.users.index',
                 'path' => 'users',
             ],
-            [
-                'name' => 'Ciudadanos',
-                'route' => 'admin.citizens.index',
-                'path' => 'citizens',
-            ],
-            [
-                'name' => 'Comerciantes',
-                'route' => 'admin.merchants.index',
-                'path' => 'merchants',
-            ],
-            [
-                'name' => 'Contadores',
-                'route' => 'admin.accountants.index',
-                'path' => 'accountants',
-            ],
-            [
-                'name' => 'Contratistas',
-                'route' => 'admin.contractors.index',
-                'path' => 'contractors',
-            ],
-            [
-                'name' => 'Suplidores',
-                'route' => 'admin.suppliers.index',
-                'path' => 'suppliers',
-            ],
+            // [
+            //     'name' => 'Ciudadanos',
+            //     'route' => 'admin.citizens.index',
+            //     'path' => 'citizens',
+            // ],
+            // [
+            //     'name' => 'Comerciantes',
+            //     'route' => 'admin.merchants.index',
+            //     'path' => 'merchants',
+            // ],
+            // [
+            //     'name' => 'Contadores',
+            //     'route' => 'admin.accountants.index',
+            //     'path' => 'accountants',
+            // ],
+            // [
+            //     'name' => 'Contratistas',
+            //     'route' => 'admin.contractors.index',
+            //     'path' => 'contractors',
+            // ],
+            // [
+            //     'name' => 'Suplidores',
+            //     'route' => 'admin.suppliers.index',
+            //     'path' => 'suppliers',
+            // ],
             [
                 'name' => 'Registros',
                 'route' => 'admin.registers.index',

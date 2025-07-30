@@ -61,6 +61,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function register()
+    {
+        return $this->hasOne(Register::class, 'user_id');
+    }
+
     public function category()
     {
         return $this->belongsTo(UserCategory::class, 'user_category_id');

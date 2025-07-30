@@ -23,34 +23,24 @@ use Illuminate\Validation\ValidationException;
 class Register extends Component
 {
     public $role;
-
     public $name;
-
     public $email;
-
     public $password;
-
     public $password_confirmation;
-
     public $phone;
-
     public $company_name;
-
     public $number;
-
     public $address;
-
     public $city;
-
     public $postal_code;
-
     public $date_of_birth;
-
     public $terms;
-
     public $user;
-
     public $approved_at;
+    public $is_veteran = false;
+    public $is_age_advanced = false;
+    public $is_bedridden = false;
+    public $is_disabled = false;
 
     public function mount($role)
     {
@@ -80,19 +70,19 @@ class Register extends Component
                 'max:255'
             ],
             'address' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant','contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
                 'string',
                 'nullable',
                 'max:255'
             ],
             'city' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant','contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
                 'string',
                 'nullable',
                 'max:255'
             ],
             'postal_code' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant','contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
                 'string',
                 'nullable',
                 'max:255'
@@ -121,176 +111,35 @@ class Register extends Component
             'approved_at' => $this->approved_at,
         ]);
 
-        if ($this->user->approved_at) {
-            $this->login();
-        }else{
+        if ($this->approved_at)
+        {
+            if ($this->is_veteran || $this->is_age_advanced || $this->is_bedridden || $this->is_disabled) {
+                $this->createRegister();
+            } else {
+                $this->login();
+            }
+
+        } else {
             redirect()->route('users.verify', ['role' => $this->role]);
         }
-
-        // switch ($this->role) {
-        //     case 'citizen':
-        //         $this->citizen();
-        //         break;
-        //     case 'merchant':
-        //         $this->merchant();
-        //         break;
-        //     case 'accountant':
-        //         $this->accountant();
-        //         break;
-        //     case 'contractor':
-        //         $this->contractor();
-        //         break;
-        //     case 'supplier':
-        //         $this->supplier();
-        //         break;
-        //     case 'visitor':
-        //         $this->visitor();
-        //         break;
-        //     default:
-        //         session()->flash('error', 'Rol no reconocido.');
-        //         return;
-        // }
     }
 
-    public function citizen()
+    public function createRegister()
     {
-        $citizen = Citizen::where('email', $this->email)->first();
-        
-        if (isset($citizen)) {
-            $citizen->update([
-                'user_id' => $this->user->id,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        } else {
-            $this->user->citizen()->create([
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        }
+        $this->validate([
+            'is_veteran' => 'boolean',
+            'is_age_advanced' => 'boolean',
+            'is_bedridden' => 'boolean',
+            'is_disabled' => 'boolean',
+        ]);
 
-        $this->login();
-    }
+        $register = $this->user->register()->create([
+            'is_veteran' => $this->is_veteran,
+            'is_age_advanced' => $this->is_age_advanced,
+            'is_bedridden' => $this->is_bedridden,
+            'is_disabled' => $this->is_disabled,
+        ]);
 
-    public function merchant()
-    {
-        $merchant = Merchant::where('email', $this->email)->first();
-
-        if (isset($merchant)) {
-            $merchant->update([
-                'user_id' => $this->user->id,
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        } else {
-            $this->user->merchant()->create([
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        }
-
-        $this->login();
-    }
-
-    public function accountant()
-    {
-        $accountant = Accountant::where('email', $this->email)->first();
-
-        if (isset($accountant)) {
-            $accountant->update([
-                'user_id' => $this->user->id,
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        } else {
-            $this->user->accountant()->create([
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        }
-
-        redirect()->route('users.verify', ['role' => $this->role]);
-    }
-
-    public function contractor()
-    {
-        $contractor = Contractor::where('email', $this->email)->first();
-
-        if (isset($contractor)) {
-            $contractor->update([
-                'user_id' => $this->user->id,
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        } else {
-            $this->user->contractor()->create([
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        }
-
-        redirect()->route('users.verify', ['role' => $this->role]);
-    }
-
-    public function supplier()
-    {
-        $supplier = Supplier::where('email', $this->email)->first();
-
-        if (isset($supplier)) {
-            $supplier->update([
-                'user_id' => $this->user->id,
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        } else {
-            $this->user->supplier()->create([
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'date_of_birth' => $this->date_of_birth,
-            ]);
-        }
-
-        redirect()->route('users.verify', ['role' => $this->role]);
-    }
-
-    public function visitor()
-    {
-        $this->user->update(['approved_at' => now()]);
         $this->login();
     }
 

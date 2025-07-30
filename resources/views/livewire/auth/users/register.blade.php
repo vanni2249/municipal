@@ -16,7 +16,7 @@
             <x-input wire:model.defer="password" id="password" @class(['w-full', 'border-red-500'=>
                 $errors->has('password')]) type="password" placeholder="Ingrese su contraseña" />
                 @error('password')
-                    <x-error message="{{ $message }}" />
+                <x-error message="{{ $message }}" />
                 @enderror
         </div>
         <div class="mt-2">
@@ -33,7 +33,8 @@
         @if (in_array($role, ['merchant', 'accountant','contractor','supplier']))
         <div class="mt-2">
             <x-label for="company_name" class="mt-4" value="Nombre de la empresa" />
-            <x-input wire:model.defer="company_name" id="company_name" @class(['w-full', 'border-red-500'=> $errors->has('company_name')])
+            <x-input wire:model.defer="company_name" id="company_name" @class(['w-full', 'border-red-500'=>
+                $errors->has('company_name')])
                 type="text" placeholder="Ingrese el nombre de su empresa" />
         </div>
         <div class="mt-2">
@@ -66,8 +67,30 @@
         </div>
         <div class="mt-2">
             <x-label for="date_of_birth" class="mt-4" value="Fecha de nacimiento" />
-            <x-input wire:model.defer="date_of_birth" id="date_of_birth" @class(['w-full text-gray-400', 'border-red-500'=>
+            <x-input wire:model.defer="date_of_birth" id="date_of_birth" @class(['w-full
+                text-gray-400', 'border-red-500'=>
                 $errors->has('date_of_birth')]) type="date" placeholder="Ingrese su fecha de nacimiento" />
+        </div>
+        @endif
+
+        @if (in_array($role, ['citizen']))
+        <div class="mt-2 grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-md">
+            <div class="flex space-x-2 items-center">
+                <x-checkbox wire:model.defer="is_veteran" id="is_veteran" name="is_veteran" class="" />
+                <span class="text-xs font-bold text-gray-600">Veterano</span>
+            </div>
+            <div class="flex space-x-2 items-center">
+                <x-checkbox wire:model.defer="is_age_advanced" id="is_age_advanced" name="is_age_advanced" />
+                <span class="text-xs font-bold text-gray-600">Edad Avanzada</span>
+            </div>
+            <div class="flex space-x-2 items-center">
+                <x-checkbox wire:model.defer="is_bedridden" id="is_bedridden" name="is_bedridden" />
+                <span class="text-xs font-bold text-gray-600">Encamado</span>
+            </div>
+            <div class="flex space-x-2 items-center">
+                <x-checkbox wire:model.defer="is_disabled" id="is_disabled" name="is_disabled" />
+                <span class="text-xs font-bold text-gray-600">Discapacitado</span>
+            </div>
         </div>
         @endif
 
@@ -92,7 +115,7 @@
             </x-button>
         </div>
         @foreach ($errors->all() as $item)
-            <div class="text-red-500 text-xs mt-1">{{ $item }}</div>
+        <div class="text-red-500 text-xs mt-1">{{ $item }}</div>
         @endforeach
     </form>
 </div>

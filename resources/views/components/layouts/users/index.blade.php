@@ -17,6 +17,7 @@
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
     <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4 overflow-auto">
+        <!-- Sidebar -->
         <aside class="bg-black rounded-xl w-full h-full overflow-auto">
             <header class="h-16 border-b border-gray-900 flex items-center text-white px-6">
                 <div class="flex justify-between items-center w-full">
@@ -41,9 +42,8 @@
             </header>
             <ul class="p-4 text-xs font-bold uppercase space-y-1">
                  @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
-                    return in_array(Auth::user()->category->en_name, $item['users'] ?? []);
+                    return in_array(Auth::user()->type->key, $item['users'] ?? []);
                     })->take(8) as $item)
-                {{-- @foreach (App\Data\Sidebar\User::items() as $item) --}}
                     <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
                         {{ $item['name'] }}
                     </x-layouts.sidebar-link>
@@ -53,14 +53,17 @@
     </div>
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
         <div class="px-4 pt-4">
+            <!-- Nav -->
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
+                        <!-- Desktop -->
                         <div class="hidden lg:flex items-center justify-center">
                             <button id="sidebar-toggle" class="cursor-pointer">
                                 <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
                             </button>
                         </div>
+                        <!-- Mobile -->
                         <div class="lg:hidden flex items-center justify-center">
                             <x-dropdown align="left">
                                 <x-slot name="trigger">
@@ -70,11 +73,13 @@
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    {{-- @foreach (App\Data\Links\Sidebar\Agency::items() as $item)
-                                        <x-dropdown-link href="{{ route($item['route']) }}">
+                                    @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
+                                        return in_array(Auth::user()->type->key, $item['users'] ?? []);
+                                    })->take(8) as $item)
+                                        <x-dropdown-link href="{{ route($item['route']) }}" @class(['bg-gray-200' => request()->segment(2) == $item['path']])>
                                             {{ $item['name'] }}
                                         </x-dropdown-link>
-                                    @endforeach --}}
+                                    @endforeach
                                 </x-slot>
                             </x-dropdown>
                         </div>

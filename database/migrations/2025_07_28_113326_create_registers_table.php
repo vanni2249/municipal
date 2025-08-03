@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->onDelete('set null');
+            $table->foreignId('user_category_id')->nullable()->onDelete('set null');
+            $table->foreignId('type_id')->nullable()->onDelete('set null');
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();

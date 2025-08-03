@@ -6,13 +6,15 @@
         </header>
         <ul class="grid grid-cols-4 text-sm text-gray-600 space-y-4 py-4">
             @foreach ($items as $item)
-            <li class="col-span-4 md:col-span-2 lg:col-span-1">
-                <small class="font-bold">{{ $item['label'] }}</small>
-                <br>
-                <span>
-                    {!! $item['value'] !!}
-                </span>
-            </li>
+                @if ($item['showable'])
+                    <li class="col-span-4 md:col-span-2 lg:col-span-1">
+                        <small class="font-bold">{{ $item['label'] }}</small>
+                        <br>
+                        <span>
+                            {!! $item['value'] !!}
+                        </span>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </x-card>
@@ -21,6 +23,9 @@
     <x-modal name="edit-register-modal" title="Editar registro" size="lg">
         <form wire:submit.prevent="updateRegister" class="space-y-2">
             @include('admin.registers.form')
+            <div>
+                <x-button type="submit" class="w-full" color="primary">Editar Registro</x-button>
+            </div>
         </form>
     </x-modal>
 </div>

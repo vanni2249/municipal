@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Data\Service;
 use App\Models\Citizen;
+use App\Models\ServiceCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,17 +19,12 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            UserCategorySeeder::class,
+            TypeSeeder::class,
             UserSeeder::class,
             AdminSeeder::class,
             RegisterSeeder::class,
-            // CitizenSeeder::class,
-            // MerchantSeeder::class,
-            // AccountantSeeder::class,
-            // ContractorSeeder::class,
-            // SupplierSeeder::class,
-            // RegisterCategorySeeder::class,
-            // Add other seeders here as needed
+            ServiceCategorySeeder::class,
+            ServiceSeeder::class,
         ]);
 
         // User::factory()->create([

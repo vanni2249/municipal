@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_categories', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_category_id')->onDelete('set null');
             $table->string('en_name')->nullable();
             $table->string('es_name')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('en_description')->nullable();
+            $table->longText('es_description')->nullable();
+            $table->string('slug')->unique();
+            $table->decimal('price', 10, 2)->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_categories');
+        Schema::dropIfExists('services');
     }
 };

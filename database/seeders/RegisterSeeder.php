@@ -14,6 +14,8 @@ class RegisterSeeder extends Seeder
     {
         $items = [
             [
+                'type_id' => 1,
+                'user_category_id' => 1,
                 'name' => 'John Doe',
                 'email' => 'john.doe@example.com',
                 'phone' => '1234567890',
@@ -26,6 +28,8 @@ class RegisterSeeder extends Seeder
                 'is_disabled' => false,
             ],
             [
+                'type_id' => 1,
+                'user_category_id' => 1,
                 'name' => 'Jane Smith',
                 'email' => 'jane.smith@example.com',
                 'phone' => '0987654321',
@@ -40,6 +44,8 @@ class RegisterSeeder extends Seeder
                 'emergency_contact_phone' => '3216549870',
             ],
             [
+                'type_id' => 1,
+                'user_category_id' => 1,
                 'name' => 'Alice Johnson',
                 'email' => 'alice.johnson@example.com',
                 'phone' => '5555555555',
@@ -55,6 +61,8 @@ class RegisterSeeder extends Seeder
                 'emergency_contact_phone' => '9876543210',
             ],
             [
+                'type_id' => 1,
+                'user_category_id' => 1,
                 'name' => 'Bob Brown',
                 'email' => 'bob.brown@example.com',
                 'phone' => '4444444444',
@@ -67,10 +75,6 @@ class RegisterSeeder extends Seeder
                 'emergency_contact' => 'Charlie Brown',
                 'emergency_contact_phone' => '6543219870',
             ],
-            [
-                'user_id' => 1,
-                'is_veteran' => true,
-            ]
         ];
 
         foreach ($items as $item) {

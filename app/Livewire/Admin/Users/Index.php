@@ -13,7 +13,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.users.index', [
-            'users' => User::with('category')
+            'users' => User::with('type')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10),
         ]);

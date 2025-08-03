@@ -27,54 +27,34 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-4">Nombre</th>
+                    <th class="p-4">Tipo</th>
                     <th class="p-4">Email</th>
                     <th class="p-4">Phone</th>
-                    <th class="p-4">Veterano</th>
-                    <th class="p-4">Edad avanzada</th>
-                    <th class="p-4">Encamado</th>
-                    <th class="p-4">Discapacidad</th>
-                    <th class="p-4 w-14">Accion</th>
+                    <th class="p-4 w-14 text-right">Accion</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
                 @foreach ($registers as $register)
-                <tr class="border-t border-gray-200">
-                    <td class="px-4 py-1 w-1/5">
-                        <span>
-                            {{ $register->user ? $register->user->name : $register->name }}
-                        </span>
-                        <br>
-                        <small>
-                            {{ $register->user ? 'Usuario' : 'No Usuario' }}
-                        </small>
-                    </td>
-                    <td class="px-4 py-1 w-1/5">{{ $register->user ? $register->user->email : $register->email ?? '...' }}</td>
-                    <td class="px-4 py-1 w-1/5">{{ $register->user ? $register->user->phone : $register->phone ?? '...' }}</td>
-                    <td class="px-4 py-1 w-1/5">
-                        <x-badge color="{{ $register->is_veteran ? 'green' : 'red' }}">
-                            {{ $register->is_veteran ? 'Si' : 'No' }}
-                        </x-badge>
-                    </td>
-                    <td class="px-4 py-1 w-1/5">
-                        <x-badge color="{{ $register->is_age_advanced ? 'green' : 'red' }}">
-                            {{ $register->is_age_advanced ? 'Si' : 'No' }}
-                        </x-badge>
-                    </td>
-                    <td class="px-4 py-1 w-1/5">
-                        <x-badge color="{{ $register->is_bedridden ? 'green' : 'red' }}">
-                            {{ $register->is_bedridden ? 'Si' : 'No' }}
-                        </x-badge>
-                    </td>
-                    <td class="px-4 py-1 w-1/5">
-                        <x-badge color="{{ $register->is_disabled ? 'green' : 'red' }}">
-                            {{ $register->is_disabled ? 'Si' : 'No' }}
-                        </x-badge>
-                    </td>
-                    <td class="px-4 py-1 flex justify-end">
-                        <x-icon-link href="{{ route('admin.registers.show', ['register' => $register->id]) }}"
-                            icon="eye" />
-                    </td>
-                </tr>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-1 w-1/4">
+                            <span>...</span>
+                            <br>
+                            <span>
+                                {{ $register->name }}
+                            </span>
+                        </td>
+                        <td class="px-4 py-1 w-1/4 capitalize">
+                            {{ $register->type->es_name ?? '...' }}
+                        </td>
+                        <td class="px-4 py-1 w-1/4">
+                            {{ $register->user ? $register->user->email : $register->email ?? '...' }}</td>
+                        <td class="px-4 py-1 w-1/4">
+                            {{ $register->user ? $register->user->phone : $register->phone ?? '...' }}</td>
+                        <td class="px-4 py-1 flex justify-end">
+                            <x-icon-link href="{{ route('admin.registers.show', ['register' => $register->id]) }}"
+                                icon="eye" />
+                        </td>
+                    </tr>
                 @endforeach
             </x-slot>
         </x-table>
@@ -83,7 +63,10 @@
     <!-- Modal create register -->
     <x-modal name="create-register-modal" title="Crear registro" size="lg">
         <form wire:submit.prevent="createRegister" class="space-y-2">
-                @include('admin.registers.form')
+            @include('admin.registers.form')
+            <div>
+                <x-button type="submit" class="w-full" color="primary">Crear Registro</x-button>
+            </div>
         </form>
     </x-modal>
 </div>

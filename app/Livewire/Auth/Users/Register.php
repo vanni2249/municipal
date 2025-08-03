@@ -2,11 +2,7 @@
 
 namespace App\Livewire\Auth\Users;
 
-use App\Models\Accountant;
-use App\Models\Citizen;
-use App\Models\Contractor;
-use App\Models\Merchant;
-use App\Models\Supplier;
+use App\Models\Type;
 use App\Models\User;
 use App\Models\UserCategory;
 use Illuminate\Auth\Events\Lockout;
@@ -15,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -97,7 +92,7 @@ class Register extends Component
         ]);
 
         $this->user = User::create([
-            'user_category_id' => UserCategory::where('en_name', $this->role)->first()->id ?? null,
+            'type_id' => Type::where('en_name', $this->role)->first()->id ?? null,
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
@@ -113,34 +108,10 @@ class Register extends Component
 
         if ($this->approved_at)
         {
-            if ($this->is_veteran || $this->is_age_advanced || $this->is_bedridden || $this->is_disabled) {
-                $this->createRegister();
-            } else {
-                $this->login();
-            }
-
+            $this->login();
         } else {
             redirect()->route('users.verify', ['role' => $this->role]);
         }
-    }
-
-    public function createRegister()
-    {
-        $this->validate([
-            'is_veteran' => 'boolean',
-            'is_age_advanced' => 'boolean',
-            'is_bedridden' => 'boolean',
-            'is_disabled' => 'boolean',
-        ]);
-
-        $register = $this->user->register()->create([
-            'is_veteran' => $this->is_veteran,
-            'is_age_advanced' => $this->is_age_advanced,
-            'is_bedridden' => $this->is_bedridden,
-            'is_disabled' => $this->is_disabled,
-        ]);
-
-        $this->login();
     }
 
     public function login()

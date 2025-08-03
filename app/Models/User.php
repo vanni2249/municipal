@@ -18,8 +18,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
         'user_category_id',
+        'type_id',
+        'name',
         'email',
         'phone',
         'password',
@@ -61,14 +62,14 @@ class User extends Authenticatable
         ];
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
+    }
+
     public function register()
     {
         return $this->hasOne(Register::class, 'user_id');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(UserCategory::class, 'user_category_id');
     }
 
     public function getLastLogin(): ?string

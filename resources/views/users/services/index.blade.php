@@ -10,10 +10,10 @@
                 </header>
                 <div class="grid grid-cols-12 gap-2">
                     @foreach (collect(\App\Data\Service::items())->filter(function($item) {
-                    return in_array(Auth::user()->category->en_name, $item['users'] ?? []);
+                    return in_array(Auth::user()->type->key, $item['users'] ?? []);
                     })->take(8) as $item)
                     <a href="{{ route($item['route']) }}"
-                        class="flex flex-col space-y-1 col-span-6 md:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
+                        class="flex flex-col space-y-1 col-span-12 md:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                         @if (isset($item['img']))
                         {{-- <div>
                             <img src="{{ asset($item['img']) }}" class="rounded-t-xl" alt="">

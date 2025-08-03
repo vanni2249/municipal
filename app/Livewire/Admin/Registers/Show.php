@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Admin\Registers;
 
+use App\Models\Type;
+use App\Models\UserCategory;
 use Livewire\Component;
 
 class Show extends Component
 {
     public $register;
 
+    public $type_id;
     public $name;
     public $email;
     public $phone;
@@ -23,6 +26,7 @@ class Show extends Component
     public function mount($register)
     {
         $this->register = $register;
+        $this->type_id = $register->type_id;
         $this->name = $register->name;
         $this->email = $register->email;
         $this->phone = $register->phone;
@@ -35,33 +39,35 @@ class Show extends Component
         $this->is_bedridden = $register->is_bedridden ? true : false;
         $this->is_disabled = $register->is_disabled ? true : false;
     }
-    
+
     public function items()
     {
         return [
-            ['label' => 'Nombre', 'value' => $this->register->user ? $this->register->user->name : $this->register->name],
-            ['label' => 'Fecha de nacimiento', 'value' => $this->register->user ? $this->register->user->date_of_birth ?? '...'  : $this->register->date_of_birth ?? '...'],
-            ['label' => 'Codigo', 'value' => $this->register->code ?? '...'],
-            ['label' => 'Email', 'value' => $this->register->user ? $this->register->user->email : $this->register->email ?? '...'],
-            ['label' => 'Telefono', 'value' => $this->register->user ? $this->register->user->phone : $this->register->phone ?? '...'],
-            ['label' => 'Direccion', 'value' => $this->register->user ? $this->register->user->address : $this->register->address ?? '...'],
-            ['label' => 'Ciudad', 'value' => $this->register->user ? $this->register->user->city : $this->register->city ?? '...'],
-            ['label' => 'Codigo Postal', 'value' => $this->register->user ? $this->register->user->postal_code : $this->register->postal_code ?? '...'],
-            ['label' => 'Veterano', 'value' => $this->register->is_veteran ? 'Si' : 'No'],
-            ['label' => 'Edad avanzada', 'value' => $this->register->is_age_advanced ? 'Si' : 'No'],
-            ['label' => 'Encamado', 'value' => $this->register->is_bedridden ? 'Si' : 'No'],
-            ['label' => 'Discapacidad', 'value' => $this->register->is_disabled ? 'Si' : 'No'],
-            ['label' => 'Tipo de discapacidad', 'value' => $this->register->disability_type ?? '...'],
-            ['label' => 'Nombre de contacto', 'value' => $this->register->emergency_contact ?? '...'],
-            ['label' => 'Telefono de contacto', 'value' => $this->register->emergency_contact_phone ?? '...'],
-            ['label' => 'Fecha de registro', 'value' => $this->register->created_at->format('d/m/Y')],
-            ['label' => 'Fecha de actualización', 'value' => $this->register->updated_at->format('d/m/Y H:i:s')],
+            ['label' => 'Nombre', 'value' => $this->register->name, 'showable' => true],
+            ['label' => 'Tipo', 'value' => $this->register->type->es_name, 'showable' => true],
+            ['label' => 'Fecha de nacimiento', 'value' => $this->register->date_of_birth ?? '...', 'showable' => true],
+            ['label' => 'Codigo', 'value' => $this->register->code ?? '...', 'showable' => true],
+            ['label' => 'Email', 'value' => $this->register->email ?? '...', 'showable' => true],
+            ['label' => 'Telefono', 'value' => $this->register->phone ?? '...', 'showable' => true],
+            ['label' => 'Direccion', 'value' => $this->register->address ?? '...', 'showable' => true],
+            ['label' => 'Ciudad', 'value' => $this->register->city ?? '...', 'showable' => true],
+            ['label' => 'Codigo Postal', 'value' => $this->register->postal_code ?? '...', 'showable' => true],
+            ['label' => 'Veterano', 'value' => $this->register->is_veteran ? 'Si' : 'No', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Edad avanzada', 'value' => $this->register->is_age_advanced ? 'Si' : 'No', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Encamado', 'value' => $this->register->is_bedridden ? 'Si' : 'No', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Discapacidad', 'value' => $this->register->is_disabled ? 'Si' : 'No', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Tipo de discapacidad', 'value' => $this->register->disability_type ?? '...', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Nombre de contacto', 'value' => $this->register->emergency_contact ?? '...', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Telefono de contacto', 'value' => $this->register->emergency_contact_phone ?? '...', 'showable' => $this->register->user_category_id == 1],
+            ['label' => 'Fecha de registro', 'value' => $this->register->created_at->format('d/m/Y'), 'showable' => true],
+            ['label' => 'Fecha de actualización', 'value' => $this->register->updated_at->format('d/m/Y H:i:s'), 'showable' => true],
         ];
     }
 
     public function updateRegister()
     {
         $this->validate([
+            'type_id' => 'required',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255|unique:registers,email,' . $this->register->id,
             'phone' => 'nullable|string|max:20',
@@ -72,6 +78,7 @@ class Show extends Component
         ]);
 
         $this->register->update([
+            'type_id' => $this->type_id,
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -90,7 +97,8 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.admin.registers.show',[
+        return view('livewire.admin.registers.show', [
+            'types' => Type::whereIn('id', [1, 2, 6])->get(),
             'items' => $this->items(),
         ]);
     }

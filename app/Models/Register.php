@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Register extends Model
 {
     protected $fillable = [
-        'user_id',
+        'type_id',
         'code',
         'name',
         'email',
@@ -25,8 +25,8 @@ class Register extends Model
         'date_of_birth',
     ];
 
-    public function user()
+    public function type()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Type::class);
     }
 }

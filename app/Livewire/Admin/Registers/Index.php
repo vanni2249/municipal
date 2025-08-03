@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin\Registers;
 
 use App\Models\Register;
+use App\Models\Type;
+use App\Models\UserCategory;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,6 +12,7 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $type_id;
     public $name;
     public $email;
     public $phone;
@@ -22,9 +25,18 @@ class Index extends Component
     public $is_bedridden = false;
     public $is_disabled = false;
 
+
+    public function updated($property)
+    {
+        if($property === 'type_id') {
+            $this->reset(['is_veteran', 'is_age_advanced', 'is_bedridden', 'is_disabled']);
+        }
+    }
+
     public function createRegister()
     {
         $this->validate([
+            'type_id' => 'required',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255|unique:registers,email',
             'phone' => 'nullable|string|max:20',
@@ -35,6 +47,7 @@ class Index extends Component
         ]);
 
         Register::create([
+            'type_id' => $this->type_id,
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -52,10 +65,13 @@ class Index extends Component
         $this->dispatch('close-modal', 'create-register-modal');
     }
 
+
+
     public function render()
     {
         return view('livewire.admin.registers.index', [
-            'registers' => Register::orderBy('created_at', 'desc')->paginate(10),
+            'types' => Type::whereIn('id', [1, 2, 6])->get(),
+            'registers' => Register::with(['type'])->orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
 }

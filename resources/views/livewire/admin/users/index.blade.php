@@ -26,7 +26,7 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-2 w-auto">Nombre</th>
-                    <th class="p-2 w-auto">Categoria</th>
+                    <th class="p-2 w-auto">Tipo</th>
                     <th class="p-2 w-auto">Email</th>
                     <th class="p-2 w-auto">Fecha<br />creacion</th>
                     <th class="p-2 w-auto">Aprobado</th>
@@ -47,7 +47,7 @@
                             {{ $user->name }}
                         </span>
                     </td>
-                    <td class="px-2 py-1 capitalize">{{ $user->category->es_name }}</td>
+                    <td class="px-2 py-1 capitalize">{{ $user->type->es_name }}</td>
                     <td class="px-2 py-1">{{ $user->email }}</td>
                     <td class="px-2 py-1">{{ $user->created_at->format('d/m/Y') }}</td>
                     <td class="px-2 py-1">

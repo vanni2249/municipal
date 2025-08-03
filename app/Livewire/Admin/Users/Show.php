@@ -20,7 +20,7 @@ class Show extends Component
     {
         return [
             ['label' => 'Codigo', 'value' => $this->user->id],
-            ['label' => 'Categoria', 'value' => $this->user->category->es_name ?? 'No'],
+            ['label' => 'Tipo', 'value' => $this->user->type->es_name ?? 'No'],
             ['label' => 'Nombre', 'value' => $this->user->name],
             ['label' => 'Email', 'value' => $this->user->email],
             ['label' => 'Email verificado', 'value' => $this->user->email_verified_at ? 'Si' : 'No'],

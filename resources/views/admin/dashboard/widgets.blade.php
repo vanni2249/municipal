@@ -68,30 +68,32 @@
 @endphp
 
 @foreach ($collection as $item)
-        <x-card class="col-span-6 md:col-span-6 xl:col-span-3 rounded-xl">
-            <div class="flex justify-between items-center">
-                <div>
-                    <small class="text-gray-800">
-                        {{ $item['title'] }}
-                    </small>
-                    <div class="flex items-baseline space-x-1">
-                        <h2 class="text-lg font-bold text-gray-900">
-                            {{ $item['value'] }}
-                        </h2>
-                        <span class="text-xs font-bold text-gray-500">
-                            <small>/
-                                {{ $item['completed'] }}
-                            </small>
-                        </span>
-                    </div>
-                    <div class="text-xs text-gray-500 line-clamp-1">
-                        <span class="font-bold">
-                            {{ $item['percentage'] }}%
-                        </span> de {{ $item['percentage_key'] }}
-                    </div>
+    <x-card class="col-span-6 md:col-span-6 xl:col-span-3 rounded-xl">
+        <div class="flex justify-between items-center">
+            <div>
+                <small class="text-gray-800">
+                    {{ $item['title'] }}
+                </small>
+                <div class="flex items-baseline space-x-1">
+                    <h2 class="text-lg font-bold text-gray-900">
+                        {{ $item['value'] }}
+                    </h2>
+                    <span class="text-xs font-bold text-gray-500">
+                        <small>/
+                            {{ $item['completed'] }}
+                        </small>
+                    </span>
                 </div>
-                <div>
-                    @if ($item['percentage'] >= 95)
+                <div class="text-xs text-gray-500 line-clamp-1">
+                    <span class="font-bold">
+                        {{ $item['percentage'] }}%
+                    </span> de {{ $item['percentage_key'] }}
+                </div>
+            </div>
+            <div>
+                @if ($item['percentage'] >= 95)
+                    <div class="bg-green-100 rounded-full p-2">
+
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round"
@@ -99,7 +101,10 @@
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M5 12l5 5l10 -10" />
                         </svg>
-                    @else
+                    </div>
+                @else
+                    <div class="bg-red-100 rounded-full p-2">
+
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round"
@@ -109,8 +114,9 @@
                             <path d="M16 15l-4 4" />
                             <path d="M8 15l4 4" />
                         </svg>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
-        </x-card>
+        </div>
+    </x-card>
 @endforeach

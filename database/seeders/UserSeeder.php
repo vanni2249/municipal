@@ -15,7 +15,6 @@ class UserSeeder extends Seeder
         $items = [
             [
                 'type_id' => 1,
-                'user_category_id' => 1,
                 'name' => 'John Doe',
                 'email' => 'ciudadano@email.com',
                 'password' => bcrypt('password'),
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'type_id' => 2,
-                'user_category_id' => 2,
                 'name' => 'Jane Smith',
                 'email' => 'comerciante@email.com',
                 'password' => bcrypt('password'),
@@ -45,7 +43,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'type_id' => 3,
-                'user_category_id' => 3,
                 'name' => 'Bob Johnson',
                 'email' => 'contador@email.com',
                 'password' => bcrypt('password'),
@@ -59,7 +56,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'type_id' => 4,
-                'user_category_id' => 4,
                 'name' => 'Alice Brown',
                 'email' => 'contratista@email.com',
                 'password' => bcrypt('password'),
@@ -71,7 +67,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'type_id' => 5,
-                'user_category_id' => 5,
                 'name' => 'Charlie Davis',
                 'email' => 'proveedor@email.com',
                 'password' => bcrypt('password'),
@@ -85,7 +80,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'type_id' => 6,
-                'user_category_id' => 6,
                 'name' => 'John Visitor',
                 'email' => 'visitante@email.com',
                 'password' => bcrypt('password'),

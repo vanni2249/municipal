@@ -12,7 +12,7 @@
         @php
             $applications = [
                 [
-                    'title' => 'Solicitud recogido de escombro',
+                    'title' => 'Solicitud recogido de escombro hogar',
                     'days' => '4',
                     'color' => 'blue',
                     'status' => 'En proceso',
@@ -24,19 +24,19 @@
                     'status' => 'Completado',
                 ],
                 [
-                    'title' => 'Solicitud de permiso de construcción',
+                    'title' => 'Solicitud de recogido de basura a negocio',
                     'days' => '1',
                     'color' => 'yellow',
                     'status' => 'Pendiente',
                 ],
                 [
-                    'title' => 'Solicitud de licencia comercial',
+                    'title' => 'Solicitud de facilidades de actividad',
                     'days' => '3',
                     'color' => 'red',
                     'status' => 'Rechazado',
                 ],
                 [
-                    'title' => 'Solicitud de asistencia social',
+                    'title' => 'Solicitud de recogido de basura a negocio',
                     'days' => '5',
                     'color' => 'purple',
                     'status' => 'En revisión',
@@ -72,7 +72,7 @@
         @php
             $applications = [
                 [
-                    'title' => 'Radicacion de patente provincial',
+                    'title' => 'Radicacion de patente temporal',
                     'days' => '4',
                     'color' => 'blue',
                     'status' => 'En proceso',
@@ -90,13 +90,13 @@
                     'status' => 'Pendiente',
                 ],
                 [
-                    'title' => 'Radicacion de licencia comercial',
+                    'title' => 'Radicacion permiso de uso',
                     'days' => '3',
                     'color' => 'red',
                     'status' => 'Rechazado',
                 ],
                 [
-                    'title' => 'Radicacion de asistencia social',
+                    'title' => 'Radicacion de renovacion de patente',
                     'days' => '5',
                     'color' => 'purple',
                     'status' => 'En revisión',

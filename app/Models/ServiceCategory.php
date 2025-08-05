@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceCategory extends Model
 {
-    protected $fillable = ['en_name', 'es_name'];
+    protected $fillable = [
+        'key',
+        'en_name',
+        'es_name'
+    ];
 
     public function services()
     {

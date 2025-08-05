@@ -15,7 +15,13 @@ class User
                 'path' => 'dashboard',
             ],
             [
-                'users' => ['citizen', 'merchant', 'accountant', 'contractor', 'supplier', 'visitor'],
+                'users' => ['citizen', 'merchant', 'accountant','contractor', 'supplier','visitor'],
+                'name' => 'Interactuar',
+                'route' => 'users.interactions.index',
+                'path' => 'interactions',
+            ],
+            [
+                'users' => ['citizen', 'merchant', 'contractor', 'supplier', 'visitor'],
                 'name' => 'Servicios',
                 'route' => 'users.services.index',
                 'path' => 'services',
@@ -31,12 +37,6 @@ class User
                 'name' => 'Negocios',
                 'route' => 'users.businesses.index',
                 'path' => 'businesses',
-            ],
-            [
-                'users' => ['citizen', 'merchant', 'accountant','contractor', 'supplier','visitor'],
-                'name' => 'Interacciones',
-                'route' => 'users.interactions.index',
-                'path' => 'interactions',
             ],
             [
                 'users' => ['citizen'],

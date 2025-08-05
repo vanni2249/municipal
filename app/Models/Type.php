@@ -30,4 +30,12 @@ class Type extends Model
     {
         return $this->hasMany(Register::class);
     }
+
+    /**
+     * Get the services associated with the type.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }

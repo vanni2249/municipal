@@ -19,10 +19,12 @@ class Register extends Model
         'is_age_advanced',
         'is_bedridden',
         'is_disabled',
+        'is_disability',
         'disability_type',
         'emergency_contact',
         'emergency_contact_phone',
         'date_of_birth',
+        'user_id',
     ];
 
     public function type()

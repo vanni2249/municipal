@@ -20,7 +20,7 @@
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                     <div>
                         <h2 class="text-lg text-gray-800 font-bold">Solicitar interaccion</h2>
-                        <p class="text-sm text-gray-700 pt-4">
+                        <p class="text-sm text-gray-700 line-clamp-2 pt-4">
                             Puede solicitar interraccion para resolver dudas o cualquier situacion relacionado a
                             cualquier servicio.
                             Recibira una llamada devuelta si solicita una llamada o un mensaje atraves de esta
@@ -68,7 +68,7 @@
                 </div>
             </x-card>
             <!-- Services box -->
-            @if ($services->isNotEmpty() && $user->type_id != 3)
+            @if ($services->isNotEmpty() && $user->type_id == 1)
             <x-card class="col-span-full p-4 h-full rounded-xl">
                 <header class="flex justify-between items-start mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
@@ -82,10 +82,10 @@
                 </header>
                 <div class="grid grid-cols-12 gap-2">
                     @foreach ($services as $service)
-                    <a href=""
+                    <a href="{{ route('users.'.$service->serviceCategory->key. '.create', ['type' => $service->slug]) }}"
                         class="flex flex-col space-y-1 col-span-6 md:col-span-4 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                         <div class="p-2 lg:p-4">
-                            <span class="text-sm text-gray-700 font-bold">
+                            <span class="text-sm text-gray-700 font-bold line-clamp-1">
                                 {{ $service->es_name }}
                             </span>
                             <span class="text-gray-500 line-clamp-2">
@@ -115,6 +115,12 @@
                 Juan del Pueblo'],
                 ['date' => '2023-10-02', 'model' => 'Comercio', 'description' => 'Creacion de Comercio con el nombre de
                 Comercio 1'],
+                ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
+                comerciante Juan del Pueblo'],
+                ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el comerciante
+                Juan del Pueblo'],
+                ['date' => '2023-10-05', 'model' => 'Patente', 'description' => 'Patente generada para el comerciante
+                Juan del Pueblo'],
                 ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
                 comerciante Juan del Pueblo'],
                 ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el comerciante

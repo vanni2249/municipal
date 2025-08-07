@@ -21,4 +21,9 @@ class Service extends Model
     {
         return $this->belongsToMany(Type::class, 'service_type', 'service_id', 'type_id');
     }
+
+    public function serviceCategory()
+    {
+        return $this->belongsTo(ServiceCategory::class, 'service_category_id');
+    }
 }

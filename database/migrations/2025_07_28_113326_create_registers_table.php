@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_category_id')->nullable()->onDelete('set null');
             $table->foreignId('type_id')->nullable()->onDelete('set null');
             $table->string('code')->nullable();
             $table->string('name')->nullable();
@@ -26,10 +25,12 @@ return new class extends Migration
             $table->boolean('is_veteran')->default(false);
             $table->boolean('is_age_advanced')->default(false);
             $table->boolean('is_bedridden')->default(false);
-            $table->boolean('is_disabled')->default(false);
+            $table->boolean('is_disability')->default(false);
             $table->string('disability_type')->nullable();
             $table->string('emergency_contact')->nullable();
             $table->string('emergency_contact_phone')->nullable();
+            $table->boolean('is_disabled')->default(false);
+            $table->foreignId('user_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }

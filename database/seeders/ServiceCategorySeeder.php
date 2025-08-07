@@ -13,11 +13,11 @@ class ServiceCategorySeeder extends Seeder
     public function run(): void
     {
         $items = [
-            ['key' => 'application', 'en_name' => 'Application', 'es_name' => 'Solicitud'],
-            ['key' => 'settlement', 'en_name' => 'Settlement', 'es_name' => 'Radicación'],
+            ['key' => 'applications', 'en_name' => 'Applications', 'es_name' => 'Solicitudes'],
+            ['key' => 'settlements', 'en_name' => 'Settlements', 'es_name' => 'Radicaciones'],
             ['key' => 'rents', 'en_name' => 'Rents', 'es_name' => 'Alquileres'],
-            ['key' => 'register', 'en_name' => 'Register', 'es_name' => 'Registro'],
-            ['key' => 'report', 'en_name' => 'Report', 'es_name' => 'Reporte'],
+            ['key' => 'registers', 'en_name' => 'Register', 'es_name' => 'Registros'],
+            ['key' => 'reports', 'en_name' => 'Report', 'es_name' => 'Reportes'],
         ];
 
         foreach ($items as $item) {

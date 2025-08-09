@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Users\Merchants;
 
-use App\Livewire\Forms\User\MerchantRegisterForm;
+use App\Livewire\Forms\User\Merchant\MerchantForm;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public MerchantRegisterForm $form;
+    public MerchantForm $form;
     public $user;
 
     public function mount()

@@ -2,27 +2,27 @@
 
 namespace App\Livewire\Users\Merchants;
 
-use App\Livewire\Forms\User\MerchantRegisterForm;
+use App\Livewire\Forms\User\Merchant\MerchantForm;
 use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Show extends Component
 {
-    public MerchantRegisterForm $form;
+    public MerchantForm $form;
     public $user;
 
     public function mount($merchant)
     {
         $this->user = Auth::user();
         $this->form->merchant = Register::where('user_id', $this->user->id)->findOrFail($merchant);
-        $this->form->name = $this->form->merchant->name;
-        $this->form->email = $this->form->merchant->email;
-        $this->form->phone = $this->form->merchant->phone;
-        $this->form->date_of_birth = $this->form->merchant->date_of_birth;
-        $this->form->address = $this->form->merchant->address;
-        $this->form->city = $this->form->merchant->city;
-        $this->form->postal_code = $this->form->merchant->postal_code;
+        $this->form->merchant_name = $this->form->merchant->name;
+        $this->form->merchant_email = $this->form->merchant->email;
+        $this->form->merchant_phone = $this->form->merchant->phone;
+        $this->form->merchant_date_of_birth = $this->form->merchant->date_of_birth;
+        $this->form->merchant_address = $this->form->merchant->address;
+        $this->form->merchant_city = $this->form->merchant->city;
+        $this->form->merchant_postal_code = $this->form->merchant->postal_code;
     }
 
     public function items()
@@ -41,12 +41,16 @@ class Show extends Component
     public function save()
     {
         $this->validate([
-            'form.email' => 'required|email|max:255|unique:registers,email,'.$this->form->merchant->id,
+            'form.merchant_email' => 'required|email|max:255|unique:registers,email,'.$this->form->merchant->id,
         ]);
 
         $this->form->update();
 
         $this->dispatch('close-modal', 'edit-merchant-modal');
+    }
+
+    public function saveBusiness()
+    {
     }
 
     public function render()

@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->hasOne(Register::class, 'user_id');
     }
 
+    public function registers()
+    {
+        return $this->hasMany(Register::class, 'user_id');
+    }
+
     public function getLastLogin(): ?string
     {
         return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';

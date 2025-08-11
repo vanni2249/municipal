@@ -7,9 +7,8 @@
                         <h2 class="text-lg font-bold text-gray-900">
                             Comerciantes
                         </h2>
-                        <div>
-                            <x-icon-button @click="$dispatch('open-modal', 'create-register-modal')"
-                                icon="plus"></x-icon-button>
+                        <div class="flex items-center space-x-2">
+                                <x-icon-link href="{{ route('users.merchants.create') }}" icon="plus" />
                         </div>
                     </header>
                     <div class="col-span-full space-y-2">

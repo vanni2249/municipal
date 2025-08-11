@@ -31,4 +31,9 @@ class Register extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
 }

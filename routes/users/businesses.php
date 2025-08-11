@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
             })->name('create');
             Route::get('/{business}', function ($business) {
                 return view('users.businesses.show', ['business' => $business]);
-            })->name('show'); Route::get('/{business}', function ($business) {
-                return view('users.businesses.show', ['business' => $business]);
-            })->name('show');
+            })->name('show'); 
+            Route::get('/{business}/edit', function ($business) {
+                return view('users.businesses.edit', ['business' => $business]);
+            })->name('edit');
 
             
             Route::prefix('/{business}/patents')->name('patents.')->group(function () {

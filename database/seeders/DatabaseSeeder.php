@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Data\Service;
-use App\Models\Citizen;
-use App\Models\ServiceCategory;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +21,8 @@ class DatabaseSeeder extends Seeder
             RegisterSeeder::class,
             ServiceCategorySeeder::class,
             ServiceSeeder::class,
+            BusinessCategorySeeder::class,
+            BusinessSeeder::class,
         ]);
 
         // User::factory()->create([

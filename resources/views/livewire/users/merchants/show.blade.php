@@ -8,8 +8,8 @@
                         <h2 class="text-lg font-bold text-gray-900">
                             Comerciante
                         </h2>
-                        <div>
-                            <x-icon-button @click="$dispatch('open-modal', 'edit-merchant-modal')" icon="edit" />
+                        <div class="flex items-center space-x-2">
+                            <x-icon-link href="{{ route('users.merchants.edit', ['merchant' => $merchant->id]) }}" />
                         </div>
                     </header>
                     <div class="col-span-full">
@@ -30,8 +30,10 @@
                         <h2 class="text-lg font-bold text-gray-900">
                             Comercios
                         </h2>
-                        <div>
-                            <x-icon-button @click="$dispatch('open-modal', 'create-business-modal')" icon="plus" />
+                        <div class="flex items-center space-x-2">
+                            <x-icon-link
+                                href="{{ route('users.merchants.businesses.create', ['merchant' => $merchant->id]) }}"
+                                icon="plus" />
                         </div>
                     </header>
                     <x-table>
@@ -39,6 +41,7 @@
                             <tr>
                                 <th class="p-4">Nombre</th>
                                 <th class="p-4">Tipo de comercio</th>
+                                <th class="p-4">Categoria</th>
                                 <th class="p-4">Telefono</th>
                                 <th class="p-4">Dirreccion</th>
                                 <th class="p-4">Patente</th>
@@ -46,23 +49,36 @@
                             </tr>
                         </x-slot>
                         <x-slot name="body">
-                            <tr>
-                                <td colspan="5" class="text-center p-4 text-gray-500">
-                                    No hay comercio registrado.
-                                </td>
-                            </tr>
+                            @forelse ($businesses as $business)
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="p-4">
+                                        {{ $business->name }}
+                                    </td>
+                                    <td class="p-4">...</td>
+                                    <td class="p-4">
+                                        {{ $business->businessCategory->es_name??'...' }}
+                                    </td>
+                                    <td class="p-4">
+                                        ...
+                                    </td>
+                                    <td class="p-4">...</td>
+                                    <td class="p-4">...</td>
+                                    <td class="p-2 flex justify-end space-x-2">
+                                        <x-icon-link href="{{ route('users.merchants.businesses.show', ['merchant' => $business->register_id, 'business' => $business->id]) }}" icon="eye" />
+                                    </td>
+
+                                </tr>
+
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center p-4 text-gray-500">
+                                        No hay comercio registrado.
+                                    </td>
+                                </tr>
+                            @endforelse
                         </x-slot>
                     </x-table>
                 </x-card>
-                <!-- Edit merchant modal -->
-                <x-modal name="edit-merchant-modal" title="Editar comerciante" size="lg">
-                    @include('users.merchants.form')
-                </x-modal>
-
-                <!-- Create business modal -->
-                <x-modal name="create-business-modal" title="Crear comercio" size="lg">
-                    @include('users.merchants.businesses.form')
-                </x-modal>
             </div>
         </div>
     </div>

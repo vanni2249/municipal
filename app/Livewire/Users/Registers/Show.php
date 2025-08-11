@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Users\Registers;
 
-use App\Livewire\Forms\User\RegisterForm;
+use App\Livewire\Forms\User\Register\RegisterForm;
 use Livewire\Component;
 
 class Show extends Component

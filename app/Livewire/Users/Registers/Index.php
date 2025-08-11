@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Users\Registers;
 
-use App\Livewire\Forms\User\RegisterForm;
+use App\Livewire\Forms\User\Register\RegisterForm;
 use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;

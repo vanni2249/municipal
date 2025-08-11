@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Livewire\Forms\User\Merchant;
+namespace App\Livewire\Forms\User\Register;
 
 use App\Models\Register;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class MerchantForm extends Form
+class RegisterForm extends Form
 {
-    public $merchant;
+    public $register;
     public $name;
-    public $email;
     public $phone;
     public $date_of_birth;
     public $address;
@@ -31,7 +30,6 @@ class MerchantForm extends Form
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
             'phone' => 'nullable|numeric',
             'date_of_birth' => 'required|date',
             'address' => 'nullable|string|max:255',
@@ -51,10 +49,9 @@ class MerchantForm extends Form
 
     public function store()
     {
-        $register = Register::create([
-            'type_id' => 2, 
+        Register::create([
+            'type_id' => 1, 
             'name' => $this->name,
-            'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,
             'address' => $this->address,
@@ -87,17 +84,12 @@ class MerchantForm extends Form
             'emergency_contact_phone',
             'terms'
         ]);
-
-        return redirect()->route('users.merchants.show', ['merchant' => $register->id])
-            ->with('success', 'Comerciante creado exitosamente.');
-
     }
 
     public function update()
     {
-        $this->merchant->update([
+        $this->register->update([
             'name' => $this->name,
-            'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,
             'address' => $this->address,
@@ -113,8 +105,5 @@ class MerchantForm extends Form
             'terms' => $this->terms,
             'is_disabled' => $this->is_disabled,
         ]);
-
-        return redirect()->route('users.merchants.show', ['merchant' => $this->merchant->id])
-            ->with('success', 'Comerciante actualizado exitosamente.');
     }
 }

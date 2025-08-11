@@ -53,6 +53,8 @@ class UserSeeder extends Seeder
                 'address' => '789 Oak St',
                 'city' => 'Capital City',
                 'postal_code' => '67890',
+                'approved_at' => now(),
+                'last_login_at' => now(),
             ],
             [
                 'type_id' => 4,

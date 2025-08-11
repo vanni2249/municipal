@@ -1,76 +1,91 @@
-<form wire:submit="save" class="space-y-2">
-    <!-- Name -->
-    <div>
-        <x-label for="Name" value="Nombre" />
-        <x-input wire:model="form.merchant_name" type="text" @class([
-            'mt-1 block w-full',
-            'border-red-400' => $errors->has('form.merchant_name'),
-        ]) />
-    </div>
-    <!-- Email -->
-    <div>
-        <x-label for="email" value="Email" />
-        <x-input wire:model="form.merchant_email" type="email" @class([
-            'mt-1 block w-full',
-            'border-red-400' => $errors->has('form.merchant_email'),
-        ]) />
-        @error('form.merchant_email')
-            <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-        @enderror
-    </div>
-    <!-- Phone -->
-    <div>
-        <x-label for="phone" value="Telefono" />
-        <x-input wire:model="form.merchant_phone" type="text" @class([
-            'mt-1 block w-full',
-            'border-red-400' => $errors->has('form.merchant_phone'),
-        ]) />
-        @error('form.merchant_phone')
-            <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-        @enderror
-    </div>
-    <!-- Date of birth -->
-    <div>
-        <x-label for="date_of_birth" value="Fecha de Nacimiento" />
-        <x-input wire:model="form.merchant_date_of_birth" type="date" @class([
-            'mt-1 block w-full',
-            'border-red-400' => $errors->has('form.merchant_date_of_birth'),
-        ]) />
-    </div>
-    <!-- Dirreccion -->
-    <div>
-        <x-label for="address" value="Direccion" />
-        <x-input wire:model="form.merchant_address" type="text" @class([
-            'mt-1 block w-full',
-            'border-red-300' => $errors->has('form.merchant_address'),
-        ]) />
-    </div>
-    <!-- City & Postal code -->
-    <div class="grid grid-cols-3 gap-4">
-        <!-- City -->
-        <div class="col-span-2">
-            <x-label for="city" value="Ciudad" />
-            <x-input wire:model="form.merchant_city" type="text" @class([
-                'mt-1 block w-full',
-                'border-red-300' => $errors->has('form.merchant_city'),
-            ]) />
+<form wire:submit="save" class="">
+    <div class="grid grid-cols-6 gap-4">
+        <div class="col-span-full md:col-span-2">
+            <h2 class="font-bold text-gray-600">Informacion personal</h2>
+            <p class="text-sm text-gray-500 mt-2">
+                Completa los campos a continuacion para crear un nuevo comerciante. Asegurate de que la informacion sea
+                correcta antes de enviar el formulario.
+            </p>
         </div>
-        <!-- Postal code -->
-        <div>
-            <x-label for="postal_code" value="Codigo postal" />
-            <x-input wire:model="form.merchant_postal_code" type="number" @class([
-                'mt-1 block w-full',
-                'border-red-300' => $errors->has('form.merchant_postal_code'),
-            ])
-                placeholder="Codigo postal" />
+        <div class="col-span-full md:col-span-4 grid grid-cols-6 gap-4">
+            <!-- Name -->
+            <div class="col-span-full">
+                <x-label for="Name" value="Nombre" />
+                <x-input wire:model="form.name" type="text" @class([
+                    'mt-1 block w-full',
+                    'border-red-400' => $errors->has('form.name'),
+                ]) />
+            </div>
+            <!-- Email -->
+            <div class="col-span-full md:col-span-4 md:col-start-1">
+                <x-label for="email" value="Email" />
+                <x-input wire:model="form.email" type="email" @class([
+                    'mt-1 block w-full',
+                    'border-red-400' => $errors->has('form.email'),
+                ]) />
+                @error('form.email')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+            <!-- Phone -->
+            <div class="col-span-full md:col-span-2 lg:col-span-2">
+                <x-label for="phone" value="Telefono" />
+                <x-input wire:model="form.phone" type="text" @class([
+                    'mt-1 block w-full',
+                    'border-red-400' => $errors->has('form.phone'),
+                ]) />
+                @error('form.phone')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+            <!-- Date of birth -->
+            <div class="col-start-1 col-span-full md:col-span-2 md:col-start-1">
+                <x-label for="date_of_birth" value="Fecha de Nacimiento" />
+                <x-input wire:model="form.date_of_birth" type="date" @class([
+                    'mt-1 block w-full',
+                    'border-red-400' => $errors->has('form.date_of_birth'),
+                ]) />
+            </div>
         </div>
-        <!-- Button -->
-        <div class="mt-4 w-full">
-            <x-button type="submit" class="w-full">Enviar</x-button>
+        <div class="col-span-full py-4"></div>
+        <div class="col-span-full md:col-span-2">
+            <h2 class="font-bold text-gray-600">Direccion postal</h2>
+            <p class="text-sm text-gray-500 mt-2">
+                Proporciona la direccion postal del comerciante. Asegurate de que la informacion sea precisa para evitar
+                problemas para contactarlo.
+            </p>
         </div>
-
-        @foreach ($errors->all() as $item)
-            <div class="text-red-500 text-xs mt-1">{{ $item }}</div>
-        @endforeach
+        <div class="col-span-full md:col-span-4 grid grid-cols-6 gap-4">
+            <!-- Dirreccion -->
+            <div class="col-start-1 col-span-full">
+                <x-label for="address" value="Direccion" />
+                <x-input wire:model="form.address" type="text" @class([
+                    'mt-1 block w-full',
+                    'border-red-300' => $errors->has('form.address'),
+                ]) />
+            </div>
+            <!-- City -->
+            <div class="col-span-full md:col-span-4 md:col-start-1">
+                <!-- City -->
+                <x-label for="city" value="Ciudad" />
+                <x-input wire:model="form.city" type="text" @class([
+                    'mt-1 block w-full',
+                    'border-red-300' => $errors->has('form.city'),
+                ]) />
+            </div>
+            <!-- Postal code -->
+            <div class="col-span-full md:col-span-2">
+                <x-label for="postal_code" value="Codigo postal" />
+                <x-input wire:model="form.postal_code" type="number" @class([
+                    'mt-1 block w-full',
+                    'border-red-300' => $errors->has('form.postal_code'),
+                ])
+                    placeholder="Codigo postal" />
+            </div>
+            <!-- Button -->
+            <div class="col-span-full">
+                <x-button type="submit" class="w-full md:w-auto">Enviar</x-button>
+            </div>
+        </div>
     </div>
 </form>

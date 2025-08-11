@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Users\Dashboard\Index as DashboardIndex;
 
 // Route::prefix(in_array(request()->segment(1), ['visitors', 'citizens', 'merchants', 'accountants', 'contractors', 'suppliers']) ? request()->segment(1) : '')
 //     ->name(request()->segment(1) . '.')
 //     ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('users.dashboard.index');
-        })->name('users.dashboard');
+        // Route::get('/dashboard', function () {
+        //     return view('users.dashboard.index');
+        // })->name('users.dashboard');
+        Route::get('/dashboard', DashboardIndex::class)->name('users.dashboard');
 
         // Route::get('/notifications', function () {
         //     return view('users.notifications.index');

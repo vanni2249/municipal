@@ -6,6 +6,7 @@ use App\Livewire\Forms\User\Merchant\BusinessForm;
 use App\Models\BusinessCategory;
 use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Create extends Component
@@ -30,6 +31,7 @@ class Create extends Component
         $this->form->store();
     }
 
+    #[Layout('components.layouts.users.index')]
     public function render()
     {
         return view('livewire.users.merchants.businesses.create');

@@ -5,6 +5,9 @@ use App\Livewire\Users\Merchants\Index as MerchantIndex;
 use App\Livewire\Users\Merchants\Create as MerchantCreate;
 use App\Livewire\Users\Merchants\Show as MerchantShow;
 use App\Livewire\Users\Merchants\Edit as MerchantEdit;
+use App\Livewire\Users\Merchants\Businesses\Create as BusinessCreate;
+use App\Livewire\Users\Merchants\Businesses\Show as BusinessShow;
+use App\Livewire\Users\Merchants\Businesses\Edit as BusinessEdit;
 
 Route::prefix('/merchants')->name('users.merchants.')->group(function () {
 
@@ -17,13 +20,19 @@ Route::prefix('/merchants')->name('users.merchants.')->group(function () {
     Route::get('/{merchant}/edit', MerchantEdit::class)->name('edit');
 
     Route::prefix('{merchant}/businesses')->name('businesses.')->group(function () {
-        Route::get('/create', function ($merchant) {
-            return view('users.merchants.businesses.create', ['merchant' => $merchant]);
-        })->name('create');
+        // Route::get('/create', function ($merchant) {
+        //     return view('users.merchants.businesses.create', ['merchant' => $merchant]);
+        // })->name('create');
 
-        Route::get('/{business}', function ($business) {
-            return view('users.merchants.businesses.show', ['business' => $business]);
-        })->name('show');
+        Route::get('/create', BusinessCreate::class)->name('create');
+
+        // Route::get('/{business}', function ($business) {
+        //     return view('users.merchants.businesses.show', ['business' => $business]);
+        // })->name('show');
+
+        Route::get('/{business}', BusinessShow::class)->name('show');
+
+        Route::get('/{business}/edit', BusinessEdit::class)->name('edit');
 
         Route::prefix('{business}/patents')->name('patents.')->group(function () {
             Route::get('/create', function () {

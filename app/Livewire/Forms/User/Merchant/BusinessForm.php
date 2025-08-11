@@ -8,6 +8,7 @@ use Livewire\Form;
 class BusinessForm extends Form
 {
     public $register;
+    public $business;
     public $business_category_id;
     public $name;
     public $merchant_number;
@@ -35,5 +36,19 @@ class BusinessForm extends Form
             'business' => $business->id,
         ]);
 
+    }
+
+    public function update()
+    {
+        $this->business->update([
+            'business_category_id' => $this->business_category_id,
+            'name' => $this->name,
+            'merchant_number' => $this->merchant_number,
+        ]);
+
+        return redirect()->route('users.merchants.businesses.show', [
+            'merchant' => $this->business->register_id,
+            'business' => $this->business->id,
+        ]);
     }
 }

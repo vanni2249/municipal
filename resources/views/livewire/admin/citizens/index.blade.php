@@ -3,10 +3,10 @@
         <header>
             <div class="flex flex-row justify-between items-center space-x-4 mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
-                    Comerciantes
+                    Ciudadanos
                 </h2>
                 <div class="flex items-center space-x-2">
-                    <x-icon-link href="{{ route('admin.merchants.create') }}" icon="plus" />
+                    <x-icon-link href="{{ route('admin.citizens.create') }}" icon="plus" />
                 </div>
             </div>
         </header>
@@ -35,48 +35,44 @@
         <x-table>
             <x-slot name="head">
                 <tr>
-                    <th class="p-4 ">Nombre</th>
-                    <th class="p-4 ">Email</th>
-                    <th class="p-4 ">Telefono</th>
-                    <th class="p-4 ">Estado</th>
-                    <th class="p-4 ">Fecha<br />creacion</th>
-                    <th class="p-4 ">Ultima<br />conexion</th>
-                    <th class="p-4 text-right">Accion</th>
+                    <th class="p-2 w-auto">Nombre</th>
+                    <th class="p-2 w-auto">Email</th>
+                    <th class="p-2 w-auto">Telefono</th>
+                    <th class="p-2 w-auto">Dirreccion</th>
+                    <th class="p-2 w-auto">Lugar</th>
+                    <th class="p-2 w-auto">Fecha<br />creacion</th>
+                    <th class="p-2 w-auto text-right">Accion</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
-                @forelse ($merchants as $merchant)
+                @forelse ($citizens as $citizen)
                     <tr class="border-t border-gray-200">
-                        <td class="p-4">
+                        <td class="px-2 py-1">
                             <span>
                                 ...
                             </span>
                             <br>
                             <span>
-                                {{ $merchant->user ? $merchant->user->name : $merchant->name }}
+                                {{ $citizen->name }}
                             </span>
                         </td>
-                        <td class="p-4">{{ $merchant->user ? $merchant->user->email : $merchant->email }}</td>
-                        <td class="p-4">{{ $merchant->phone }}</td>
-                        <td class="p-4">
-                            @if ($merchant->user && $merchant->user->approved_at)
-                                <x-badge color="green" class="capitalize">Aprobado</x-badge>
-                            @elseif ($merchant->user && $merchant->user->blocked_at)
-                                <x-badge color="red" class="capitalize">Bloqueado</x-badge>
-                            @else
-                                ...
-                            @endif
+                        <td class="px-2 py-1">{{ $citizen->email }}</td>
+                        <td class="px-2 py-1">{{ $citizen->phone }}</td>
+                        <td class="px-2 py-1">
+                            {{ $citizen->address }}
                         </td>
-                        <td class="p-4">{{ $merchant->created_at->format('d/m/Y') }}</td>
-                        <td class="p-4">{{ $merchant->user ? $merchant->user->last_login_at : '...' }}</td>
-                        <td class="p-4 flex justify-end">
-                            <x-icon-link href="{{ route('admin.merchants.show', ['merchant' => $merchant->id]) }}"
+                        <td class="px-2 py-1">
+                            {{ $citizen->place->name }}
+                        </td>
+                        <td class="px-2 py-1">{{ $citizen->created_at->format('d/m/Y') }}</td>
+                        <td class="px-2 py-1 flex justify-end">
+                            <x-icon-link href="{{ route('admin.citizens.show', ['citizen' => $citizen->id]) }}"
                                 icon="eye" />
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4">No hay comerciantes disponibles.</td>
+                        <td colspan="7" class="text-center py-4">No hay ciudadanos disponibles.</td>
                     </tr>
                 @endforelse
             </x-slot>

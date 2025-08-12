@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('merchants', function (Blueprint $table) {
+        Schema::create('citizens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->onDelete('set null');
             $table->string('code')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('city')->nullable();
+            $table->foreignId('place_id')->nullable()->onDelete('set null');
             $table->string('postal_code')->nullable();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('merchants');
+        Schema::dropIfExists('citizens');
     }
 };

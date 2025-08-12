@@ -19,20 +19,15 @@ class Admin
                 'path' => 'interactions',
             ],
             [
-                'name' => 'Usuarios',
-                'route' => 'admin.users.index',
-                'path' => 'users',
+                'name' => 'Ciudadanos',
+                'route' => 'admin.citizens.index',
+                'path' => 'citizens',
             ],
-            // [
-            //     'name' => 'Ciudadanos',
-            //     'route' => 'admin.citizens.index',
-            //     'path' => 'citizens',
-            // ],
-            // [
-            //     'name' => 'Comerciantes',
-            //     'route' => 'admin.merchants.index',
-            //     'path' => 'merchants',
-            // ],
+            [
+                'name' => 'Comerciantes',
+                'route' => 'admin.merchants.index',
+                'path' => 'merchants',
+            ],
             // [
             //     'name' => 'Contadores',
             //     'route' => 'admin.accountants.index',
@@ -49,10 +44,15 @@ class Admin
             //     'path' => 'suppliers',
             // ],
             [
-                'name' => 'Registros',
-                'route' => 'admin.registers.index',
-                'path' => 'registers',
+                'name' => 'Usuarios',
+                'route' => 'admin.users.index',
+                'path' => 'users',
             ],
+            // [
+            //     'name' => 'Registros',
+            //     'route' => 'admin.registers.index',
+            //     'path' => 'registers',
+            // ],
             [
                 'name' => 'Empleados',
                 'route' => 'admin.employees.index',

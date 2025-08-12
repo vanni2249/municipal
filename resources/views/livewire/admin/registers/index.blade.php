@@ -2,7 +2,9 @@
     <x-card class="h-full rounded-xl">
         <header class="flex justify-between items-center mb-4">
             <h1 class="text-lg font-bold">Registros</h1>
-            <x-icon-button icon="plus" @click="$dispatch('open-modal', 'create-register-modal')" />
+            <div class="flex space-x-2">
+                <x-icon-link href="{{ route('admin.registers.create') }}" icon="plus" />
+            </div>
         </header>
         <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
             <div class="">
@@ -59,14 +61,4 @@
             </x-slot>
         </x-table>
     </x-card>
-
-    <!-- Modal create register -->
-    <x-modal name="create-register-modal" title="Crear registro" size="lg">
-        <form wire:submit.prevent="createRegister" class="space-y-2">
-            @include('admin.registers.form')
-            <div>
-                <x-button type="submit" class="w-full" color="primary">Crear Registro</x-button>
-            </div>
-        </form>
-    </x-modal>
 </div>

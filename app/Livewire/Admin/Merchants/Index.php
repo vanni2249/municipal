@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Livewire\Admin\Users;
+namespace App\Livewire\Admin\Merchants;
 
-use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,14 +9,13 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
+    public $head = true;
     
     #[Layout('components.layouts.admin.index')]
     public function render()
     {
-        return view('livewire.admin.users.index', [
-            'users' => User::with('type')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10),
+        return view('livewire.admin.merchants.index',[
+            'merchants' => \App\Models\Merchant::paginate(10),
         ]);
     }
 }

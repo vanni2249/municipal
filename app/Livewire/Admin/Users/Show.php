@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Admin\Users;
 
-use Illuminate\Container\Attributes\Auth;
+use App\Models\User;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Show extends Component
@@ -13,7 +14,7 @@ class Show extends Component
 
     public function mount($user)
     {
-        $this->user = $user->load('type');
+        $this->user = User::with(['type'])->findOrFail($user);
     }
 
     public function items()
@@ -68,6 +69,7 @@ class Show extends Component
         $this->dispatch('close-modal', 'block-user-modal');
     }
 
+    #[Layout('components.layouts.admin.index')]
     public function render()
     {
         return view('livewire.admin.users.show', [

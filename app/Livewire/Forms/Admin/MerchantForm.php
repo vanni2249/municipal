@@ -2,19 +2,19 @@
 
 namespace App\Livewire\Forms\Admin;
 
-use App\Models\Citizen;
+use App\Models\Merchant;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class CitizenForm extends Form
+class MerchantForm extends Form
 {
-    public $citizen;
+    public $merchant;
     public $name;
     public $date_of_birth;
     public $email;
     public $phone;
     public $address;
-    public $place_id;
+    public $city;
     public $postal_code;
 
     public function rules(): array
@@ -22,41 +22,41 @@ class CitizenForm extends Form
         return [
             'name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'email' => 'nullable|email|unique:citizens,email,' . ($this->record->id ?? 'NULL') . ',id',
+            'email' => 'required|email|unique:merchants,email,' . ($this->merchant->id ?? 'NULL') . ',id',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
-            'place_id' => 'required|exists:places,id',
+            'city' => 'required|string|max:100',
             'postal_code' => 'required|string|max:10',
         ];
     }
 
     public function save()
     {
-        $citizen = Citizen::create([
+        $merchant = Merchant::create([
             'name' => $this->name,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
-            'place_id' => $this->place_id,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
         ]);
 
-        return redirect()->route('admin.citizens.show', $citizen);
+        return redirect()->route('admin.merchants.show', $merchant);
     }
 
     public function update()
     {
-        $this->citizen->update([
+        $this->merchant->update([
             'name' => $this->name,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
-            'place_id' => $this->place_id,
+            'merchant' => $this->merchant,
             'postal_code' => $this->postal_code,
         ]);
 
-        return redirect()->route('admin.citizens.show', $this->citizen);
+        return redirect()->route('admin.merchants.show', $this->merchant);
     }
 }

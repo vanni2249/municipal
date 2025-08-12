@@ -2,13 +2,12 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\Users\Index as UserIndex;
+use App\Livewire\Admin\Users\Show as UserShow;
 
 Route::prefix('/users')->name('users.')->group(function () {
 
-    Route::get('/', function () {
-        return view('admin.users.index');
-    })->name('index');
-    Route::get('/{user}', function (User $user) {
-        return view('admin.users.show', ['user' => $user]);
-    })->name('show');
+    Route::get('/', UserIndex::class)->name('index');
+
+    Route::get('/{user}', UserShow::class)->name('show');
 });

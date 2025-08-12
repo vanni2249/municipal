@@ -104,7 +104,7 @@
                 </div>
             </nav>
         </div>
-        <main class="flex-grow min-h-96 py-4">
+        <main class="flex-grow min-h-96 p-4">
             {{ $slot }}
         </main>
         <footer class="mx-auto px-4 pb-4 w-full ">

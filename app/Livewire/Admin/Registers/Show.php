@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Registers;
 
+use App\Models\Register;
 use App\Models\Type;
 use App\Models\UserCategory;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Show extends Component
@@ -25,19 +27,19 @@ class Show extends Component
 
     public function mount($register)
     {
-        $this->register = $register;
-        $this->type_id = $register->type_id;
-        $this->name = $register->name;
-        $this->email = $register->email;
-        $this->phone = $register->phone;
-        $this->address = $register->address;
-        $this->city = $register->city;
-        $this->postal_code = $register->postal_code;
-        $this->date_of_birth = $register->date_of_birth;
-        $this->is_veteran = $register->is_veteran ? true : false;
-        $this->is_age_advanced = $register->is_age_advanced ? true : false;
-        $this->is_bedridden = $register->is_bedridden ? true : false;
-        $this->is_disabled = $register->is_disabled ? true : false;
+        $this->register = Register::findOrFail($register);
+        // $this->type_id = $register->type_id;
+        // $this->name = $register->name;
+        // $this->email = $register->email;
+        // $this->phone = $register->phone;
+        // $this->address = $register->address;
+        // $this->city = $register->city;
+        // $this->postal_code = $register->postal_code;
+        // $this->date_of_birth = $register->date_of_birth;
+        // $this->is_veteran = $register->is_veteran ? true : false;
+        // $this->is_age_advanced = $register->is_age_advanced ? true : false;
+        // $this->is_bedridden = $register->is_bedridden ? true : false;
+        // $this->is_disabled = $register->is_disabled ? true : false;
     }
 
     public function items()
@@ -95,6 +97,7 @@ class Show extends Component
         $this->dispatch('close-modal', 'edit-register-modal');
     }
 
+    #[Layout('components.layouts.admin.index')]
     public function render()
     {
         return view('livewire.admin.registers.show', [

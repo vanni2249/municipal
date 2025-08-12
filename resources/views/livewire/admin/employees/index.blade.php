@@ -38,7 +38,7 @@
             <x-slot name="body">
                 @foreach ($employees as $employee)
                 <tr class="border-t border-gray-200">
-                    <td class="px-2 py-1">
+                    <td class="p-2">
                         <span>
                             {{ $employee->id }}
                         </span>
@@ -47,14 +47,14 @@
                             {{ $employee->name }}
                         </span>
                     </td>
-                    <td class="px-2 py-1">{{ $employee->email }}</td>
-                    <td class="px-2 py-1">{{ $employee->phone }}</td>
-                    <td class="px-2 py-1">
+                    <td class="p-2">{{ $employee->email }}</td>
+                    <td class="p-2">{{ $employee->phone }}</td>
+                    <td class="p-2">
                         <x-badge color="green" class="capitalize">Activo</x-badge>
                     </td>
-                    <td class="px-2 py-1">{{ $employee->created_at->format('d/m/Y') }}</td>
-                    <td class="px-2 py-1">{{ $employee->getLastLogin() }}</td>
-                    <td class="px-2 py-1 flex justify-end">
+                    <td class="p-2">{{ $employee->created_at->format('d/m/Y') }}</td>
+                    <td class="p-2">{{ $employee->getLastLogin() }}</td>
+                    <td class="p-2 flex justify-end">
                         <x-icon-link href="{{ route('admin.employees.show', ['employee' => $employee->id]) }}" icon="eye" />
                     </td>
                 </tr>

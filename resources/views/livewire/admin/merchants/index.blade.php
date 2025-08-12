@@ -35,19 +35,19 @@
         <x-table>
             <x-slot name="head">
                 <tr>
-                    <th class="p-4 ">Nombre</th>
-                    <th class="p-4 ">Email</th>
-                    <th class="p-4 ">Telefono</th>
-                    <th class="p-4 ">Estado</th>
-                    <th class="p-4 ">Fecha<br />creacion</th>
-                    <th class="p-4 ">Ultima<br />conexion</th>
-                    <th class="p-4 text-right">Accion</th>
+                    <th class="p-2 ">Nombre</th>
+                    <th class="p-2 ">Email</th>
+                    <th class="p-2 ">Telefono</th>
+                    <th class="p-2 ">Estado</th>
+                    <th class="p-2 ">Fecha<br />creacion</th>
+                    <th class="p-2 ">Ultima<br />conexion</th>
+                    <th class="p-2 text-right">Accion</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
                 @forelse ($merchants as $merchant)
                     <tr class="border-t border-gray-200">
-                        <td class="p-4">
+                        <td class="p-2">
                             <span>
                                 ...
                             </span>
@@ -56,9 +56,9 @@
                                 {{ $merchant->user ? $merchant->user->name : $merchant->name }}
                             </span>
                         </td>
-                        <td class="p-4">{{ $merchant->user ? $merchant->user->email : $merchant->email }}</td>
-                        <td class="p-4">{{ $merchant->phone }}</td>
-                        <td class="p-4">
+                        <td class="p-2">{{ $merchant->user ? $merchant->user->email : $merchant->email }}</td>
+                        <td class="p-2">{{ $merchant->phone }}</td>
+                        <td class="p-2">
                             @if ($merchant->user && $merchant->user->approved_at)
                                 <x-badge color="green" class="capitalize">Aprobado</x-badge>
                             @elseif ($merchant->user && $merchant->user->blocked_at)
@@ -67,9 +67,9 @@
                                 ...
                             @endif
                         </td>
-                        <td class="p-4">{{ $merchant->created_at->format('d/m/Y') }}</td>
-                        <td class="p-4">{{ $merchant->user ? $merchant->user->last_login_at : '...' }}</td>
-                        <td class="p-4 flex justify-end">
+                        <td class="p-2">{{ $merchant->created_at->format('d/m/Y') }}</td>
+                        <td class="p-2">{{ $merchant->user ? $merchant->user->last_login_at : '...' }}</td>
+                        <td class="p-2 flex justify-end">
                             <x-icon-link href="{{ route('admin.merchants.show', ['merchant' => $merchant->id]) }}"
                                 icon="eye" />
                         </td>

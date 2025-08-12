@@ -22,7 +22,7 @@ class CitizenForm extends Form
         return [
             'name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'email' => 'nullable|email|unique:citizens,email,' . ($this->record->id ?? 'NULL') . ',id',
+            'email' => 'nullable|email|unique:citizens,email,' . ($this->citizen->id ?? 'NULL') . ',id',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
             'place_id' => 'required|exists:places,id',

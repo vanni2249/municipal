@@ -47,7 +47,7 @@
             <x-slot name="body">
                 @forelse ($citizens as $citizen)
                     <tr class="border-t border-gray-200">
-                        <td class="px-2 py-1">
+                        <td class="p-2">
                             <span>
                                 ...
                             </span>
@@ -56,16 +56,16 @@
                                 {{ $citizen->name }}
                             </span>
                         </td>
-                        <td class="px-2 py-1">{{ $citizen->email }}</td>
-                        <td class="px-2 py-1">{{ $citizen->phone }}</td>
-                        <td class="px-2 py-1">
+                        <td class="p-2">{{ $citizen->email }}</td>
+                        <td class="p-2">{{ $citizen->phone }}</td>
+                        <td class="p-2">
                             {{ $citizen->address }}
                         </td>
-                        <td class="px-2 py-1">
+                        <td class="p-2">
                             {{ $citizen->place->name }}
                         </td>
-                        <td class="px-2 py-1">{{ $citizen->created_at->format('d/m/Y') }}</td>
-                        <td class="px-2 py-1 flex justify-end">
+                        <td class="p-2">{{ $citizen->created_at->format('d/m/Y') }}</td>
+                        <td class="p-2 flex justify-end">
                             <x-icon-link href="{{ route('admin.citizens.show', ['citizen' => $citizen->id]) }}"
                                 icon="eye" />
                         </td>

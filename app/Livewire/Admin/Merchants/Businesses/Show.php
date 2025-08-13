@@ -26,7 +26,7 @@ class Show extends Component
             ['label' => 'Número de teléfono', 'value' => $this->business->phone ?? '...'],
             ['label' => 'Correo electrónico', 'value' => $this->business->email ?? '...'],
             ['label' => 'Dirección', 'value' => $this->business->address ?? '...'],
-            ['label' => 'Ciudad', 'value' => $this->business->place->name ?? '...'],
+            ['label' => 'Lugar', 'value' => $this->business->place->name ?? '...'],
         ];
     }
 

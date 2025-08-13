@@ -21,4 +21,9 @@ class Place extends Model
     {
         return $this->hasMany(Citizen::class);
     }
+
+    public function places()
+    {
+        return $this->hasMany(Place::class);
+    }
 }

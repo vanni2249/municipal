@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -39,6 +40,7 @@ class EmployeeForm extends Form
             'password' => bcrypt('password'), // Default password, should be changed later
             'phone' => $this->phone,
             'username' => $this->username,
+            'admin_id' => Auth::guard('admin')->user()->id, // Assuming the admin creating the employee is logged in
         ]);
 
         return redirect()->route('admin.employees.show', $employee->id)

@@ -24,6 +24,11 @@ class Admin
                 'path' => 'citizens',
             ],
             [
+                'name' => 'Visitantes',
+                'route' => 'admin.visitors.index',
+                'path' => 'visitors',
+            ],
+            [
                 'name' => 'Comerciantes',
                 'route' => 'admin.merchants.index',
                 'path' => 'merchants',

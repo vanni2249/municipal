@@ -27,7 +27,7 @@ class Show extends Component
             ['label' => 'ID de Empleado', 'value' => $this->employee->id],
             ['label' => 'Nombre', 'value' => $this->employee->name],
             ['label' => 'Email', 'value' => $this->employee->email],
-            ['label' => 'Email', 'value' => $this->employee->username],
+            ['label' => 'Usuario', 'value' => $this->employee->username],
             ['label' => 'Telefono', 'value' => $this->employee->phone],
             ['label' => 'Fecha de registro', 'value' => $this->employee->getCreatedAt()],
             ['label' => 'Fecha de actualizacion', 'value' => $this->employee->getUpdatedAt()],

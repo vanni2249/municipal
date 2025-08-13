@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms\Admin;
 
 use App\Models\Merchant;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -40,6 +41,7 @@ class MerchantForm extends Form
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
+            'admin_id' => Auth::guard('admin')->id(),
         ]);
 
         return redirect()->route('admin.merchants.show', $merchant);

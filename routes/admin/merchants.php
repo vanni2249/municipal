@@ -8,21 +8,12 @@ use App\Livewire\Admin\Merchants\Edit as MerchantEdit;
 
 Route::prefix('/merchants')->name('merchants.')->group(function () {
     Route::get('/', MerchantIndex::class)->name('index');
+
     Route::get('/create', MerchantCreate::class)->name('create');
+    
     Route::get('/{merchant}', MerchantShow::class)->name('show');
+    
     Route::get('/{merchant}/edit', MerchantEdit::class)->name('edit');
-    // Route::get('/', function () {
-    //     return view('admin.merchants.index');
-    // })->name('index');
-    // Route::get('/create', function () {
-    //     return view('admin.merchants.create');
-    // })->name('create');
-    // Route::get('/{merchant}', function () {
-    //     return view('admin.merchants.show');
-    // })->name('show');
-    // Route::get('/{merchant}/edit', function () {
-    //     return view('admin.merchants.edit');
-    // })->name('edit');
 
     // Negocios del Comerciante
     Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {

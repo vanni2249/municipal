@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('blocked_by')->nullable();
             $table->string('blocked_reason')->nullable();
             $table->timestamp('last_login_at')->nullable();
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->nullOnDelete();
             $table->timestamps();
         });
     }

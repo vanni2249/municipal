@@ -2,20 +2,20 @@
 
 namespace App\Livewire\Forms\Admin;
 
-use App\Models\Citizen;
+use App\Models\Visitor;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class CitizenForm extends Form
+class VisitorForm extends Form
 {
-    public $citizen;
+    public $visitor;
     public $name;
     public $date_of_birth;
     public $email;
     public $phone;
     public $address;
-    public $place_id;
+    public $city;
     public $postal_code;
 
     public function rules(): array
@@ -23,42 +23,42 @@ class CitizenForm extends Form
         return [
             'name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'email' => 'nullable|email|unique:citizens,email,' . ($this->citizen->id ?? 'NULL') . ',id',
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
-            'place_id' => 'required|exists:places,id',
-            'postal_code' => 'required|string|max:10',
+            'email' => 'nullable|email|unique:visitors,email,' . ($this->visitor->id ?? 'NULL') . ',id',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:100',
+            'postal_code' => 'nullable|string|max:10',
         ];
     }
 
     public function save()
     {
-        $citizen = Citizen::create([
+        $visitor = Visitor::create([
             'name' => $this->name,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
-            'place_id' => $this->place_id,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
             'admin_id' => Auth::guard('admin')->id(),
         ]);
 
-        return redirect()->route('admin.citizens.show', $citizen);
+        return redirect()->route('admin.visitors.show', $visitor);
     }
 
     public function update()
     {
-        $this->citizen->update([
+        $this->visitor->update([
             'name' => $this->name,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
-            'place_id' => $this->place_id,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
         ]);
 
-        return redirect()->route('admin.citizens.show', $this->citizen);
+        return redirect()->route('admin.visitors.show', $this->visitor);
     }
 }

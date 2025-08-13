@@ -18,6 +18,7 @@ class Merchant extends Model
         'state',
         'postal_code',
         'date_of_birth',
+        'admin_id',
     ];
 
     public function user()

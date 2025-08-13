@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Citizen extends Model
+class Visitor extends Model
 {
     protected $fillable = [
         'name',
@@ -12,13 +12,8 @@ class Citizen extends Model
         'email',
         'phone',
         'address',
-        'place_id',
+        'city',
         'postal_code',
         'admin_id',
     ];
-
-    public function place()
-    {
-        return $this->belongsTo(Place::class);
-    }
 }

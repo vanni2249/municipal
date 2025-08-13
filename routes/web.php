@@ -48,7 +48,8 @@ Route::prefix('admin')->middleware(AuthAdmin::class)->name('admin.')->group(func
     require __DIR__ . '/admin/interactions.php';
     require __DIR__ . '/admin/citizens.php';
     require __DIR__ . '/admin/merchants.php';
-    require __DIR__ . '/admin/registers.php';
+    require __DIR__ . '/admin/visitors.php';
+    // require __DIR__ . '/admin/registers.php';
     require __DIR__ . '/admin/users.php';
     require __DIR__ . '/admin/employees.php';
     require __DIR__ . '/admin/applications.php';

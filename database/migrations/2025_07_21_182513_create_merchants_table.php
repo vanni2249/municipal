@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('merchants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->onDelete('set null');
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->date('date_of_birth')->nullable();
@@ -22,6 +21,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
+            $table->foreignId('admin_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }

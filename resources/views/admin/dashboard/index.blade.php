@@ -2,13 +2,13 @@
     <div class=" space-y-4">
         <!-- Dashboard Widgets -->
         <div class="grid grid-cols-12 gap-2">
-            <div class="col-span-full grid grid-cols-12 gap-2 px-4">
+            <div class="col-span-full grid grid-cols-12 gap-2">
                 @include('admin.dashboard.widgets')
             </div>
         </div>
 
         <!-- Dashboard Cards -->
-        <div class="grid grid-cols-12 gap-2 px-4">
+        <div class="grid grid-cols-12 gap-2">
         @php
             $applications = [
                 [

@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_category_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('business_category_id')->nullable()->onDelete('set null');
             $table->string('name')->nullable();
             $table->string('code')->unique()->nullable();
             $table->string('merchant_number')->nullable();
-            $table->foreignId('register_id')->nullable()->constrained()->onDelete('set null');
+            $table->string('address')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->foreignId('place_id')->nullable()->onDelete('set null');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->foreignId('merchant_id')->nullable()->onDelete('set null');
             $table->foreignId('user_id')->nullable();
             $table->boolean('is_show')->default(false);
             $table->timestamps();

@@ -25,4 +25,9 @@ class Merchant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
 }

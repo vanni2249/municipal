@@ -11,7 +11,13 @@ class Business extends Model
         'name',
         'code',
         'merchant_number',
-        'register_id',
+        'address',
+        'postal_code',
+        'phone',
+        'email',
+        'place_id',
+        'merchant_id',
+        'is_show',
         'user_id',
     ];
 

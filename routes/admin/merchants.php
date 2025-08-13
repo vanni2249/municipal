@@ -6,6 +6,10 @@ use App\Livewire\Admin\Merchants\Create as MerchantCreate;
 use App\Livewire\Admin\Merchants\Show as MerchantShow;
 use App\Livewire\Admin\Merchants\Edit as MerchantEdit;
 
+use App\Livewire\Admin\Merchants\Businesses\Show as BusinessShow;
+use App\Livewire\Admin\Merchants\Businesses\Create as BusinessCreate;
+use App\Livewire\Admin\Merchants\Businesses\Edit as BusinessEdit;
+
 Route::prefix('/merchants')->name('merchants.')->group(function () {
     Route::get('/', MerchantIndex::class)->name('index');
 
@@ -17,11 +21,12 @@ Route::prefix('/merchants')->name('merchants.')->group(function () {
 
     // Negocios del Comerciante
     Route::prefix('/{merchant}/businesses')->name('businesses.')->group(function () {
-        // Negocio
-        Route::get('/{business}', function ($merchant, $business) {
-            return view('admin.merchants.businesses.show', ['merchant' => $merchant, 'business' => $business]);
-        })->name('show');
-        // Patentes del Negocio
+        Route::get('/create', BusinessCreate::class)->name('create');
+        
+        Route::get('/{business}', BusinessShow::class)->name('show');
+
+        Route::get('/{business}/edit', BusinessEdit::class)->name('edit');
+        
         Route::prefix('/{business}/patents')->name('patents.')->group(function () {
             // Patente
             Route::get('/{patent}', function ($merchant, $business, $patent) {

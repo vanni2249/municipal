@@ -18,11 +18,12 @@ class Show extends Component
     public function items()
     {
         return [
-            ['label' => 'Nombre', 'value' => $this->merchant->name,],
-            ['label' => 'Email', 'value' => $this->merchant->email,],
-            ['label' => 'Telefono', 'value' => $this->merchant->phone,],
-            ['label' => 'Direccion', 'value' => $this->merchant->address,],
-            ['label' => 'Lugar', 'value' => $this->merchant->place ? $this->merchant->place->name : 'N/A',],
+            ['label' => 'Nombre', 'value' => $this->merchant->name??'...'],
+            ['label' => 'Email', 'value' => $this->merchant->email??'...'],
+            ['label' => 'Telefono', 'value' => $this->merchant->phone??'...'],
+            ['label' => 'Direccion', 'value' => $this->merchant->address??'...'],
+            ['label' => 'Ciudad', 'value' => $this->merchant->city??'...'],
+            ['label' => 'Codigo de area', 'value' => $this->merchant->postal_code??'...'],
             ['label' => 'Fecha de creacion', 'value' => $this->merchant->created_at->format('d/m/Y'),],
         ];
     }

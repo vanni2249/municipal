@@ -37,15 +37,15 @@
             <form wire:submit.prevent="updateEmployee" class="space-y-4">
                 <div>
                     <x-label for="name" value="Nombre" />
-                    <x-input id="name" wire:model.defer="name" @class(['w-full', 'border-red-600' => true])/>
+                    <x-input id="name" wire:model.defer="name" @class(['w-full', 'border-red-600' => $errors->has('name')])/>
                 </div>
                 <div>
                     <x-label for="email" value="Email" />
-                    <x-input id="email" type="email" wire:model.defer="email" @class(['w-full', 'border-red-600' => true])/>
+                    <x-input id="email" type="email" wire:model.defer="email" @class(['w-full', 'border-red-600' => $errors->has('email')])/>
                 </div>
                 <div>
                     <x-label for="phone" value="Telefono" />
-                    <x-input id="phone" wire:model.defer="phone" @class(['w-full', 'border-red-600' => true])/>
+                    <x-input id="phone" wire:model.defer="phone" @class(['w-full', 'border-red-600' => $errors->has('phone')])/>
                 </div>
                 <x-button type="submit">Actualizar</x-button>
             </form>

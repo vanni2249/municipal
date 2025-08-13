@@ -25,6 +25,14 @@ class Create extends Component
                 $firstWordLastname = explode(' ', $this->form->lastname)[0];
                 $firstLetterName = substr($this->form->name, 0, 1);
                 $username = strtolower($firstWordLastname) . strtolower($firstLetterName);
+                $username = strtr($username, [
+                    'á' => 'a', 'à' => 'a', 'ä' => 'a', 'â' => 'a',
+                    'é' => 'e', 'è' => 'e', 'ë' => 'e', 'ê' => 'e',
+                    'í' => 'i', 'ì' => 'i', 'ï' => 'i', 'î' => 'i',
+                    'ó' => 'o', 'ò' => 'o', 'ö' => 'o', 'ô' => 'o',
+                    'ú' => 'u', 'ù' => 'u', 'ü' => 'u', 'û' => 'u',
+                    'ñ' => 'n'
+                ]);
                 $existingCount = \App\Models\Admin::where('username', 'like', $username . '%')->count();
                 if ($existingCount > 0) {
                     $username .= ($existingCount + 1);

@@ -23,7 +23,6 @@ class EmployeeForm extends Form
                 'string',
                 'max:50',
                 'min:6',
-                'regex:/^[A-Za-z]+( [A-Za-z]+){1,2}$/'
             ],
             'lastname' => 'required|string|max:50',
             'date_of_birth' => 'required|date',
@@ -37,6 +36,7 @@ class EmployeeForm extends Form
     {
         $employee = \App\Models\Admin::create([
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'password' => bcrypt('password'), // Default password, should be changed later

@@ -3,7 +3,7 @@
         <div class="col-span-full lg:col-span-2">
             <h2 class="font-bold text-gray-600">Informacion del empleado</h2>
             <p class="text-sm text-gray-500 mt-2">
-                Completa los campos a continuacion para crear un nuevo empleado.
+                Completa los campos a continuacion para crear un nuevo empleado. El nombre y apellido no son editables una vez creado el empleado.
             </p>
         </div>
         <div class="col-span-full lg:col-span-4 grid grid-cols-2 gap-4">

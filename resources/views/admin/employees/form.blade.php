@@ -7,11 +7,19 @@
             </p>
         </div>
         <div class="col-span-full lg:col-span-4 grid grid-cols-2 gap-4">
-            <div class="col-span-full">
-                <x-label value="Nombre" />
+            <div class="col-span-full lg:col-span-1 lg:col-start-1">
+                <x-label value="Nombre e inicial" />
                 <x-input wire:model.lazy="form.name" id="name" name="name" type="text" class="w-full"
                     placeholder="Nombre" />
                 @error('form.name')
+                    <x-error message="{{ $message }}" />
+                @enderror
+            </div>
+            <div class="col-span-full lg:col-span-1 lg:col-start-2">
+                <x-label value="Apellidos" />
+                <x-input wire:model.lazy="form.lastname" id="lastname" name="lastname" type="text" class="w-full"
+                    placeholder="Apellido" />
+                @error('form.lastname')
                     <x-error message="{{ $message }}" />
                 @enderror
             </div>

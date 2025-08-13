@@ -17,15 +17,16 @@ class Show extends Component
 
     public function items()
     {
-        return [
-            ['label' => 'Nombre', 'value' => $this->merchant->name??'...'],
-            ['label' => 'Email', 'value' => $this->merchant->email??'...'],
-            ['label' => 'Telefono', 'value' => $this->merchant->phone??'...'],
-            ['label' => 'Direccion', 'value' => $this->merchant->address??'...'],
-            ['label' => 'Ciudad', 'value' => $this->merchant->city??'...'],
-            ['label' => 'Codigo de area', 'value' => $this->merchant->postal_code??'...'],
-            ['label' => 'Fecha de creacion', 'value' => $this->merchant->created_at->format('d/m/Y'),],
-        ];
+        return collect([
+            ['label' => 'Nombre', 'value' => $this->merchant->name ?? '...'],
+            ['label' => 'Email', 'value' => $this->merchant->email ?? '...'],
+            ['label' => 'Telefono', 'value' => $this->merchant->phone ?? '...'],
+            ['label' => 'Creado por', 'value' => $this->merchant->user_id ? 'Contador' : 'Administrador'],
+            ['label' => 'Fecha de creacion', 'value' => $this->merchant->created_at->format('d/m/Y')],
+            ['label' => 'Direccion', 'value' => $this->merchant->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->merchant->city ?? '...'],
+            ['label' => 'Codigo de area', 'value' => $this->merchant->postal_code ?? '...'],
+        ]);
     }
     #[Layout('components.layouts.admin.index')]
     public function render()

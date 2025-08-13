@@ -19,18 +19,23 @@ class Create extends Component
 
     public function updated($propertyName)
     {
-        if ($propertyName === 'form.name') {
-            // get second part of name and first letter of first part if exists add number 1 or sum
-            $nameParts = explode(' ', $this->form->name);
-            $username = strtolower($nameParts[1] ?? '') . substr(strtolower($nameParts[0] ?? ''), 0, 1) . 1;
-            $existingUsernames = \App\Models\Admin::where('username', 'like', $username . '%')->pluck('username')->toArray();
-            $counter = 1;
-            while (in_array($username, $existingUsernames)) {
-                $username = strtolower($nameParts[1] ?? '') . substr(strtolower($nameParts[0] ?? ''), 0, 1) . $counter;
-                $counter++;
+        if ($propertyName === 'form.name' || $propertyName === 'form.lastname') {
+            if (!empty($this->form->name) && !empty($this->form->lastname)) {
+                // get first word of lastname and first letter of name and append 1 or increment if exists
+                $firstWordLastname = explode(' ', $this->form->lastname)[0];
+                $firstLetterName = substr($this->form->name, 0, 1);
+                $username = strtolower($firstWordLastname) . strtolower($firstLetterName);
+                $existingCount = \App\Models\Admin::where('username', 'like', $username . '%')->count();
+                if ($existingCount > 0) {
+                    $username .= ($existingCount + 1);
+                } else {
+                    $username .= '1';
+                }
+                $this->form->name = ucfirst($this->form->name);
+                $this->form->lastname = ucfirst($this->form->lastname);
+
+                $this->form->username = $username;
             }
-        
-            $this->form->username = $username;
         }
     }
 

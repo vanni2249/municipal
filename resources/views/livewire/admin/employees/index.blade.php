@@ -36,7 +36,7 @@
                 </tr>
             </x-slot>
             <x-slot name="body">
-                @foreach ($employees as $employee)
+                @forelse ($employees as $employee)
                 <tr class="border-t border-gray-200">
                     <td class="p-2">
                         <span>
@@ -58,7 +58,13 @@
                         <x-icon-link href="{{ route('admin.employees.show', ['employee' => $employee->id]) }}" icon="eye" />
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="7" class="text-center p-4 text-gray-500">
+                        No hay empleados registrados.
+                    </td>
+                </tr>
+                @endforelse
             </x-slot>
         </x-table>
     </x-card>

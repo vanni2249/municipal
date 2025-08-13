@@ -9,6 +9,7 @@ use Livewire\Form;
 class EmployeeForm extends Form
 {
     public $name;
+    public $lastname;
     public $date_of_birth;
     public $email;
     public $phone;
@@ -24,6 +25,7 @@ class EmployeeForm extends Form
                 'min:6',
                 'regex:/^[A-Za-z]+( [A-Za-z]+){1,2}$/'
             ],
+            'lastname' => 'required|string|max:50',
             'date_of_birth' => 'required|date',
             'email' => 'required|email|max:255|unique:admins,email',
             'phone' => 'required|string|max:20',

@@ -8,6 +8,7 @@ use Livewire\Form;
 
 class EmployeeForm extends Form
 {
+    public $employee;
     public $name;
     public $lastname;
     public $date_of_birth;
@@ -26,9 +27,8 @@ class EmployeeForm extends Form
             ],
             'lastname' => 'required|string|max:50',
             'date_of_birth' => 'required|date',
-            'email' => 'required|email|max:255|unique:admins,email',
+            'email' => 'required|email|max:255|unique:admins,email' . ($this->employee ? ',' . $this->employee->id : ''),
             'phone' => 'required|string|max:20',
-            'username' => 'required|string|max:50|unique:admins,username',
         ];
     }
 
@@ -47,5 +47,20 @@ class EmployeeForm extends Form
 
         return redirect()->route('admin.employees.show', $employee->id)
             ->with('success', 'Empleado creado exitosamente.');
+    }
+
+    public function update()
+    {
+
+        if ($this->employee) {
+            $this->employee->update([
+                'date_of_birth' => $this->date_of_birth,
+                'email' => $this->email,
+                'phone' => $this->phone,
+            ]);
+        }
+
+        return redirect()->route('admin.employees.show', $this->employee->id)
+            ->with('success', 'Empleado actualizado exitosamente.');
     }
 }

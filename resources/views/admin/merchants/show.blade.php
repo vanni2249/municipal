@@ -26,7 +26,7 @@
                 <ul class="grid grid-cols-4 text-sm text-gray-600 space-y-4 py-4">
                     @foreach ($items as $item)
                     <li class="col-span-4 md:col-span-2 lg:col-span-1">
-                        <small class="font-bold">{{ $item['label'] }}</small>
+                        <span class="font-bold">{{ $item['label'] }}</span>
                         <br>
                         <span>
                             {!! $item['value'] !!}

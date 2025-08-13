@@ -12,7 +12,9 @@ class Create extends Component
 
     public function save()
     {
-        $this->validate();
+        $this->validate([
+            'form.username' => 'required|string|max:50|unique:admins,username',
+        ]);
 
         $this->form->save();
     }

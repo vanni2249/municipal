@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             RegisterSeeder::class,
             ServiceCategorySeeder::class,
             ServiceSeeder::class,
+            BusinessTypeSeeder::class,
             BusinessCategorySeeder::class,
             BusinessSeeder::class,
             PlaceSeeder::class,

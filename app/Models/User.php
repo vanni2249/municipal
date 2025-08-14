@@ -81,6 +81,11 @@ class User extends Authenticatable
         return $this->hasMany(Register::class, 'user_id');
     }
 
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'user_id');
+    }
+
     public function addresses()
     {
         return $this->morphMany(Address::class, 'addressable');

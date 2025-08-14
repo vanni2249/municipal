@@ -30,10 +30,10 @@
                                         <span>{{ $merchant->name }}</span>
                                     </td>
                                     <td class="p-4">
-                                        {{ $merchant->email }}
+                                        {{ $merchant->email??'...' }}
                                     </td>
                                     <td class="p-4">
-                                        {{ $merchant->phone }}
+                                        {{ $merchant->phone??'...' }}
                                     </td>
                                     <td class="p-4 flex justify-end">
                                         <x-icon-link href="{{ route('users.merchants.show', ['merchant' => $merchant->id]) }}" icon="eye" />
@@ -53,8 +53,4 @@
             </div>
         </div>
     </div>
-    <!-- Create register modal -->
-    <x-modal name="create-register-modal" title="Registrar comerciante" size="lg">
-        @include('users.merchants.form')
-    </x-modal>
 </div>

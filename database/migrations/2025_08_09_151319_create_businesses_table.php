@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('business_type_id')->nullable()->onDelete('set null');
             $table->foreignId('business_category_id')->nullable()->onDelete('set null');
             $table->string('name')->nullable();
             $table->string('code')->unique()->nullable();

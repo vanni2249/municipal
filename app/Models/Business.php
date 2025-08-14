@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Business extends Model
 {
     protected $fillable = [
+        'business_type_id',
         'business_category_id',
         'name',
         'code',
@@ -20,6 +21,11 @@ class Business extends Model
         'is_show',
         'user_id',
     ];
+
+    public function businessType()
+    {
+        return $this->belongsTo(BusinessType::class);
+    }
 
     public function businessCategory()
     {

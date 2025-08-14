@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Users\Merchants;
 
-use App\Models\Register;
+use App\Models\Merchant;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -16,21 +16,21 @@ class Show extends Component
     public function mount($merchant)
     {
         $this->user = Auth::user();
-        $this->merchant = Register::where('user_id', $this->user->id)->findOrFail($merchant);
+        $this->merchant = Merchant::where('user_id', $this->user->id)->findOrFail($merchant);
         $this->businesses = $this->merchant->businesses()->get();
     }
 
     public function items()
     {
-        return [
-            ['key' => 'Nombre', 'value' => $this->merchant->name ?? '...'],
-            ['key' => 'Email', 'value' => $this->merchant->email ?? '...'],
-            ['key' => 'Telefono', 'value' => $this->merchant->phone ?? '...'],
-            ['key' => 'Fecha de Nacimiento', 'value' => $this->merchant->date_of_birth ?? '...'],
-            ['key' => 'Direccion', 'value' => $this->merchant->address ?? '...'],
-            ['key' => 'Ciudad', 'value' => $this->merchant->city ?? '...'],
-            ['key' => 'Codigo Postal', 'value' => $this->merchant->postal_code ?? '...'],
-        ];
+        return collect([
+            ['label' => 'Nombre', 'value' => $this->merchant->name ?? '...'],
+            ['label' => 'Email', 'value' => $this->merchant->email ?? '...'],
+            ['label' => 'Telefono', 'value' => $this->merchant->phone ?? '...'],
+            ['label' => 'Fecha de Nacimiento', 'value' => $this->merchant->date_of_birth ?? '...'],
+            ['label' => 'Direccion', 'value' => $this->merchant->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->merchant->city ?? '...'],
+            ['label' => 'Codigo Postal', 'value' => $this->merchant->postal_code ?? '...'],
+        ]);
     }
 
     #[Layout('components.layouts.users.index')]

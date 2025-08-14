@@ -252,7 +252,7 @@
         </div>
 
         <!-- Additional Cards -->
-        <div class="grid grid-cols-12 gap-2 px-4">
+        <div class="grid grid-cols-12 gap-2">
             <x-card class="col-span-12 md:col-span-6 lg:col-span-3 space-y-2 rounded-xl">
                 <header class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-bold text-gray-900">

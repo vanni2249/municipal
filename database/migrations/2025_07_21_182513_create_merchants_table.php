@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
             $table->foreignId('admin_id')->nullable()->onDelete('set null');
+            $table->foreignId('user_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }

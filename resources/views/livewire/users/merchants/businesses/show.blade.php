@@ -9,27 +9,35 @@
                             Negocio
                         </h2>
                         <div class="flex flex-row items-center space-x-2">
+                            <x-icon-button @click="$dispatch('open-modal', 'more-detail')"  icon="eye"/>
                             <x-icon-link
-                                href="{{ route('users.merchants.businesses.edit', ['merchant' => $business->register_id, 'business' => $business->id]) }}" />
+                                href="{{ route('users.merchants.businesses.edit', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}" />
+                            <x-modal name="more-detail" title="Detalles del negocio">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    @foreach ($items as $item)
+                                        <x-detail-item-modal label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
+                                    @endforeach
+                                </div>
+                            </x-modal>
                             <x-dropdown align="right" width="72">
                                 <x-slot name="trigger">
-                                    <x-icon-button icon="menu" />
+                                    <x-icon-button icon="ellipsis-vertical" />
                                 </x-slot>
                                 <x-slot name="content">
                                     <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.building-permit.create',['merchant' => 1, 'business' => 1]) }}">
+                                        href="{{ route('users.merchants.businesses.settlements.building-permit.create', ['merchant' => 1, 'business' => 1]) }}">
                                         Radicacion de permiso de construccion
                                     </x-dropdown-link>
                                     <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.use-permit.create',['merchant' => 1, 'business' => 1]) }}">
+                                        href="{{ route('users.merchants.businesses.settlements.use-permit.create', ['merchant' => 1, 'business' => 1]) }}">
                                         Radicacion de permiso de uso
                                     </x-dropdown-link>
                                     <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.temp-patent.create',['merchant' => 1, 'business' => 1]) }}">
+                                        href="{{ route('users.merchants.businesses.settlements.temp-patent.create', ['merchant' => 1, 'business' => 1]) }}">
                                         Radicacion de patente temporaria
                                     </x-dropdown-link>
                                     <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.official-patent.create',['merchant' => 1, 'business' => 1]) }}">
+                                        href="{{ route('users.merchants.businesses.settlements.official-patent.create', ['merchant' => 1, 'business' => 1]) }}">
                                         Radicacion de patente oficial
                                     </x-dropdown-link>
                                 </x-slot>
@@ -38,12 +46,9 @@
                     </header>
                     <div class="col-span-full">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            @foreach ($items as $item)
-                            <ul>
-                                <li class="text-xs font-bold text-gray-800">{{ $item['key'] }}</li>
-                                <li class="text-sm text-gray-600">{{ $item['value'] }}</li>
-                            </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                            @foreach ($items->take(4) as $item)
+                                <x-detail-item label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
                             @endforeach
                         </div>
                     </div>
@@ -57,53 +62,53 @@
                         </h2>
                     </header>
                     <div class="grid grid-cols-3 gap-4">
-                        @for ($i = 0; $i < 2; $i++) <a
-                            href="{{ route('users.merchants.businesses.patents.show', ['merchant' => 1, 'business' => 1, 'patent' => 1]) }}"
-                            class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
-                            <header class="flex justify-between items-center">
-                                <small class=" text-gray-600">
-                                    {{ rand(10000, 99999) }}
-                                </small>
-                                @switch($i)
-                                @case(0)
-                                <x-badge color="green">
-                                    Activo
-                                </x-badge>
-                                @break
-
-                                @case(1)
-                                <x-badge color="red">
-                                    Vencida
-                                </x-badge>
-                                @break
-
-                                @default
-                                @endswitch
-                            </header>
-                            <ul class="text-sm pt-2">
-                                <li class="text-gray-800 text-md font-bold ">
+                        @for ($i = 0; $i < 2; $i++)
+                            <a href="{{ route('users.merchants.businesses.patents.show', ['merchant' => 1, 'business' => 1, 'patent' => 1]) }}"
+                                class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
+                                <header class="flex justify-between items-center">
+                                    <small class=" text-gray-600">
+                                        {{ rand(10000, 99999) }}
+                                    </small>
                                     @switch($i)
-                                    @case(1)
-                                    Patente Temporera
-                                    @break
+                                        @case(0)
+                                            <x-badge color="green">
+                                                Activo
+                                            </x-badge>
+                                        @break
 
-                                    @case(0)
-                                    Patente Oficial
-                                    @break
+                                        @case(1)
+                                            <x-badge color="red">
+                                                Vencida
+                                            </x-badge>
+                                        @break
 
-                                    @default
+                                        @default
                                     @endswitch
-                                </li>
-                                <li class="text-xs text-gray-600">
-                                    @if ($i == 0)
-                                    01 de enero de 2025 &bull; 31 de enero de 2025
-                                    @else
-                                    01 de febrero de 2024 &bull; 31 de enero de 2024
-                                    @endif
-                                </li>
-                            </ul>
+                                </header>
+                                <ul class="text-sm pt-2">
+                                    <li class="text-gray-800 text-md font-bold ">
+                                        @switch($i)
+                                            @case(1)
+                                                Patente Temporera
+                                            @break
+
+                                            @case(0)
+                                                Patente Oficial
+                                            @break
+
+                                            @default
+                                        @endswitch
+                                    </li>
+                                    <li class="text-xs text-gray-600">
+                                        @if ($i == 0)
+                                            01 de enero de 2025 &bull; 31 de enero de 2025
+                                        @else
+                                            01 de febrero de 2024 &bull; 31 de enero de 2024
+                                        @endif
+                                    </li>
+                                </ul>
                             </a>
-                            @endfor
+                        @endfor
                     </div>
                 </x-card>
                 <!-- Activity -->
@@ -120,30 +125,62 @@
                         </div>
                     </header>
                     @php
-                    $activities = collect([
-                    ['date' => '2023-10-01', 'model' => 'Comerciante', 'description' => 'Anadio el comerciante con el
+                        $activities = collect([
+                            [
+                                'date' => '2023-10-01',
+                                'model' => 'Comerciante',
+                                'description' => 'Anadio el comerciante con el
                     nombre
-                    Juan del Pueblo'],
-                    ['date' => '2023-10-02', 'model' => 'Comercio', 'description' => 'Creacion de Comercio con el nombre
+                    Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-02',
+                                'model' => 'Comercio',
+                                'description' => 'Creacion de Comercio con el nombre
                     de
-                    Comercio 1'],
-                    ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
-                    comerciante Juan del Pueblo'],
-                    ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el
+                    Comercio 1',
+                            ],
+                            [
+                                'date' => '2023-10-03',
+                                'model' => 'Solicitud',
+                                'description' => 'Solicitud de interaccion con el
+                    comerciante Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-04',
+                                'model' => 'Factura',
+                                'description' => 'Factura generada para el
                     comerciante
-                    Juan del Pueblo'],
-                    ['date' => '2023-10-05', 'model' => 'Patente', 'description' => 'Patente generada para el
+                    Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-05',
+                                'model' => 'Patente',
+                                'description' => 'Patente generada para el
                     comerciante
-                    Juan del Pueblo'],
-                    ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
-                    comerciante Juan del Pueblo'],
-                    ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el
+                    Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-03',
+                                'model' => 'Solicitud',
+                                'description' => 'Solicitud de interaccion con el
+                    comerciante Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-04',
+                                'model' => 'Factura',
+                                'description' => 'Factura generada para el
                     comerciante
-                    Juan del Pueblo'],
-                    ['date' => '2023-10-05', 'model' => 'Patente', 'description' => 'Patente generada para el
+                    Juan del Pueblo',
+                            ],
+                            [
+                                'date' => '2023-10-05',
+                                'model' => 'Patente',
+                                'description' => 'Patente generada para el
                     comerciante
-                    Juan del Pueblo'],
-                    ]);
+                    Juan del Pueblo',
+                            ],
+                        ]);
                     @endphp
                     <x-table>
                         <x-slot name="head">
@@ -156,14 +193,14 @@
                         </x-slot>
                         <x-slot name="body">
                             @foreach ($activities as $item)
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="p-4">{{ $item['date'] }}</td>
-                                <td class="p-4">{{ $item['model'] }}</td>
-                                <td class="p-4">{{ $item['description'] }}</td>
-                                <td class="flex justify-end items-center px-4 py-2">
-                                    <x-icon-link href="#" icon="eye"></x-icon-link>
-                                </td>
-                            </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="p-4">{{ $item['date'] }}</td>
+                                    <td class="p-4">{{ $item['model'] }}</td>
+                                    <td class="p-4">{{ $item['description'] }}</td>
+                                    <td class="flex justify-end items-center px-4 py-2">
+                                        <x-icon-link href="#" icon="eye"></x-icon-link>
+                                    </td>
+                                </tr>
                             @endforeach
                         </x-slot>
                     </x-table>

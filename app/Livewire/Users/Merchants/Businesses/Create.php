@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Users\Merchants\Businesses;
 
-use App\Livewire\Forms\User\Merchant\BusinessForm;
+use App\Livewire\Forms\User\MerchantBusinessForm;
 use App\Models\BusinessCategory;
+use App\Models\Merchant;
+use App\Models\Place;
 use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -11,17 +13,17 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public BusinessForm $form;
-    public $merchant;
+    public MerchantBusinessForm $form;
     public $user;
     public $business_categories;
+    public $places;
 
     public function mount($merchant)
     {
         $this->user = Auth::user();
-        $this->merchant = Register::where('user_id', $this->user->id)->findOrFail($merchant);
-        $this->form->register = $this->merchant;
+        $this->form->merchant = Merchant::where('user_id', $this->user->id)->findOrFail($merchant);
         $this->business_categories = BusinessCategory::all()->sortBy('name');
+        $this->places = Place::all()->sortBy('name');
     }
 
     public function save()

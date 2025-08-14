@@ -11,15 +11,18 @@
             <!-- Name -->
             <div class="col-span-full">
                 <x-label for="Name" value="Nombre" />
-                <x-input wire:model="form.name" type="text" @class([
+                <x-input wire:model="form.name" name="name" id="name" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-400' => $errors->has('form.name'),
                 ]) />
+                @error('form.name')
+                    <x-error message="{{ $message }}"/>
+                @enderror
             </div>
             <!-- Email -->
             <div class="col-span-full md:col-span-4 md:col-start-1">
                 <x-label for="email" value="Email" />
-                <x-input wire:model="form.email" type="email" @class([
+                <x-input wire:model="form.email" name="email" id="email" type="email" @class([
                     'mt-1 block w-full',
                     'border-red-400' => $errors->has('form.email'),
                 ]) />
@@ -30,7 +33,7 @@
             <!-- Phone -->
             <div class="col-span-full md:col-span-2 lg:col-span-2">
                 <x-label for="phone" value="Telefono" />
-                <x-input wire:model="form.phone" type="text" @class([
+                <x-input wire:model="form.phone" name="phone" id="phone" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-400' => $errors->has('form.phone'),
                 ]) />
@@ -41,10 +44,13 @@
             <!-- Date of birth -->
             <div class="col-start-1 col-span-full md:col-span-2 md:col-start-1">
                 <x-label for="date_of_birth" value="Fecha de Nacimiento" />
-                <x-input wire:model="form.date_of_birth" type="date" @class([
+                <x-input wire:model="form.date_of_birth" name="date_of_birth" id="date_of_birth" type="date" @class([
                     'mt-1 block w-full',
                     'border-red-400' => $errors->has('form.date_of_birth'),
                 ]) />
+                @error('form.date_of_birth')
+                    <x-error message="{{ $message }}"/>
+                @enderror
             </div>
         </div>
         <div class="col-span-full py-4"></div>
@@ -59,7 +65,7 @@
             <!-- Dirreccion -->
             <div class="col-start-1 col-span-full">
                 <x-label for="address" value="Direccion" />
-                <x-input wire:model="form.address" type="text" @class([
+                <x-input wire:model="form.address" name="address" id="address" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-300' => $errors->has('form.address'),
                 ]) />
@@ -68,7 +74,7 @@
             <div class="col-span-full md:col-span-4 md:col-start-1">
                 <!-- City -->
                 <x-label for="city" value="Ciudad" />
-                <x-input wire:model="form.city" type="text" @class([
+                <x-input wire:model="form.city" name="city" id="city" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-300' => $errors->has('form.city'),
                 ]) />
@@ -76,7 +82,7 @@
             <!-- Postal code -->
             <div class="col-span-full md:col-span-2">
                 <x-label for="postal_code" value="Codigo postal" />
-                <x-input wire:model="form.postal_code" type="number" @class([
+                <x-input wire:model="form.postal_code" name="postal_code" id="postal_code" type="number" @class([
                     'mt-1 block w-full',
                     'border-red-300' => $errors->has('form.postal_code'),
                 ])

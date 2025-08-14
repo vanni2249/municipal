@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Users\Merchants;
 
-use App\Livewire\Forms\User\Merchant\MerchantForm;
+use App\Livewire\Forms\User\MerchantForm;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;

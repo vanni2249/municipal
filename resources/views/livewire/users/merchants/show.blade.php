@@ -9,26 +9,31 @@
                             Comerciante
                         </h2>
                         <div class="flex items-center space-x-2">
+                            <x-icon-button icon="eye" @click="$dispatch('open-modal', 'more-detail')" />
                             <x-icon-link href="{{ route('users.merchants.edit', ['merchant' => $merchant->id]) }}" />
                         </div>
+                        <x-modal name="more-detail" title="Detalles del Comerciante">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                @foreach ($this->items() as $item)
+                                    <x-detail-item-modal :label="$item['label']" :value="$item['value']" />
+                                @endforeach
+                            </div>
+                        </x-modal>
                     </header>
                     <div class="col-span-full">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            @foreach ($items as $item)
-                                <ul>
-                                    <li class="text-xs font-bold text-gray-800">{{ $item['key'] }}</li>
-                                    <li class="text-sm text-gray-600">{{ $item['value'] }}</li>
-                                </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                            @foreach ($items->take(4) as $item)
+                                <x-detail-item label="{{ $item['label'] }}" :value="$item['value']" />
                             @endforeach
                         </div>
                     </div>
                 </x-card>
-                <!-- Comercios -->
+                <!-- Business -->
                 <x-card class="rounded-xl">
                     <header
-                        class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0 mb-4">
+                        class="flex flex-row justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-gray-900">
-                            Comercios
+                            Negocios del Comerciante
                         </h2>
                         <div class="flex items-center space-x-2">
                             <x-icon-link
@@ -56,7 +61,7 @@
                                     </td>
                                     <td class="p-4">...</td>
                                     <td class="p-4">
-                                        {{ $business->businessCategory->es_name??'...' }}
+                                        {{ $business->businessCategory->es_name ?? '...' }}
                                     </td>
                                     <td class="p-4">
                                         ...
@@ -64,15 +69,17 @@
                                     <td class="p-4">...</td>
                                     <td class="p-4">...</td>
                                     <td class="p-2 flex justify-end space-x-2">
-                                        <x-icon-link href="{{ route('users.merchants.businesses.show', ['merchant' => $business->register_id, 'business' => $business->id]) }}" icon="eye" />
+                                        <x-icon-link
+                                            href="{{ route('users.merchants.businesses.show', ['merchant' => $business->register_id, 'business' => $business->id]) }}"
+                                            icon="eye" />
                                     </td>
 
                                 </tr>
 
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center p-4 text-gray-500">
-                                        No hay comercio registrado.
+                                    <td colspan="6" class="text-center p-4 text-gray-500">
+                                        No hay negocios registrados para este comerciante.
                                     </td>
                                 </tr>
                             @endforelse

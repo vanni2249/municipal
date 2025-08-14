@@ -21,7 +21,7 @@
                         </x-modal>
                     </header>
                     <div class="col-span-full">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
                             @foreach ($items->take(4) as $item)
                                 <x-detail-item label="{{ $item['label'] }}" :value="$item['value']" />
                             @endforeach
@@ -70,7 +70,7 @@
                                     <td class="p-4">...</td>
                                     <td class="p-2 flex justify-end space-x-2">
                                         <x-icon-link
-                                            href="{{ route('users.merchants.businesses.show', ['merchant' => $business->register_id, 'business' => $business->id]) }}"
+                                            href="{{ route('users.merchants.businesses.show', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}"
                                             icon="eye" />
                                     </td>
 

@@ -20,7 +20,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.users.merchants.index', [
-            'merchants' => $this->user->registers()->where('type_id', 2)->get(),
+            'merchants' => $this->user->merchants()->get(),
         ]);
     }
 }

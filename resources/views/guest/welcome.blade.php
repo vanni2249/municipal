@@ -20,7 +20,7 @@
                     Este sitio web es un esfuerzo por parte del gobierno municipal de la ciudad de San Antonio para
                     brindar a los ciudadanos acceso a información y servicios en línea.
                 </p>
-                <ul
+                {{-- <ul
                     class="flex items-center flex-row space-x-1 ">
                     <li>
                         <a href="#"
@@ -30,7 +30,7 @@
                         <a href="#"
                             class="bg-gray-700 hover:bg-gray-800 border-gray-400 text-gray-200 hover:text-white px-6 py-2 text-xs uppercase font-bold rounded-full">Comerciantes</a>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </section>
@@ -111,5 +111,5 @@
         </div>
         @endforeach
     </section>
-    @livewire('guest.welcome')
+    {{-- @livewire('guest.welcome') --}}
 </x-layouts.guest>

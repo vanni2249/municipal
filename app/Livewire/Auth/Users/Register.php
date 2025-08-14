@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Layout;
 
 class Register extends Component
 {
+    public $types;
     public $role;
     public $name;
     public $email;
@@ -37,23 +39,30 @@ class Register extends Component
     public $is_bedridden = false;
     public $is_disabled = false;
 
-    public function mount($role)
+    public function mount()
     {
-        $this->role = $role;
+        $this->types = Type::all();
+        // $this->role = $role;
         $this->terms = true; // Default to true
-        $this->approved_at = in_array($this->role, ['citizen', 'merchant', 'visitor']) ? now() : null;
+        // $this->approved_at = in_array($this->role, ['citizen', 'merchant', 'citizen-merchant', 'visitor']) ? now() : null;
+    }
+
+    public function updatedRole($value)
+    {
+        $this->reset(['company_name', 'number', 'address', 'city', 'postal_code', 'date_of_birth']);
+        $this->approved_at = in_array($value, ['citizen', 'merchant', 'citizen-merchant', 'visitor']) ? now() : null;
     }
 
     public function register()
     {
         $this->validate([
-            'role' => ['required', 'string', Rule::in(['citizen', 'merchant', 'accountant', 'contractor', 'supplier', 'visitor'])],
+            'role' => ['required', 'string', Rule::in(['citizen', 'merchant', 'citizen-merchant', 'accountant', 'contractor', 'supplier', 'visitor'])],
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|numeric',
             'company_name' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['merchant', 'accountant', 'contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['accountant', 'contractor', 'supplier'])),
                 'string',
                 'nullable',
                 'max:255'
@@ -92,7 +101,7 @@ class Register extends Component
         ]);
 
         $this->user = User::create([
-            'type_id' => Type::where('en_name', $this->role)->first()->id ?? null,
+            'type_id' => Type::where('key', $this->role)->first()->id ?? null,
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
@@ -170,6 +179,7 @@ class Register extends Component
         }
     }
 
+    #[Layout('components.layouts.auth.index')]
     public function render()
     {
         return view('livewire.auth.users.register');

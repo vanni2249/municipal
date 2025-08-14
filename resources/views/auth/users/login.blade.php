@@ -25,7 +25,7 @@
                 break;
         }
     @endphp
-    <div class="bg-white w-full sm:w-sm rounded-xl p-4">
+    <div class="bg-white w-full sm:w-md rounded-xl p-4">
         <div class="">
             <h1 class="text-2xl font-bold text-gray-900">Acceso</h1>
             <p class="mt-1 text-xs text-gray-600">¡Bienvenido! Inicia sesión en tu cuenta de <b>{{ $roleLabel }}</b>.</p>

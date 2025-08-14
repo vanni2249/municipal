@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -114,6 +115,7 @@ class Login extends Component
      * Get the view or component name for the Livewire component.
      */
 
+    #[Layout('components.layouts.auth.index')]
     public function render()
     {
         return view('livewire.auth.users.login');

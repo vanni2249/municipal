@@ -15,6 +15,7 @@ class TypeSeeder extends Seeder
         $items = [
             ['key' => 'citizen', 'en_name' => 'Citizen', 'es_name' => 'Ciudadano'],
             ['key' => 'merchant', 'en_name' => 'Merchant', 'es_name' => 'Comerciante'],
+            ['key' => 'citizen-merchant', 'en_name' => 'Citizen & Merchant', 'es_name' => 'Ciudadano & Comerciante'],
             ['key' => 'accountant', 'en_name' => 'Accountant', 'es_name' => 'Contador'],
             ['key' => 'contractor', 'en_name' => 'Contractor', 'es_name' => 'Contratista'],
             ['key' => 'supplier', 'en_name' => 'Supplier', 'es_name' => 'Proveedor'],

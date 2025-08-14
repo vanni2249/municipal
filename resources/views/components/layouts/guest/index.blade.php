@@ -28,7 +28,7 @@
                 'text-gray-800' => !request()->routeIs('welcome')])>
                     MyApp's
                 </a>
-                @php
+                {{-- @php
                     $items = [
                         [
                             'label' => 'Ciudadano',
@@ -95,6 +95,10 @@
                             @endforeach
                         </x-slot>
                     </x-dropdown>
+                </div> --}}
+                <div class="flex justify-between items-center space-x-2">
+                    <a href="{{ route('users.login') }}" class="bg-gray-400 hover:bg-gray-300 hover:text-gray-800 py-2 px-4 rounded-xl text-sm">Conectate</a>
+                    <a href="{{ route('users.register') }}" class="border border-gray-600 hover:bg-gray-600 py-2 px-4 rounded-xl text-sm text-white hover:text-gray-300">Registrate</a>
                 </div>
             </div>
         </div>

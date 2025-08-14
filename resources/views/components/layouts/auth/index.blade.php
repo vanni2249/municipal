@@ -15,11 +15,13 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-200 font-sans flex flex-col items-center px-4 py-24 md:py-32 min-h-screen">
-    <header class="mb-6">
+<body class="bg-gray-200 font-sans px-4 py-6 min-h-screen">
+    <header class="mb-6 flex justify-center">
         <a href="/" class="text-2xl font-bold">Myapp's</a>
     </header>
-    {{ $slot }}
+    <div class="md:flex md:justify-center">
+        {{ $slot }}
+    </div>
 </body>
 
 </html>

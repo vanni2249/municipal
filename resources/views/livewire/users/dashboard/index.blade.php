@@ -11,7 +11,7 @@
                         {{ $user_type }}
                     </small>
                 </header>
-                <h2 class="text-2xl font-bold text-white">
+                <h2 class="text-2xl font-bold text-white line-clamp-1">
                     {{ $user_name }}
                 </h2>
             </x-card>

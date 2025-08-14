@@ -136,10 +136,10 @@
                     {{ __('Registrar') }}
                 </x-button>
             </div>
-            @foreach ($errors->all() as $item)
+            {{-- @foreach ($errors->all() as $item)
                 <div class="text-red-500 text-xs mt-1">{{ $item }}</div>
             @endforeach
-            {{ $approved_at }}
+            {{ $approved_at }} --}}
         </form>
         <div class="mt-6">
             <p class="mt-4 text-xs text-gray-600">¿Ya tienes una cuenta? <a href="{{ route('users.login') }}"

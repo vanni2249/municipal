@@ -16,61 +16,20 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
-    <nav @class(['w-full',
-        ' bg-black' => request()->routeIs('welcome')])>
+    <nav @class(['w-full', ' bg-black' => request()->routeIs('welcome')])>
         <div class="max-w-7xl mx-auto p-4">
-            <div  @class(['flex justify-between items-center rounded-2xl p-4',
-            'bg-gray-800' => request()->routeIs('welcome'),
-            'bg-white' => !request()->routeIs('welcome')])
-            class="">
-                <a href="/" @class(['text-xl font-semibold',
-                'text-gray-200' => request()->routeIs('welcome'),
-                'text-gray-800' => !request()->routeIs('welcome')])>
+            <div @class([
+                'flex justify-between items-center rounded-2xl p-4',
+                'bg-gray-800' => request()->routeIs('welcome'),
+                'bg-white' => !request()->routeIs('welcome'),
+            ]) class="">
+                <a href="/" @class([
+                    'text-xl font-semibold',
+                    'text-gray-200' => request()->routeIs('welcome'),
+                    'text-gray-800' => !request()->routeIs('welcome'),
+                ])>
                     MyApp's
                 </a>
-                {{-- @php
-                    $items = [
-                        [
-                            'label' => 'Ciudadano',
-                            'route' => 'users.login',
-                            'role' => 'citizen'
-                        ],
-                        [
-                            'label' => 'Comerciante',
-                            'route' => 'users.login',
-                            'role' => 'merchant'
-                        ],
-                        [
-                            'label' => 'Contador',
-                            'route' => 'users.login',
-                            'role' => 'accountant'
-                        ],
-                        [
-                            'label' => 'Contratista',
-                            'route' => 'users.login',
-                            'role' => 'contractor'
-                        ],
-                        [
-                            'label' => 'Supplidor',
-                            'route' => 'users.login',
-                            'role' => 'supplier'
-                        ],
-                        [
-                            'label' => 'Visitante',
-                            'route' => 'users.login',
-                            'role' => 'visitor'
-                        ],
-                    ];
-                @endphp
-                <nav class="hidden lg:flex space-x-4 text-sm font-semibold">
-                    @foreach ($items as $item)
-                        <a href="{{ route($item['route'], ['role' => strtolower($item['role'])]) }}" 
-                        @class(['text-gray-300 hover:text-gray-100' => request()->routeIs('welcome'),
-                        'text-gray-700 hover:text-gray-900' => !request()->routeIs('welcome')])>
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
-                </nav>
                 <div class="flex lg:hidden text-white">
                     <x-dropdown>
                         <x-slot name="trigger">
@@ -88,17 +47,21 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            @foreach ($items as $item)
-                                <x-dropdown-link :href="route($item['route'], ['role' => strtolower($item['role'])])">
-                                    {{ $item['label'] }}
-                                </x-dropdown-link>
-                            @endforeach
+                            <x-dropdown-link :href="route('users.login')">
+                                Inicio de sesión
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('users.register')">
+                                Registrarse
+                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
-                </div> --}}
-                <div class="flex justify-between items-center space-x-2">
-                    <a href="{{ route('users.login') }}" class="bg-gray-400 hover:bg-gray-300 hover:text-gray-800 py-2 px-4 rounded-xl text-sm">Conectate</a>
-                    <a href="{{ route('users.register') }}" class="border border-gray-600 hover:bg-gray-600 py-2 px-4 rounded-xl text-sm text-white hover:text-gray-300">Registrate</a>
+                </div>
+                <div class="hidden md:flex justify-between items-center space-x-2">
+                    <a href="{{ route('users.login') }}"
+                        class="bg-gray-400 hover:bg-gray-300 hover:text-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase">iniciar
+                        sesión</a>
+                    <a href="{{ route('users.register') }}"
+                        class="border border-gray-600 hover:bg-gray-600 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-300">Registrate</a>
                 </div>
             </div>
         </div>
@@ -109,8 +72,7 @@
     <footer class="max-w-7xl mx-auto p-4 w-full">
         <div class=" bg-gray-300 p-4 rounded-2xl">
 
-            <ul
-                class=" text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
+            <ul class=" text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">
                 <li class="font-bold">
                     &copy; {{ date('Y') }} MyApp. All rights reserved.
                 </li>

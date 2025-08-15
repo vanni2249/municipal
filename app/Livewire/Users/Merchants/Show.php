@@ -25,11 +25,11 @@ class Show extends Component
         return collect([
             ['label' => 'Nombre', 'value' => $this->merchant->name ?? '...'],
             ['label' => 'Email', 'value' => $this->merchant->email ?? '...'],
-            ['label' => 'Telefono', 'value' => $this->merchant->phone ?? '...'],
+            ['label' => 'Teléfono', 'value' => $this->merchant->phone ?? '...'],
             ['label' => 'Fecha de Nacimiento', 'value' => $this->merchant->date_of_birth ?? '...'],
-            ['label' => 'Direccion', 'value' => $this->merchant->address ?? '...'],
+            ['label' => 'Dirección', 'value' => $this->merchant->address ?? '...'],
             ['label' => 'Ciudad', 'value' => $this->merchant->city ?? '...'],
-            ['label' => 'Codigo Postal', 'value' => $this->merchant->postal_code ?? '...'],
+            ['label' => 'Código Postal', 'value' => $this->merchant->postal_code ?? '...'],
         ]);
     }
 

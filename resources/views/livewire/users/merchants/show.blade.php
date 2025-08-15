@@ -4,14 +4,18 @@
             <div class="col-span-full lg:col-span-full space-y-4">
                 <!-- Comerciante -->
                 <x-card class="rounded-xl p-4">
-                    <header class="flex flex-row justify-between items-center mb-4">
-                        <h2 class="text-lg font-bold text-gray-900">
-                            Comerciante
-                        </h2>
+                    <header class="flex flex-row justify-between items-center mb-1">
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-900">
+                                {{ $merchant->name ?? '...' }}
+                            </h2>
+                            <span class="text-xs text-gray-400">Comerciante</span>
+                        </div>
                         <div class="flex items-center space-x-2">
                             <x-icon-button icon="eye" @click="$dispatch('open-modal', 'more-detail')" />
                             <x-icon-link href="{{ route('users.merchants.edit', ['merchant' => $merchant->id]) }}" />
                         </div>
+                        <!-- Detail modal -->
                         <x-modal name="more-detail" title="Detalles del Comerciante">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 @foreach ($this->items() as $item)
@@ -20,20 +24,22 @@
                             </div>
                         </x-modal>
                     </header>
-                    <div class="col-span-full">
-                        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                    <ul class="col-span-full flex items-center space-x-2 text-xs text-gray-500">
+                        <li>{{ $merchant->code ?? '254897' }}</li>
+                        <li>|</li>
+                        <li>{{ $merchant->phone }}</li>
+                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             @foreach ($items->take(4) as $item)
                                 <x-detail-item label="{{ $item['label'] }}" :value="$item['value']" />
                             @endforeach
-                        </div>
-                    </div>
+                        </div> --}}
+                    </ul>
                 </x-card>
                 <!-- Business -->
                 <x-card class="rounded-xl">
-                    <header
-                        class="flex flex-row justify-between items-center mb-4">
+                    <header class="flex flex-row justify-between items-center mb-2">
                         <h2 class="text-lg font-bold text-gray-900">
-                            Negocios del Comerciante
+                            Negocios
                         </h2>
                         <div class="flex items-center space-x-2">
                             <x-icon-link
@@ -41,7 +47,7 @@
                                 icon="plus" />
                         </div>
                     </header>
-                    <x-table>
+                    {{-- <x-table>
                         <x-slot name="head">
                             <tr>
                                 <th class="p-4">Nombre</th>
@@ -84,7 +90,43 @@
                                 </tr>
                             @endforelse
                         </x-slot>
-                    </x-table>
+                    </x-table> --}}
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+
+                        @forelse ($businesses as $business)
+                            <a href="{{ route('users.merchants.businesses.show', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}" class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
+                                <div class="flex flex-col space-x-2">
+                                    <div class="flex items-center justify-between">
+                                        <h2 class="text-lg text-gray-700 font-light line-clamp-1">{{ $business->name }}</h2>
+                                        <x-badge color="blue" label="ID" value="{{ $business->code ?? '...' }}" />
+                                    </div>
+                                    <div class="pt-2">
+                                        <ul class="flex items-center space-x-2 text-xs text-gray-600">
+                                            <li>
+                                                {{ $business->businessType->es_name }}
+                                            </li>
+                                            <li>
+                                                |
+                                            </li>
+                                            <li>
+                                                {{ $business->businessCategory->es_name ?? '...' }}
+                                            </li>
+                                            <li>
+                                                |
+                                            </li>
+                                            <li>
+                                                {{ $merchant->city ?? '...' }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        @empty
+                            <p class="text-center p-4 text-gray-500">
+                                No hay negocios registrados para este comerciante.
+                            </p>
+                        @endforelse
+                    </div>
                 </x-card>
             </div>
         </div>

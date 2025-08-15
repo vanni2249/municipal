@@ -38,6 +38,7 @@ class Show extends Component
     {
         return view('livewire.users.merchants.businesses.show',[
             'items' => $this->items(),
+            'business' => $this->business,
         ]);
     }
 }

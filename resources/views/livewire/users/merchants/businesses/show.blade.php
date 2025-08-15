@@ -4,18 +4,19 @@
             <div class="col-span-full lg:col-span-full space-y-4">
                 <!-- Business Description -->
                 <x-card class="rounded-xl p-4">
-                    <header class="flex flex-row justify-between items-center mb-4">
+                    <header class="flex flex-row justify-between items-center mb-2">
                         <h2 class="text-lg font-bold text-gray-900">
-                            Negocio
+                            {{ $business->name ?? '...' }}
                         </h2>
                         <div class="flex flex-row items-center space-x-2">
-                            <x-icon-button @click="$dispatch('open-modal', 'more-detail')"  icon="eye"/>
+                            <x-icon-button @click="$dispatch('open-modal', 'more-detail')" icon="eye" />
                             <x-icon-link
                                 href="{{ route('users.merchants.businesses.edit', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}" />
                             <x-modal name="more-detail" title="Detalles del negocio">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     @foreach ($items as $item)
-                                        <x-detail-item-modal label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
+                                        <x-detail-item-modal label="{{ $item['label'] }}"
+                                            value="{{ $item['value'] }}" />
                                     @endforeach
                                 </div>
                             </x-modal>
@@ -45,12 +46,30 @@
                         </div>
                     </header>
                     <div class="col-span-full">
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                        <div class="pt-2">
+                            <ul class="flex items-center space-x-2 text-xs text-gray-600">
+                                <li>
+                                    {{ $business->businessType->es_name }}
+                                </li>
+                                <li>
+                                    |
+                                </li>
+                                <li>
+                                    {{ $business->businessCategory->es_name ?? '...' }}
+                                </li>
+                                <li>
+                                    |
+                                </li>
+                                <li>
+                                    {{ $business->place->name ?? '...' }}
+                                </li>
+                            </ul>
+                        </div>
+                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
                             @foreach ($items->take(4) as $item)
                                 <x-detail-item label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                 </x-card>
                 <!-- Documentos -->
@@ -61,7 +80,7 @@
                             Documentos
                         </h2>
                     </header>
-                    <div class="grid grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @for ($i = 0; $i < 2; $i++)
                             <a href="{{ route('users.merchants.businesses.patents.show', ['merchant' => 1, 'business' => 1, 'patent' => 1]) }}"
                                 class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">

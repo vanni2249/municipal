@@ -1,9 +1,9 @@
 <div>
     <div class="p-4">
         <x-card>
-            <header class="flex flex-row justify-between items-center mb-4">
+            <header class="flex flex-row justify-between items-center">
                 <h2 class="text-lg font-bold text-gray-900">
-                    Negocio
+                    {{ $business->name ?? '...' }}
                 </h2>
                 <div class="flex items-center space-x-2">
                     <x-icon-button @click="$dispatch('open-modal', 'more-detail-modal')" icon="eye" />
@@ -17,10 +17,29 @@
                     <x-icon-link href="{{ route('users.businesses.edit', ['business' => $business]) }}" />
                 </div>
             </header>
+            <div class="pt-2">
+                <ul class="flex items-center space-x-2 text-xs text-gray-600">
+                    <li>
+                        {{ $business->businessType->es_name }}
+                    </li>
+                    <li>
+                        |
+                    </li>
+                    <li>
+                        {{ $business->businessCategory->es_name ?? '...' }}
+                    </li>
+                    <li>
+                        |
+                    </li>
+                    <li>
+                        {{ $business->place->name ?? '...' }}
+                    </li>
+                </ul>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                @foreach ($items->take(4) as $item)
+                {{-- @foreach ($items->take(4) as $item)
                     <x-detail-item label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
-                @endforeach
+                @endforeach --}}
             </div>
         </x-card>
     </div>

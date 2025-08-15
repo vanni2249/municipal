@@ -12,17 +12,19 @@
                             Si el negocio ya existe, puedes emparejarlo con el comerciante. Si no, puedes crear un nuevo
                             negocio.
                         </p>
-                        <x-link-button variant="primary-outline" href="{{ route('users.businesses.create') }}"  class="w-full mt-4 flex justify-center " label="Emparejar negocio"/>
+                        <x-link-button variant="primary-outline" href="{{ route('users.businesses.create') }}"
+                            class="w-full mt-4 flex justify-center " label="Emparejar negocio" />
                         <p class=" text-gray-800 mt-2">
                             Si el negocio posee permiso de uso y patente, puedes agregarlo aquí.
                             Si no, puedes crear un nuevo negocio y luego agregarle el permiso de uso y patente.
                         </p>
-                        <x-link-button href="{{ route('users.businesses.create') }}"  class="w-full mt-4 flex justify-center " label="Crear negocio nuevo"/>
+                        <x-link-button href="{{ route('users.businesses.create') }}"
+                            class="w-full mt-4 flex justify-center " label="Crear negocio nuevo" />
                     </x-modal>
                 </div>
             </header>
             <div class="hidden md:block">
-                <x-table>
+                {{-- <x-table>
                     <x-slot name="head">
                         <tr>
                             <th class="p-4">Nombre</th>
@@ -75,11 +77,11 @@
                             </tr>
                         @endforelse
                     </x-slot>
-                </x-table>
+                </x-table> --}}
             </div>
-            <div class="col-span-full space-y-2 md:hidden">
+            <div class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($businesses as $business)
-                    <a href="{{ route('users.businesses.show', ['business' => $business]) }}"
+                    {{-- <a href="{{ route('users.businesses.show', ['business' => $business]) }}"
                         class="bg-gray-100 hover:bg-gray-200 flex flex-col p-4 rounded">
                         <header class="flex justify-between items-center">
                             <small class=" text-gray-600">
@@ -99,6 +101,34 @@
                                 {{ $business->businessCategory->es_name ?? '...' }}
                             </li>
                         </ul>
+                    </a> --}}
+                    <a href="{{ route('users.businesses.show', ['business' => $business]) }}"
+                        class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
+                        <div class="flex flex-col space-x-2">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-md text-gray-700 font-light line-clamp-1">{{ $business->name }}</h2>
+                                <x-badge color="blue" label="ID" value="{{ $business->code ?? '...' }}" />
+                            </div>
+                            <div class="pt-2">
+                                <ul class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <li>
+                                        {{ $business->businessType->es_name }}
+                                    </li>
+                                    <li>
+                                        |
+                                    </li>
+                                    <li>
+                                        {{ $business->businessCategory->es_name ?? '...' }}
+                                    </li>
+                                    <li>
+                                        |
+                                    </li>
+                                    <li>
+                                        {{ $merchant->city ?? '...' }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </a>
                 @empty
                     <div class="text-center bg-gray-100 rounded-xl p-4 text-gray-500">

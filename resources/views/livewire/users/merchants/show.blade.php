@@ -94,10 +94,12 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2">
 
                         @forelse ($businesses as $business)
-                            <a href="{{ route('users.merchants.businesses.show', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}" class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
+                            <a href="{{ route('users.merchants.businesses.show', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}"
+                                class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
                                 <div class="flex flex-col space-x-2">
                                     <div class="flex items-center justify-between">
-                                        <h2 class="text-lg text-gray-700 font-light line-clamp-1">{{ $business->name }}</h2>
+                                        <h2 class="text-lg text-gray-700 font-light line-clamp-1">{{ $business->name }}
+                                        </h2>
                                         <x-badge color="blue" label="ID" value="{{ $business->code ?? '...' }}" />
                                     </div>
                                     <div class="pt-2">
@@ -122,9 +124,12 @@
                                 </div>
                             </a>
                         @empty
-                            <p class="text-center p-4 text-gray-500">
-                                No hay negocios registrados para este comerciante.
-                            </p>
+                            <div class="col-span-full">
+
+                                <p class="text-center p-4 text-gray-500">
+                                    No hay negocios registrados para este comerciante.
+                                </p>
+                            </div>
                         @endforelse
                     </div>
                 </x-card>

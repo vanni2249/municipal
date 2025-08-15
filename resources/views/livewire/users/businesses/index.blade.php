@@ -131,7 +131,7 @@
                         </div>
                     </a>
                 @empty
-                    <div class="text-center bg-gray-100 rounded-xl p-4 text-gray-500">
+                    <div class="text-center p-4 text-gray-500">
                         No hay negocios registrados.
                     </div>
                 @endforelse

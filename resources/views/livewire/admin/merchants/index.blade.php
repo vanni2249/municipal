@@ -36,12 +36,12 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-2 ">Nombre</th>
-                    <th class="p-2 ">Email</th>
-                    <th class="p-2 ">Telefono</th>
-                    <th class="p-2 ">Estado</th>
-                    <th class="p-2 ">Fecha<br />creacion</th>
-                    <th class="p-2 ">Ultima<br />conexion</th>
-                    <th class="p-2 text-right">Accion</th>
+                    <th class="p-2 ">Tipo</th>
+                    <th class="p-2 ">Email<br/>Teléfono</th>
+                    <th class="p-2 ">Dirección</th>
+                    <th class="p-2 ">Creado<br />por</th>
+                    <th class="p-2 ">Fecha<br />creación</th>
+                    <th class="p-2 text-right">Acción</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
@@ -49,26 +49,34 @@
                     <tr class="border-t border-gray-200">
                         <td class="p-2">
                             <span>
-                                ...
+                                {{ $merchant->code }}
                             </span>
                             <br>
                             <span>
-                                {{ $merchant->user ? $merchant->user->name : $merchant->name }}
+                                {{ $merchant->name  }}  {{ $merchant->lastname }}
                             </span>
                         </td>
-                        <td class="p-2">{{ $merchant->user ? $merchant->user->email : $merchant->email }}</td>
-                        <td class="p-2">{{ $merchant->phone }}</td>
+                        <td class="p-2">{{ $merchant->type->es_name }}</td>
                         <td class="p-2">
-                            @if ($merchant->user && $merchant->user->approved_at)
-                                <x-badge color="green" class="capitalize">Aprobado</x-badge>
-                            @elseif ($merchant->user && $merchant->user->blocked_at)
-                                <x-badge color="red" class="capitalize">Bloqueado</x-badge>
-                            @else
-                                ...
-                            @endif
+                            <span>
+                                {{ $merchant->email??'...' }}
+                            </span>
+                            <br>
+                            <span>{{ $merchant->phone }}</span>
                         </td>
-                        <td class="p-2">{{ $merchant->created_at->format('d/m/Y') }}</td>
-                        <td class="p-2">{{ $merchant->user ? $merchant->user->last_login_at : '...' }}</td>
+                        <td class="p-2">
+                            <span>
+                                {{ $merchant->address }}
+                            </span>
+                            <br>
+                            <span>
+                                {{ $merchant->city?? '...' }} {{ $merchant->postal_code?? '...' }}
+                            </span>
+                        </td>
+                        <td class="p-2">
+                            <x-badge label="{{ $merchant->created_by }}"></x-badge>
+                        </td>
+                        <td class="p-2">{{ $merchant->created_at->format('d/M/Y')}}</td>
                         <td class="p-2 flex justify-end">
                             <x-icon-link href="{{ route('admin.merchants.show', ['merchant' => $merchant->id]) }}"
                                 icon="eye" />

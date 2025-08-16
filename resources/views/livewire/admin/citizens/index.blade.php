@@ -36,12 +36,12 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-2 w-auto">Nombre</th>
-                    <th class="p-2 w-auto">Email</th>
-                    <th class="p-2 w-auto">Telefono</th>
-                    <th class="p-2 w-auto">Dirreccion</th>
+                    <th class="p-2 w-auto">Email<br />Teléfono</th>
                     <th class="p-2 w-auto">Lugar</th>
-                    <th class="p-2 w-auto">Fecha<br />creacion</th>
-                    <th class="p-2 w-auto text-right">Accion</th>
+                    <th class="p-2 w-auto">Dirección</th>
+                    <th class="p-2 w-auto">Creado<br/> por</th>
+                    <th class="p-2 w-auto">Fecha<br />creación</th>
+                    <th class="p-2 w-auto text-right">Acción</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
@@ -49,20 +49,34 @@
                     <tr class="border-t border-gray-200">
                         <td class="p-2">
                             <span>
-                                ...
+                                {{ $citizen->code }}
                             </span>
                             <br>
                             <span>
-                                {{ $citizen->name }}
+                                {{ $citizen->name }} {{ $citizen->lastname }}
                             </span>
                         </td>
-                        <td class="p-2">{{ $citizen->email }}</td>
-                        <td class="p-2">{{ $citizen->phone }}</td>
                         <td class="p-2">
-                            {{ $citizen->address }}
+                            <span>
+                                {{ $citizen->email }}
+                            </span>
+                            <br>
+                            <span>{{ $citizen->phone }}</span>
                         </td>
                         <td class="p-2">
-                            {{ $citizen->place->name }}
+                            {{ $citizen->place ? $citizen->place->name : '...' }}
+                        </td>
+                        <td class="p-2">
+                            <span>{{ $citizen->address }}</span>
+                            <br>
+                            <span>
+                                {{ $citizen->city }} {{ $citizen->postal_code }}
+                            </span>
+                            
+                        </td>
+                        <td class="p-2">
+                            <x-badge color="" label="{{ $citizen->created_by??'...' }}" />
+                            
                         </td>
                         <td class="p-2">{{ $citizen->created_at->format('d/m/Y') }}</td>
                         <td class="p-2 flex justify-end">

@@ -1,13 +1,14 @@
 <form wire:submit.prevent="save">
     <div class="grid grid-cols-6 gap-4">
         <div class="col-span-full lg:col-span-2">
-            <h2 class="font-bold text-gray-600">Informacion del visitante</h2>
+            <h2 class="font-bold text-gray-600">Información del visitante</h2>
             <p class="text-sm text-gray-500 mt-2">
-                Completa los campos a continuacion para crear un nuevo visitante.
+                Completa los campos a continuación para crear un nuevo visitante.
             </p>
         </div>
         <div class="col-span-full lg:col-span-4 grid grid-cols-2 gap-4">
-            <div class="col-span-full">
+            <!-- Name -->
+            <div class="col-span-full lg:col-span-1 lg:col-start-1">
                 <x-label value="Nombre" />
                 <x-input wire:model.defer="form.name" id="name" name="name" type="text" class="w-full"
                     placeholder="Nombre" />
@@ -15,6 +16,16 @@
                     <x-error message="{{ $message }}" />
                 @enderror
             </div>
+            <!-- Lastname -->
+            <div class="col-span-full lg:col-span-1 lg:col-start-2">
+                <x-label value="Apellido" />
+                <x-input wire:model.defer="form.lastname" id="lastname" name="lastname" type="text" class="w-full"
+                    placeholder="Apellido" />
+                @error('form.lastname')
+                    <x-error message="{{ $message }}" />
+                @enderror
+            </div>
+            <!-- Date of Birth -->
             <div class="col-span-full lg:col-span-1">
                 <x-label value="Fecha de Nacimiento" />
                 <x-input wire:model.defer="form.date_of_birth" id="date_of_birth" name="date_of_birth" type="date"

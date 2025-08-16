@@ -2,15 +2,16 @@
 
 namespace App\Livewire\Forms\Admin;
 
-use App\Models\Visitor;
+use App\Models\Register;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class VisitorForm extends Form
 {
     public $visitor;
     public $name;
+    public $lastname;
     public $date_of_birth;
     public $email;
     public $phone;
@@ -22,8 +23,9 @@ class VisitorForm extends Form
     {
         return [
             'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'email' => 'nullable|email|unique:visitors,email,' . ($this->visitor->id ?? 'NULL') . ',id',
+            'email' => 'nullable|email|unique:registers,email,' . ($this->visitor->id ?? 'NULL') . ',id',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:100',
@@ -33,14 +35,18 @@ class VisitorForm extends Form
 
     public function save()
     {
-        $visitor = Visitor::create([
+        $visitor = Register::create([
+            'type_id' => Type::where('key', 'visitor')->first()->id,
+            'code' => 'VIS-' . time(), // Example code generation
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
+            'created_by' => 'admin',
             'admin_id' => Auth::guard('admin')->id(),
         ]);
 
@@ -51,6 +57,7 @@ class VisitorForm extends Form
     {
         $this->visitor->update([
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,

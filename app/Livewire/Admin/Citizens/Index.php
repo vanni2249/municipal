@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Citizens;
 
-use App\Models\Citizen;
+use App\Models\Register;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,7 +16,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.citizens.index',[
-            'citizens' => Citizen::paginate(10),
+            'citizens' => Register::whereIn('type_id',[1,3])->paginate(10),
         ]);
     }
 }

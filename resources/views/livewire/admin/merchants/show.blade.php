@@ -3,37 +3,33 @@
 
         <x-card>
             <header>
-                <div class="flex flex-row justify-between items-center space-x-4 mb-4">
+                <div class="flex flex-row justify-between items-center space-x-4">
                     <h2 class="text-lg font-bold text-gray-900">
-                        Comerciante
+                        {{ $merchant->name }} {{ $merchant->lastname }}
                     </h2>
                     <div class="flex items-center space-x-2">
+                        <x-icon-button @click="$dispatch('open-modal', 'more-info')" icon="eye" />
                         <x-icon-link href="{{ route('admin.merchants.edit', ['merchant' => $merchant]) }}"
                             icon="edit" />
-                        <x-icon-button @click="$dispatch('open-modal', 'more-info')" icon="eye" />
                     </div>
                 </div>
             </header>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                @foreach ($items->take(4) as $item)
-                    <ul class="">
-                        <li class="text-xs font-bold text-gray-800">{{ $item['label'] }}</li>
-                        <li class="text-sm text-gray-600">{{ $item['value'] }}</li>
-                    </ul>
-                @endforeach
-                <x-modal name="more-info" title="Información del Comerciante" max-width="2xl">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        @foreach ($items as $item)
-                            <ul class="">
-                                <li class="text-sm font-bold text-gray-800">{{ $item['label'] }}</li>
-                                <li class="text-sm text-gray-600">{{ $item['value'] }}</li>
-                            </ul>
-                        @endforeach
-                    </div>
-                </x-modal>
-            </div>
+            <x-modal name="more-info" title="Detalles adicionales del comerciante">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @foreach ($items as $item)
+                        <x-detail-item-modal label="{!! $item['label'] !!}" value="{!! $item['value'] !!}" />
+                    @endforeach
+                </div>
+            </x-modal>
+            <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
+                <li>{{ $merchant->type->es_name??'...' }}</li>
+                <li>|</li>
+                <li class="capitalize">{{ $merchant->created_by??'...' }}</li>
+                <li>|</li>
+                <li>{{ $merchant->phone??'...' }}</li>
+            </ul>
         </x-card>
-        <x-card>
+        {{-- <x-card>
             <header class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
                     Negocios
@@ -80,6 +76,6 @@
                     @endforelse
                 </x-slot>
             </x-table>
-        </x-card>
+        </x-card> --}}
     </div>
 </div>

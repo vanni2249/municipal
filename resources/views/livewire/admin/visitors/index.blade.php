@@ -3,7 +3,7 @@
         <header>
             <div class="flex flex-row justify-between items-center space-x-4 mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
-                    Visitors
+                    Visitantes
                 </h2>
                 <div class="flex items-center space-x-2">
                     <x-icon-link href="{{ route('admin.visitors.create') }}" icon="plus" />
@@ -35,12 +35,11 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-2 w-auto">Nombre</th>
-                    <th class="p-2 w-auto">Email</th>
-                    <th class="p-2 w-auto">Telefono</th>
-                    <th class="p-2 w-auto">Dirreccion</th>
-                    <th class="p-2 w-auto">Lugar</th>
-                    <th class="p-2 w-auto">Fecha<br />creacion</th>
-                    <th class="p-2 w-auto text-right">Accion</th>
+                    <th class="p-2 w-auto">Email<br/>Teléfono</th>
+                    <th class="p-2 w-auto">Dirección</th>
+                    <th class="p-2 w-auto">Creado por</th>
+                    <th class="p-2 w-auto">Fecha<br />creación</th>
+                    <th class="p-2 w-auto text-right">Acción</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
@@ -48,20 +47,31 @@
                     <tr class="border-t border-gray-200">
                         <td class="p-2">
                             <span>
-                                ...
+                                {{ $visitor->code }}
                             </span>
                             <br>
                             <span>
-                                {{ $visitor->name }}
+                                {{ $visitor->name }} {{ $visitor->lastname }}
                             </span>
                         </td>
-                        <td class="p-2">{{ $visitor->email }}</td>
-                        <td class="p-2">{{ $visitor->phone }}</td>
                         <td class="p-2">
-                            {{ $visitor->address }}
+                            <span>
+                                {{ $visitor->email??'...' }}
+                            </span>
+                            <br>
+                            <span>
+                                {{ $visitor->phone??'...' }}
+                            </span>
                         </td>
                         <td class="p-2">
-                            {{ $visitor->city }}
+                            {{ $visitor->address }}
+                            <br>
+                            <span>
+                                {{ $visitor->city }} {{ $visitor->postal_code }}
+                            </span>
+                        </td>
+                        <td class="p-2">
+                            <x-badge color="" label="{{ $visitor->created_by }}"></x-badge>
                         </td>
                         <td class="p-2">{{ $visitor->created_at->format('d/m/Y') }}</td>
                         <td class="p-2 flex justify-end">

@@ -3,8 +3,7 @@
 namespace App\Livewire\Admin\Visitors;
 
 use App\Livewire\Forms\Admin\VisitorForm;
-use App\Models\Place;
-use App\Models\Visitor;
+use App\Models\Register;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -15,7 +14,7 @@ class Edit extends Component
 
     public function mount($visitor)
     {
-        $this->form->visitor = Visitor::findOrFail($visitor);
+        $this->form->visitor = Register::findOrFail($visitor);
         $this->form->name = $this->form->visitor->name;
         $this->form->date_of_birth = $this->form->visitor->date_of_birth;
         $this->form->email = $this->form->visitor->email;

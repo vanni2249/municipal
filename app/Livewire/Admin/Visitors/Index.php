@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Visitors;
 
+use App\Models\Register;
 use App\Models\Visitor;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.visitors.index',[
-            'visitors' => Visitor::paginate(10),
+            'visitors' => Register::where('type_id', 7)->paginate(10),
         ]);
     }
 }

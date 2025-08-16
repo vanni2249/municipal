@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Merchants;
 
+use App\Models\Register;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,7 +16,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.merchants.index',[
-            'merchants' => \App\Models\Merchant::paginate(10),
+            'merchants' => Register::whereIn('type_id', [2,3])->paginate(10),
         ]);
     }
 }

@@ -16,12 +16,14 @@ return new class extends Migration
             $table->foreignId('type_id')->nullable()->onDelete('set null');
             $table->string('code')->nullable();
             $table->string('name')->nullable();
+            $table->string('lastname')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
+            $table->foreignId('place_id')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
-            $table->date('date_of_birth')->nullable();
             $table->boolean('is_veteran')->default(false);
             $table->boolean('is_age_advanced')->default(false);
             $table->boolean('is_bedridden')->default(false);
@@ -30,7 +32,9 @@ return new class extends Migration
             $table->string('emergency_contact')->nullable();
             $table->string('emergency_contact_phone')->nullable();
             $table->boolean('is_disabled')->default(false);
+            $table->enum('created_by', ['admin', 'accountant', 'user'])->default('admin');
             $table->foreignId('user_id')->nullable()->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }

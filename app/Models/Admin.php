@@ -27,6 +27,8 @@ class Admin extends Authenticatable
         'admin_id',
         'last_login_at',
         'blocked_at',
+        'blocked_by',
+        'blocked_reason',
     ];
 
     /**

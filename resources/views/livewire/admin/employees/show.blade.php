@@ -1,21 +1,31 @@
 <div>
     <x-card class="rounded-xl">
         <header class="flex justify-between items-center">
-            <h1 class="text-lg font-bold text-gray-800">Detalles del empleado</h1>
+            <h1 class="text-lg font-bold text-gray-800">{{ $employee->name }} {{ $employee->lastname }}</h1>
             <div class="flex items-center space-x-2">
-                <x-icon-link href="{{ route('admin.employees.edit', ['employee' => $employee]) }}" />
                 <x-icon-button @click="$dispatch('open-modal', 'more-info')" icon="eye" />
+                <x-icon-link href="{{ route('admin.employees.edit', ['employee' => $employee]) }}" />
             </div>
         </header>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-            @foreach ($items->take(4) as $item)
-                <x-detail-item :label="$item['label']" :value="$item['value']" />
-            @endforeach
-        </div>
+        <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
+            <li>{{ $employee->username }}</li>
+            <li>|</li>
+            <li class="">{{ $employee->email }}</li>
+            <li>|</li>
+            <li>
+                @if ($employee->blocked_at)
+                    <x-badge color="red" label="" value="Bloqueado" ></x-badge>
+                @else
+                    <x-badge color="green" label="" value="No bloqueado" ></x-badge>
+                @endif
+            </li>
+            <li>|</li>
+            <li>Ultima conexión: {{ $employee->last_login_at??'Nunca' }}</li>
+        </ul>
     </x-card>
 
     <!-- More info modal -->
-    <x-modal name="more-info" title="Mas Informacion" size="xl">
+    <x-modal name="more-info" title="Mas Información" size="xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($items as $item)
                 <x-detail-item-modal :label="$item['label']" :value="$item['value']" />

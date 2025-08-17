@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Auth\Users;
 
+use App\Models\Place;
 use App\Models\Type;
 use App\Models\User;
-use App\Models\UserCategory;
+use App\Traits\RegisterCode;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,16 @@ use Livewire\Attributes\Layout;
 
 class Register extends Component
 {
+    use RegisterCode;
+
     public $types;
     public $role;
     public $name;
+    public $lastname;
+    public $place_id;
+    public $disability_type;
+    public $emergency_contact;
+    public $emergency_contact_phone;
     public $email;
     public $password;
     public $password_confirmation;
@@ -49,7 +57,7 @@ class Register extends Component
 
     public function updatedRole($value)
     {
-        $this->reset(['company_name', 'number', 'address', 'city', 'postal_code', 'date_of_birth']);
+        $this->reset(['company_name', 'number', 'address', 'city', 'postal_code', 'date_of_birth', 'place_id', 'disability_type', 'emergency_contact', 'emergency_contact_phone']);
         $this->approved_at = in_array($value, ['citizen', 'merchant', 'citizen-merchant', 'visitor']) ? now() : null;
     }
 
@@ -68,7 +76,13 @@ class Register extends Component
                 'max:255'
             ],
             'number' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['merchant', 'accountant', 'contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['accountant', 'contractor', 'supplier'])),
+                'string',
+                'nullable',
+                'max:255'
+            ],
+            'place_id' => [
+                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'citizen-merchant'])),
                 'string',
                 'nullable',
                 'max:255'
@@ -101,18 +115,35 @@ class Register extends Component
         ]);
 
         $this->user = User::create([
-            'type_id' => Type::where('key', $this->role)->first()->id ?? null,
-            'name' => $this->name,
+            'name' => $this->name . ' ' . $this->lastname,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'approved_at' => $this->approved_at,
+        ]);
+
+        $this->user->register()->create([
+            'type_id' => Type::where('key', $this->role)->first()->id ?? null,
+            'code' => $this->createRegisterCode(),
+            'name' => $this->name,
+            'lastname' => $this->lastname,
+            'date_of_birth' => $this->date_of_birth,
+            'email' => $this->email,
             'phone' => $this->phone,
             'company_name' => $this->company_name,
             'number' => $this->number,
+            'place_id' => $this->place_id,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
-            'date_of_birth' => $this->date_of_birth,
-            'approved_at' => $this->approved_at,
+            'is_veteran' => $this->is_veteran,
+            'is_age_advanced' => $this->is_age_advanced,
+            'is_bedridden' => $this->is_bedridden,
+            'is_disability' => $this->is_disabled,
+            'disability_type' => $this->disability_type,
+            'emergency_contact' => $this->emergency_contact,
+            'emergency_contact_phone' => $this->emergency_contact_phone,
+            'created_by' => 'user',
+            'user_id' => $this->user->id,
         ]);
 
         if ($this->approved_at)
@@ -182,6 +213,8 @@ class Register extends Component
     #[Layout('components.layouts.auth.index')]
     public function render()
     {
-        return view('livewire.auth.users.register');
+        return view('livewire.auth.users.register', [
+            'places' => Place::all(),
+        ]);
     }
 }

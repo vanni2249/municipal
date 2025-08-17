@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('disability_type')->nullable();
             $table->string('emergency_contact')->nullable();
             $table->string('emergency_contact_phone')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('number')->nullable();
             $table->boolean('is_disabled')->default(false);
             $table->enum('created_by', ['admin', 'accountant', 'user'])->default('admin');
             $table->foreignId('user_id')->nullable()->onDelete('set null');

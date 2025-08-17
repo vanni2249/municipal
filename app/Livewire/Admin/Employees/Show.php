@@ -26,13 +26,13 @@ class Show extends Component
         return collect([
             ['label' => 'Nombre', 'value' => $this->employee->name],
             ['label' => 'Apellidos', 'value' => $this->employee->lastname],
-            ['label' => 'Correo Electronico', 'value' => $this->employee->email],
+            ['label' => 'Correo electrónico', 'value' => $this->employee->email],
             ['label' => 'Usuario', 'value' => $this->employee->username],
             ['label' => 'ID de Empleado', 'value' => $this->employee->id],
-            ['label' => 'Telefono', 'value' => $this->employee->phone],
+            ['label' => 'Teléfono', 'value' => $this->employee->phone],
             ['label' => 'Fecha de registro', 'value' => $this->employee->getCreatedAt()],
-            ['label' => 'Fecha de actualizacion', 'value' => $this->employee->getUpdatedAt()],
-            ['label' => 'Ultima conexion', 'value' => $this->employee->getLastLogin()],
+            ['label' => 'Fecha de actualización', 'value' => $this->employee->getUpdatedAt()],
+            ['label' => 'Ultima conexión', 'value' => $this->employee->getLastLogin()],
             ['label' => 'Bloqueado', 'value' => $this->employee->getBlocked()],
             ['label' => 'Fecha de bloqueo', 'value' => $this->employee->getBlockedAt()],
         ]);

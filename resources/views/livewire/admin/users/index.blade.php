@@ -29,38 +29,51 @@
                         <tr>
                             <th class="p-2 w-auto">Nombre</th>
                             <th class="p-2 w-auto">Tipo</th>
-                            <th class="p-2 w-auto">Email</th>
-                            <th class="p-2 w-auto">Fecha<br />creacion</th>
-                            <th class="p-2 w-auto">Aprobado</th>
-                            <th class="p-2 w-auto">Ultima<br />conexion</th>
+                            <th class="p-2 w-auto">Email<br/>Teléfono</th>
+                            <th class="p-2 w-auto">Fecha<br />creación</th>
+                            <th class="p-2 w-auto">Ultima<br />conexión</th>
+                            <th class="p-2 w-auto">Status</th>
                             <th class="p-2 w-auto">Bloqueado</th>
-                            <th class="p-2 w-auto text-right">Accion</th>
+                            <th class="p-2 w-auto text-right">Acción</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
                         @forelse ($users as $user)
                             <tr class="border-t border-gray-200">
+                                <!-- Name -->
                                 <td class="px-2 py-1">
-                                    <small>
-                                        {{ $user->code ?? '...' }}
-                                    </small>
+                                    <span>
+                                        {{ $user->register->code ?? '...' }}
+                                    </span>
                                     <br>
                                     <span>
-                                        {{ $user->name }}
+                                        {{ $user->name }} 
                                     </span>
                                 </td>
-                                <td class="px-2 py-1 capitalize">{{ $user->type->es_name }}</td>
-                                <td class="px-2 py-1">{{ $user->email }}</td>
+                                <!-- Type -->
+                                <td class="px-2 py-1 capitalize">{{ $user->register->type->es_name }}</td>
+                                <!-- Email & phone -->
+                                <td class="px-2 py-1">
+                                    <span>
+                                        {{ $user->email }}
+                                    </span>
+                                    <br>
+                                    <span>
+                                        {{ $user->register->phone ?? '...' }}
+                                    </span>
+                                </td>
+                                <!-- Create_at -->
                                 <td class="px-2 py-1">{{ $user->created_at->format('d/m/Y') }}</td>
+                                <!-- Last Connection -->
+                                <td class="px-2 py-1">
+                                    {{ $user->getLastLogin() }}
+                                </td>
                                 <td class="px-2 py-1">
                                     @if ($user->approved_at)
                                         <x-badge color="green">Aprobado</x-badge>
                                     @else
                                         <x-badge color="red">No aprobado</x-badge>
                                     @endif
-                                </td>
-                                <td class="px-2 py-1">
-                                    {{ $user->getLastLogin() }}
                                 </td>
                                 <td class="px-2 py-1">
                                     @if ($user->blocked_at)

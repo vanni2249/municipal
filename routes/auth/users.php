@@ -13,13 +13,6 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/login', UserLogin::class)->middleware(GuestUser::class)->name('login');
 
     Route::get('/register', UserRegister::class)->middleware(GuestUser::class)->name('register');
-    // Route::get('/login/{role}', function ($role) {
-    //     return view('auth.users.login', compact('role'));
-    // })->middleware(GuestUser::class)->name('login');
-
-    // Route::get('/register/{role}', function ($role) {
-    //     return view('auth.users.register', compact('role'));
-    // })->middleware(GuestUser::class)->name('register');
 
     Route::get('/unapproved/{role}', function ($role) {
         return view('auth.users.unapproved', compact('role'));

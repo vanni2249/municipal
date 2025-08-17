@@ -15,6 +15,10 @@ class EmployeeForm extends Form
     public $email;
     public $phone;
     public $username;
+    public $blocked;
+    public $blocked_at;
+    public $blocked_by;
+    public $blocked_reason;
 
     public function rules()
     {
@@ -29,6 +33,8 @@ class EmployeeForm extends Form
             'date_of_birth' => 'required|date',
             'email' => 'required|email|max:255|unique:admins,email' . ($this->employee ? ',' . $this->employee->id : ''),
             'phone' => 'required|string|max:20',
+            'blocked' => 'boolean',
+            'blocked_reason' => 'required_if:blocked,true|nullable|string|max:255',
         ];
     }
 
@@ -57,6 +63,9 @@ class EmployeeForm extends Form
                 'date_of_birth' => $this->date_of_birth,
                 'email' => $this->email,
                 'phone' => $this->phone,
+                'blocked_at' => $this->blocked ? now() : null,
+                'blocked_by' => $this->blocked ? Auth::guard('admin')->user()->id : null,
+                'blocked_reason' => $this->blocked ? $this->blocked_reason : null,
             ]);
         }
 

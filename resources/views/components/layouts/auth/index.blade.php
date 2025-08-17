@@ -19,7 +19,7 @@
     <header class="mb-6 flex justify-center">
         <a href="/" class="text-2xl font-bold">Myapp's</a>
     </header>
-    <div class="md:flex md:justify-center">
+    <div class="">
         {{ $slot }}
     </div>
 </body>

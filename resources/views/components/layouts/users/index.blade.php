@@ -42,7 +42,7 @@
             </header>
             <ul class="p-4 text-xs font-bold uppercase space-y-1">
                  @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
-                    return in_array(Auth::user()->type->key, $item['users'] ?? []);
+                    return in_array(Auth::user()->register->type->key, $item['users'] ?? []);
                     })->take(8) as $item)
                     <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
                         {{ $item['name'] }}
@@ -74,7 +74,7 @@
                                 </x-slot>
                                 <x-slot name="content">
                                     @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
-                                        return in_array(Auth::user()->type->key, $item['users'] ?? []);
+                                        return in_array(Auth::user()->register->type->key, $item['users'] ?? []);
                                     })->take(8) as $item)
                                         <x-dropdown-link href="{{ route($item['route']) }}" @class(['bg-gray-200' => request()->segment(2) == $item['path']])>
                                             {{ $item['name'] }}

@@ -7,20 +7,19 @@
                 <x-icon-link href="{{ route('admin.employees.edit', ['employee' => $employee]) }}" />
             </div>
         </header>
-        <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
+        <ul class="flex flex-wrap text-sm items-center space-x-2 text-gray-700 mt-2 md:mt-0">
             <li>{{ $employee->username }}</li>
             <li>|</li>
-            <li class="">{{ $employee->email }}</li>
-            <li>|</li>
+            <li>Ultima conexión: {{ $employee->last_login_at ?? 'Nunca' }}</li>
+        </ul>
+        <ul class="flex space-x-2 text-sm mt-2">
             <li>
                 @if ($employee->blocked_at)
-                    <x-badge color="red" label="" value="Bloqueado" ></x-badge>
+                    <x-badge color="red" label="" value="Bloqueado"></x-badge>
                 @else
-                    <x-badge color="green" label="" value="No bloqueado" ></x-badge>
+                    <x-badge color="green" label="" value="No bloqueado"></x-badge>
                 @endif
             </li>
-            <li>|</li>
-            <li>Ultima conexión: {{ $employee->last_login_at??'Nunca' }}</li>
         </ul>
     </x-card>
 

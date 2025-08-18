@@ -51,7 +51,7 @@
                                     </span>
                                 </td>
                                 <!-- Type -->
-                                <td class="px-2 py-1 capitalize">{{ $user->register->type->es_name }}</td>
+                                <td class="px-2 py-1 capitalize">{{ $user->register->type->es_name??'...' }}</td>
                                 <!-- Email & phone -->
                                 <td class="px-2 py-1">
                                     <span>

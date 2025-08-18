@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Auth\Users\Login as UserLogin;
 use App\Livewire\Auth\Users\Register as UserRegister;
+use App\Livewire\Auth\Users\Attach as UserAttach;
 
 
 Route::prefix('users')->name('users.')->group(function () {
@@ -13,6 +14,8 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/login', UserLogin::class)->middleware(GuestUser::class)->name('login');
 
     Route::get('/register', UserRegister::class)->middleware(GuestUser::class)->name('register');
+
+    Route::get('/attach', UserAttach::class)->middleware(GuestUser::class)->name('attach');
 
     Route::get('/unapproved/{role}', function ($role) {
         return view('auth.users.unapproved', compact('role'));

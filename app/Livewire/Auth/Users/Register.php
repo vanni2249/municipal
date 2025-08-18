@@ -9,6 +9,7 @@ use App\Traits\RegisterCode;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
@@ -64,7 +65,9 @@ class Register extends Component
         $this->validate([
             'role' => ['required', 'string', Rule::in(['citizen', 'merchant', 'citizen-merchant', 'accountant', 'contractor', 'supplier', 'visitor'])],
             'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:registers,email',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|numeric',
             'company_name' => [
@@ -104,7 +107,7 @@ class Register extends Component
                 'max:255'
             ],
             'date_of_birth' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
+                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'citizen-merchant', 'merchant', 'accountant', 'contractor', 'supplier'])),
                 'date',
                 'nullable',
 
@@ -112,44 +115,50 @@ class Register extends Component
             'terms' => 'accepted',
         ]);
 
-        $this->user = User::create([
-            'name' => $this->name . ' ' . $this->lastname,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-            'approved_at' => $this->approved_at,
-        ]);
+        DB::transaction(function () {
 
-        $this->user->register()->create([
-            'type_id' => Type::where('key', $this->role)->first()->id ?? null,
-            'code' => $this->createRegisterCode(),
-            'name' => $this->name,
-            'lastname' => $this->lastname,
-            'date_of_birth' => $this->date_of_birth,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'company_name' => $this->company_name,
-            'number' => $this->number,
-            'place_id' => $this->place_id,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
-            'is_veteran' => $this->is_veteran,
-            'is_age_advanced' => $this->is_age_advanced,
-            'is_bedridden' => $this->is_bedridden,
-            'is_disability' => $this->is_disabled,
-            'disability_type' => $this->disability_type,
-            'emergency_contact' => $this->emergency_contact,
-            'emergency_contact_phone' => $this->emergency_contact_phone,
-            'created_by' => 'user',
-            'user_id' => $this->user->id,
-        ]);
+            $this->user = User::create([
+                'name' => $this->name . ' ' . $this->lastname,
+                'email' => $this->email,
+                'password' => Hash::make($this->password),
+                'approved_at' => $this->approved_at,
+            ]);
 
-        if ($this->approved_at)
-        {
-            $this->login();
-        } else {
-            redirect()->route('users.verify', ['role' => $this->role]);
-        }
+            $this->user->register()->create([
+                'type_id' => Type::where('key', $this->role)->first()->id ?? null,
+                'code' => $this->createRegisterCode(),
+                'name' => $this->name,
+                'lastname' => $this->lastname,
+                'date_of_birth' => $this->date_of_birth,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'company_name' => $this->company_name,
+                'number' => $this->number,
+                'place_id' => $this->place_id,
+                'address' => $this->address,
+                'city' => $this->city,
+                'postal_code' => $this->postal_code,
+                'is_veteran' => $this->is_veteran,
+                'is_age_advanced' => $this->is_age_advanced,
+                'is_bedridden' => $this->is_bedridden,
+                'is_disability' => $this->is_disabled,
+                'disability_type' => $this->disability_type,
+                'emergency_contact' => $this->emergency_contact,
+                'emergency_contact_phone' => $this->emergency_contact_phone,
+                'created_by' => 'user',
+                'user_id' => $this->user->id,
+                'type_id' => Type::where('key', $this->role)->first()->id ?? null,
+                'code' => $this->createRegisterCode(),
+                'created_by' => 'user',
+                'user_id' => $this->user->id,
+            ]);
+
+            if ($this->approved_at) {
+                $this->login();
+            } else {
+                redirect()->route('users.verify', ['role' => $this->role]);
+            }
+        });
     }
 
     public function login()

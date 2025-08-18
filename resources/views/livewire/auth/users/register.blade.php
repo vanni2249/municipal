@@ -19,9 +19,6 @@
                                 <option value="{{ $type->key }}">{{ $type->es_name }}</option>
                             @endforeach
                         </x-select>
-                        @error('role')
-                            <x-error message="{{ $message }}" />
-                        @enderror
                     </div>
                     <!-- Name -->
                     <div class="col-span-4 md:col-span-2">
@@ -51,6 +48,9 @@
                         <x-label for="email" class="mt-4" value="Correo electrónico" />
                         <x-input wire:model.defer="email" name="email" id="email" @class(['w-full', 'border-red-500' => $errors->has('email')])
                             type="email" placeholder="Ingrese su correo electrónico" />
+                            @error('email')
+                                <x-error message="{{ $message }}" />
+                            @enderror
                     </div>
                     <!-- Phone -->
                     <div class="col-span-4 md:col-span-1">
@@ -87,9 +87,6 @@
                                     <option value="{{ $place->id }}">{{ $place->name }}</option>
                                 @endforeach
                             </x-select>
-                            @error('place_id')
-                                <x-error message="{{ $message }}" />
-                            @enderror
                         </div>
                     @endif
                     @if (in_array($role, ['accountant', 'contractor', 'supplier']))

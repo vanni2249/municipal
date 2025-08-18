@@ -4,7 +4,7 @@
         <x-card>
             <header>
                 <div class="flex flex-row justify-between items-center space-x-4">
-                    <h2 class="text-lg font-bold text-gray-900">
+                    <h2 class="text-lg font-bold text-gray-900 whitespace-nowrap">
                         {{ $merchant->name }} {{ $merchant->lastname }}
                     </h2>
                     <div class="flex items-center space-x-2">
@@ -14,6 +14,9 @@
                     </div>
                 </div>
             </header>
+            <span class="text-sm text-gray-800">
+                {{ $merchant->code }}
+            </span>
             <x-modal name="more-info" title="Detalles adicionales del comerciante">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach ($items as $item)
@@ -24,9 +27,7 @@
             <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
                 <li>{{ $merchant->type->es_name??'...' }}</li>
                 <li>|</li>
-                <li class="capitalize">{{ $merchant->created_by??'...' }}</li>
-                <li>|</li>
-                <li>{{ $merchant->phone??'...' }}</li>
+                <li class="">{{ $merchant->createdBy() }}</li>
             </ul>
         </x-card>
         {{-- <x-card>

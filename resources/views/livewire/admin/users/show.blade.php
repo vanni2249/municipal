@@ -12,19 +12,31 @@
                         <x-icon-link href="{{ route('admin.users.edit', ['user' => $user]) }}" />
                     </div>
                 </header>
-                <ul class="flex space-x-2 text-sm text-gray-800">
+                <span class="text-sm text-gray-600">
+                    {{ $user->register->code }}
+                </span>
+                <ul class="hidden md:flex space-x-2 text-sm text-gray-800">
                     <li class="line-clamp-1">
                         {{ $user->register->type->es_name }}
                     </li>
                     <li>|</li>
+                    <li>
+                        {{ $user->register->createdBy() }}
+                    </li>
+                    <li class="">|</li>
                     <li class="line-clamp-1">
+                        Ultima conexión:
+                        {{ $user->last_login_at ? \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() : 'Nunca' }}
+                    </li>
+                </ul>
+                <ul class="flex space-x-2 text-sm mt-2">
+                    <li>
                         @if ($user->approved_at)
                             <x-badge color="green" class="capitalize">Aprobado</x-badge>
                         @else
                             <x-badge color="red" class="capitalize">No aprobado</x-badge>
                         @endif
                     </li>
-                    <li>|</li>
                     <li>
                         @if ($user->blocked_at)
                             <x-badge color="red" class="capitalize">Bloqueado</x-badge>
@@ -32,14 +44,9 @@
                             <x-badge color="green" class="capitalize">No bloqueado</x-badge>
                         @endif
                     </li>
-                    <li class="hidden md:block">|</li>
-                    <li class="line-clamp-1 hidden md:block">
-                        Last conexión:
-                        {{ $user->last_login_at ? \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() : 'Nunca' }}
-                    </li>
                 </ul>
                 <x-modal name="more-detail" title="Más detalles de {{ $user->name }}">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach ($items as $item)
                             <x-detail-item-modal label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
                         @endforeach

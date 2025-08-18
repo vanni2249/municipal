@@ -20,8 +20,9 @@ class Show extends Component
     public function items()
     {
         return [
-            ['label' => 'Código', 'value' => $this->user->code??'...'],
+            ['label' => 'Código', 'value' => $this->user->register->code??'...'],
             ['label' => 'Tipo', 'value' => $this->user->register->type->es_name ?? '...'],
+            ['label' => 'Creado por', 'value' => $this->user->register->createdBy() ?? '...'],
             ['label' => 'Nombre', 'value' => $this->user->name],
             ['label' => 'Email', 'value' => $this->user->email],
             ['label' => 'Email verificado', 'value' => $this->user->email_verified_at ? 'Si' : 'No'],

@@ -13,9 +13,13 @@
                     </p>
                 </div>
                 <div class="col-span-full lg:col-span-4 grid grid-cols-2 gap-2">
-                    <div class="">
+                    <div class="col-span-2 lg:col-span-1">
                         <x-label for="name" value="Nombre" />
                         <x-input id="name" type="text" class="w-full" wire:model="name" disabled />
+                    </div>
+                    <div class="col-span-2 lg:col-span-1">
+                        <x-label for="lastname" value="Apellidos" />
+                        <x-input id="lastname" type="text" class="w-full" wire:model="lastname" disabled />
                     </div>
                     <div class="col-span-2 lg:col-span-2">
                         <x-label for="email" value="Correo electrónico" />

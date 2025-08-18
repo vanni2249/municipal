@@ -50,9 +50,7 @@ class Register extends Component
     public function mount()
     {
         $this->types = Type::all();
-        // $this->role = $role;
         $this->terms = true; // Default to true
-        // $this->approved_at = in_array($this->role, ['citizen', 'merchant', 'citizen-merchant', 'visitor']) ? now() : null;
     }
 
     public function updatedRole($value)

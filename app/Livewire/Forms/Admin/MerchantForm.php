@@ -10,6 +10,7 @@ use Livewire\Form;
 
 class MerchantForm extends Form
 {
+    use \App\Traits\RegisterCode;
     public $merchant;
     public $type_id;
     public $name;
@@ -42,7 +43,7 @@ class MerchantForm extends Form
     {
         $merchant = Register::create([
             'type_id' => $this->type_id,
-            'code' => 'MER-' . strtoupper(uniqid()),
+            'code' => $this->createRegisterCode(),
             'name' => $this->name,
             'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,

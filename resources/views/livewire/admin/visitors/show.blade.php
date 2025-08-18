@@ -19,12 +19,11 @@
                 </div>
             </x-modal>
         </header>
+        <span>{{ $visitor->code }}</span>
         <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
             <li>{{ $visitor->type->es_name }}</li>
             <li>|</li>
-            <li>{{ $visitor->city }}</li>
-            <li>|</li>
-            <li>{{ $visitor->phone }}</li>
+            <li>{{ $visitor->createdBy() }}</li>
         </ul>
     </x-card>
 </div>

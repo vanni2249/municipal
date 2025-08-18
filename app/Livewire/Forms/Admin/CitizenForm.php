@@ -9,6 +9,8 @@ use Livewire\Form;
 
 class CitizenForm extends Form
 {
+    use \App\Traits\RegisterCode;
+
     public $citizen;
     public $name;
     public $lastname;
@@ -59,7 +61,7 @@ class CitizenForm extends Form
     {
         $citizen = Register::create([
             'type_id' => 1, // Assuming type_id is fixed for citizens
-            'code' => 'CIT-' . time(), // Example code generation
+            'code' => $this->createRegisterCode(),
             'name' => $this->name,
             'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,

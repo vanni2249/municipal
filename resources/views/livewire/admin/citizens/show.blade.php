@@ -21,11 +21,7 @@
         <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
             <li>{{ $citizen->type->es_name }}</li>
             <li>|</li>
-            <li class="capitalize">{{ $citizen->created_by }}</li>
-            <li>|</li>
-            <li>{{ $citizen->phone }}</li>
-            <li>|</li>
-            <li>{{ $citizen->place->name }}</li>
+            <li class="">{{ $citizen->createdBy() }}</li>
         </ul>
     </x-card>
 </div>

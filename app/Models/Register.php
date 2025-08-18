@@ -40,13 +40,11 @@ class Register extends Model
     {
         return $this->belongsTo(Place::class);
     }
-    
 
     public function addresses()
     {
         return $this->morphMany(Address::class, 'addressable');
     }
-
 
     public function businesses()
     {
@@ -61,5 +59,22 @@ class Register extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function createdBy()
+    {
+        switch ($this->created_by) {
+            case 'admin':
+                return 'Creado por el administrador';
+                break;
+
+            case 'accountant':
+                return 'Creado por el contador';
+                break;
+
+            default:
+                return 'Creado por el usuario';
+                break;
+        }
     }
 }

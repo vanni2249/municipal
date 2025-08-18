@@ -9,6 +9,7 @@ use Livewire\Form;
 
 class VisitorForm extends Form
 {
+    use \App\Traits\RegisterCode;
     public $visitor;
     public $name;
     public $lastname;
@@ -37,7 +38,7 @@ class VisitorForm extends Form
     {
         $visitor = Register::create([
             'type_id' => Type::where('key', 'visitor')->first()->id,
-            'code' => 'VIS-' . time(), // Example code generation
+            'code' => $this->createRegisterCode(),
             'name' => $this->name,
             'lastname' => $this->lastname,
             'date_of_birth' => $this->date_of_birth,

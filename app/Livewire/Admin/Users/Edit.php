@@ -11,6 +11,7 @@ class Edit extends Component
 {
     public $user;
     public $name;
+    public $lastname;
     public $email;
     public $blocked;
     public $blocked_at;
@@ -25,7 +26,8 @@ class Edit extends Component
     public function mount($user)
     {
         $this->user = User::findOrFail($user);
-        $this->name = $this->user->name;
+        $this->name = $this->user->register->name;
+        $this->lastname = $this->user->register->lastname;
         $this->email = $this->user->email;
         if ($this->user->blocked_at)
         {

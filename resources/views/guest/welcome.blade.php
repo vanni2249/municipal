@@ -34,6 +34,23 @@
             </div>
         </div>
     </section>
+    <section class="max-w-7xl px-4 mx-auto pt-4">
+        <x-card>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="grow">
+                    <h2 class="text-gray-800 text-lg font-bold">
+                        Tienes numero de registro?
+                    </h2>
+                    <p class="text-gray-600 text-sm mt-1">
+                        Si ya tienes un número de registro, puedes adjuntar el numero de registro con una cuenta de usuario nueva.
+                    </p>
+                </div>
+                <div class="w-full md:w-auto flex ">
+                    <x-link-button href="{{ route('users.attach') }}" class="w-full whitespace-nowrap" label="Adjuntar numero de registro" />
+                </div>
+            </div>
+        </x-card>
+    </section>
     <section class="grid grid-cols-12 gap-2 lg:gap-4 pt-4  max-w-7xl px-4 mx-auto">
         <header id="services" class="col-span-full pt-4 px-2">
             <h2 class="font-bold text-xl text-gray-800">

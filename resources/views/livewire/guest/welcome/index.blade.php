@@ -11,7 +11,7 @@
         class="bg-white col-span-full md:col-span-6 lg:col-span-4 px-4 py-6 md:p-6 lg:p-8 rounded-xl flex flex-col space-y-6">
         <header class="flex items-center justify-between">
             <h2 class="text-lg font-bold text-gray-700 leading-3">
-                Servicos al {{ $type->es_name }}
+                Servicios al {{ $type->es_name }}
             </h2>
         </header>
         <ul class="grow text-sm space-y-4 py-2 px-1">

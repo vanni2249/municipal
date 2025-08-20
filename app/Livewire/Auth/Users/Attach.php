@@ -43,7 +43,8 @@ class Attach extends Component
 
         // Here you would typically check the code and email against your database
         $register = \App\Models\Register::where('code', $this->code)
-            ->where('email', $this->email)->whereNull('register_id')
+            ->where('email', $this->email)
+            ->whereNull('user_id')
             ->first();
 
     //If register is not found, return error in code field

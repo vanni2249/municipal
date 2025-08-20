@@ -13,10 +13,12 @@ use Livewire\Component;
 class Create extends Component
 {
     public BusinessForm $form;
+    public $type;
 
     public function mount()
     {
         $this->form->user = Auth::user();
+        $this->form->register = $this->form->user->register;
     }
 
     public function save()

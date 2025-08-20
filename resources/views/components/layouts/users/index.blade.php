@@ -41,6 +41,8 @@
                 </div>
             </header>
             <ul class="p-4 text-xs font-bold uppercase space-y-1">
+                <div class="text-white">
+                </div>
                  @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
                     return in_array(Auth::user()->register->type->key, $item['users'] ?? []);
                     })->take(8) as $item)

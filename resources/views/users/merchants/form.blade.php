@@ -1,15 +1,15 @@
 <form wire:submit="save" class="">
     <div class="grid grid-cols-6 gap-4">
         <div class="col-span-full md:col-span-2">
-            <h2 class="font-bold text-gray-600">Informacion personal</h2>
+            <h2 class="font-bold text-gray-600">Información personal</h2>
             <p class="text-sm text-gray-500 mt-2">
-                Completa los campos a continuacion para crear un nuevo comerciante. Asegurate de que la informacion sea
+                Completa los campos a continuación para crear un nuevo comerciante. Asegúrate de que la información sea
                 correcta antes de enviar el formulario.
             </p>
         </div>
         <div class="col-span-full md:col-span-4 grid grid-cols-6 gap-4">
             <!-- Name -->
-            <div class="col-span-full">
+            <div class="col-span-full md:col-span-3">
                 <x-label for="Name" value="Nombre" />
                 <x-input wire:model="form.name" name="name" id="name" type="text" @class([
                     'mt-1 block w-full',
@@ -17,6 +17,17 @@
                 ]) />
                 @error('form.name')
                     <x-error message="{{ $message }}"/>
+                @enderror
+            </div>
+            <!-- Lastname -->
+            <div class="col-span-full md:col-span-3">
+                <x-label for="lastname" value="Apellido" />
+                <x-input wire:model="form.lastname" name="lastname" id="lastname" type="text" @class([
+                    'mt-1 block w-full',
+                    'border-red-400' => $errors->has('form.lastname'),
+                ]) />
+                @error('form.lastname')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
                 @enderror
             </div>
             <!-- Email -->
@@ -32,7 +43,7 @@
             </div>
             <!-- Phone -->
             <div class="col-span-full md:col-span-2 lg:col-span-2">
-                <x-label for="phone" value="Telefono" />
+                <x-label for="phone" value="Teléfono" />
                 <x-input wire:model="form.phone" name="phone" id="phone" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-400' => $errors->has('form.phone'),
@@ -55,16 +66,16 @@
         </div>
         <div class="col-span-full py-4"></div>
         <div class="col-span-full md:col-span-2">
-            <h2 class="font-bold text-gray-600">Direccion postal</h2>
+            <h2 class="font-bold text-gray-600">Dirección postal</h2>
             <p class="text-sm text-gray-500 mt-2">
-                Proporciona la direccion postal del comerciante. Asegurate de que la informacion sea precisa para evitar
+                Proporciona la dirección postal del comerciante. Asegúrate de que la información sea precisa para evitar
                 problemas para contactarlo.
             </p>
         </div>
         <div class="col-span-full md:col-span-4 grid grid-cols-6 gap-4">
-            <!-- Dirreccion -->
+            <!-- Dirección -->
             <div class="col-start-1 col-span-full">
-                <x-label for="address" value="Direccion" />
+                <x-label for="address" value="Dirección" />
                 <x-input wire:model="form.address" name="address" id="address" type="text" @class([
                     'mt-1 block w-full',
                     'border-red-300' => $errors->has('form.address'),
@@ -81,12 +92,12 @@
             </div>
             <!-- Postal code -->
             <div class="col-span-full md:col-span-2">
-                <x-label for="postal_code" value="Codigo postal" />
+                <x-label for="postal_code" value="Código postal" />
                 <x-input wire:model="form.postal_code" name="postal_code" id="postal_code" type="number" @class([
                     'mt-1 block w-full',
                     'border-red-300' => $errors->has('form.postal_code'),
                 ])
-                    placeholder="Codigo postal" />
+                    placeholder="Código postal" />
             </div>
             <!-- Button -->
             <div class="col-span-full">

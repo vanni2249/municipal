@@ -29,6 +29,9 @@ class Register extends Model
         'created_by',
         'user_id',
         'admin_id',
+        'register_id',
+        'company_name',
+        'number',
     ];
 
     public function type()
@@ -51,6 +54,11 @@ class Register extends Model
         return $this->hasMany(Business::class);
     }
 
+    public function businessesCount()
+    {
+        return $this->businesses()->count() . ' negocio' . ($this->businesses()->count() !== 1 ? 's' : '');
+    }
+
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
@@ -59,6 +67,16 @@ class Register extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function register()
+    {
+        return $this->belongsTo(Register::class, 'register_id');
+    }
+
+    public function registers()
+    {
+        return $this->hasMany(Register::class, 'register_id');
     }
 
     public function createdBy()

@@ -19,12 +19,12 @@
             <x-card class="col-span-full lg:col-span-9   p-4 rounded-xl">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                     <div>
-                        <h2 class="text-lg text-gray-800 font-bold">Solicitar interaccion</h2>
+                        <h2 class="text-lg text-gray-800 font-bold">Solicitar interacción</h2>
                         <p class="text-sm text-gray-700 line-clamp-2 pt-4">
-                            Puede solicitar interraccion para resolver dudas o cualquier situacion relacionado a
+                            Puede solicitar interacción para resolver dudas o cualquier situación relacionado a
                             cualquier servicio.
-                            Recibira una llamada devuelta si solicita una llamada o un mensaje atraves de esta
-                            palataforma.
+                            Recibirá una llamada devuelta si solicita una llamada o un mensaje a través de esta
+                            plataforma.
                         </p>
                     </div>
                     <div>
@@ -111,17 +111,17 @@
                 </header>
                 @php
                 $activities = collect([
-                ['date' => '2023-10-01', 'model' => 'Comerciante', 'description' => 'Anadio el comerciante con el nombre
+                ['date' => '2023-10-01', 'model' => 'Comerciante', 'description' => 'Añadió el comerciante con el nombre
                 Juan del Pueblo'],
-                ['date' => '2023-10-02', 'model' => 'Comercio', 'description' => 'Creacion de Comercio con el nombre de
+                ['date' => '2023-10-02', 'model' => 'Comercio', 'description' => 'Creación de Comercio con el nombre de
                 Comercio 1'],
-                ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
+                ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interacción con el
                 comerciante Juan del Pueblo'],
                 ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el comerciante
                 Juan del Pueblo'],
                 ['date' => '2023-10-05', 'model' => 'Patente', 'description' => 'Patente generada para el comerciante
                 Juan del Pueblo'],
-                ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interaccion con el
+                ['date' => '2023-10-03', 'model' => 'Solicitud', 'description' => 'Solicitud de interacción con el
                 comerciante Juan del Pueblo'],
                 ['date' => '2023-10-04', 'model' => 'Factura', 'description' => 'Factura generada para el comerciante
                 Juan del Pueblo'],
@@ -134,8 +134,8 @@
                         <tr>
                             <th class="p-4 w-64">Fecha</th>
                             <th class="p-4 w-64">Modelo</th>
-                            <th class="p-4">Descripcion</th>
-                            <th class="p-4 w-24 text-right">Accion</th>
+                            <th class="p-4">Descripción</th>
+                            <th class="p-4 w-24 text-right">Acción</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">

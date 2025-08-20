@@ -11,7 +11,7 @@
             <div>
                 <x-label for="code" class="mt-4" value="Código de registro" />
                 <x-input wire:model.defer="code" id="code" class="w-full" type="text"
-                    placeholder="Ingrese su código de registro" />
+                    placeholder="Ingrese su código de registro" disabled="{{ $show }}" />
                 @error('code')
                     <x-error message="{{ $message }}" />
                 @enderror
@@ -37,7 +37,7 @@
             <div>
                 <x-label for="email" class="mt-4" value="Correo electrónico" />
                 <x-input wire:model.defer="email" id="email" class="w-full" type="email"
-                    placeholder="Ingrese su correo electrónico" />
+                    placeholder="Ingrese su correo electrónico" disabled="{{ $show }}"/>
                 @error('email')
                     <x-error message="{{ $message }}" />
                 @enderror

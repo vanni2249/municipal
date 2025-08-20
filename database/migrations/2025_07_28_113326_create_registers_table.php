@@ -37,6 +37,7 @@ return new class extends Migration
             $table->enum('created_by', ['admin', 'accountant', 'user'])->default('admin');
             $table->foreignId('user_id')->nullable()->onDelete('set null');
             $table->foreignId('admin_id')->nullable()->onDelete('set null');
+            $table->foreignId('register_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }

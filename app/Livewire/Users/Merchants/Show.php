@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Users\Merchants;
 
-use App\Models\Merchant;
+use App\Models\Register;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -16,14 +16,18 @@ class Show extends Component
     public function mount($merchant)
     {
         $this->user = Auth::user();
-        $this->merchant = Merchant::where('user_id', $this->user->id)->findOrFail($merchant);
-        $this->businesses = $this->merchant->businesses()->get();
+        $this->merchant = Register::findOrFail($merchant);
+        $this->businesses = $this->merchant->businesses()->with(['businessCategory', 'place'])->get();
     }
 
     public function items()
     {
         return collect([
+            ['label' => 'Código', 'value' => $this->merchant->code ?? '...'],
             ['label' => 'Nombre', 'value' => $this->merchant->name ?? '...'],
+            ['label' => 'Apellido', 'value' => $this->merchant->lastname ?? '...'],
+            ['label' => 'Tipo', 'value' => 'Comerciante'],
+            ['label' => 'Creado por', 'value' => $this->merchant->createdBy() ?? '...'],
             ['label' => 'Email', 'value' => $this->merchant->email ?? '...'],
             ['label' => 'Teléfono', 'value' => $this->merchant->phone ?? '...'],
             ['label' => 'Fecha de Nacimiento', 'value' => $this->merchant->date_of_birth ?? '...'],

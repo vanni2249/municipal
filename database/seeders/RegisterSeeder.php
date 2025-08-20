@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Traits\RegisterCode;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,11 +17,11 @@ class RegisterSeeder extends Seeder
     {
         $items = [
             [
-                'type_id' => 1,
+                'type_id' => 4,
                 'code' => $this->createRegisterCode(),
-                'name' => 'John',
+                'name' => 'Contador',
                 'lastname' => 'Doe',
-                'email' => 'vanni2249@gmail.com',
+                'email' => 'contador@gmail.com',
                 'phone' => '1234567890',
                 'place_id' => 1,
                 'address' => '123 Main St, Anytown, USA',
@@ -31,7 +32,23 @@ class RegisterSeeder extends Seeder
                 'is_age_advanced' => false,
                 'is_disabled' => false,
                 'created_by' => 'admin',
-                'admin_id' => 1,
+            ],
+            [
+                'type_id' => 2,
+                'code' => $this->createRegisterCode(),
+                'name' => 'Comerciante',
+                'lastname' => 'Doe',
+                'email' => 'comerciante@gmail.com',
+                'phone' => '1234567890',
+                'place_id' => 1,
+                'address' => '123 Main St, Anytown, USA',
+                'city' => 'Anytown',
+                'postal_code' => '12345',
+                'date_of_birth' => '1990-01-01',
+                'is_veteran' => true,
+                'is_age_advanced' => false,
+                'is_disabled' => false,
+                'created_by' => 'admin',
             ],
             // [
             //     'type_id' => 1,
@@ -98,5 +115,32 @@ class RegisterSeeder extends Seeder
         foreach ($items as $item) {
             \App\Models\Register::create($item);
         }
+
+        $register = \App\Models\Register::find(1);;
+        
+        $user = User::create([
+            'name' => $register->name . ' ' . $register->lastname,
+            'email' => $register->email,
+            'password' => bcrypt('password'), // Default password, change as needed
+            'approved_at' => now(),
+        ]);
+
+        $register->update([
+            'user_id' => $user->id,
+        ]);
+
+        $register = \App\Models\Register::find(2);;
+
+        $user = User::create([
+            'name' => $register->name . ' ' . $register->lastname,
+            'email' => $register->email,
+            'password' => bcrypt('password'), // Default password, change as needed
+            'approved_at' => now(),
+        ]);
+
+        $register->update([
+            'user_id' => $user->id,
+        ]);
+        
     }
 }

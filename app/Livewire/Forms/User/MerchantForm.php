@@ -2,26 +2,30 @@
 
 namespace App\Livewire\Forms\User;
 
-use App\Models\Merchant;
-use Livewire\Attributes\Validate;
+use App\Models\Register;
+use App\Traits\RegisterCode;
 use Livewire\Form;
 
 class MerchantForm extends Form
 {
+    use RegisterCode;
+
     public $merchant;
     public $name;
+    public $lastname;
     public $date_of_birth;
     public $email;
     public $phone;
     public $address;
     public $city;
     public $postal_code;
-    public $user_id;
+    public $register_id;
 
     public function rules()
     {
         return [
             'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|numeric',
@@ -33,16 +37,19 @@ class MerchantForm extends Form
 
     public function store()
     {
-        $merchant = Merchant::create([
+        $merchant = Register::create([
             'type_id' => 2, 
+            'code' => $this->createRegisterCode(),
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
-            'user_id' => $this->user_id,
+            'register_id' => $this->register_id,
+            'created_by' => 'accountant'
         ]); 
 
         $this->reset([
@@ -63,6 +70,7 @@ class MerchantForm extends Form
     {
         $this->merchant->update([
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,

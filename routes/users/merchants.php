@@ -5,6 +5,7 @@ use App\Livewire\Users\Merchants\Index as MerchantIndex;
 use App\Livewire\Users\Merchants\Create as MerchantCreate;
 use App\Livewire\Users\Merchants\Show as MerchantShow;
 use App\Livewire\Users\Merchants\Edit as MerchantEdit;
+// use App\Livewire\Users\Merchants\Businesses\Index as BusinessIndex;
 use App\Livewire\Users\Merchants\Businesses\Create as BusinessCreate;
 use App\Livewire\Users\Merchants\Businesses\Show as BusinessShow;
 use App\Livewire\Users\Merchants\Businesses\Edit as BusinessEdit;
@@ -20,6 +21,7 @@ Route::prefix('/merchants')->name('users.merchants.')->group(function () {
     Route::get('/{merchant}/edit', MerchantEdit::class)->name('edit');
 
     Route::prefix('{merchant}/businesses')->name('businesses.')->group(function () {
+        // Route::get('/', BusinessIndex::class)->name('index');
 
         Route::get('/create', BusinessCreate::class)->name('create');
 

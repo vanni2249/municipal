@@ -2,33 +2,37 @@
 
 namespace App\Livewire\Forms\User;
 
+use App\Traits\BusinessCode;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class MerchantBusinessForm extends Form
 {
+    use BusinessCode;
     public $merchant;
     public $business;
+    public $business_type_id;
     public $business_category_id;
     public $name;
-    public $merchant_number;
-    public $address;
+    public $number;
     public $place_id;
+    public $address;
+    public $city;
     public $postal_code;
     public $phone;
-    public $email;
 
     public function rules(): array
     {
         return [
+            'business_type_id' => 'required',
             'business_category_id' => 'required',
             'name' => 'required|string|max:255',
-            'merchant_number' => 'nullable|string|max:50',
-            'address' => 'required|string|max:255',
+            'number' => 'nullable|string|max:50',
             'place_id' => 'required',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:100',
             'postal_code' => 'required|string|max:20',
             'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
         ];
     }
 
@@ -36,14 +40,16 @@ class MerchantBusinessForm extends Form
     {
 
         $business = $this->merchant->businesses()->create([
+            'business_type_id' => $this->business_type_id,
             'business_category_id' => $this->business_category_id,
+            'code' => $this->createBusinessCode(),
             'name' => $this->name,
-            'merchant_number' => $this->merchant_number,
-            'address' => $this->address,
+            'number' => $this->number,
             'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
             'phone' => $this->phone,
-            'email' => $this->email,
         ]);
 
         return redirect()->route('users.merchants.businesses.show', [
@@ -56,18 +62,19 @@ class MerchantBusinessForm extends Form
     public function update()
     {
         $this->business->update([
+            'business_type_id' => $this->business_type_id,
             'business_category_id' => $this->business_category_id,
             'name' => $this->name,
-            'merchant_number' => $this->merchant_number,
-            'address' => $this->address,
+            'number' => $this->number,
             'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
             'phone' => $this->phone,
-            'email' => $this->email,
         ]);
 
         return redirect()->route('users.merchants.businesses.show', [
-            'merchant' => $this->business->merchant_id,
+            'merchant' => $this->business->register_id,
             'business' => $this->business->id,
         ]);
     }

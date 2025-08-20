@@ -4,6 +4,7 @@ namespace App\Livewire\Users\Merchants\Businesses;
 
 use App\Livewire\Forms\User\MerchantBusinessForm;
 use App\Models\BusinessCategory;
+use App\Models\BusinessType;
 use App\Models\Merchant;
 use App\Models\Place;
 use App\Models\Register;
@@ -15,15 +16,11 @@ class Create extends Component
 {
     public MerchantBusinessForm $form;
     public $user;
-    public $business_categories;
-    public $places;
 
     public function mount($merchant)
     {
         $this->user = Auth::user();
-        $this->form->merchant = Merchant::where('user_id', $this->user->id)->findOrFail($merchant);
-        $this->business_categories = BusinessCategory::all()->sortBy('name');
-        $this->places = Place::all()->sortBy('name');
+        $this->form->merchant = Register::findOrFail($merchant);
     }
 
     public function save()
@@ -36,6 +33,10 @@ class Create extends Component
     #[Layout('components.layouts.users.index')]
     public function render()
     {
-        return view('livewire.users.merchants.businesses.create');
+        return view('livewire.users.merchants.businesses.create', [
+            'business_categories' => BusinessCategory::all()->sortBy('name'),
+            'business_types' => BusinessType::all()->sortBy('name'),
+            'places' => Place::all()->sortBy('name'),
+        ]);
     }
 }

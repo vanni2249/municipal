@@ -47,10 +47,10 @@
             </div>
             <!-- Merchant number -->
             <div class="col-span-full lg:col-span-1">
-                <x-label for="merchant_number" value="Número de comerciante" />
-                <x-input wire:model.defer="form.merchant_number" id="merchant_number" name="merchant_number"
+                <x-label for="number" value="Número de comerciante" />
+                <x-input wire:model.defer="form.number" id="number" name="number"
                     type="text" class="w-full" placeholder="Número de comerciante" />
-                @error('form.merchant_number')
+                @error('form.number')
                     <x-error message="{{ $message }}" />
                 @enderror
             </div>
@@ -77,15 +77,6 @@
         </div>
         <!-- Address -->
         <div class="col-span-full md:col-span-4 grid grid-cols-2 gap-4">
-            <!-- Address -->
-            <div class="col-span-full">
-                <x-label for="address" value="Dirección" />
-                <x-input wire:model.defer="form.address" id="address" name="address" type="text" class="w-full"
-                    placeholder="Dirección del negocio" />
-                @error('form.address')
-                    <x-error message="{{ $message }}" />
-                @enderror
-            </div>
             <!-- Place -->
             <div class="col-span-full lg:col-span-1 lg:col-start-1">
                 <x-label for="place_id" value="Lugar" />
@@ -99,6 +90,24 @@
                     <x-error message="{{ $message }}" />
                 @enderror
             </div>
+            <!-- Address -->
+            <div class="col-span-full">
+                <x-label for="address" value="Dirección" />
+                <x-input wire:model.defer="form.address" id="address" name="address" type="text" class="w-full"
+                    placeholder="Dirección del negocio" />
+                @error('form.address')
+                    <x-error message="{{ $message }}" />
+                @enderror
+            </div>
+            <!-- City -->
+            <div class="col-span-full lg:col-span-1 lg:col-start-1">
+                <x-label for="city" value="Ciudad" />
+                <x-input wire:model.defer="form.city" id="city" name="city" type="text" class="w-full"
+                    placeholder="Ciudad" />
+                @error('form.city')
+                    <x-error message="{{ $message }}" />
+                @enderror
+            </div
             <!-- Postal code -->
             <div class="col-span-full lg:col-span-1 lg:col-start-2">
                 <x-label for="postal_code" value="Código postal" />

@@ -20,9 +20,10 @@ class Edit extends Component
         $this->form->business_type_id = $business->business_type_id;
         $this->form->business_category_id = $business->business_category_id;
         $this->form->name = $business->name;
-        $this->form->merchant_number = $business->merchant_number;
-        $this->form->address = $business->address;
+        $this->form->number = $business->number;
         $this->form->place_id = $business->place_id;
+        $this->form->address = $business->address;
+        $this->form->city = $business->city;
         $this->form->postal_code = $business->postal_code;
         $this->form->phone = $business->phone;
     }

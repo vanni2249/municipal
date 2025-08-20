@@ -11,77 +11,39 @@
                             <x-icon-link href="{{ route('users.merchants.create') }}" icon="plus" />
                         </div>
                     </header>
-                    <div class="col-span-full">
-                        {{-- <x-table>
-                            <x-slot name="head">
-                                <tr>
-                                    <th class="p-4">Nombre</th>
-                                    <th class="p-4">Email</th>
-                                    <th class="p-4">Teléfono</th>
-                                    <th class="p-4 w-14">Acción</th>
-                                </tr>
-                            </x-slot>
-                            <x-slot name="body">
-                                @forelse ($merchants as $merchant)
-                                    <tr class="border-t border-gray-300">
-                                        <td class="p-4">
-                                            <span>...</span>
-                                            <br>
-                                            <span>{{ $merchant->name }}</span>
-                                        </td>
-                                        <td class="p-4">
-                                            {{ $merchant->email ?? '...' }}
-                                        </td>
-                                        <td class="p-4">
-                                            {{ $merchant->phone ?? '...' }}
-                                        </td>
-                                        <td class="p-4 flex justify-end">
-                                            <x-icon-link
-                                                href="{{ route('users.merchants.show', ['merchant' => $merchant->id]) }}"
-                                                icon="eye" />
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center p-4 text-gray-500">
-                                            No hay comerciantes registrados.
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </x-slot>
-                        </x-table> --}}
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            @foreach ($merchants as $merchant)
-                                <a href="{{ route('users.merchants.show', ['merchant' => $merchant]) }}"
-                                    class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
-                                    <div class="flex flex-col space-x-2">
-                                        <div class="flex items-center justify-between">
-                                            <h2 class="text-xl font-light line-clamp-1">{{ $merchant->name }}</h2>
-                                            <x-badge color="blue" label="ID" value="{{ $merchant->id }}" />
-                                        </div>
-                                        <div class="pt-4">
-                                            <ul class="flex items-center space-x-2 text-xs text-gray-600">
-                                                <li>
-                                                    Negocios: 2
-                                                </li>
-                                                <li>
-                                                    |
-                                                </li>
-                                                <li>
-                                                    {{ $merchant->phone ?? '...' }}
-                                                </li>
-                                                <li>
-                                                    |
-                                                </li>
-                                                <li>
-                                                    {{ $merchant->city ?? '...' }}
-                                                </li>
-                                            </ul>
-                                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        @forelse ($merchants as $merchant)
+                            <a href="{{ route('users.merchants.show', ['merchant' => $merchant]) }}"
+                                class="bg-gray-100 hover:shadow-md shadow rounded-lg p-4">
+                                <div class="flex flex-col space-x-2">
+                                    <div class="flex justify-between items-center">
+                                        <span>
+                                            <x-badge value="{{ $merchant->code }}" />
+                                        </span>
+                                        <span
+                                            class="border hidden md:block border-gray-400 text-gray-800 rounded-full text-xs px-2">{{ $merchant->businessesCount() }}</span>
                                     </div>
-                                </a>
-                            @endforeach
-                        </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <h2 class="text-lg font-light line-clamp-1 text-gray-900">{{ $merchant->name }}
+                                            {{ $merchant->lastname }}</h2>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="border border-blue-400 text-blue-800 rounded-full px-2 text-xs">{{ $merchant->email ?? 'Sin correo' }}</span>
+                                        <span
+                                            class="border border-blue-400 text-blue-800 rounded-full px-2 text-xs">{{ $merchant->phone }}</span>
+                                        @if ($merchant->user)
+                                            <span
+                                                class="border border-green-400 bg-green-200 text-green-600 rounded-full px-2 text-xs">{{ $merchant->user ? 'Usuario' : '' }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </a>
+                        @empty
+                            <div class="col-span-full text-center p-4 text-gray-500">
+                                No hay comerciantes registrados.
+                            </div>
+                        @endforelse
                     </div>
                 </x-card>
             </div>

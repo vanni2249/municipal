@@ -11,15 +11,15 @@ class Business extends Model
         'business_category_id',
         'name',
         'code',
-        'merchant_number',
+        'number',
         'address',
         'postal_code',
+        'city',
         'phone',
         'email',
         'place_id',
-        'merchant_id',
+        'register_id',
         'is_show',
-        'user_id',
     ];
 
     public function businessType()
@@ -35,11 +35,6 @@ class Business extends Model
     public function register()
     {
         return $this->belongsTo(Register::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function place()

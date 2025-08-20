@@ -4,14 +4,15 @@
             <div class="col-span-full lg:col-span-full space-y-4">
                 <!-- Business Description -->
                 <x-card class="rounded-xl p-4">
-                    <header class="flex flex-row justify-between items-center mb-2">
-                        <h2 class="text-lg font-bold text-gray-900">
+
+                    <header class="flex flex-row space-x-2 justify-between items-center">
+                        <h2 class="text-lg font-bold text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis">
                             {{ $business->name ?? '...' }}
                         </h2>
                         <div class="flex flex-row items-center space-x-2">
                             <x-icon-button @click="$dispatch('open-modal', 'more-detail')" icon="eye" />
                             <x-icon-link
-                                href="{{ route('users.merchants.businesses.edit', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}" />
+                                href="{{ route('users.merchants.businesses.edit', ['merchant' => $business->register_id, 'business' => $business->id]) }}" />
                             <x-modal name="more-detail" title="Detalles del negocio">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     @foreach ($items as $item)
@@ -46,30 +47,17 @@
                         </div>
                     </header>
                     <div class="col-span-full">
-                        <div class="pt-2">
-                            <ul class="flex items-center space-x-2 text-xs text-gray-600">
-                                <li>
-                                    {{ $business->businessType->es_name }}
-                                </li>
-                                <li>
-                                    |
-                                </li>
-                                <li>
-                                    {{ $business->businessCategory->es_name ?? '...' }}
-                                </li>
-                                <li>
-                                    |
-                                </li>
-                                <li>
-                                    {{ $business->place->name ?? '...' }}
-                                </li>
-                            </ul>
-                        </div>
-                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                            @foreach ($items->take(4) as $item)
-                                <x-detail-item label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
-                            @endforeach
-                        </div> --}}
+                    </div>
+                    <div class="flex flex-row space-x-2 mt-4 md:mt-0">
+                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
+                            {{ $business->code }}
+                        </span>
+                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
+                            {{ $business->businessCategory->es_name ?? '...' }}
+                        </span>
+                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
+                            {{ $business->businessType->es_name ?? '...' }}
+                        </span>  
                     </div>
                 </x-card>
                 <!-- Documentos -->

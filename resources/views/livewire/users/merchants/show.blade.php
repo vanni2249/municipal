@@ -7,9 +7,9 @@
                     <header class="flex flex-row justify-between items-center mb-1">
                         <div>
                             <h2 class="text-lg font-bold text-gray-900">
-                                {{ $merchant->name ?? '...' }}
+                                {{ $merchant->name }} {{ $merchant->lastname }}
                             </h2>
-                            <span class="text-xs text-gray-400">Comerciante</span>
+                            <span class="text-sm text-gray-800">{{ $merchant->code }}</span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <x-icon-button icon="eye" @click="$dispatch('open-modal', 'more-detail')" />
@@ -24,15 +24,10 @@
                             </div>
                         </x-modal>
                     </header>
-                    <ul class="col-span-full flex items-center space-x-2 text-xs text-gray-500">
-                        <li>{{ $merchant->code ?? '254897' }}</li>
+                    <ul class="col-span-full flex items-center space-x-2 text-sm text-gray-800">
+                        <li>Comerciante</li>
                         <li>|</li>
-                        <li>{{ $merchant->phone }}</li>
-                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            @foreach ($items->take(4) as $item)
-                                <x-detail-item label="{{ $item['label'] }}" :value="$item['value']" />
-                            @endforeach
-                        </div> --}}
+                        <li>{{ $merchant->createdBy() }}</li>
                     </ul>
                 </x-card>
                 <!-- Business -->
@@ -91,44 +86,17 @@
                             @endforelse
                         </x-slot>
                     </x-table> --}}
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                         @forelse ($businesses as $business)
-                            <a href="{{ route('users.merchants.businesses.show', ['merchant' => $business->merchant_id, 'business' => $business->id]) }}"
-                                class="border border-gray-200 hover:bg-gray-200 rounded-lg p-4">
-                                <div class="flex flex-col space-x-2">
-                                    <div class="flex items-center justify-between">
-                                        <h2 class="text-lg text-gray-700 font-light line-clamp-1">{{ $business->name }}
-                                        </h2>
-                                        <x-badge color="blue" label="ID" value="{{ $business->code ?? '...' }}" />
-                                    </div>
-                                    <div class="pt-2">
-                                        <ul class="flex items-center space-x-2 text-xs text-gray-600">
-                                            <li>
-                                                {{ $business->businessType->es_name }}
-                                            </li>
-                                            <li>
-                                                |
-                                            </li>
-                                            <li>
-                                                {{ $business->businessCategory->es_name ?? '...' }}
-                                            </li>
-                                            <li>
-                                                |
-                                            </li>
-                                            <li>
-                                                {{ $merchant->city ?? '...' }}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <a href="{{ route('users.merchants.businesses.show', ['merchant' => $business->register_id, 'business' => $business->id]) }}"
+                                class=" bg-gray-100 hover:bg-gray-200 rounded-lg p-4">
+                                <x-card-business-user :code="$business->code" :place="$business->place->name" :name="$business->name"
+                                    :type="$business->businessType->es_name" :category="$business->businessCategory->es_name" />
                             </a>
                         @empty
-                            <div class="col-span-full">
-
-                                <p class="text-center p-4 text-gray-500">
-                                    No hay negocios registrados para este comerciante.
-                                </p>
+                            <div class="col-span-full text-center p-4 text-gray-500">
+                                No hay negocios registrados para este comerciante.
                             </div>
                         @endforelse
                     </div>

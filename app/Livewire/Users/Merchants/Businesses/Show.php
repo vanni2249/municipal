@@ -16,18 +16,22 @@ class Show extends Component
     public function mount($business)
     {
         $this->user = Auth::user();
-        $this->business = Business::with(['businessCategory'])->where('merchant_id', $this->merchant)->findOrFail($business);
+        $this->business = Business::with(['businessCategory'])->where('register_id', $this->merchant)->findOrFail($business);
     }
 
     public function items()
     {
         return collect([
+            ['label' => 'Tipo de Comercio', 'value' => $this->business->businessType->es_name ?? '...'],
             ['label' => 'Categoría', 'value' => $this->business->businessCategory->es_name ?? '...'],
+            ['label' => 'Código', 'value' => $this->business->code ?? '...'],
             ['label' => 'Nombre', 'value' => $this->business->name ?? '...'],
-            ['label' => 'Número de Comercio', 'value' => $this->business->merchant_number ?? '...'],
+            ['label' => 'Número de Comercio', 'value' => $this->business->number ?? '...'],
+            ['label' => 'Lugar', 'value' => $this->business->place->name ?? '...'],
             ['label' => 'Dirección', 'value' => $this->business->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->business->city ?? '...'],
+            ['label' => 'Código postal', 'value' => $this->business->postal_code ?? '...'],
             ['label' => 'Teléfono', 'value' => $this->business->phone ?? '...'],
-            ['label' => 'Correo Electrónico', 'value' => $this->business->email ?? '...'],
             ['label' => 'Fecha de Creación', 'value' => $this->business->created_at->format('d/m/Y H:i')],
             ['label' => 'Última Actualización', 'value' => $this->business->updated_at->format('d/m/Y H:i')],
         ]);

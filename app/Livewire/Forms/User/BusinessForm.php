@@ -2,20 +2,26 @@
 
 namespace App\Livewire\Forms\User;
 
+use App\Models\Business;
+use App\Traits\BusinessCode;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class BusinessForm extends Form
 {
+    use BusinessCode;
+
     public $business;
     public $business_type_id;
     public $business_category_id;
     public $name;
-    public $merchant_number;
-    public $address;
+    public $number;
     public $place_id;
+    public $address;
+    public $city;
     public $postal_code;
     public $phone;
+    public $register;
     public $user;
 
     public function rules()
@@ -24,9 +30,10 @@ class BusinessForm extends Form
             'business_type_id' => ['required'],
             'business_category_id' => ['required'],
             'name' => ['required', 'string', 'max:255'],
-            'merchant_number' => ['required', 'string', 'max:50'],
-            'address' => ['required', 'string', 'max:255'],
+            'number' => ['required', 'string', 'max:50'],
             'place_id' => ['required', 'exists:places,id'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:100'],
             'postal_code' => ['required', 'string', 'max:20'],
             'phone' => ['nullable', 'string', 'max:20'],
         ];
@@ -34,15 +41,18 @@ class BusinessForm extends Form
 
     public function store()
     {
-        $business = $this->user->businesses()->create([
+        $business = Business::create([
             'business_type_id' => $this->business_type_id,
             'business_category_id' => $this->business_category_id,
+            'code' => $this->createBusinessCode(),
             'name' => $this->name,
-            'merchant_number' => $this->merchant_number,
-            'address' => $this->address,
+            'number' => $this->number,
             'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
             'phone' => $this->phone,
+            'register_id' => $this->register->id,
         ]);
 
         return redirect()->route('users.businesses.show', ['business' => $business])->with('success', 'Negocio creado exitosamente.');
@@ -54,9 +64,10 @@ class BusinessForm extends Form
             'business_type_id' => $this->business_type_id,
             'business_category_id' => $this->business_category_id,
             'name' => $this->name,
-            'merchant_number' => $this->merchant_number,
-            'address' => $this->address,
+            'number' => $this->number,
             'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
             'phone' => $this->phone,
         ]);

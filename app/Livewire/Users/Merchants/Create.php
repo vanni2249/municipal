@@ -15,7 +15,7 @@ class Create extends Component
     public function mount()
     {
         $this->user = Auth::user();
-        $this->form->user_id = $this->user->id;
+        $this->form->register_id = $this->user->register->id;
     }
 
     public function save()

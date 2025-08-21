@@ -35,19 +35,19 @@
         <x-table>
             <x-slot name="head">
                 <tr>
-                    <th class="p-2 w-auto">Nombre</th>
-                    <th class="p-2 w-auto">Email<br />Teléfono</th>
-                    <th class="p-2 w-auto">Lugar</th>
-                    <th class="p-2 w-auto">Dirección</th>
-                    <th class="p-2 w-auto">Creado<br/> por</th>
-                    <th class="p-2 w-auto">Fecha<br />creación</th>
-                    <th class="p-2 w-auto text-right">Acción</th>
+                    <th class="p-4 w-auto">Nombre</th>
+                    <th class="p-4 w-auto">Email<br />Teléfono</th>
+                    <th class="p-4 w-auto">Lugar</th>
+                    <th class="p-4 w-auto">Dirección</th>
+                    <th class="p-4 w-auto">Creado<br/> por</th>
+                    <th class="p-4 w-auto">Fecha<br />creación</th>
+                    <th class="p-4 w-auto text-right">Acción</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
                 @forelse ($citizens as $citizen)
                     <tr class="border-t border-gray-200">
-                        <td class="p-2">
+                        <td class="p-4">
                             <span>
                                 {{ $citizen->code }}
                             </span>
@@ -56,17 +56,17 @@
                                 {{ $citizen->name }} {{ $citizen->lastname }}
                             </span>
                         </td>
-                        <td class="p-2">
+                        <td class="p-4">
                             <span>
                                 {{ $citizen->email }}
                             </span>
                             <br>
                             <span>{{ $citizen->phone }}</span>
                         </td>
-                        <td class="p-2">
+                        <td class="p-4">
                             {{ $citizen->place ? $citizen->place->name : '...' }}
                         </td>
-                        <td class="p-2">
+                        <td class="p-4">
                             <span>{{ $citizen->address }}</span>
                             <br>
                             <span>
@@ -74,12 +74,12 @@
                             </span>
                             
                         </td>
-                        <td class="p-2">
+                        <td class="p-4">
                             <x-badge color="" label="{{ $citizen->created_by??'...' }}" />
                             
                         </td>
-                        <td class="p-2">{{ $citizen->created_at->format('d/m/Y') }}</td>
-                        <td class="p-2 flex justify-end">
+                        <td class="p-4">{{ $citizen->created_at->format('d/m/Y') }}</td>
+                        <td class="p-4 flex justify-end">
                             <x-icon-link href="{{ route('admin.citizens.show', ['citizen' => $citizen->id]) }}"
                                 icon="eye" />
                         </td>

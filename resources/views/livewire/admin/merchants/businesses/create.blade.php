@@ -3,7 +3,7 @@
         <header>
             <div class="flex flex-row justify-between items-center space-x-4 mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
-                    Crear comerciante
+                    Crear negocio
                 </h2>
             </div>
         </header>

@@ -12,21 +12,23 @@ class Show extends Component
 
     public function mount($merchant, $business)
     {
-        $this->business = Business::where('merchant_id', $merchant)
+        $this->business = Business::where('register_id', $merchant)
             ->findOrFail($business);
     }
 
     public function items()
     {
         return [
-            ['label' => 'Categoria de negocio', 'value' => $this->business->businessCategory->es_name ?? '...'],
+            ['label' => 'Tipo de negocio', 'value' => $this->business->businessType->es_name ?? '...'],
+            ['label' => 'Categoría de negocio', 'value' => $this->business->businessCategory->es_name ?? '...'],
             ['label' => 'Nombre del negocio', 'value' => $this->business->name],
-            ['label' => 'Número de identificación', 'value' => $this->business->code ?? '...'],
-            ['label' => 'Número de comercio', 'value' => $this->business->merchant_number ?? '...'],
+            ['label' => 'Código', 'value' => $this->business->code ?? '...'],
+            ['label' => 'Número', 'value' => $this->business->number ?? '...'],
             ['label' => 'Número de teléfono', 'value' => $this->business->phone ?? '...'],
-            ['label' => 'Correo electrónico', 'value' => $this->business->email ?? '...'],
-            ['label' => 'Dirección', 'value' => $this->business->address ?? '...'],
             ['label' => 'Lugar', 'value' => $this->business->place->name ?? '...'],
+            ['label' => 'Dirección', 'value' => $this->business->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->business->city ?? '...'],
+            ['label' => 'Código postal', 'value' => $this->business->postal_code ?? '...'],
         ];
     }
 

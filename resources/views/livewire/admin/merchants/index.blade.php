@@ -35,19 +35,18 @@
         <x-table>
             <x-slot name="head">
                 <tr>
-                    <th class="p-2 ">Nombre</th>
-                    <th class="p-2 ">Tipo</th>
-                    <th class="p-2 ">Email<br/>Teléfono</th>
-                    <th class="p-2 ">Dirección</th>
-                    <th class="p-2 ">Creado<br />por</th>
-                    <th class="p-2 ">Fecha<br />creación</th>
-                    <th class="p-2 text-right">Acción</th>
+                    <th class="p-4 ">Nombre</th>
+                    <th class="p-4 ">Tipo</th>
+                    <th class="p-4 ">Email<br/>Teléfono</th>
+                    <th class="p-4 ">Creado<br />por</th>
+                    <th class="p-4 ">Fecha<br />creación</th>
+                    <th class="p-4 text-right">Acción</th>
                 </tr>
             </x-slot>
             <x-slot name="body">
                 @forelse ($merchants as $merchant)
-                    <tr class="border-t border-gray-200">
-                        <td class="p-2">
+                    <tr class="border-t border-gray-300">
+                        <td class="p-4">
                             <span>
                                 {{ $merchant->code }}
                             </span>
@@ -56,28 +55,27 @@
                                 {{ $merchant->name  }}  {{ $merchant->lastname }}
                             </span>
                         </td>
-                        <td class="p-2">{{ $merchant->type->es_name }}</td>
-                        <td class="p-2">
+                        <td class="p-4">
+                            <span>
+                                {{ $merchant->type->es_name }}
+                            </span>
+                            <br>
+                            @if ($merchant->user_id)
+                                <x-badge color="green" value="{{ $merchant->user->name }}" />
+                            @endif
+                        </td>
+                        <td class="p-4">
                             <span>
                                 {{ $merchant->email??'...' }}
                             </span>
                             <br>
                             <span>{{ $merchant->phone }}</span>
                         </td>
-                        <td class="p-2">
-                            <span>
-                                {{ $merchant->address }}
-                            </span>
-                            <br>
-                            <span>
-                                {{ $merchant->city?? '...' }} {{ $merchant->postal_code?? '...' }}
-                            </span>
+                        <td class="p-4">
+                            <x-badge label="{{ $merchant->createdBy() }}"></x-badge>
                         </td>
-                        <td class="p-2">
-                            <x-badge label="{{ $merchant->created_by }}"></x-badge>
-                        </td>
-                        <td class="p-2">{{ $merchant->created_at->format('d/M/Y')}}</td>
-                        <td class="p-2 flex justify-end">
+                        <td class="p-4">{{ $merchant->created_at->format('d/M/Y')}}</td>
+                        <td class="p-4 flex justify-end">
                             <x-icon-link href="{{ route('admin.merchants.show', ['merchant' => $merchant->id]) }}"
                                 icon="eye" />
                         </td>

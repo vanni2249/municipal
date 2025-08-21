@@ -27,21 +27,21 @@
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                            <th class="p-2 w-auto">Nombre</th>
-                            <th class="p-2 w-auto">Tipo</th>
-                            <th class="p-2 w-auto">Email<br/>Teléfono</th>
-                            <th class="p-2 w-auto">Fecha<br />creación</th>
-                            <th class="p-2 w-auto">Ultima<br />conexión</th>
-                            <th class="p-2 w-auto">Status</th>
-                            <th class="p-2 w-auto">Bloqueado</th>
-                            <th class="p-2 w-auto text-right">Acción</th>
+                            <th class="p-4 w-auto">Nombre</th>
+                            <th class="p-4 w-auto">Tipo</th>
+                            <th class="p-4 w-auto">Email<br/>Teléfono</th>
+                            <th class="p-4 w-auto">Fecha<br />creación</th>
+                            <th class="p-4 w-auto">Ultima<br />conexión</th>
+                            <th class="p-4 w-auto">Status</th>
+                            <th class="p-4 w-auto">Bloqueado</th>
+                            <th class="p-4 w-auto text-right">Acción</th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
                         @forelse ($users as $user)
-                            <tr class="border-t border-gray-200">
+                            <tr class="border-t border-gray-300">
                                 <!-- Name -->
-                                <td class="px-2 py-1">
+                                <td class="p-4">
                                     <span>
                                         {{ $user->register->code ?? '...' }}
                                     </span>
@@ -51,9 +51,9 @@
                                     </span>
                                 </td>
                                 <!-- Type -->
-                                <td class="px-2 py-1 capitalize">{{ $user->register->type->es_name??'...' }}</td>
+                                <td class="p-4 capitalize">{{ $user->register->type->es_name??'...' }}</td>
                                 <!-- Email & phone -->
-                                <td class="px-2 py-1">
+                                <td class="p-4">
                                     <span>
                                         {{ $user->email }}
                                     </span>
@@ -63,26 +63,26 @@
                                     </span>
                                 </td>
                                 <!-- Create_at -->
-                                <td class="px-2 py-1">{{ $user->created_at->format('d/m/Y') }}</td>
+                                <td class="p-4">{{ $user->created_at->format('d/m/Y') }}</td>
                                 <!-- Last Connection -->
-                                <td class="px-2 py-1">
+                                <td class="p-4">
                                     {{ $user->getLastLogin() }}
                                 </td>
-                                <td class="px-2 py-1">
+                                <td class="p-4">
                                     @if ($user->approved_at)
                                         <x-badge color="green">Aprobado</x-badge>
                                     @else
                                         <x-badge color="red">No aprobado</x-badge>
                                     @endif
                                 </td>
-                                <td class="px-2 py-1">
+                                <td class="p-4">
                                     @if ($user->blocked_at)
                                         <x-badge color="red">Bloqueado</x-badge>
                                     @else
                                         <x-badge color="green">Activo</x-badge>
                                     @endif
                                 </td>
-                                <td class="px-2 py-1 flex justify-end">
+                                <td class="p-4 flex justify-end">
                                     <x-icon-link href="{{ route('admin.users.show', ['user' => $user->id]) }}"
                                         icon="eye" />
                                 </td>

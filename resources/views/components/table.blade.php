@@ -4,7 +4,7 @@
             <thead class="text-left border-b-1 border-gray-300 text-xs uppercase">
                 {{ $head }}
             </thead>
-            <tbody class=" text-gray-700 whitespace-nowrap">
+            <tbody class=" text-gray-800 whitespace-nowrap">
                 {{ $body }}
             </tbody>
         </table>

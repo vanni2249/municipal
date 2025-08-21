@@ -24,13 +24,15 @@
                     @endforeach
                 </div>
             </x-modal>
-            <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
-                <li>{{ $merchant->type->es_name??'...' }}</li>
-                <li>|</li>
-                <li class="">{{ $merchant->createdBy() }}</li>
-            </ul>
+            <div class="flex flex-wrap gap-2">
+                <x-badge value="{{ $merchant->type->es_name }}" />
+                <x-badge value="{{ $merchant->createdBy() }}" />
+                    @if ($merchant->user_id)
+                        <x-badge color="green" value="{{ $merchant->user->name }}" />
+                    @endif
+            </div>
         </x-card>
-        {{-- <x-card>
+        <x-card>
             <header class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
                     Negocios
@@ -44,23 +46,25 @@
                 <x-slot name="head">
                     <tr>
                         <th class="p-4">Nombre</th>
-                        <th class="p-4">Categoria</th>
-                        <th class="p-4 whitespace-nowrap">Numero <br> de comercio</th>
-                        <th class="p-4 text-right w-14">Accion</th>
+                        <th class="p-4">Tipo</th>
+                        <th class="p-4">Categoría</th>
+                        <th class="p-4 whitespace-nowrap">Lugar</th>
+                        <th class="p-4 text-right w-14">Acción</th>
                     </tr>
                 </x-slot>
                 <x-slot name="body">
                     @forelse ($merchant->businesses as $business)
                         <tr class="border-t border-gray-200">
                             <td class="p-4">
-                                <span>...</span>
+                                <span>{{ $business->code }}</span>
                                 <br>
                                 <span class="text-sm text-gray-600">{{ $business->name }}</span>
                             </td>
                             <td class="p-4">
-                                <span class="text-sm text-gray-600">{{ $business->businessCategory->es_name }}</span>
+                                <span class="text-sm text-gray-600">{{ $business->businessType->es_name }}</span>
                             </td>
-                            <td class="p-4">{{ $business->merchant_number }}</td>
+                            <td class="p-4">{{ $business->businessCategory->es_name }}</td>
+                            <td class="p-4">{{ $business->place->name }}</td>
                             <td class="p-4 text-right flex space-x-2 justify-end">
                                 <x-icon-link
                                     href="{{ route('admin.merchants.businesses.show', ['merchant' => $merchant->id, 'business' => $business->id]) }}"
@@ -77,6 +81,6 @@
                     @endforelse
                 </x-slot>
             </x-table>
-        </x-card> --}}
+        </x-card>
     </div>
 </div>

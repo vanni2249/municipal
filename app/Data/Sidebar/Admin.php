@@ -14,7 +14,7 @@ class Admin
                 'path' => 'dashboard',
             ],
             [
-                'name' => 'Iterracciones',
+                'name' => 'Interacciones',
                 'route' => 'admin.interactions.index',
                 'path' => 'interactions',
             ],
@@ -32,6 +32,11 @@ class Admin
                 'name' => 'Comerciantes',
                 'route' => 'admin.merchants.index',
                 'path' => 'merchants',
+            ],
+            [
+                'name' => 'Contadores',
+                'route' => 'admin.accountants.index',
+                'path' => 'accountants',
             ],
             // [
             //     'name' => 'Contadores',

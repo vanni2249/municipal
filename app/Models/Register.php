@@ -69,10 +69,10 @@ class Register extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function register()
-    {
-        return $this->belongsTo(Register::class, 'register_id');
-    }
+    // public function register()
+    // {
+    //     return $this->belongsTo(Register::class, 'register_id');
+    // }
 
     public function registers()
     {

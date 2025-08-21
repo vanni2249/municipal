@@ -3,10 +3,10 @@
         <header>
             <div class="flex flex-row justify-between items-center space-x-4 mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
-                    Comerciantes
+                    Contadores
                 </h2>
                 <div class="flex items-center space-x-2">
-                    <x-icon-link href="{{ route('admin.merchants.create') }}" icon="plus" />
+                    <x-icon-link href="{{ route('admin.accountants.create') }}" icon="plus" />
                 </div>
             </div>
         </header>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="flex space-x-2">
                     <div class="bg-gray-200 rounded-md p-1">
-                        <span class="pl-2 uppercase text-xs font-bold text-gray-600 leading-tight">Mostra</span>
+                        <span class="pl-2 uppercase text-xs font-bold text-gray-600 leading-tight">Mostrar</span>
                         <select class="mx-2 rounded-md text-sm">
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -44,45 +44,45 @@
                 </tr>
             </x-slot>
             <x-slot name="body">
-                @forelse ($merchants as $merchant)
+                @forelse ($accountants as $accountant)
                     <tr class="border-t border-gray-300">
                         <td class="p-4">
                             <span>
-                                {{ $merchant->code }}
+                                {{ $accountant->code }}
                             </span>
                             <br>
                             <span>
-                                {{ $merchant->name  }}  {{ $merchant->lastname }}
+                                {{ $accountant->name  }}  {{ $accountant->lastname }}
                             </span>
                         </td>
                         <td class="p-4">
                             <span>
-                                {{ $merchant->type->es_name }}
+                                {{ $accountant->type->es_name }}
                             </span>
                             <br>
-                            @if ($merchant->user_id)
-                                <x-badge color="green" value="{{ $merchant->user->name }}" />
+                            @if ($accountant->user_id)
+                                <x-badge color="green" value="{{ $accountant->user->name }}" />
                             @endif
                         </td>
                         <td class="p-4">
                             <span>
-                                {{ $merchant->email??'...' }}
+                                {{ $accountant->email??'...' }}
                             </span>
                             <br>
-                            <span>{{ $merchant->phone }}</span>
+                            <span>{{ $accountant->phone }}</span>
                         </td>
                         <td class="p-4">
-                            <x-badge label="{{ $merchant->createdBy() }}"></x-badge>
+                            <x-badge label="{{ $accountant->createdBy() }}"></x-badge>
                         </td>
-                        <td class="p-4">{{ $merchant->created_at->format('d/M/Y')}}</td>
+                        <td class="p-4">{{ $accountant->created_at->format('d/M/Y')}}</td>
                         <td class="p-4 flex justify-end">
-                            <x-icon-link href="{{ route('admin.merchants.show', ['merchant' => $merchant->id]) }}"
+                            <x-icon-link href="{{ route('admin.accountants.show', ['accountant' => $accountant->id]) }}"
                                 icon="eye" />
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4">No hay contadores disponibles.</td>
+                        <td colspan="7" class="text-center py-4">No hay comerciantes disponibles.</td>
                     </tr>
                 @endforelse
             </x-slot>

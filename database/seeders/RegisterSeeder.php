@@ -38,7 +38,7 @@ class RegisterSeeder extends Seeder
                 'code' => $this->createRegisterCode(),
                 'name' => 'Comerciante',
                 'lastname' => 'Doe',
-                'email' => 'comerciante@gmail.com',
+                'email' => 'vanni2249@gmail.com',
                 'phone' => '1234567890',
                 'place_id' => 1,
                 'address' => '123 Main St, Anytown, USA',

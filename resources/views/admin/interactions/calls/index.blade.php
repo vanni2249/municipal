@@ -10,7 +10,7 @@
                     </div>
                     <div class="flex space-x-2">
                         <div class="bg-gray-200 rounded-md p-1">
-                            <span class="pl-2 uppercase text-xs font-bold text-gray-600 leading-tight">Mostra</span>
+                            <span class="pl-2 uppercase text-xs font-bold text-gray-600 leading-tight">Mostrar</span>
                             <select class="mx-2 rounded-md text-sm">
                                 <option value="10">10</option>
                                 <option value="20">20</option>

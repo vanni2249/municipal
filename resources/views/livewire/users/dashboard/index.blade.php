@@ -30,7 +30,7 @@
                     <div>
                         <div class="flex space-x-2 rounded-full">
                             <div class="flex w-1/2">
-                                <a href="{{ route(request()->segment(1) . '.interactions.calls.create') }}"
+                                <a href="{{ route('users.interactions.create', ['type' => 'call']) }}"
                                     class="w-full bg-gray-200 hover:bg-gray-300 p-2 rounded-full flex justify-center items-center space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="flex w-1/2">
-                                <a href="{{ route(request()->segment(1) . '.interactions.messages.create') }}"
+                                <a href="{{ route('users.interactions.create', ['type' => 'message']) }}"
                                     class="w-full bg-gray-200 hover:bg-gray-300 p-2 rounded-full flex justify-center items-center space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

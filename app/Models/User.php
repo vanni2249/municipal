@@ -66,6 +66,11 @@ class User extends Authenticatable
         return $this->belongsTo(Type::class, 'type_id');
     }
 
+    public function interactions()
+    {
+        return $this->hasMany(Interaction::class);
+    }
+
     public function merchants()
     {
         return $this->hasMany(Merchant::class);

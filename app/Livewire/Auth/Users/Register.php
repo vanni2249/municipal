@@ -176,6 +176,8 @@ class Register extends Component
 
         $this->setLastLogin();
 
+        $this->setSessionTypeNavigation();
+
         $this->redirectIntended(default: route('users.dashboard', absolute: false), navigate: true);
     }
 
@@ -214,6 +216,19 @@ class Register extends Component
         if ($user instanceof \App\Models\User) {
             $user->last_login_at = now();
             $user->save();
+        }
+    }
+
+    protected function setSessionTypeNavigation()
+    {
+        $user = Auth::user();
+        $type = $user->register->type->key ?? 'citizen';
+
+        // if type is citizen-merchant or merchant set to merchant
+        if (in_array($type, ['citizen-merchant', 'merchant'])) {
+            session(['type_navigation' => 'merchant']);
+        } else {
+            session(['type_navigation' => $type]);
         }
     }
 

@@ -111,4 +111,24 @@ class User extends Authenticatable
         return $this->belongsTo(Admin::class, 'blocked_by');
     }
 
+    public function showSessionTypeNavigation()
+    {
+        switch (session('type_navigation')) {
+            case 'citizen':
+                return 'Ciudadano';
+            case 'merchant':
+                return 'Comerciante';
+            case 'accountant':
+                return 'Contador';
+            case 'contractor':
+                return 'Contratista';
+            case 'supplier':
+                return 'Proveedor';
+            case 'visitor':
+                return 'Visitante';
+            default:
+                return 'Usuario';
+        }
+    }
+
 }

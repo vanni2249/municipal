@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>MyCity</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -18,15 +18,17 @@
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
     <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4 overflow-auto">
         <!-- Sidebar -->
-        <aside class="bg-black rounded-xl w-full h-full overflow-auto">
+        <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-auto">
+            <!-- Header -->
             <header class="h-16 border-b border-gray-900 flex items-center text-white px-6">
                 <div class="flex justify-between items-center w-full">
                     <div class="flex flex-col">
                         <span class="text-sm font-semibold text-gray-200">
                             MyCity
                         </span>
-                        <span class="text-xs font-extrabold text-gray-600">
-                        </span>
+                        <div class=" text-xs text-gray-400">
+                            {{ Auth::user()->showSessionTypeNavigation() }}
+                        </div>
                     </div>
                     <button class="cursor-pointer lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -40,24 +42,38 @@
                     </button>
                 </div>
             </header>
-            <ul class="p-4 text-xs font-bold uppercase space-y-1">
+            <!-- Body & Links -->
+            <ul class="grow p-4 text-xs font-bold uppercase space-y-1">
                 <div class="text-white">
                 </div>
-                 @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
-                    return in_array(Auth::user()->register->type->key, $item['users'] ?? []);
-                    })->take(8) as $item)
+                @foreach (collect(\App\Data\Sidebar\User::items())->filter(function ($item) {
+            return in_array(session('type_navigation'), $item['users'] ?? []);
+        })->take(8) as $item)
                     <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
                         {{ $item['name'] }}
                     </x-layouts.sidebar-link>
                 @endforeach
             </ul>
+            <!-- Footer -->
+            @if (Auth::user()->register->type->key == 'citizen-merchant')
+                <footer class="p-4 border-t border-gray-900">
+                    <div class="text-gray-600 text-sm font-bold mb-1">navegar como:</div>
+                    <x-link-button
+                        href="{{ route('change-type-navigation', ['type' => session('type_navigation') == 'merchant' ? 'citizen' : 'merchant']) }}"
+                        variant="secondary"
+                        label="{{ session('type_navigation') == 'merchant' ? 'Ciudadano' : 'Comerciante' }}"
+                        class="w-full block bg-gray-900" />
+                </footer>
+            @endif
         </aside>
     </div>
+    <!-- Main content -->
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
         <div class="px-4 pt-4">
             <!-- Nav -->
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
+                    <!-- Left nav  -->
                     <div class="flex space-x-4">
                         <!-- Desktop -->
                         <div class="hidden lg:flex items-center justify-center">
@@ -75,10 +91,11 @@
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    @foreach (collect(\App\Data\Sidebar\User::items())->filter(function($item) {
-                                        return in_array(Auth::user()->register->type->key, $item['users'] ?? []);
-                                    })->take(8) as $item)
-                                        <x-dropdown-link href="{{ route($item['route']) }}" @class(['bg-gray-200' => request()->segment(2) == $item['path']])>
+                                    @foreach (collect(\App\Data\Sidebar\User::items())->filter(function ($item) {
+            return in_array(session('type_navigation'), $item['users'] ?? []);
+        })->take(8) as $item)
+                                        <x-dropdown-link href="{{ route($item['route']) }}"
+                                            @class(['bg-gray-200' => request()->segment(2) == $item['path']])>
                                             {{ $item['name'] }}
                                         </x-dropdown-link>
                                     @endforeach
@@ -87,6 +104,7 @@
                         </div>
                         <a href="" class="font-bold lg:hidden">MyCity</a>
                     </div>
+                    <!-- Right nav -->
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">
                             <a href="" class="text-gray-800 hover:text-gray-600">
@@ -96,7 +114,8 @@
                         <li class="inline-block">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    <img src="{{ asset('icons/user-circle.svg') }}" alt="user" class="cursor-pointer">
+                                    <img src="{{ asset('icons/user-circle.svg') }}" alt="user"
+                                        class="cursor-pointer">
                                 </x-slot>
                                 <x-slot name="content">
                                     <div>
@@ -117,9 +136,11 @@
                 </div>
             </nav>
         </div>
+        <!-- Main -->
         <main class="flex-grow min-h-96">
             {{ $slot }}
         </main>
+        <!-- Footer -->
         <footer class="mx-auto px-4 pb-4 w-full ">
             <div class="bg-gray-300 rounded-xl">
 

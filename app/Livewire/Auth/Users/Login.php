@@ -43,13 +43,13 @@ class Login extends Component
 
         $user = User::where('email', $this->email)->first();
 
-        if ($user && $user->blocked_at !== null ) {
+        if ($user && $user->blocked_at !== null) {
             throw ValidationException::withMessages([
                 'email' => ['Your account is either blocked.'],
             ]);
             return;
         }
-        
+
         if ($user && $user->approved_at === null) {
             throw ValidationException::withMessages([
                 'email' => ['Your account is not approved.'],
@@ -69,6 +69,8 @@ class Login extends Component
         Session::regenerate();
 
         $this->setLastLogin();
+
+        $this->setSessionTypeNavigation();
 
         $this->redirectIntended(default: route('users.dashboard', absolute: false), navigate: true);
     }
@@ -104,11 +106,25 @@ class Login extends Component
 
     protected function setLastLogin(): void
     {
-       $user = Auth::user();
-       if ($user instanceof \App\Models\User) {
-           $user->last_login_at = now();
-           $user->save();
-       }
+        $user = Auth::user();
+        if ($user instanceof \App\Models\User) {
+            $user->last_login_at = now();
+            $user->save();
+        }
+    }
+
+    protected function setSessionTypeNavigation()
+    {
+        // Set session name for type_navigation if register type is citizen-merchant or merchant set to merchant 
+        $user = Auth::user();
+        $type = $user->register->type->key ?? 'citizen';
+
+        // if type is citizen-merchant or merchant set to merchant
+        if (in_array($type, ['citizen-merchant', 'merchant'])) {
+            session(['type_navigation' => 'merchant']);
+        } else {
+            session(['type_navigation' => $type]);
+        }
     }
 
     /**

@@ -8,11 +8,11 @@
                         Bienvenido
                     </h2>
                     <small class="text-xs capitalize">
-                        {{ $user_type }}
+                        {{ Auth::user()->name }}
                     </small>
                 </header>
                 <h2 class="text-2xl font-bold text-white line-clamp-1">
-                    {{ $user_name }}
+                    {{ Auth::user()->showSessionTypeNavigation() }}
                 </h2>
             </x-card>
             <!-- Interaction box -->

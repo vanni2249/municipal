@@ -19,6 +19,7 @@ class Show extends Component
     {
         $this->admin = Auth::guard('admin')->user();
         $this->interaction = Interaction::with(['service', 'messages'])->findOrFail($interaction);
+        $this->status = 'in_progress';
         $this->readMessage();
     }
 

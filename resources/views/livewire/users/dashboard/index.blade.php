@@ -8,11 +8,11 @@
                         Bienvenido
                     </h2>
                     <small class="text-xs capitalize">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->showSessionTypeNavigation() }}
                     </small>
                 </header>
                 <h2 class="text-2xl font-bold text-white line-clamp-1">
-                    {{ Auth::user()->showSessionTypeNavigation() }}
+                    {{ Auth::user()->name }}
                 </h2>
             </x-card>
             <!-- Interaction box -->
@@ -68,32 +68,36 @@
                 </div>
             </x-card>
             <!-- Services box -->
-            @if ($services->isNotEmpty() && $user->type_id == 1)
+            @if (in_array(session('type_navigation'), ['citizen', 'visitor', 'contractor', 'supplier']))
             <x-card class="col-span-full p-4 h-full rounded-xl">
                 <header class="flex justify-between items-start mb-4">
                     <h2 class="text-lg font-bold text-gray-900">
                         Servicios
                     </h2>
                     <div>
-                        <a href="{{ route(request()->segment(1) . '.services.index') }}" class="text-xs text-gray-700">
+                        <a href="{{ route('users.services.index') }}" class="text-xs text-gray-700">
                             Ver mas
                         </a>
                     </div>
                 </header>
                 <div class="grid grid-cols-12 gap-2">
-                    @foreach ($services as $service)
-                    <a href="{{ route('users.'.$service->serviceCategory->key. '.create', ['type' => $service->slug]) }}"
-                        class="flex flex-col space-y-1 col-span-6 md:col-span-4 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
-                        <div class="p-2 lg:p-4">
-                            <span class="text-sm text-gray-700 font-bold line-clamp-1">
+                    @forelse($services as $service)
+                    <a href="{{ route('users.actions.create', ['service' => $service->id]) }}"
+                        class="flex flex-col space-y-1 col-span-full md:col-span-6 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
+                        <div class="p-4">
+                            <h3 class="text-sm text-gray-700 font-bold line-clamp-1">
                                 {{ $service->es_name }}
-                            </span>
-                            <span class="text-gray-500 line-clamp-2">
+                            </h3>
+                            <span class="text-gray-500 line-clamp-1 mt-1">
                                 {{ $service->es_description }}
                             </span>
                         </div>
                     </a>
-                    @endforeach
+                    @empty
+                    <div class="col-span-full text-center text-gray-500">
+                        No hay servicios disponibles.
+                    </div>
+                    @endforelse
                 </div>
             </x-card>
             @endif

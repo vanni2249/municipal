@@ -15,31 +15,27 @@
                         </div>
                     </x-modal>
                     <x-icon-link href="{{ route('users.businesses.edit', ['business' => $business]) }}" />
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <x-icon-button icon="ellipsis-vertical" />
+                            </x-slot>
+                            <x-slot name="content">
+                                @forelse ($services as $service)
+                                        <x-dropdown-link href="{{ route('users.businesses.actions.create', ['business' => $business->id ,'service' => $service->id]) }}">
+                                            {{ $service->es_name }}
+                                        </x-dropdown-link>
+                                @empty
+                                    
+                                @endforelse
+                                
+                            </x-slot>
+                        </x-dropdown>
                 </div>
             </header>
-            <div class="pt-2">
-                <ul class="flex items-center space-x-2 text-xs text-gray-600">
-                    <li>
-                        {{ $business->businessType->es_name }}
-                    </li>
-                    <li>
-                        |
-                    </li>
-                    <li>
-                        {{ $business->businessCategory->es_name ?? '...' }}
-                    </li>
-                    <li>
-                        |
-                    </li>
-                    <li>
-                        {{ $business->place->name ?? '...' }}
-                    </li>
-                </ul>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {{-- @foreach ($items->take(4) as $item)
-                    <x-detail-item label="{{ $item['label'] }}" value="{{ $item['value'] }}" />
-                @endforeach --}}
+            <div class="pt-2 flex flex-wrap gap-2">
+                <x-badge value="{{ $business->businessType->es_name }}"/>
+                <x-badge value="{{ $business->businessCategory->es_name ?? '...' }}"/>
+                <x-badge value="{{ $business->place->name ?? '...' }}"/>
             </div>
         </x-card>
     </div>

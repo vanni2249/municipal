@@ -37,6 +37,7 @@ Route::prefix('users')->middleware(AuthUser::class)->group(function () {
     require __DIR__ . '/users/rents.php';
     require __DIR__ . '/users/merchants.php';
     require __DIR__ . '/users/businesses.php';
+    require __DIR__ . '/users/actions.php';
 });
 
 /*

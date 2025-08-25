@@ -5,7 +5,7 @@
                 <!-- Business Description -->
                 <x-card class="rounded-xl p-4">
 
-                    <header class="flex flex-row space-x-2 justify-between items-center">
+                    <header class="flex flex-row space-x-2 justify-between items-center mb-2">
                         <h2 class="text-lg font-bold text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis">
                             {{ $business->name ?? '...' }}
                         </h2>
@@ -21,43 +21,27 @@
                                     @endforeach
                                 </div>
                             </x-modal>
-                            <x-dropdown align="right" width="72">
+                            <x-dropdown align="right">
                                 <x-slot name="trigger">
                                     <x-icon-button icon="ellipsis-vertical" />
                                 </x-slot>
                                 <x-slot name="content">
-                                    <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.building-permit.create', ['merchant' => 1, 'business' => 1]) }}">
-                                        Radicacion de permiso de construccion
-                                    </x-dropdown-link>
-                                    <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.use-permit.create', ['merchant' => 1, 'business' => 1]) }}">
-                                        Radicacion de permiso de uso
-                                    </x-dropdown-link>
-                                    <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.temp-patent.create', ['merchant' => 1, 'business' => 1]) }}">
-                                        Radicacion de patente temporaria
-                                    </x-dropdown-link>
-                                    <x-dropdown-link
-                                        href="{{ route('users.merchants.businesses.settlements.official-patent.create', ['merchant' => 1, 'business' => 1]) }}">
-                                        Radicacion de patente oficial
-                                    </x-dropdown-link>
+                                    @forelse ($services as $service)
+                                        <x-dropdown-link
+                                            href="{{ route('users.merchants.businesses.actions.create', ['merchant' => $merchant, 'business' => $business->id, 'service' => $service->id]) }}">
+                                            {{ $service->es_name }}
+                                        </x-dropdown-link>
+                                    @empty
+                                    @endforelse
+
                                 </x-slot>
                             </x-dropdown>
                         </div>
                     </header>
-                    <div class="col-span-full">
-                    </div>
-                    <div class="flex flex-row space-x-2 mt-4 md:mt-0">
-                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
-                            {{ $business->code }}
-                        </span>
-                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
-                            {{ $business->businessCategory->es_name ?? '...' }}
-                        </span>
-                        <span class="border border-gray-400 text-xs px-2 rounded-full text-gray-800 inline-block">
-                            {{ $business->businessType->es_name ?? '...' }}
-                        </span>  
+                    <div class="flex flex-wrap gap-2">
+                        <x-badge value="{{ $business->code }}" />
+                        <x-badge value="{{ $business->businessCategory->es_name ?? '...' }}" />
+                        <x-badge value="{{ $business->businessType->es_name ?? '...' }}" />
                     </div>
                 </x-card>
                 <!-- Documentos -->
@@ -70,8 +54,7 @@
                     </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @for ($i = 0; $i < 2; $i++)
-                            <a href="{{ route('users.merchants.businesses.patents.show', ['merchant' => 1, 'business' => 1, 'patent' => 1]) }}"
-                                class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
+                            <a href="" class="bg-gray-100 hover:bg-gray-200 block w-full p-2 md:p-4 rounded-xl">
                                 <header class="flex justify-between items-center">
                                     <small class=" text-gray-600">
                                         {{ rand(10000, 99999) }}

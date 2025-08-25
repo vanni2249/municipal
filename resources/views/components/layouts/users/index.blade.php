@@ -26,7 +26,7 @@
                         <span class="text-sm font-semibold text-gray-200">
                             MyCity
                         </span>
-                        <div class=" text-xs text-gray-400">
+                        <div class=" text-xs font-bold text-gray-400">
                             {{ Auth::user()->showSessionTypeNavigation() }}
                         </div>
                     </div>
@@ -47,8 +47,8 @@
                 <div class="text-white">
                 </div>
                 @foreach (collect(\App\Data\Sidebar\User::items())->filter(function ($item) {
-            return in_array(session('type_navigation'), $item['users'] ?? []);
-        })->take(8) as $item)
+                    return in_array(session('type_navigation'), $item['users'] ?? []);
+                })->take(8) as $item)
                     <x-layouts.sidebar-link href="{{ route($item['route']) }}" @class(['bg-gray-800' => request()->segment(2) == $item['path']])>
                         {{ $item['name'] }}
                     </x-layouts.sidebar-link>

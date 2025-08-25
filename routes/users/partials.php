@@ -13,5 +13,6 @@ Route::get('/change-type-navigation/{type}', function ($type) {
     if (in_array($type, ['citizen', 'merchant'])) {
         session(['type_navigation' => $type]);
     }
+    
     return redirect()->route('users.dashboard');
 })->name('change-type-navigation');

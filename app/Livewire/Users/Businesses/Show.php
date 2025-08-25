@@ -3,6 +3,8 @@
 namespace App\Livewire\Users\Businesses;
 
 use App\Models\Business;
+use App\Models\Service;
+use App\Models\Type;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -10,11 +12,13 @@ class Show extends Component
 {
     public $business;
     public $merchant;
+    public $type_id;
 
     public function mount($business = null, $merchant = null)
     {
-        $this->business = $business ? Business::findOrFail($business) : null;
+        $this->business = $business ? Business::with(['businessType', 'businessCategory'])->findOrFail($business) : null;
         $this->merchant = $merchant;
+        $this->type_id = Type::where('key', 'merchant')->first()->id;
     }
 
     public function items()
@@ -39,6 +43,10 @@ class Show extends Component
         return view('livewire.users.businesses.show', [
             'business' => $this->business,
             'items' => $this->items(),
+            'services' => Service::with(['types', 'serviceCategory'])
+                                ->where('type_id', $this->type_id)
+                                ->where('is_active', true)
+                                ->get(),
         ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Livewire\Users\Merchants\Businesses;
 
 use App\Models\Business;
+use App\Models\Service;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -12,11 +14,14 @@ class Show extends Component
     public $user;
     public $merchant;
     public $business;
+    public $type_id;
 
-    public function mount($business)
+    public function mount($merchant, $business)
     {
         $this->user = Auth::user();
+        $this->merchant = $merchant;
         $this->business = Business::with(['businessCategory'])->where('register_id', $this->merchant)->findOrFail($business);
+        $this->type_id = Type::where('key', 'merchant')->first()->id;
     }
 
     public function items()
@@ -43,6 +48,10 @@ class Show extends Component
         return view('livewire.users.merchants.businesses.show',[
             'items' => $this->items(),
             'business' => $this->business,
+            'services' => Service::with(['types', 'serviceCategory'])
+                                ->where('type_id', $this->type_id)
+                                ->where('is_active', true)
+                                ->get(),
         ]);
     }
 }

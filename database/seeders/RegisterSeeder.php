@@ -50,6 +50,23 @@ class RegisterSeeder extends Seeder
                 'is_disabled' => false,
                 'created_by' => 'admin',
             ],
+            [
+                'type_id' => 1,
+                'code' => $this->createRegisterCode(),
+                'name' => 'Ciudadano',
+                'lastname' => 'Doe',
+                'email' => 'ciudadano@gmail.com',
+                'phone' => '1234567890',
+                'place_id' => 1,
+                'address' => '123 Main St, Anytown, USA',
+                'city' => 'Anytown',
+                'postal_code' => '12345',
+                'date_of_birth' => '1990-01-01',
+                'is_veteran' => true,
+                'is_age_advanced' => false,
+                'is_disabled' => false,
+                'created_by' => 'admin',
+            ],
             // [
             //     'type_id' => 1,
             //     'code' => 'CIT-' . (time() + 1),
@@ -130,6 +147,19 @@ class RegisterSeeder extends Seeder
         ]);
 
         $register = \App\Models\Register::find(2);;
+
+        $user = User::create([
+            'name' => $register->name . ' ' . $register->lastname,
+            'email' => $register->email,
+            'password' => bcrypt('password'), // Default password, change as needed
+            'approved_at' => now(),
+        ]);
+
+        $register->update([
+            'user_id' => $user->id,
+        ]);
+        
+        $register = \App\Models\Register::find(3);;
 
         $user = User::create([
             'name' => $register->name . ' ' . $register->lastname,

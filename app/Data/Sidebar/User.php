@@ -21,7 +21,7 @@ class User
                 'path' => 'interactions',
             ],
             [
-                'users' => ['citizen', 'merchant', 'contractor', 'supplier', 'visitor'],
+                'users' => ['citizen', 'contractor', 'supplier', 'visitor'],
                 'name' => 'Servicios',
                 'route' => 'users.services.index',
                 'path' => 'services',
@@ -38,11 +38,17 @@ class User
                 'route' => 'users.businesses.index',
                 'path' => 'businesses',
             ],
+            // [
+            //     'users' => ['citizen',],
+            //     'name' => 'Registros',
+            //     'route' => 'users.registers.index',
+            //     'path' => 'registers',
+            // ],
             [
-                'users' => ['citizen',],
-                'name' => 'Registros',
-                'route' => 'users.registers.index',
-                'path' => 'registers',
+                'users' => ['citizen', 'merchant', 'accountant', 'contractor', 'supplier', 'visitor'],
+                'name' => 'Acciones',
+                'route' => 'users.actions.index',
+                'path' => 'actions',
             ],
             [
                 'users' => ['citizen', 'merchant', 'accountant', 'contractor', 'supplier', 'visitor'],

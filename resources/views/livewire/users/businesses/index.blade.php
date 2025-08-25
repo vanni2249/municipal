@@ -6,7 +6,7 @@
                     Negocios
                 </h2>
                 <div class="flex items-center space-x-2">
-                    @if (in_array($type, ['merchant', 'merchant-citizen']))
+                    @if (in_array($type, ['merchant', 'citizen-merchant']))
                         <x-icon-link href="{{ route('users.businesses.create') }}" icon="plus" />
                     @endif
                 </div>

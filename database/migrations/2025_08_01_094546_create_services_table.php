@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_category_id')->onDelete('set null');
+            $table->foreignId('type_id')->onDelete('set null');
             $table->string('en_name')->nullable();
             $table->string('es_name')->nullable();
             $table->longText('en_description')->nullable();

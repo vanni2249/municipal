@@ -12,6 +12,7 @@ class CitizenForm extends Form
     use \App\Traits\RegisterCode;
 
     public $citizen;
+    public $citizen_address;
     public $name;
     public $lastname;
     public $date_of_birth;
@@ -59,7 +60,7 @@ class CitizenForm extends Form
 
     public function save()
     {
-        $citizen = Register::create([
+        $register = Register::create([
             'type_id' => 1, // Assuming type_id is fixed for citizens
             'code' => $this->createRegisterCode(),
             'name' => $this->name,
@@ -67,10 +68,10 @@ class CitizenForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
-            'place_id' => $this->place_id,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
+            // 'place_id' => $this->place_id,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
             'is_veteran' => $this->is_veteran,
             'is_age_advanced' => $this->is_age_advanced,
             'is_bedridden' => $this->is_bedridden,
@@ -83,7 +84,16 @@ class CitizenForm extends Form
             'admin_id' => Auth::guard('admin')->id(),
         ]);
 
-        return redirect()->route('admin.citizens.show', $citizen);
+        $register->addresses()->create([
+            'name' => 'Por defecto',
+            'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'is_primary' => true,
+        ]);
+
+        return redirect()->route('admin.citizens.show', $register);
     }
 
     public function update()
@@ -94,10 +104,10 @@ class CitizenForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
-            'place_id' => $this->place_id,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
+            // 'place_id' => $this->place_id,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
             'is_veteran' => $this->is_veteran,
             'is_age_advanced' => $this->is_age_advanced,
             'is_bedridden' => $this->is_bedridden,
@@ -106,6 +116,15 @@ class CitizenForm extends Form
             'emergency_contact' => $this->emergency_contact,
             'emergency_contact_phone' => $this->emergency_contact_phone,
             'is_disabled' => $this->is_disabled,
+        ]);
+
+        $this->citizen->addresses()->update([
+            'name' => 'Por defecto',
+            'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('admin.citizens.show', $this->citizen);

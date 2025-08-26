@@ -1,7 +1,7 @@
 <div>
     <div class="p-4">
         <x-card>
-            <header class="flex flex-row justify-between items-center">
+            <header class="flex flex-row justify-between items-center mb-4">
                 <h2 class="text-lg font-bold text-gray-900">
                     {{ $business->name ?? '...' }}
                 </h2>
@@ -33,9 +33,10 @@
                 </div>
             </header>
             <div class="pt-2 flex flex-wrap gap-2">
+                <x-badge value="{{ $business->code ?? '...' }}"/>
                 <x-badge value="{{ $business->businessType->es_name }}"/>
                 <x-badge value="{{ $business->businessCategory->es_name ?? '...' }}"/>
-                <x-badge value="{{ $business->place->name ?? '...' }}"/>
+                <x-badge value="{{ $address->place->name ?? '...' }}"/>
             </div>
         </x-card>
     </div>

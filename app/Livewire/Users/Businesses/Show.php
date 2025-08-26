@@ -11,12 +11,14 @@ use Livewire\Component;
 class Show extends Component
 {
     public $business;
+    public $address;
     public $merchant;
     public $type_id;
 
     public function mount($business = null, $merchant = null)
     {
         $this->business = $business ? Business::with(['businessType', 'businessCategory'])->findOrFail($business) : null;
+        $this->address = $this->business ? $this->business->addresses()->with(['place'])->where('is_primary', true)->first() : null;
         $this->merchant = $merchant;
         $this->type_id = Type::where('key', 'merchant')->first()->id;
     }
@@ -29,10 +31,10 @@ class Show extends Component
             ['label' => 'Categoría del negocio', 'value' => $this->business->businessCategory->es_name ?? '..'],
             ['label' => 'Nombre del negocio', 'value' => $this->business->name ?? '..'],
             ['label' => 'Numero de comerciante', 'value' => $this->business->number ?? '..'],
-            ['label' => 'Lugar', 'value' => $this->business->place->name ?? '..'],
-            ['label' => 'Dirección', 'value' => $this->business->address ?? '..'],
-            ['label' => 'Ciudad', 'value' => $this->business->city ?? '..'],
-            ['label' => 'Código postal', 'value' => $this->business->postal_code ?? '..'],
+            ['label' => 'Lugar', 'value' => $this->address->place->name ?? '..'],
+            ['label' => 'Dirección', 'value' => $this->address->address ?? '..'],
+            ['label' => 'Ciudad', 'value' => $this->address->city ?? '..'],
+            ['label' => 'Código postal', 'value' => $this->address->postal_code ?? '..'],
             ['label' => 'Teléfono', 'value' => $this->business->phone ?? '..'],
         ]);
     }
@@ -42,6 +44,7 @@ class Show extends Component
     {
         return view('livewire.users.businesses.show', [
             'business' => $this->business,
+            'address' => $this->address,
             'items' => $this->items(),
             'services' => Service::with(['types', 'serviceCategory'])
                                 ->where('type_id', $this->type_id)

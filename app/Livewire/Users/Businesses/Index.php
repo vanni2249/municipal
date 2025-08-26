@@ -23,7 +23,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.users.businesses.index', [
-            'businesses' => Business::when($this->type === 'accountant', function ($query) {
+            'businesses' => Business::with(['addresses'])->when($this->type === 'accountant', function ($query) {
                 return $query->whereIn('register_id', $this->user->register->registers->pluck('id'));
             })->when($this->type === 'merchant', function ($query) {
                 return $query->where('register_id', $this->user->register->id);

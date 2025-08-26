@@ -45,12 +45,20 @@ class MerchantForm extends Form
             'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
             'register_id' => $this->register_id,
             'created_by' => 'accountant'
         ]); 
+
+        $merchant->addresses()->create([
+            'name' => 'Por defecto',
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'is_primary' => true,
+        ]);
 
         $this->reset([
             'name',
@@ -74,9 +82,17 @@ class MerchantForm extends Form
             'email' => $this->email,
             'phone' => $this->phone,
             'date_of_birth' => $this->date_of_birth,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
+        ]);
+
+        $this->merchant->addresses()->create([
+            'name' => 'Por defecto',
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('users.merchants.show', ['merchant' => $this->merchant->id])

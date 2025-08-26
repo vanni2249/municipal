@@ -9,15 +9,9 @@ class Business extends Model
     protected $fillable = [
         'business_type_id',
         'business_category_id',
-        'name',
         'code',
+        'name',
         'number',
-        'address',
-        'postal_code',
-        'city',
-        'phone',
-        'email',
-        'place_id',
         'register_id',
         'is_show',
     ];
@@ -40,5 +34,15 @@ class Business extends Model
     public function place()
     {
         return $this->belongsTo(Place::class);
+    }
+
+    public function histories()
+    {
+        return $this->morphMany(History::class, 'historyable');
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
     }
 }

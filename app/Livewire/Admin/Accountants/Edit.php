@@ -24,10 +24,10 @@ class Edit extends Component
         $this->form->date_of_birth = $this->form->merchant->date_of_birth;
         $this->form->email = $this->form->merchant->email;
         $this->form->phone = $this->form->merchant->phone;
-        $this->form->place_id = $this->form->merchant->place_id;
-        $this->form->address = $this->form->merchant->address;
-        $this->form->city = $this->form->merchant->city;
-        $this->form->postal_code = $this->form->merchant->postal_code;
+        // $this->form->place_id = $this->form->merchant->place_id;
+        // $this->form->address = $this->form->merchant->address;
+        // $this->form->city = $this->form->merchant->city;
+        // $this->form->postal_code = $this->form->merchant->postal_code;
     }
 
     public function updated($propertyName)

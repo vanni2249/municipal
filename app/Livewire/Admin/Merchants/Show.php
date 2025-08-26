@@ -10,10 +10,12 @@ use Livewire\Component;
 class Show extends Component
 {
     public $merchant;
+    public $merchant_address;
 
     public function mount($merchant)
     {
         $this->merchant = Register::findOrFail($merchant);
+        $this->merchant_address = $this->merchant->addresses()->where('is_primary', true)->first();
     }
 
     public function items()

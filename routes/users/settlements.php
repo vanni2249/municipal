@@ -1,28 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Users\Settlements\Index as SettlementIndex;
+use App\Livewire\Users\Settlements\Create as SettlementCreate;
+use App\Livewire\Users\Settlements\Show as SettlementShow;
+use App\Livewire\Users\Settlements\Edit as SettlementEdit;
 
 Route::prefix('/settlements')->name('users.settlements.')->group(function () {
-    Route::get('/', function () {
-        return view('users.settlements.index');
-    })->name('index');
-
-    Route::get('/create/{type?}', function () {
-        return view('users.settlements.create');
-    })->name('create');
-
-    Route::get('/{settlement}', function ($settlement) {
-        return view('users.settlements.show', ['settlement' => $settlement]);
-    })->name('show');
-
-    // Route::prefix('/building-permit')->name('building-permit.')->group(function () {
-    //     Route::get('/create', function () {
-    //         return view('users.settlements.building-permit.create');
-    //     })->name('create');
-    // });
-    // Route::prefix('/use-permit')->name('use-permit.')->group(function () {
-    //     Route::get('/create', function () {
-    //         return view('users.settlements.use-permit.create');
-    //     })->name('create');
-    // });
+    Route::get('/', SettlementIndex::class)->name('index');
+    Route::get('/create/{service}', SettlementCreate::class)->name('create');
+    Route::get('/{settlement}', SettlementShow::class)->name('show');
+    Route::get('/{settlement}/edit', SettlementEdit::class)->name('edit');
+    
 });

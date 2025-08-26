@@ -1,2 +1,0 @@
-<x-layouts.users>
-</x-layouts.users>

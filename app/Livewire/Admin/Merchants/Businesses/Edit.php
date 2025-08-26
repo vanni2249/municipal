@@ -19,15 +19,16 @@ class Edit extends Component
         $this->form->business = Business::where('register_id', $merchant)
             ->findOrFail($business);
         $this->form->merchant = $this->form->business->merchant;
+        $this->form->business_address = $this->form->business->addresses()->where('is_primary', true)->first();
         $this->form->business_type_id = $this->form->business->business_type_id;
         $this->form->business_category_id = $this->form->business->business_category_id;
         $this->form->name = $this->form->business->name;
         $this->form->number = $this->form->business->number;
         $this->form->phone = $this->form->business->phone;
-        $this->form->place_id = $this->form->business->place_id;
-        $this->form->address = $this->form->business->address;
-        $this->form->city = $this->form->business->city;
-        $this->form->postal_code = $this->form->business->postal_code;
+        $this->form->place_id = $this->form->business_address->place_id;
+        $this->form->address = $this->form->business_address->address;
+        $this->form->city = $this->form->business_address->city;
+        $this->form->postal_code = $this->form->business_address->postal_code;
     }
 
     public function save()

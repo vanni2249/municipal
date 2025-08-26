@@ -13,6 +13,7 @@ class MerchantBusinessForm extends Form
 
     public $merchant;
     public $business;
+    public $business_address;
     public $business_type_id;
     public $business_category_id;
     public $name;
@@ -47,11 +48,16 @@ class MerchantBusinessForm extends Form
             'name' => $this->name,
             'number' => $this->number,
             'phone' => $this->phone,
+            'register_id' => $this->merchant,
+        ]);
+
+        $business->addresses()->create([
+            'name' => 'Por defecto',
             'place_id' => $this->place_id,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
-            'register_id' => $this->merchant,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('admin.merchants.businesses.show', [
@@ -69,6 +75,9 @@ class MerchantBusinessForm extends Form
             'name' => $this->name,
             'number' => $this->number,
             'phone' => $this->phone,
+        ]);
+
+        $this->business->addresses()->update([
             'place_id' => $this->place_id,
             'address' => $this->address,
             'city' => $this->city,

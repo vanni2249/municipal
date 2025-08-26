@@ -9,10 +9,12 @@ use Livewire\Component;
 class Show extends Component
 {
     public $visitor;
+    public $address;
 
     public function mount($visitor)
     {
         $this->visitor = Register::findOrFail($visitor);
+        $this->address = $this->visitor->addresses()->where('is_primary', true)->first();
     }
 
     public function items()
@@ -24,9 +26,9 @@ class Show extends Component
             ['label' => 'Fecha de nacimiento', 'value' => $this->visitor->date_of_birth??'...'],
             ['label' => 'Email', 'value' => $this->visitor->email??'...'],
             ['label' => 'Teléfono', 'value' => $this->visitor->phone??'...'],
-            ['label' => 'Dirección', 'value' => $this->visitor->address??'...'],
-            ['label' => 'Cuidad', 'value' => $this->visitor->city??'...'],
-            ['label' => 'Código Postal', 'value' => $this->visitor->postal_code??'...'],
+            ['label' => 'Dirección', 'value' => $this->address->address??'...'],
+            ['label' => 'Cuidad', 'value' => $this->address->city??'...'],
+            ['label' => 'Código Postal', 'value' => $this->address->postal_code??'...'],
             ['label' => 'Fecha de creación', 'value' => $this->visitor->created_at,],
             ['label' => 'Creado por', 'value' => $this->visitor->created_by??'...'],
         ];

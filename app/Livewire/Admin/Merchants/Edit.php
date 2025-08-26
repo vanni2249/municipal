@@ -18,6 +18,7 @@ class Edit extends Component
     public function mount($merchant)
     {
         $this->form->merchant = Register::findOrFail($merchant);
+        $this->form->merchant_address = $this->form->merchant->addresses()->where('is_primary', true)->first();
         $this->form->type_id = $this->form->merchant->type_id;
         $this->form->name = $this->form->merchant->name;
         $this->form->lastname = $this->form->merchant->lastname;
@@ -25,9 +26,9 @@ class Edit extends Component
         $this->form->email = $this->form->merchant->email;
         $this->form->phone = $this->form->merchant->phone;
         $this->form->place_id = $this->form->merchant->place_id;
-        $this->form->address = $this->form->merchant->address;
-        $this->form->city = $this->form->merchant->city;
-        $this->form->postal_code = $this->form->merchant->postal_code;
+        $this->form->address = $this->form->merchant_address->address;
+        $this->form->city = $this->form->merchant_address->city;
+        $this->form->postal_code = $this->form->merchant_address->postal_code;
     }
 
     public function updated($propertyName)

@@ -124,7 +124,7 @@ class Register extends Component
                 'approved_at' => $this->approved_at,
             ]);
 
-            $this->user->register()->create([
+            $register = $this->user->register()->create([
                 'type_id' => Type::where('key', $this->role)->first()->id ?? null,
                 'code' => $this->createRegisterCode(),
                 'name' => $this->name,
@@ -151,6 +151,15 @@ class Register extends Component
                 'code' => $this->createRegisterCode(),
                 'created_by' => 'user',
                 'user_id' => $this->user->id,
+            ]);
+
+            $register->addresses()->create([
+                'name' => 'Por defecto',
+                'place_id' => $this->place_id,
+                'address' => $this->address,
+                'city' => $this->city,
+                'postal_code' => $this->postal_code,
+                'is_primary' => true,
             ]);
 
             if ($this->approved_at) {

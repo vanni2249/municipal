@@ -82,7 +82,7 @@
                 </header>
                 <div class="grid grid-cols-12 gap-2">
                     @forelse($services as $service)
-                    <a href="{{ route('users.actions.create', ['service' => $service->id]) }}"
+                    <a href="{{ route('users.'.$service->serviceCategory->key .'.create', ['service' => $service->id]) }}"
                         class="flex flex-col space-y-1 col-span-full md:col-span-6 lg:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                         <div class="p-4">
                             <h3 class="text-sm text-gray-700 font-bold line-clamp-1">

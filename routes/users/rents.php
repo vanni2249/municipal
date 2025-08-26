@@ -1,22 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Users\Rents\Index as RentIndex;
+use App\Livewire\Users\Rents\Show as RentShow;
+use App\Livewire\Users\Rents\Create as RentCreate;
+use App\Livewire\Users\Rents\Edit as RentEdit;
 
-Route::prefix(in_array(request()->segment(1), ['citizens', 'merchants', 'accountants', 'contractors']) ? request()->segment(1) : '')
-    ->name(request()->segment(1) . '.')
-    ->group(function () {
-        Route::prefix('/rents')->name('rents.')->group(function (){
-            Route::get('/', function () {
-                return view('users.rents.index');
-            })->name('index');
-            Route::get('/{rent}', function ($rent) {
-                return view('users.rents.show', ['rent' => $rent]);
-            })->name('show');
-
-            Route::prefix('facilities')->name('facilities.')->group(function () {
-                Route::get('/create', function () {
-                    return view('users.rents.facilities.create');
-                })->name('create');
-            });
-        });
-    });
+Route::prefix('/rents')->name('users.rents.')->group(function () {
+    Route::get('/', RentIndex::class)->name('index');
+    Route::get('/{rent}', RentShow::class)->name('show');
+    Route::get('/create/{service}', RentCreate::class)->name('create');
+    Route::get('/{rent}/edit', RentEdit::class)->name('edit');
+});

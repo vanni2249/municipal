@@ -9,10 +9,12 @@ use Livewire\Component;
 class Show extends Component
 {
     public $accountant;
+    public $address;
 
     public function mount($accountant)
     {
         $this->accountant = Register::with(['registers'])->findOrFail($accountant);
+        $this->address = $this->accountant->addresses()->where('is_primary', true)->first();
     }
 
     public function items()
@@ -25,10 +27,9 @@ class Show extends Component
             ['label' => 'Fecha de nacimiento', 'value' => $this->accountant->date_of_birth?? '...'],
             ['label' => 'Email', 'value' => $this->accountant->email ?? '...'],
             ['label' => 'Teléfono', 'value' => $this->accountant->phone ?? '...'],
-            ['label' => 'Lugar', 'value' => $this->accountant->place->name ?? '...'],
-            ['label' => 'Dirección', 'value' => $this->accountant->address ?? '...'],
-            ['label' => 'Ciudad', 'value' => $this->accountant->city ?? '...'],
-            ['label' => 'Código de area', 'value' => $this->accountant->postal_code ?? '...'],
+            ['label' => 'Dirección', 'value' => $this->address->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->address->city],
+            ['label' => 'Código de area', 'value' => $this->address->postal_code ?? '...'],
             ['label' => 'Creado por', 'value' => $this->accountant->user_id ? 'Contador' : 'Administrador'],
             ['label' => 'Fecha de creación', 'value' => $this->accountant->created_at->format('d/m/Y')],
         ]);

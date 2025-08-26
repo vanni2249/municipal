@@ -2,21 +2,18 @@
     <div class="space-y-4">
 
         <x-card>
-            <header>
+            <header class="mb-4">
                 <div class="flex flex-row justify-between items-center space-x-4">
                     <h2 class="text-lg font-bold text-gray-900 whitespace-nowrap">
                         {{ $accountant->name }} {{ $accountant->lastname }}
                     </h2>
                     <div class="flex items-center space-x-2">
                         <x-icon-button @click="$dispatch('open-modal', 'more-info')" icon="eye" />
-                        <x-icon-link href="{{ route('admin.accountants.edit', ['accountant' => $accountant]) }}"
-                            icon="edit" />
+                        {{-- <x-icon-link href="{{ route('admin.accountants.edit', ['accountant' => $accountant]) }}"
+                            icon="edit" /> --}}
                     </div>
                 </div>
             </header>
-            <span class="text-sm text-gray-800">
-                {{ $accountant->code }}
-            </span>
             <x-modal name="more-info" title="Detalles adicionales del comerciante">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach ($items as $item)
@@ -25,11 +22,9 @@
                 </div>
             </x-modal>
             <div class="flex flex-wrap gap-2">
+                <x-badge value="{{ $accountant->code }}" />
                 <x-badge value="{{ $accountant->type->es_name }}" />
                 <x-badge value="{{ $accountant->createdBy() }}" />
-                    @if ($accountant->user_id)
-                        <x-badge color="green" value="{{ $accountant->user->name }}" />
-                    @endif
             </div>
         </x-card>
         <x-card>

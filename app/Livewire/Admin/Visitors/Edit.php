@@ -15,13 +15,15 @@ class Edit extends Component
     public function mount($visitor)
     {
         $this->form->visitor = Register::findOrFail($visitor);
+        $this->form->visitor_address = $this->form->visitor->addresses()->where('is_primary', true)->first();
         $this->form->name = $this->form->visitor->name;
+        $this->form->lastname = $this->form->visitor->lastname;
         $this->form->date_of_birth = $this->form->visitor->date_of_birth;
         $this->form->email = $this->form->visitor->email;
         $this->form->phone = $this->form->visitor->phone;
-        $this->form->address = $this->form->visitor->address;
-        $this->form->city = $this->form->visitor->city;
-        $this->form->postal_code = $this->form->visitor->postal_code;
+        $this->form->address = $this->form->visitor_address->address;
+        $this->form->city = $this->form->visitor_address->city;
+        $this->form->postal_code = $this->form->visitor_address->postal_code;
     }
 
     public function save()

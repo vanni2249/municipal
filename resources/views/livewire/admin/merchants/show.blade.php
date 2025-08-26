@@ -2,7 +2,7 @@
     <div class="space-y-4">
 
         <x-card>
-            <header>
+            <header class="mb-4">
                 <div class="flex flex-row justify-between items-center space-x-4">
                     <h2 class="text-lg font-bold text-gray-900 whitespace-nowrap">
                         {{ $merchant->name }} {{ $merchant->lastname }}
@@ -14,9 +14,6 @@
                     </div>
                 </div>
             </header>
-            <span class="text-sm text-gray-800">
-                {{ $merchant->code }}
-            </span>
             <x-modal name="more-info" title="Detalles adicionales del comerciante">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach ($items as $item)
@@ -25,11 +22,12 @@
                 </div>
             </x-modal>
             <div class="flex flex-wrap gap-2">
+                <x-badge value="{{ $merchant->code }}" />
                 <x-badge value="{{ $merchant->type->es_name }}" />
                 <x-badge value="{{ $merchant->createdBy() }}" />
-                    @if ($merchant->user_id)
-                        <x-badge color="green" value="{{ $merchant->user->name }}" />
-                    @endif
+                @if ($merchant->user_id)
+                    <x-badge color="green" value="Tiene usuario" />
+                @endif
             </div>
         </x-card>
         <x-card>

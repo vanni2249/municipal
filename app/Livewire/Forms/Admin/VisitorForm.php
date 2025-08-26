@@ -11,6 +11,7 @@ class VisitorForm extends Form
 {
     use \App\Traits\RegisterCode;
     public $visitor;
+    public $visitor_address;
     public $name;
     public $lastname;
     public $date_of_birth;
@@ -36,7 +37,7 @@ class VisitorForm extends Form
 
     public function save()
     {
-        $visitor = Register::create([
+        $register = Register::create([
             'type_id' => Type::where('key', 'visitor')->first()->id,
             'code' => $this->createRegisterCode(),
             'name' => $this->name,
@@ -44,14 +45,22 @@ class VisitorForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
             'created_by' => 'admin',
             'admin_id' => Auth::guard('admin')->id(),
         ]);
 
-        return redirect()->route('admin.visitors.show', $visitor);
+        $register->addresses()->create([
+            'name' => 'Por defecto',
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'is_primary' => true,
+        ]);
+
+        return redirect()->route('admin.visitors.show', $register);
     }
 
     public function update()
@@ -62,9 +71,17 @@ class VisitorForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
+        ]);
+
+        $this->visitor->addresses()->update([
+            'name' => 'Por defecto',
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('admin.visitors.show', $this->visitor);

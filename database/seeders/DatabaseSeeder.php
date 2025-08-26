@@ -19,13 +19,13 @@ class DatabaseSeeder extends Seeder
             ActionCategorySeeder::class,
             // UserSeeder::class,
             AdminSeeder::class,
+            PlaceSeeder::class,
             RegisterSeeder::class,
             ServiceCategorySeeder::class,
             ServiceSeeder::class,
             BusinessTypeSeeder::class,
             BusinessCategorySeeder::class,
             BusinessSeeder::class,
-            PlaceSeeder::class,
             DebrisSeeder::class,
         ]);
 

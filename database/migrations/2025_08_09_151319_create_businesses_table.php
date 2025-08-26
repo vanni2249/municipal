@@ -18,11 +18,7 @@ return new class extends Migration
             $table->string('code')->unique()->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
-            $table->foreignId('place_id')->nullable()->onDelete('set null');
             $table->string('number')->nullable();
-            $table->string('address')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('city')->nullable();
             $table->foreignId('register_id')->nullable()->onDelete('set null');
             $table->boolean('is_show')->default(false);
             $table->timestamps();

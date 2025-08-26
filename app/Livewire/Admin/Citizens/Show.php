@@ -9,10 +9,12 @@ use Livewire\Component;
 class Show extends Component
 {
     public $citizen;
+    public $address;
 
     public function mount($citizen)
     {
         $this->citizen = Register::findOrFail($citizen);
+        $this->address = $this->citizen->addresses()->where('is_primary', true)->first();
     }
 
     public function items()
@@ -25,8 +27,10 @@ class Show extends Component
             ['label' => 'Fecha de nacimiento', 'value' => $this->citizen->date_of_birth??'...',],
             ['label' => 'Email', 'value' => $this->citizen->email??'...',],
             ['label' => 'Teléfono', 'value' => $this->citizen->phone??'...',],
-            ['label' => 'Ciudad', 'value' => $this->citizen->city??'...',],
-            ['label' => 'Código Postal', 'value' => $this->citizen->postal_code??'..',],
+            ['label' => 'Lugar', 'value' => $this->address->place ? $this->address->place->name : '...',],
+            ['label' => 'Dirección', 'value' => $this->address->address??'...',],
+            ['label' => 'Ciudad', 'value' => $this->address->city??'...',],
+            ['label' => 'Código Postal', 'value' => $this->address->postal_code??'..',],
             ['label' => 'Veterano', 'value' => $this->citizen->is_veteran ? 'Sí' : 'No',],
             ['label' => 'Edad avanzada', 'value' => $this->citizen->is_age_advanced ? 'Sí' : 'No',],
             ['label' => 'Postrado en cama', 'value' => $this->citizen->is_bedridden ? 'Sí' : 'No',],
@@ -36,10 +40,8 @@ class Show extends Component
             ['label' => 'Teléfono de contacto de emergencia', 'value' => $this->citizen->emergency_contact_phone??'...',],
             ['label' => 'Discapacitado', 'value' => $this->citizen->is_disabled ? 'Sí' : 'No',],
             ['label' => 'Creado por', 'value' => $this->citizen->created_by,],
-            ['label' => 'Administrador', 'value' => $this->citizen->admin_id ? $this->citizen->admin->name . ' ' . $this->citizen->admin->lastname : '...',],
+            ['label' => 'Crear por el Administrador', 'value' => $this->citizen->admin_id ? $this->citizen->admin->name . ' ' . $this->citizen->admin->lastname : '...',],
             ['label' => 'Usuario', 'value' => $this->citizen->user_id ? $this->citizen->user->code??'...' : '...',],
-            ['label' => 'Dirección', 'value' => $this->citizen->address??'...',],
-            ['label' => 'Lugar', 'value' => $this->citizen->place ? $this->citizen->place->name : '...',],
             ['label' => 'Fecha de creación', 'value' => $this->citizen->created_at->format('d/m/Y'),],
         ];
     }

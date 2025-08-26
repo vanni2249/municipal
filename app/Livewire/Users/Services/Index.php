@@ -27,7 +27,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.users.services.index',[
-            'services' => Service::with(['types'])->where('type_id', $this->type_id)->get(),
+            'services' => Service::with(['serviceCategory','types'])->where('type_id', $this->type_id)->get(),
         ]);
     }
 }

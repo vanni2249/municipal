@@ -17,7 +17,7 @@
                         ? route('users.merchants.businesses.show', ['merchant' => $business->register->id, 'business' => $business->id])
                         : route('users.businesses.show', ['business' => $business->id]) }}"
                         class=" bg-gray-100 hover:bg-gray-200 rounded-lg p-4">
-                        <x-card-business-user :code="$business->code" :place="$type === 'accountant' ? $business->register->name : $business->place->name" :name="$business->name" :type="$business->businessType->es_name"
+                        <x-card-business-user :code="$business->code" :place="$type === 'accountant' ? $business->register->name : $business->addresses()->first()->place->name" :name="$business->name" :type="$business->businessType->es_name"
                             :category="$business->businessCategory->es_name" />
                     </a>
                 @empty

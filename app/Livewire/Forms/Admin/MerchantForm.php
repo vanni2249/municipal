@@ -12,6 +12,7 @@ class MerchantForm extends Form
 {
     use \App\Traits\RegisterCode;
     public $merchant;
+    public $merchant_address;
     public $type_id;
     public $name;
     public $lastname;
@@ -41,7 +42,7 @@ class MerchantForm extends Form
 
     public function save()
     {
-        $merchant = Register::create([
+        $register = Register::create([
             'type_id' => $this->type_id,
             'code' => $this->createRegisterCode(),
             'name' => $this->name,
@@ -49,15 +50,24 @@ class MerchantForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
-            'place_id' => $this->place_id,
-            'address' => $this->address,
-            'city' => $this->city,
-            'postal_code' => $this->postal_code,
+            // 'place_id' => $this->place_id,
+            // 'address' => $this->address,
+            // 'city' => $this->city,
+            // 'postal_code' => $this->postal_code,
             'created_by' => 'admin',
             'admin_id' => Auth::guard('admin')->id(),
         ]);
 
-        return redirect()->route('admin.merchants.show', $merchant);
+        $register->addresses()->create([
+            'name' => 'Por defecto',
+            'place_id' => $this->place_id,
+            'address' => $this->address,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'is_primary' => true,
+        ]);
+
+        return redirect()->route('admin.merchants.show', $register);
     }
 
     public function update()
@@ -69,10 +79,19 @@ class MerchantForm extends Form
             'date_of_birth' => $this->date_of_birth,
             'email' => $this->email,
             'phone' => $this->phone,
+            // 'place_id' => $this->place_id,
+            // 'address' => $this->address,
+            'merchant' => $this->merchant,
+            // 'postal_code' => $this->postal_code,
+        ]);
+
+        $this->merchant->addresses()->update([
+            'name' => 'Por defecto',
             'place_id' => $this->place_id,
             'address' => $this->address,
-            'merchant' => $this->merchant,
+            'city' => $this->city,
             'postal_code' => $this->postal_code,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('admin.merchants.show', $this->merchant);

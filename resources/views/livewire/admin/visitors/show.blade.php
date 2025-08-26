@@ -1,6 +1,6 @@
 <div>
     <x-card>
-        <header>
+        <header class="mb-4">
             <div class="flex flex-row justify-between items-center space-x-4">
                 <h2 class="text-lg font-bold text-gray-900">
                     {{ $visitor->name . ' ' . $visitor->lastname }}
@@ -19,11 +19,10 @@
                 </div>
             </x-modal>
         </header>
-        <span>{{ $visitor->code }}</span>
-        <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
-            <li>{{ $visitor->type->es_name }}</li>
-            <li>|</li>
-            <li>{{ $visitor->createdBy() }}</li>
-        </ul>
+        <div class="flex flex-row gap-2">
+            <x-badge value="{{ $visitor->code }}" />
+            <x-badge value="{{ $visitor->type->es_name }}" />
+            <x-badge value="{{ $visitor->createdBy() }}" />
+        </div>
     </x-card>
 </div>

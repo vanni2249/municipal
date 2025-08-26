@@ -14,6 +14,7 @@ class BusinessForm extends Form
     public $business;
     public $business_type_id;
     public $business_category_id;
+    public $business_address;
     public $name;
     public $number;
     public $place_id;
@@ -47,12 +48,17 @@ class BusinessForm extends Form
             'code' => $this->createBusinessCode(),
             'name' => $this->name,
             'number' => $this->number,
+            'phone' => $this->phone,
+            'register_id' => $this->register->id,
+        ]);
+
+        $business->addresses()->create([
+            'name' => 'Sede Principal',
             'place_id' => $this->place_id,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
-            'phone' => $this->phone,
-            'register_id' => $this->register->id,
+            'is_primary' => true,
         ]);
 
         return redirect()->route('users.businesses.show', ['business' => $business])->with('success', 'Negocio creado exitosamente.');
@@ -65,11 +71,14 @@ class BusinessForm extends Form
             'business_category_id' => $this->business_category_id,
             'name' => $this->name,
             'number' => $this->number,
+            'phone' => $this->phone,
+        ]);
+
+        $this->business->addresses()->update([
             'place_id' => $this->place_id,
             'address' => $this->address,
             'city' => $this->city,
             'postal_code' => $this->postal_code,
-            'phone' => $this->phone,
         ]);
 
         return redirect()->route('users.businesses.show', ['business' => $this->business])->with('success', 'Negocio actualizado exitosamente.');

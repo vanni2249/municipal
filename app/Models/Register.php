@@ -14,10 +14,6 @@ class Register extends Model
         'date_of_birth',
         'email',
         'phone',
-        'place_id',
-        'address',
-        'city',
-        'postal_code',
         'is_veteran',
         'is_age_advanced',
         'is_bedridden',
@@ -69,14 +65,14 @@ class Register extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // public function register()
-    // {
-    //     return $this->belongsTo(Register::class, 'register_id');
-    // }
-
     public function registers()
     {
         return $this->hasMany(Register::class, 'register_id');
+    }
+
+    public function histories()
+    {
+        return $this->morphMany(History::class, 'historyable');
     }
 
     public function createdBy()

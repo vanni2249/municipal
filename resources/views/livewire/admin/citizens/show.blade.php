@@ -7,7 +7,9 @@
                 </h2>
                 <div class="flex items-center space-x-2">
                     <x-icon-button @click="$dispatch('open-modal', 'more-detail')" icon="eye" />
-                    <x-icon-link href="{{ route('admin.citizens.edit', ['citizen' => $citizen]) }}" icon="edit" />
+                    @if ($citizen->created_by === 'admin')
+                        <x-icon-link href="{{ route('admin.citizens.edit', ['citizen' => $citizen]) }}" icon="edit" />
+                    @endif
                 </div>
             </div>
             <x-modal name="more-detail" title="Detalles adicionales del ciudadano">
@@ -18,10 +20,9 @@
                 </div>
             </x-modal>
         </header>
-        <ul class="flex flex-wrap items-center space-x-2 text-sm text-gray-700">
-            <li>{{ $citizen->type->es_name }}</li>
-            <li>|</li>
-            <li class="">{{ $citizen->createdBy() }}</li>
-        </ul>
+        <div class="flex flex-row gap-2">
+            <x-badge value="{{ $citizen->type->es_name }}" />
+            <x-badge value="{{ $citizen->createdBy() }}" />
+        </div>
     </x-card>
 </div>

@@ -130,7 +130,34 @@ class RegisterSeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            \App\Models\Register::create($item);
+            $register = \App\Models\Register::create([
+                'type_id' => $item['type_id'],
+                'code' => $item['code'],
+                'name' => $item['name'],
+                'lastname' => $item['lastname'],
+                'email' => $item['email'],
+                'phone' => $item['phone'],
+                'date_of_birth' => $item['date_of_birth'],
+                'is_veteran' => $item['is_veteran'],
+                'is_age_advanced' => $item['is_age_advanced'],
+                'is_bedridden' => $item['is_bedridden'] ?? false,
+                'is_disability' => $item['is_disability'] ?? false,
+                'disability_type' => $item['disability_type'] ?? null,
+                'is_disabled' => $item['is_disabled'] ?? false,
+                'created_by' => $item['created_by'],
+                'admin_id' => $item['admin_id'] ?? null,
+                'emergency_contact' => $item['emergency_contact'] ?? null,
+                'emergency_contact_phone' => $item['emergency_contact_phone'] ?? null,
+            ]);
+
+            $register->addresses()->create([
+                'name' => 'Por defecto',
+                'place_id' => $item['place_id'],
+                'address' => $item['address'],
+                'city' => $item['city'],
+                'postal_code' => $item['postal_code'],
+                'is_primary' => true,
+            ]);
         }
 
         $register = \App\Models\Register::find(1);;
@@ -138,7 +165,7 @@ class RegisterSeeder extends Seeder
         $user = User::create([
             'name' => $register->name . ' ' . $register->lastname,
             'email' => $register->email,
-            'password' => bcrypt('password'), // Default password, change as needed
+            'password' => bcrypt('password'),
             'approved_at' => now(),
         ]);
 

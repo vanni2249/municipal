@@ -20,10 +20,10 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
-            $table->foreignId('place_id')->nullable();
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('postal_code')->nullable();
+            // $table->foreignId('place_id')->nullable();
+            // $table->string('address')->nullable();
+            // $table->string('city')->nullable();
+            // $table->string('postal_code')->nullable();
             $table->boolean('is_veteran')->default(false);
             $table->boolean('is_age_advanced')->default(false);
             $table->boolean('is_bedridden')->default(false);

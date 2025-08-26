@@ -9,11 +9,14 @@ use Livewire\Component;
 class Show extends Component
 {
     public $business;
+    public $address;
 
     public function mount($merchant, $business)
     {
         $this->business = Business::where('register_id', $merchant)
             ->findOrFail($business);
+        $this->address = $this->business->addresses()->where('is_primary', true)->first();
+
     }
 
     public function items()
@@ -25,10 +28,10 @@ class Show extends Component
             ['label' => 'Código', 'value' => $this->business->code ?? '...'],
             ['label' => 'Número', 'value' => $this->business->number ?? '...'],
             ['label' => 'Número de teléfono', 'value' => $this->business->phone ?? '...'],
-            ['label' => 'Lugar', 'value' => $this->business->place->name ?? '...'],
-            ['label' => 'Dirección', 'value' => $this->business->address ?? '...'],
-            ['label' => 'Ciudad', 'value' => $this->business->city ?? '...'],
-            ['label' => 'Código postal', 'value' => $this->business->postal_code ?? '...'],
+            ['label' => 'Lugar', 'value' => $this->address->place->name ?? '...'],
+            ['label' => 'Dirección', 'value' => $this->address->address ?? '...'],
+            ['label' => 'Ciudad', 'value' => $this->address->city ?? '...'],
+            ['label' => 'Código postal', 'value' => $this->address->postal_code ?? '...'],
         ];
     }
 

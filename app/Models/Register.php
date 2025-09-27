@@ -70,9 +70,9 @@ class Register extends Model
         return $this->hasMany(Register::class, 'register_id');
     }
 
-    public function histories()
+    public function actions()
     {
-        return $this->morphMany(History::class, 'historyable');
+        return $this->morphMany(Action::class, 'actionable');
     }
 
     public function createdBy()

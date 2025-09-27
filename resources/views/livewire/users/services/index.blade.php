@@ -10,7 +10,7 @@
                 </header>
                 <div class="grid grid-cols-12 gap-2">
                     @forelse ($services as $service)
-                    <a href="{{ route('users.'.$service->serviceCategory->key .'.create',['service' => $service->id]) }}"
+                    <a href="{{ route($service->url) }}"
                         class="flex flex-col space-y-1 col-span-12 md:col-span-3 bg-gray-100 text-xs text-gray-700 hover:bg-gray-200 rounded-xl">
                         <div class="p-2 lg:p-4">
                             <span class="text-sm text-gray-700 font-bold">

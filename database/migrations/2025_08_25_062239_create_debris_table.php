@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('debris', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
-            $table->string('en_name')->nullable();
-            $table->string('es_name')->nullable();
+            $table->foreignId('action_id')->nullable()->constrained('actions')->onDelete('set null');
+            $table->foreignId('place_id')->nullable()->constrained('places')->onDelete('set null');
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->foreignId('debris_type_id')->constrained('debris_types')->onDelete('cascade');      
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

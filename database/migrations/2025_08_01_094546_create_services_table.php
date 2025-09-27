@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('en_description')->nullable();
             $table->longText('es_description')->nullable();
             $table->string('slug')->unique();
+            $table->string('url')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

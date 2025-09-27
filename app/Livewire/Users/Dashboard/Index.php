@@ -18,9 +18,6 @@ class Index extends Component
     {
         $this->user = Auth::user();
         $this->type_id = Type::where('key', session('type_navigation', 'citizen'))->first()->id;
-        // $this->services = Service::with(['types'])->whereHas('types', function ($query) {
-        //     $query->where('type_id', $this->user->type_id);
-        // })->take(4)->get();
     }
 
     #[Layout('components.layouts.users.index')]

@@ -36,9 +36,9 @@ class Business extends Model
         return $this->belongsTo(Place::class);
     }
 
-    public function histories()
+    public function actions()
     {
-        return $this->morphMany(History::class, 'historyable');
+        return $this->morphMany(Action::class, 'actionable');
     }
 
     public function addresses()

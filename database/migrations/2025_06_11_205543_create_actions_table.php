@@ -16,7 +16,7 @@ return new class extends Migration
             $table->morphs('actionable');
             $table->foreignId('action_category_id')->nullable()->constrained('action_categories')->nullOnDelete();
             $table->text('description')->nullable();
-            $table->foreignId('user_id')->nullable()->contrains('users')->onDelete('set null');
+            $table->string('created_by')->nullable();
             $table->foreignId('register_id')->nullable()->onDelete('set null');
             $table->foreignId('admin_id')->nullable()->onDelete('set null');
             $table->timestamps();

@@ -10,22 +10,11 @@
                         <div>
                             <x-dropdown align="right" width="72">
                                 <x-slot name="trigger">
-                                    <x-button size="sm" variant="light" class="flex items-center space-x-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M4 6h16" />
-                                            <path d="M7 12h13" />
-                                            <path d="M10 18h10" />
-                                        </svg>
-                                    </x-button>
+                                    <x-icon-button icon="ellipsis-vertical" />
                                 </x-slot>
                                 <x-slot name="content">
                                     @foreach ($services as $service)
-                                        <x-dropdown-link
-                                            href="{{ route('users.applications.create', ['type' => $service->slug]) }}">
+                                        <x-dropdown-link href="{{ route($service->url) }}">
                                             {{ $service->es_name }}
                                         </x-dropdown-link>
                                     @endforeach
@@ -34,14 +23,14 @@
                         </div>
                     </header>
                     <div class="col-span-full space-y-2">
-                        @for ($i = 0; $i < 2; $i++)
-                            <a href="{{ route(request()->segment(1) . '.applications.show', ['application' => 1]) }}"
+                        @forelse ($actions as $action)
+                            <a href="{{ route('users.applications.show', ['application' => $action]) }}"
                                 class="bg-gray-100 hover:bg-gray-200 block p-2 md:p-4 rounded-xl">
                                 <header class="flex justify-between items-center">
                                     <small class=" text-gray-600">
                                         {{ rand(10000, 99999) }}
                                     </small>
-                                    @switch($i)
+                                    @switch(1)
                                         @case(0)
                                             <x-badge color="yellow">
                                                 Evaluacion
@@ -59,7 +48,7 @@
                                 </header>
                                 <ul class="text-sm pt-2">
                                     <li class="text-gray-800 text-md font-bold ">
-                                        @switch($i)
+                                        @switch(1)
                                             @case(0)
                                                 Solicitud de recogido de escombros
                                             @break
@@ -72,7 +61,7 @@
                                         @endswitch
                                     </li>
                                     <li class="text-xs text-gray-600 flex space-x-4">
-                                        @switch($i)
+                                        @switch(1)
                                             @case(1)
                                                 hace {{ rand(1, 12) }} horas &bull; Departamento Recreacion y Deportes
                                             @break
@@ -83,10 +72,11 @@
                                     </li>
                                 </ul>
                             </a>
-                        @endfor
-                    </div>
-                </x-card>
+                            @empty
+                            @endforelse
+                        </div>
+                    </x-card>
+                </div>
             </div>
         </div>
     </div>
-</div>

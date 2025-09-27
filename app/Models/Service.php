@@ -13,6 +13,7 @@ class Service extends Model
         'es_description',
         'en_description',
         'slug',
+        'url',
         'price',
         'is_active',
     ];

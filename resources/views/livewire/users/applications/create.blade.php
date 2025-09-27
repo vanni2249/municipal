@@ -8,7 +8,7 @@
             @switch($service->slug)
                 @case('debris-collection-home')
                     {{-- debris-collection-home --}}
-                    @livewire('users.applications.debris-collection-home.create')
+                    {{-- @livewire('users.applications.debris-collection-home.create') --}}
                     @break
                 @case(2)
                     

@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             BusinessTypeSeeder::class,
             BusinessCategorySeeder::class,
             BusinessSeeder::class,
-            DebrisSeeder::class,
+            DebrisTypeSeeder::class,
+            ActionCategorySeeder::class,
         ]);
 
         // User::factory()->create([

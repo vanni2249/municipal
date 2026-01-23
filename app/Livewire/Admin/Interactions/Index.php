@@ -21,7 +21,7 @@ class Index extends Component
         return $interaction->messages()->whereNull('admin_id')->whereNull('admin_read_at')->count();
     }
 
-    #[Layout('components.layouts.admin.index')]
+    #[Layout('layouts.admin')]
     public function render()
     {
         return view('livewire.admin.interactions.index', [

@@ -83,8 +83,8 @@
                                     @endif
                                 </td>
                                 <td class="p-4 flex justify-end">
-                                    <x-icon-link href="{{ route('admin.users.show', ['user' => $user->id]) }}"
-                                        icon="eye" />
+                                    {{-- <x-icon-link href="{{ route('admin.users.show', ['user' => $user->id]) }}"
+                                        icon="eye" /> --}}
                                 </td>
                             </tr>
                         @empty

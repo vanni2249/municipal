@@ -1,6 +1,6 @@
 <li>
     <a {{ $attributes->merge(['class' => 'text-white p-2 tracking-widest rounded hover:bg-gray-800 flex items-center
-        justify-between']) }}>
+        justify-between']) }} wire:navigate>
         <span>
             {{ $slot }}
         </span>

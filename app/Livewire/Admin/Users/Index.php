@@ -11,7 +11,7 @@ class Index extends Component
 {
     use WithPagination;
     
-    #[Layout('components.layouts.admin.index')]
+    #[Layout('layouts.admin')]
     public function render()
     {
         return view('livewire.admin.users.index', [

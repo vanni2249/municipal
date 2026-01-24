@@ -1,0 +1,87 @@
+[33me957353[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m refactor: remove unused seeders and clean up database seeding files
+[33m6ba13f1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m refactor: remove unused model and migration files to clean up the codebase
+[33m1532457[m fix: remove deprecated admin and user route files; introduce new sidebar link component for navigation.
+[33m239fd31[m fix: updating admin users functions
+[33m2ace33b[m feat: adding admin users livewire component
+[33m65115cf[m feat: adding placeholder skeleton
+[33mf42deaf[m fix: updating admin user functions
+[33m2267ada[m fix: updating components
+[33m4a5e01d[m fix: updating admin user functions
+[33m9ed1b28[m fix: updating admin structure file
+[33mf3cd04f[m fix: updating routes, layouts and structure livewire files
+[33m74f61e0[m Update Guest Welcome
+[33m1ef6c2f[m Update welcome
+[33ma53e245[m Update Welcome
+[33mf4695e4[m Update & Delete File Added Address Function to Register & Business
+[33mc26b079[m Updated Admin Users Action function Session Navigation
+[33mfa48877[m Updated Users Dashboard UI
+[33m7953976[m Update User Navigation Session Function
+[33md1a706b[m Update Admin INteraction Function
+[33ma995018[m Update Register Seeder
+[33m07cd875[m Update Admin & User Interaction Function
+[33m5f88604[m Update Admin Accountant Function
+[33mda4eb13[m Update Admin Merchant Business & UI
+[33m4510b8e[m Update User Attach Function
+[33m8313701[m Update Attach User Function
+[33m0d9f806[m Update Welcome Function
+[33m57f5bc7[m Update User Merchant Function & Business Function
+[33ma3a18f1[m Update Register User Added Attach function Register to User
+[33m383b01b[m Updated Admin Show Users & Employee
+[33m442189a[m Update  Admin User Register Function
+[33m8f646af[m Update Register User Not User Admin Register
+[33m7e6a34e[m Updated Admin Register Citizen, Visitor, Merchant Function
+[33mb359059[m Update User UI Merchant show
+[33ma5df388[m Update User UI  Business
+[33m7ad3a7d[m Update User UI Merchant Business
+[33m47002a2[m Update User Business Function
+[33m7ac31cf[m Update Merchant Function
+[33m4acaa95[m Update User Merchant Function and Merchant Function
+[33m893e8b8[m Update User UI Welcome file,Navbar,  Register form
+[33m80cb8fc[m Update User Register Login Added Type citizen-merchant
+[33m130665e[m Update Admin Employee Function
+[33mc7f23ef[m Update Admin Employee Function
+[33me77002d[m Update Admin Employee and UI Merchant
+[33m18e3d3e[m Update Admin Merchant Business Show Place
+[33m457692a[m Update Admin Merchant Business Function
+[33me67e39f[m Update Citizen, Merchant, Visitor Function
+[33mdca8f0a[m Update Admin Employee
+[33m5c8f414[m Update Citizen Merchant
+[33m638e489[m Update Multiple Function Added Citizen Merchant Model
+[33mf2a60ca[m Update Admin Show Detail
+[33med4925c[m Update Business Function
+[33m2a389a4[m Update Merchant Function
+[33m60dae16[m Update Merchant Register
+[33m3a48515[m Update Merchant Function
+[33m097b1d7[m Updated Citizen Register
+[33m9a377c0[m Update Function Uses
+[33m2789ad2[m Update User Function
+[33m39fdba4[m Update function Service
+[33mf346741[m Update Register user
+[33m94a1fea[m Update Register and stucture
+[33m9a8a31f[m Update Sructure
+[33md2db428[m Update user, citizen function
+[33ma77e77e[m Updated User Admin
+[33m7fba6a5[m Update Auth function
+[33mf0dd386[m Update admin file
+[33m3a73669[m Update admin file
+[33m50be9a4[m Update admin file
+[33mc4e9c96[m Update structure file
+[33mf94700e[m Update structure file
+[33mccae152[m Updated UX  Agencies Files
+[33ma0e15af[m Updated UX Dashboard Widget Icons
+[33m22cee95[m Updated UX Widget
+[33mf51eaf1[m Updated UX Title Card
+[33m30f606d[m Updated UX Dashboard
+[33mf9d8c6a[m Update UX Dashboard widget
+[33m8904826[m Updated UX
+[33m0c2af1b[m Updated UX
+[33m3004501[m Updated all index ux
+[33me486846[m Updated UX
+[33mf44d23c[m Updated services links
+[33m967389f[m Fixed Notification
+[33m1d96010[m Updated File Structors
+[33mcdea7cf[m Added Folder Citizen & Updated Guest
+[33ma4275dd[m Menu navbar updated
+[33m8c45d32[m Welcome Layout & Hero updated
+[33m23e26ee[m Add new JavaScript and manifest files for application assets
+[33mb7809c8[m Init commit

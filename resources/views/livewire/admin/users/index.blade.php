@@ -20,19 +20,19 @@
                             </select>
                         </div>
                         <div>
-                            <x-button variant="light">Filtro</x-button>
+                            <x-button variant="light" label="Filtro" />
                         </div>
                     </div>
                 </div>
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                                <th class="p-2 w-auto">Number</th>
-                                <th class="p-2 w-auto">Name<br>Lastname</th>
-                                <th class="p-2 w-auto">Email<br>Phone</th>
-                                <th class="p-2 w-auto">Last Connection</th>
-                                <th class="p-2 w-auto">Status</th>
-                                <th class="p-2 w-24"></th>
+                            <th class="p-2 w-auto">Number</th>
+                            <th class="p-2 w-auto">Name<br>Lastname</th>
+                            <th class="p-2 w-auto">Email<br>Phone</th>
+                            <th class="p-2 w-auto">Last Connection</th>
+                            <th class="p-2 w-auto">Status</th>
+                            <th class="p-2 w-24"></th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
@@ -67,10 +67,11 @@
                                     {{ $user->session?->created_at ? $user->session->created_at->diffForHumans() : '...' }}
                                 </td>
                                 <td class="p-2">
-                                   <x-badge :variant="$user->status->statusType->variant" :label="$user->status->statusType->name" />
+                                    <x-badge :variant="$user->status->statusType->variant" :label="$user->status->statusType->name" />
                                 </td>
-                                <td class="p-2 flex justify-end">
-                                    <x-icon-link href="{{ route('admin.users.show', ['user' => $user->ulid]) }}"
+                                <td class="p-2 flex space-x-2 justify-end">
+                                    <x-icon-link variant="light"
+                                        href="{{ route('admin.users.show', ['user' => $user->ulid]) }}"
                                         icon="eye" />
                                 </td>
                             </tr>

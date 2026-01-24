@@ -27,64 +27,51 @@
                 <x-table>
                     <x-slot name="head">
                         <tr>
-                            <th class="p-4 w-auto">Nombre</th>
-                            <th class="p-4 w-auto">Tipo</th>
-                            <th class="p-4 w-auto">Email<br/>Teléfono</th>
-                            <th class="p-4 w-auto">Fecha<br />creación</th>
-                            <th class="p-4 w-auto">Ultima<br />conexión</th>
-                            <th class="p-4 w-auto">Status</th>
-                            <th class="p-4 w-auto">Bloqueado</th>
-                            <th class="p-4 w-auto text-right">Acción</th>
+                                <th class="p-2 w-auto">Number</th>
+                                <th class="p-2 w-auto">Name<br>Lastname</th>
+                                <th class="p-2 w-auto">Email<br>Phone</th>
+                                <th class="p-2 w-auto">Last Connection</th>
+                                <th class="p-2 w-auto">Status</th>
+                                <th class="p-2 w-24"></th>
                         </tr>
                     </x-slot>
                     <x-slot name="body">
                         @forelse ($users as $user)
                             <tr class="border-t border-gray-300">
                                 <!-- Name -->
-                                <td class="p-4">
-                                    <span>
-                                        {{ $user->register->code ?? '...' }}
-                                    </span>
-                                    <br>
-                                    <span>
-                                        {{ $user->name }} 
-                                    </span>
+                                <td class="p-2">
+                                    {{ $user->number ?? '...' }}
                                 </td>
                                 <!-- Type -->
-                                <td class="p-4 capitalize">{{ $user->register->type->es_name??'...' }}</td>
-                                <!-- Email & phone -->
-                                <td class="p-4">
+                                <td class="p-2 capitalize">
                                     <span>
-                                        {{ $user->email }}
+                                        {{ $user->name ?? '...' }}
                                     </span>
                                     <br>
                                     <span>
-                                        {{ $user->register->phone ?? '...' }}
+                                        {{ $user->lastname ?? '...' }}
                                     </span>
                                 </td>
-                                <!-- Create_at -->
-                                <td class="p-4">{{ $user->created_at->format('d/m/Y') }}</td>
+                                <!-- Email & phone -->
+                                <td class="p-2">
+                                    <span>
+                                        {{ $user->email ?? '...' }}
+                                    </span>
+                                    <br>
+                                    <span>
+                                        {{ $user->phone ?? '...' }}
+                                    </span>
+                                </td>
                                 <!-- Last Connection -->
-                                <td class="p-4">
-                                    {{ $user->getLastLogin() }}
+                                <td class="p-2">
+                                    {{ $user->session?->created_at ? $user->session->created_at->diffForHumans() : '...' }}
                                 </td>
-                                <td class="p-4">
-                                    @if ($user->approved_at)
-                                        <x-badge color="green">Aprobado</x-badge>
-                                    @else
-                                        <x-badge color="red">No aprobado</x-badge>
-                                    @endif
+                                <td class="p-2">
+                                   <x-badge :variant="$user->status->statusType->variant" :label="$user->status->statusType->name" />
                                 </td>
-                                <td class="p-4">
-                                    @if ($user->blocked_at)
-                                        <x-badge color="red">Bloqueado</x-badge>
-                                    @else
-                                        <x-badge color="green">Activo</x-badge>
-                                    @endif
-                                </td>
-                                <td class="p-4 flex justify-end">
-                                    {{-- <x-icon-link href="{{ route('admin.users.show', ['user' => $user->id]) }}"
-                                        icon="eye" /> --}}
+                                <td class="p-2 flex justify-end">
+                                    <x-icon-link href="{{ route('admin.users.show', ['user' => $user->ulid]) }}"
+                                        icon="eye" />
                                 </td>
                             </tr>
                         @empty

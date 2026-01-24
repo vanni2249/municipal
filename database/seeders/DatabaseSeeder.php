@@ -15,19 +15,20 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            TypeSeeder::class,
-            ActionCategorySeeder::class,
-            // UserSeeder::class,
-            AdminSeeder::class,
-            PlaceSeeder::class,
-            RegisterSeeder::class,
-            ServiceCategorySeeder::class,
-            ServiceSeeder::class,
-            BusinessTypeSeeder::class,
-            BusinessCategorySeeder::class,
-            BusinessSeeder::class,
-            DebrisTypeSeeder::class,
-            ActionCategorySeeder::class,
+            UserSeeder::class,
+            UserStatusTypeSeeder::class,
+            // TypeSeeder::class,
+            // ActionCategorySeeder::class,
+            // AdminSeeder::class,
+            // PlaceSeeder::class,
+            // RegisterSeeder::class,
+            // ServiceCategorySeeder::class,
+            // ServiceSeeder::class,
+            // BusinessTypeSeeder::class,
+            // BusinessCategorySeeder::class,
+            // BusinessSeeder::class,
+            // DebrisTypeSeeder::class,
+            // ActionCategorySeeder::class,
         ]);
 
         // User::factory()->create([

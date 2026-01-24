@@ -1,26 +1,27 @@
-@props(['color' => 'gray','label' => null, 'value' => null])
+@props(['variant' => 'success', 'label' => null])
 
-{{-- Badge component for displaying colored labels with optional text and value --}}
-
-{{-- Define a mapping of color names to Tailwind CSS classes --}}
 
 @php
-    $colors = [
-        'gray' => 'bg-gray-300 text-gray-700',
-        'gray-outline' => 'border border-gray-400 text-gray-700',
-        'red' => 'bg-red-200 text-red-500',
-        'red-outline' => 'border border-red-400 text-red-500',
-        'green' => 'bg-green-300 text-green-800',
-        'green-outline' => 'border border-green-400 text-green-800',
-        'blue' => 'bg-blue-300 text-blue-600',
-        'blue-outline' => 'border border-blue-400 text-blue-600',
-        'yellow' => 'bg-yellow-300 text-gray-600',
-        'yellow-outline' => 'border border-yellow-400 text-gray-600',
+    $variants = [
+        'primary' => 'bg-blue-300 text-blue-700',
+        'primary-outline' => 'border border-blue-700 text-blue-700 bg-transparent',
+        'secondary' => 'bg-gray-200 text-gray-700',
+        'secondary-outline' => 'border border-gray-700 text-gray-700 bg-transparent',
+        'success' => 'bg-green-300 text-green-700',
+        'success-outline' => 'border border-green-700 text-green-700 bg-transparent',
+        'danger' => 'bg-red-300 text-red-700',
+        'danger-outline' => 'border border-red-700 text-red-700 bg-transparent',
+        'warning' => 'bg-yellow-300 text-yellow-800',
+        'warning-outline' => 'border border-yellow-800 text-yellow-800 bg-transparent',
+        'info' => 'bg-teal-300 text-teal-700',
+        'info-outline' => 'border border-teal-700 text-teal-700 bg-transparent',
+        'light' => 'bg-white text-gray-800',
+        'light-outline' => 'border border-gray-800 text-gray-800 bg-transparent',
+        'dark' => 'bg-gray-800 text-white',
+        'dark-outline' => 'border border-white text-white bg-transparent',
     ];
 @endphp
 
-<span {{ $attributes->merge(['class' => "px-3 py-0.5 rounded text-xs font-semibold " . ($colors[$color] ?? $colors['gray'])]) }}>
-    {{ $slot }}
+<span {{ $attributes->merge(['class' => "px-3 py-0.5 rounded text-xs font-semibold {$variants[$variant]}"]) }}>
     {{ $label ?? '' }}
-    {{ $value ?? '' }}
 </span>

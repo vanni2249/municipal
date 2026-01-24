@@ -2,11 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\UserStatusType;
+use App\Traits\UserNumber;
+use App\Traits\UserUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Jenssegers\Agent\Agent;
 
 class UserSeeder extends Seeder
 {
+    use UserUlid, UserNumber;
     /**
      * Run the database seeds.
      */
@@ -14,102 +20,54 @@ class UserSeeder extends Seeder
     {
         $items = [
             [
-                'type_id' => 1,
-                'name' => 'John Doe',
-                'email' => 'ciudadano@email.com',
+                'ulid' => $this->createUserUlid(),
+                'number' => $this->createUserNumber(),
+                'name' => 'Giovanni',
+                'lastname' => 'Colon Barrios',
+                'email' => 'giovanni@email.com',
+                'phone' => '8096822249',
                 'password' => bcrypt('password'),
-                // 'date_of_birth' => '1990-01-01',
-                // 'phone' => '1234567890',
-                // 'address' => '123 Main St',
-                // 'city' => 'Springfield',
-                // 'postal_code' => '12345',
-                'approved_at' => now(),
-                'last_login_at' => now(),
             ],
             [
-                'type_id' => 2,
-                'name' => 'Jane Smith',
-                'email' => 'comerciante@email.com',
+                'ulid' => $this->createUserUlid(),
+                'number' => $this->createUserNumber(),
+                'name' => 'Karen',
+                'lastname' => 'Colon Barrios',
+                'email' => 'karen@email.com',
+                'phone' => '8096822249',
                 'password' => bcrypt('password'),
-                // 'date_of_birth' => '1992-02-02',
-                // 'phone' => '0987654321',
-                // 'number' => '456-789-0123',
-                // 'address' => '456 Elm St',
-                // 'city' => 'Shelbyville',
-                // 'postal_code' => '54321',
-                'approved_at' => now(),
-                'last_login_at' => now(),
             ],
             [
-                'type_id' => 3,
-                'name' => 'Bob Johnson',
-                'email' => 'citizen-merchant@email.com',
+                'ulid' => $this->createUserUlid(),
+                'number' => $this->createUserNumber(),
+                'name' => 'Admin',
+                'lastname' => 'User',
+                'email' => 'admin@email.com',
+                'phone' => '8096822249',
                 'password' => bcrypt('password'),
-                // 'date_of_birth' => '1985-03-03',
-                // 'phone' => '5678901234',
-                // 'number' => '567-890-1234',
-                // 'address' => '789 Oak St',
-                // 'city' => 'Capital City',
-                // 'postal_code' => '67890',
-                'approved_at' => now(),
-                'last_login_at' => now(),
             ],
             [
-                'type_id' => 4,
-                'name' => 'Bob Johnson',
-                'email' => 'contador@email.com',
+                'ulid' => $this->createUserUlid(),
+                'number' => $this->createUserNumber(),
+                'name' => 'Test',
+                'lastname' => 'User',
+                'email' => 'test@email.com',
+                'phone' => '8096822249',
                 'password' => bcrypt('password'),
-                // 'date_of_birth' => '1985-03-03',
-                // 'phone' => '5678901234',
-                // 'company_name' => 'Bob\'s Accounting',
-                // 'number' => '567-890-1234',
-                // 'address' => '789 Oak St',
-                // 'city' => 'Capital City',
-                // 'postal_code' => '67890',
-                'approved_at' => now(),
-                'last_login_at' => now(),
             ],
             [
-                'type_id' => 5,
-                'name' => 'Alice Brown',
-                'email' => 'contratista@email.com',
-                'password' => bcrypt('password'),
-                'date_of_birth' => '1980-04-04',
-                // 'phone' => '6789012345',
-                // 'address' => '321 Pine St',
-                // 'city' => 'Metropolis',
-                // 'postal_code' => '13579',
-            ],
-            [
-                'type_id' => 6,
-                'name' => 'Charlie Davis',
-                'email' => 'proveedor@email.com',
-                'password' => bcrypt('password'),
-                // 'date_of_birth' => '1975-05-05',
-                // 'phone' => '7890123456',
-                // 'company_name' => 'Charlie\'s Supplies',
-                // 'number' => '678-901-2345',
-                // 'address' => '654 Cedar St',
-                // 'city' => 'Smallville',
-                // 'postal_code' => '24680',
-            ],
-            [
-                'type_id' => 7,
-                'name' => 'John Visitor',
-                'email' => 'visitante@email.com',
-                'password' => bcrypt('password'),
-                // 'date_of_birth' => '1990-01-01',
-                // 'phone' => '1234567890',
-                // 'address' => '123 Admin St',
-                // 'city' => 'Admin City',
-                // 'postal_code' => '12345',
-                'approved_at' => now(),
-                'last_login_at' => now(),
-            ],
+                'ulid' => $this->createUserUlid(),
+                'number' => $this->createUserNumber(),
+                'name' => 'Demo',
+                'lastname' => 'User',
+                'email' => 'demo@email.com',
+                'phone' => '8096822249',
+                'password' => bcrypt('password'),   
+            ]
         ];
 
         foreach ($items as $item) {
-            \App\Models\User::create($item);
+            User::create($item);
         }
     }
 }

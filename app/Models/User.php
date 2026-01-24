@@ -18,24 +18,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'type_id',
+        'ulid',
+        'number',
         'name',
+        'lastname',
         'email',
         'phone',
-        'password',
-        'company_name',
-        'number',
-        'address',
-        'city',
-        'state',
-        'postal_code',
-        'date_of_birth',
-        'approved_at',
-        'approved_by',
-        'blocked_at',
-        'blocked_by',
-        'blocked_reason',
-        'last_login_at',
     ];
 
     /**
@@ -61,74 +49,93 @@ class User extends Authenticatable
         ];
     }
 
-    public function type()
+    public function sessions()
     {
-        return $this->belongsTo(Type::class, 'type_id');
+        return $this->hasMany(UserSession::class);
+    }
+    public function session()
+    {
+        return $this->hasOne(UserSession::class)->latestOfMany();
     }
 
-    public function interactions()
+    public function statuses()
     {
-        return $this->hasMany(Interaction::class);
+        return $this->hasMany(UserStatus::class);
     }
 
-    public function merchants()
+    public function status()
     {
-        return $this->hasMany(Merchant::class);
+        return $this->hasOne(UserStatus::class)->latestOfMany();
     }
 
-    public function register()
-    {
-        return $this->hasOne(Register::class, 'user_id');
-    }
+    // public function type()
+    // {
+    //     return $this->belongsTo(Type::class, 'type_id');
+    // }
 
-    public function registers()
-    {
-        return $this->hasMany(Register::class, 'user_id');
-    }
+    // public function interactions()
+    // {
+    //     return $this->hasMany(Interaction::class);
+    // }
 
-    public function businesses()
-    {
-        return $this->hasMany(Business::class, 'user_id');
-    }
+    // public function merchants()
+    // {
+    //     return $this->hasMany(Merchant::class);
+    // }
 
-    public function addresses()
-    {
-        return $this->morphMany(Address::class, 'addressable');
-    }
+    // public function register()
+    // {
+    //     return $this->hasOne(Register::class, 'user_id');
+    // }
 
-    public function getLastLogin(): ?string
-    {
-        return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
-    }
+    // public function registers()
+    // {
+    //     return $this->hasMany(Register::class, 'user_id');
+    // }
 
-    public function approvedBy()
-    {
-        return $this->belongsTo(Admin::class, 'approved_by');
-    }
+    // public function businesses()
+    // {
+    //     return $this->hasMany(Business::class, 'user_id');
+    // }
 
-    public function blockedBy()
-    {
-        return $this->belongsTo(Admin::class, 'blocked_by');
-    }
+    // public function addresses()
+    // {
+    //     return $this->morphMany(Address::class, 'addressable');
+    // }
 
-    public function showSessionTypeNavigation()
-    {
-        switch (session('type_navigation')) {
-            case 'citizen':
-                return 'Ciudadano';
-            case 'merchant':
-                return 'Comerciante';
-            case 'accountant':
-                return 'Contador';
-            case 'contractor':
-                return 'Contratista';
-            case 'supplier':
-                return 'Proveedor';
-            case 'visitor':
-                return 'Visitante';
-            default:
-                return 'Usuario';
-        }
-    }
+    // public function getLastLogin(): ?string
+    // {
+    //     return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+    // }
+
+    // public function approvedBy()
+    // {
+    //     return $this->belongsTo(Admin::class, 'approved_by');
+    // }
+
+    // public function blockedBy()
+    // {
+    //     return $this->belongsTo(Admin::class, 'blocked_by');
+    // }
+
+    // public function showSessionTypeNavigation()
+    // {
+    //     switch (session('type_navigation')) {
+    //         case 'citizen':
+    //             return 'Ciudadano';
+    //         case 'merchant':
+    //             return 'Comerciante';
+    //         case 'accountant':
+    //             return 'Contador';
+    //         case 'contractor':
+    //             return 'Contratista';
+    //         case 'supplier':
+    //             return 'Proveedor';
+    //         case 'visitor':
+    //             return 'Visitante';
+    //         default:
+    //             return 'Usuario';
+    //     }
+    // }
 
 }

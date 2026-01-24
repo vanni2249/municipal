@@ -10,8 +10,6 @@ class Show extends Component
 {
     public $user;
 
-    public $blocked_reason;
-
     public function mount($user)
     {
         $this->user = User::where('ulid', $user)->firstOrFail();

@@ -9,15 +9,10 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination;
-
+   
     #[Layout('layouts.admin')]
     public function render()
     {
-        return view('livewire.admin.users.index', [
-            'users' => User::with('session', 'status')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10),
-        ]);
+        return view('livewire.admin.users.index');
     }
 }

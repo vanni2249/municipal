@@ -1,13 +1,5 @@
-@props(['color' => 'bg-white', 'title' => '', 'actions' => ''])
+@props(['color' => 'bg-white'])
 
-<div {{ $attributes->merge(['class' => $color . ' p-4 rounded-xl']) }}>
-    <header class="flex justify-between items-center">
-        <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">
-            {{ $title }}
-        </h2>
-        <div>
-            {{ $actions }}
-        </div>
-    </header>
+<div {{ $attributes->merge(['class' => $color . ' p-4 space-y-4 rounded-xl']) }}>
     {{ $slot }} 
 </div>

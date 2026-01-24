@@ -17,10 +17,10 @@ class Show extends Component
 
     public function mount($interaction)
     {
-        $this->admin = Auth::guard('admin')->user();
-        $this->interaction = Interaction::with(['service', 'messages'])->findOrFail($interaction);
-        $this->status = 'in_progress';
-        $this->readMessage();
+        // $this->admin = Auth::guard('admin')->user();
+        // $this->interaction = Interaction::with(['service', 'messages'])->findOrFail($interaction);
+        // $this->status = 'in_progress';
+        // $this->readMessage();
     }
 
     public function updatedMessage($value)
@@ -61,12 +61,12 @@ class Show extends Component
         $this->dispatch('close-modal', 'add-message-modal');
     }
 
-    #[Layout('components.layouts.admin.index')]
+    #[Layout('layouts.admin')]
     public function render()
     {
         return view('livewire.admin.interactions.show', [
-            'interaction' => $this->interaction,
-            'messages' => $this->interaction->messages()->with(['interaction'])->orderBy('created_at', 'desc')->get(),
+            // 'interaction' => $this->interaction,
+            // 'messages' => $this->interaction->messages()->with(['interaction'])->orderBy('created_at', 'desc')->get(),
         ]);
     }
 }

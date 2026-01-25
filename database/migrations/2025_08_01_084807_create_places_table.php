@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->morphs('historyable');
-            $table->foreignId('service_id')->nullable()->constrained('services')->onDelete('set null');
-            $table->timestamps();
+            $table->ulid('ulid')->unique();
+            $table->string('number')->unique();
+            $table->string('name')->nullable();
+            $table->foreignId('place_type_id')->constrained('place_types')->onDelete('cascade');
+            $table->timestamps();   
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('histories');
+        Schema::dropIfExists('places');
     }
 };

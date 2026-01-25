@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasOne(UserStatus::class)->latestOfMany();
     }
 
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
     // public function type()
     // {
     //     return $this->belongsTo(Type::class, 'type_id');

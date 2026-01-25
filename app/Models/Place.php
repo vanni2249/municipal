@@ -18,6 +18,11 @@ class Place extends Model
         return $this->belongsTo(PlaceType::class);
     }
 
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
 
     /**
      * Get the addresses associated with the place.

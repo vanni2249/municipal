@@ -7,42 +7,69 @@ use Illuminate\Database\Eloquent\Model;
 class Business extends Model
 {
     protected $fillable = [
-        'business_type_id',
-        'business_category_id',
-        'code',
-        'name',
+        'ulid',
         'number',
-        'register_id',
-        'is_show',
+        'name',
+        'business_type_id',
+        'address',
+        'zip_code',
+        'place_id',
+        'account_id',
     ];
 
-    public function businessType()
+    public function business_type()
     {
         return $this->belongsTo(BusinessType::class);
-    }
-
-    public function businessCategory()
-    {
-        return $this->belongsTo(BusinessCategory::class);
-    }
-
-    public function register()
-    {
-        return $this->belongsTo(Register::class);
     }
 
     public function place()
     {
         return $this->belongsTo(Place::class);
     }
-
-    public function actions()
+    
+    public function account()
     {
-        return $this->morphMany(Action::class, 'actionable');
+        return $this->belongsTo(Account::class);
     }
 
-    public function addresses()
+    public function statuses()
     {
-        return $this->morphMany(Address::class, 'addressable');
+        return $this->hasMany(BusinessStatus::class);
     }
+
+    public function status()
+    {
+        return $this->hasOne(BusinessStatus::class)->latestOfMany();
+    }
+
+
+    // public function businessType()
+    // {
+    //     return $this->belongsTo(BusinessType::class);
+    // }
+
+    // public function businessCategory()
+    // {
+    //     return $this->belongsTo(BusinessCategory::class);
+    // }
+
+    // public function register()
+    // {
+    //     return $this->belongsTo(Register::class);
+    // }
+
+    // public function place()
+    // {
+    //     return $this->belongsTo(Place::class);
+    // }
+
+    // public function actions()
+    // {
+    //     return $this->morphMany(Action::class, 'actionable');
+    // }
+
+    // public function addresses()
+    // {
+    //     return $this->morphMany(Address::class, 'addressable');
+    // }
 }

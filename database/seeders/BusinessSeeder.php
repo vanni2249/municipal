@@ -2,24 +2,37 @@
 
 namespace Database\Seeders;
 
+use App\Traits\BusinessNumber;
+use App\Traits\BusinessUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BusinessSeeder extends Seeder
 {
+    use BusinessUlid, BusinessNumber;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
         $items = [
-            ['key' => 'restaurant', 'en_name' => 'Restaurant', 'es_name' => 'Restaurante'],
-            ['key' => 'cafe', 'en_name' => 'Coffee', 'es_name' => 'Cafetería'],
-            ['key' => 'bar', 'en_name' => 'Bar', 'es_name' => 'Bar'],
-            ['key' => 'shop', 'en_name' => 'Shop', 'es_name' => 'Tienda'],
-            ['key' => 'service', 'en_name' => 'Service', 'es_name' => 'Servicio'],
+            [
+                'ulid' => $this->createBusinessUlid(),
+                'number' => $this->createBusinessNumber(),
+                'business_type_id' => 1,
+                'name' => 'Acme Corporation',
+                'address' => '123 Main St',
+                'zip_code' => '12345',
+                'place_id' => 1,
+                'account_id' => 1,
+            ]
         ];
 
-        \App\Models\BusinessCategory::insert($items);
+        foreach ($items as $item) {
+            \App\Models\Business::create($item)->statuses()->create([
+                'business_status_type_id' => 1,
+                'reason' => 'Initial status set to active.',
+            ]);
+        }
     }
 }

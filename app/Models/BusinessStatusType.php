@@ -5,19 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class BusinessType extends Model
+class BusinessStatusType extends Model
 {
     use HasTranslations;
 
     public array $translatable = ['name'];
-    
+
     protected $fillable = [
         'slug',
         'name',
+        'variant',
     ];
 
-    public function businesses()
+    protected $casts = [
+        'name' => 'array',
+    ];
+
+    public function businessStatuses()
     {
-        return $this->hasMany(Business::class);
+        return $this->hasMany(BusinessStatus::class, 'business_status_type_id');
     }
 }

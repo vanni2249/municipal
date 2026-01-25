@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_type_id')->nullable()->onDelete('set null');
-            $table->foreignId('business_category_id')->nullable()->onDelete('set null');
-            $table->string('code')->unique()->nullable();
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('number')->nullable();
-            $table->foreignId('register_id')->nullable()->onDelete('set null');
-            $table->boolean('is_show')->default(false);
+            $table->ulid('ulid')->unique();
+            $table->string('number')->unique();
+            $table->foreignId('business_type_id')->constrained('business_types');
+            $table->string('name');
+            $table->string('address')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->foreignId('place_id')->constrained('places');
+            $table->foreignId('account_id')->constrained('accounts');
             $table->timestamps();
         });
     }

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('business_types', function (Blueprint $table) {
+        Schema::create('business_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
-            $table->string('en_name')->nullable();
-            $table->string('es_name')->nullable();
+            $table->foreignId('business_id')->constrained('businesses');
+            $table->foreignId('business_status_type_id')->constrained('business_status_types');
+            $table->unsignedBigInteger('changed_by')->nullable();
+            $table->text('reason')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('business_types');
+        Schema::dropIfExists('business_statuses');
     }
 };

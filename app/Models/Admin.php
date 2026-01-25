@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Models;
-use App\AdminSession;
-use App\AdminStatus;
+use App\Models\AdminSession;
+use App\Models\AdminStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

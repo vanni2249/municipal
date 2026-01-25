@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\AdminStatusType;
+use App\Models\AdminStatusType;
 use App\Models\Admin;
 use App\Traits\AdminNumber;
 use App\Traits\AdminUlid;

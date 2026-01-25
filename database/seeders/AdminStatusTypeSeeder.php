@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\AdminStatusType;
+use App\Models\AdminStatusType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

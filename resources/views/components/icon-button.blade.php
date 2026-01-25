@@ -1,4 +1,4 @@
-@props(['type' => 'button', 'variant' => 'primary', 'icon' => 'edit'])
+@props(['type' => 'button', 'variant' => 'primary', 'size' => 'md', 'icon' => 'edit'])
 
 @php
     $variants = [
@@ -33,9 +33,16 @@
         'dark-outline' =>
             ' border border-gray-800 text-gray-900 hover:text-white hover:bg-gray-900 focus:bg-gray-900 active:bg-gray-900',
     ];
+
+    $sizes = [
+        'xs' => ' p-0.5 ',
+        'sm' => ' p-1',
+        'md' => ' p-1.5 ',
+        'lg' => ' p-2 ',
+    ];
 @endphp
 
-<button type="{{ $type }}" {{ $attributes->merge(['class' => $variants[$variant] . ' rounded-md p-1.5 cursor-pointer']) }}>
+<button type="{{ $type }}" {{ $attributes->merge(['class' => $variants[$variant] . ' rounded-md ' . $sizes[$size] . ' cursor-pointer']) }}>
 
     @switch($icon)
         @case('minus')

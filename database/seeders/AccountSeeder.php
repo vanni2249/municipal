@@ -39,7 +39,10 @@ class AccountSeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            \App\Models\Account::create($item);
+            \App\Models\Account::create($item)->statuses()->create([
+                'account_status_type_id' => 1,
+                'reason' => 'Initial status set to active.',
+            ]);
         }
 
     }

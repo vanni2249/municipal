@@ -33,4 +33,19 @@ class Account extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function statuses()
+    {
+        return $this->hasMany(AccountStatus::class);
+    }
+
+    public function status()
+    {
+        return $this->hasOne(AccountStatus::class)->latestOfMany();
+    }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
 }

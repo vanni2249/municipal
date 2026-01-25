@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\AdminSession;
+use App\AdminStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,18 +19,14 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'ulid',
+        'number',
         'name',
         'lastname',
-        'date_of_birth',
         'email',
         'phone',
         'username',
         'password',
-        'admin_id',
-        'last_login_at',
-        'blocked_at',
-        'blocked_by',
-        'blocked_reason',
     ];
 
     /**
@@ -54,29 +52,49 @@ class Admin extends Authenticatable
         ];
     }
 
-    public function getLastLogin(): ?string
+    public function sessions()
     {
-        return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+        return $this->hasMany(AdminSession::class);
     }
 
-    public function getCreatedAt(): string
+    public function session()
     {
-        return \Carbon\Carbon::parse($this->created_at)->format('d/m/Y H:i:s');
+        return $this->hasOne(AdminSession::class)->latestOfMany();
     }
 
-    public function getUpdatedAt(): string
+    public function statuses()
     {
-        return \Carbon\Carbon::parse($this->updated_at)->format('d/m/Y H:i:s');
+        return $this->hasMany(AdminStatus::class);
     }
 
-    public function getBlocked(): string
+    public function status()
     {
-        return $this->blocked_at ? 'Si' : 'No';
+        return $this->hasOne(AdminStatus::class)->latestOfMany();
     }
 
-    public function getBlockedAt(): string
-    {
-        return $this->blocked_at ? \Carbon\Carbon::parse($this->blocked_at)->format('d/m/Y') : '...';
-    }
+    // public function getLastLogin(): ?string
+    // {
+    //     return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
+    // }
+
+    // public function getCreatedAt(): string
+    // {
+    //     return \Carbon\Carbon::parse($this->created_at)->format('d/m/Y H:i:s');
+    // }
+
+    // public function getUpdatedAt(): string
+    // {
+    //     return \Carbon\Carbon::parse($this->updated_at)->format('d/m/Y H:i:s');
+    // }
+
+    // public function getBlocked(): string
+    // {
+    //     return $this->blocked_at ? 'Si' : 'No';
+    // }
+
+    // public function getBlockedAt(): string
+    // {
+    //     return $this->blocked_at ? \Carbon\Carbon::parse($this->blocked_at)->format('d/m/Y') : '...';
+    // }
 
 }

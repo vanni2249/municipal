@@ -13,19 +13,15 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->ulid('ulid')->unique();
+            $table->string('number')->unique();
             $table->string('name');
             $table->string('lastname');
-            $table->date('date_of_birth');
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->boolean('is_developer')->default(false);
             $table->string('phone')->nullable();
-            $table->timestamp('blocked_at')->nullable();
-            $table->string('blocked_by')->nullable();
-            $table->string('blocked_reason')->nullable();
-            $table->timestamp('last_login_at')->nullable();
-            $table->foreignId('admin_id')->nullable()->constrained('admins')->nullOnDelete();
+            $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AdminStatusTypeSeeder::class,
             AdminSeeder::class,
+            PlaceTypeSeeder::class,
+            PlaceSeeder::class,
             // TypeSeeder::class,
             // ActionCategorySeeder::class,
             // AdminSeeder::class,

@@ -45,10 +45,6 @@ class UserStatusTypeSeeder extends Seeder
             UserStatusType::create($item);
         }
 
-        foreach (User::all() as $user) {
-            $user->statuses()->create([
-                'user_status_type_id' => UserStatusType::inRandomOrder()->first()->id,
-            ]);
-        }
+       
     }
 }

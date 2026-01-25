@@ -62,12 +62,18 @@ class UserSeeder extends Seeder
                 'lastname' => 'User',
                 'email' => 'demo@email.com',
                 'phone' => '8096822249',
-                'password' => bcrypt('password'),   
+                'password' => bcrypt('password'),
             ]
         ];
 
         foreach ($items as $item) {
             User::create($item);
+        }
+
+        foreach (User::all() as $user) {
+            $user->statuses()->create([
+                'user_status_type_id' => UserStatusType::inRandomOrder()->first()->id,
+            ]);
         }
     }
 }

@@ -12,8 +12,15 @@
             </x-dropdown>
         </x-card-header>
         <x-card-elements-group>
-            @for ($i = 0; $i < rand(2, 4); $i++)
-                <x-card-element></x-card-element>
+            @for ($i = 0; $i < 3; $i++)
+               <x-card-element class="flex justify-between items-center">
+                    <div>
+                        <strong class="text-sm">Accounts</strong>
+                        <br>
+                        <span class="text-gray-700">{{ now() }}</span>
+                    </div>
+                    <x-icon-button icon="ellipsis-vertical" variant="light" size="xs"/>
+                </x-card-element>
             @endfor
         </x-card-elements-group>
     </x-card>

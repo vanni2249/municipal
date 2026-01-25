@@ -23,9 +23,9 @@ class Sidebar extends Component
             'path' => 'administrators',
         ],
         [
-            'name' => 'Miembros',
-            'route' => 'admin.members',
-            'path' => 'members',
+            'name' => 'Cuentas',
+            'route' => 'admin.accounts',
+            'path' => 'accounts',
         ],
         [
             'name' => 'Servicios',

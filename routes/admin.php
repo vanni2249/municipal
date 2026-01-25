@@ -19,8 +19,8 @@ use App\Livewire\Admin\Admins\Statuses\Show as AdminAdminsStatusesShow;
 use App\Livewire\Admin\Admins\Index as AdminAdmins;
 use App\Livewire\Admin\Admins\Show as AdminAdminsShow;
 
-use App\Livewire\Admin\Members\Index as AdminMembers;
-use App\Livewire\Admin\Members\Show as AdminMembersShow;
+use App\Livewire\Admin\Accounts\Index as AdminAccounts;
+use App\Livewire\Admin\Accounts\Show as AdminAccountShow;
 
 use App\Livewire\Admin\Services\Index as AdminServices;
 use App\Livewire\Admin\Services\Show as AdminServicesShow;
@@ -80,8 +80,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/{status}', AdminAdminsStatusesShow::class)->name('index');
         });
 
-        Route::get('/members', AdminMembers::class)->name('members');
-        Route::get('/members/{member}', AdminMembersShow::class)->name('members.show');
+        Route::get('/accounts', AdminAccounts::class)->name('accounts');
+        Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');
 
         Route::get('/services', AdminServices::class)->name('services');
         Route::get('/services/{service}', AdminServicesShow::class)->name('services.show');

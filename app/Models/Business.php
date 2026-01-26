@@ -14,7 +14,6 @@ class Business extends Model
         'address',
         'zip_code',
         'place_id',
-        'account_id',
     ];
 
     public function business_type()
@@ -27,21 +26,22 @@ class Business extends Model
         return $this->belongsTo(Place::class);
     }
     
-    public function account()
+    public function accounts()
     {
-        return $this->belongsTo(Account::class);
+        return $this->belongsToMany(Account::class, 'account_business', 'business_id', 'account_id')
+        ->withPivot(['ulid', 'number', 'is_active'])
+        ->withTimestamps();
     }
 
     public function statuses()
     {
-        return $this->hasMany(BusinessStatus::class);
+        return $this->morphMany(Status::class, 'statusable');
     }
 
     public function status()
     {
-        return $this->hasOne(BusinessStatus::class)->latestOfMany();
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
-
 
     // public function businessType()
     // {

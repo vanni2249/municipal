@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\StatusType;
 use App\Models\User;
 use App\Models\UserStatusType;
 use App\Traits\UserNumber;
 use App\Traits\UserUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Jenssegers\Agent\Agent;
 
 class UserSeeder extends Seeder
 {
@@ -72,7 +72,8 @@ class UserSeeder extends Seeder
 
         foreach (User::all() as $user) {
             $user->statuses()->create([
-                'user_status_type_id' => UserStatusType::inRandomOrder()->first()->id,
+                'status_type_id' => StatusType::inRandomOrder()->first()->id,
+                'reason' => 'Initial status for user '.$user->number,
             ]);
         }
     }

@@ -60,12 +60,12 @@ class User extends Authenticatable
 
     public function statuses()
     {
-        return $this->hasMany(UserStatus::class);
+        return $this->morphMany(Status::class, 'statusable');
     }
 
     public function status()
     {
-        return $this->hasOne(UserStatus::class)->latestOfMany();
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
     public function accounts()

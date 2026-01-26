@@ -64,12 +64,12 @@ class Admin extends Authenticatable
 
     public function statuses()
     {
-        return $this->hasMany(AdminStatus::class);
+        return $this->morphMany(Status::class, 'statusable');
     }
 
     public function status()
     {
-        return $this->hasOne(AdminStatus::class)->latestOfMany();
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
     // public function getLastLogin(): ?string

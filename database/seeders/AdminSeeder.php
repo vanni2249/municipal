@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AdminStatusType;
 use App\Models\Admin;
+use App\Models\StatusType;
 use App\Traits\AdminNumber;
 use App\Traits\AdminUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -60,7 +61,8 @@ class AdminSeeder extends Seeder
 
          foreach (Admin::all() as $admin) {
             $admin->statuses()->create([
-                'admin_status_type_id' => AdminStatusType::inRandomOrder()->first()->id,
+                'status_type_id' => StatusType::inRandomOrder()->first()->id,
+                'reason' => 'Initial status for admin '.$admin->number,
             ]);
         }
     }

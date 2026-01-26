@@ -36,16 +36,18 @@ class Account extends Model
 
     public function statuses()
     {
-        return $this->hasMany(AccountStatus::class);
+        return $this->morphMany(Status::class, 'statusable');
     }
 
     public function status()
     {
-        return $this->hasOne(AccountStatus::class)->latestOfMany();
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
     public function businesses()
     {
-        return $this->hasMany(Business::class);
+        return $this->belongsToMany(Business::class, 'account_business', 'account_id', 'business_id')
+        ->withPivot(['ulid', 'number', 'is_active'])
+        ->withTimestamps();
     }
 }

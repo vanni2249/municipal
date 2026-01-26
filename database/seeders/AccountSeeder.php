@@ -33,15 +33,14 @@ class AccountSeeder extends Seeder
                 'lastname' => 'Colon',
                 'email' => 'kariani@example.com',
                 'phone' => '555-5678',
-                'user_id' => 2,
                 'is_default' => false,
             ]
         ];
 
         foreach ($items as $item) {
             \App\Models\Account::create($item)->statuses()->create([
-                'account_status_type_id' => 1,
-                'reason' => 'Initial status set to active.',
+                'status_type_id' => 1,
+                'reason' => 'Initial status for account '.$item['number'],
             ]);
         }
 

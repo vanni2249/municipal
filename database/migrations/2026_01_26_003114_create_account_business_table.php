@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('businesses', function (Blueprint $table) {
+        Schema::create('account_business', function (Blueprint $table) {
             $table->id();
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
-            $table->foreignId('business_type_id')->constrained('business_types');
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('zip_code')->nullable();
-            $table->foreignId('place_id')->constrained('places');
+            $table->foreignId('account_id')->constrained()->onDelete('cascade');
+            $table->foreignId('business_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('businesses');
+        Schema::dropIfExists('account_business');
     }
 };

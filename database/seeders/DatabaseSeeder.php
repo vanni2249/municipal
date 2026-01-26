@@ -15,17 +15,14 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            UserStatusTypeSeeder::class,
+            StatusTypeSeeder::class,
             UserSeeder::class,
-            AdminStatusTypeSeeder::class,
             AdminSeeder::class,
             PlaceTypeSeeder::class,
             PlaceSeeder::class,
             AccountTypeSeeder::class,
-            AccountStatusTypeSeeder::class,
             AccountSeeder::class,
             BusinessTypeSeeder::class,
-            BusinessStatusTypeSeeder::class,
             BusinessSeeder::class,
             // TypeSeeder::class,
             // ActionCategorySeeder::class,

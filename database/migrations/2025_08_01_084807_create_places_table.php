@@ -16,6 +16,8 @@ return new class extends Migration
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
             $table->string('name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('postal_code')->nullable();
             $table->foreignId('place_type_id')->constrained('place_types')->onDelete('cascade');
             $table->timestamps();   
         });

@@ -10,6 +10,8 @@ class Place extends Model
         'ulid',
         'number',
         'name',
+        'address',
+        'postal_code',
         'place_type_id',
     ];
     

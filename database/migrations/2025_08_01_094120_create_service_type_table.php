@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('service_type', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id');
-            $table->foreignId('type_id');
-            // $table->timestamps();
+            $table->string('slug')->unique();
+            $table->string('name')->unique();
+            $table->timestamps();
         });
     }
 

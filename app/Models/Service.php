@@ -3,28 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Testing\Fluent\Concerns\Has;
+use Spatie\Translatable\HasTranslations;
 
 class Service extends Model
 {
+    use HasTranslations;
+
+    public array $translatable = ['title', 'description'];
+
     public $fillable = [
-        'service_category_id',
-        'es_name',
-        'en_name',
-        'es_description',
-        'en_description',
+        'ulid',
+        'number',
         'slug',
-        'url',
-        'price',
-        'is_active',
+        'title',
+        'description',
+        'account_type_id',
+        'service_type_id',
+        'amount',
+        'fee',
     ];
 
-    public function types()
+    public function serviceType()
     {
-        return $this->belongsToMany(Type::class, 'service_type', 'service_id', 'type_id');
+        return $this->belongsTo(ServiceType::class, 'service_type_id');
     }
 
-    public function serviceCategory()
+    public function accountType()
     {
-        return $this->belongsTo(ServiceCategory::class, 'service_category_id');
+        return $this->belongsTo(AccountType::class, 'account_type_id');
     }
 }

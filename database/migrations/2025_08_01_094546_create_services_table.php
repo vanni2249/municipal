@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_category_id')->onDelete('set null');
-            $table->foreignId('type_id')->onDelete('set null');
-            $table->string('en_name')->nullable();
-            $table->string('es_name')->nullable();
-            $table->longText('en_description')->nullable();
-            $table->longText('es_description')->nullable();
+            $table->ulid('ulid')->unique();
+            $table->string('number')->unique();
             $table->string('slug')->unique();
-            $table->string('url')->nullable();
-            $table->decimal('price', 10, 2)->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->foreignId('account_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_type_id')->constrained('service_type')->onDelete('cascade');
+            $table->decimal('amount', 10, 2)->default(0);
+            $table->decimal('fee', 10, 2)->default(0);
             $table->timestamps();
         });
     }

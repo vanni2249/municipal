@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             PropertySeeder::class,
             AddressSeeder::class,
-            
+            RouteTypeSeeder::class,
         ]);
 
         // User::factory()->create([

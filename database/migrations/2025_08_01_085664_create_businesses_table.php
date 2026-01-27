@@ -16,10 +16,7 @@ return new class extends Migration
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
             $table->foreignId('business_type_id')->constrained('business_types');
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('zip_code')->nullable();
-            $table->foreignId('place_id')->constrained('places');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

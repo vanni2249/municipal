@@ -14,7 +14,6 @@ class Account extends Model
         'lastname',
         'email',
         'phone',
-        'place_id',
         'user_id',
         'is_default',
     ];
@@ -22,11 +21,6 @@ class Account extends Model
     public function accountType()
     {
         return $this->belongsTo(AccountType::class, 'account_type_id');
-    }
-
-    public function place()
-    {
-        return $this->belongsTo(Place::class, 'place_id');
     }
 
     public function user()
@@ -49,5 +43,10 @@ class Account extends Model
         return $this->belongsToMany(Business::class, 'account_business', 'account_id', 'business_id')
         ->withPivot(['ulid', 'number', 'is_active'])
         ->withTimestamps();
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
     }
 }

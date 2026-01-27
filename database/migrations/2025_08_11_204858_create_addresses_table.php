@@ -17,10 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->foreignId('place_id')->nullable()->constrained('places')->nullOnDelete();
             $table->string('address')->nullable();
-            $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
-            $table->boolean('is_primary')->default(false);
-            $table->boolean('is_postal')->default(false);
             $table->timestamps();
         });
     }

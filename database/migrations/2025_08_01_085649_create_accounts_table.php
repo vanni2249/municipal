@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('phone')->nullable();
-            $table->foreignId('place_id')->constrained('places');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->boolean('is_default')->default(false);
             $table->timestamps();

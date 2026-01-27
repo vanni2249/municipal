@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('app_business_report_tax_periods', function (Blueprint $table) {
             $table->id();
-            $table->ulid('ulid')->unique();
-            $table->string('number')->unique();
-            $table->foreignId('account_id')->constrained()->onDelete('cascade');
-            $table->morphs('applicable');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->year('year');
+            $table->enum('quarter', ['Q1', 'Q2', 'Q3', 'Q4']);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('app_business_report_tax_periods');
     }
 };

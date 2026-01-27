@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('app_citizen_report_property_damages', function (Blueprint $table) {
             $table->id();
+            $table->string('property');
             $table->string('description');
-            $table->string('damage_type');
             $table->timestamps();
         });
     }

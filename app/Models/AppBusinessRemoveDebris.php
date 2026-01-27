@@ -11,8 +11,12 @@ class AppBusinessRemoveDebris extends Model
     protected $fillable = [
         'business_id',
         'description',
-        'amount',
     ];
+
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
 
     public function business()
     {

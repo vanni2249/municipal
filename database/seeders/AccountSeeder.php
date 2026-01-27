@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Account;
 use App\Traits\AccountNumber;
 use App\Traits\AccountUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,34 +16,37 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
-        $items = [
-            [
-                'ulid' => $this->createAccountUlid(),
-                'number' => $this->createAccountNumber(),
-                'account_type_id' => 1,
-                'place_id' => 1,
-                'user_id' => 1,
-                'is_default' => true,
-            ],
-            [
-                'ulid' => $this->createAccountUlid(),
-                'number' => $this->createAccountNumber(),
-                'account_type_id' => 2,
-                'place_id' => 2,
-                'name' => 'Kariani A',
-                'lastname' => 'Colon',
-                'email' => 'kariani@example.com',
-                'phone' => '555-5678',
-                'is_default' => false,
-            ]
-        ];
+        // Create citizen account
+        $accountFirst = Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 1,
+            'user_id' => 1,
+            'is_default' => true,
+        ]);
 
-        foreach ($items as $item) {
-            \App\Models\Account::create($item)->statuses()->create([
-                'status_type_id' => 1,
-                'reason' => 'Initial status for account '.$item['number'],
-            ]);
-        }
+        $accountFirst->addresses()->create([
+            'name' => 'Default Account Address',
+            'place_id' => 1,
+            'address' => '123 Main St, Hometown',
+            'postal_code' => '12345',
+        ]);
 
+        $accountFirst->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
+
+        // Create merchant account
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 2,
+            'user_id' => 1,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
     }
 }

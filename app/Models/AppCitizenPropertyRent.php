@@ -14,8 +14,14 @@ class AppCitizenPropertyRent extends Model
         'description',
     ];
 
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
+    
     public function property()
     {
         return $this->belongsTo(Property::class, 'property_id');
     }
+
 }

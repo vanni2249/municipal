@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AppBusinessRemoveTrash extends Model
+class AppBusinessReportTax extends Model
 {
-    protected $table = 'app_business_remove_trashes';
+    protected $table = 'app_business_report_taxes';
 
     protected $fillable = [
         'business_id',
-        'description',
+        'tax_period_id',
+        'amount_reported',
+        'tax_due',
     ];
 
     public function applications()
@@ -21,5 +23,10 @@ class AppBusinessRemoveTrash extends Model
     public function business()
     {
         return $this->belongsTo(Business::class, 'business_id');
+    }
+
+    public function taxPeriod()
+    {
+        return $this->belongsTo(AppBusinessReportTaxPeriod::class, 'tax_period_id');
     }
 }

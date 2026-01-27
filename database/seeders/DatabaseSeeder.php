@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             PropertySeeder::class,
             AddressSeeder::class,
+            ApplicationSeeder::class,
             RouteTypeSeeder::class,
         ]);
 

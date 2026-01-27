@@ -10,10 +10,18 @@ class AppBusinessRenewPatent extends Model
 
     protected $fillable = [
         'business_id',
-        'renewal_date',
-        'sales',
+        'sales_amount',
+        'started_at',
+        'ended_at',
+        'document_id',
+        'amount',
         'fee',
     ];
+
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
 
     public function business()
     {

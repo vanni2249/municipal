@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
             $table->string('permit_number')->nullable()->unique();
-            $table->string('project_name');
             $table->text('project_description')->nullable();
             $table->string('contractor_name');
             $table->string('contractor_license_number')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->date('started_at')->nullable();
+            $table->date('ended_at')->nullable();
             $table->timestamps();
         });
     }

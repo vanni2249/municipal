@@ -16,6 +16,11 @@ class AppCitizenResidencialConstructionPermit extends Model
         'contractor_name',
     ];
 
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
+
     public function address()
     {
         return $this->belongsTo(Address::class);

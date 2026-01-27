@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('app_business_temporary_patents', function (Blueprint $table) {
+        Schema::create('app_business_report_taxes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
-            $table->date('started_at');
-            $table->date('ended_at');
-            $table->string('document_id')->nullable();
-            $table->decimal('amount', 10, 2);
-            $table->decimal('fee', 10, 2);
+            $table->foreignId('tax_period_id')->constrained('app_business_report_tax_periods')->onDelete('cascade');
+            $table->decimal('amount_reported', 15, 2);
+            $table->decimal('tax_due', 15, 2);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_business_temporary_patents');
+        Schema::dropIfExists('app_business_report_taxes');
     }
 };

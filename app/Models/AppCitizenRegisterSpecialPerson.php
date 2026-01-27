@@ -24,5 +24,10 @@ class AppCitizenRegisterSpecialPerson extends Model
         'remarks',
         'is_active',
     ];
+
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
     
 }

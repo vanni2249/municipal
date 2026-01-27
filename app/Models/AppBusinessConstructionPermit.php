@@ -11,13 +11,17 @@ class AppBusinessConstructionPermit extends Model
     protected $fillable = [
         'business_id',
         'permit_number',
-        'project_name',
         'project_description',
         'contractor_name',
         'contractor_license_number',
-        'start_date',
-        'end_date',
+        'started_at',
+        'ended_at',
     ];
+
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
 
     public function business()
     {

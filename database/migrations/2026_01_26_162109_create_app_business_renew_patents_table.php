@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('app_business_renew_patents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->decimal('sales_amount', 10, 2);
+            $table->date('started_at');
+            $table->date('ended_at');
+            $table->foreignId('document_id')->nullable();
             $table->decimal('amount', 10, 2);
             $table->decimal('fee', 10, 2);
             $table->timestamps();

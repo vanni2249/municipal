@@ -11,9 +11,14 @@ class AppBusinessUsePermit extends Model
     protected $fillable = [
         'business_id',
         'permit_number',
-        'start_date',
-        'end_date',
+        'started_at',
+        'ended_at',
     ];
+
+    public function applications()
+    {
+        return $this->morphMany(Application::class, 'applicable');
+    }
 
     public function business()
     {

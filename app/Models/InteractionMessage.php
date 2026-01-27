@@ -15,8 +15,6 @@ class InteractionMessage extends Model
         'admin_created_id',
         'admin_read_id',
         'admin_read_at',
-        'ip_address',
-        'user_agent',
     ];
 
     public function interaction()
@@ -36,12 +34,12 @@ class InteractionMessage extends Model
 
     public function getMessageReadAdmin()
     {
-        return $this->admin_read_id ? 'Leído' : 'No leído';
+        return $this->admin_read_id ? __('Leído') : __('No leído');
     }
     
     public function getMessageReadUser()
     {
-        return $this->user_read_id ? 'Leído' : 'No leído';
+        return $this->user_read_id ? __('Leído') : __('No leído');
 
     }
 }

@@ -22,8 +22,6 @@ return new class extends Migration
             $table->foreignId('admin_read_id')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamp('admin_read_at')->nullable();
             $table->softDeletes();
-            $table->string('ip_address')->nullable();
-            $table->string('user_agent')->nullable();
             $table->timestamps();
         });
     }

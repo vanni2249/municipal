@@ -13,19 +13,11 @@ return new class extends Migration
     {
         Schema::create('interactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('set null');
-            $table->string('type'); // 'call', 'message', etc.
-            $table->foreignId('service_id')->nullable()->onDelete('set null');
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->enum('status', ['pending', 'in_progress', 'resolved', 'closed'])->default('pending');
-            $table->timestamp('resolved_at')->nullable();
-            $table->timestamp('closed_at')->nullable();
-            $table->foreignId('deleted_by')->nullable()->onDelete('set null');
-            $table->boolean('is_deleted')->default(false);
-            $table->softDeletes(); // This will add a deleted_at column for soft deletes
-            $table->string('ip_address')->nullable();
-            $table->string('user_agent')->nullable();
+            $table->ulid('uuid')->unique();
+            $table->string('number');
+            $table->foreignId('interaction_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

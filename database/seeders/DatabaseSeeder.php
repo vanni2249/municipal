@@ -24,18 +24,11 @@ class DatabaseSeeder extends Seeder
             AccountSeeder::class,
             BusinessTypeSeeder::class,
             BusinessSeeder::class,
-            // TypeSeeder::class,
-            // ActionCategorySeeder::class,
-            // AdminSeeder::class,
-            // PlaceSeeder::class,
-            // RegisterSeeder::class,
-            // ServiceCategorySeeder::class,
-            // ServiceSeeder::class,
-            // BusinessTypeSeeder::class,
-            // BusinessCategorySeeder::class,
-            // BusinessSeeder::class,
-            // DebrisTypeSeeder::class,
-            // ActionCategorySeeder::class,
+            ServiceTypeSeeder::class,
+            ServiceSeeder::class,
+            PropertySeeder::class,
+            AddressSeeder::class,
+            
         ]);
 
         // User::factory()->create([

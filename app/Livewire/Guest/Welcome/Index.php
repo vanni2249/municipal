@@ -13,7 +13,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.guest.welcome.index', [
-            'types' => Type::with(['services'])->get()
+            // 'types' => Type::with(['services'])->get()
         ]);
     }
 }

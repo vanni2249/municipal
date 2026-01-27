@@ -56,7 +56,7 @@
             </h2>
         </header>
         <!-- Citizens services -->
-        @php
+        {{-- @php
             $services = [
                 [
                     'key' => 'citizen',
@@ -99,8 +99,8 @@
                     'route' => 'users.login',
                 ],
             ];
-        @endphp     
-        @foreach ($services as $service)
+        @endphp      --}}
+        {{-- @foreach ($services as $service)
         <div class="bg-white col-span-full md:col-span-6 lg:col-span-4 px-4 py-6 md:p-6 lg:p-8 rounded-xl flex flex-col space-y-6">
             <header class="flex items-center justify-between">
                 <h2 class="text-lg font-bold text-gray-700 leading-3">
@@ -118,13 +118,13 @@
             </ul>
             @endif
             <footer class="flex justify-center">
-                {{-- <a href="{{ route($service['route'], ['role' => $service['key']]) }}"
+                <a href="{{ route($service['route'], ['role' => $service['key']]) }}"
                     class="border border-gray-300 font-bold text-gray-600 hover:text-gray-800 transition-all hover:bg-gray-200 w-full text-center text-xs py-2 rounded-full">
-                    Acceder a los servicios --}}
+                    Acceder a los servicios
                 </a>
             </footer>
         </div>
-        @endforeach
+        @endforeach --}}
     </section>
     </section>
 </div>

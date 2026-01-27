@@ -16,4 +16,12 @@ class RouteType extends Model
         'name',
     ];
     
+    protected $casts = [
+        'name' => 'array',
+    ];
+
+    public function routes()
+    {
+        return $this->hasMany(Route::class, 'route_type_id');
+    }
 }

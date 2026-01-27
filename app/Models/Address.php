@@ -12,23 +12,10 @@ class Address extends Model
         'name',
         'place_id',
         'address',
-        'city',
         'postal_code',
-        'is_primary',
-        'is_postal',
     ];
 
-    public function register()
-    {
-        return $this->morphTo();
-    }
-
-    public function business()
-    {
-        return $this->morphTo();
-    }
-
-    public function user()
+    public function addressable()
     {
         return $this->morphTo();
     }

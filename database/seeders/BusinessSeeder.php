@@ -18,69 +18,55 @@ class BusinessSeeder extends Seeder
      */
     public function run(): void
     {
-        $items = [
-            [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
-                'business_type_id' => 1,
-                'name' => 'Acme Corporation',
-                'address' => '123 Main St',
-                'zip_code' => '12345',
-                'place_id' => 1,
-            ]
-        ];
 
-        foreach ($items as $item) {
-            Business::create($item)
-                ->statuses()->create([
-                    'status_type_id' => 1,
-                    'reason' => 'Initial status for business ' . $item['number'],
-                ]);
-        }
+        // Business 1
+        $business = Business::create([
+            'ulid' => $this->createBusinessUlid(),
+            'number' => $this->createBusinessNumber(),
+            'business_type_id' => 1,
+            'name' => 'Acme Corporation',
+        ]);
 
-        foreach (Business::all() as $business) {
-            $business->accounts()->attach(1,[
-                'ulid' => $this->createAccountBusinessUlid(),
-                'number' => $this->createAccountBusinessNumber(),
-            ]);
-        }
+        $business->addresses()->create([
+            'name' => 'Headquarters',
+            'place_id' => 1,
+            'address' => '123 Main St',
+            'postal_code' => '12345',
+        ]);
 
+        $business->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for business',
+        ]);
 
+        $business->accounts()->attach(1, [
+            'ulid' => $this->createAccountBusinessUlid(),
+            'number' => $this->createAccountBusinessNumber(),
+        ]);
+
+        // Business 2
         $business = Business::create([
             'ulid' => $this->createBusinessUlid(),
             'number' => $this->createBusinessNumber(),
             'business_type_id' => 1,
             'name' => 'Second Business',
-            'address' => '789 Tertiary St',
-            'zip_code' => '11223',
-            'place_id' => 2,
         ]);
-        $status = $business->statuses()->create([
+
+        $business->addresses()->create([
+            'name' => 'Main Office',
+            'place_id' => 2,
+            'address' => '456 Another St',
+            'postal_code' => '67890',
+        ]);
+
+        $business->statuses()->create([
             'status_type_id' => 1,
             'reason' => 'Initial status for second business',
         ]);
 
-        $attach = $business->accounts()->attach(1,[
+        $business->accounts()->attach(1, [
             'ulid' => $this->createAccountBusinessUlid(),
             'number' => $this->createAccountBusinessNumber(),
         ]);
-
-        // dd($business->accounts->first()->pivot->statuses()->create([
-        //     'status_type_id' => 1,
-        //     'reason' => 'Initial status for account_business of second business',
-        // ]));
-
-        // $accountBusiness = AccountBusiness::where('business_id', $business->id)
-        //     ->where('account_id', 1)
-        //     ->doesntHave('statuses')
-        //     ->first();
-
-        // $accountBusiness->statuses()->create([
-        //     'status_type_id' => 1,
-        //     'reason' => 'Initial status for account_business of second business',
-        // ]);    
-
-        //     dd($accountBusiness->status->statusType->name);
-
     }
 }

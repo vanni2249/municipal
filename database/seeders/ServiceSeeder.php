@@ -200,21 +200,6 @@ class ServiceSeeder extends Seeder
             [
                 'ulid' => $this->createBusinessUlid(),
                 'number' => $this->createBusinessNumber(),
-                'slug' => 'app-business-official-patent',
-                'title' => [
-                    'en' => 'Apply for Official Business Patent',
-                    'es' => 'Solicitar Patente Comercial Oficial',
-                ],
-                'description' => [
-                    'en' => 'Apply for an official patent to legally operate your business within the municipality.',
-                    'es' => 'Solicitar una patente oficial para operar legalmente su negocio dentro del municipio.',
-                ],
-                'account_type_id' => 2,
-                'service_type_id' => 2,
-            ],
-            [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
                 'slug' => 'app-business-renew-patent',
                 'title' => [
                     'en' => 'Renew Business Patent',
@@ -230,17 +215,17 @@ class ServiceSeeder extends Seeder
             [
                 'ulid' => $this->createBusinessUlid(),
                 'number' => $this->createBusinessNumber(),
-                'slug' => 'app-business-arbitrary-act',
+                'slug' => 'app-business-report-tax',
                 'title' => [
-                    'en' => 'Request Arbitrary Act Service',
-                    'es' => 'Solicitar Servicio de Acto Arbitrario',
+                    'en' => 'File Business Tax Report',
+                    'es' => 'Presentar Informe de Impuestos Comerciales',
                 ],
                 'description' => [
-                    'en' => 'Request an arbitrary act service for your business as needed.',
-                    'es' => 'Solicitar un servicio de acto arbitrario para su negocio según sea necesario.',
+                    'en' => 'File your business tax report for the specified tax period as required by municipal regulations.',
+                    'es' => 'Presentar su informe de impuestos comerciales para el período fiscal especificado según lo requerido por las regulaciones municipales.',
                 ],
                 'account_type_id' => 2,
-                'service_type_id' => 2,
+                'service_type_id' => 4,
             ]
 
         ];

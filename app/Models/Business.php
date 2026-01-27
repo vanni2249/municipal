@@ -11,9 +11,6 @@ class Business extends Model
         'number',
         'name',
         'business_type_id',
-        'address',
-        'zip_code',
-        'place_id',
     ];
 
     public function business_type()
@@ -41,6 +38,11 @@ class Business extends Model
     public function status()
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
     }
 
     // public function businessType()

@@ -15,7 +15,7 @@
         'warning-outline' => 'border border-yellow-800 text-yellow-800 bg-transparent',
         'info' => 'bg-teal-300 text-teal-700',
         'info-outline' => 'border border-teal-700 text-teal-700 bg-transparent',
-        'light' => 'bg-white text-gray-800',
+        'light' => 'border border-gray-400 bg-white text-gray-800',
         'light-outline' => 'border border-gray-800 text-gray-800 bg-transparent',
         'dark' => 'bg-gray-800 text-white',
         'dark-outline' => 'border border-white text-white bg-transparent',

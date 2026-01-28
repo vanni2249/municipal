@@ -38,11 +38,21 @@ class Account extends Model
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
+    // public function businesses()
+    // {
+    //     return $this->belongsToMany(Business::class, 'account_business', 'account_id', 'business_id')
+    //     ->withPivot(['ulid', 'number', 'is_active'])
+    //     ->withTimestamps();
+    // }
+
     public function businesses()
     {
-        return $this->belongsToMany(Business::class, 'account_business', 'account_id', 'business_id')
-        ->withPivot(['ulid', 'number', 'is_active'])
-        ->withTimestamps();
+        return $this->hasMany(Business::class);
+    }
+
+    public function merges()
+    {
+        return $this->hasMany(Merge::class);
     }
 
     public function addresses()

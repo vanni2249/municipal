@@ -48,5 +48,17 @@ class AccountSeeder extends Seeder
             'status_type_id' => 1,
             'reason' => 'Initial status for default account',
         ]);
+
+        // Create admin account
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 3,
+            'user_id' => 1,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
     }
 }

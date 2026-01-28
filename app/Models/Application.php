@@ -59,4 +59,14 @@ class Application extends Model
     {
         return $this->morphMany(Inspection::class, 'inspectable');
     }
+
+    public function userLogs()
+    {
+        return $this->morphMany(UserLog::class, 'loggable');
+    }
+
+    public function adminLogs()
+    {
+        return $this->morphMany(AdminLog::class, 'loggable');
+    }
 }

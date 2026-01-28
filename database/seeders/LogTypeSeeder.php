@@ -12,6 +12,23 @@ class LogTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $items = [
+            [
+                'slug' => 'created',
+                'name' => ['en' => 'Created', 'es' => 'Creado'],
+            ],
+            [
+                'slug' => 'edited',
+                'name' => ['en' => 'Edited', 'es' => 'Editado'],
+            ],
+            [
+                'slug' => 'viewed',
+                'name' => ['en' => 'Viewed', 'es' => 'Visto'],
+            ],
+        ];
+
+        foreach ($items as $item) {
+            \App\Models\LogType::create($item);
+        }
     }
 }

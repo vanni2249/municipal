@@ -69,6 +69,12 @@ class ApplicationSeeder extends Seeder
             'reason' => 'Initial status',
         ]);
 
+        $app->userLogs()->create([
+            'user_id' => 1,
+            'account_id' => 1,
+            'log_type_id' => 1, // Assuming 1 corresponds to a valid log user type
+        ]);
+
         // Create another AppCitizenPropertyRental
         AppCitizenPropertyRent::create([
             'property_id' => 2,
@@ -159,6 +165,11 @@ class ApplicationSeeder extends Seeder
         $app->permit()->create([
             'ulid' => $this->createPermitUlid(),
             'number' => $this->createPermitNumber(),
+        ]);
+
+        $app->adminLogs()->create([
+            'admin_id' => 1,
+            'log_type_id' => 1, // Assuming 1 corresponds to a valid log user type
         ]);
 
         // Create AppBusinessRemoveTrash application

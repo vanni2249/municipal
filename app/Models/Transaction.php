@@ -13,12 +13,17 @@ class Transaction extends Model
         'transactionable_id',
         'status',
         'amount',
-        'payment_method',
+        'transaction_method_type_id',
         'reference',
     ];
 
     public function transactionable()
     {
         return $this->morphTo();
+    }
+
+    public function transactionMethodType()
+    {
+        return $this->belongsTo(TransactionMethodType::class);
     }
 }

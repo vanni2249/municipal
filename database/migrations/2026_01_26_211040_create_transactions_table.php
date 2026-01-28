@@ -18,7 +18,7 @@ return new class extends Migration
             $table->morphs('transactionable');
             $table->string('status');
             $table->decimal('amount', 15, 2);
-            $table->string('payment_method');
+            $table->foreignId('transaction_method_type_id')->nullable()->constrained('transaction_method_types')->onDelete('set null');
             $table->string('reference')->nullable();
             $table->timestamps();
         });

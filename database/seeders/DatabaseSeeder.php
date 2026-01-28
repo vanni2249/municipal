@@ -24,12 +24,16 @@ class DatabaseSeeder extends Seeder
             AccountSeeder::class,
             BusinessTypeSeeder::class,
             BusinessSeeder::class,
+            MergeSeeder::class,
             ServiceTypeSeeder::class,
             ServiceSeeder::class,
             PropertySeeder::class,
             AddressSeeder::class,
+            InspectionTypeSeeder::class,
+            TransactionMethodTypeSeeder::class,
             ApplicationSeeder::class,
             RouteTypeSeeder::class,
+            RouteSeeder::class,
         ]);
 
         // User::factory()->create([

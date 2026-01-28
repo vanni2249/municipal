@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->ulid('uuid')->unique();
+            $table->ulid('ulid')->unique();
             $table->string('number')->unique();
             $table->foreignId('route_type_id')->constrained()->onDelete('cascade');
-            $table->morphs('routeable');
+            $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }

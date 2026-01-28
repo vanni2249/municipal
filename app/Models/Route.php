@@ -10,17 +10,16 @@ class Route extends Model
         'ulid',
         'number',
         'route_type_id',
-        'routeable_id',
-        'routeable_type',
+        'admin_id',
     ];
-
-    public function routeable()
-    {
-        return $this->morphTo();
-    }
 
     public function routeType()
     {
         return $this->belongsTo(RouteType::class, 'route_type_id');
+    }
+
+    public function inspections()
+    {
+    return $this->belongsToMany(Inspection::class, 'inspection_route')->withTimestamps();
     }
 }

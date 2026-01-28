@@ -67,7 +67,7 @@ class StatusTypeSeeder extends Seeder
                     'en' => 'Deleted',
                     'es' => 'Eliminado',
                 ],
-                'variant' => 'black',
+                'variant' => 'danger',
             ],
             [
                 'slug' => 'verified',

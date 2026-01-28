@@ -19,29 +19,51 @@ use App\Models\AppCitizenResidencialRemovalDebris;
 use App\Models\Application;
 use App\Traits\ApplicationNumber;
 use App\Traits\ApplicationUlid;
+use App\Traits\InspectionNumber;
+use App\Traits\InspectionUlid;
+use App\Traits\PermitNumber;
+use App\Traits\PermitUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 
 class ApplicationSeeder extends Seeder
 {
-    use ApplicationUlid, ApplicationNumber;
+    use ApplicationUlid, ApplicationNumber, PermitNumber, PermitUlid, InspectionUlid, InspectionNumber;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
         // Create an AppCitizenPropertyUse
-        AppCitizenPropertyUse::create([
+        $appCitizenPropertyUse = AppCitizenPropertyUse::create([
             'property_id' => 1,
             'use_date' => now(),
             'description' => 'Park one Use',
-        ])->applications()->create([
+        ]);
+        
+        $app = $appCitizenPropertyUse->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'account_id' => 1,
             'number' => $this->createApplicationNumber(),
             'service_id' => 1,
-        ])->statuses()->create([
+        ]);
+
+        $app->transactions()->create([
+            'ulid' => $this->createInspectionUlid(),
+            'number' => $this->createInspectionNumber(),
+            'status' => 'success',
+            'amount' => 100.00,
+            'transaction_method_type_id' => 1, // Assuming 1 corresponds to a valid transaction method type
+            'reference' => 'Initial payment for application',
+        ]);
+
+        $app->permit()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
+        ]);
+        
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
@@ -116,16 +138,27 @@ class ApplicationSeeder extends Seeder
             'expiry_date' => now()->addYear(),
             'contractor_name' => 'Best Builders Inc.',
         ]);
-        $application = $citizenConstPermit->applications()->create([
+        $app = $citizenConstPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
             'account_id' => 1,
             'service_id' => 6,
         ]);
-        $application->statuses()->create([
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
+        ]);
+
+        $app->inspections()->create([
+            'ulid' => $this->createInspectionUlid(),
+            'number' => $this->createInspectionNumber(),
+            'inspection_type_id' => 1, // Assuming 1 corresponds to 'building-inspection'
+        ]);
+        
+        $app->permit()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
         ]);
 
         // Create AppBusinessRemoveTrash application
@@ -168,70 +201,94 @@ class ApplicationSeeder extends Seeder
             'contractor_name' => 'Top Construction LLC',
             'contractor_license_number' => 'LIC-987654',
         ]);
-        $application = $businessConstPermit->applications()->create([
+        $app = $businessConstPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
             'account_id' => 1,
             'service_id' => 9,
         ]);
-        $application->statuses()->create([
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
         ]);
 
+        $app->permit()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
+        ]);
+
         // Create AppBusinessUsePermit application
-        AppBusinessUsePermit::create([
+        $appBusinessUsePermit = AppBusinessUsePermit::create([
             'business_id' => 1,
             'permit_number' => 'BUS-UP-001',
             'started_at' => now(),
             'ended_at' => now()->addYears(1),
-        ])->applications()->create([
+        ]);
+        $app = $appBusinessUsePermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
             'account_id' => 1,
             'service_id' => 10,
-        ])->statuses()->create([
+        ]);
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
         ]);
+         $app->permit()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
+        ]);
 
         // Create AppBusinessTemporaryPatent application
-        AppBusinessTemporaryPatent::create([
+        $appBusinessTemporaryPatent = AppBusinessTemporaryPatent::create([
             'business_id' => 2,
             'started_at' => now(),
             'ended_at' => now()->addMonths(3),
             'amount' => 500.00,
             'fee' => 50.00,
-        ])->applications()->create([
+        ]);
+        $app = $appBusinessTemporaryPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
             'account_id' => 1,
             'service_id' => 12,
-        ])->statuses()->create([
+        ]);
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
         ]);
+        $app->patent()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
+        ]);
 
         // Create AppBusinessRenewPatent application
-        AppBusinessRenewPatent::create([
+        $appBusinessRenewPatent = AppBusinessRenewPatent::create([
             'business_id' => 2,
             'sales_amount' => 10000.00,
             'started_at' => now(),
             'ended_at' => now()->addYear(),
             'amount' => 200.00,
             'fee' => 20.00,
-        ])->applications()->create([
+        ]);
+        $app = $appBusinessRenewPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
             'account_id' => 1,
             'service_id' => 11,
-        ])->statuses()->create([
+        ]);
+        $app->statuses()->create([
             'status_type_id' => 1,
             'changed_by' => 1,
             'reason' => 'Initial status',
+        ]);
+
+        $app->patent()->create([
+            'ulid' => $this->createPermitUlid(),
+            'number' => $this->createPermitNumber(),
         ]);
 
         // Create AppBusinessReportTaxPeriods

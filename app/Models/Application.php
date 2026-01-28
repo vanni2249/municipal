@@ -30,11 +30,6 @@ class Application extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function documents()
-    {
-        return $this->belongsToMany(Document::class, 'application_document');
-    }
-
     public function statuses()
     {
         return $this->morphMany(Status::class, 'statusable');
@@ -43,5 +38,25 @@ class Application extends Model
     public function status()
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
+
+    public function patent()
+    {
+        return $this->belongsTo(Patent::class, 'application_patent');
+    }
+
+    public function permit()
+    {
+        return $this->hasOne(Permit::class);
+    }
+
+    public function inspections()
+    {
+        return $this->morphMany(Inspection::class, 'inspectable');
     }
 }

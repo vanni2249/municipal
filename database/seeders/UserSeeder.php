@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'number' => $this->createUserNumber(),
                 'name' => 'Giovanni',
                 'lastname' => 'Colon Barrios',
-                'email' => 'giovanni@email.com',
+                'email' => 'vanni2249@gmail.com',
                 'phone' => '8096822249',
                 'password' => bcrypt('password'),
             ],

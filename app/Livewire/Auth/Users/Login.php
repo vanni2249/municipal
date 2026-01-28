@@ -43,19 +43,19 @@ class Login extends Component
 
         $user = User::where('email', $this->email)->first();
 
-        if ($user && $user->blocked_at !== null) {
-            throw ValidationException::withMessages([
-                'email' => ['Your account is either blocked.'],
-            ]);
-            return;
-        }
+        // if ($user && $user->blocked_at !== null) {
+        //     throw ValidationException::withMessages([
+        //         'email' => ['Your account is either blocked.'],
+        //     ]);
+        //     return;
+        // }
 
-        if ($user && $user->approved_at === null) {
-            throw ValidationException::withMessages([
-                'email' => ['Your account is not approved.'],
-            ]);
-            return;
-        }
+        // if ($user && $user->approved_at === null) {
+        //     throw ValidationException::withMessages([
+        //         'email' => ['Your account is not approved.'],
+        //     ]);
+        //     return;
+        // }
 
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
@@ -68,11 +68,11 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->setLastLogin();
+        // $this->setLastLogin();
 
-        $this->setSessionTypeNavigation();
+        // $this->setSessionTypeNavigation();
 
-        $this->redirectIntended(default: route('users.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('users.accounts.index', absolute: false), navigate: true);
     }
 
     /**
@@ -131,7 +131,7 @@ class Login extends Component
      * Get the view or component name for the Livewire component.
      */
 
-    #[Layout('components.layouts.auth.index')]
+    #[Layout('layouts.auth')]
     public function render()
     {
         return view('livewire.auth.users.login');

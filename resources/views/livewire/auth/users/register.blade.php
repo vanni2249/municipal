@@ -1,4 +1,9 @@
 <div>
+    <header class=" mx-auto p-4 w-full">
+        <div class="flex justify-center ">
+            <a href="/" class="text-2xl font-bold text-gray-900" wire:navigate>{{ __('MyApps') }}</a>
+        </div>
+    </header>
     <div class=" mx-auto bg-gray-100 rounded-xl overflow-hidden md:max-w-2xl">
 
         <div class="bg-white w-full  rounded-xl p-4">
@@ -11,7 +16,7 @@
             <form wire:submit.prevent='register'>
                 <div class="grid grid-cols-4 gap-4 py-6">
                     <!-- Type -->
-                    <div class="col-span-4">
+                    {{-- <div class="col-span-4">
                         <x-label for="text" class="mt-4" value="Tipo de usuario" />
                         <x-select wire:model.live="role" id="role" @class(['w-full', 'border-red-500' => $errors->has('role')]) autofocus>
                             <option value="">Seleccione un tipo de usuario</option>
@@ -19,7 +24,7 @@
                                 <option value="{{ $type->key }}">{{ $type->es_name }}</option>
                             @endforeach
                         </x-select>
-                    </div>
+                    </div> --}}
                     <!-- Name -->
                     <div class="col-span-4 md:col-span-2">
                         <x-label for="text" class="mt-4" value="Nombre" />
@@ -39,7 +44,7 @@
                         <x-input wire:model.defer="date_of_birth" name="date_of_birth" id="date_of_birth"
                             @class([
                                 'w-full
-                                                                                                                                                                                                                                                                                                                                                                                            text-gray-400',
+                                                                                                                                                                                                                                                                                                                                                                                                                        text-gray-400',
                                 'border-red-500' => $errors->has('date_of_birth'),
                             ]) type="date" placeholder="Ingrese su fecha de nacimiento" />
                     </div>
@@ -48,9 +53,9 @@
                         <x-label for="email" class="mt-4" value="Correo electrónico" />
                         <x-input wire:model.defer="email" name="email" id="email" @class(['w-full', 'border-red-500' => $errors->has('email')])
                             type="email" placeholder="Ingrese su correo electrónico" />
-                            @error('email')
-                                <x-error message="{{ $message }}" />
-                            @enderror
+                        @error('email')
+                            <x-error message="{{ $message }}" />
+                        @enderror
                     </div>
                     <!-- Phone -->
                     <div class="col-span-4 md:col-span-1">
@@ -78,7 +83,7 @@
                             placeholder="Confirme su contraseña" />
                     </div>
                     <!-- place -->
-                    @if (in_array($role, ['citizen', 'citizen-merchant']))
+                    {{-- @if (in_array($role, ['citizen', 'citizen-merchant']))
                         <div class="col-span-4 md:col-span-2">
                             <x-label for="place_id" class="mt-4" value="Lugar de residencia" />
                             <x-select wire:model.live="place_id" id="place_id" @class(['w-full', 'border-red-500' => $errors->has('place_id')]) autofocus>
@@ -88,8 +93,8 @@
                                 @endforeach
                             </x-select>
                         </div>
-                    @endif
-                    @if (in_array($role, ['accountant', 'contractor', 'supplier']))
+                    @endif --}}
+                    {{-- @if (in_array($role, ['accountant', 'contractor', 'supplier']))
                     <!-- Company name -->
                         <div class="col-span-4 md:col-span-2">
                             <x-label for="company_name" class="mt-4" value="Nombre de la empresa" />
@@ -104,8 +109,8 @@
                                 @class(['w-full', 'border-red-500' => $errors->has('number')]) type="text"
                                 placeholder="Ingrese el número de comerciante" />
                         </div>
-                    @endif
-                    @if (in_array($role, ['citizen', 'merchant', 'citizen-merchant', 'accountant', 'contractor', 'supplier']))
+                    @endif --}}
+                    {{-- @if (in_array($role, ['citizen', 'merchant', 'citizen-merchant', 'accountant', 'contractor', 'supplier']))
                         <!-- Address -->
                         <div class="col-span-4">
                             <x-label for="address" class="mt-4" value="Dirección" />
@@ -124,9 +129,9 @@
                             <x-input wire:model.defer="postal_code" name="postal_code" id="postal_code"
                                 @class(['w-full', 'border-red-500' => $errors->has('postal_code')]) type="text" placeholder="Ingrese su código postal" />
                         </div>
-                    @endif
+                    @endif --}}
 
-                    @if (in_array($role, ['citizen', 'citizen-merchant']))
+                    {{-- @if (in_array($role, ['citizen', 'citizen-merchant']))
                         <div class="col-span-full grid grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-100 p-4 rounded-md">
                             <!-- is veteran -->
                             <div class="flex space-x-2 items-center">
@@ -153,7 +158,7 @@
                                 <span class="text-xs font-bold text-gray-600">Discapacitado</span>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                     <!-- Term -->
                     <div class="col-span-4">
                         <div class="flex items-center space-x-2">
@@ -171,13 +176,13 @@
                     </div>
                     <!-- Button -->
                     <div class="col-span-4">
-                        <x-button class="w-full md:w-auto">
+                        <x-button class="w-full md:w-auto" label="Registrar" type="submit" size="lg">
                             {{ __('Registrar') }}
                         </x-button>
                     </div>
                     <div class="col-span-full">
-                        <p class="mt-4 text-xs text-gray-600">¿Ya tienes una cuenta? <a
-                                href="{{ route('users.login') }}" class="text-blue-500">Inicia
+                        <p class="mt-4 text-sm text-gray-600">¿Ya tienes una cuenta? <a href="{{ route('login') }}"
+                                class="text-blue-500">Inicia
                                 sesión</a></p>
                     </div>
                 </div>

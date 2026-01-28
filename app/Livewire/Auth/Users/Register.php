@@ -3,7 +3,7 @@
 namespace App\Livewire\Auth\Users;
 
 use App\Models\Place;
-use App\Models\Type;
+// use App\Models\Type;
 use App\Models\User;
 use App\Traits\RegisterCode;
 use Illuminate\Auth\Events\Lockout;
@@ -22,7 +22,6 @@ class Register extends Component
 {
     use RegisterCode;
 
-    public $types;
     public $role;
     public $name;
     public $lastname;
@@ -50,7 +49,6 @@ class Register extends Component
 
     public function mount()
     {
-        $this->types = Type::all();
         $this->terms = true; // Default to true
     }
 
@@ -125,7 +123,7 @@ class Register extends Component
             ]);
 
             $register = $this->user->register()->create([
-                'type_id' => Type::where('key', $this->role)->first()->id ?? null,
+                // 'type_id' => Type::where('key', $this->role)->first()->id ?? null,
                 'code' => $this->createRegisterCode(),
                 'name' => $this->name,
                 'lastname' => $this->lastname,
@@ -143,7 +141,7 @@ class Register extends Component
                 'emergency_contact_phone' => $this->emergency_contact_phone,
                 'created_by' => 'user',
                 'user_id' => $this->user->id,
-                'type_id' => Type::where('key', $this->role)->first()->id ?? null,
+                // 'type_id' => Type::where('key', $this->role)->first()->id ?? null,
                 'code' => $this->createRegisterCode(),
                 'created_by' => 'user',
                 'user_id' => $this->user->id,
@@ -237,7 +235,7 @@ class Register extends Component
         }
     }
 
-    #[Layout('components.layouts.auth.index')]
+    #[Layout('layouts.auth')]
     public function render()
     {
         return view('livewire.auth.users.register', [

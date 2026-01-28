@@ -25,6 +25,7 @@ class BusinessSeeder extends Seeder
             'number' => $this->createBusinessNumber(),
             'business_type_id' => 1,
             'name' => 'Acme Corporation',
+            'account_id' => 1,
         ]);
 
         $business->addresses()->create([
@@ -39,10 +40,10 @@ class BusinessSeeder extends Seeder
             'reason' => 'Initial status for business',
         ]);
 
-        $business->accounts()->attach(1, [
-            'ulid' => $this->createAccountBusinessUlid(),
-            'number' => $this->createAccountBusinessNumber(),
-        ]);
+                // $business->accounts()->attach(1, [
+                //     'ulid' => $this->createAccountBusinessUlid(),
+                //     'number' => $this->createAccountBusinessNumber(),
+                // ]);
 
         // Business 2
         $business = Business::create([
@@ -50,6 +51,7 @@ class BusinessSeeder extends Seeder
             'number' => $this->createBusinessNumber(),
             'business_type_id' => 1,
             'name' => 'Second Business',
+            'account_id' => 1,
         ]);
 
         $business->addresses()->create([
@@ -64,9 +66,9 @@ class BusinessSeeder extends Seeder
             'reason' => 'Initial status for second business',
         ]);
 
-        $business->accounts()->attach(1, [
-            'ulid' => $this->createAccountBusinessUlid(),
-            'number' => $this->createAccountBusinessNumber(),
-        ]);
+        // $business->accounts()->attach(1, [
+        //     'ulid' => $this->createAccountBusinessUlid(),
+        //     'number' => $this->createAccountBusinessNumber(),
+        // ]);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('number')->unique();
             $table->foreignId('business_type_id')->constrained('business_types');
             $table->string('name')->nullable();
+            $table->foreignId('account_id')->nullable()->constrained('accounts');
             $table->timestamps();
         });
     }

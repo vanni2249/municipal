@@ -11,6 +11,7 @@ class Business extends Model
         'number',
         'name',
         'business_type_id',
+        'account_id',
     ];
 
     public function business_type()
@@ -23,11 +24,21 @@ class Business extends Model
         return $this->belongsTo(Place::class);
     }
     
-    public function accounts()
+    // public function accounts()
+    // {
+    //     return $this->belongsToMany(Account::class, 'account_business', 'business_id', 'account_id')
+    //     ->withPivot(['ulid', 'number', 'is_active'])
+    //     ->withTimestamps();
+    // }
+
+    public function account()
     {
-        return $this->belongsToMany(Account::class, 'account_business', 'business_id', 'account_id')
-        ->withPivot(['ulid', 'number', 'is_active'])
-        ->withTimestamps();
+        return $this->belongsTo(Account::class);
+    }
+
+    public function merges()
+    {
+        return $this->hasMany(Merge::class);
     }
 
     public function statuses()

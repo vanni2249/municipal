@@ -21,20 +21,33 @@
                 Ver todos
             </a>
         </x-card-header>
-        <x-card-elements-group class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             @foreach ($services as $service)
-                <x-card-element>
-                    <strong class="text-md">{{ $service->title }}</strong>
-                    <br>
-                    <small>
-                        {{ $service->serviceType->name }}
-                    </small>
-                    <p class="text-sm text-gray-600 line-clamp-2">
-                        {{ $service->description }}
-                    </p>
+                <x-card-element class="flex flex-col">
+                    <div class="grow">
+                        <div>
+                            <small class="text-gray-700">
+                                {{ $service->serviceType->name }}
+                            </small>
+                            <br>
+                            <strong class="text-md">{{ $service->title }}</strong>
+                        </div>
+                        <p class="text-sm text-gray-600 line-clamp-2 grow mb-4">
+                            {{ $service->description }}
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="text-sm text-gray-800">
+                            {{-- <x-money-format :amount="$service->amount" /> --}}
+                        </div>
+                        <div class="flex justify-end">
+                            <x-link-button href="{{ route('businesses.services.show', $service->ulid) }}"
+                                variant="light">Aplicar</x-link-button>
+                        </div>
+                    </div>
                 </x-card-element>
             @endforeach
-        </x-card-elements-group>
+        </div>
     </x-card>
     <div class="grid grid-cols-12 gap-2">
         <!-- Applications -->

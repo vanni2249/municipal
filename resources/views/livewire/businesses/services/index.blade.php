@@ -24,7 +24,7 @@
                     </div>
                     <div class="flex justify-end">
                         <x-link-button href="{{ route('businesses.services.show', $service->ulid) }}"
-                            variant="light">Aplicar</x-link-button>
+                            variant="light" wire:navigate>Aplicar</x-link-button>
                     </div>
                 </div>
             </x-card>

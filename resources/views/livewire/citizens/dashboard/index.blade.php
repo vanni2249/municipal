@@ -30,17 +30,17 @@
                             <br>
                             <strong class="text-md">{{ $service->title }}</strong>
                         </div>
-                        <p class="text-sm text-gray-600 line-clamp-2 grow">
+                        <p class="text-sm text-gray-600 line-clamp-2 grow mb-4">
                             {{ $service->description }}
                         </p>
                     </div>
                     <div class="flex justify-between items-center mt-auto">
                         <div class="text-sm text-gray-800">
-                            <x-money-format :amount="$service->amount" />
+                            {{-- <x-money-format :amount="$service->amount" /> --}}
                         </div>
                         <div class="flex justify-end">
                             <x-link-button href="{{ route('citizens.services.show', $service->ulid) }}"
-                                variant="light">Aplicar</x-link-button>
+                                variant="light" wire:navigate>Aplicar</x-link-button>
                         </div>
                     </div>
                 </x-card-element>

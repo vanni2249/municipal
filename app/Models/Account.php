@@ -52,7 +52,7 @@ class Account extends Model
 
     public function merges()
     {
-        return $this->hasMany(Merge::class);
+        return $this->hasMany(Merge::class, 'account_accountant_id');
     }
 
     public function addresses()

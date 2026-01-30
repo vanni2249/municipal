@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AuthUser;
+use App\Models\Account;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Citizens\Dashboard\Index as CitizensDashboard;
 use App\Livewire\Citizens\Services\Index as CitizensServices;
@@ -7,7 +9,14 @@ use App\Livewire\Citizens\Applications\Index as CitizensApplications;
 use App\Livewire\Citizens\Interactions\Index as CitizensInteractions;
 use App\Livewire\Citizens\Settings\Index as CitizensSettings;
 
-Route::prefix('citizens')->name('citizen.')->group(function () {
+Route::prefix('citizens')->name('citizens.')->middleware(AuthUser::class)->group(function () {
+    Route::get('/set-session/{account}', function ($account) {
+        $account = Account::where('ulid', $account)->first();
+
+        session()->forget('data');
+        session(['data.account_ulid' => $account->ulid]);
+        return redirect()->route('citizens.dashboard');
+    })->name('set-session');
     Route::get('/dashboard', CitizensDashboard::class)->name('dashboard');
     Route::get('/services', CitizensServices::class)->name('services');
     Route::get('/applications', CitizensApplications::class)->name('applications');

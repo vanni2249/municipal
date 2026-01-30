@@ -14,9 +14,14 @@ class Business extends Model
         'account_id',
     ];
 
-    public function business_type()
+    public function businessType()
     {
-        return $this->belongsTo(BusinessType::class);
+        return $this->belongsTo(BusinessType::class, 'business_type_id');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
     }
 
     public function place()
@@ -35,6 +40,12 @@ class Business extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    // public function merges()
+    // {
+    //     return $this->belongsToMany(Merge::class, 'business_merge', 'business_id', 'merge_id')
+    //     ->withTimestamps();
+    // }
 
     public function merges()
     {

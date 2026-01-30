@@ -1,5 +1,4 @@
 <x-layouts.guest>
-    
     <!-- Hero -->
     <section class="bg-black h-[30rem] border-0">
         <div class="max-w-7xl px-4 mx-auto flex flex-col items-center justify-center h-full">
@@ -34,23 +33,30 @@
             </div>
         </div>
     </section>
-    <section class="max-w-7xl px-4 mx-auto pt-4">
-        <x-card>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="grow">
-                    <h2 class="text-gray-800 text-lg font-bold">
-                        Tienes numero de registro?
-                    </h2>
-                    <p class="text-gray-600 text-sm mt-1">
-                        Si ya tienes un número de registro, puedes adjuntar el numero de registro con una cuenta de usuario nueva.
-                    </p>
+    <div class="grid grid-cols-12 gap-2 md:gap-4">
+        @foreach ($services as $service)
+            <x-card class="col-span-full md:col-span-6 lg:col-span-3 flex flex-col">
+                <div>
+                    <small class="text-gray-700">
+                        {{ $service->serviceType->name }}
+                    </small>
+                    <br>
+                    <strong class="text-md">{{ $service->title }}</strong>
                 </div>
-                <div class="w-full md:w-auto flex ">
-                    {{-- <x-link-button href="{{ route('users.attach') }}" class="w-full whitespace-nowrap" label="Adjuntar numero de registro" /> --}}
+                <p class="text-sm text-gray-600 line-clamp-2 grow mb-4">
+                    {{ $service->description }}
+                </p>
+                <div class="flex justify-between items-center mt-auto">
+                    <div class="text-sm text-gray-800">
+                       <x-money-format :amount="$service->amount" />
+                    </div>
+                    <div class="flex justify-end">
+                        <x-link-button href="{{ route('businesses.services.show', $service->ulid) }}" variant="light">Aplicar</x-link-button>
+                    </div>
                 </div>
-            </div>
-        </x-card>
-    </section>
+            </x-card>
+        @endforeach
+    </div>
     <section class="grid grid-cols-12 gap-2 lg:gap-4 pt-4  max-w-7xl px-4 mx-auto">
         <header id="services" class="col-span-full pt-4 px-2">
             <h2 class="font-bold text-xl text-gray-800">

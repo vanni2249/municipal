@@ -10,6 +10,7 @@ class Application extends Model
         'ulid',
         'number',
         'account_id',
+        'business_id',
         'applicable_type',
         'applicable_id',
         'service_id',
@@ -18,6 +19,11 @@ class Application extends Model
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
     }
 
     public function applicable()

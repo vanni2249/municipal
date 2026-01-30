@@ -7,10 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Merge extends Model
 {
     protected $fillable = [
+        'ulid',
+        'number',
+        'code',
+        'account_accountant_id',
+        'account_merchant_id',
         'business_id',
-        'account_id',
-        'merge_code',
     ];
+
+    // public function businesses()
+    // {
+    //     return $this->belongsToMany(Business::class, 'business_merge', 'merge_id', 'business_id')
+    //     ->withTimestamps();
+    // }
+
+    public function accountant()
+    {
+        return $this->belongsTo(Account::class, 'account_accountant_id');
+    }
+
+    public function merchant()
+    {
+        return $this->belongsTo(Account::class, 'account_merchant_id');
+    }
 
     public function business()
     {

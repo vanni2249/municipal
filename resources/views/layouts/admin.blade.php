@@ -67,7 +67,7 @@
                     <div class="flex space-x-4">
                         <div class="hidden lg:flex items-center justify-center">
                             <button id="sidebar-toggle" class="cursor-pointer">
-                                <img src="{{ asset('icons/menu-2.svg') }}" alt="" />
+                                <x-icon icon="bars-3" />
                             </button>
                         </div>
                         <div class="lg:hidden flex items-center justify-center">
@@ -75,7 +75,7 @@
                                 <x-slot name="trigger">
                                     <button
                                         class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
-                                        <img src="{{ asset('icons/menu-2.svg') }}" alt="dropdown" />
+                                        <x-icon icon="bars-3" />
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
@@ -102,20 +102,19 @@
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">
                             <a href="" class="text-gray-800 hover:text-gray-600">
-                                <img src="{{ asset('icons/bell.svg') }}" alt="bell">
+                                <x-icon icon="bell" />
                             </a>
                         </li>
                         <li class="inline-block">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    <img src="{{ asset('icons/user-circle.svg') }}" alt="user"
-                                        class="cursor-pointer">
+                                    <x-icon icon="user-circle" />
                                 </x-slot>
                                 <x-slot name="content">
                                     <x-dropdown-link href="">
                                         Mi Perfil
                                     </x-dropdown-link>
-                                    <x-dropdown-link href="{{ route('admin.logout') }}">
+                                    <x-dropdown-link href="{{ route('logout') }}">
                                         Salir
                                     </x-dropdown-link>
                                 </x-slot>

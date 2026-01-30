@@ -21,10 +21,10 @@ class AccountTypeSeeder extends Seeder
                 ],
             ],
             [
-                'slug' => 'business',
+                'slug' => 'merchant',
                 'name' => [
-                    'en' => 'Business',
-                    'es' => 'Negocio',
+                    'en' => 'Merchant',
+                    'es' => 'Comerciante',
                 ],
             ],
             [

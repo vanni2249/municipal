@@ -66,18 +66,21 @@
                     <a href="{{ route('businesses.applications.show', $application->ulid) }}" class="block">
                         <x-card-element class="border-l-4 border-green-400 hover:bg-gray-50">
                             <div class="flex justify-between items-start space-x-2">
-                                <div class="flex flex-col space-y-1">
+                                <div class="flex-1 flex flex-col space-y-1">
                                     <span
                                         class="text-gray-700 font-bold uppercase text-xs">{{ $application->service->serviceType->name }}</span>
                                     <span class="text-md font-bold text-gray-900">{{ $application->service->title }}</span>
                                 </div>
-                                <div class="flex-1 flex flex-col space-y-2">
+                                <div class="flex flex-col space-y-2">
                                     <div class="flex justify-end">
                                         <x-badge label="{{ $application->status->statusType->name }}"
                                             variant="{{ $application->status->statusType->variant }}" />
                                     </div>
-                                    <span class="text-sm text-gray-600">
+                                    <span class="hidden md:block text-sm text-gray-600">
                                         <x-date-format :date="$application->created_at" format="d M Y H:m a"/>
+                                    </span>
+                                    <span class="md:hidden text-sm text-gray-600 text-right">
+                                        <x-date-format :date="$application->created_at" format="d/M/Y"/>
                                     </span>
                                 </div>
                             </div>

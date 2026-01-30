@@ -1,13 +1,13 @@
 <div class="space-y-4">
     <x-card>
-        <div class="md:flex md:justify-between space-y-4 md:space-y-0 md:items-start">
+        <div class="md:flex md:justify-between space-y-4 md:space-y-0 md:items-start ">
             <div>
                 <x-h2 value="Bienvenido, {{ $account->user->name }}" />
                 <span class="text-sm text-gray-800">{{ $account->accountType->name }} | {{ $account->number }}</span>
             </div>
             <div>
-                <x-link-button href="{{ route('users.accounts.index') }}" icon="cog" variant="light" size="sm"
-                    label="Cambiar cuenta" />
+                <x-link-button href="{{ route('users.accounts.index') }}" icon="cog" variant="primary"
+                    label="Mis cuentas" />
             </div>
         </div>
     </x-card>

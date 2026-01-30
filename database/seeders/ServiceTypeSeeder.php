@@ -24,7 +24,7 @@ class ServiceTypeSeeder extends Seeder
                 'slug' => 'settlement',
                 'name' => [
                     'en' => 'Settlement',
-                    'es' => 'Liquidación',
+                    'es' => 'Radicación',
                 ]
             ],
             [

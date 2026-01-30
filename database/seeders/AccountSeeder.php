@@ -60,5 +60,18 @@ class AccountSeeder extends Seeder
             'status_type_id' => 1,
             'reason' => 'Initial status for default account',
         ]);
+
+        //Create citizen account not linked to user
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 1,
+            'name' => 'John',
+            'lastname' => 'Doe',
+            'email' => 'john.doe@example.com',
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
     }
 }

@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Traits\BusinessNumber;
-use App\Traits\BusinessUlid;
+use App\Traits\ServiceNumber;
+use App\Traits\ServiceUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 
 class ServiceSeeder extends Seeder
 {
-    use BusinessUlid, BusinessNumber;
+    use ServiceUlid, ServiceNumber;
     /**
      * Run the database seeds.
      */
@@ -18,8 +18,8 @@ class ServiceSeeder extends Seeder
     {
         $items = [
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-property-use',
                 'title' => [
                     'en' => 'Request Municipal Property Use',
@@ -34,8 +34,8 @@ class ServiceSeeder extends Seeder
                 
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-property-rent',
                 'title' => [
                     'en' => 'Request Municipal Property Rent',
@@ -49,8 +49,8 @@ class ServiceSeeder extends Seeder
                 'service_type_id' => 3,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-residencial-removal-debris',
                 'title' => [
                     'en' => 'Request Residential Debris Removal',
@@ -66,8 +66,8 @@ class ServiceSeeder extends Seeder
                 'fee' => 5.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-report-property-damage',
                 'title' => [
                     'en' => 'Report Property Damage',
@@ -81,8 +81,8 @@ class ServiceSeeder extends Seeder
                 'service_type_id' => 1,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-register-special-person',
                 'title' => [
                     'en' => 'Register Special Person',
@@ -96,8 +96,8 @@ class ServiceSeeder extends Seeder
                 'service_type_id' => 1,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-residencial-construction-permit',
                 'title' => [
                     'en' => 'Apply for Residential Construction Permit',
@@ -113,12 +113,12 @@ class ServiceSeeder extends Seeder
                 'fee' => 20.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-remove-trash',
                 'title' => [
                     'en' => 'Apply for garbage removal service',
-                    'es' => 'Solicitar servicio de recolección de basura',
+                    'es' => 'Solicitar servicio de recolección de basura para negocios',
                 ],
                 'description' => [
                     'en' => 'Request the municipal garbage removal service for your business premises.',
@@ -130,12 +130,12 @@ class ServiceSeeder extends Seeder
                 'fee' => 10.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-remove-debris',
                 'title' => [
                     'en' => 'Apply for debris removal service',
-                    'es' => 'Solicitar servicio de retiro de escombros',
+                    'es' => 'Solicitar servicio de retiro de escombros para negocios',
                 ],
                 'description' => [
                     'en' => 'Request the municipal debris removal service for your business premises.',
@@ -147,8 +147,8 @@ class ServiceSeeder extends Seeder
                 'fee' => 15.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-construction-permit',
                 'title' => [
                     'en' => 'Apply for Business Construction Permit',
@@ -164,8 +164,8 @@ class ServiceSeeder extends Seeder
                 'fee' => 30.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-use-permit',
                 'title' => [
                     'en' => 'Apply for Business Use Permit',
@@ -181,8 +181,8 @@ class ServiceSeeder extends Seeder
                 'fee' => 5.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-temporary-patent',
                 'title' => [
                     'en' => 'Apply for Temporary Business Patent',
@@ -198,8 +198,8 @@ class ServiceSeeder extends Seeder
                 'fee' => 10.00,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-renew-patent',
                 'title' => [
                     'en' => 'Renew Business Patent',
@@ -213,8 +213,8 @@ class ServiceSeeder extends Seeder
                 'service_type_id' => 2,
             ],
             [
-                'ulid' => $this->createBusinessUlid(),
-                'number' => $this->createBusinessNumber(),
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-report-tax',
                 'title' => [
                     'en' => 'File Business Tax Report',

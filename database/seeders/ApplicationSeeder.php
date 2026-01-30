@@ -179,7 +179,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 1,
             'service_id' => 7,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -194,7 +194,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 2,
             'service_id' => 8,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -215,7 +215,7 @@ class ApplicationSeeder extends Seeder
         $app = $businessConstPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 1,
             'service_id' => 9,
         ]);
         $app->statuses()->create([
@@ -239,7 +239,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessUsePermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 1,
             'service_id' => 10,
         ]);
         $app->statuses()->create([
@@ -263,7 +263,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessTemporaryPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 2,
             'service_id' => 12,
         ]);
         $app->statuses()->create([
@@ -288,7 +288,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessRenewPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 2,
             'service_id' => 11,
         ]);
         $app->statuses()->create([
@@ -320,7 +320,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'business_id' => 1,
             'service_id' => 13,
         ])->statuses()->create([
             'status_type_id' => 1,

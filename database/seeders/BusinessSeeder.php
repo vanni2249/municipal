@@ -25,7 +25,7 @@ class BusinessSeeder extends Seeder
             'number' => $this->createBusinessNumber(),
             'business_type_id' => 1,
             'name' => 'Acme Corporation',
-            'account_id' => 1,
+            'account_id' => 2,
         ]);
 
         $business->addresses()->create([
@@ -36,14 +36,10 @@ class BusinessSeeder extends Seeder
         ]);
 
         $business->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for business',
         ]);
 
-                // $business->accounts()->attach(1, [
-                //     'ulid' => $this->createAccountBusinessUlid(),
-                //     'number' => $this->createAccountBusinessNumber(),
-                // ]);
 
         // Business 2
         $business = Business::create([
@@ -51,7 +47,7 @@ class BusinessSeeder extends Seeder
             'number' => $this->createBusinessNumber(),
             'business_type_id' => 1,
             'name' => 'Second Business',
-            'account_id' => 1,
+            'account_id' => 2,
         ]);
 
         $business->addresses()->create([
@@ -62,13 +58,30 @@ class BusinessSeeder extends Seeder
         ]);
 
         $business->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for second business',
         ]);
 
-        // $business->accounts()->attach(1, [
-        //     'ulid' => $this->createAccountBusinessUlid(),
-        //     'number' => $this->createAccountBusinessNumber(),
-        // ]);
+        // Business 3
+        $business = Business::create([
+            'ulid' => $this->createBusinessUlid(),
+            'number' => $this->createBusinessNumber(),
+            'business_type_id' => 1,
+            'name' => 'Third Business',
+            'account_id' => 4,
+        ]);
+
+        $business->addresses()->create([
+            'name' => 'Main Office',
+            'place_id' => 2,
+            'address' => '456 Another St',
+            'postal_code' => '67890',
+        ]);
+
+        $business->statuses()->create([
+            'status_type_id' => 2,
+            'reason' => 'Initial status for third business',
+        ]);
+
     }
 }

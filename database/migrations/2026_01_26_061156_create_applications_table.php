@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
-            $table->foreignId('account_id')->constrained()->onDelete('cascade');
+            $table->foreignId('account_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('business_id')->nullable()->constrained()->onDelete('set null');
             $table->morphs('applicable');
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('merges', function (Blueprint $table) {
+        Schema::create('business_merge', function (Blueprint $table) {
             $table->id();
-            $table->ulid('ulid')->unique();
-            $table->string('number')->unique();
-            $table->string('code')->default('code');
-            $table->foreignId('account_accountant_id')->constrained('accounts')->onDelete('cascade');
-            $table->foreignId('account_merchant_id')->constrained('accounts')->onDelete('cascade');
             $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
+            $table->foreignId('merge_id')->constrained('merges')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('merges');
+        Schema::dropIfExists('business_merge');
     }
 };

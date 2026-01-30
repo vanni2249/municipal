@@ -16,7 +16,7 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create citizen account
+        // 1Create citizen account Giovanni
         $accountFirst = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
@@ -37,7 +37,30 @@ class AccountSeeder extends Seeder
             'reason' => 'Initial status for default account',
         ]);
 
-        // Create merchant account
+        // 2Create citizen account Angel F
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 1,
+            'user_id' => 2,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
+        //3 Create citizen account Angel M
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 1,
+            'user_id' => 3,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
+
+        // 4Create merchant account Giovanni
         Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
@@ -45,11 +68,35 @@ class AccountSeeder extends Seeder
             'user_id' => 1,
             'is_default' => true,
         ])->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
-        // Create admin account
+        // 5Create merchant account Angel F
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 2,
+            'user_id' => 2,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 2,
+            'reason' => 'Initial status for default account',
+        ]);
+
+        // 6Create merchant account Angel M
+        Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 2,
+            'user_id' => 3,
+            'is_default' => true,
+        ])->statuses()->create([
+            'status_type_id' => 2,
+            'reason' => 'Initial status for default account',
+        ]);
+
+        // 7Create accountant account Giovanni
         Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
@@ -57,11 +104,11 @@ class AccountSeeder extends Seeder
             'user_id' => 1,
             'is_default' => true,
         ])->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
-        //Create citizen account not linked to user
+        // 8Create citizen account not linked to user
         Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),

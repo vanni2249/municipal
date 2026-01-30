@@ -10,7 +10,7 @@
                         <header class="flex justify-between space-x-2 items-start">
                             <p class="text-sm md:text-md font-bold">{{ $application->service->title }}</p>
                             <div>
-                                <x-badge label="{{ $application->status->statusType->name }}" color="{{ $application->status->statusType->variant }}" />
+                                <x-badge label="{{ $application->status->statusType->name }}" variant="{{ $application->status->statusType->variant }}" />
                             </div>
                         </header>
                         <ul class="flex space-x-3 text-sm text-gray-800 mt-2">

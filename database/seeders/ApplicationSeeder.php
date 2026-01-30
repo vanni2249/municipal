@@ -44,7 +44,7 @@ class ApplicationSeeder extends Seeder
         
         $app = $appCitizenPropertyUse->applications()->create([
             'ulid' => $this->createApplicationUlid(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'number' => $this->createApplicationNumber(),
             'service_id' => 1,
         ]);
@@ -71,7 +71,7 @@ class ApplicationSeeder extends Seeder
 
         $app->userLogs()->create([
             'user_id' => 1,
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'log_type_id' => 1, // Assuming 1 corresponds to a valid log user type
         ]);
 
@@ -83,7 +83,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'service_id' => 2,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -98,7 +98,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'service_id' => 3,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -113,7 +113,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'service_id' => 4,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -128,7 +128,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'service_id' => 5,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -147,7 +147,7 @@ class ApplicationSeeder extends Seeder
         $app = $citizenConstPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'account_id' => 1,
+            'account_id' => rand(1, 3),
             'service_id' => 6,
         ]);
         $app->statuses()->create([
@@ -179,7 +179,7 @@ class ApplicationSeeder extends Seeder
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'service_id' => 7,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -189,12 +189,12 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessRemoveDebris application
         AppBusinessRemoveDebris::create([
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'description' => 'Business Debris Removal Service',
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'service_id' => 8,
         ])->statuses()->create([
             'status_type_id' => 1,
@@ -204,7 +204,7 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessConstructionPermit application
         $businessConstPermit = AppBusinessConstructionPermit::create([
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'permit_number' => 'BUS-CP-001',
             'started_at' => now()->addYear(),
             'ended_at' => now()->addYears(2),
@@ -215,7 +215,7 @@ class ApplicationSeeder extends Seeder
         $app = $businessConstPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'service_id' => 9,
         ]);
         $app->statuses()->create([
@@ -231,7 +231,7 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessUsePermit application
         $appBusinessUsePermit = AppBusinessUsePermit::create([
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'permit_number' => 'BUS-UP-001',
             'started_at' => now(),
             'ended_at' => now()->addYears(1),
@@ -239,7 +239,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessUsePermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'service_id' => 10,
         ]);
         $app->statuses()->create([
@@ -254,7 +254,7 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessTemporaryPatent application
         $appBusinessTemporaryPatent = AppBusinessTemporaryPatent::create([
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'started_at' => now(),
             'ended_at' => now()->addMonths(3),
             'amount' => 500.00,
@@ -263,7 +263,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessTemporaryPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'service_id' => 12,
         ]);
         $app->statuses()->create([
@@ -278,7 +278,7 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessRenewPatent application
         $appBusinessRenewPatent = AppBusinessRenewPatent::create([
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'sales_amount' => 10000.00,
             'started_at' => now(),
             'ended_at' => now()->addYear(),
@@ -288,7 +288,7 @@ class ApplicationSeeder extends Seeder
         $app = $appBusinessRenewPatent->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 2,
+            'business_id' => rand(1, 3),
             'service_id' => 11,
         ]);
         $app->statuses()->create([
@@ -313,14 +313,14 @@ class ApplicationSeeder extends Seeder
 
         // Create AppBusinessReportTaxesIvu application
         AppBusinessReportTax::create([
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'tax_period_id' => 1,
             'amount_reported' => 15000.00,
             'tax_due' => 750.00,
         ])->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'number' => $this->createApplicationNumber(),
-            'business_id' => 1,
+            'business_id' => rand(1, 3),
             'service_id' => 13,
         ])->statuses()->create([
             'status_type_id' => 1,

@@ -5,6 +5,7 @@ use App\Models\Business;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Businesses\Dashboard\Index as BusinessDashboard;
 use App\Livewire\Businesses\Services\Index as BusinessServicesIndex;
+use App\Livewire\Businesses\Services\Create as BusinessServicesCreate;
 use App\Livewire\Businesses\Services\Show as BusinessServicesShow;
 use App\Livewire\Businesses\Applications\Index as BusinessApplicationsIndex;
 use App\Livewire\Businesses\Applications\Show as BusinessApplicationsShow;
@@ -22,6 +23,7 @@ Route::prefix('businesses')->name('businesses.')->group(function () {
         })->name('set-session');
         Route::get('/dashboard', BusinessDashboard::class)->name('dashboard');
         Route::get('/services', BusinessServicesIndex::class)->name('services');
+        Route::get('/services/{service}/create', BusinessServicesCreate::class)->name('services.create');
         Route::get('/services/{service}', BusinessServicesShow::class)->name('services.show');
         Route::get('/applications', BusinessApplicationsIndex::class)->name('applications');
         Route::get('/applications/{application}', BusinessApplicationsShow::class)->name('applications.show');

@@ -14,11 +14,15 @@ class Index extends Component
     public $business;
     public $services;
 
+    public $applications;
+
     public function mount()
     {
         $this->business = Business::where('ulid', session('data.business_ulid'))->first();
         // Only 4 citizen services
         $this->services = Service::where('account_type_id', $this->getAccountTypeId('merchant'))->limit(4)->get();
+        
+        $this->applications = $this->business->applications()->latest()->limit(5)->get();
 
     }
 

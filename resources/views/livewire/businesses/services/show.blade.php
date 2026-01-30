@@ -1,9 +1,8 @@
 <div>
     <x-card>
-        <div>
-            <span class="text-gray-700">{{ $service->serviceType->name }}</span>
-            <br>
-            <strong class="text-md">{{ $service->title }}</strong>
-        </div>
+        <x-card-header>
+            <x-h1>{{ $service->title }}</x-h1>
+            <span class="text-gray-700">{{ $service->title }}</span>
+        </x-card-header>
     </x-card>
 </div>

@@ -2,8 +2,8 @@
     <header class="px-2 flex justify-between items-center mb-8">
         <div>
             <x-h1 value="Mis cuentas" />
-            <p class="text-sm text-gray-800">
-                Manage your user accounts here.
+            <p class="text-sm text-gray-700">
+                Gestiona y navega entre las cuentas asociadas a tu usuario.
             </p>
         </div>
         {{-- <div class="flex">
@@ -13,11 +13,11 @@
     <x-card>
         <x-card-header>
             <p class="text-sm">
-                <strong>
+                <strong class="text-lg">
                     Cuentas asociadas a tu usuario.
                 </strong>
                 <br>
-                <span class="text-gray-800">
+                <span class="text-gray-700">
                     Selecciona una cuenta para navegar a su panel administrativo.
                 </span>
             </p>

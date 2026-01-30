@@ -15,7 +15,7 @@ class Index extends Component
 
     public function mount()
     {
-        $this->services = Service::where('account_type_id', $this->getAccountTypeId('business'))->get();
+        $this->services = Service::where('account_type_id', $this->getAccountTypeId('merchant'))->get();
     }
 
     #[Layout('layouts.admin')]

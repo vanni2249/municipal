@@ -23,7 +23,11 @@ class User extends Authenticatable
         'name',
         'lastname',
         'email',
+        'password',
         'phone',
+        'date_of_birth',
+        'gender',
+        'terms_accepted',
     ];
 
     /**
@@ -46,6 +50,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'gender' => 'string',
         ];
     }
 
@@ -71,6 +76,11 @@ class User extends Authenticatable
     public function accounts()
     {
         return $this->hasMany(Account::class);
+    }
+
+    public function userLogs()
+    {
+        return $this->morphMany(UserLog::class ,'loggable');
     }
 
     // public function type()

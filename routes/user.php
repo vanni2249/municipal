@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthUser;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Users\Accounts\Index as UserAccountIndex;
@@ -16,21 +17,21 @@ use App\Livewire\Users\Accounts\Merges\Index as UserAccountMergesIndex;
 use App\Livewire\Users\Accounts\Merges\Create as UserAccountMergesCreate;
 use App\Livewire\Users\Accounts\Merges\Attach as UserAccountMergesAttach;
 
-Route::prefix('users/accounts')->name('users.accounts.')->group(function () {
+Route::prefix('users/accounts')->name('users.accounts.')->middleware(AuthUser::class)->group(function () {
     Route::get('/', UserAccountIndex::class)->name('index');
     Route::get('/create', UserAccountCreate::class)->name('create');
     Route::get('/attach', UserAccountAttach::class)->name('attach');
 
-        Route::prefix('/accounts/{account}/businesses')->name('accounts.businesses')->group(function () {
-            Route::get('/', UserAccountBusinessIndex::class)->name('index');
-            Route::get('/create', UserAccountBusinessCreate::class)->name('create');
-            Route::get('/attach', UserAccountBusinessAttach::class)->name('attach');
-        });
+    Route::prefix('/{account}/businesses')->name('businesses.')->group(function () {
+        Route::get('/', UserAccountBusinessIndex::class)->name('index');
+        Route::get('/create', UserAccountBusinessCreate::class)->name('create');
+        Route::get('/attach', UserAccountBusinessAttach::class)->name('attach');
+    });
 
-        Route::prefix('/accounts/{account}/merges')->name('accounts.merges')->group(function () {
-            Route::get('/', UserAccountMergesIndex::class)->name('index');
-            Route::get('/create', UserAccountMergesCreate::class)->name('create');
-            Route::get('/attach', UserAccountMergesAttach::class)->name('attach');
-        });
+    Route::prefix('/{account}/merges')->name('merges.')->group(function () {
+        Route::get('/', UserAccountMergesIndex::class)->name('index');
+        Route::get('/create', UserAccountMergesCreate::class)->name('create');
+        Route::get('/attach', UserAccountMergesAttach::class)->name('attach');
+    });
 
 });

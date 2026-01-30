@@ -61,7 +61,7 @@
     </div>
 
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
-        <div class="px-4 pt-4">
+        <div class="px-2 md:px-4 pt-2 md:pt-4">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
@@ -115,9 +115,9 @@
                                     <x-dropdown-link href="">
                                         Mi Perfil
                                     </x-dropdown-link>
-                                    {{-- <x-dropdown-link href="{{ route('admin.logout') }}">
+                                    <x-dropdown-link href="{{ route('admin.logout') }}">
                                         Salir
-                                    </x-dropdown-link> --}}
+                                    </x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
                         </li>
@@ -125,10 +125,10 @@
                 </div>
             </nav>
         </div>
-        <main class="flex-grow min-h-96 p-4">
+        <main class="flex-grow min-h-96 px-2 py-4 md:p-4">
             {{ $slot }}
         </main>
-        <footer class="mx-auto px-4 pb-4 w-full ">
+        <footer class="mx-auto px-2 md:px-4 pb-2 md:pb-4 w-full ">
             <div class="bg-gray-300 rounded-xl">
 
                 <ul

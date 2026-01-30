@@ -14,6 +14,10 @@ class LogTypeSeeder extends Seeder
     {
         $items = [
             [
+                'slug' => 'registration',
+                'name' => ['en' => 'Registration', 'es' => 'Registro'],
+            ],
+            [
                 'slug' => 'created',
                 'name' => ['en' => 'Created', 'es' => 'Creado'],
             ],

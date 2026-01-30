@@ -5,7 +5,12 @@ namespace App\Livewire\Auth\Users;
 use App\Models\Place;
 // use App\Models\Type;
 use App\Models\User;
+use App\Models\UserLog;
+use App\Traits\LogTypeId;
 use App\Traits\RegisterCode;
+use App\Traits\StatusId;
+use App\Traits\UserNumber;
+use App\Traits\UserUlid;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -20,153 +25,69 @@ use Livewire\Attributes\Layout;
 
 class Register extends Component
 {
-    use RegisterCode;
+    use UserUlid, UserNumber, StatusId, LogTypeId;
 
-    public $role;
     public $name;
     public $lastname;
-    public $place_id;
-    public $disability_type;
-    public $emergency_contact;
-    public $emergency_contact_phone;
     public $email;
     public $password;
     public $password_confirmation;
     public $phone;
-    public $company_name;
-    public $number;
-    public $address;
-    public $city;
-    public $postal_code;
     public $date_of_birth;
-    public $terms;
-    public $user;
-    public $approved_at;
-    public $is_veteran = false;
-    public $is_age_advanced = false;
-    public $is_bedridden = false;
-    public $is_disabled = false;
+    public $gender;
+    public $term_accepted;
 
     public function mount()
     {
-        $this->terms = true; // Default to true
+        $this->term_accepted = true; // Default to true
+        $this->gender = null; // Default to null
     }
 
-    public function updatedRole($value)
-    {
-        $this->reset(['company_name', 'number', 'address', 'city', 'postal_code', 'date_of_birth', 'place_id', 'disability_type', 'emergency_contact', 'emergency_contact_phone']);
-        $this->approved_at = in_array($value, ['citizen', 'merchant', 'citizen-merchant', 'visitor']) ? now() : null;
-    }
 
     public function register()
     {
         $this->validate([
-            'role' => ['required', 'string', Rule::in(['citizen', 'merchant', 'citizen-merchant', 'accountant', 'contractor', 'supplier', 'visitor'])],
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'email' => 'required|email|unique:registers,email',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|numeric',
-            'company_name' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['accountant', 'contractor', 'supplier'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'number' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['accountant', 'contractor', 'supplier'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'place_id' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'citizen-merchant'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'address' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'city' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'postal_code' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'merchant', 'accountant', 'contractor', 'supplier'])),
-                'string',
-                'nullable',
-                'max:255'
-            ],
-            'date_of_birth' => [
-                Rule::requiredIf(fn() => in_array($this->role, ['citizen', 'citizen-merchant', 'merchant', 'accountant', 'contractor', 'supplier'])),
-                'date',
-                'nullable',
-
-            ],
-            'terms' => 'accepted',
+            'date_of_birth' => 'required|date',
+            'gender' => ['nullable', Rule::in(['male', 'female', 'other'])],    
+            'term_accepted' => ['accepted', Rule::in([true, 1, '1'])],
         ]);
 
         DB::transaction(function () {
 
             $this->user = User::create([
+                'ulid' =>$this->createUserUlid(),
+                'number' => $this->createUserNumber(),
                 'name' => $this->name . ' ' . $this->lastname,
+                'lastname' => $this->lastname,
                 'email' => $this->email,
                 'password' => Hash::make($this->password),
-                'approved_at' => $this->approved_at,
-            ]);
-
-            $register = $this->user->register()->create([
-                // 'type_id' => Type::where('key', $this->role)->first()->id ?? null,
-                'code' => $this->createRegisterCode(),
-                'name' => $this->name,
-                'lastname' => $this->lastname,
-                'date_of_birth' => $this->date_of_birth,
-                'email' => $this->email,
                 'phone' => $this->phone,
-                'company_name' => $this->company_name,
-                'number' => $this->number,
-                'is_veteran' => $this->is_veteran,
-                'is_age_advanced' => $this->is_age_advanced,
-                'is_bedridden' => $this->is_bedridden,
-                'is_disability' => $this->is_disabled,
-                'disability_type' => $this->disability_type,
-                'emergency_contact' => $this->emergency_contact,
-                'emergency_contact_phone' => $this->emergency_contact_phone,
-                'created_by' => 'user',
-                'user_id' => $this->user->id,
-                // 'type_id' => Type::where('key', $this->role)->first()->id ?? null,
-                'code' => $this->createRegisterCode(),
-                'created_by' => 'user',
-                'user_id' => $this->user->id,
+                'date_of_birth' => $this->date_of_birth,
+                'gender' => $this->gender,
+                'term_accepted' => $this->term_accepted,
+            ]);
+            $this->user->statuses()->create([
+                'status_type_id' => $this->getStatusId('active'),
+                'reason' => 'Initial status for user '.$this->email,
             ]);
 
-            $register->addresses()->create([
-                'name' => 'Por defecto',
-                'place_id' => $this->place_id,
-                'address' => $this->address,
-                'city' => $this->city,
-                'postal_code' => $this->postal_code,
-                'is_primary' => true,
+            $this->user->userLogs()->create([
+                'user_id' => $this->user->id,
+                'log_type_id' => $this->getLogTypeId('registration'),
             ]);
 
-            if ($this->approved_at) {
-                $this->login();
-            } else {
-                redirect()->route('users.verify', ['role' => $this->role]);
-            }
+            $this->login();
         });
     }
 
     public function login()
     {
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], true)) {
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], true)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -177,11 +98,11 @@ class Register extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->setLastLogin();
+        $this->user->sessions()->create([
+            'session_id' => Session::getId(),
+        ]);
 
-        $this->setSessionTypeNavigation();
-
-        $this->redirectIntended(default: route('users.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('users.accounts.create', absolute: false), navigate: true);
     }
 
     /**
@@ -189,7 +110,7 @@ class Register extends Component
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -211,28 +132,6 @@ class Register extends Component
     protected function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
-    }
-
-    protected function setLastLogin(): void
-    {
-        $user = Auth::user();
-        if ($user instanceof \App\Models\User) {
-            $user->last_login_at = now();
-            $user->save();
-        }
-    }
-
-    protected function setSessionTypeNavigation()
-    {
-        $user = Auth::user();
-        $type = $user->register->type->key ?? 'citizen';
-
-        // if type is citizen-merchant or merchant set to merchant
-        if (in_array($type, ['citizen-merchant', 'merchant'])) {
-            session(['type_navigation' => 'merchant']);
-        } else {
-            session(['type_navigation' => $type]);
-        }
     }
 
     #[Layout('layouts.auth')]

@@ -50,13 +50,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     //     return view('auth.admin.register');
     // })->middleware(GuestAdmin::class)->name('register');
 
-    // Route::get('/logout', function () {
-    //     Auth::logout();
+    Route::get('/logout', function () {
+        Auth::logout();
 
-    //     request()->session()->invalidate();
+        request()->session()->invalidate();
 
-    //     request()->session()->regenerateToken();
+        request()->session()->regenerateToken();
 
-    //     return redirect('/');
-    // })->name('logout');
+        return redirect('admin/login');
+    })->name('logout');
 });

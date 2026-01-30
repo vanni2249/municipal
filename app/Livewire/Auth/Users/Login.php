@@ -24,6 +24,7 @@ class Login extends Component
     public string $password = '';
 
     public bool $remember = false;
+    public $user;
 
     public function mount(): void
     {
@@ -41,23 +42,9 @@ class Login extends Component
 
         // check if users is blocked_at and if approved_at is null before allowing login
 
-        $user = User::where('email', $this->email)->first();
+        $this->user = User::where('email', $this->email)->first();
 
-        // if ($user && $user->blocked_at !== null) {
-        //     throw ValidationException::withMessages([
-        //         'email' => ['Your account is either blocked.'],
-        //     ]);
-        //     return;
-        // }
-
-        // if ($user && $user->approved_at === null) {
-        //     throw ValidationException::withMessages([
-        //         'email' => ['Your account is not approved.'],
-        //     ]);
-        //     return;
-        // }
-
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (!$this->user) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -65,14 +52,34 @@ class Login extends Component
             ]);
         }
 
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
+        $status = $this->user->status->statusType->slug;
 
-        // $this->setLastLogin();
+        if ($status != 'active') {
 
-        // $this->setSessionTypeNavigation();
+            throw ValidationException::withMessages([
+                'email' => ['Your user account status is: ' . $status . '. You cannot log in.'],
+            ]);
 
-        $this->redirectIntended(default: route('users.accounts.index', absolute: false), navigate: true);
+        } else {
+
+
+            if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+                RateLimiter::hit($this->throttleKey());
+
+                throw ValidationException::withMessages([
+                    'email' => __('auth.failed'),
+                ]);
+            }
+
+            RateLimiter::clear($this->throttleKey());
+            Session::regenerate();
+
+            $this->user->sessions()->create([
+                'session_id' => Session::getId(),
+            ]);
+
+            $this->redirectIntended(default: route('users.accounts.index', absolute: false), navigate: true);
+        }
     }
 
     /**
@@ -80,7 +87,7 @@ class Login extends Component
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 

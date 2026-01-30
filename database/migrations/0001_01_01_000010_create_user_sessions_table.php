@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('session_token')->nullable();
+            $table->string('session_id')->nullable();
             $table->string('device_info')->nullable();
             $table->string('platform')->nullable();
             $table->string('browser')->nullable();

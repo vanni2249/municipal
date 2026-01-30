@@ -72,7 +72,8 @@ class UserSeeder extends Seeder
 
         foreach (User::all() as $user) {
             $user->statuses()->create([
-                'status_type_id' => StatusType::inRandomOrder()->first()->id,
+                // 'status_type_id' => StatusType::inRandomOrder()->first()->id,
+                'status_type_id' => 2,
                 'reason' => 'Initial status for user '.$user->number,
             ]);
         }

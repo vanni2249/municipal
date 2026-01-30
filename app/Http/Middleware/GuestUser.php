@@ -17,7 +17,7 @@ class GuestUser
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::guard('web')->check()) {
-            return redirect()->route('users.dashboard');
+            return redirect()->route('users.accounts.index');
         }
         return $next($request);
     }

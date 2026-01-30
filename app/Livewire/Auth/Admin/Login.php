@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Auth\Admin;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,9 @@ class Login extends Component
 
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::guard('admin')->attempt(['username' => $this->username, 'password' => $this->password], $this->remember)) {
+        $admin = Admin::where('username', $this->username)->first();
+
+        if (!$admin) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -39,12 +42,29 @@ class Login extends Component
             ]);
         }
 
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
+        $status = $admin->status->statusType->slug;
 
-        $this->setLastLogin();
+        if ($status != 'active') {
 
-        $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+            throw ValidationException::withMessages([
+                'username' => ['Your admin account status is: ' . $status . '. You cannot log in.'],
+            ]);
+
+        } else {
+
+            if (!Auth::guard('admin')->attempt(['username' => $this->username, 'password' => $this->password], $this->remember)) {
+                RateLimiter::hit($this->throttleKey());
+
+                throw ValidationException::withMessages([
+                    'username' => __('auth.failed'),
+                ]);
+            }
+
+            RateLimiter::clear($this->throttleKey());
+            Session::regenerate();
+
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+        }
     }
 
     /**
@@ -52,7 +72,7 @@ class Login extends Component
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -73,17 +93,17 @@ class Login extends Component
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->username).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->username) . '|' . request()->ip());
     }
 
-    protected function setLastLogin(): void
-    {
-       $user = Auth::guard('admin')->user();
-      if ($user instanceof \App\Models\Admin) {
-           $user->last_login_at = now();
-           $user->save();
-       }
-    }
+    // protected function setLastLogin(): void
+    // {
+    //    $user = Auth::guard('admin')->user();
+    //   if ($user instanceof \App\Models\Admin) {
+    //        $user->last_login_at = now();
+    //        $user->save();
+    //    }
+    // }
 
     #[Layout('layouts.auth')]
     public function render()

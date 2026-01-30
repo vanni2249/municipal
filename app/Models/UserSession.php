@@ -8,7 +8,7 @@ class UserSession extends Model
 {
     protected $fillable = [
         'user_id',
-        'session_token',
+        'session_id',
         'device_info',
         'platform',
         'browser',

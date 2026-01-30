@@ -9,27 +9,27 @@ class Sidebar extends Component
     public $links = [
         [
             'name' => 'Tablero',
-            'route' => 'citizen.dashboard',
+            'route' => 'citizens.dashboard',
             'path' => 'dashboard',
         ],
         [
             'name' => 'Servicios',
-            'route' => 'citizen.services',
+            'route' => 'citizens.services',
             'path' => 'services',
         ],
         [
             'name' => 'Aplicaciones',
-            'route' => 'citizen.applications',
+            'route' => 'citizens.applications',
             'path' => 'applications',
         ],
         [
             'name' => 'Interacciones',
-            'route' => 'citizen.interactions',
+            'route' => 'citizens.interactions',
             'path' => 'interactions',
         ],
         [
             'name' => 'Configuración',
-            'route' => 'citizen.settings',
+            'route' => 'citizens.settings',
             'path' => 'settings',
         ],
     ];

@@ -9,9 +9,14 @@
                     <li>{{ $business->businessType->name }}</li>
                 </ul>
             </div>
-            <div class="">
-                <x-link-button href="{{ route('users.accounts.index') }}" icon="cog" variant="primary" size="md"
-                    label="Mis cuentas" wire:navigate />
+            <div class="flex">
+                <x-link-button href="{{ route('users.accounts.index') }}" icon="cog" class="flex items-center md:space-x-2" variant="primary" size="md"
+                    wire:navigate>
+                    <x-icon icon="home" class="" width="20" height="20" />
+                    <span class="hidden md:block">
+                        Mis cuentas
+                    </span>
+                </x-link-button>
             </div>
         </header>
     </x-card>

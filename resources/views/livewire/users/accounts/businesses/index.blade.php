@@ -1,13 +1,13 @@
 <div class="space-y-4">
     <x-card>
         <header class="flex justify-between items-start">
-            <div class="flex-1">
+            <div class="">
                 <x-h2 value="Cuenta de comerciante" />
                 <p class="text-sm text-gray-800">
                     Gestión de sus comercios asociados a la cuenta de comerciante.
                 </p>
             </div>
-            <div>
+            <div class="flex">
                 <x-link-button href="{{ route('users.accounts.index') }}" label="Mis cuentas" variant="primary" />
 
             </div>

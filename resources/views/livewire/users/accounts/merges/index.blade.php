@@ -1,17 +1,20 @@
-<div>
-    <header class="px-2 flex justify-between items-center mb-8">
-        <div>
-            <x-h1 value="Mis clientes" />
-            <p class="text-sm text-gray-800">
-                Maneja los comercios asociados a tu cuenta de contador aquí.
-            </p>
-        </div>
-        <div class="flex">
-            <x-link-button href="{{ route('users.accounts.index') }}" label="Mis cuentas" variant="light" />
-        </div>
-    </header>
+<div class="space-y-4">
     <x-card>
-        <x-card-header>
+
+        <header class="flex justify-between items-start">
+            <div class="flex-1">
+                <x-h2 value="Mis clientes" />
+                <p class="text-sm text-gray-800 mt-2">
+                    Maneja los comercios asociados a tu cuenta de contador aquí.
+                </p>
+            </div>
+            <div class="flex items-center space-x-2">
+                <x-link-button href="{{ route('users.accounts.index') }}" label="Mis cuentas" variant="primary" />
+            </div>
+        </header>
+    </x-card>
+    <x-card>
+        {{-- <x-card-header>
             <p class="text-sm">
                 <strong>
                     Lista de clientes asociados a tu cuenta de contador. 
@@ -22,16 +25,12 @@
                     Selecciona un comercio para navegar a su panel administrativo.
                 </span>
             </p>
-        </x-card-header>
+        </x-card-header> --}}
         <x-card-elements-group>
-            @foreach ($merges as $merge)
+            @forelse ($merges as $merge)
                 <x-card-element>
                     <div class="flex justify-between items-center mb-4">
                         <div>
-                            {{-- Get just one merchant name --}}
-                            {{-- {{ $merge->first()->merchant->user_id
-                                ? $merge->first()->merchant->user->name . ' ' . $merge->first()->merchant->user->lastname
-                                : $merge->first()->merchant->name . ' ' . $merge->first()->merchant->lastname }} --}}
                             <strong class="text-sm">
                                 {{ $merge->first()->merchant->user_id
                                     ? $merge->first()->merchant->user->name . ' ' . $merge->first()->merchant->user->lastname
@@ -72,7 +71,13 @@
                         @endforeach
                     </div>
                 </x-card-element>
-            @endforeach
+            @empty
+                <x-card-element>
+                    <p class="text-sm text-gray-700">
+                        No tienes comercios asociados a tu cuenta de contador.
+                    </p>
+                </x-card-element>
+            @endforelse
         </x-card-elements-group>
     </x-card>
 </div>

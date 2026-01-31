@@ -9,7 +9,7 @@
         <x-card-elements-group>
             @forelse ($applications as $application)
                 <a href="{{ route('businesses.applications.show', $application->ulid) }}" class="block" wire:navigate>
-                    <x-card-element class="hover:bg-gray-50" border="{{ $application->status->statusType->variant }}">
+                    <x-card-element class="hover:bg-gray-200" border="{{ $application->status->statusType->variant }}">
                         <div class="flex justify-between items-start space-x-2">
                             <div class="flex-1 flex flex-col space-y-1">
                                 <span class="text-gray-700 font-bold uppercase text-xs">

@@ -6,7 +6,9 @@
             ' bg-black border border-transparent text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900',
         'primary-outline' =>
             ' bg-transparent border border-gray-700 text-black hover:bg-gray-700 hover:text-white focus:bg-gray-700 active:bg-gray-900',
-        'secondary' =>
+            'secondary' =>
+            ' bg-gray-500 border border-transparent text-white hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-700',
+        'secondary-outline' =>
             ' bg-transparent border border-gray-500 text-gray-500 hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-700',
         'success' =>
             ' bg-green-500 border border-transparent text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700',

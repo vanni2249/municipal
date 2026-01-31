@@ -13,12 +13,15 @@ class Index extends Component
    use AccountTypeId;
     public $account;
     public $services;
+    public $applications;
 
     public function mount()
     {
         $this->account = Account::where('ulid', session('data.account_ulid'))->first();
-        // Only 4 citizen services
+
         $this->services = Service::where('account_type_id', $this->getAccountTypeId('citizen'))->limit(4)->get();
+
+        $this->applications = $this->account->applications()->latest()->limit(5)->get();
 
     }
     #[Layout('layouts.admin')]

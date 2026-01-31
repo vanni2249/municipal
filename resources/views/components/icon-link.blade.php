@@ -5,7 +5,7 @@
         'primary' =>
             ' bg-black border border-transparent text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900',
         'primary-outline' =>
-            ' bg-transparent border border-gray-700 text-black hover:bg-gray-700 hover:text-white focus:bg-gray-700 active:bg-gray-900',
+            ' bg-transparent border border-gray-900 text-black hover:bg-gray-900 hover:text-white focus:bg-gray-700 active:bg-gray-900',
             'secondary' =>
             ' bg-gray-500 border border-transparent text-white hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-700',
         'secondary-outline' =>

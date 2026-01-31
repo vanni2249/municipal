@@ -27,7 +27,7 @@
                         <x-money-format :amount="$service->amount" />
                     </div>
                     <div class="flex justify-end">
-                        <x-link-button href="{{ route('businesses.services.create', $service->ulid) }}"
+                        <x-link-button href="{{ route('citizens.services.create', $service->ulid) }}"
                             variant="primary" wire:navigate>Aplicar</x-link-button>
                     </div>
                 </div>

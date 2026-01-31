@@ -67,7 +67,7 @@
             </x-card-header>
             <x-card-elements-group>
                 @forelse ($applications as $application)
-                    <a href="#" class="block" wire:navigate>
+                    <a href="{{ route('citizens.applications.show', $application->ulid) }}" class="block" wire:navigate>
                         <x-card-element class="hover:bg-gray-200"
                             border="{{ $application->status->statusType->variant }}">
                             <div class="flex justify-between items-start space-x-2">

@@ -7,14 +7,11 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $businesses;
+    public $account;
 
     public function mount($account)
     {
-        $this->businesses = auth()->user()->accounts()
-            ->where('ulid', $account)
-            ->with('businesses')
-            ->first()->businesses;
+        $this->account = $account;
     }
 
     #[Layout('layouts.user')]

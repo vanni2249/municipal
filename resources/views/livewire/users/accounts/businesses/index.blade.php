@@ -17,7 +17,11 @@
             </div>
         </header>
     </x-card>
-    <x-card>
+
+    @livewire('users.accounts.businesses.components.businesses-list', ['account' => $account])
+
+    {{-- Businesses --}}
+    {{-- <x-card>
         <x-card-elements-group>
             @foreach ($businesses as $business)
                 <x-card-element class="flex justify-between items-center border-l-4 border-gray-400">
@@ -31,5 +35,5 @@
                 </x-card-element>
             @endforeach
         </x-card-elements-group>
-    </x-card>
+    </x-card> --}}
 </div>

@@ -29,29 +29,22 @@
         </x-card-header>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
             @foreach ($services as $service)
-                <x-card-element class="flex flex-col" border="secondary">
-                    <div class="grow">
-                        <div>
-                            <span class="text-gray-700 text-xs font-bold uppercase">
-                                {{ $service->serviceType->name }}
-                            </span>
-                            <br>
-                            <span class="text-md font-bold text-gray-900 line-clamp-2">{{ $service->title }}</span>
+                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="block" wire:navigate>
+                    <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
+                        <div class="grow">
+                            <div>
+                                <span class="text-gray-700 text-xs font-bold uppercase">
+                                    {{ $service->serviceType->name }}
+                                </span>
+                                <br>
+                                <span class="text-md font-bold text-gray-900 line-clamp-2">{{ $service->title }}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 line-clamp-2 grow mb-2">
+                                {{ $service->description }}
+                            </p>
                         </div>
-                        <p class="text-sm text-gray-600 line-clamp-2 grow mb-4">
-                            {{ $service->description }}
-                        </p>
-                    </div>
-                    <div class="flex justify-between items-center mt-auto">
-                        <div class="text-sm text-gray-800">
-                            {{-- <x-money-format :amount="$service->amount" /> --}}
-                        </div>
-                        <div class="flex justify-end">
-                            <x-link-button href="{{ route('citizens.services.create', $service->ulid) }}"
-                                variant="primary" wire:navigate>Aplicar</x-link-button>
-                        </div>
-                    </div>
-                </x-card-element>
+                    </x-card-element>
+                </a>
             @endforeach
         </div>
     </x-card>
@@ -67,7 +60,8 @@
             </x-card-header>
             <x-card-elements-group>
                 @forelse ($applications as $application)
-                    <a href="{{ route('citizens.applications.show', $application->ulid) }}" class="block" wire:navigate>
+                    <a href="{{ route('citizens.applications.show', $application->ulid) }}" class="block"
+                        wire:navigate>
                         <x-card-element class="hover:bg-gray-200"
                             border="{{ $application->status->statusType->variant }}">
                             <div class="flex justify-between items-start space-x-2">

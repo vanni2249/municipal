@@ -1,6 +1,6 @@
 <div class="space-y-4">
     <x-card>
-        <header class="flex justify-between items-start">
+        <header class="flex justify-between space-x-2 items-start">
             <div class="flex-1">
                 <x-h2 value="Cuenta de comerciante" />
                 <p class="text-sm text-gray-800">

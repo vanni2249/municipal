@@ -23,6 +23,11 @@ class Account extends Model
         return $this->belongsTo(AccountType::class, 'account_type_id');
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

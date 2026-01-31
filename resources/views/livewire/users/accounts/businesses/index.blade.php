@@ -1,7 +1,7 @@
 <div class="space-y-4">
     <x-card>
         <header class="flex justify-between items-start">
-            <div class="">
+            <div class="flex-1">
                 <x-h2 value="Cuenta de comerciante" />
                 <p class="text-sm text-gray-800">
                     Gestión de sus comercios asociados a la cuenta de comerciante.

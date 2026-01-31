@@ -8,7 +8,7 @@
                     Maneja los comercios asociados a tu cuenta de contador aquí.
                 </p>
             </div>
-            <div class="flex items-center space-x-2">
+            <div class="flex">
                 <x-link-button href="{{ route('users.accounts.index') }}" label="Mis cuentas" variant="primary" />
             </div>
         </header>

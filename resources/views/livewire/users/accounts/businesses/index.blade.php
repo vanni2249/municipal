@@ -2,19 +2,27 @@
     <x-card>
         <header class="flex justify-between space-x-2 items-start">
             <div class="flex-1">
+                <ul class="flex space-x-2 text-xs mb-2">
+                    <li class="font-bold">
+                        <a href="{{ route('users.accounts.index') }}">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="text-gray-600">Lista de Comercios</li>
+                </ul>
                 <x-h2 value="Cuenta de comerciante" />
-                <p class="text-sm text-gray-800">
+                <p class="text-sm text-gray-700">
                     Gestión de sus comercios asociados a la cuenta de comerciante.
                 </p>
             </div>
             <div class="flex">
-                <x-link-button href="{{ route('users.accounts.index') }}" variant="primary-outline"
+                {{-- <x-link-button href="{{ route('users.accounts.index') }}" variant="primary-outline"
                     class="flex md:space-x-2 items-center">
                     <x-icon icon="home" class="" width="16" height="16" />
                     <span class="hidden md:block">
                         Mis cuentas
                     </span>
-                </x-link-button>
+                </x-link-button> --}}
             </div>
         </header>
     </x-card>

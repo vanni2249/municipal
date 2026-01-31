@@ -1,20 +1,24 @@
 <div class="space-y-4">
-    <header class="px-2">
-        <x-h1>Business Services</x-h1>
-        <p class="text-sm text-gray-700">Manage the business services offered by your business.</p>
-    </header>
+    <x-card>
+        <header>
+            <x-h2>Servicios de negocio</x-h2>
+            <span class="text-sm text-gray-700">
+                Explorar y solicitar los servicios disponibles para su negocio.    
+            </span>
+        </header>
+    </x-card>
     <div class="grid grid-cols-12 gap-2 md:gap-4">
         @foreach ($services as $service)
             <x-card class="col-span-full md:col-span-6 lg:col-span-3 flex flex-col">
                 <div class="grow">
                     <div>
-                        <small class="text-gray-700">
+                        <span class="text-gray-700 text-xs font-bold uppercase">
                             {{ $service->serviceType->name }}
-                        </small>
+                        </span>
                         <br>
-                        <strong class="text-md">{{ $service->title }}</strong>
+                        <span class="text-md font-bold text-gray-900">{{ $service->title }}</span>
                     </div>
-                    <p class="text-sm text-gray-600 line-clamp-2 grow mb-2">
+                    <p class="text-sm text-gray-600 line-clamp-3 grow mb-2">
                         {{ $service->description }}
                     </p>
                 </div>
@@ -23,8 +27,8 @@
                         <x-money-format :amount="$service->amount" />
                     </div>
                     <div class="flex justify-end">
-                        <x-link-button href="{{ route('businesses.services.show', $service->ulid) }}"
-                            variant="light" wire:navigate>Aplicar</x-link-button>
+                        <x-link-button href="{{ route('businesses.services.create', $service->ulid) }}"
+                            variant="secondary" wire:navigate>Aplicar</x-link-button>
                     </div>
                 </div>
             </x-card>

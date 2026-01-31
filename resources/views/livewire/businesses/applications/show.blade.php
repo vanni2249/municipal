@@ -1,17 +1,25 @@
 <div>
     <x-card>
-        <x-card-header class="flex justify-between items-start space-x-2">
+        <header class="flex justify-between items-start">
             <div>
-
-                <span class="text-gray-700 font-semibold text-sm">
-                    {{ $application->number }}
-                </span>
-                <x-h1>{{ $application->service->title }}</x-h1>
-                <span class="text-gray-700">{{ $application->service->title }}</span>
+                <x-h2>{{ $application->service->title }}</x-h2>
+                <ul class="flex space-x-4 text-sm text-gray-700 mt-1">
+                    <li>{{ $application->number }}</li>
+                    <li>{{ $application->service->serviceType->name }}</li>
+                </ul>
             </div>
-            <div>
-                <x-badge label="{{ $application->status->statusType->name }}" variant="{{ $application->status->statusType->variant }}" />
+            <div class="text-right">
+                <x-badge label="{{ $application->status->statusType->name }}"
+                    variant="{{ $application->status->statusType->variant }}" />
+                <div class="mt-2">
+                    <span class="hidden md:block text-sm text-gray-600">
+                        <x-date-format :date="$application->created_at" format="d M Y H:m a" />
+                    </span>
+                    <span class="md:hidden text-sm text-gray-600 text-right">
+                        <x-date-format :date="$application->created_at" format="d/M/Y" />
+                    </span>
+                </div>
             </div>
-        </x-card-header>
+        </header>
     </x-card>
 </div>

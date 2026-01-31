@@ -14,7 +14,7 @@
         <!-- Citizen account -->
         <x-card-elements-group>
             @forelse ($accounts as $account)
-                <x-card-element class="flex justify-between items-center border-l-4 border-gray-400">
+                <x-card-element class="flex justify-between items-center" border="secondary">
                     <div>
                         <strong class="text-sm">{{ $account->accountType->name }}</strong>
                         <br>
@@ -23,19 +23,19 @@
                     @switch($account->accountType->slug)
                         @case('citizen')
                             <x-icon-link href="{{ route('citizens.set-session', ['account' => $account->ulid]) }}"
-                                icon="arrow-right" variant="secondary" size="xs" wire:navigate />
+                                icon="arrow-right" variant="primary" size="xs" wire:navigate />
                         @break
 
                         @case('merchant')
                             <x-icon-link
                                 href="{{ route('users.accounts.businesses.index', ['account' => $account->ulid]) }}"
-                                icon="arrow-right" variant="secondary" size="xs" wire:navigate />
+                                icon="arrow-right" variant="primary" size="xs" wire:navigate />
                         @break
 
                         @case('accountant')
                             <x-icon-link
                                 href="{{ route('users.accounts.merges.index', ['account' => $account->ulid]) }}"
-                                icon="arrow-right" variant="secondary" size="xs" wire:navigate />
+                                icon="arrow-right" variant="primary" size="xs" wire:navigate />
                         @break
 
                         @default

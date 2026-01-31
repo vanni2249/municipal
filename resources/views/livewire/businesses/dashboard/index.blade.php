@@ -31,7 +31,7 @@
         </x-card-header>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             @foreach ($services as $service)
-                <x-card-element class="flex flex-col border-l-4 border-gray-400">
+                <x-card-element class="flex flex-col" border="secondary">
                     <div class="grow">
                         <div>
                             <span class="text-gray-700 text-xs font-bold uppercase">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="flex justify-end">
                             <x-link-button href="{{ route('businesses.services.create', $service->ulid) }}"
-                                variant="secondary" wire:navigate>Aplicar</x-link-button>
+                                variant="primary" wire:navigate>Aplicar</x-link-button>
                         </div>
                     </div>
                 </x-card-element>
@@ -70,7 +70,7 @@
             <x-card-elements-group>
                 @foreach ($applications as $application)
                     <a href="{{ route('businesses.applications.show', $application->ulid) }}" class="block">
-                        <x-card-element class="border-l-4 border-gray-400 hover:bg-gray-50">
+                        <x-card-element class="hover:bg-gray-50" border="{{ $application->status->statusType->variant }}">
                             <div class="flex justify-between items-start space-x-2">
                                 <div class="flex-1 flex flex-col space-y-1">
                                     <span class="text-gray-700 font-bold uppercase text-xs">

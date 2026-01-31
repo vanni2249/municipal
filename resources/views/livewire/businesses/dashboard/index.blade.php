@@ -61,7 +61,7 @@
     <!-- Applications and Interactions -->
     <div class="grid grid-cols-12 gap-2">
         <!-- Applications -->
-        <x-card class="col-span-full lg:col-span-7 lg:min-h-96">
+        <x-card class="col-span-full lg:col-span-7">
             <x-card-header class="flex justify-between items-center">
                 <x-h2 value="Últimas aplicaciones" />
                 <a href="{{ route('businesses.applications') }}" class="text-sm text-gray-600 font-bold hover:underline"
@@ -105,7 +105,7 @@
             </x-card-elements-group>
         </x-card>
         <!-- Interactions -->
-        <x-card class="col-span-full lg:col-span-5 lg:min-h-96">
+        <x-card class="col-span-full lg:col-span-5">
             <x-card-header class="flex justify-between items-center">
                 <x-h2 value="Interacciones" />
                 <a href="#" class="text-sm text-gray-600 font-bold hover:underline" wire:navigate>

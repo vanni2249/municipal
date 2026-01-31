@@ -22,12 +22,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-property-use',
                 'title' => [
-                    'en' => 'Request Municipal Property Use',
-                    'es' => 'Solicitar Uso de Propiedad Municipal',
+                    'en' => 'Request municipal property use',
+                    'es' => 'Solicitar uso de propiedad municipal',
                 ],
                 'description' => [
                     'en' => 'Request the use of a municipal property for various purposes. Example: community events, recreational activities, etc.',
-                    'es' => 'Solicitar el uso de una propiedad municipal para diversos fines. Ejemplo: eventos comunitarios, actividades recreativas, etc.',
+                    'es' => 'Solicitud del uso de una propiedad municipal para diversos fines. Ejemplo: eventos comunitarios, actividades recreativas, etc.',
                 ],
                 'account_type_id' => 1,
                 'service_type_id' => 1,
@@ -38,12 +38,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-property-rent',
                 'title' => [
-                    'en' => 'Request Municipal Property Rent',
-                    'es' => 'Solicitar Alquiler de Propiedad Municipal',
+                    'en' => 'Request municipal property rent',
+                    'es' => 'Solicitud de alquiler de propiedad municipal',
                 ],
                 'description' => [
                     'en' => 'Request to rent a municipal property for not licit or commercial use.',
-                    'es' => 'Solicitar el alquiler de una propiedad municipal para uso no lícito o comercial.',
+                    'es' => 'Solicitud de alquiler de una propiedad municipal para uso no lícito o comercial.',
                 ],
                 'account_type_id' => 1,
                 'service_type_id' => 3,
@@ -53,12 +53,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-residencial-removal-debris',
                 'title' => [
-                    'en' => 'Request Residential Debris Removal',
-                    'es' => 'Solicitar Retiro de Escombros Residenciales',
+                    'en' => 'Request residential debris removal',
+                    'es' => 'Solicitud de retiro de escombros residenciales',
                 ],
                 'description' => [
                     'en' => 'Request the removal of residential debris from your property by the municipal services.',
-                    'es' => 'Solicitar el retiro de escombros residenciales de su propiedad por los servicios municipales.',
+                    'es' => 'Solicitud de retiro de escombros residenciales de su propiedad por los servicios municipales.',
                 ],
                 'account_type_id' => 1,
                 'service_type_id' => 1,
@@ -70,8 +70,8 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-report-property-damage',
                 'title' => [
-                    'en' => 'Report Property Damage',
-                    'es' => 'Reportar Daños a la Propiedad',
+                    'en' => 'Report m property damage',
+                    'es' => 'Reporte de daños a la propiedad municipal',
                 ],
                 'description' => [
                     'en' => 'Report any damage to public or private property within the municipality.',
@@ -85,8 +85,8 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-register-special-person',
                 'title' => [
-                    'en' => 'Register Special Person',
-                    'es' => 'Registrar Persona Especial',
+                    'en' => 'Register special person',
+                    'es' => 'Registro de persona especial',
                 ],
                 'description' => [
                     'en' => 'Register individuals with special needs or circumstances for municipal assistance and services.',
@@ -100,12 +100,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-citizen-residencial-construction-permit',
                 'title' => [
-                    'en' => 'Apply for Residential Construction Permit',
-                    'es' => 'Solicitar Permiso de Construcción Residencial',
+                    'en' => 'Application for residential construction permit',
+                    'es' => 'Solicitud de permiso de construcción residencial',
                 ],
                 'description' => [
-                    'en' => 'Apply for a permit to carry out residential construction projects within the municipality.',
-                    'es' => 'Solicitar un permiso para llevar a cabo proyectos de construcción residencial dentro del municipio.',
+                    'en' => 'Application for a permit to carry out residential construction projects within the municipality.',
+                    'es' => 'Solicitud de permiso para llevar a cabo proyectos de construcción residencial dentro del municipio.',
                 ],
                 'account_type_id' => 1,
                 'service_type_id' => 2,
@@ -117,12 +117,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-remove-trash',
                 'title' => [
-                    'en' => 'Apply for garbage removal service',
-                    'es' => 'Solicitar servicio de recolección de basura para negocios',
+                    'en' => 'Application for garbage removal service',
+                    'es' => 'Solicitud de servicio de recolección de basura para negocios',
                 ],
                 'description' => [
-                    'en' => 'Request the municipal garbage removal service for your business premises.',
-                    'es' => 'Solicitar el servicio municipal de recolección de basura para sus instalaciones comerciales.',
+                    'en' => 'Application for the municipal garbage removal service for your business premises.',
+                    'es' => 'Solicitud de servicio municipal de recolección de basura para sus instalaciones comerciales.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 1,
@@ -134,12 +134,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-remove-debris',
                 'title' => [
-                    'en' => 'Apply for debris removal service',
-                    'es' => 'Solicitar servicio de retiro de escombros para negocios',
+                    'en' => 'Application for debris removal service',
+                    'es' => 'Solicitud de servicio de retiro de escombros para negocios',
                 ],
                 'description' => [
-                    'en' => 'Request the municipal debris removal service for your business premises.',
-                    'es' => 'Solicitar el servicio municipal de retiro de escombros para sus instalaciones comerciales.',
+                    'en' => 'Application for the municipal debris removal service for your business premises.',
+                    'es' => 'Solicitud de servicio municipal de retiro de escombros para sus instalaciones comerciales.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 1,
@@ -151,12 +151,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-construction-permit',
                 'title' => [
-                    'en' => 'Apply for Business Construction Permit',
-                    'es' => 'Solicitar Permiso de Construcción Comercial',
+                    'en' => 'Application for Business Construction Permit',
+                    'es' => 'Solicitud de Permiso de Construcción Comercial',
                 ],
                 'description' => [
-                    'en' => 'Apply for a permit to carry out construction projects for your business within the municipality.',
-                    'es' => 'Solicitar un permiso para llevar a cabo proyectos de construcción para su negocio dentro del municipio.',
+                    'en' => 'Application for a permit to carry out construction projects for your business within the municipality.',
+                    'es' => 'Solicitud de un permiso para llevar a cabo proyectos de construcción para su negocio dentro del municipio.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 2,
@@ -168,12 +168,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-use-permit',
                 'title' => [
-                    'en' => 'Apply for Business Use Permit',
-                    'es' => 'Solicitar Permiso de Uso Comercial',
+                    'en' => 'Application for Business Use Permit',
+                    'es' => 'Solicitud de Permiso de Uso Comercial',
                 ],
                 'description' => [
-                    'en' => 'Apply for a permit to use municipal properties for your business activities.',
-                    'es' => 'Solicitar un permiso para usar propiedades municipales para las actividades de su negocio.',
+                    'en' => 'Application for a permit to use municipal properties for your business activities.',
+                    'es' => 'Solicitud de un permiso para usar propiedades municipales para las actividades de su negocio.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 2,
@@ -185,12 +185,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-temporary-patent',
                 'title' => [
-                    'en' => 'Apply for Temporary Business Patent',
-                    'es' => 'Solicitar Patente Comercial Temporal',
+                    'en' => 'Application for Temporary Business Patent',
+                    'es' => 'Solicitud de Patente Comercial Temporal',
                 ],
                 'description' => [
-                    'en' => 'Apply for a temporary patent to operate your business within the municipality.',
-                    'es' => 'Solicitar una patente temporal para operar su negocio dentro del municipio.',
+                    'en' => 'Application for a temporary patent to operate your business within the municipality.',
+                    'es' => 'Solicitud de una patente temporal para operar su negocio dentro del municipio.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 2,
@@ -202,12 +202,12 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-renew-patent',
                 'title' => [
-                    'en' => 'Renew Business Patent',
-                    'es' => 'Renovar Patente Comercial',
+                    'en' => 'Renewal of Business Patent',
+                    'es' => 'Renovación de Patente Comercial',
                 ],
                 'description' => [
-                    'en' => 'Renew your existing business patent to continue operating legally within the municipality.',
-                    'es' => 'Renovar su patente comercial existente para continuar operando legalmente dentro del municipio.',
+                    'en' => 'Renewal of your existing business patent to continue operating legally within the municipality.',
+                    'es' => 'Renovación de patente comercial existente para continuar operando legalmente dentro del municipio.',
                 ],
                 'account_type_id' => 2,
                 'service_type_id' => 2,
@@ -217,15 +217,15 @@ class ServiceSeeder extends Seeder
                 'number' => $this->createServiceNumber(),
                 'slug' => 'app-business-report-tax',
                 'title' => [
-                    'en' => 'File Business Tax Report',
-                    'es' => 'Presentar Informe de Impuestos Comerciales',
+                    'en' => 'Business Tax Report',
+                    'es' => 'Informe de Impuestos Comerciales',
                 ],
                 'description' => [
-                    'en' => 'File your business tax report for the specified tax period as required by municipal regulations.',
-                    'es' => 'Presentar su informe de impuestos comerciales para el período fiscal especificado según lo requerido por las regulaciones municipales.',
+                    'en' => 'Business tax report for the specified tax period as required by municipal regulations.',
+                    'es' => 'Informe de impuestos comerciales para el período fiscal especificado según lo requerido por las regulaciones municipales.',
                 ],
                 'account_type_id' => 2,
-                'service_type_id' => 4,
+                'service_type_id' => 2,
             ]
 
         ];

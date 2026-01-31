@@ -106,7 +106,7 @@
         break;
     }
 @endphp
-<a {{ $attributes->merge(['class' => $classes . ' text-center focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150  cursor-pointer'. ($disabled ? ' cursor-not-allowed opacity-50' : '')]) }}>
+<a {{ $attributes->merge(['class' => $classes . ' text-center focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150  cursor-pointer'. ($disabled ? ' cursor-not-allowed opacity-50 overflow-auto whitespace-nowrap' : '')]) }}>
     {{ $label }}
     {{ $slot }}
 </a>

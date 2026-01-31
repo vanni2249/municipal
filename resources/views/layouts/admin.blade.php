@@ -97,7 +97,7 @@
                                 </x-slot>
                             </x-dropdown>
                         </div>
-                        <a href="" class="font-bold lg:hidden">MyCity</a>
+                        <a href="{{ route(request()->segment(1) . '.dashboard') }}" class="font-bold lg:hidden">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">

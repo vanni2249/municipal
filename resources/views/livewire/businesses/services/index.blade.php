@@ -23,7 +23,7 @@
                     </p>
                 </div>
                 <div class="flex justify-between items-center mt-auto">
-                    <div class="text-sm text-gray-800">
+                    <div class="text-sm font-bold text-gray-900">
                         <x-money-format :amount="$service->amount" />
                     </div>
                     <div class="flex justify-end">

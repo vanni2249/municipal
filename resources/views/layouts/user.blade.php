@@ -15,7 +15,7 @@
     @livewireStyles
 </head>
 
-<body class="max-w-3xl mx-auto p-2 md:p-4 space-y-4 bg-gray-100 font-sans antialiased flex flex-col min-h-screen">
+<body class="max-w-3xl mx-auto p-2 md:p-4 space-y-4 bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
     <div class="w-full">
         @livewire('users.layout.navbar')
     </div>

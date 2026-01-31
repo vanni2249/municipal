@@ -14,7 +14,7 @@
                         </span>
                     </span>
                 </h1>
-                <p class="text-gray-400 text-xs md:sm text-center max-w-2xl py-4">
+                <p class="text-gray-400 text-sm text-center max-w-2xl py-4">
                     Este sitio web es un esfuerzo por parte del gobierno municipal de la ciudad de San Antonio para
                     brindar a los ciudadanos acceso a información y servicios en línea.
                 </p>

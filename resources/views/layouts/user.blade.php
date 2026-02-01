@@ -109,9 +109,9 @@
                                 </x-slot>
                                 <x-slot name="content">
 
-                                    <x-dropdown-link href="{{ route('users.accounts.index') }}">
+                                    {{-- <x-dropdown-link href="{{ route('users.accounts.index') }}">
                                         Mis Cuentas
-                                    </x-dropdown-link>
+                                    </x-dropdown-link> --}}
                                     <x-dropdown-link href="">
                                         Mi Perfil
                                     </x-dropdown-link>

@@ -39,6 +39,9 @@
                 </a>
 
             @empty
+                <x-card-element>
+                    <p class="text-gray-600 text-center">No hay aplicaciones recientes.</p>
+                </x-card-element>
             @endforelse
         </x-card-elements-group>
     </x-card>

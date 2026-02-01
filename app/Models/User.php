@@ -78,6 +78,16 @@ class User extends Authenticatable
         return $this->hasMany(Account::class);
     }
 
+    public function defaults()
+    {
+        return $this->hasMany(UserDefault::class);
+    }
+
+    public function default()
+    {
+        return $this->hasOne(UserDefault::class)->latestOfMany();
+    }
+
     public function userLogs()
     {
         return $this->morphMany(UserLog::class ,'loggable');

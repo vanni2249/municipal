@@ -41,6 +41,12 @@ class Business extends Model
         return $this->belongsTo(Account::class);
     }
 
+    public function defaults()
+    {
+        return $this->morphMany(UserDefault::class, 'defaultable');
+    }
+
+
     // public function merges()
     // {
     //     return $this->belongsToMany(Merge::class, 'business_merge', 'business_id', 'merge_id')

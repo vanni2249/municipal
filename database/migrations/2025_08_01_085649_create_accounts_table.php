@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('phone')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users');
-            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }

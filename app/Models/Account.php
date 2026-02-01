@@ -15,7 +15,6 @@ class Account extends Model
         'email',
         'phone',
         'user_id',
-        'is_default',
     ];
 
     public function accountType()
@@ -41,6 +40,11 @@ class Account extends Model
     public function status()
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
+    public function defaults()
+    {
+        return $this->morphMany(UserDefault::class, 'defaultable');
     }
 
     // public function businesses()

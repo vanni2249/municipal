@@ -78,7 +78,32 @@ class Login extends Component
                 'session_id' => Session::getId(),
             ]);
 
-            $this->redirectIntended(default: route('users.accounts.index', absolute: false), navigate: true);
+            if ($this->user->has('accounts')) {
+                
+                $table = $this->user->default->defaultable->getTable();
+
+                if ($table == 'accounts') {
+                    session(['data.account_ulid' => $this->user->default->defaultable->ulid]);
+                    redirect()->route('citizens.dashboard');
+                }elseif($table == 'businesses'){
+                    session(['data.business_ulid' => $this->user->default->defaultable->ulid]);
+                    redirect()->route('businesses.dashboard');
+                }else{
+                    Auth::logout();
+                    throw ValidationException::withMessages([
+                        'email' => ['No accounts associated with this user. Please contact support.'],
+                    ]);
+                }
+
+
+            }else{
+                Auth::logout();
+                throw ValidationException::withMessages([
+                    'email' => ['No accounts associated with this user. Please contact support.'],
+                ]);
+            }
+
+
         }
     }
 

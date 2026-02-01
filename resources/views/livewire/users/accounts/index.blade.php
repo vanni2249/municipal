@@ -11,6 +11,16 @@
     </x-card>
     <!-- Accounts -->
     <x-card>
+        {{-- {{ dd(Auth::user()->default->defaultable->getTable()) }} --}}
+
+        @if (Auth::user()->default->defaultable->getTable() == 'accountants')
+            yes
+                
+            @else
+              no  
+        @endif
+
+
         <x-card-elements-group>
             @forelse ($accounts as $account)
                 @switch($account->accountType->slug)

@@ -9,7 +9,7 @@
             <ul class="flex space-x-2 text-sm">
                 <li class="font-bold">
                     <a href="{{ route('users.accounts.index') }}">
-                        Inicio
+                        Mis cuentas
                     </a>
                 </li>
                 <li class="text-gray-600">Lista de Comercios</li>

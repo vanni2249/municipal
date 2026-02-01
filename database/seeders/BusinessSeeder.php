@@ -39,6 +39,9 @@ class BusinessSeeder extends Seeder
             'status_type_id' => 2,
             'reason' => 'Initial status for business',
         ]);
+        // $business->defaults()->create([
+        //     'user_id' => 1,
+        // ]);
 
 
         // Business 2 Giovanni

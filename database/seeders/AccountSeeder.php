@@ -20,9 +20,8 @@ class AccountSeeder extends Seeder
         $accountFirst = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 1,
-            'user_id' => 1,
-            'is_default' => true,
+            'account_type_id' => 1, // Citizen
+            'user_id' => 1, // Giovanni
         ]);
 
         $accountFirst->addresses()->create([
@@ -37,86 +36,99 @@ class AccountSeeder extends Seeder
             'reason' => 'Initial status for default account',
         ]);
 
-        // 2Create citizen account Angel F
-        Account::create([
-            'ulid' => $this->createAccountUlid(),
-            'number' => $this->createAccountNumber(),
-            'account_type_id' => 1,
-            'user_id' => 2,
-            'is_default' => true,
-        ])->statuses()->create([
-            'status_type_id' => 1,
-            'reason' => 'Initial status for default account',
+        $accountFirst->defaults()->create([
+            'user_id' => 1,
         ]);
-        //3 Create citizen account Angel M
-        Account::create([
+
+        // 2Create citizen account Angel F
+        $accountSecond = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 1,
-            'user_id' => 3,
-            'is_default' => true,
-        ])->statuses()->create([
+            'account_type_id' => 1, // Citizen
+            'user_id' => 2, // Angel F
+        ]);
+        $accountSecond->statuses()->create([
             'status_type_id' => 1,
             'reason' => 'Initial status for default account',
         ]);
 
-        // 4Create merchant account Giovanni
-        Account::create([
+        $accountSecond->defaults()->create([
+            'user_id' => 2,
+        ]);
+
+        //3 Create citizen account Angel M
+        $accountThird = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 2,
-            'user_id' => 1,
-            'is_default' => true,
-        ])->statuses()->create([
+            'account_type_id' => 1, // Citizen
+            'user_id' => 3, // Angel M
+        ]);
+        $accountThird->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
+        $accountThird->defaults()->create([
+            'user_id' => 3,
+        ]);
+
+        // 4Create merchant account Giovanni
+        $accountFourth = Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'account_type_id' => 2, // Merchant
+            'user_id' => 1, // Giovanni
+        ]);
+        $accountFourth->statuses()->create([
             'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
         // 5Create merchant account Angel F
-        Account::create([
+        $accountFifth = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 2,
-            'user_id' => 2,
-            'is_default' => true,
-        ])->statuses()->create([
+            'account_type_id' => 2, // Merchant
+            'user_id' => 2, // Angel F
+        ]);
+        $accountFifth->statuses()->create([
             'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
         // 6Create merchant account Angel M
-        Account::create([
+        $accountSixth = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 2,
-            'user_id' => 3,
-            'is_default' => true,
-        ])->statuses()->create([
+            'account_type_id' => 2, // Merchant
+            'user_id' => 3, // Angel M
+        ]);
+        $accountSixth->statuses()->create([
             'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
         // 7Create accountant account Giovanni
-        Account::create([
+        $accountSeventh = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 3,
-            'user_id' => 1,
-            'is_default' => true,
-        ])->statuses()->create([
+            'account_type_id' => 3, // Accountant
+            'user_id' => 1, // Giovanni
+        ]);
+        $accountSeventh->statuses()->create([
             'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
         // 8Create citizen account not linked to user
-        Account::create([
+        $accountEighth = Account::create([
             'ulid' => $this->createAccountUlid(),
             'number' => $this->createAccountNumber(),
-            'account_type_id' => 1,
+            'account_type_id' => 1, // Citizen
             'name' => 'John',
             'lastname' => 'Doe',
             'email' => 'john.doe@example.com',
-        ])->statuses()->create([
+        ]);
+        $accountEighth->statuses()->create([
             'status_type_id' => 1,
             'reason' => 'Initial status for default account',
         ]);

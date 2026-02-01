@@ -17,7 +17,7 @@ class Index extends Component
         $this->account = Account::where('ulid', session('data.account_ulid'))->first();
         $this->applications = Application::where('account_id', $this->account->id)->get();
     }
-    #[Layout('layouts.admin')]
+    #[Layout('layouts.user')]
     public function render()
     {
         return view('livewire.citizens.applications.index');

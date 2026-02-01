@@ -14,7 +14,7 @@ class Show extends Component
     {
         $this->service = Service::where('ulid', $service)->first();
     }
-    #[Layout('layouts.admin')]
+    #[Layout('layouts.user')]
     public function render()
     {
         return view('livewire.citizens.services.show');

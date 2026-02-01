@@ -34,7 +34,7 @@ class Index extends Component
         return view('placeholders.views.citizens.dashboard');
     }
 
-    #[Layout('layouts.admin')]
+    #[Layout('layouts.user')]
     public function render()
     {
         return view('livewire.citizens.dashboard.index');

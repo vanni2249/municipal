@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
-    <div id="sidebar" class="fixed h-screen w-0 lg:w-64 transition-all py-4 pl-4">
+    <div id="sidebar" class="z-50 fixed h-screen w-0 lg:w-64 transition-all py-2 lg:py-4 pl-2 lg:pl-4">
         <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-hidden">
             <header class="h-16 flex items-center text-white px-6 border-b border-gray-900">
                 <div class="flex justify-between items-center w-full">
@@ -27,19 +27,12 @@
                         <span class="text-xs font-extrabold text-gray-600">
                         </span>
                     </div>
-                    <button class="cursor-pointer lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="icon icon-tabler text-gray-400 icons-tabler-outline icon-tabler-x">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M18 6l-12 12" />
-                            <path d="M6 6l12 12" />
-                        </svg>
+                    <button id="sidebar-close-toggle" class=" lg:hidden cursor-pointer">
+                       <x-icon icon="x" width="20" height="20" />
                     </button>
                 </div>
             </header>
-            <ul class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
+            <ul class="grow z-40 text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
                 @switch(request()->segment(1))
                     @case('citizens')
                         @livewire('citizens.layout.sidebar')
@@ -60,18 +53,25 @@
         </aside>
     </div>
 
+    <!-- bgOpacity -->
+    <div class="lg:hidden">
+        
+        <div id="bg-opacity" class="hidden fixed inset-0 bg-black w-full h-full opacity-50"></div>
+
+    </div>
+
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
         <div class="px-2 md:px-4 pt-2 md:pt-4">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
-                        <div class="hidden lg:flex items-center justify-center">
+                        <div class=" items-center justify-center">
                             <button id="sidebar-toggle" class="cursor-pointer">
                                 <x-icon icon="bars-3" />
                             </button>
                         </div>
                         <div class="lg:hidden flex items-center justify-center">
-                            <x-dropdown align="left">
+                            {{-- <x-dropdown align="left">
                                 <x-slot name="trigger">
                                     <button
                                         class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
@@ -95,9 +95,10 @@
                                         @default
                                     @endswitch
                                 </x-slot>
-                            </x-dropdown>
+                            </x-dropdown> --}}
                         </div>
-                        <a href="{{ route(request()->segment(1) . '.dashboard') }}" class="font-bold lg:hidden">MyCity</a>
+                        {{-- <a href="{{ route(request()->segment(1) . '.dashboard') }}"
+                            class="font-bold lg:hidden">MyCity</a> --}}
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">

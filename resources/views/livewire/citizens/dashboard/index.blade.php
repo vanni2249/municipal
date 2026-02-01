@@ -4,17 +4,13 @@
             <div>
                 <x-h2 value="Bienvenido, {{ $account->user->name }}" />
                 <ul class="text-sm flex flex-col md:flex-row md:space-x-4 space-y-1 md:space-y-0 text-gray-800 mt-1">
-                    <li>{{ $account->number }}</li>
+                    <li>{{ $account->accountType->name }}</li>
                 </ul>
             </div>
             <div class="flex">
-                <x-link-button href="{{ route('users.accounts.index') }}" icon="cog"
-                    class="flex items-center md:space-x-2" variant="primary" size="md" wire:navigate>
-                    <x-icon icon="home" class="" width="20" height="20" />
-                    <span class="hidden md:block">
-                        Mis cuentas
-                    </span>
-                </x-link-button>
+               <span class="text-sm text-gray-700">
+                {{ $account->number }}
+               </span>
             </div>
         </header>
     </x-card>

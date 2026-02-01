@@ -5,20 +5,13 @@
             <div>
                 <x-h2 value="{{ $business->name }}" />
                 <ul class="text-sm flex flex-col md:flex-row md:space-x-4 space-y-1 md:space-y-0 text-gray-800 mt-1">
-                    <li>{{ $business->businessType->name }}</li>
+                    <li>{{ $business->account->accountType->name }}</li>
                 </ul>
             </div>
             <div class="flex">
                 <span class="text-sm text-gray-700">
                     {{ $business->number }}
                 </span>
-                {{-- <x-link-button href="{{ route('users.accounts.index') }}" icon="cog"
-                    class="flex items-center md:space-x-2" variant="primary" size="md" wire:navigate>
-                    <x-icon icon="home" class="" width="20" height="20" />
-                    <span class="hidden md:block">
-                        Mis cuentas
-                    </span>
-                </x-link-button> --}}
             </div>
         </header>
     </x-card>

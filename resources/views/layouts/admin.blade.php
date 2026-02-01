@@ -34,13 +34,6 @@
             </header>
             <ul class="grow z-40 text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
                 @switch(request()->segment(1))
-                    @case('citizens')
-                        @livewire('citizens.layout.sidebar')
-                    @break
-
-                    @case('businesses')
-                        @livewire('businesses.layout.sidebar')
-                    @break
 
                     @case('admin')
                         @livewire('admin.layout.sidebar')
@@ -70,35 +63,6 @@
                                 <x-icon icon="bars-3" />
                             </button>
                         </div>
-                        <div class="lg:hidden flex items-center justify-center">
-                            {{-- <x-dropdown align="left">
-                                <x-slot name="trigger">
-                                    <button
-                                        class="text-gray-800 hover:text-gray-600 font-bold flex items-center justify-center">
-                                        <x-icon icon="bars-3" />
-                                    </button>
-                                </x-slot>
-                                <x-slot name="content">
-                                    @switch(request()->segment(1))
-                                        @case('citizens')
-                                            @livewire('citizens.layout.sidebar')
-                                        @break
-
-                                        @case('businesses')
-                                            @livewire('businesses.layout.sidebar')
-                                        @break
-
-                                        @case('admin')
-                                            @livewire('admin.layout.sidebar')
-                                        @break
-
-                                        @default
-                                    @endswitch
-                                </x-slot>
-                            </x-dropdown> --}}
-                        </div>
-                        {{-- <a href="{{ route(request()->segment(1) . '.dashboard') }}"
-                            class="font-bold lg:hidden">MyCity</a> --}}
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">
@@ -118,7 +82,7 @@
                                     <x-dropdown-link href="">
                                         Mi Perfil
                                     </x-dropdown-link>
-                                    <x-dropdown-link href="{{ route('logout') }}">
+                                    <x-dropdown-link href="{{ route('admin.logout') }}">
                                         Salir
                                     </x-dropdown-link>
                                 </x-slot>

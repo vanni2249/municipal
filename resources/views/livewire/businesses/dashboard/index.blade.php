@@ -34,7 +34,7 @@
         </x-card-header>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
             @foreach ($services as $service)
-                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="block" wire:navigate>
+                <a href="{{ route('businesses.services.create', $service->ulid) }}" class="block" wire:navigate>
                     <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
                         <div class="grow">
                             <div>

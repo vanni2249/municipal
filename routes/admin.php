@@ -80,33 +80,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/{status}', AdminAdminsStatusesShow::class)->name('index');
         });
 
+        // Accounts
         Route::get('/accounts', AdminAccounts::class)->name('accounts');
         Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');
 
+        // Services
         Route::get('/services', AdminServices::class)->name('services');
         Route::get('/services/{service}', AdminServicesShow::class)->name('services.show');
 
+        // Applications
         Route::get('/applications', AdminApplications::class)->name('applications');
         Route::get('/applications/{application}', AdminApplicationsShow::class)->name('applications.show');
 
+        // Interactions
         Route::get('/interactions', AdminInteractions::class)->name('interactions');
         Route::get('/interactions/{interaction}', AdminInteractionsShow::class)->name('interactions.show');
 
+        // Inspections
         Route::get('/inspections', AdminInspections::class)->name('inspections');
         Route::get('/inspections/{inspection}', AdminInspectionsShow::class)->name('inspections.show');
 
+        // Routes
         Route::get('/routes', AdminRoutes::class)->name('routes');
         Route::get('/routes/{route}', AdminRoutesShow::class)->name('routes.show');
 
+        // Lists
         Route::get('/lists', AdminLists::class)->name('lists');
         Route::get('/lists/{list}', AdminListsShow::class)->name('lists.show');
 
+        // Transactions
         Route::get('/transactions', AdminTransactions::class)->name('transactions');
         Route::get('/transactions/{transaction}', AdminTransactionsShow::class)->name('transactions.show');
 
+        // Logs
         Route::get('/logs', AdminLogs::class)->name('logs');
         Route::get('/logs/{log}', AdminLogsShow::class)->name('logs.show');
 
+        // Settings
         Route::get('/settings', AdminSettings::class)->name('settings');
         Route::get('/settings/{setting}', AdminSettingsShow::class)->name('settings.show');
 });

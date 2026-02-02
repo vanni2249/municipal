@@ -33,4 +33,9 @@ class Service extends Model
     {
         return $this->belongsTo(AccountType::class, 'account_type_id');
     }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'service_id');
+    }
 }

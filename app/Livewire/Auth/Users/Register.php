@@ -6,6 +6,8 @@ use App\Models\Place;
 // use App\Models\Type;
 use App\Models\User;
 use App\Models\UserLog;
+use App\Traits\AccountNumber;
+use App\Traits\AccountUlid;
 use App\Traits\LogTypeId;
 use App\Traits\RegisterCode;
 use App\Traits\StatusId;
@@ -25,8 +27,12 @@ use Livewire\Attributes\Layout;
 
 class Register extends Component
 {
-    use UserUlid, UserNumber, StatusId, LogTypeId;
+    use UserUlid, UserNumber, StatusId, LogTypeId, AccountUlid, AccountNumber;
 
+    public $accounts = [
+        'citizen' => false,
+        'merchant' => false,
+    ];
     public $name;
     public $lastname;
     public $email;
@@ -43,24 +49,37 @@ class Register extends Component
         $this->gender = null; // Default to null
     }
 
+    protected $rules = [
+        'accounts.citizen' => 'accepted',
+        'accounts.merchant' => 'accepted',
+    ];
 
     public function register()
     {
+
+        // dd($this->accounts['citizen'], $this->accounts['merchant']);
+        if (!$this->accounts['citizen'] && !$this->accounts['merchant']) {
+            $this->addError('accounts', 'Selecciona al menos una opción.');
+            return;
+        }
+
+
         $this->validate([
+            'accounts' => 'nullable|array|min:1',
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|numeric',
             'date_of_birth' => 'required|date',
-            'gender' => ['nullable', Rule::in(['male', 'female', 'other'])],    
+            'gender' => ['nullable', Rule::in(['male', 'female', 'other'])],
             'term_accepted' => ['accepted', Rule::in([true, 1, '1'])],
         ]);
 
         DB::transaction(function () {
 
             $this->user = User::create([
-                'ulid' =>$this->createUserUlid(),
+                'ulid' => $this->createUserUlid(),
                 'number' => $this->createUserNumber(),
                 'name' => $this->name . ' ' . $this->lastname,
                 'lastname' => $this->lastname,
@@ -73,8 +92,18 @@ class Register extends Component
             ]);
             $this->user->statuses()->create([
                 'status_type_id' => $this->getStatusId('active'),
-                'reason' => 'Initial status for user '.$this->email,
+                'reason' => 'Initial status for user ' . $this->email,
             ]);
+
+            if ($this->accounts['citizen']) {
+                $this->user->accounts()->create([
+                    'ulid' => $this->createAccountUlid(),
+                    'number' => $this->createAccountNumber(),
+                    'account_type_id' => $this->accounts['citizen'],
+                ])->defaults()->create([
+                            'user_id' => $this->user->id,
+                        ]);
+            }
 
             $this->user->userLogs()->create([
                 'user_id' => $this->user->id,
@@ -83,6 +112,14 @@ class Register extends Component
 
             $this->login();
         });
+    }
+
+    public function updatingAccounts()
+    {
+        $this->validate([
+            'accounts' => 'nullable|array|min:1',
+            'accounts.*' => 'exists:accounts,id',
+        ]);
     }
 
     public function login()
@@ -102,7 +139,9 @@ class Register extends Component
             'session_id' => Session::getId(),
         ]);
 
-        $this->redirectIntended(default: route('users.accounts.create', absolute: false), navigate: true);
+        $this->redirectIntended(route('citizens.set-session', ['account' => $this->user->accounts()->first()->ulid], absolute: false));
+
+        // $this->redirectIntended(default: route('users.accounts.create', absolute: false), navigate: true);
     }
 
     /**

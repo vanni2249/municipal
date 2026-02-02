@@ -1,7 +1,7 @@
 <div class="space-y-4">
     <x-card>
         <header>
-            <x-h2>Servicios de negocio</x-h2>
+            <x-h2>Servicios de ciudadano</x-h2>
             <span class="text-sm text-gray-700">
                 Explorar y solicitar los servicios disponibles para su negocio.
             </span>

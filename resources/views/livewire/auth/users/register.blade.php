@@ -15,6 +15,43 @@
 
             <form wire:submit.prevent='register'>
                 <div class="grid grid-cols-4 gap-4 py-6">
+
+                    @error('accounts')
+                        <div class="col-span-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                            <span @class(['text-red-500', 'text-xs', 'font-bold'])>{{ $message }}</span>
+                        </div>
+                    @enderror
+                    <!-- Citizen -->
+
+                    <div @class(['col-span-4', 'md:col-span-2', 'border', 'border-gray-300', 'rounded', 'p-2', $errors->has('accounts') ? 'border-red-500' : ''])>
+                        <div class="flex items-center space-x-2">
+
+                            <div class="pt-1">
+                                <x-checkbox value="citizen" wire:model.defer="accounts.citizen" name="citizen"
+                                    @class(['w-full']) />
+                            </div>
+                            <a href="#">
+                                <x-label for="citizen" value="Residente de San Antonio" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Merchant -->
+                    <div @class(['col-span-4', 'md:col-span-2', 'border', 'border-gray-300', 'rounded', 'p-2', $errors->has('accounts') ? 'border-red-500' : ''])>
+                        <div class="flex items-center space-x-2">
+
+                            <div class="pt-1">
+                                <x-checkbox value="merchant" wire:model.defer="accounts.merchant" name="merchant"
+                                    @class(['w-full']) />
+                            </div>
+                            <a href="#">
+                                <x-label for="merchant" value="Comerciante de San Antonio" />
+                            </a>
+                        </div>
+                    </div>
+
+
+
                     <!-- Name -->
                     <div class="col-span-4 md:col-span-2">
                         <x-label for="text" class="mt-4" value="Nombre" />
@@ -34,7 +71,7 @@
                         <x-input wire:model.defer="date_of_birth" name="date_of_birth" id="date_of_birth"
                             @class([
                                 'w-full
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    text-gray-400',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            text-gray-400',
                                 'border-red-500' => $errors->has('date_of_birth'),
                             ]) type="date" placeholder="Ingrese su fecha de nacimiento" />
                     </div>

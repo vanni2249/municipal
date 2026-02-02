@@ -33,7 +33,7 @@ class Index extends Component
         return view('placeholders.views.businesses.dashboard');
     }
 
-    #[Layout('layouts.user')]
+    #[Layout('layouts.business')]
     public function render()
     {
         return view('livewire.businesses.dashboard.index');

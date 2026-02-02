@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Businesses\Settings;
+namespace App\Livewire\Users\Businesses;
 
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Index extends Component
 {
-     #[Layout('layouts.business')]
+    #[Layout('layouts.user')]
     public function render()
     {
-        return view('livewire.businesses.settings.index');
+        return view('livewire.users.businesses.index');
     }
 }

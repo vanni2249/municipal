@@ -20,7 +20,7 @@ class Index extends Component
         $this->applications = Application::where('business_id', $this->business->id)->latest()->take(5)->get();
     }
 
-     #[Layout('layouts.user')]
+     #[Layout('layouts.business')]
     public function render()
     {
         return view('livewire.businesses.applications.index');

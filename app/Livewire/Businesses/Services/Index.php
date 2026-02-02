@@ -18,7 +18,7 @@ class Index extends Component
         $this->services = Service::where('account_type_id', $this->getAccountTypeId('merchant'))->get();
     }
 
-    #[Layout('layouts.user')]
+    #[Layout('layouts.business')]
     public function render()
     {
         return view('livewire.businesses.services.index');

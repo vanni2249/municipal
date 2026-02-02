@@ -15,7 +15,7 @@ class Create extends Component
         $this->service = Service::where('ulid', $service)->first();
     }
     
-    #[Layout('layouts.user')]
+    #[Layout('layouts.citizen')]
     public function render()
     {
         return view('livewire.citizens.services.create');

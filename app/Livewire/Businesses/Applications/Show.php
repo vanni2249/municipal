@@ -14,7 +14,7 @@ class Show extends Component
     {
         $this->application = Application::where('ulid', $application)->first();
     }
-    #[Layout('layouts.user')]
+    #[Layout('layouts.business')]
     public function render()
     {
         return view('livewire.businesses.applications.show');

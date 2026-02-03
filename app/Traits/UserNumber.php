@@ -13,6 +13,7 @@ trait UserNumber
      *
      * @return string
      */
+    
     public function createUserNumber()
     {
         do {

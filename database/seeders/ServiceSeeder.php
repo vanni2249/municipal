@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Traits\InteractionUlid;
 use App\Traits\ServiceNumber;
 use App\Traits\ServiceUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\App;
 
 class ServiceSeeder extends Seeder
 {
-    use ServiceUlid, ServiceNumber;
+    use ServiceUlid, ServiceNumber, InteractionUlid, \App\Traits\InteractionNumber;
     /**
      * Run the database seeds.
      */
@@ -234,5 +235,25 @@ class ServiceSeeder extends Seeder
             \App\Models\Service::create($item);
         }
 
+
+        $service = \App\Models\Service::find(1);
+
+        $interaction = $service->interactions()->create([
+            'ulid' => $this->createInteractionUlid(),
+            'number' => $this->createInteractionNumber(),
+            'interaction_type_id' => 1,
+            'account_id' => 1,
+        ]);
+        $interaction->statuses()->create([
+            'status_type_id' => 2,
+            'changed_by' => 1,
+            'reason' => 'Initial status interaction',
+        ]);
+
+        $interaction->messages()->create([
+            'message' => 'This is the initial message for the service interaction.',
+            'created_account_id' => 1,
+        ]);
+    
     }
 }

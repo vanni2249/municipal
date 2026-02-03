@@ -75,4 +75,9 @@ class Application extends Model
     {
         return $this->morphMany(AdminLog::class, 'loggable');
     }
+
+    public function interactions()
+    {
+        return $this->morphMany(Interaction::class, 'interactionable');
+    }
 }

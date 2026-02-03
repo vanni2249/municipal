@@ -21,15 +21,26 @@ use App\Traits\ApplicationNumber;
 use App\Traits\ApplicationUlid;
 use App\Traits\InspectionNumber;
 use App\Traits\InspectionUlid;
+use App\Traits\InteractionNumber;
+use App\Traits\InteractionUlid;
 use App\Traits\PermitNumber;
 use App\Traits\PermitUlid;
+use App\Traits\UserLogUlid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 
 class ApplicationSeeder extends Seeder
 {
-    use ApplicationUlid, ApplicationNumber, PermitNumber, PermitUlid, InspectionUlid, InspectionNumber;
+    use ApplicationUlid, 
+        ApplicationNumber, 
+        PermitNumber, 
+        PermitUlid, 
+        InspectionUlid, 
+        InspectionNumber, 
+        UserLogUlid,
+        InteractionUlid,
+        InteractionNumber;
     /**
      * Run the database seeds.
      */
@@ -70,10 +81,32 @@ class ApplicationSeeder extends Seeder
         ]);
 
         $app->userLogs()->create([
+            'ulid' => $this->createUserLogUlid(),
             'user_id' => 1,
             'account_id' => rand(1, 3),
             'log_type_id' => 1, // Assuming 1 corresponds to a valid log user type
         ]);
+
+        $interaction = $app->interactions()->create([
+            'ulid' => $this->createInteractionUlid(),
+            'number' => $this->createInteractionNumber(),
+            'interaction_type_id' => 1, // Assuming 1 corresponds to 'general-inquiry'
+            'account_id' => 1,
+            'business_id' => 1,
+        ]);
+
+        $interaction->statuses()->create([
+            'status_type_id' => 2,
+            'changed_by' => 1,
+            'reason' => 'Initial status interaction for application',
+        ]);
+
+        $interaction->messages()->create([
+            'message' => 'This is the initial message for the application interaction.',
+            'created_account_id' => 1,
+        ]);
+
+
 
         // Create another AppCitizenPropertyRental
         AppCitizenPropertyRent::create([

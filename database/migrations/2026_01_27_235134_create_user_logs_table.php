@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_logs', function (Blueprint $table) {
             $table->id();
+            $table->ulid('ulid')->unique();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('account_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('log_type_id')->constrained()->onDelete('cascade');

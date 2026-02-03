@@ -38,4 +38,9 @@ class Service extends Model
     {
         return $this->hasMany(Application::class, 'service_id');
     }
+
+    public function interactions()
+    {
+        return $this->morphMany(Interaction::class, 'interactionable');
+    }
 }

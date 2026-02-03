@@ -1,4 +1,4 @@
-@props(['variant' => 'primary', 'icon' => 'edit'])
+@props(['variant' => 'primary', 'icon' => 'edit', 'width' => 24, 'height' => 24, 'size' => 6])
 
 @php
     $variants = [
@@ -6,7 +6,7 @@
             ' bg-black border border-transparent text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900',
         'primary-outline' =>
             ' bg-transparent border border-gray-900 text-black hover:bg-gray-900 hover:text-white focus:bg-gray-700 active:bg-gray-900',
-            'secondary' =>
+        'secondary' =>
             ' bg-gray-500 border border-transparent text-white hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-700',
         'secondary-outline' =>
             ' bg-transparent border border-gray-500 text-gray-500 hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-700',
@@ -37,12 +37,13 @@
     ];
 @endphp
 
-<a {{ $attributes->merge(['class' => $variants[$variant] . ' rounded-md p-1.5 cursor-pointer']) }}>
+<a {{ $attributes->merge(['class' => ' rounded-md p-1.5 cursor-pointer ' . $variants[$variant] ]) }}>
 
     @switch($icon)
+        {{-- Tabler --}}
         @case('minus')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-minus">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l14 0" />
@@ -50,8 +51,8 @@
         @break
 
         @case('plus')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 5l0 14" />
@@ -60,8 +61,8 @@
         @break
 
         @case('edit')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-pencil">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
@@ -70,8 +71,8 @@
         @break
 
         @case('delete')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-x">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M18 6l-12 12" />
@@ -80,9 +81,9 @@
         @break
 
         @case('eye')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                 <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
@@ -90,9 +91,9 @@
         @break
 
         @case('phone')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path
                     d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
@@ -100,9 +101,9 @@
         @break
 
         @case('message')
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-message">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 9h8" />
                 <path d="M8 13h6" />
@@ -110,8 +111,20 @@
             </svg>
         @break
 
+        @case('arrow-narrow-left-dashed')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12h6m3 0h1.5m3 0h.5" />
+                <path d="M5 12l4 4" />
+                <path d="M5 12l4 -4" />
+            </svg>
+        @break
+
+        {{-- Heroicons --}}
         @case('arrow-right')
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-{{ $size }}">
                 <path fill-rule="evenodd"
                     d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z"
                     clip-rule="evenodd" />
@@ -120,7 +133,7 @@
 
         @case('arrow-left')
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="size-6">
+                class="size-{{ $size }}">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
         @break

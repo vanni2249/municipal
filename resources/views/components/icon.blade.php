@@ -95,6 +95,17 @@
             </svg>
         @break
 
+        @case('arrow-narrow-left-dashed')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12h6m3 0h1.5m3 0h.5" />
+                <path d="M5 12l4 4" />
+                <path d="M5 12l4 -4" />
+            </svg>
+        @break
+
         {{-- Heroicons --}}
         @case('arrow-right')
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"

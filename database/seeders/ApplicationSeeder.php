@@ -160,6 +160,10 @@ class ApplicationSeeder extends Seeder
             'ulid' => $this->createInspectionUlid(),
             'number' => $this->createInspectionNumber(),
             'inspection_type_id' => 1, // Assuming 1 corresponds to 'building-inspection'
+        ])->statuses()->create([
+            'status_type_id' => 1,
+            'changed_by' => 1,
+            'reason' => 'Initial status',
         ]);
         
         $app->permit()->create([

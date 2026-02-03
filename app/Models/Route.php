@@ -20,6 +20,21 @@ class Route extends Model
 
     public function inspections()
     {
-    return $this->belongsToMany(Inspection::class, 'inspection_route')->withTimestamps();
+        return $this->belongsToMany(Inspection::class, 'inspection_route')->withTimestamps();
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function statuses()
+    {
+        return $this->morphMany(Status::class, 'statusable');
+    }
+
+    public function status()
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 }

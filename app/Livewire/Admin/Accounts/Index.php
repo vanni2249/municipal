@@ -17,10 +17,12 @@ class Index extends Component
     {
         sleep(1);
     }
+
     public function placeholder()
     {
         return view('placeholders.views.partials.header-table-skeleton');
     }
+    
     #[Layout('layouts.admin')]
     public function render()
     {

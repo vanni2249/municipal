@@ -28,6 +28,16 @@ class Inspection extends Model
     {
         return $this->belongsTo(InspectionType::class);
     }
+
+    public function statuses()
+    {
+        return $this->morphMany(Status::class, 'statusable');
+    }
+
+    public function status()
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
     
     public function route()
     {

@@ -16,11 +16,20 @@ class RouteSeeder extends Seeder
      */
     public function run(): void
     {
-        Route::create([
+        $route = Route::create([
             'ulid' => $this->createRouteUlid(),
             'number' => $this->createRouteNumber(),
             'route_type_id' => 1,
             'admin_id' => 1,
-        ])->inspections()->attach([1]);
+        ]);
+        
+        $status = $route->statuses()->create([
+            'status_type_id' => 1,
+            'changed_by' => 1,
+            'reason' => 'Initial status',
+        ]);
+        $route->inspections()->attach([1]);
+
+
     }
 }

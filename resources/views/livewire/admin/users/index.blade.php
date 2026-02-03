@@ -32,6 +32,7 @@
                     <th class="p-2 w-auto">Email<br>Phone</th>
                     <th class="p-2 w-auto">Last Connection</th>
                     <th class="p-2 w-auto">Status</th>
+                    <th class="p-2 w-auto">Fecha</br>Registro</th>
                     <th class="p-2 w-24"></th>
                 </tr>
             </x-slot>
@@ -69,6 +70,10 @@
                         <td class="p-2">
                             <x-badge :variant="$user->status->statusType->variant" :label="$user->status->statusType->name" />
                         </td>
+                        <td class="p-2">
+                            <x-date-format date="{{ $user->created_at }}" format="d/m/Y" />
+                        </td>
+                        <!-- Actions -->
                         <td class="p-2 flex space-x-2 justify-end">
                             <x-icon-link variant="light" href="{{ route('admin.users.show', ['user' => $user->ulid]) }}"
                                 icon="eye" wire:navigate/>

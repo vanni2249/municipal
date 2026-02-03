@@ -37,7 +37,7 @@
     ];
 @endphp
 
-<a {{ $attributes->merge(['class' => ' rounded-md p-1.5 cursor-pointer ' . $variants[$variant] ]) }}>
+<a {{ $attributes->merge(['class' => ' rounded-md p-1.5 cursor-pointer ' . $variants[$variant]]) }}>
 
     @switch($icon)
         {{-- Tabler --}}
@@ -112,9 +112,9 @@
         @break
 
         @case('arrow-narrow-left-dashed')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12h6m3 0h1.5m3 0h.5" />
                 <path d="M5 12l4 4" />
@@ -122,9 +122,21 @@
             </svg>
         @break
 
+        @case('arrow-narrow-right-dashed')
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right-dashed">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12h.5m3 0h1.5m3 0h6" />
+                <path d="M15 16l4 -4" />
+                <path d="M15 8l4 4" />
+            </svg>
+        @break
+
         {{-- Heroicons --}}
         @case('arrow-right')
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-{{ $size }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                class="size-{{ $size }}">
                 <path fill-rule="evenodd"
                     d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z"
                     clip-rule="evenodd" />
@@ -132,8 +144,8 @@
         @break
 
         @case('arrow-left')
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="size-{{ $size }}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-{{ $size }}">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
         @break

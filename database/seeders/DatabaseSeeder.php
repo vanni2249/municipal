@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             LogTypeSeeder::class,
+            InteractionTypeSeeder::class,
             // LogUserTypeSeeder::class,
             // LogAdminTypeSeeder::class,
             StatusTypeSeeder::class,

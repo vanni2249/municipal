@@ -10,8 +10,10 @@ class Interaction extends Model
         'ulid',
         'number',
         'interaction_type_id',
-        'service_id',
-        'user_id',
+        'interactionable_type',
+        'interactionable_id',
+        'account_id',
+        'business_id',
     ];
 
     public function interactionType()
@@ -19,15 +21,31 @@ class Interaction extends Model
         return $this->belongsTo(InteractionType::class, 'interaction_type_id');
     }
 
-    public function service()
+    public function interactionable()
     {
-        return $this->belongsTo(Service::class, 'service_id');
+        return $this->morphTo();
     }
 
-    public function user()
+    public function account()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Account::class, 'account_id');
     }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class, 'business_id');
+    }
+
+    public function statuses()
+    {
+        return $this->morphMany(Status::class, 'statusable');
+    }
+
+    public function status()
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
 
     public function messages()
     {

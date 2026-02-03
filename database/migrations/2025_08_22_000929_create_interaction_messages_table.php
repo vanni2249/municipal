@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('interaction_id')->constrained('interactions')->onDelete('cascade');
             $table->text('message');
-            $table->foreignId('user_created_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->foreignId('user_read_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->timestamp('user_read_at')->nullable();
-            $table->foreignId('admin_created_id')->nullable()->constrained('admins')->onDelete('set null');
-            $table->foreignId('admin_read_id')->nullable()->constrained('admins')->onDelete('set null');
-            $table->timestamp('admin_read_at')->nullable();
+            $table->foreignId('created_account_id')->nullable()->constrained('accounts')->onDelete('set null');
+            $table->foreignId('read_account_id')->nullable()->constrained('accounts')->onDelete('set null');
+            $table->timestamp('read_account_at')->nullable();
+            $table->foreignId('created_admin_id')->nullable()->constrained('admins')->onDelete('set null');
+            $table->foreignId('read_admin_id')->nullable()->constrained('admins')->onDelete('set null');
+            $table->timestamp('read_admin_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

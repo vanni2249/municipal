@@ -25,61 +25,50 @@
         <x-table>
             <x-slot name="head">
                 <tr>
+                    <th class="p-4">Number</th>
+                    <th class="p-4">Tipo</th>
+                    <th class="p-4">Interacción<br/>Tipo</th>
+                    <th class="p-4">Total<br/>mensajes</th>
+                    <th class="p-4">Cuenta</th>
+                    <th class="p-4">Business</th>
                     <th class="p-4">Fecha</th>
-                    <th class="p-4">Categoría</th>
-                    <th class="p-4">Servicios</th>
-                    <th class="p-4">Mensajes<br/>sin leer</th>
-                    <th class="p-4">Total<br/>de mensajes</th>
-                    <th class="p-4">Usuario</th>
-                    <th class="p-4">Status</th>
-                    <th class="p-4 w-14">Acción</th>
+                    <th class="p-4">Estado</th>
+                    <th class="p-4 w-14"></th>
                 </tr>
             </x-slot>
             <x-slot name="body">
                 @forelse ($interactions as $interaction)
                 <tr class="border-t border-gray-300">
-                    <!-- Date -->
-                    <td class="p-4">{{ $interaction->created_at->diffForHumans() }}</td>
+                    <!-- Number -->
+                    <td class="p-4">{{ $interaction->number }}</td>
                     <!-- Type -->
-                    <td class="p-4">{{ $interaction->getTypeNameAttribute() }}</td>
-                    <!-- Service -->
-                    <td class="p-4">{{ $interaction->service->es_name }}</td>
-                    <!-- Messages not read -->
+                    <td class="p-4">{{ $interaction->interactionType->name }}</td>
+                    <!-- Interaction Type -->
+                    <td class="p-4">{{ $interaction->interactionable->getTable() }}</td>
+                    <!-- Total Messages -->
                     <td class="p-4">
-                        @if ($interaction->countNotReadMessagesAdmin() == 0)
-                            <span class="text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
-                                0
-                            </span>
-                        @else
-                            <span class="bg-red-300 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
-                                {{ $interaction->countNotReadMessagesAdmin() }}
-                            </span> 
-                            
-                        @endif
+                        {{ $interaction->messages->count() }}
                     </td>
-                    <!-- Messages -->
+                    <!-- Account -->
                     <td class="p-4">
-                        <span class="bg-blue-300 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
-                            {{ $interaction->messages->count() }}
-                        </span>
+                        {{ $interaction->account->number ?? '...' }}
                     </td>
-                    <!-- User -->
+                    <!-- Business -->
                     <td class="p-4">
-                        <span>
-                            {{ $interaction->user->name }}
-                        </span>
-                        <br>
-                        <span class="text-xs text-gray-500">{{ $interaction->user->register->type->es_name }}</span>
+                        {{ $interaction->business->name ?? '...' }}
                     </td>
-                    <!-- Status -->
+                    <!-- Date -->
                     <td class="p-4">
-                        <x-badge
-                            color="{{ $interaction->getStatusColorAttribute() }}">{{ $interaction->getStatusNameAttribute() }}</x-badge>
+                        <x-date-format date="{{ $interaction->created_at }}" format="d/m/Y" />
+                    </td>
+                    <!-- Statuses -->
+                    <td class="p-4">
+                        <x-badge label="{{ $interaction->status->statusType->name }}" color="{{ $interaction->status->statusType->variant }}" />
                     </td>
                     <!-- Action -->
                     <td class="p-4 flex justify-end">
-                        <x-icon-link href="{{ route('admin.interactions.show', ['interaction' => $interaction]) }}"
-                            icon="eye" />
+                        <x-icon-link href="{{ route('admin.interactions.show', ['interaction' => $interaction->ulid]) }}"
+                            icon="arrow-narrow-right-dashed" variant="light" wire:navigate />
                     </td>
                 </tr>
                 @empty

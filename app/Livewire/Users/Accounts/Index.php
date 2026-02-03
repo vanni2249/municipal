@@ -23,7 +23,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.users.accounts.index', [
-            'accounts' => auth()->user()->accounts()->with('accountType')->orderBy('account_type_id', 'asc')->get(),
+            'accounts' => auth()->user()->accounts()->with('accountType')->whereIn('account_type_id', [1, 2])->orderBy('account_type_id', 'asc')->get(),
         ]);
     }
 }

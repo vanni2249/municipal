@@ -1,22 +1,4 @@
 <div class="space-y-4">
-    <div class="flex space-x-2">
-        <div class="flex flex-shrink-0 flex-col justify-center">
-            <a href="{{ route('users.accounts.index') }}" class="p-3.5 bg-white hover:bg-gray-100 rounded-xl">
-              <x-icon icon="arrow-left" size="5" class="text-gray-400 hover:text-gray-600" />
-            </a>
-        </div>
-        <x-card class="grow">
-            <ul class="flex space-x-2 text-sm">
-                <li class="font-bold">
-                    <a href="{{ route('users.accounts.index') }}">
-                        Mis cuentas
-                    </a>
-                </li>
-                <li class="text-gray-600">Lista de Comercios</li>
-            </ul>
-
-        </x-card>
-    </div>
     <x-card>
         <header class="flex justify-between space-x-2 items-start">
             <div class="flex-1">

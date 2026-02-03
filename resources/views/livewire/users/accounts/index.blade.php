@@ -11,52 +11,59 @@
     </x-card>
     <!-- Accounts -->
     <x-card>
-        {{-- {{ dd(Auth::user()->default->defaultable->getTable()) }} --}}
-
-        @if (Auth::user()->default->defaultable->getTable() == 'accountants')
-            yes
-                
-            @else
-              no  
-        @endif
-
-
-        <x-card-elements-group>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
             @forelse ($accounts as $account)
-                @switch($account->accountType->slug)
-                    @case('citizen')
-                        <a href="{{ route('citizens.set-session', ['account' => $account->ulid]) }}" class="block" wire:navigate>
-                    @break
+                {{-- @switch($account->accountType->slug) --}}
+                {{-- @case('citizen') --}}
+                {{-- <a href="{{ route('citizens.set-session', ['account' => $account->ulid]) }}" class="block" wire:navigate>
+                        @break
 
-                    @case('merchant')
-                        <a href="{{ route('users.accounts.businesses.index', ['account' => $account->ulid]) }}" class="block"
-                            wire:navigate>
-                    @break
+                        @case('merchant')
+                            <a href="{{ route('users.accounts.businesses.index', ['account' => $account->ulid]) }}" class="block"
+                                wire:navigate>
+                            @break
 
-                    @case('accountant')
-                        <a href="{{ route('users.accounts.merges.index', ['account' => $account->ulid]) }}" class="block"
-                            wire:navigate>
-                    @break
+                            @case('accountant')
+                                <a href="{{ route('users.accounts.merges.index', ['account' => $account->ulid]) }}"
+                                    class="block" wire:navigate>
+                                @break
 
-                    @default
-                @endswitch
-                            <x-card-element class="flex justify-between items-center hover:bg-gray-200"
-                                border="secondary">
-                                <div>
-                                    <strong class="text-sm">{{ $account->accountType->name }}</strong>
-                                    <br>
-                                    <span class="text-gray-700 text-sm">{{ $account->number }}</span>
-                                </div>
-                                <div>
-                                    <x-icon icon="arrow-right" size="5" class="text-gray-400" />
-                                </div>
-                            </x-card-element>
-                        </a>
+                                @default
+                            @endswitch --}}
+                <x-card-element class="flex justify-between items-center" border="secondary">
+                    <div>
+                        <strong class="text-sm">{{ $account->accountType->name }}</strong>
+                        <br>
+                        <span class="text-gray-700 text-sm">{{ $account->number }}</span>
+                    </div>
+                    <div>
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <x-icon-button icon="ellipsis-vertical" variant="light" />
+                            </x-slot>
+                            <x-slot name="content">
+                                @if ($account->accountType->slug == 'citizen')
+                                    <x-dropdown-link href="{{ route('citizens.set-session', $account->ulid) }}">
+                                        Ir a la cuenta
+                                    </x-dropdown-link>
+                                @else
+                                    <x-dropdown-link href="{{ route('users.businesses.index') }}">
+                                        Ver comercios
+                                    </x-dropdown-link>
+                                @endif
+                            </x-slot>
+                        </x-dropdown>
+                        {{-- <x-icon icon="arrow-right" size="5" class="text-gray-400" /> --}}
+                    </div>
+                </x-card-element>
+                {{-- </a> --}}
             @empty
                 <x-card-element>
-                    <p class="text-gray-700 text-sm">No tienes cuentas asociadas a tu usuario.</p>
+                    <p class="text-gray-700
+                                        text-sm">No tienes cuentas asociadas
+                        a tu usuario.</p>
                 </x-card-element>
             @endforelse
-        </x-card-elements-group>
+        </div>
     </x-card>
-</div>  
+</div>

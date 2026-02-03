@@ -8,6 +8,7 @@ use App\Livewire\Users\Profile\Index as UserProfile;
 // use App\Livewire\Users\Notifications as UserNotifications;
 
 use App\Livewire\Users\Businesses\Index as UserBusinessIndex;
+use App\Livewire\Users\Businesses\Create as UserBusinessCreate;
 
 use App\Livewire\Users\Accounts\Index as UserAccountIndex;
 use App\Livewire\Users\Accounts\Create as UserAccountCreate;
@@ -28,6 +29,7 @@ Route::prefix('users')->name('users.')->group(function () {
 
     Route::prefix('businesses')->name('businesses.')->middleware(AuthUser::class)->group(function () {
         Route::get('/', UserBusinessIndex::class)->name('index');
+        Route::get('/create', UserBusinessCreate::class)->name('create');
     });
 });
 

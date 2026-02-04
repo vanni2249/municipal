@@ -1,10 +1,10 @@
 <div>
     <x-button size="sm" variant="light" class="flex items-center space-x-1"
         @click="$dispatch('open-modal', 'accounts-modal')">
-        <span class="md:hidden">
+        {{-- <span class="md:hidden">
             <x-icon icon="replace" width="18" height="18" />
-        </span>
-        <span class="hidden md:block">
+        </span> --}}
+        <span class="">
             Cambiar
         </span>
     </x-button>

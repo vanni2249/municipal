@@ -28,7 +28,7 @@
             <div class="flex flex-row space-x-2 pb-1 overflow-x-auto no-scrollbar">
 
                 @foreach ($services as $service)
-                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="flex-shrink-0 w-72 sm:w-76 md:w-80 lg:w-1/4" wire:navigate>
+                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="flex-shrink-0 w-76 sm:w-80 md:w-84 lg:w-1/4" wire:navigate>
                     <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
                         <div class="grow">
                             <div>

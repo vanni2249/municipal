@@ -8,10 +8,12 @@ use Livewire\Component;
 
 class Create extends Component
 {
+    public $account;
     public $service;
 
     public function mount($service)
     {
+        $this->account = auth()->user()->accounts()->where('ulid', session('data.account_ulid'))->first();
         $this->service = Service::where('ulid', $service)->first();
     }
     

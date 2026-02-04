@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-4">
     <x-card>
         <x-card-header>
             <h1 class="font-bold text-lg text-gray-900 line-clamp-2">{{ $service->title }}</h1>
@@ -6,11 +6,14 @@
         </x-card-header>
     </x-card>
 
-    {{ $service->slug }}
+    {{-- {{ $service->slug }} --}}
 
     @switch($service->slug)
         @case('app-citizen-property-use')
-            @livewire('citizens.applications.app-citizen-property-use.create')
+            @livewire('citizens.applications.app-citizen-property-use.create', [
+                'service' => $service,
+                'account' => $account,
+            ])
             
             @break
         @case('app-citizen-property-rent')

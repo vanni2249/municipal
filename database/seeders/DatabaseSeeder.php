@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
             AddressSeeder::class,
             InspectionTypeSeeder::class,
             TransactionMethodTypeSeeder::class,
-            ApplicationSeeder::class,
+            // ApplicationSeeder::class,
             RouteTypeSeeder::class,
-            RouteSeeder::class,
+            // RouteSeeder::class,
         ]);
 
         // User::factory()->create([

@@ -97,13 +97,18 @@ class Register extends Component
                 'reason' => 'Initial status for user ' . $this->email,
             ]);
 
-            $this->user->accounts()->create([
+            $account = $this->user->accounts()->create([
                 'ulid' => $this->createAccountUlid(),
                 'number' => $this->createAccountNumber(),
                 'account_type_id' => $this->getAccountTypeId('citizen'),
-            ])->defaults()->create([
+            ]);
+            $account->defaults()->create([
                         'user_id' => $this->user->id,
                     ]);
+            $account->statuses()->create([
+                'status_type_id' => $this->getStatusId('active'),
+                'reason' => 'Initial status for account ' . $account->ulid,
+            ]);
 
             $this->user->userLogs()->create([
                 'ulid' => $this->createUserLogUlid(),

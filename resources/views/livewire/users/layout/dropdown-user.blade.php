@@ -10,7 +10,7 @@
             <x-dropdown-link href="{{ route('logout') }}">
                 Salir
             </x-dropdown-link>
-            <div class="text-sm border-b border-gray-200">
+            {{-- <div class="text-sm border-b border-gray-200">
                 @foreach (auth()->user()->accounts()->with('accountType')->whereIn('account_type_id', [1, 2])->get() as $item)
                     @if ($item->accountType->slug == 'citizen')
                         <div class="px-4 py-2 border-y border-gray-200 bg-gray-100">
@@ -42,7 +42,7 @@
                         @endforeach
                     @endif
                 @endforeach
-            </div>
+            </div> --}}
             <x-dropdown-link href="{{ route('users.businesses.index') }}">
                 Ajustes de comercios
             </x-dropdown-link>

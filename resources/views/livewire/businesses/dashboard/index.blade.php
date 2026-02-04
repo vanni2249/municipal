@@ -8,7 +8,8 @@
                     <li>{{ $business->account->accountType->name }}</li>
                 </ul>
             </div>
-            <div class="flex">
+            <div class="flex flex-col items-end space-y-2">
+                 @livewire('users.accounts.components.modal-accounts')
                 <span class="text-sm text-gray-700">
                     {{ $business->number }}
                 </span>

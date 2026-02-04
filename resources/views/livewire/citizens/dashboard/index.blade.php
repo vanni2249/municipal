@@ -7,10 +7,11 @@
                     <li>{{ $account->accountType->name }}</li>
                 </ul>
             </div>
-            <div class="flex">
-               <span class="text-sm text-gray-700">
-                {{ $account->number }}
-               </span>
+            <div class="flex flex-col items-end space-y-2">
+                @livewire('users.accounts.components.modal-accounts')
+                <span class="text-xs text-gray-700">
+                    {{ $account->number }}
+                </span>
             </div>
         </header>
     </x-card>
@@ -23,9 +24,11 @@
                 Ver todos
             </a>
         </x-card-header>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
-            @foreach ($services as $service)
-                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="block" wire:navigate>
+        <div class="grid grid-cols-1">
+            <div class="flex flex-row space-x-2 pb-1 overflow-x-auto no-scrollbar">
+
+                @foreach ($services as $service)
+                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="flex-shrink-0 w-96 lg:w-1/4" wire:navigate>
                     <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
                         <div class="grow">
                             <div>
@@ -41,7 +44,8 @@
                         </div>
                     </x-card-element>
                 </a>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </x-card>
     <div class="grid grid-cols-12 gap-2">

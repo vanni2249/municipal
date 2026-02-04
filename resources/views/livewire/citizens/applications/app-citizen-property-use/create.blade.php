@@ -5,7 +5,7 @@
                 <!-- Select property -->
                 <x-form-element class="col-span-full lg:col-span-6">
                     <x-label for="property_id" value="Propiedad" />
-                    <x-select id="property_id" wire:model="property_id" @class(['w-full appearance-none', 'border-red-500' => $errors->has('property_id')])>
+                    <x-select id="property_id" wire:model="property_id" @class(['w-full', 'border-red-500' => $errors->has('property_id')])>
                         <option value="">Seleccione Propiedad</option>
                         @foreach ($properties as $property)
                             <option value="{{ $property->id }}">{{ $property->name }}</option>
@@ -19,13 +19,11 @@
                 <!-- Selecte date -->
                 <x-form-element class="col-span-full md:col-span-6 md:col-start-1 lg:col-span-3 lg:col-start-1">
                     <x-label for="date_at" value="Fecha" />
-                    <x-input id="date_at" type="date" wire:model="date_at" @class(['w-full appearance-none', 'border-red-500 ' => $errors->has('date_at')]) />
+                    <x-input id="date_at" type="date" wire:model="date_at" @class(['w-full', 'border-red-500 ' => $errors->has('date_at')]) />
                     @error('date_at')
                         <x-error message="{{ $message }}" />
                     @enderror
                 </x-form-element>
-                <input type="date" name="" id="">
-
                 <!-- Description -->
                 <x-form-element class="col-span-full lg:col-span-6 lg:col-start-1">
                     <x-label for="description" value="Descripción" />

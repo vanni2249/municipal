@@ -2,12 +2,64 @@
 
 namespace App\Livewire\Citizens\Applications\AppCitizenResidencialRemovalDebris;
 
+use App\Models\AppCitizenResidencialRemovalDebris;
+use App\Traits\ApplicationNumber;
+use App\Traits\ApplicationUlid;
+use App\Traits\StatusTypeId;
 use Livewire\Component;
 
 class Create extends Component
 {
+    use ApplicationUlid, ApplicationNumber, StatusTypeId;
+    public $service;
+
+    public $account;
+
+    public $address_id;
+
+    public $description;
+
+    public function mount($service, $account)
+    {
+        $this->service = $service;
+        $this->account = $account;
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'address_id' => 'required|exists:properties,id',
+            'description' => 'required|string|min:10|max:1000',
+        ]);
+
+
+       $appCitizenResidencialRemovalDebris = AppCitizenResidencialRemovalDebris::create([
+            'address_id' => $this->address_id,
+            'description' => $this->description,
+        ]);
+
+        $app = $appCitizenResidencialRemovalDebris->applications()->create([
+            'ulid' => $this->createApplicationUlid(),
+            'number' => $this->createApplicationNumber(),
+            'account_id' => $this->account->id,
+            'service_id' => $this->service->id,
+        ]);
+
+        $app->statuses()->create([
+            'status_type_id' => $this->getStatusTypeId('pending'),
+        ]);
+
+
+        // Logic to store the application goes here
+
+        session()->flash('message', 'Application submitted successfully.');
+
+        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+    }
     public function render()
     {
-        return view('livewire.citizens.applications.app-citizen-residencial-removal-debris.create');
+        return view('livewire.citizens.applications.app-citizen-residencial-removal-debris.create',[
+            'addresses' => $this->account->addresses,
+        ]);
     }
 }

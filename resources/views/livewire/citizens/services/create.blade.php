@@ -17,11 +17,17 @@
             
             @break
         @case('app-citizen-property-rent')
-            @livewire('citizens.applications.app-citizen-property-rent.create')
+            @livewire('citizens.applications.app-citizen-property-rent.create',[
+                'service' => $service,
+                'account' => $account,
+            ])
                 
             @break
         @case('app-citizen-residencial-removal-debris')
-                app-citizen-residencial-removal-debris
+            @livewire('citizens.applications.app-citizen-residencial-removal-debris.create',[
+                'service' => $service,
+                'account' => $account,
+            ])
             @break
 
         @case('app-citizen-report-property-damage')

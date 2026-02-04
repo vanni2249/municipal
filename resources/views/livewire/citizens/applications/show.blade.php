@@ -36,7 +36,9 @@
             ])
             @break
         @case('app-citizen-residencial-removal-debris')
-                app-citizen-residencial-removal-debris
+            @livewire('citizens.applications.app-citizen-residencial-removal-debris.show', [
+                'application' => $application,
+            ])
             @break
 
         @case('app-citizen-report-property-damage')

@@ -19,7 +19,8 @@
                 <!-- Selecte date -->
                 <x-form-element class="col-span-full md:col-span-6 md:col-start-1 lg:col-span-3 lg:col-start-1">
                     <x-label for="date_at" value="Fecha" />
-                    <x-input id="date_at" type="date" wire:model="date_at" @class(['w-full', 'border-red-500 appearance-none' => $errors->has('date_at')]) />
+                    {{-- <x-input id="date_at" type="date" wire:model="date_at" @class(['w-full', 'border-red-500 appearance-none' => $errors->has('date_at')]) /> --}}
+                        <input type="date" name="" id="" class="w-full border border-gray-200 rounded-xl">
                     @error('date_at')
                         <x-error message="{{ $message }}" />
                     @enderror

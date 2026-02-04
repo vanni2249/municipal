@@ -19,8 +19,10 @@ class AppCitizenRegisterSpecialPerson extends Model
         'deceased_date',
         'relationship',
         'contact_person',
-        'contact_number',
+        'contact_phone',
         'address',
+        'place_id',
+        'zip_code',
         'remarks',
         'is_active',
     ];
@@ -28,6 +30,11 @@ class AppCitizenRegisterSpecialPerson extends Model
     public function applications()
     {
         return $this->morphMany(Application::class, 'applicable');
+    }
+
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
     }
     
 }

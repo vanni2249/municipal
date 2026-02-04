@@ -14,32 +14,43 @@
                 'service' => $service,
                 'account' => $account,
             ])
-            
-            @break
+        @break
+
         @case('app-citizen-property-rent')
-            @livewire('citizens.applications.app-citizen-property-rent.create',[
+            @livewire('citizens.applications.app-citizen-property-rent.create', [
                 'service' => $service,
                 'account' => $account,
             ])
-                
-            @break
+        @break
+
         @case('app-citizen-residencial-removal-debris')
-            @livewire('citizens.applications.app-citizen-residencial-removal-debris.create',[
+            @livewire('citizens.applications.app-citizen-residencial-removal-debris.create', [
                 'service' => $service,
                 'account' => $account,
             ])
-            @break
+        @break
 
         @case('app-citizen-report-property-damage')
-                app-citizen-report-property-damage
-            @break
+            @livewire('citizens.applications.app-citizen-report-property-damage.create', [
+                'service' => $service,
+                'account' => $account,
+            ])
+        @break
+
         @case('app-citizen-register-special-person')
-                app-citizen-register-special-person
-            @break
+            @livewire('citizens.applications.app-citizen-register-special-person.create', [
+                'service' => $service,
+                'account' => $account,
+            ])
+        @break
+
         @case('app-citizen-residencial-construction-permit')
-                app-citizen-residencial-construction-permit
-            @break
+            @livewire('citizens.applications.app-citizen-residencial-construction-permit.create', [
+                'service' => $service,
+                'account' => $account,
+            ])
+        @break
+
         @default
-            
     @endswitch
 </div>

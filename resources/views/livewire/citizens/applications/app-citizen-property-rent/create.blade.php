@@ -3,7 +3,7 @@
         <form wire:submit.prevent="store">
             <x-form-elements>
                 <!-- Select property -->
-                <x-form-element class="col-span-1">
+                <x-form-element class="col-span-full lg:col-span-6">
                     <x-label for="property_id" value="Propiedad" />
                     <x-select id="property_id" wire:model="property_id" @class(['w-full', 'border-red-500' => $errors->has('property_id')])>
                         <option value="">Seleccione Propiedad</option>
@@ -17,7 +17,7 @@
                 </x-form-element>
 
                 <!-- Selecte date -->
-                <x-form-element class="col-span-1 col-start-1">
+                <x-form-element class="col-span-full md:col-span-6 md:col-start-1 lg:col-span-3 lg:col-start-1">
                     <x-label for="date_at" value="Fecha" />
                     <x-input id="date_at" type="date" wire:model="date_at" @class(['w-full', 'border-red-500' => $errors->has('date_at')]) />
                     @error('date_at')
@@ -26,7 +26,7 @@
                 </x-form-element>
 
                 <!-- Description -->
-                <x-form-element class="col-span-1 col-start-1">
+                <x-form-element class="col-span-full lg:col-span-6 lg:col-start-1">
                     <x-label for="description" value="Descripción" />
                     <x-textarea id="description" wire:model="description" @class(['w-full', 'border-red-500' => $errors->has('description')]) rows="4" />
                     @error('description')
@@ -35,7 +35,7 @@
                 </x-form-element>
 
                 <!-- Submit button -->
-                <x-form-element class="col-span-1 col-start-1   ">
+                <x-form-element class="col-span-full">
                     <x-button type="submit">
                         Enviar Solicitud
                     </x-button>

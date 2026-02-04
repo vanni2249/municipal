@@ -31,26 +31,41 @@
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Fecha de creación" />
                         <x-app-element-value>
-                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />
+                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />    
                         </x-app-element-value>
                     </x-app-element>
                 </x-app-elements>
             </x-card>
             <x-card>
                 <header>
-                    <x-h3>Detalles de Uso de Propiedad</x-h3>
+                    <x-h3>Detalles de permiso de construcción residencial</x-h3>
                 </header>
                 <x-app-elements>
-                    <x-app-element class="col-span-full md:col-span-4">
-                        <x-app-element-label label="Propiedad" />
-                        <x-app-element-value value="{{ $application->applicable->property->name }}" />
+                    <!-- Owner name -->
+                    <x-app-element class="col-span-full">
+                        <x-app-element-label label="Nombre del propietario" />
+                        <x-app-element-value value="{{ $application->applicable->owner_name }}" />
+                    </x-app-element>
+                    <!-- Address -->
+                    <x-app-element class="col-span-full">
+                        <x-app-element-label label="Dirección" />
+                        <x-app-element-value value="{{ $application->applicable->address->address }}" />
                     </x-app-element>
 
-                    <x-app-element class="col-span-full md:col-span-2">
-                        <x-app-element-label label="Fecha de Uso de Propiedad" />
-                        <x-app-element-value>
-                            <x-date-format :date="$application->applicable->rent_date" format="d M Y" />
-                        </x-app-element-value>
+                    <!-- Place -->
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Lugar" />
+                        <x-app-element-value value="{{ $application->applicable->address->place->name }}" />
+                    </x-app-element>
+                    <!-- Zip -->
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Código Postal" />
+                        <x-app-element-value value="{{ $application->applicable->address->postal_code }}" />
+                    </x-app-element>
+                    <!-- Contractor name -->
+                    <x-app-element class="col-span-full">
+                        <x-app-element-label label="Nombre del contratista" />
+                        <x-app-element-value value="{{ $application->applicable->contractor_name }}" />
                     </x-app-element>
 
                     <x-app-element class="col-span-full">
@@ -74,7 +89,7 @@
                                         <x-date-format :date="$status->created_at" format="d M Y h:i a" />
                                     </p>
                                 </div>
-                                <div class="">
+                                <div class="mt-1 text-right">
                                     <x-badge label="{{ $status->statusType->name }}"
                                         variant="{{ $status->statusType->variant }}" />
                                 </div>

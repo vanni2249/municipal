@@ -5,18 +5,15 @@
                 <x-h2>{{ $application->service->title }}</x-h2>
                 <ul class="flex space-x-4 text-sm text-gray-700 mt-1">
                     <li>{{ $application->number }}</li>
-                    <li>{{ $application->service->serviceType->name }}</li>
+                    {{-- <li>{{ $application->service->serviceType->name }}</li> --}}
                 </ul>
             </div>
             <div class="text-right">
                 <x-badge label="{{ $application->status->statusType->name }}"
                     variant="{{ $application->status->statusType->variant }}" />
-                <div class="mt-2">
-                    <span class="hidden md:block text-sm text-gray-600">
-                        <x-date-format :date="$application->created_at" format="d M Y h:i a" />
-                    </span>
-                    <span class="md:hidden text-sm text-gray-600 text-right">
-                        <x-date-format :date="$application->created_at" format="d/M/Y" />
+                <div class="uppercase text-xs font-bold text-gray-500 mt-1">
+                    <span class="text-sm text-gray-600 text-right">
+                        {{ $application->service->serviceType->name }}
                     </span>
                 </div>
             </div>
@@ -42,13 +39,19 @@
             @break
 
         @case('app-citizen-report-property-damage')
-                app-citizen-report-property-damage
+            @livewire('citizens.applications.app-citizen-report-property-damage.show', [
+                'application' => $application,
+            ])
             @break
         @case('app-citizen-register-special-person')
-                app-citizen-register-special-person
+            @livewire('citizens.applications.app-citizen-register-special-person.show', [
+                'application' => $application,
+            ])
             @break
         @case('app-citizen-residencial-construction-permit')
-                app-citizen-residencial-construction-permit
+            @livewire('citizens.applications.app-citizen-residencial-construction-permit.show', [
+                'application' => $application,
+            ])
             @break
         @default
             

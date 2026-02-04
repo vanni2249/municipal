@@ -23,8 +23,10 @@ return new class extends Migration
             $table->date('deceased_date')->nullable();
             $table->string('relationship')->nullable();
             $table->string('contact_person')->nullable();
-            $table->string('contact_number')->nullable();
+            $table->string('contact_phone')->nullable();
             $table->string('address')->nullable();
+            $table->foreignId('place_id')->nullable()->constrained('places')->onDelete('set null');
+            $table->string('zip_code')->nullable();
             $table->string('remarks')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

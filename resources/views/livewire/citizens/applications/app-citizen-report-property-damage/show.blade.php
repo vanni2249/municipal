@@ -28,31 +28,23 @@
                     </x-app-element>
 
                     <!-- Created At -->
-                    <x-app-element class="col-span-full md:col-span-3">
+                    <x-app-element class="col-span-full">
                         <x-app-element-label label="Fecha de creación" />
                         <x-app-element-value>
-                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />
+                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />    
                         </x-app-element-value>
                     </x-app-element>
                 </x-app-elements>
             </x-card>
             <x-card>
                 <header>
-                    <x-h3>Detalles de Uso de Propiedad</x-h3>
+                    <x-h3>Detalles de reporte de propiedad</x-h3>
                 </header>
                 <x-app-elements>
-                    <x-app-element class="col-span-full md:col-span-4">
+                    <x-app-element class="col-span-full">
                         <x-app-element-label label="Propiedad" />
                         <x-app-element-value value="{{ $application->applicable->property->name }}" />
                     </x-app-element>
-
-                    <x-app-element class="col-span-full md:col-span-2">
-                        <x-app-element-label label="Fecha de Uso de Propiedad" />
-                        <x-app-element-value>
-                            <x-date-format :date="$application->applicable->rent_date" format="d M Y" />
-                        </x-app-element-value>
-                    </x-app-element>
-
                     <x-app-element class="col-span-full">
                         <x-app-element-label label="Descripción" />
                         <x-app-element-value value="{{ $application->applicable->description }}" />
@@ -74,7 +66,7 @@
                                         <x-date-format :date="$status->created_at" format="d M Y h:i a" />
                                     </p>
                                 </div>
-                                <div class="">
+                                <div class="mt-1 text-right">
                                     <x-badge label="{{ $status->statusType->name }}"
                                         variant="{{ $status->statusType->variant }}" />
                                 </div>

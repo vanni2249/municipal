@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('app_citizen_report_property_damages', function (Blueprint $table) {
             $table->id();
-            $table->string('property');
+            $table->foreignId('property_id')->constrained('properties')->onDelete('cascade');
             $table->string('description');
             $table->timestamps();
         });

@@ -1,8 +1,28 @@
 <div class="space-y-4">
     <x-card>
-        <header>
-            <x-h2 value="Aplicaciones" />
-            <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por tu negocio.</span>
+        <header class="flex justify-between items-start">
+            <div>
+                <x-h2 value="Aplicaciones" />
+                <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por tu negocio.</span>
+            </div>
+            <div>
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <x-icon-button variant="light" icon="ellipsis-vertical" />
+                    </x-slot>
+                    <x-slot name="content">
+                        @forelse ($services as $service)
+                            <x-dropdown-link href="{{ route('citizens.services.create', $service->ulid) }}">
+                                {{ $service->title }}
+                            </x-dropdown-link>
+                        @empty
+                            <x-dropdown-link href="">
+                                No hay servicios disponibles
+                            </x-dropdown-link>
+                        @endforelse
+                    </x-slot>
+                </x-dropdown>
+            </div>
         </header>
     </x-card>
     <x-card class="col-span-full lg:col-span-7">

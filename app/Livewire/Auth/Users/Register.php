@@ -7,10 +7,12 @@ use App\Models\Place;
 use App\Models\User;
 use App\Models\UserLog;
 use App\Traits\AccountNumber;
+use App\Traits\AccountTypeId;
 use App\Traits\AccountUlid;
 use App\Traits\LogTypeId;
 use App\Traits\RegisterCode;
 use App\Traits\StatusId;
+use App\Traits\UserLogUlid;
 use App\Traits\UserNumber;
 use App\Traits\UserUlid;
 use Illuminate\Auth\Events\Lockout;
@@ -27,12 +29,12 @@ use Livewire\Attributes\Layout;
 
 class Register extends Component
 {
-    use UserUlid, UserNumber, StatusId, LogTypeId, AccountUlid, AccountNumber;
+    use UserUlid, UserNumber, StatusId, LogTypeId, AccountUlid, AccountNumber, AccountTypeId, UserLogUlid;
 
-    public $accounts = [
-        'citizen' => false,
-        'merchant' => false,
-    ];
+    // public $accounts = [
+    //     'citizen' => false,
+    //     'merchant' => false,
+    // ];
     public $name;
     public $lastname;
     public $email;
@@ -49,23 +51,23 @@ class Register extends Component
         $this->gender = null; // Default to null
     }
 
-    protected $rules = [
-        'accounts.citizen' => 'accepted',
-        'accounts.merchant' => 'accepted',
-    ];
+    // protected $rules = [
+    //     'accounts.citizen' => 'accepted',
+    //     'accounts.merchant' => 'accepted',
+    // ];
 
     public function register()
     {
 
         // dd($this->accounts['citizen'], $this->accounts['merchant']);
-        if (!$this->accounts['citizen'] && !$this->accounts['merchant']) {
-            $this->addError('accounts', 'Selecciona al menos una opción.');
-            return;
-        }
+        // if (!$this->accounts['citizen'] && !$this->accounts['merchant']) {
+        //     $this->addError('accounts', 'Selecciona al menos una opción.');
+        //     return;
+        // }
 
 
         $this->validate([
-            'accounts' => 'nullable|array|min:1',
+            // 'accounts' => 'nullable|array|min:1',
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -95,17 +97,17 @@ class Register extends Component
                 'reason' => 'Initial status for user ' . $this->email,
             ]);
 
-            if ($this->accounts['citizen']) {
-                $this->user->accounts()->create([
-                    'ulid' => $this->createAccountUlid(),
-                    'number' => $this->createAccountNumber(),
-                    'account_type_id' => $this->accounts['citizen'],
-                ])->defaults()->create([
-                            'user_id' => $this->user->id,
-                        ]);
-            }
+            $this->user->accounts()->create([
+                'ulid' => $this->createAccountUlid(),
+                'number' => $this->createAccountNumber(),
+                'account_type_id' => $this->getAccountTypeId('citizen'),
+            ])->defaults()->create([
+                        'user_id' => $this->user->id,
+                    ]);
 
             $this->user->userLogs()->create([
+                'ulid' => $this->createUserLogUlid(),
+                'number' => $this->createUserNumber(),
                 'user_id' => $this->user->id,
                 'log_type_id' => $this->getLogTypeId('registration'),
             ]);

@@ -16,7 +16,7 @@
             <form wire:submit.prevent='register'>
                 <div class="grid grid-cols-4 gap-4 py-6">
 
-                    @error('accounts')
+                    {{-- @error('accounts')
                         <div class="col-span-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
                             <span @class(['text-red-500', 'text-xs', 'font-bold'])>{{ $message }}</span>
                         </div>
@@ -48,7 +48,7 @@
                                 <x-label for="merchant" value="Comerciante de San Antonio" />
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
 
 
 
@@ -137,7 +137,7 @@
                     </div>
                     <!-- Button -->
                     <div class="col-span-4">
-                        <x-button class="w-full md:w-auto" label="Registrar" type="submit" size="lg">
+                        <x-button class="w-full md:w-auto" type="submit" size="lg">
                             {{ __('Registrar') }}
                         </x-button>
                     </div>

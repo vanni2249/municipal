@@ -46,7 +46,6 @@ class Business extends Model
         return $this->morphMany(UserDefault::class, 'defaultable');
     }
 
-
     // public function merges()
     // {
     //     return $this->belongsToMany(Merge::class, 'business_merge', 'business_id', 'merge_id')
@@ -73,33 +72,8 @@ class Business extends Model
         return $this->morphMany(Address::class, 'addressable');
     }
 
-    // public function businessType()
-    // {
-    //     return $this->belongsTo(BusinessType::class);
-    // }
-
-    // public function businessCategory()
-    // {
-    //     return $this->belongsTo(BusinessCategory::class);
-    // }
-
-    // public function register()
-    // {
-    //     return $this->belongsTo(Register::class);
-    // }
-
-    // public function place()
-    // {
-    //     return $this->belongsTo(Place::class);
-    // }
-
-    // public function actions()
-    // {
-    //     return $this->morphMany(Action::class, 'actionable');
-    // }
-
-    // public function addresses()
-    // {
-    //     return $this->morphMany(Address::class, 'addressable');
-    // }
+    public function interactions()
+    {
+        return $this->hasMany(Interaction::class);
+    }
 }

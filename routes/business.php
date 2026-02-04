@@ -9,7 +9,8 @@ use App\Livewire\Businesses\Services\Create as BusinessServicesCreate;
 use App\Livewire\Businesses\Services\Show as BusinessServicesShow;
 use App\Livewire\Businesses\Applications\Index as BusinessApplicationsIndex;
 use App\Livewire\Businesses\Applications\Show as BusinessApplicationsShow;
-use App\Livewire\Businesses\Interactions\Index as BusinessInteractions;
+use App\Livewire\Businesses\Interactions\Index as BusinessInteractionsIndex;
+use App\Livewire\Businesses\Interactions\Show as BusinessInteractionsShow;
 use App\Livewire\Businesses\Settings\Index as BusinessSettings;
 
 Route::prefix('businesses')->name('businesses.')->group(function () {
@@ -27,6 +28,7 @@ Route::prefix('businesses')->name('businesses.')->group(function () {
         Route::get('/services/{service}', BusinessServicesShow::class)->name('services.show');
         Route::get('/applications', BusinessApplicationsIndex::class)->name('applications');
         Route::get('/applications/{application}', BusinessApplicationsShow::class)->name('applications.show');
-        Route::get('/interactions', BusinessInteractions::class)->name('interactions');
+        Route::get('/interactions', BusinessInteractionsIndex::class)->name('interactions');
+        Route::get('/interactions/{interaction}', BusinessInteractionsShow::class)->name('interactions.show');
         Route::get('/settings', BusinessSettings::class)->name('settings');
 });

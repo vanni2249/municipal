@@ -15,7 +15,8 @@ class Index extends Component
     public function mount()
     {
         $this->account = Account::where('ulid', session('data.account_ulid'))->first();
-        $this->applications = Application::where('account_id', $this->account->id)->get();
+        $this->applications = Application::where('account_id', $this->account->id)->orderBy('created_at', 'desc')->get();
+        
     }
     #[Layout('layouts.citizen')]
     public function render()

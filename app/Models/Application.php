@@ -80,4 +80,9 @@ class Application extends Model
     {
         return $this->morphMany(Interaction::class, 'interactionable');
     }
+
+    public function appCitizenPropertyUse()
+    {
+        return $this->hasOne(AppCitizenPropertyUse::class, 'application_id');
+    }
 }

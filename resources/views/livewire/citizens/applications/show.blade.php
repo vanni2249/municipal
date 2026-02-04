@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-4">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
@@ -13,7 +13,7 @@
                     variant="{{ $application->status->statusType->variant }}" />
                 <div class="mt-2">
                     <span class="hidden md:block text-sm text-gray-600">
-                        <x-date-format :date="$application->created_at" format="d M Y H:m a" />
+                        <x-date-format :date="$application->created_at" format="d M Y h:i a" />
                     </span>
                     <span class="md:hidden text-sm text-gray-600 text-right">
                         <x-date-format :date="$application->created_at" format="d/M/Y" />
@@ -22,4 +22,33 @@
             </div>
         </header>
     </x-card>
+
+     @switch($application->service->slug)
+        @case('app-citizen-property-use')
+            @livewire('citizens.applications.app-citizen-property-use.show', [
+                'application' => $application,
+            ])
+            
+            @break
+        @case('app-citizen-property-rent')
+            @livewire('citizens.applications.app-citizen-property-rent.show', [
+                'application' => $application,
+            ])
+            @break
+        @case('app-citizen-residencial-removal-debris')
+                app-citizen-residencial-removal-debris
+            @break
+
+        @case('app-citizen-report-property-damage')
+                app-citizen-report-property-damage
+            @break
+        @case('app-citizen-register-special-person')
+                app-citizen-register-special-person
+            @break
+        @case('app-citizen-residencial-construction-permit')
+                app-citizen-residencial-construction-permit
+            @break
+        @default
+            
+    @endswitch
 </div>

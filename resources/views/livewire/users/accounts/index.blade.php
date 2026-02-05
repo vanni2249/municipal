@@ -1,11 +1,26 @@
 <div class="space-y-4">
     <x-card>
-        <header class="flex justify-between items-center">
+        <header class="flex justify-between items-start">
             <div>
                 <x-h2 value="Mis cuentas" />
                 <p class="text-sm text-gray-700">
                     Gestiona y navega entre las cuentas asociadas a tu usuario.
                 </p>
+            </div>
+            <div>
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <x-icon-button icon="ellipsis-vertical" variant="light" />
+                    </x-slot>
+                    <x-slot name="content">
+                        <x-dropdown-link href="">
+                            Attachar cuenta
+                        </x-dropdown-link>
+                        <x-dropdown-link href="">
+                            Gestionar cuentas
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
             </div>
         </header>
     </x-card>

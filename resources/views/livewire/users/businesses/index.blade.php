@@ -46,7 +46,7 @@
                 </x-card-element>
 
             @empty
-                <x-card-element>
+                <x-card-element class="col-span-full">
                     <p class="text-center text-gray-500">No hay comercios registrados.</p>
                 </x-card-element>
             @endforelse

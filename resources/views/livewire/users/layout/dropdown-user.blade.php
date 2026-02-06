@@ -10,9 +10,9 @@
             <x-dropdown-link href="{{ route('users.accounts.index') }}">
                 Mis cuentas
             </x-dropdown-link>
-            <x-dropdown-link href="{{ route('users.businesses.index') }}">
+            {{-- <x-dropdown-link href="{{ route('users.businesses.index') }}">
                 Mis comercios
-            </x-dropdown-link>
+            </x-dropdown-link> --}}
             <x-dropdown-link href="{{ route('logout') }}">
                 Salir
             </x-dropdown-link>

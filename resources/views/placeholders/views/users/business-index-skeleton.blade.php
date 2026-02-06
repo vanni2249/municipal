@@ -11,7 +11,7 @@
         </header>
     </x-card>
     <x-card>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 gap-4">
             @for ($i = 0; $i < 2; $i++)
                 <div class="h-12 bg-gray-300 rounded w-full"></div>
             @endfor

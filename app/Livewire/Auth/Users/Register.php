@@ -68,8 +68,8 @@ class Register extends Component
 
         $this->validate([
             // 'accounts' => 'nullable|array|min:1',
-            'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
+            'name' => 'required|string|max:10',
+            'lastname' => 'required|string|max:25',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|numeric',
@@ -83,7 +83,7 @@ class Register extends Component
             $this->user = User::create([
                 'ulid' => $this->createUserUlid(),
                 'number' => $this->createUserNumber(),
-                'name' => $this->name . ' ' . $this->lastname,
+                'name' => $this->name,
                 'lastname' => $this->lastname,
                 'email' => $this->email,
                 'password' => Hash::make($this->password),

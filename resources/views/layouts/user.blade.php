@@ -27,7 +27,7 @@
                                 <x-icon icon="bars-3" />
                             </button>
                         </div> --}}
-                        <a href="{{ route('users.profile') }}" class="font-bold ">MyCity</a>
+                        <a href="{{ route('users.accounts.index') }}" class="font-bold ">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">

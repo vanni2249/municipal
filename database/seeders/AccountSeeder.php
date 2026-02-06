@@ -32,7 +32,7 @@ class AccountSeeder extends Seeder
         ]);
 
         $accountFirst->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
@@ -48,7 +48,7 @@ class AccountSeeder extends Seeder
             'user_id' => 2, // Angel F
         ]);
         $accountSecond->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
@@ -64,7 +64,7 @@ class AccountSeeder extends Seeder
             'user_id' => 3, // Angel M
         ]);
         $accountThird->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
         $accountThird->defaults()->create([
@@ -129,7 +129,7 @@ class AccountSeeder extends Seeder
             'email' => 'john.doe@example.com',
         ]);
         $accountEighth->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
 
@@ -144,7 +144,7 @@ class AccountSeeder extends Seeder
             'email' => 'jose.doe@example.com',
         ]);
         $accountNinth->statuses()->create([
-            'status_type_id' => 1,
+            'status_type_id' => 2,
             'reason' => 'Initial status for default account',
         ]);
     }

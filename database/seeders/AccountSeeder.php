@@ -132,5 +132,20 @@ class AccountSeeder extends Seeder
             'status_type_id' => 1,
             'reason' => 'Initial status for default account',
         ]);
+
+        // 9Create merchant account not linked to user
+        $accountNinth = Account::create([
+            'ulid' => $this->createAccountUlid(),
+            'number' => $this->createAccountNumber(),
+            'code' => 'code1234',
+            'account_type_id' => 2, // Merchant
+            'name' => 'Jose',
+            'lastname' => 'Contreras',
+            'email' => 'jose.doe@example.com',
+        ]);
+        $accountNinth->statuses()->create([
+            'status_type_id' => 1,
+            'reason' => 'Initial status for default account',
+        ]);
     }
 }

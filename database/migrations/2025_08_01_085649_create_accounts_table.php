@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
+            $table->string('code')->nullable();
             $table->foreignId('account_type_id')->constrained('account_types');
             $table->string('name')->nullable();
             $table->string('lastname')->nullable();

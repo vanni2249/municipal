@@ -8,7 +8,9 @@
                 </ul>
             </div>
             <div class="flex flex-col items-end space-y-2">
-                @livewire('users.accounts.components.modal-accounts')
+                @if ($has_account_merchant && $account_has_businesses)
+                    @livewire('users.accounts.components.modal-accounts')
+                @endif
                 <span class="text-xs text-gray-700">
                     {{ $account->number }}
                 </span>
@@ -28,22 +30,24 @@
             <div class="flex flex-row space-x-2 pb-1 overflow-x-auto no-scrollbar">
 
                 @foreach ($services as $service)
-                <a href="{{ route('citizens.services.create', $service->ulid) }}" class="flex-shrink-0 w-76 sm:w-80 md:w-84 lg:w-1/4" wire:navigate>
-                    <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
-                        <div class="grow">
-                            <div>
-                                <span class="text-gray-700 text-xs font-bold uppercase">
-                                    {{ $service->serviceType->name }}
-                                </span>
-                                <br>
-                                <span class="text-md font-bold text-gray-900 line-clamp-2">{{ $service->title }}</span>
+                    <a href="{{ route('citizens.services.create', $service->ulid) }}"
+                        class="flex-shrink-0 w-76 sm:w-80 md:w-84 lg:w-1/4" wire:navigate>
+                        <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
+                            <div class="grow">
+                                <div>
+                                    <span class="text-gray-700 text-xs font-bold uppercase">
+                                        {{ $service->serviceType->name }}
+                                    </span>
+                                    <br>
+                                    <span
+                                        class="text-md font-bold text-gray-900 line-clamp-2">{{ $service->title }}</span>
+                                </div>
+                                <p class="text-sm text-gray-600 line-clamp-2 grow mb-2">
+                                    {{ $service->description }}
+                                </p>
                             </div>
-                            <p class="text-sm text-gray-600 line-clamp-2 grow mb-2">
-                                {{ $service->description }}
-                            </p>
-                        </div>
-                    </x-card-element>
-                </a>
+                        </x-card-element>
+                    </a>
                 @endforeach
             </div>
         </div>

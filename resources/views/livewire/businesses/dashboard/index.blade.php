@@ -92,9 +92,7 @@
                     </a>
                 @empty
                     <x-card-element>
-                        <div class="text-center text-gray-600 py-4">
-                            No hay aplicaciones recientes.
-                        </div>
+                        <p class="text-gray-600 text-center">No hay aplicaciones recientes.</p>
                     </x-card-element>
                 @endforelse
             </x-card-elements-group>

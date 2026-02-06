@@ -50,16 +50,16 @@
         <div class="px-2 md:px-4 pt-2 md:pt-4">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
-                    <div class="flex space-x-4">
-                        <div class=" items-center justify-center">
+                    <div class="flex items-center space-x-2">
+                        <div class="flex items-center justify-center ">
                             <button id="sidebar-toggle" class="cursor-pointer">
                                 <x-icon icon="bars-3" />
                             </button>
                         </div>
-                        <div class="lg:hidden flex items-center justify-center">
+                        <div class="lg:hidden flex items-center justify-center ">
+                            <a href="{{ route(request()->segment(1) . '.dashboard') }}"
+                                class="font-bold lg:hidden">MyCity</a>
                         </div>
-                        <a href="{{ route(request()->segment(1) . '.dashboard') }}"
-                            class="font-bold lg:hidden">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
                         <li class="inline-block">

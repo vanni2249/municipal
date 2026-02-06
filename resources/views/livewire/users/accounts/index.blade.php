@@ -40,14 +40,8 @@
 
                         <!-- Right Side buttons -->
                         <div class="flex flex-col space-y-2 ">
-                            <!-- Status -->
-                            <div class="text-right">
-                                <x-badge variant="{{ $account->status->statusType->variant }}"
-                                    label="{{ $account->status->statusType->name }}" />
-                            </div>
-                            <!-- Citizen & Merchant dashboard buttons -->
                             <div>
-                                @if ($account->accountType->slug == 'citizen')
+                                @if ($account->accountType->slug == 'citizen' && $account->status->statusType->slug == 'active')
                                     <!-- Citizen dashboard button -->
                                     <div class="">
                                         <x-link-button href="{{ route('citizens.set-session', $account->ulid) }}"
@@ -57,11 +51,20 @@
                                     </div>
                                 @elseif($account->accountType->slug == 'merchant' && $account->status->statusType->slug == 'active')
                                     <!-- Merchant dashboard button -->
-                                    {{-- @if ($account->businesses->isNotEmpty() && $account->businesses->last()->status->statusType->slug == 'active') --}}
-                                        <x-button variant="light" @click="$dispatch('open-modal', 'create-business-modal')">
-                                            Crear nuevo comercio
-                                        </x-button>
-                                    {{-- @endif --}}
+                                    {{-- <x-button variant="light" @click="$dispatch('open-modal', 'create-business-modal')">
+                                        Crear comercio
+                                    </x-button> --}}
+                                    <span
+                                        class="text-xs border border-gray-300 p-2 rounded-md uppercase font-bold text-gray-700">
+                                        {{ $account->businesses->count() }}
+                                        {{ Str::plural('comercio', $account->businesses->count()) }}
+                                    </span>
+                                @else
+                                    <!-- Status -->
+                                    <div class="text-right">
+                                        <x-badge variant="{{ $account->status->statusType->variant }}"
+                                            label="{{ $account->status->statusType->name }}" />
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -71,7 +74,7 @@
                     @if ($account->accountType->slug == 'merchant' && $account->status->statusType->slug == 'active')
                         <div class="mt-4 space-y-2">
                             @forelse ($account->businesses as $business)
-                                <div class=" p-4 bg-gray-200 rounded">
+                                <div class="p-2 md:p-4 bg-gray-50 border border-gray-200 rounded-lg">
                                     <div class="flex justify-between items-center">
                                         <!-- Business Info -->
                                         <div>
@@ -85,7 +88,7 @@
                                             @if ($business->status->statusType->slug == 'active')
                                                 <x-link-button
                                                     href="{{ route('businesses.set-session', $business->ulid) }}"
-                                                    variant="light-outline">
+                                                    variant="light">
                                                     Ir al tablero
                                                 </x-link-button>
                                             @else
@@ -102,6 +105,20 @@
                                     </p>
                                 </div>
                             @endforelse
+                            <div
+                                class="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4 lg:flex lg:justify-between space-y-4 lg:space-y-0 lg:items-center">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Crear un nuevo comercio bajo esta cuenta de comerciante. Recuerda que cada comercio
+                                        puede tener su propia configuración y estado independiente.
+                                    </p>
+                                </div>
+                                <div>
+                                    <x-button variant="light" @click="$dispatch('open-modal', 'create-business-modal')">
+                                        Nuevo comercio
+                                    </x-button>
+                                </div>
+                            </div>
                         </div>
                     @endif
                 </x-card-element>
@@ -141,6 +158,7 @@
             </div>
         @endif
     </x-card>
+    <!-- End accounts -->
 
     <!-- Modals -->
     <!-- Attach merchant account -->
@@ -182,6 +200,7 @@
     </x-modal>
     <!-- Create merchant account -->
     <x-modal name="request-merchant-account-modal" title="Solicitar cuenta de comerciante" size="md">
+
         <form wire:submit.prevent="createMerchantAccount">
             <!-- application account merchant term -->
             <div class="mb-4 text-sm text-gray-700">
@@ -201,88 +220,97 @@
 
     <!-- Create business -->
     <x-modal name="create-business-modal" title="Crear nuevo comercio" size="md">
-        <form wire:submit.prevent="createBusiness">
-            <div class="space-y-4">
-                <!-- Business type -->
-                <div>
-                    <x-label for="business_type_id" value="Tipo de comercio" />
-                    <x-select id="business_type_id" @class([
-                        'mt-1 block w-full',
-                        'border-red-500' => $errors->has('business_type_id'),
-                    ]) wire:model.defer="business_type_id">
-                        <option value="">Seleccione un tipo de comercio</option>
-                        @foreach ($business_types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
-                        @endforeach
-                    </x-select>
-                    @error('business_type_id')
-                        <x-error message="{{ $message }}" />
-                    @enderror
-                </div>
-                <!-- Business name -->
-                <div>
-                    <x-label for="business_name" value="Nombre del comercio" />
-                    <x-input id="business_name" type="text" @class([
-                        'mt-1 block w-full',
-                        'border-red-500' => $errors->has('business_name'),
-                    ])
-                        wire:model.defer="business_name" autocomplete="off" />
-                    @error('business_name')
-                        <x-error message="{{ $message }}" />
-                    @enderror
-                </div>
-                <!-- Address -->
-                <div>
-                    <x-label for="business_address" value="Dirección" />
-                    <x-input id="business_address" type="text" @class([
-                        'mt-1 block w-full',
-                        'border-red-500' => $errors->has('business_address'),
-                    ])
-                        wire:model.defer="business_address" autocomplete="off" />
-                    @error('business_address')
-                        <x-error message="{{ $message }}" />
-                    @enderror
-                </div>
-
-                <!-- Place and Postal Code -->
-                <div class="grid grid-cols-2 gap-4">
-                    <!-- Place -->
+        {{-- {{ $accounts->where('account_type_id', 2)->first() }} --}}
+        @if ($accounts->where('account_type_id', 2)->first()->businesses->last()->status->statusType->slug != 'active')
+            <div class="mb-4 text-sm text-gray-700">
+                Haz solicitado la creación de un nuevo comercio. Tu solicitud está siendo revisada por el equipo administrativo.
+                Recibirás una notificación por correo electrónico una vez que tu comercio haya sido aprobado o rechazado. Mientras tanto, puedes revisar el estado de tu solicitud en la sección de cuentas de tu panel de usuario.
+            </div>
+        @else
+            <form wire:submit.prevent="createBusiness">
+                <div class="space-y-4">
+                    <!-- Business type -->
                     <div>
-                        <x-label for="business_place_id" value="Lugar" />
-                        <x-select id="business_place_id" @class([
+                        <x-label for="business_type_id" value="Tipo de comercio" />
+                        <x-select id="business_type_id" @class([
                             'mt-1 block w-full',
-                            'border-red-500' => $errors->has('business_place_id'),
+                            'border-red-500' => $errors->has('business_type_id'),
                         ])
-                            wire:model.defer="business_place_id">
-                            <option value="">Seleccione un lugar</option>
-                            @foreach ($places as $place)
-                                <option value="{{ $place->id }}">{{ $place->name }}</option>
+                            wire:model.defer="business_type_id">
+                            <option value="">Seleccione un tipo de comercio</option>
+                            @foreach ($business_types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </x-select>
-                        @error('business_place_id')
+                        @error('business_type_id')
                             <x-error message="{{ $message }}" />
                         @enderror
                     </div>
-                    <!-- Zip code -->
+                    <!-- Business name -->
                     <div>
-                        <x-label for="business_postal_code" value="Código postal" />
-                        <x-input id="business_postal_code" type="text" @class([
+                        <x-label for="business_name" value="Nombre del comercio" />
+                        <x-input id="business_name" type="text" @class([
                             'mt-1 block w-full',
-                            'border-red-500' => $errors->has('business_postal_code'),
+                            'border-red-500' => $errors->has('business_name'),
                         ])
-                            wire:model.defer="business_postal_code" autocomplete="off" />
-                        @error('business_postal_code')
+                            wire:model.defer="business_name" autocomplete="off" />
+                        @error('business_name')
                             <x-error message="{{ $message }}" />
                         @enderror
                     </div>
+                    <!-- Address -->
+                    <div>
+                        <x-label for="business_address" value="Dirección" />
+                        <x-input id="business_address" type="text" @class([
+                            'mt-1 block w-full',
+                            'border-red-500' => $errors->has('business_address'),
+                        ])
+                            wire:model.defer="business_address" autocomplete="off" />
+                        @error('business_address')
+                            <x-error message="{{ $message }}" />
+                        @enderror
+                    </div>
+
+                    <!-- Place and Postal Code -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Place -->
+                        <div>
+                            <x-label for="business_place_id" value="Lugar" />
+                            <x-select id="business_place_id" @class([
+                                'mt-1 block w-full',
+                                'border-red-500' => $errors->has('business_place_id'),
+                            ])
+                                wire:model.defer="business_place_id">
+                                <option value="">Seleccione un lugar</option>
+                                @foreach ($places as $place)
+                                    <option value="{{ $place->id }}">{{ $place->name }}</option>
+                                @endforeach
+                            </x-select>
+                            @error('business_place_id')
+                                <x-error message="{{ $message }}" />
+                            @enderror
+                        </div>
+                        <!-- Zip code -->
+                        <div>
+                            <x-label for="business_postal_code" value="Código postal" />
+                            <x-input id="business_postal_code" type="text" @class([
+                                'mt-1 block w-full',
+                                'border-red-500' => $errors->has('business_postal_code'),
+                            ])
+                                wire:model.defer="business_postal_code" autocomplete="off" />
+                            @error('business_postal_code')
+                                <x-error message="{{ $message }}" />
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- Submit button -->
+                    <div>
+                        <x-button type="submit" variant="primary">
+                            Crear comercio
+                        </x-button>
+                    </div>
                 </div>
-                <!-- Submit button -->
-                <div>
-                    <x-button type="submit" variant="primary">
-                        Crear comercio
-                    </x-button>
-                </div>
-            </div>
-        </form>
+            </form>
+        @endif
     </x-modal>
 </div>

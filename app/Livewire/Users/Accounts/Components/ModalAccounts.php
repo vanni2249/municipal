@@ -9,7 +9,7 @@ class ModalAccounts extends Component
     public function render()
     {
         return view('livewire.users.accounts.components.modal-accounts', [
-            'accounts' => auth()->user()->accounts,
+            'accounts' => auth()->user()->accounts()->with('accountType', 'businesses')->orderBy('account_type_id', 'asc')->get(),
         ]);
     }
 }

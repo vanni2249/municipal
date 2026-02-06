@@ -12,7 +12,7 @@
 
     <x-modal name="accounts-modal" title="Mis cuentas" size="md">
         <div class="space-y-4">
-            @foreach (auth()->user()->accounts()->with('accountType')->whereIn('account_type_id', [1, 2])->get() as $item)
+            @foreach ($accounts as $item)
                 @if ($item->accountType->slug == 'citizen')
                     <div class="space-y-2">
                         <span class="text-xs text-gray-600 font-bold uppercase">
@@ -30,7 +30,7 @@
                         <span class="text-xs text-gray-600 font-bold uppercase">
                             Mi(s) comercio(s)
                         </span>
-                        @foreach ($item->businesses()->get() as $business)
+                        @foreach ($item->businesses as $business)
                             <a href="{{ route('businesses.set-session', $business->ulid) }}" class="block">
                                 <ul class="flex justify-between text-sm bg-gray-50 hover:bg-gray-200 space-y-1 p-2 rounded">
                                     <li class="font-bold text-gray-800">{{ $business->name }}</li>

@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-4">
     <x-card>
         <x-card-header>
             <h1 class="font-bold text-lg text-gray-900 line-clamp-2">{{ $service->title }}</h1>
@@ -6,32 +6,77 @@
         </x-card-header>
     </x-card>
 
-    {{ $service->slug }}
-
     @switch($service->slug)
         @case('app-business-remove-trash')
-                app-business-remove-trash
-            @break
+            @livewire('businesses.applications.app-business-remove-trash.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-remove-trash-create')
+            )
+        @break
+
         @case('app-business-remove-debris')
-                app-business-remove-debris
-            @break
+            @livewire('businesses.applications.app-business-remove-debris.create',  
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-remove-debris-create')
+            )
+        @break
+
         @case('app-business-construction-permit')
-                app-business-construction-permit
-            @break
+            @livewire('businesses.applications.app-business-construction-permit.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-construction-permit-create')
+            )
+        @break
 
         @case('app-business-use-permit')
-                app-business-use-permit
-            @break
+            @livewire('businesses.applications.app-business-use-permit.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-use-permit-create')
+            )
+        @break
+
         @case('app-business-temporary-patent')
-                app-business-temporary-patent
-            @break
+            @livewire('businesses.applications.app-business-temporary-patent.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-temporary-patent-create')
+            )
+        @break
+
         @case('app-business-renew-patent')
-                app-business-renew-patent
-            @break
+            @livewire('businesses.applications.app-business-renew-patent.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-renew-patent-create')
+            )
+        @break
+
         @case('app-business-report-tax')
-                app-business-report-tax
-            @break
+            @livewire('businesses.applications.app-business-report-tax.create',
+                [
+                    'service' => $service,
+                    'business' => $business,
+                ],
+                key('app-business-report-tax-create')
+            )
+        @break
+
         @default
-            
     @endswitch
 </div>

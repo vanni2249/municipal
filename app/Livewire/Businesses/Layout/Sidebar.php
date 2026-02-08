@@ -23,6 +23,16 @@ class Sidebar extends Component
             'path' => 'applications',
         ],
         [
+            'name' => 'Permisos',
+            'route' => 'businesses.permits',
+            'path' => 'permits',
+        ],
+        [
+            'name' => 'Patente',
+            'route' => 'businesses.patents',
+            'path' => 'patents',
+        ],
+        [
             'name' => 'Interacciones',
             'route' => 'businesses.interactions',
             'path' => 'interactions',

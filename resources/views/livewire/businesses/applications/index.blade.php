@@ -1,8 +1,30 @@
 <div class="space-y-4">
     <x-card>
-        <header>
-            <x-h2 value="Aplicaciones" />
-            <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por tu negocio.</span>
+        <header class="flex justify-between items-center">
+            <div>
+                <x-h2 value="Aplicaciones" />
+                <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por tu negocio.</span>
+            </div>
+            <div>
+                <div>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <x-icon-button variant="light" icon="ellipsis-vertical" />
+                        </x-slot>
+                        <x-slot name="content">
+                            @forelse ($services as $service)
+                                <x-dropdown-link href="{{ route('businesses.services.create', $service->ulid) }}">
+                                    {{ $service->title }}
+                                </x-dropdown-link>
+                            @empty
+                                <x-dropdown-link href="">
+                                    No hay servicios disponibles
+                                </x-dropdown-link>
+                            @endforelse
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+            </div>
         </header>
     </x-card>
     <x-card class="col-span-full lg:col-span-7">
@@ -10,29 +32,28 @@
             @forelse ($applications as $application)
                 <a href="{{ route('businesses.applications.show', $application->ulid) }}" class="block" wire:navigate>
                     <x-card-element class="hover:bg-gray-200" border="{{ $application->status->statusType->variant }}">
-                        <div class="flex justify-between items-start space-x-2">
-                            <div class="flex-1 flex flex-col space-y-1">
-                                <span class="text-gray-700 font-bold uppercase text-xs">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="col-span-2 grid grid-cols-1 lg:grid-cols-4 gap-1 ">
+                                <span class="text-gray-900 font-bold uppercase text-sm tracking-wide">
                                     {{ $application->number }}
                                 </span>
-                                <span class="text-md font-bold text-gray-900">
+                                <span class="lg:col-span-2 text-sm font-bold text-gray-700">
                                     {{ $application->service->title }}
                                 </span>
-                                <ul class="text-sm text-gray-600">
-                                    <li>{{ $application->service->serviceType->name }}</li>
-                                </ul>
+                                <span class="text-sm text-gray-700 lg:text-center">
+                                    {{ $application->service->serviceType->name }}
+                                </span>
                             </div>
-                            <div class="flex flex-col space-y-2">
-                                <div class="flex justify-end">
-                                    <x-badge label="{{ $application->status->statusType->name }}"
-                                        variant="{{ $application->status->statusType->variant }}" />
+                            <div class="col-span-1">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 h-auto">
+                                    <div class="tracking-wide text-right lg:order-last">
+                                        <x-badge label="{{ $application->status->statusType->name }}"
+                                            variant="{{ $application->status->statusType->variant }}" />
+                                    </div>
+                                    <div class="text-sm text-gray-700 text-right lg:text-center">
+                                        <x-date-format :date="$application->created_at" format="d/M/Y" />
+                                    </div>
                                 </div>
-                                <span class="hidden md:block text-sm text-gray-600">
-                                    <x-date-format :date="$application->created_at" format="d M Y H:m a" />
-                                </span>
-                                <span class="md:hidden text-sm text-gray-600 text-right">
-                                    <x-date-format :date="$application->created_at" format="d/M/Y" />
-                                </span>
                             </div>
                         </div>
                     </x-card-element>

@@ -164,23 +164,23 @@ class ServiceSeeder extends Seeder
                 'amount' => 300.00,
                 'fee' => 30.00,
             ],
-            [
-                'ulid' => $this->createServiceUlid(),
-                'number' => $this->createServiceNumber(),
-                'slug' => 'app-business-use-permit',
-                'title' => [
-                    'en' => 'Application for Business Use Permit',
-                    'es' => 'Solicitud de Permiso de Uso Comercial',
-                ],
-                'description' => [
-                    'en' => 'Application for a permit to use municipal properties for your business activities.',
-                    'es' => 'Solicitud de un permiso para usar propiedades municipales para las actividades de su negocio.',
-                ],
-                'account_type_id' => 2,
-                'service_type_id' => 2,
-                'amount' => 20.00,
-                'fee' => 5.00,
-            ],
+            // [
+            //     'ulid' => $this->createServiceUlid(),
+            //     'number' => $this->createServiceNumber(),
+            //     'slug' => 'app-business-use-permit',
+            //     'title' => [
+            //         'en' => 'Application for Business Use Permit',
+            //         'es' => 'Solicitud de Permiso de Uso Comercial',
+            //     ],
+            //     'description' => [
+            //         'en' => 'Application for a permit to use municipal properties for your business activities.',
+            //         'es' => 'Solicitud de un permiso para usar propiedades municipales para las actividades de su negocio.',
+            //     ],
+            //     'account_type_id' => 2,
+            //     'service_type_id' => 2,
+            //     'amount' => 20.00,
+            //     'fee' => 5.00,
+            // ],
             [
                 'ulid' => $this->createServiceUlid(),
                 'number' => $this->createServiceNumber(),

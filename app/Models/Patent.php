@@ -9,10 +9,18 @@ class Patent extends Model
     protected $fillable = [
         'ulid',
         'number',
+        'patentable_id',
+        'patentable_type',
     ];
 
-    public function applications()
+    public function patentable()
     {
-        return $this->belongsToMany(Application::class, 'application_patent');
+        return $this->morphTo();
     }
+
+    public function periods()
+    {
+        return $this->morphMany(Period::class, 'periodable');
+    }
+    
 }

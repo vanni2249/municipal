@@ -28,7 +28,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 4,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Headquarters',
             'place_id' => 1,
             'address' => '123 Main St',
@@ -53,7 +53,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 4,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Main Office',
             'place_id' => 2,
             'address' => '456 Another St',
@@ -74,7 +74,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 5,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Main Office',
             'place_id' => 2,
             'address' => '456 Another St',
@@ -95,7 +95,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 5,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Main Office',
             'place_id' => 2,
             'address' => '456 Another St',
@@ -116,7 +116,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 6,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Main Office',
             'place_id' => 2,
             'address' => '456 Another St',
@@ -137,7 +137,7 @@ class BusinessSeeder extends Seeder
             'account_id' => 6,
         ]);
 
-        $business->addresses()->create([
+        $business->address()->create([
             'name' => 'Main Office',
             'place_id' => 2,
             'address' => '456 Another St',

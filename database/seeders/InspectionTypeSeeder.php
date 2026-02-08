@@ -34,6 +34,34 @@ class InspectionTypeSeeder extends Seeder
                     'es' => 'Inspección de Seguridad',
                 ],
             ],
+            [
+                'slug' => 'trash-inspection',
+                'name' => [
+                    'en' => 'Trash Inspection',
+                    'es' => 'Inspección de Basura',
+                ],
+            ],
+            [
+                'slug' => 'debris-inspection',
+                'name' => [
+                    'en' => 'Debris Inspection',
+                    'es' => 'Inspección de Escombros',
+                ],
+            ],
+            [
+                'slug' => 'environmental-inspection',
+                'name' => [
+                    'en' => 'Environmental Inspection',
+                    'es' => 'Inspección Ambiental',
+                ],
+            ],
+            [
+                'slug' => 'construction-inspection',
+                'name' => [
+                    'en' => 'Construction Inspection',
+                    'es' => 'Inspección de Construcción',
+                ],
+            ]
         ];
 
         foreach ($items as $item) {

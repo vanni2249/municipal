@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('app_business_use_permits', function (Blueprint $table) {
+        Schema::create('periods', function (Blueprint $table) {
             $table->id();
-            $table->string('permit_number')->nullable()->unique();
-            $table->date('started_at')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->morphs('periodable');
+            $table->foreignId('application_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_business_use_permits');
+        Schema::dropIfExists('periods');
     }
 };

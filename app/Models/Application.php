@@ -56,11 +56,6 @@ class Application extends Model
         return $this->belongsTo(Patent::class, 'application_patent');
     }
 
-    public function permit()
-    {
-        return $this->hasOne(Permit::class);
-    }
-
     public function inspections()
     {
         return $this->morphMany(Inspection::class, 'inspectable');
@@ -81,8 +76,13 @@ class Application extends Model
         return $this->morphMany(Interaction::class, 'interactionable');
     }
 
-    public function appCitizenPropertyUse()
+    public function invoice()
     {
-        return $this->hasOne(AppCitizenPropertyUse::class, 'application_id');
+        return $this->morphOne(Invoice::class, 'invoicable');
+    }
+
+    public function permit()
+    {
+        return $this->hasOne(Permit::class);
     }
 }

@@ -31,6 +31,13 @@ class AccountSeeder extends Seeder
             'postal_code' => '12345',
         ]);
 
+        $accountFirst->addresses()->create([
+            'name' => 'Second Account Address',
+            'place_id' => 1,
+            'address' => '456 Main St, Hometown',
+            'postal_code' => '12345',
+        ]);
+
         $accountFirst->statuses()->create([
             'status_type_id' => 2,
             'reason' => 'Initial status for default account',

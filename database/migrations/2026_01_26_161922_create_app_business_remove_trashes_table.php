@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('app_business_remove_trashes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->timestamps();
         });

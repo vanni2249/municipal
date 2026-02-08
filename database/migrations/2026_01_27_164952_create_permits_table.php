@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
-            $table->foreignId('application_id')->constrained('applications');
+            $table->morphs('permitable');
+            $table->foreignId('application_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

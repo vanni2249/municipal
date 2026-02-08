@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('app_business_temporary_patents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
             $table->date('started_at');
-            $table->date('ended_at');
-            $table->string('document_id')->nullable();
+            $table->date('ended_at')->nullable();
+            $table->string('patent_id')->nullable();
             $table->decimal('amount', 10, 2);
-            $table->decimal('fee', 10, 2);
             $table->timestamps();
         });
     }

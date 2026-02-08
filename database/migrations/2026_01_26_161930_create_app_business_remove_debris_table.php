@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('app_business_remove_debris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
             $table->string('description')->nullable();
-            $table->decimal('amount', 10, 2)->default(0);
             $table->timestamps();
         });
     }

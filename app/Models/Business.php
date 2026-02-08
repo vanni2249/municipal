@@ -29,13 +29,6 @@ class Business extends Model
         return $this->belongsTo(Place::class);
     }
     
-    // public function accounts()
-    // {
-    //     return $this->belongsToMany(Account::class, 'account_business', 'business_id', 'account_id')
-    //     ->withPivot(['ulid', 'number', 'is_active'])
-    //     ->withTimestamps();
-    // }
-
     public function account()
     {
         return $this->belongsTo(Account::class);
@@ -45,12 +38,6 @@ class Business extends Model
     {
         return $this->morphMany(UserDefault::class, 'defaultable');
     }
-
-    // public function merges()
-    // {
-    //     return $this->belongsToMany(Merge::class, 'business_merge', 'business_id', 'merge_id')
-    //     ->withTimestamps();
-    // }
 
     public function merges()
     {
@@ -67,9 +54,9 @@ class Business extends Model
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->morphMany(Address::class, 'addressable');
+        return $this->morphOne(Address::class, 'addressable');
     }
 
     public function interactions()

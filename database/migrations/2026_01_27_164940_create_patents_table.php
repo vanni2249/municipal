@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
+            $table->morphs('patentable');
             $table->timestamps();
         });
     }

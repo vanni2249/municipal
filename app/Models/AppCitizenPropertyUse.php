@@ -19,6 +19,6 @@ class AppCitizenPropertyUse extends Model
 
     public function applications()
     {
-        return $this->morphMany(Application::class, 'applicable');
+        return $this->morphOne(Application::class, 'applicable');
     }
 }

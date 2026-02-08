@@ -9,17 +9,11 @@ class AppBusinessRemoveTrash extends Model
     protected $table = 'app_business_remove_trashes';
 
     protected $fillable = [
-        'business_id',
         'description',
     ];
 
     public function applications()
     {
         return $this->morphMany(Application::class, 'applicable');
-    }
-
-    public function business()
-    {
-        return $this->belongsTo(Business::class, 'business_id');
     }
 }

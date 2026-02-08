@@ -48,13 +48,6 @@ class Account extends Model
         return $this->morphMany(UserDefault::class, 'defaultable');
     }
 
-    // public function businesses()
-    // {
-    //     return $this->belongsToMany(Business::class, 'account_business', 'account_id', 'business_id')
-    //     ->withPivot(['ulid', 'number', 'is_active'])
-    //     ->withTimestamps();
-    // }
-
     public function businesses()
     {
         return $this->hasMany(Business::class);
@@ -68,5 +61,10 @@ class Account extends Model
     public function addresses()
     {
         return $this->morphMany(Address::class, 'addressable');
+    }
+
+    public function permits()
+    {
+        return $this->morphMany(Permit::class, 'permitable');
     }
 }

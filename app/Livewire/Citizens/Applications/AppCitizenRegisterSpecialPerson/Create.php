@@ -28,7 +28,7 @@ class Create extends Component
     public $place_id;
     public $zip_code;
 
-     public function mount($service, $account)
+    public function mount($service, $account)
     {
         $this->service = $service;
         $this->account = $account;
@@ -81,7 +81,7 @@ class Create extends Component
         // Logic to store the special person registration application goes here
 
         session()->flash('message', 'Application submitted successfully.');
-        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+        return $this->redirect(route('citizens.applications.show', $app->ulid), navigate: true);
     }
     public function render()
     {

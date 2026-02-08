@@ -33,7 +33,7 @@ class Create extends Component
         ]);
 
 
-       $appCitizenResidencialRemovalDebris = AppCitizenResidencialRemovalDebris::create([
+        $appCitizenResidencialRemovalDebris = AppCitizenResidencialRemovalDebris::create([
             'address_id' => $this->address_id,
             'description' => $this->description,
         ]);
@@ -54,11 +54,11 @@ class Create extends Component
 
         session()->flash('message', 'Application submitted successfully.');
 
-        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+        return $this->redirect(route('citizens.applications.show', $app->ulid), navigate: true);
     }
     public function render()
     {
-        return view('livewire.citizens.applications.app-citizen-residencial-removal-debris.create',[
+        return view('livewire.citizens.applications.app-citizen-residencial-removal-debris.create', [
             'addresses' => $this->account->addresses,
         ]);
     }

@@ -37,7 +37,7 @@ class Create extends Component
         ]);
 
 
-       $appCitizenPropertyRent = AppCitizenPropertyRent::create([
+        $appCitizenPropertyRent = AppCitizenPropertyRent::create([
             'property_id' => $this->property_id,
             'rent_date' => $this->date_at,
             'description' => $this->description,
@@ -59,12 +59,12 @@ class Create extends Component
 
         session()->flash('message', 'Application submitted successfully.');
 
-        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+        return $this->redirect(route('citizens.applications.show', $app->ulid), navigate: true);
     }
 
     public function render()
     {
-        return view('livewire.citizens.applications.app-citizen-property-rent.create',[
+        return view('livewire.citizens.applications.app-citizen-property-rent.create', [
             'properties' => Property::all(),
         ]);
     }

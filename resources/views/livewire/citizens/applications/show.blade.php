@@ -11,11 +11,11 @@
             <div class="text-right">
                 <x-badge label="{{ $application->status->statusType->name }}"
                     variant="{{ $application->status->statusType->variant }}" />
-                <div class="uppercase text-xs font-bold text-gray-500 mt-1">
+                {{-- <div class="uppercase text-xs font-bold text-gray-500 mt-1">
                     <span class="text-sm text-gray-600 text-right">
                         {{ $application->service->serviceType->name }}
                     </span>
-                </div>
+                </div> --}}
             </div>
         </header>
     </x-card>

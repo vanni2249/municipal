@@ -37,7 +37,7 @@ class Create extends Component
         ]);
 
 
-       $appCitizenPropertyUse = AppCitizenPropertyUse::create([
+        $appCitizenPropertyUse = AppCitizenPropertyUse::create([
             'property_id' => $this->property_id,
             'use_date' => $this->date_at,
             'description' => $this->description,
@@ -59,7 +59,7 @@ class Create extends Component
 
         session()->flash('message', 'Application submitted successfully.');
 
-        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+        return $this->redirect(route('citizens.applications.show', $app->ulid), navigate: true);
     }
 
     public function render()

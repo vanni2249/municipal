@@ -34,7 +34,7 @@ class Create extends Component
         ]);
 
 
-       $appCitizenReportPropertyDamage = AppCitizenReportPropertyDamage::create([
+        $appCitizenReportPropertyDamage = AppCitizenReportPropertyDamage::create([
             'property_id' => $this->property_id,
             'description' => $this->description,
         ]);
@@ -55,7 +55,7 @@ class Create extends Component
 
         session()->flash('message', 'Application submitted successfully.');
 
-        return redirect()->route('citizens.applications.show', ['application' => $app->ulid]);
+        return $this->redirect(route('citizens.applications.show', $app->ulid), navigate: true);
     }
     public function render()
     {

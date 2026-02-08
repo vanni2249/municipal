@@ -38,7 +38,31 @@
             </x-card>
             <x-card>
                 <header>
-                    <x-h3>Detalles de Uso de Propiedad</x-h3>
+                    <x-h3>Estado de la aplicación</x-h3>
+                </header>
+                <x-card-elements-group>
+                    @foreach ($application->statuses as $status)
+                        <x-card-element class="mb-4" border="{{ $status->statusType->variant }}">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-sm text-gray-600 mt-1">
+                                        <x-date-format :date="$status->created_at" format="d M Y h:i a" />
+                                    </p>
+                                </div>
+                                <div class="">
+                                    <x-badge label="{{ $status->statusType->name }}"
+                                        variant="{{ $status->statusType->variant }}" />
+                                </div>
+                            </div>
+                        </x-card-element>
+                    @endforeach
+                </x-card-elements-group>
+            </x-card>
+        </div>
+        <div class="col-span-full lg:col-span-7">
+            <x-card>
+                <header>
+                    <x-h3>Detalles de alquiler de propiedad</x-h3>
                 </header>
                 <x-app-elements>
                     <x-app-element class="col-span-full md:col-span-4">
@@ -59,30 +83,7 @@
                     </x-app-element>
                 </x-app-elements>
             </x-card>
-        </div>
-        <div class="col-span-full lg:col-span-7">
-            <x-card>
-                <header>
-                    <x-h3>Estado de la Aplicación</x-h3>
-                </header>
-                <x-card-elements-group>
-                    @foreach ($application->statuses as $status)
-                        <x-card-element class="mb-4" border="{{ $status->statusType->variant }}">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <p class="text-sm text-gray-600 mt-1">
-                                        <x-date-format :date="$status->created_at" format="d M Y h:i a" />
-                                    </p>
-                                </div>
-                                <div class="">
-                                    <x-badge label="{{ $status->statusType->name }}"
-                                        variant="{{ $status->statusType->variant }}" />
-                                </div>
-                            </div>
-                        </x-card-element>
-                    @endforeach
-                </x-card-elements-group>
-            </x-card>
+
         </div>
     </div>
 </div>

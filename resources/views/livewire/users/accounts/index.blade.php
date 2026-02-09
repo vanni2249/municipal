@@ -8,7 +8,7 @@
                 </p>
             </div>
             <div>
-                <x-dropdown align="right" width="48">
+                {{-- <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <x-icon-button icon="ellipsis-vertical" variant="light" />
                     </x-slot>
@@ -20,7 +20,7 @@
                             Solicitar cuenta de comerciante
                         </x-dropdown-button>
                     </x-slot>
-                </x-dropdown>
+                </x-dropdown> --}}
             </div>
         </header>
     </x-card>
@@ -45,7 +45,7 @@
                                     <!-- Citizen dashboard button -->
                                     <div class="">
                                         <x-link-button href="{{ route('citizens.set-session', $account->ulid) }}"
-                                            variant="light">
+                                            variant="success">
                                             Ir al tablero
                                         </x-link-button>
                                     </div>
@@ -88,7 +88,7 @@
                                             @if ($business->status->statusType->slug == 'active')
                                                 <x-link-button
                                                     href="{{ route('businesses.set-session', $business->ulid) }}"
-                                                    variant="light">
+                                                    variant="success">
                                                     Ir al tablero
                                                 </x-link-button>
                                             @else

@@ -106,8 +106,8 @@
             </x-card-header>
             <x-card-elements-group>
                 @forelse ($interactions as $interaction)
-                    <a href="#" class="block" wire:navigate>
-                        <x-card-element class="hover:bg-gray-200" border="success">
+                    <a href="{{ route('citizens.interactions.show', $interaction->ulid) }}" class="block" wire:navigate>
+                        <x-card-element class="hover:bg-gray-200" border="{{ $interaction->status->statusType->variant }}">
                             <div class="flex justify-between items-center space-x-2">
                                 <div class="flex-1 flex flex-col space-y-1">
                                     <span class="text-gray-700 font-bold uppercase text-xs">

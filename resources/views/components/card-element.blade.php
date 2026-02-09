@@ -2,7 +2,7 @@
 
     @php
         $borders = [
-            'primary' => ' border-l-4 border-gray-300 ',
+            'primary' => ' border-l-4 border-blue-500 ',
             'secondary' => ' border-l-4 border-gray-400 ',
             'success' => ' border-l-4 border-green-300 ',
             'danger' => ' border-l-4 border-red-500 ',

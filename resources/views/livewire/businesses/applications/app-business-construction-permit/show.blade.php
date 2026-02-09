@@ -1,5 +1,15 @@
 <div>
     <div class="grid grid-cols-12 gap-4">
+        {{-- {{ $application->inspections->count() }} --}}
+        @if ($application->inspections->count() > 0)
+            <div class="col-span-full">
+                <x-card variant="warning">
+                    <p>
+                        Esta aplicación tiene {{ $application->inspections->count() }} inspeccion(es) asociada(s).
+                    </p>
+                </x-card>
+            </div>
+        @endif
         <div class="col-span-full lg:col-span-5 space-y-4">
             <!-- Basic information -->
             <x-card>
@@ -59,7 +69,7 @@
                 </x-card-elements-group>
             </x-card>
         </div>
-        <div class="col-span-full lg:col-span-7">
+        <div class="col-span-full lg:col-span-7 space-y-4">
             <!-- Remove trash application -->
             <x-card>
                 <header>
@@ -68,7 +78,7 @@
                 <x-app-elements>
                     <x-app-element class="col-span-full md:col-span-4">
                         <x-app-element-label label="Dirección" />
-                        <x-app-element-value value="{{ $application->business->addresses->first()->address }}" />
+                        <x-app-element-value value="{{ $application->business->address->address }}" />
                     </x-app-element>
                     <x-app-element class="col-span-full">
                         <x-app-element-label label="Descripción" />
@@ -84,6 +94,32 @@
                     </x-app-element>
                 </x-app-elements>
             </x-card>
+
+            @if ($application->inspections->count() > 0)
+                <x-card>
+                    <header>
+                        <x-h3>Inspecciones asociadas</x-h3>
+                    </header>
+                    <x-card-elements-group>
+                        @foreach ($application->inspections as $inspection)
+                            <x-card-element class="col-span-full flex justify-between items-center" border="{{ $inspection->status->statusType->variant }}">
+                                <ul>
+                                    <li>
+                                        {{ $inspection->number }}
+                                    </li>
+                                    <li class="text-sm text-gray-700">
+                                        {{ $inspection->inspectionType->name }}
+                                    </li>
+                                </ul>
+                                <div>
+                                    <x-badge label="{{ $inspection->status->statusType->name }}" variant="{{ $inspection->status->statusType->variant }}" />
+                                </div>
+                            </x-card-element>
+                        @endforeach
+                    </x-card-elements-group>
+                </x-card>
+                
+            @endif
         </div>
     </div>
 </div>

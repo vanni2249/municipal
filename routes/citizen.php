@@ -12,6 +12,7 @@ use App\Livewire\Citizens\Applications\Show as CitizensApplicationsShow;
 use App\Livewire\Citizens\Permits\Index as CitizensPermitsIndex;
 use App\Livewire\Citizens\Permits\Show as CitizensPermitsShow;
 use App\Livewire\Citizens\Interactions\Index as CitizensInteractions;
+use App\Livewire\Citizens\Interactions\Show as CitizensInteractionsShow;
 use App\Livewire\Citizens\Settings\Index as CitizensSettings;
 
 Route::prefix('citizens')->name('citizens.')->middleware(AuthUser::class)->group(function () {
@@ -31,5 +32,6 @@ Route::prefix('citizens')->name('citizens.')->middleware(AuthUser::class)->group
     Route::get('/permits', CitizensPermitsIndex::class)->name('permits');
     Route::get('/permits/{permit}', CitizensPermitsShow::class)->name('permits.show');
     Route::get('/interactions', CitizensInteractions::class)->name('interactions');
+    Route::get('/interactions/{interaction}', CitizensInteractionsShow::class)->name('interactions.show');
     Route::get('/settings', CitizensSettings::class)->name('settings');
 });

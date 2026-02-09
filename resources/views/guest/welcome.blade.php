@@ -11,7 +11,7 @@
                     <span class="text-[2.1rem] md:text-6xl font-bold text-white tracking-tighter">
                         Ciudad de
                         <span class="text-red-600">
-                            San Antonio.
+                            San Jose.
                         </span>
                     </span>
                 </h1>

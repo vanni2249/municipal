@@ -3,7 +3,7 @@
         <header>
             <x-h2>Servicios de ciudadano</x-h2>
             <span class="text-sm text-gray-700">
-                Explorar y solicitar los servicios disponibles para su negocio.
+                Explorar y solicitar los servicios disponibles del ciudadano.
             </span>
         </header>
     </x-card>

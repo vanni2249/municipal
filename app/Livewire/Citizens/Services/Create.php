@@ -16,7 +16,6 @@ class Create extends Component
 
     public function mount($service)
     {
-        sleep(1);
         $this->account = Auth::user()->accounts->where('ulid', session('data.account_ulid'))->first();
         $this->service = Service::where('ulid', $service)->first();
     }

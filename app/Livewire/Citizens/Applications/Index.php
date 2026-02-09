@@ -18,7 +18,6 @@ class Index extends Component
 
     public function mount()
     {
-        sleep(1);
         $this->account = Account::where('ulid', session('data.account_ulid'))->first();
     }
 

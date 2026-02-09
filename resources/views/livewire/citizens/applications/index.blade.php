@@ -3,7 +3,7 @@
         <header class="flex justify-between items-start">
             <div>
                 <x-h2 value="Aplicaciones" />
-                <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por tu negocio.</span>
+                <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por el ciudadano.</span>
             </div>
             <div>
                 <x-dropdown>
@@ -28,7 +28,7 @@
     <div class="grid grid-cols-12 gap-4">
         <x-card class="col-span-full">
             <header class="flex justify-between items-center">
-                <x-h3 value="Lista" />
+                <x-h3 value="Aplicaciones emitidas" />
             </header>
             <x-card-elements-group>
                 @forelse ($applications as $application)

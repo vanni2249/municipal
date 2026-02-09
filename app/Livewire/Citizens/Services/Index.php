@@ -17,7 +17,6 @@ class Index extends Component
 
     public function mount()
     {
-        sleep(1); // Simulate loading delay
         $this->services = Service::where('account_type_id', $this->getAccountTypeId('citizen'))->get();
     }
 

@@ -105,28 +105,32 @@
                 </a>
             </x-card-header>
             <x-card-elements-group>
-                @for ($i = 0; $i < rand(2, 5); $i++)
+                @forelse ($interactions as $interaction)
                     <a href="#" class="block" wire:navigate>
                         <x-card-element class="hover:bg-gray-200" border="success">
                             <div class="flex justify-between items-center space-x-2">
                                 <div class="flex-1 flex flex-col space-y-1">
                                     <span class="text-gray-700 font-bold uppercase text-xs">
-                                        APP-2023-000{{ $i + 1 }}
+                                        {{ $interaction->number }}
                                     </span>
                                     <span class="text-md font-bold text-gray-900 line-clamp-1">
-                                        Servicio de ejemplo {{ $i + 1 }}
+                                        {{ $interaction->interactionable->service->title }}
                                     </span>
                                 </div>
                                 <div class="flex flex-col space-y-1 items-end">
-                                    <x-badge label="Abierto" color="success" />
-                                    <span class="text-sm text-gray-600 text-right">
-                                        2023/01/0{{ $i + 1 }}
+                                    <x-badge label="{{ $interaction->status->statusType->name }}" variant="{{ $interaction->status->statusType->variant }}" />
+                                    <span class="text-sm text-gray-800 text-right">
+                                        <x-date-format :date="$interaction->created_at" format="d/M/Y" />
                                     </span>
                                 </div>
                             </div>
                         </x-card-element>
                     </a>
-                @endfor
+                @empty
+                    <x-card-element>
+                        <p class="text-gray-600 text-center">No hay interacciones recientes.</p>
+                    </x-card-element>
+                @endforelse
             </x-card-elements-group>
         </x-card>
 

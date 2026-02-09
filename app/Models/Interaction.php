@@ -14,6 +14,7 @@ class Interaction extends Model
         'interactionable_id',
         'account_id',
         'business_id',
+        'user_id',
     ];
 
     public function interactionType()
@@ -45,7 +46,6 @@ class Interaction extends Model
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
-
 
     public function messages()
     {

@@ -9,12 +9,16 @@ class InteractionMessage extends Model
     protected $fillable = [
         'interaction_id',
         'message',
-        'user_created_id',
-        'user_read_id',
-        'user_read_at',
-        'admin_created_id',
-        'admin_read_id',
-        'admin_read_at',
+        'created_account_id',
+        'read_account_id',
+        'read_account_at',
+        'created_business_id',
+        'read_business_id',
+        'read_business_at',
+        'user_id',
+        'created_admin_id',
+        'read_admin_id',
+        'read_admin_at',
     ];
 
     public function interaction()
@@ -22,24 +26,49 @@ class InteractionMessage extends Model
         return $this->belongsTo(Interaction::class);
     }
 
+    public function accountCreated()
+    {
+        return $this->belongsTo(Account::class, 'created_account_id');
+    }
+
+    public function accountRead()
+    {
+        return $this->belongsTo(Account::class, 'read_account_id');
+    }
+
+    public function businessCreated()
+    {
+        return $this->belongsTo(Business::class, 'created_business_id');
+    }
+
+    public function businessRead()
+    {
+        return $this->belongsTo(Business::class, 'read_business_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function adminCreated()
     {
-        return $this->belongsTo(Admin::class, 'admin_created_id');
+        return $this->belongsTo(Admin::class, 'created_admin_id');
     }
 
     public function adminRead()
     {
-        return $this->belongsTo(Admin::class, 'admin_read_id');
+        return $this->belongsTo(Admin::class, 'read_admin_id');
     }
 
     public function getMessageReadAdmin()
     {
-        return $this->admin_read_id ? __('Leído') : __('No leído');
+        return $this->read_admin_id ? __('Leído') : __('No leído');
     }
     
-    public function getMessageReadUser()
+    public function getMessageReadAccount()
     {
-        return $this->user_read_id ? __('Leído') : __('No leído');
+        return $this->read_account_id ? __('Leído') : __('No leído');
 
     }
 }

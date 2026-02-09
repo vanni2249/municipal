@@ -19,6 +19,7 @@ return new class extends Migration
             $table->morphs('interactionable');
             $table->foreignId('account_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('business_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

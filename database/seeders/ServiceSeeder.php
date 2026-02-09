@@ -164,23 +164,23 @@ class ServiceSeeder extends Seeder
                 'amount' => 300.00,
                 'fee' => 30.00,
             ],
-            // [
-            //     'ulid' => $this->createServiceUlid(),
-            //     'number' => $this->createServiceNumber(),
-            //     'slug' => 'app-business-use-permit',
-            //     'title' => [
-            //         'en' => 'Application for Business Use Permit',
-            //         'es' => 'Solicitud de Permiso de Uso Comercial',
-            //     ],
-            //     'description' => [
-            //         'en' => 'Application for a permit to use municipal properties for your business activities.',
-            //         'es' => 'Solicitud de un permiso para usar propiedades municipales para las actividades de su negocio.',
-            //     ],
-            //     'account_type_id' => 2,
-            //     'service_type_id' => 2,
-            //     'amount' => 20.00,
-            //     'fee' => 5.00,
-            // ],
+            [
+                'ulid' => $this->createServiceUlid(),
+                'number' => $this->createServiceNumber(),
+                'slug' => 'app-business-use-permit',
+                'title' => [
+                    'en' => 'Application for Business Use Permit',
+                    'es' => 'Solicitud de Permiso de Uso Comercial',
+                ],
+                'description' => [
+                    'en' => 'Application for a permit to use municipal properties for your business activities.',
+                    'es' => 'Solicitud de un permiso para usar propiedades municipales para las actividades de su negocio.',
+                ],
+                'account_type_id' => 2,
+                'service_type_id' => 2,
+                'amount' => 20.00,
+                'fee' => 5.00,
+            ],
             [
                 'ulid' => $this->createServiceUlid(),
                 'number' => $this->createServiceNumber(),
@@ -236,24 +236,24 @@ class ServiceSeeder extends Seeder
         }
 
 
-        $service = \App\Models\Service::find(1);
+        // $service = \App\Models\Service::find(1);
 
-        $interaction = $service->interactions()->create([
-            'ulid' => $this->createInteractionUlid(),
-            'number' => $this->createInteractionNumber(),
-            'interaction_type_id' => 1,
-            'account_id' => 1,
-        ]);
-        $interaction->statuses()->create([
-            'status_type_id' => 2,
-            'changed_by' => 1,
-            'reason' => 'Initial status interaction',
-        ]);
+        // $interaction = $service->interactions()->create([
+        //     'ulid' => $this->createInteractionUlid(),
+        //     'number' => $this->createInteractionNumber(),
+        //     'interaction_type_id' => 1,
+        //     'account_id' => 1,
+        // ]);
+        // $interaction->statuses()->create([
+        //     'status_type_id' => 2,
+        //     'changed_by' => 1,
+        //     'reason' => 'Initial status interaction',
+        // ]);
 
-        $interaction->messages()->create([
-            'message' => 'This is the initial message for the service interaction.',
-            'created_account_id' => 1,
-        ]);
+        // $interaction->messages()->create([
+        //     'message' => 'This is the initial message for the service interaction.',
+        //     'created_account_id' => 1,
+        // ]);
     
     }
 }

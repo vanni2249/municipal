@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             PropertySeeder::class,
             AddressSeeder::class,
+            PermitTypeSeeder::class,
             InspectionTypeSeeder::class,
             TransactionMethodTypeSeeder::class,
             // ApplicationSeeder::class,

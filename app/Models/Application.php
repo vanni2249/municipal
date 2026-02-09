@@ -76,6 +76,11 @@ class Application extends Model
         return $this->morphMany(Interaction::class, 'interactionable');
     }
 
+    public function interaction()
+    {
+        return $this->morphOne(Interaction::class, 'interactionable')->latestOfMany();
+    }
+
     public function invoice()
     {
         return $this->morphOne(Invoice::class, 'invoicable');

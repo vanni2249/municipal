@@ -19,7 +19,7 @@ class StatusTypeSeeder extends Seeder
                     'en' => 'Pending',
                     'es' => 'Pendiente',
                 ],
-                'variant' => 'info',    
+                'variant' => 'info',
             ],
             [
                 'slug' => 'active',
@@ -52,6 +52,15 @@ class StatusTypeSeeder extends Seeder
                     'es' => 'Cerrado',
                 ],
                 'variant' => 'danger',
+            ],
+            [
+                'slug' => 'open',
+                'name' => [
+                    'en' => 'Open',
+                    'es' => 'Abierto',
+                ],
+                'variant' => 'primary',
+
             ],
             [
                 'slug' => 'archived',

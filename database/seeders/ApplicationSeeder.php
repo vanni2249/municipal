@@ -87,24 +87,24 @@ class ApplicationSeeder extends Seeder
             'log_type_id' => 1, // Assuming 1 corresponds to a valid log user type
         ]);
 
-        $interaction = $app->interactions()->create([
-            'ulid' => $this->createInteractionUlid(),
-            'number' => $this->createInteractionNumber(),
-            'interaction_type_id' => 1, // Assuming 1 corresponds to 'general-inquiry'
-            'account_id' => 1,
-            'business_id' => 1,
-        ]);
+        // $interaction = $app->interactions()->create([
+        //     'ulid' => $this->createInteractionUlid(),
+        //     'number' => $this->createInteractionNumber(),
+        //     'interaction_type_id' => 1, // Assuming 1 corresponds to 'general-inquiry'
+        //     'account_id' => 1,
+        //     'business_id' => 1,
+        // ]);
 
-        $interaction->statuses()->create([
-            'status_type_id' => 2,
-            'changed_by' => 1,
-            'reason' => 'Initial status interaction for application',
-        ]);
+        // $interaction->statuses()->create([
+        //     'status_type_id' => 6,
+        //     'changed_by' => 1,
+        //     'reason' => 'Initial status interaction for application',
+        // ]);
 
-        $interaction->messages()->create([
-            'message' => 'This is the initial message for the application interaction.',
-            'created_account_id' => 1,
-        ]);
+        // $interaction->messages()->create([
+        //     'message' => 'This is the initial message for the application interaction.',
+        //     'created_account_id' => 1,
+        // ]);
 
 
 

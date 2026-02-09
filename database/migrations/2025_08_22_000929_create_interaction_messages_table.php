@@ -18,6 +18,10 @@ return new class extends Migration
             $table->foreignId('created_account_id')->nullable()->constrained('accounts')->onDelete('set null');
             $table->foreignId('read_account_id')->nullable()->constrained('accounts')->onDelete('set null');
             $table->timestamp('read_account_at')->nullable();
+            $table->foreignId('created_business_id')->nullable()->constrained('businesses')->onDelete('set null');
+            $table->foreignId('read_business_id')->nullable()->constrained('businesses')->onDelete('set null');
+            $table->timestamp('read_business_at')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('created_admin_id')->nullable()->constrained('admins')->onDelete('set null');
             $table->foreignId('read_admin_id')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamp('read_admin_at')->nullable();

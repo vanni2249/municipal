@@ -67,4 +67,9 @@ class Account extends Model
     {
         return $this->morphMany(Permit::class, 'permitable');
     }
+
+    public function interactions()
+    {
+        return $this->hasMany(Interaction::class);
+    }
 }

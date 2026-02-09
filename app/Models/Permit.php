@@ -9,10 +9,16 @@ class Permit extends Model
     protected $fillable = [
         'ulid',
         'number',
+        'permit_type_id',
         'permitable_id',
         'permitable_type',
         'application_id',
     ];
+
+    public function permitType()
+    {
+        return $this->belongsTo(PermitType::class);
+    }
 
     public function permitable()
     {

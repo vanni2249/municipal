@@ -16,15 +16,17 @@ class Index extends Component
     public $business;
     public $services;
     public $applications;
+    public $interactions;
 
     public function mount()
     {
-        sleep(1);
         $this->business = Business::where('ulid', session('data.business_ulid'))->first();
         
         $this->services = Service::where('account_type_id', $this->getAccountTypeId('merchant'))->limit(4)->get();
         
         $this->applications = $this->business->applications()->latest()->limit(5)->get();
+
+        $this->interactions = $this->business->interactions()->latest()->limit(5)->get();
 
     }
 

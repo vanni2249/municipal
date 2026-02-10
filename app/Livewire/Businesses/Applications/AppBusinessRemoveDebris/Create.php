@@ -49,10 +49,9 @@ class Create extends Component
         $app->inspections()->create([
             'ulid' => $this->createInspectionUlid(),
             'number' => $this->createInspectionNumber(),
-            'inspection_type_id' => $this->getInspectionTypeId('debris-inspection'),
+            'inspection_type_id' => $this->getInspectionTypeId('business-remove-debris-inspection'),
         ])->statuses()->create([
             'status_type_id' => $this->getStatusTypeId('pending'),
-            'reason' => 'Initial status',
         ]);
 
 

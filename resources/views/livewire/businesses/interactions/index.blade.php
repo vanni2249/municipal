@@ -11,7 +11,7 @@
     </x-card>
     <x-card>
         <x-card-elements-group>
-            @foreach ($interactions as $interaction)
+            @forelse ($interactions as $interaction)
                 <a href="{{ route('businesses.interactions.show', $interaction->ulid) }}" wire:navigate>
                     <x-card-element>
                         <div class="flex flex-row flex-wrap md:flex-nowrap text-sm">
@@ -38,7 +38,12 @@
                         </div>
                     </x-card-element>
                 </a>
-            @endforeach
+
+            @empty
+                <x-card-element>
+                    <p class="text-gray-600 text-center">No hay interacciones recientes.</p>
+                </x-card-element>
+            @endforelse
         </x-card-elements-group>
     </x-card>
 </div>

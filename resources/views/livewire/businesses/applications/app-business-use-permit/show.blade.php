@@ -1,3 +1,5 @@
-<div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+<div class="space-y-4">
+    <x-card>
+
+    </x-card>
 </div>

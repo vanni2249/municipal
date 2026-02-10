@@ -50,10 +50,9 @@ class Create extends Component
         $app->inspections()->create([
             'ulid' => $this->createInspectionUlid(),
             'number' => $this->createInspectionNumber(),
-            'inspection_type_id' => $this->getInspectionTypeId('trash-inspection'),
+            'inspection_type_id' => $this->getInspectionTypeId('business-remove-trash-inspection'),
         ])->statuses()->create([
             'status_type_id' => $this->getStatusTypeId('pending'),
-            'reason' => 'Initial status',
         ]);
 
 

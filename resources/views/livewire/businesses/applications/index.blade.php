@@ -40,7 +40,7 @@
                                 <span class="lg:col-span-2 text-sm font-bold text-gray-700">
                                     {{ $application->service->title }}
                                 </span>
-                                <span class="text-sm text-gray-700 lg:text-center">
+                                <span class="text-sm text-gray-700">
                                     {{ $application->service->serviceType->name }}
                                 </span>
                             </div>
@@ -60,6 +60,9 @@
                 </a>
 
             @empty
+                <x-card-element>
+                    <p class="text-gray-600 text-center">No hay aplicaciones recientes.</p>
+                </x-card-element>
             @endforelse
         </x-card-elements-group>
     </x-card>

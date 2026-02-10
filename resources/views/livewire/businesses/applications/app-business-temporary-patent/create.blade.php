@@ -12,7 +12,7 @@
                 <x-form-element class="col-span-full lg:col-span-6 lg:col-start-1">
                     <x-label for="business_address_id" value="Dirección del Negocio" />
                     <x-input id="business_address_id" type="text" class="w-full"
-                        value="{{ $business->addresses->first()->address ?? '' }}" disabled />
+                        value="{{ $business->address->address ?? '' }}" disabled />
                 </x-form-element>
 
                 <!-- Start date -->

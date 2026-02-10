@@ -4,8 +4,10 @@ namespace App\Livewire\Businesses\Interactions;
 
 use App\Models\Business;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Lazy;
 use Livewire\Component;
 
+#[Lazy()]
 class Index extends Component
 {
     public $business;
@@ -13,6 +15,11 @@ class Index extends Component
     public function mount()
     {
         $this->business = Business::where('ulid', session('data.business_ulid'))->first();
+    }
+
+    public function placeholder()
+    {
+        return view('placeholders.views.businesses.interaction-index');
     }
 
      #[Layout('layouts.business')]

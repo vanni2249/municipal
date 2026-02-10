@@ -7,8 +7,10 @@ use App\Models\Application;
 use App\Models\Business;
 use App\Models\Service;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Lazy;
 use Livewire\Component;
 
+#[Lazy()]
 class Index extends Component
 {
     use \App\Traits\AccountTypeId;
@@ -21,6 +23,11 @@ class Index extends Component
         $this->business = Business::where('ulid', session('data.business_ulid'))->first();
 
         $this->applications = Application::where('business_id', $this->business->id)->latest()->take(5)->get();
+    }
+
+    public function placeholder()
+    {
+        return view('placeholders.views.businesses.application-index');
     }
 
      #[Layout('layouts.business')]

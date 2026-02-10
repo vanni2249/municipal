@@ -16,59 +16,7 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
-    <nav @class(['w-full', ' bg-black' => request()->routeIs('welcome')])>
-        <div class="max-w-7xl mx-auto p-4">
-            <div @class([
-                'flex justify-between items-center bg-gray-900 rounded-2xl p-4',
-                // '' => request()->routeIs('welcome'),
-                // '' => !request()->routeIs('welcome'),
-            ]) class="">
-                <a href="/" @class([
-                    'text-xl font-semibold text-gray-200',
-                    // 'text-gray-200' => request()->routeIs('welcome'),
-                    // '' => !request()->routeIs('welcome'),
-                ]) wire:navigate>
-                    MyApp's
-                </a>
-                <div class="flex lg:hidden text-white">
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <button
-                                class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 6l16 0" />
-                                    <path d="M4 12l16 0" />
-                                    <path d="M4 18l16 0" />
-                                </svg>
-                            </button>
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('login')" wire:navigate>
-                                Inicio de sesión
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('register')" wire:navigate>
-                                Registrarse
-                            </x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                </div>
-                <div class="hidden md:flex justify-between items-center space-x-2">
-                    <a href="{{ route('register') }}"
-                        class=" hover:bg-gray-700 border border-gray-900 hover:border-gray-700 py-2 px-4 rounded-lg text-xs font-bold uppercase text-white hover:text-gray-300" wire:navigate>
-                        Regístrate
-                    </a>
-                    <a href="{{ route('login') }}"
-                        class="border border-gray-700 hover:bg-gray-700 hover:text-gray-100 py-2 px-4 rounded-lg text-xs text-white font-bold uppercase" wire:navigate>
-                        iniciar sesión
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {{--  --}}
     <main class="flex-grow min-h-96">
         {{ $slot }}
     </main>

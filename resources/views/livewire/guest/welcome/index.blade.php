@@ -1,6 +1,6 @@
 <div>
     <section class="bg-black h-[30rem] border-0">
-        <img src="{{ asset('img/app/puerto-rico.jpg') }}" alt="Puerto Rico" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        {{-- <img src="{{ asset('img/app/puerto-rico.jpg') }}" alt="Puerto Rico" class="absolute inset-0 w-full h-full object-cover opacity-30"> --}}
         <div class="max-w-7xl px-4 mx-auto flex flex-col items-center justify-center h-full">
             <div class="grow flex flex-col justify-center items-center h-full">
                 <h1

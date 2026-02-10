@@ -63,4 +63,14 @@ class Business extends Model
     {
         return $this->hasMany(Interaction::class);
     }
+
+    public function permits()
+    {
+        return $this->morphMany(Permit::class, 'permitable');
+    }
+
+    public function patents()
+    {
+        return $this->morphMany(Patent::class, 'patentable');
+    }
 }

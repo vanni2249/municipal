@@ -14,54 +14,47 @@ class InspectionTypeSeeder extends Seeder
     {
         $items = [
             [
-                'slug' => 'building-inspection',
+                'slug' => 'business-remove-trash-inspection',
                 'name' => [
-                    'en' => 'Building Inspection',
-                    'es' => 'Inspección de Edificios',
+                    'en' => 'Business Remove Trash Inspection',
+                    'es' => 'Inspección de Retiro de Basura Comercial',
                 ],
             ],
             [
-                'slug' => 'health-inspection',
+                'slug' => 'business-remove-debris-inspection',
                 'name' => [
-                    'en' => 'Health Inspection',
-                    'es' => 'Inspección de Salud',
+                    'en' => 'Business Remove Debris Inspection',
+                    'es' => 'Inspección de Retiro de Escombros Comerciales',
                 ],
             ],
             [
-                'slug' => 'safety-inspection',
+                'slug' => 'business-construction-permit-inspection',
                 'name' => [
-                    'en' => 'Safety Inspection',
-                    'es' => 'Inspección de Seguridad',
+                    'en' => 'Business Construction Permit Inspection',
+                    'es' => 'Inspección de Permiso de Construcción Comercial',
                 ],
             ],
             [
-                'slug' => 'trash-inspection',
+                'slug' => 'business-use-permit-inspection',
                 'name' => [
-                    'en' => 'Trash Inspection',
-                    'es' => 'Inspección de Basura',
+                    'en' => 'Business Use Permit Inspection',
+                    'es' => 'Inspección de Permiso de Uso Comercial',
                 ],
             ],
             [
-                'slug' => 'debris-inspection',
+                'slug' => 'residential-remove-debris-inspection',
                 'name' => [
-                    'en' => 'Debris Inspection',
-                    'es' => 'Inspección de Escombros',
+                    'en' => 'Residential Remove Debris Inspection',
+                    'es' => 'Inspección de Retiro de Escombros Residenciales',
                 ],
             ],
             [
-                'slug' => 'environmental-inspection',
+                'slug' => 'residential-construction-permit-inspection',
                 'name' => [
-                    'en' => 'Environmental Inspection',
-                    'es' => 'Inspección Ambiental',
+                    'en' => 'Residential Construction Permit Inspection',
+                    'es' => 'Inspección de Permiso de Construcción Residencial',
                 ],
             ],
-            [
-                'slug' => 'construction-inspection',
-                'name' => [
-                    'en' => 'Construction Inspection',
-                    'es' => 'Inspección de Construcción',
-                ],
-            ]
         ];
 
         foreach ($items as $item) {

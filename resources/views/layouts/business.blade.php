@@ -56,8 +56,6 @@
                                 <x-icon icon="bars-3" />
                             </button>
                         </div>
-                        <div class="lg:hidden flex items-center justify-center">
-                        </div>
                         <a href="{{ route(request()->segment(1) . '.dashboard') }}"
                             class="font-bold lg:hidden">MyCity</a>
                     </div>

@@ -93,7 +93,9 @@
                     <!-- Created At -->
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Fecha de creación" />
-                        <x-app-element-value value="{{ $application->created_at }}" />
+                        <x-app-element-value>
+                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />
+                        </x-app-element-value>
                     </x-app-element>
                 </x-app-elements>
             </x-card>

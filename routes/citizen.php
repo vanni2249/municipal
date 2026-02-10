@@ -18,7 +18,6 @@ use App\Livewire\Citizens\Settings\Index as CitizensSettings;
 Route::prefix('citizens')->name('citizens.')->middleware(AuthUser::class)->group(function () {
     Route::get('/set-session/{account}', function ($account) {
         $account = Account::where('ulid', $account)->first();
-
         session()->forget('data');
         session(['data.account_ulid' => $account->ulid]);
         return redirect()->route('citizens.dashboard');

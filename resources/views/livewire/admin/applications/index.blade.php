@@ -29,8 +29,9 @@
                 <tr>
                     <th class="p-2 w-auto">Number</th>
                     <th class="p-2 w-auto">Servicio</th>
-                    <th class="p-2 w-auto">Ciudadano</th>
-                    <th class="p-2 w-auto">Comercio</th>
+                    <th class="p-2 w-auto">Ciudadano<br />Comercio</th>
+                    <th class="p-2 w-auto">Nombre</th>
+                    <th class="p-2 w-auto">Fecha</th>
                     <th class="p-2 w-auto">Status</th>
                     <th class="p-2 w-24"></th>
                 </tr>
@@ -46,35 +47,42 @@
                         <td class="p-2">
                             {{ $application->service->serviceType->name ?? '...' }}
                         </td>
-                        <!-- Citizen -->
+                        <!-- Citizen/Business -->
                         <td class="p-2 capitalize">
                             <span>
-                                @if ($application->account_id)
-                                    {{ $application->account->user->name . ' ' . $application->account->user->lastname ?? '...' }} 
-                                    
-                                @else
-                                    ...
-                                @endif
+                                {{ $application->service->accountType->name ?? '...' }}
                             </span>
                         </td>
                         <!-- Business -->
                         <td class="p-2 capitalize">
                             <span>
                                 @if ($application->business_id)
-                                    {{ $application->business->name ?? '...' }} 
-                                    
+                                    {{ $application->business->name }}
                                 @else
-                                    ...
+                                    {{ $application->account->user_id
+                                        ? $application->account->user->name . ' ' . $application->account->user->lastname
+                                        : $application->account->name . ' ' . $application->account->lastname }}
                                 @endif
                             </span>
                         </td>
+                        <!-- Created At -->
+                        <td class="p-2">
+                            <x-date-format :date="$application->created_at" format="d M Y h:i a" />
+                        </td>   
                         <!-- Status -->
                         <td class="p-2">
-                            <x-badge label="{{ $application->status->statusType->name ?? '...' }}" variant="{{ $application->status->statusType->variant ?? 'secondary' }}" />
+                            <x-badge label="{{ $application->status->statusType->name ?? '...' }}"
+                                variant="{{ $application->status->statusType->variant ?? 'secondary' }}" />
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.applications.show', ['application' => $application->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light"
+                                href="{{ route('admin.applications.show', ['application' => $application->ulid]) }}"
+                                icon="eye" wire:navigate />
+                        </td>
+                    </tr>
+                    <tr class="border-dashed border-t border-gray-300">
+                        <td class="p-2" colspan="8">
+                            {{ $application->service->title ?? '...' }}
                         </td>
                     </tr>
                 @empty

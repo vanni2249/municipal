@@ -1,44 +1,44 @@
 <div class="space-y-4">
     <div class="grid grid-cols-12 gap-2">
-        @for ($i = 0; $i < 8; $i++)
+        @foreach ($widgets as $widget)
             <div class="col-span-6 md:col-span-6 lg:col-span-3">
-                <x-widget variant="success" title="Widget {{ $i + 1 }}" subtitle="Subtitle {{ $i + 1 }}"
-                    value="Value {{ $i + 1 }}" />
+                <x-widget variant="success" title="{{ $widget['title'] }}" subtitle="{{ $widget['subtitle'] ?? '' }}"
+                    value="{{ $widget['value'] }}" />
             </div>
-        @endfor
+        @endforeach
     </div>
     <div class="col-span-12">
         <x-card class="h-96">
             <div class="h-full w-full">
-                <canvas  style="position: relative; height:50vh; width:80vw;" id="myChart"></canvas>
+                <canvas  style="position: relative; height:50vh; width:0vw;" id="myChart"></canvas>
             </div>
         </x-card>
     </div>
     <div class="grid grid-cols-12 gap-2">
 
-        @for ($i = 0; $i < 4; $i++)
+        @foreach ($lists as $list)
             <div class="col-span-full md:col-span-6 lg:col-span-3">
-                <x-card>
+                <x-card class="">
                     <header class="flex justify-between items-center">
                         <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">
-                            Card {{ $i + 1 }}
+                            {{ $list['title'] }}
                         </h2>
                         <span class="text-xs text-gray-500 leading-3 font-medium">
-                            Subtitle {{ $i + 1 }}
+                            {{ $list['total'] ?? '' }}
                         </span>
 
                     </header>
-                    <ul>
-                        @for ($x = 0; $x < 5; $x++)
-                            <li class="flex justify-between items-center bg-gray-100 p-2 rounded-lg mb-2">
-                                <span class="text-sm text-gray-800">Item</span>
-                                <span class="text-sm font-bold text-gray-700">34</span>
+                    <ul class="space-y-1">
+                        @foreach ($list['items'] as $item)
+                            <li class="flex justify-between items-center bg-gray-100 p-2 rounded-lg">
+                                <span class="text-sm text-gray-800">{{ $item['name'] }}</span>
+                                <span class="text-sm font-bold text-gray-700">{{ $item['count'] }}</span>
                             </li>
-                        @endfor
+                        @endforeach
                     </ul>
                 </x-card>
             </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 

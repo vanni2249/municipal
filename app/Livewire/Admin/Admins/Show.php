@@ -15,8 +15,6 @@ class Show extends Component
 
     public function mount($administrator)
     {
-        sleep(1);
-
         $this->administrator = Admin::where('ulid', $administrator)->firstOrFail();
     }
 

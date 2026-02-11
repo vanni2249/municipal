@@ -38,26 +38,28 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-card-list>
-                    <x-card-list-element title="Ulid">
-                        {{ $administrator->ulid ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Numero">
-                        {{ $administrator->number ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Nombre completo">
-                        {{ $administrator->name }} {{ $administrator->lastname }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Correo electrónico">
-                        {{ $administrator->email ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Telefono">
-                        {{ $administrator->phone ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Fecha de creacion">
-                        {{ $administrator->created_at ?? 'N/A' }}
-                    </x-card-list-element>
-                </x-card-list>
+                <x-app-elements>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Número" />
+                        <x-app-element-value value="{{ $administrator->number ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Nombre completo" />
+                        <x-app-element-value value="{{ $administrator->name }} {{ $administrator->lastname }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full">
+                        <x-app-element-label label="Correo electrónico" />
+                        <x-app-element-value value="{{ $administrator->email ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Teléfono" />
+                        <x-app-element-value value="{{ $administrator->phone ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Fecha de creación" />
+                        <x-app-element-value value="{{ $administrator->created_at ?? 'N/A' }}" />
+                    </x-app-element>
+                </x-app-elements>
             </x-card>
 
             <!-- Accounts -->

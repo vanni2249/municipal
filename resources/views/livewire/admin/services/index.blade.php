@@ -1,7 +1,12 @@
 <div class="space-y-4">
     <x-card>
         <header class="flex justify-between items-center">
-            <h1 class="text-lg font-bold">Servicios</h1>
+            <div>
+                <x-h2 value="Servicios" />
+                <p class="text-sm text-gray-700 mt-1">
+                    Maneja los servicios disponibles para los negocios, incluyendo su costo, requisitos y aplicaciones.
+                </p>
+            </div>
         </header>
     </x-card>
     <x-card class="h-full rounded-xl">

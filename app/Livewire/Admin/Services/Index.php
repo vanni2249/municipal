@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Services;
 
+use App\Models\Service;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
@@ -14,7 +15,6 @@ class Index extends Component
 
     public function mount()
     {
-        sleep(1);
     }
     public function placeholder()
     {
@@ -25,7 +25,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.services.index', [
-            'services' => \App\Models\Service::orderBy('created_at', 'desc')
+            'services' => Service::with(['accountType', 'serviceType', 'applications'])->orderBy('created_at', 'desc')
                 ->paginate(10),
         ]);
     }

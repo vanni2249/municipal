@@ -22,4 +22,9 @@ class ServiceType extends Model
     {
         return $this->hasMany(Service::class, 'service_type_id');
     }
+
+    public function applications()
+    {
+        return $this->hasManyThrough(Application::class, Service::class);
+    }
 }

@@ -23,7 +23,7 @@
             <!-- User detail -->
             <x-card>
                 <x-card-header class="flex justify-between items-center">
-                    <x-h2 value="Información básica" />
+                    <x-h3 value="Información básica" />
                     <x-dropdown>
                         <x-slot name="trigger">
                             <x-icon-button icon="ellipsis-vertical" variant="light" />
@@ -33,33 +33,33 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-card-list>
-                    <x-card-list-element title="Ulid">
-                        {{ $user->ulid ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Numero">
-                        {{ $user->number ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Nombre completo">
-                        {{ $user->name }} {{ $user->lastname }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Correo electrónico">
-                        {{ $user->email ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Telefono">
-                        {{ $user->phone ?? 'N/A' }}
-                    </x-card-list-element>
-                    <x-card-list-element title="Fecha de creacion">
-                        {{ $user->created_at ?? 'N/A' }}
-                    </x-card-list-element>
-                </x-card-list>
+                <x-app-elements>
+                    <x-app-element class="col-span-full lg:col-span-3">
+                        <x-app-element-label label="Número de usuario" />
+                        <x-app-element-value value="{{ $user->number ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full lg:col-span-3">
+                        <x-app-element-label label="Nombre completo" />
+                        <x-app-element-value value="{{ $user->name }} {{ $user->lastname }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full">
+                        <x-app-element-label label="Correo electrónico" />
+                        <x-app-element-value value="{{ $user->email ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Teléfono" />
+                        <x-app-element-value value="{{ $user->phone ?? 'N/A' }}" />
+                    </x-app-element>
+                    <x-app-element class="col-span-full md:col-span-3">
+                        <x-app-element-label label="Fecha de creación" />
+                        <x-app-element-value value="{{ $user->created_at ?? 'N/A' }}" />
+                    </x-app-element>
+                </x-app-elements>
             </x-card>
-            {{-- @livewire('admin.users.components.user-detail', ['user' => $user], key($user->id)) --}}
-
             <!-- Accounts -->
             <x-card>
                 <x-card-header class="flex justify-between items-center">
-                    <x-h2 value="Cuentas" />
+                    <x-h3 value="Cuentas" />
                     <x-dropdown>
                         <x-slot name="trigger">
                             <x-icon-button icon="ellipsis-vertical" variant="light" />

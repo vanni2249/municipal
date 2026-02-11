@@ -14,7 +14,6 @@ class Show extends Component
 
     public function mount($user)
     {
-        sleep(1);
         $this->user = User::where('ulid', $user)->firstOrFail();
     }
 

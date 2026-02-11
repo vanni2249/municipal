@@ -61,6 +61,11 @@ class Application extends Model
         return $this->morphMany(Inspection::class, 'inspectable');
     }
 
+    public function inspection()
+    {
+        return $this->morphOne(Inspection::class, 'inspectable')->latestOfMany();
+    }
+
     public function userLogs()
     {
         return $this->morphMany(UserLog::class, 'loggable');

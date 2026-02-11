@@ -13,7 +13,6 @@ class Index extends Component
 {
     public function mount()
     {
-        sleep(1);
     }
 
     public function placeholder()
@@ -25,7 +24,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.applications.index', [
-            'applications' => Application::with(['account', 'business', 'service', 'status'])->paginate(20),
+            'applications' => Application::with(['account', 'business', 'service', 'status'])->orderByDesc('created_at')->paginate(20),
         ]);
     }
 }

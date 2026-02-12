@@ -1,4 +1,4 @@
-@props(['type' => 'button', 'variant' => 'primary', 'size' => 'md', 'disabled' => false, 'label' => null])
+@props(['type' => 'button', 'variant' => 'primary', 'size' => 'md', 'disabled' => true, 'label' => null])
 
 @php
     $variants = [
@@ -42,30 +42,24 @@
     ];
 @endphp
 
-<button wire:loading.attr="disabled" wire:loading.class="cursor-not-allowed opacity-50"
-    {{ $attributes->merge(['type' => $type, 'class' => $variants[$variant] . $sizes[$size] . 'focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150  cursor-pointer' . ($disabled ? ' cursor-not-allowed opacity-50 whitespace-nowrap' : '')]) }}>
-    <div wire:loading.remove>
-        {{ $label ?? '' }}
-        {{ $slot }}
-    </div>
-    <div wire:loading>
-        <div class="flex justify-center space-x-2 items-center">
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-loader size-5 animate-spin">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 6l0 -3" />
-                <path d="M16.25 7.75l2.15 -2.15" />
-                <path d="M18 12l3 0" />
-                <path d="M16.25 16.25l2.15 2.15" />
-                <path d="M12 18l0 3" />
-                <path d="M7.75 16.25l-2.15 2.15" />
-                <path d="M6 12l-3 0" />
-                <path d="M7.75 7.75l-2.15 -2.15" />
-            </svg>
-            <div class="">
-                Procesando...
-            </div>
-        </div>
+<button
+    {{ $attributes->merge(['type' => 'button', 'class' => $variants[$variant] . $sizes[$size] . ' focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150 cursor-not-allowed opacity-75 whitespace-nowrap']) }} disabled>
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-loader size-4 animate-spin">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 6l0 -3" />
+            <path d="M16.25 7.75l2.15 -2.15" />
+            <path d="M18 12l3 0" />
+            <path d="M16.25 16.25l2.15 2.15" />
+            <path d="M12 18l0 3" />
+            <path d="M7.75 16.25l-2.15 2.15" />
+            <path d="M6 12l-3 0" />
+            <path d="M7.75 7.75l-2.15 -2.15" />
+        </svg>
+    </span>
+    <span>
+        Prosesando...
+    </span>
 </button>

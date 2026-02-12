@@ -39,12 +39,12 @@
                     </div>
                     <div class="hidden lg:flex justify-between items-center space-x-2">
                         <a href="{{ route('register') }}"
-                            class=" hover:bg-gray-500 border border-transparent hover:border-gray-500 py-2 px-4 rounded-lg text-xs font-bold uppercase text-white hover:text-gray-300"
+                            class=" hover:bg-white/10 border border-transparent hover:border-white/20 py-2 px-4 rounded-lg text-xs font-bold uppercase text-white hover:text-gray-300 transition-all duration-200"
                             wire:navigate>
                             Regístrate
                         </a>
                         <a href="{{ route('login') }}"
-                            class="border border-gray-500 hover:bg-gray-500 hover:text-gray-100 py-2 px-4 rounded-lg text-xs text-white font-bold uppercase"
+                            class="border border-white/20 hover:bg-white/10 hover:text-gray-100 py-2 px-4 rounded-lg text-xs text-white font-bold uppercase transition-all duration-200"
                             wire:navigate>
                             iniciar sesión
                         </a>

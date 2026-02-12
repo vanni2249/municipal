@@ -44,7 +44,7 @@
                     @default
                 @endswitch
             </ul>
-            <footer class="h-24 border-t border-gray-900"></footer>
+            <footer class="h-14 border-t border-gray-900"></footer>
         </aside>
     </div>
 

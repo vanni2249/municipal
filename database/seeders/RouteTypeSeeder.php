@@ -22,17 +22,17 @@ class RouteTypeSeeder extends Seeder
                 ],
             ],
             [
-                'slug' => 'business_remove_debris',
+                'slug' => 'remove_debris',
                 'name' => [
-                    'en' => 'Business Debris Removal',
-                    'es' => 'Retiro de Escombros Comercial',
+                    'en' => 'Debris Removal',
+                    'es' => 'Retiro de Escombros',
                 ],
             ],
             [
-                'slug' => 'residential_remove_debris',
+                'slug' => 'garbage_collection',
                 'name' => [
-                    'en' => 'Residential Debris Removal',
-                    'es' => 'Retiro de Escombros Residencial',
+                    'en' => 'Garbage Collection',
+                    'es' => 'Recolección de Basura',
                 ],
             ]
         ];

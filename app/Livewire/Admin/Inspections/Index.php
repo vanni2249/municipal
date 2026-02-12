@@ -24,7 +24,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.inspections.index', [
-            'inspections' => Inspection::with(['inspectionType', 'inspectable'])->paginate(20),
+            'inspections' => Inspection::with(['inspectionType', 'status', 'status.statusType'])->paginate(20),
         ]);
     }
 }

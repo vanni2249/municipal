@@ -71,7 +71,7 @@
             </x-card>
             <!-- Interaction -->
             @if ($application->interaction)
-                inspection
+                interaction
             @endif
             <!-- Invoice -->
             @if ($application->invoice)
@@ -166,7 +166,7 @@
                 </x-card>
             @endif
             <!-- Inspection -->
-            @if ($application->inspections)
+            @if ($application->inspection)
                 <x-card>
                     <x-card-header>
                         <x-h3>Inspección asociada</x-h3>

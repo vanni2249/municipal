@@ -1,83 +1,103 @@
-<div>
-    <x-card class="rounded-xl p-4 h-full">
-        <header>
-            <div class="flex justify-between items-center mb-2">
-                {{-- <small class="text-gray-800">{{ $interaction->getTypeNameAttribute() }}</small> --}}
-                {{-- <x-badge color="{{ $interaction->getStatusColorAttribute() }}"
-                    value="{{ $interaction->getStatusNameAttribute() }}" /> --}}
-            </div>
-            <div class="flex justify-between items-start gap-2">
-                <!-- Title -->
+<div class="grid grid-cols-12 gap-4">
+    <div class="col-span-full">
+        <x-card>
+            <header class="flex justify-between items-start">
                 <div>
-                    <h2 class="text-lg font-medium text-gray-900">
-                        {{-- {{ $interaction->service->es_name }} --}}
-                    </h2>
-                    {{-- @if ($interaction->getTypeNameAttribute() == 'Llamada')
-                        <span class="text-sm text-gray-800">Teléfono:
-                            {{ $interaction->phone ? $interaction->phone : $interaction->user->register->phone }}</span>
-                    @endif --}}
+                    <x-h2>{{ $interaction->interactionable->service->title }}</x-h2>
+                    <ul class="flex space-x-4 text-sm text-gray-700 mt-1">
+                        <li>{{ $interaction->number }}</li>
+                    </ul>
                 </div>
-                <!-- Button add message -->
-                <div class="">
-                    <!-- Button -->
-                    {{-- @if ($interaction->status == 'pending' || $interaction->status == 'in_progress')
-                        <x-icon-button @click="$dispatch('open-modal', 'add-message-modal')" icon="message-2-plus" />
-                    @endif --}}
-                    <!-- Modal -->
-                    <x-modal name="add-message-modal" title="Añadir mensaje">
-                        <form wire:submit.prevent="addMessage">
-                            <div class="grid grid-cols-1 gap-4">
-                                <div class="">
-                                    <x-label for="Status" value="Estado de mensaje" />
-                                    <x-select wire:model='status' class="w-full">
-                                        <option value="in_progress">Responder interacción</option>
-                                        <option value="resolved">Interacción resuelta</option>
-                                        <option value="closed">Interacción cerrada</option>
-                                    </x-select>
-                                </div>
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <x-label for="message" value="Escribir mensaje" />
-                                        <span class="text-xs text-gray-600">240 |
-                                            <span>{{ $count }}</span></span>
-                                    </div>
-                                    <x-textarea wire:model.live="message" class="w-full" rows="4" />
-                                    @error('message')
-                                        <x-error message="{{ $message }}" />
-                                    @enderror
-                                </div>
-                                <div>
-                                    <x-button type="submit" class="w-full sm:w-auto">Enviar</x-button>
-                                </div>
-                            </div>
-                        </form>
-                    </x-modal>
+                <div class="text-right">
+                    <x-badge label="{{ $interaction->status->statusType->name }}"
+                        variant="{{ $interaction->status->statusType->variant }}" />
                 </div>
-            </div>
-        </header>
-        <div class="grid grid-cols-1 gap-2 mt-4">
-            {{-- @foreach ($messages as $message)
-                <x-card color="{{ !$message->admin_created_id ? 'bg-green-200' : 'bg-gray-100' }}">
-                    <header class="flex justify-between items-center mb-2">
-                        <span class="text-gray-800 text-xs">
-                            {{ $message->admin_created_id ? 'Respuesta del administrador' : $message->interaction->user->name }}
-                        </span>
-                        <span class="text-gray-600 text-xs">
-                            @if ($message->admin_created_id)
-                                {{ $message->getMessageReadUser() }}
-                            @endif
-                        </span>
-                    </header>
-                    <p>
-                        {{ $message->message }}
-                    </p>
-                    <footer class="flex justify-start text-gray-600 items-center mt-1">
-                        <span class="text-xs">
-                            {{ $message->created_at->diffForHumans() }}
-                        </span>
-                    </footer>
-                </x-card>
-            @endforeach --}}
-        </div>
-    </x-card>
+            </header>
+        </x-card>
+    </div>
+    <div class="col-span-full lg:col-span-7 lg:order-last">
+        <x-card>
+            <header class="flex justify-between items-center">
+                <x-h3>Mensajes</x-h3>
+                {{-- <div>
+                        <x-button label="Responder" variant="info" size="sm" @click="$dispatch('open-modal', 'response-support-interaction-modal')" />
+                    </div> --}}
+            </header>
+            @forelse ($messages as $message)
+                <div class="space-y-1">
+                    <div @class([
+                        'bg-gray-200' => $message->created_account_id,
+                        'bg-gray-100' => !$message->created_account_id,
+                        'p-2 md:p-4 space-y-1 rounded-md',
+                    ])="bg-gray-200 rounded-xl p-4 space-y-2">
+                        <header class="flex justify-between items-center">
+                            <span class="text-xs font-light">
+                                @if ($message->created_account_id)
+                                    {{ $message->accountCreated->user->name }}
+                                @else
+                                    Administrador
+                                @endif
+                            </span>
+                            <span class="text-xs font-light">
+                                <x-date-format date="{{ $message->created_at }}" format="d M Y H:i" />
+                            </span>
+                        </header>
+                        <p class="text-sm text-gray-800">{{ $message->message }}</p>
+                        <footer class="flex justify-end">
+                            <span class="text-xs">
+                                @if ($message->created_account_id)
+                                    {{ $message->getMessageReadAccount() }}
+                                @endif
+
+                            </span>
+                        </footer>
+                    </div>
+                </div>
+            @empty
+                <div>
+                    <p class="text-center text-gray-500 py-4">No hay mensajes para esta interacción.</p>
+                </div>
+            @endforelse
+        </x-card>
+    </div>
+    <div class="col-span-full lg:col-span-5 space-y-4">
+        <!-- Información de la interacción -->
+        <x-card>
+            <header>
+                <x-h3 value="Detalles de la interacción" />
+            </header>
+            <x-card-body-grids>
+                <x-card-body-grid class="col-span-full lg:col-span-6" label="Numero de interacción"
+                    value="{{ $interaction->number }}" />
+                <x-card-body-grid class="col-span-full lg:col-span-6" label="Tipo de interacción"
+                    value="{{ $interaction->interactionType->name }}" />
+                <x-card-body-grid class="col-span-full" label="Cuenta asociada">
+                    @if ($interaction->account_id)
+                        {{ $interaction->account->user_id
+                            ? $interaction->account->user->name . ' ' . $interaction->account->user->lastname
+                            : $interaction->account->name . ' ' . $interaction->account->lastname }}
+                    @else
+                        {{ $interaction->business->name }}
+                    @endif
+                </x-card-body-grid>
+                <x-card-body-grid class="col-span-full lg:col-span-6" label="Fecha de creación" value="">
+                    <x-date-format date="{{ $interaction->created_at }}" format="d M Y H:i" />
+                </x-card-body-grid>
+            </x-card-body-grids>
+        </x-card>
+
+        <!-- Information of account -->
+        <x-card>
+            <header>
+                <x-h3 value="Información de la cuenta" />
+            </header>
+            <x-card-body-grids>
+                <x-card-body-grid class="col-span-full" label="Número de cuenta"
+                    value="{{ $interaction->interactionable->number }}" />
+                <x-card-body-grid class="col-span-full" label="Servicio asociado"
+                    value="{{ $interaction->interactionable->service->title }}" />
+            </x-card-body-grids>
+        </x-card>
+    </div>
+
 </div>

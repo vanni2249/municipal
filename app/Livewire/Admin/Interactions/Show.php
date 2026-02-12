@@ -17,8 +17,8 @@ class Show extends Component
 
     public function mount($interaction)
     {
-        // $this->admin = Auth::guard('admin')->user();
-        // $this->interaction = Interaction::with(['service', 'messages'])->findOrFail($interaction);
+        $this->admin = Auth::guard('admin')->user();
+        $this->interaction = Interaction::with(['messages'])->where('ulid', $interaction)->firstOrFail();
         // $this->status = 'in_progress';
         // $this->readMessage();
     }
@@ -65,7 +65,8 @@ class Show extends Component
     public function render()
     {
         return view('livewire.admin.interactions.show', [
-            // 'interaction' => $this->interaction,
+            'interaction' => $this->interaction,
+            'messages' => $this->interaction->messages()->orderBy('id', 'desc')->get(),
             // 'messages' => $this->interaction->messages()->with(['interaction'])->orderBy('created_at', 'desc')->get(),
         ]);
     }

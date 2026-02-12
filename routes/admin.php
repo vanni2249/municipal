@@ -37,11 +37,14 @@ use App\Livewire\Admin\Inspections\Show as AdminInspectionsShow;
 use App\Livewire\Admin\Routes\Index as AdminRoutes;
 use App\Livewire\Admin\Routes\Show as AdminRoutesShow;
 
-use App\Livewire\Admin\Lists\Index as AdminLists;
-use App\Livewire\Admin\Lists\Show as AdminListsShow;
+use App\Livewire\Admin\Invoices\Index as AdminInvoices;
+use App\Livewire\Admin\Invoices\Show as AdminInvoicesShow;
 
 use App\Livewire\Admin\Transactions\Index as AdminTransactions;
 use App\Livewire\Admin\Transactions\Show as AdminTransactionsShow;
+
+use App\Livewire\Admin\Lists\Index as AdminLists;
+use App\Livewire\Admin\Lists\Show as AdminListsShow;
 
 use App\Livewire\Admin\Logs\Index as AdminLogs;
 use App\Livewire\Admin\Logs\Show as AdminLogsShow;
@@ -103,14 +106,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Routes
         Route::get('/routes', AdminRoutes::class)->name('routes');
         Route::get('/routes/{route}', AdminRoutesShow::class)->name('routes.show');
-
-        // Lists
-        Route::get('/lists', AdminLists::class)->name('lists');
-        Route::get('/lists/{list}', AdminListsShow::class)->name('lists.show');
+        
+        // Invoices
+        Route::get('/invoices', AdminInvoices::class)->name('invoices');
+        Route::get('/invoices/{invoice}', AdminInvoicesShow::class)->name('invoices.show');
 
         // Transactions
         Route::get('/transactions', AdminTransactions::class)->name('transactions');
         Route::get('/transactions/{transaction}', AdminTransactionsShow::class)->name('transactions.show');
+
+        // Lists
+        Route::get('/lists', AdminLists::class)->name('lists');
+        Route::get('/lists/{list}', AdminListsShow::class)->name('lists.show');
 
         // Logs
         Route::get('/logs', AdminLogs::class)->name('logs');

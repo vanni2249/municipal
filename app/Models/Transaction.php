@@ -26,4 +26,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(TransactionMethodType::class);
     }
+
+    public function invoice()
+    {
+        return $this->morphOne(Invoice::class, 'invoicable');
+    }
 }

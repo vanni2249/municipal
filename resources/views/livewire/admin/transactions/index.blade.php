@@ -29,7 +29,7 @@
                 <tr>
                     <th class="p-2 w-auto">Number</th>
                     <th class="p-2 w-auto">Método</th>
-                    <th class="p-2 w-auto">Transacciones</th>
+                    <th class="p-2 w-auto">Invoice</th>
                     <th class="p-2 w-auto">Amount</th>
                     <th class="p-2 w-auto">Status</th>
                     <th class="p-2 w-24"></th>
@@ -48,12 +48,9 @@
                         </td>
                         <!-- Transactionable -->
                         <td class="p-2">
-                            {{-- {{ $transaction->transactionable->getTable() ?? '...' }} --}}
-                            @if ($transaction->transactionable->getTable() == 'applications')
-                                {{ $transaction->transactionable->service->title ?? '...' }}
-                            @else
-                                
-                            @endif
+                            {{ $transaction->transactionable->number ?? '...' }}
+                            <br>
+                           {{ $transaction->transactionable->invoicable->service->title ?? '...' }}
                         </td>
                         <!-- Amount -->
                         <td class="p-2">

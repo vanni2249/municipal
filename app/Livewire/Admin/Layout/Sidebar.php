@@ -53,9 +53,9 @@ class Sidebar extends Component
             'path' => 'routes',
         ],
         [
-            'name' => 'Listas',
-            'route' => 'admin.lists',
-            'path' => 'lists',
+            'name' => 'Facturas',
+            'route' => 'admin.invoices',
+            'path' => 'invoices',
         ],
         [
             'name' => 'Transacciones',
@@ -68,11 +68,16 @@ class Sidebar extends Component
             'path' => 'logs',
         ],
         [
+            'name' => 'Listas',
+            'route' => 'admin.lists',
+            'path' => 'lists',
+        ],
+        [
             'name' => 'Configuración',
             'route' => 'admin.settings',
             'path' => 'settings',
         ],
-     ];
+    ];
     public function render()
     {
         return view('livewire.admin.layout.sidebar', [

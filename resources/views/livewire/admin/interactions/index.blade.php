@@ -26,11 +26,9 @@
             <x-slot name="head">
                 <tr>
                     <th class="p-4">Number</th>
-                    <th class="p-4">Tipo</th>
-                    <th class="p-4">Interacción<br/>Tipo</th>
-                    <th class="p-4">Total<br/>mensajes</th>
                     <th class="p-4">Cuenta</th>
-                    <th class="p-4">Business</th>
+                    <th class="p-4">Servicio</th>
+                    <th class="p-4">Total<br />mensajes</th>
                     <th class="p-4">Fecha</th>
                     <th class="p-4">Estado</th>
                     <th class="p-4 w-14"></th>
@@ -38,45 +36,55 @@
             </x-slot>
             <x-slot name="body">
                 @forelse ($interactions as $interaction)
-                <tr class="border-t border-gray-300">
-                    <!-- Number -->
-                    <td class="p-4">{{ $interaction->number }}</td>
-                    <!-- Type -->
-                    <td class="p-4">{{ $interaction->interactionType->name }}</td>
-                    <!-- Interaction Type -->
-                    <td class="p-4">{{ $interaction->interactionable->getTable() }}</td>
-                    <!-- Total Messages -->
-                    <td class="p-4">
-                        {{ $interaction->messages->count() }}
-                    </td>
-                    <!-- Account -->
-                    <td class="p-4">
-                        {{ $interaction->account->number ?? '...' }}
-                    </td>
-                    <!-- Business -->
-                    <td class="p-4">
-                        {{ $interaction->business->name ?? '...' }}
-                    </td>
-                    <!-- Date -->
-                    <td class="p-4">
-                        <x-date-format date="{{ $interaction->created_at }}" format="d/m/Y" />
-                    </td>
-                    <!-- Statuses -->
-                    <td class="p-4">
-                        <x-badge label="{{ $interaction->status->statusType->name }}" color="{{ $interaction->status->statusType->variant }}" />
-                    </td>
-                    <!-- Action -->
-                    <td class="p-4 flex justify-end">
-                        <x-icon-link href="{{ route('admin.interactions.show', ['interaction' => $interaction->ulid]) }}"
-                            icon="arrow-narrow-right-dashed" variant="light" wire:navigate />
-                    </td>
-                </tr>
+                    <tr class="border-t border-gray-300">
+                        <!-- Number -->
+                        <td class="p-4">{{ $interaction->number }}</td>
+                        <!-- Account -->
+                        <td class="p-4">
+                            @if ($interaction->account_id)
+                                {{ $interaction->account->user_id
+                                    ? $interaction->account->user->name . ' ' . $interaction->account->user->lastname
+                                    : $interaction->account->name . ' ' . $interaction->account->lastname }}
+                            @else
+                                {{ $interaction->business->name }}
+                            @endif
+                        </td>
+                        <!-- Type -->
+                        <td class="p-4">{{ $interaction->interactionable->service->title }}</td>
+                        <!-- Total Messages -->
+                        <td class="p-4">
+                            {{ $interaction->messages->count() }}
+                        </td>
+                        <!-- Date -->
+                        <td class="p-4">
+
+                            @if ($interaction->created_at->diffInMonths(now()) >= 1)
+                                {{-- Más de un mes: mostramos formato de fecha --}}
+                                <x-date-format :date="$interaction->created_at" format="d/m/Y" />
+                            @else
+                                {{-- Menos de un mes: mostramos formato humano --}}
+                                <x-diff-humans :date="$interaction->created_at" />
+                            @endif
+
+                        </td>
+                        <!-- Statuses -->
+                        <td class="p-4">
+                            <x-badge label="{{ $interaction->status->statusType->name }}"
+                                color="{{ $interaction->status->statusType->variant }}" />
+                        </td>
+                        <!-- Action -->
+                        <td class="p-4 flex justify-end">
+                            <x-icon-link
+                                href="{{ route('admin.interactions.show', ['interaction' => $interaction->ulid]) }}"
+                                icon="arrow-narrow-right-dashed" variant="light" wire:navigate />
+                        </td>
+                    </tr>
                 @empty
-                <tr>
-                    <td colspan="6" class="p-4 text-center text-gray-500">
-                        No se encontraron interacciones.
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="9" class="p-4 text-center text-gray-500">
+                            No se encontraron interacciones.
+                        </td>
+                    </tr>
                 @endforelse
 
             </x-slot>

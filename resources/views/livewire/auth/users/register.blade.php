@@ -137,7 +137,7 @@
                     </div>
                     <!-- Button -->
                     <div class="col-span-4">
-                        <x-button class="w-full md:w-auto" type="submit" size="lg">
+                        <x-button class="w-full md:w-auto" type="submit">
                             {{ __('Registrar') }}
                         </x-button>
                     </div>

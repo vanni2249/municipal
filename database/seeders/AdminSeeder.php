@@ -61,7 +61,7 @@ class AdminSeeder extends Seeder
 
          foreach (Admin::all() as $admin) {
             $admin->statuses()->create([
-                'status_type_id' => StatusType::inRandomOrder()->first()->id,
+                'status_type_id' => 2,
                 'reason' => 'Initial status for admin '.$admin->number,
             ]);
         }

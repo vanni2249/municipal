@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\SessionCitizen;
 use App\Models\Account;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Citizens\Dashboard\Index as CitizensDashboard;
@@ -22,15 +23,18 @@ Route::prefix('citizens')->name('citizens.')->middleware(AuthUser::class)->group
         session(['data.account_ulid' => $account->ulid]);
         return redirect()->route('citizens.dashboard');
     })->name('set-session');
-    Route::get('/dashboard', CitizensDashboard::class)->name('dashboard');
-    Route::get('/services', CitizensServicesIndex::class)->name('services');
-    Route::get('/services/{service}/create', CitizensServicesCreate::class)->name('services.create');
-    Route::get('/services/{service}', CitizensServicesShow::class)->name('services.show');
-    Route::get('/applications', CitizensApplicationsIndex::class)->name('applications');
-    Route::get('/applications/{application}', CitizensApplicationsShow::class)->name('applications.show');
-    Route::get('/permits', CitizensPermitsIndex::class)->name('permits');
-    Route::get('/permits/{permit}', CitizensPermitsShow::class)->name('permits.show');
-    Route::get('/interactions', CitizensInteractions::class)->name('interactions');
-    Route::get('/interactions/{interaction}', CitizensInteractionsShow::class)->name('interactions.show');
-    Route::get('/settings', CitizensSettings::class)->name('settings');
+
+    Route::middleware(SessionCitizen::class)->group(function () {
+        Route::get('/dashboard', CitizensDashboard::class)->name('dashboard');
+        Route::get('/services', CitizensServicesIndex::class)->name('services');
+        Route::get('/services/{service}/create', CitizensServicesCreate::class)->name('services.create');
+        Route::get('/services/{service}', CitizensServicesShow::class)->name('services.show');
+        Route::get('/applications', CitizensApplicationsIndex::class)->name('applications');
+        Route::get('/applications/{application}', CitizensApplicationsShow::class)->name('applications.show');
+        Route::get('/permits', CitizensPermitsIndex::class)->name('permits');
+        Route::get('/permits/{permit}', CitizensPermitsShow::class)->name('permits.show');
+        Route::get('/interactions', CitizensInteractions::class)->name('interactions');
+        Route::get('/interactions/{interaction}', CitizensInteractionsShow::class)->name('interactions.show');
+        Route::get('/settings', CitizensSettings::class)->name('settings');
+    });
 });

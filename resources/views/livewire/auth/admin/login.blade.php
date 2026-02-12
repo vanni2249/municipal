@@ -2,13 +2,15 @@
     <div class="bg-white mx-auto sm:w-md rounded-xl p-4">
         <div class="">
             <h1 class="text-2xl font-bold text-gray-900">Acceso</h1>
-            <p class="mt-1 text-xs text-gray-600">¡Bienvenido de nuevo! Inicia sesión en tu cuenta de <b>empleado</b>.</p>
+            <p class="mt-1 text-sm text-gray-600">¡Bienvenido de nuevo! Inicia sesión en tu cuenta de <b>empleado</b>.
+            </p>
         </div>
 
         <form wire:submit="login">
             <div class="mt-4">
                 <x-label for="username" class="mt-4" value="Username" />
-                <x-input wire:model="username" class="w-full" type="text" placeholder="Enter your username" autofocus />
+                <x-input wire:model="username" class="w-full" type="text" placeholder="Enter your username"
+                    autofocus />
                 @error('username')
                     <x-error message="{{ $message }}" />
                 @enderror
@@ -24,9 +26,8 @@
                 <p class="mt-2 text-xs text-gray-600">Forgot your password?</p>
             </a>
             <div class="mt-8">
-                <x-button type="submit" class="w-full" label="{{ __('Login') }}" size="lg">
-                    {{ __('Login') }}
-                </x-button>
+                <x-button type="submit" class="w-full" label="{{ __('Login') }}" />
+                {{-- <x-loading-button wire:loading class="w-full" variant="primary" /> --}}
             </div>
         </form>
     </div>

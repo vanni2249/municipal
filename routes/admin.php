@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard\Index as AdminDashboard;
 
@@ -52,7 +53,7 @@ use App\Livewire\Admin\Logs\Show as AdminLogsShow;
 use App\Livewire\Admin\Settings\Index as AdminSettings;
 use App\Livewire\Admin\Settings\Show as AdminSettingsShow;
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(AuthAdmin::class)->group(function () {
         Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
         // Users

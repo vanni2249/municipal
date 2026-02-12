@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\SessionBusiness;
 use App\Models\Account;
 use App\Models\Business;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +19,7 @@ use App\Livewire\Businesses\Interactions\Index as BusinessInteractionsIndex;
 use App\Livewire\Businesses\Interactions\Show as BusinessInteractionsShow;
 use App\Livewire\Businesses\Settings\Index as BusinessSettings;
 
-Route::prefix('businesses')->name('businesses.')->group(function () {
+Route::prefix('businesses')->name('businesses.')->middleware(AuthUser::class)->group(function () {
         Route::get('/set-session/{business}', function ($business) {
                 $business = Business::where('ulid', $business)->first();
 
@@ -26,17 +28,20 @@ Route::prefix('businesses')->name('businesses.')->group(function () {
 
                 return redirect()->route('businesses.dashboard');
         })->name('set-session');
-        Route::get('/dashboard', BusinessDashboard::class)->name('dashboard');
-        Route::get('/services', BusinessServicesIndex::class)->name('services');
-        Route::get('/services/{service}/create', BusinessServicesCreate::class)->name('services.create');
-        Route::get('/services/{service}', BusinessServicesShow::class)->name('services.show');
-        Route::get('/applications', BusinessApplicationsIndex::class)->name('applications');
-        Route::get('/applications/{application}', BusinessApplicationsShow::class)->name('applications.show');
-        Route::get('/permits', BusinessPermitsIndex::class)->name('permits');
-        Route::get('/permits/{permit}', BusinessPermitsShow::class)->name('permits.show');
-        Route::get('/patents', BusinessPatentsIndex::class)->name('patents');
-        Route::get('/patents/{patent}', BusinessPatentsShow::class)->name('patents.show');
-        Route::get('/interactions', BusinessInteractionsIndex::class)->name('interactions');
-        Route::get('/interactions/{interaction}', BusinessInteractionsShow::class)->name('interactions.show');
-        Route::get('/settings', BusinessSettings::class)->name('settings');
+
+        Route::middleware(SessionBusiness::class)->group(function () {
+                Route::get('/dashboard', BusinessDashboard::class)->name('dashboard');
+                Route::get('/services', BusinessServicesIndex::class)->name('services');
+                Route::get('/services/{service}/create', BusinessServicesCreate::class)->name('services.create');
+                Route::get('/services/{service}', BusinessServicesShow::class)->name('services.show');
+                Route::get('/applications', BusinessApplicationsIndex::class)->name('applications');
+                Route::get('/applications/{application}', BusinessApplicationsShow::class)->name('applications.show');
+                Route::get('/permits', BusinessPermitsIndex::class)->name('permits');
+                Route::get('/permits/{permit}', BusinessPermitsShow::class)->name('permits.show');
+                Route::get('/patents', BusinessPatentsIndex::class)->name('patents');
+                Route::get('/patents/{patent}', BusinessPatentsShow::class)->name('patents.show');
+                Route::get('/interactions', BusinessInteractionsIndex::class)->name('interactions');
+                Route::get('/interactions/{interaction}', BusinessInteractionsShow::class)->name('interactions.show');
+                Route::get('/settings', BusinessSettings::class)->name('settings');
+        });
 });

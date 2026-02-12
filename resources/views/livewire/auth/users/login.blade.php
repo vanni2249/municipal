@@ -30,7 +30,7 @@
                     <p class="mt-2 text-sm text-gray-600">Forgot your password?</p>
                 </a>
                 <div class="mt-8">
-                    <x-button type="submit" class="w-full" label="{{ __('Login') }}" size="lg" />
+                    <x-button type="submit" class="w-full" label="{{ __('Login') }}" />
                 </div>
             </form>
             <div class="mt-6">

@@ -35,7 +35,7 @@
             <ul class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
                 @livewire('citizens.layout.sidebar')
             </ul>
-            <footer class="h-24 border-t border-gray-900"></footer>
+            <footer class="h-14 border-t border-gray-900"></footer>
         </aside>
     </div>
 

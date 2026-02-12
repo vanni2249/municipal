@@ -45,7 +45,7 @@
                                     <!-- Citizen dashboard button -->
                                     <div class="">
                                         <x-link-button href="{{ route('citizens.set-session', $account->ulid) }}"
-                                            variant="success">
+                                            variant="primary">
                                             Ir al tablero
                                         </x-link-button>
                                     </div>
@@ -88,7 +88,7 @@
                                             @if ($business->status->statusType->slug == 'active')
                                                 <x-link-button
                                                     href="{{ route('businesses.set-session', $business->ulid) }}"
-                                                    variant="success">
+                                                    variant="primary">
                                                     Ir al tablero
                                                 </x-link-button>
                                             @else

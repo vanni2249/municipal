@@ -33,28 +33,18 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-app-elements>
-                    <x-app-element class="col-span-full lg:col-span-3">
-                        <x-app-element-label label="Número de usuario" />
-                        <x-app-element-value value="{{ $user->number ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full lg:col-span-3">
-                        <x-app-element-label label="Nombre completo" />
-                        <x-app-element-value value="{{ $user->name }} {{ $user->lastname }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full">
-                        <x-app-element-label label="Correo electrónico" />
-                        <x-app-element-value value="{{ $user->email ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Teléfono" />
-                        <x-app-element-value value="{{ $user->phone ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Fecha de creación" />
-                        <x-app-element-value value="{{ $user->created_at ?? 'N/A' }}" />
-                    </x-app-element>
-                </x-app-elements>
+                <x-card-body-grids>
+                    <x-card-body-grid label="Número de usuario" value="{{ $user->number ?? 'N/A' }}"
+                        class="col-span-full" />
+                    <x-card-body-grid label="Nombre" value="{{ $user->name ?? 'N/A' }}" class="col-span-6" />
+                    <x-card-body-grid label="Apellidos" value="{{ $user->lastname ?? 'N/A' }}" class="col-span-6" />
+                    <x-card-body-grid label="Correo electrónico" value="{{ $user->email ?? 'N/A' }}"
+                        class="col-span-full" />
+                    <x-card-body-grid label="Fecha de creación" class="col-span-full">
+                        <x-date-format date="{{ $user->created_at }}" />
+                    </x-card-body-grid>
+
+                </x-card-body-grids>
             </x-card>
             <!-- Accounts -->
             <x-card>
@@ -69,23 +59,25 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-card-elements-group>
-                    @for ($i = 0; $i < 3; $i++)
-                        <x-card-element class="flex justify-between items-center">
+                <x-card-body-lists>
+                    @foreach ($user->accounts as $account)
+                        <x-card-body-list class="flex justify-between items-center">
                             <div>
-                                <strong class="text-sm">Accounts</strong>
-                                <br>
-                                <span class="text-gray-700">{{ now() }}</span>
+                                <ul class="text-xs text-gray-700 font-bold">
+                                    <li>{{ $account->number }}</li>
+                                </ul>
+                                <span>{{ $account->accountType->name }}</span>
+                                <ul>
+                                    <li></li>
+                                </ul>
                             </div>
-                            <x-icon-button icon="ellipsis-vertical" variant="light" size="xs" />
-                        </x-card-element>
-                    @endfor
-                </x-card-elements-group>
+                            <x-badge variant="{{ $account->status->statusType->variant }}"
+                                label="{{ $account->status->statusType->name }}" />
+                        </x-card-body-list>
+                    @endforeach
+                </x-card-body-lists>
             </x-card>
-            {{-- @livewire('admin.users.components.user-accounts', ['user' => $user], key($user->id)) --}}
-
             <!-- Statues -->
-            {{-- @livewire('admin.users.components.user-statuses', ['user' => $user], key($user->id)) --}}
             <x-card>
                 <x-card-header class="flex justify-between items-center">
                     <x-h2 value="Estados" />
@@ -98,18 +90,20 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-card-elements-group>
+                <x-card-body-lists>
                     @foreach ($user->statuses as $status)
-                        <x-card-element class="flex justify-between items-center">
+                        <x-card-body-list class="flex justify-between items-center">
                             <div>
                                 <strong class="text-sm">{{ $status->statusType->name }}</strong>
                                 <br>
-                                <span class="text-gray-700">{{ $status->created_at }}</span>
+                                <span class="text-gray-700">
+                                    <x-date-format date="{{ $status->created_at }}" format="d/M/Y H:i:s" />
+                                </span>
                             </div>
                             <x-badge :variant="$status->statusType->variant" :label="$status->statusType->name" />
-                        </x-card-element>
+                        </x-card-body-list>
                     @endforeach
-                </x-card-elements-group>
+                </x-card-body-lists>
             </x-card>
 
         </div>
@@ -119,26 +113,17 @@
                 <x-card-header>
                     <x-h2 value="Sesiones" />
                 </x-card-header>
-                <x-card-elements-group>
-                    @for ($i = 0; $i < 10; $i++)
-                        <x-card-element class="flex justify-between items-center">
-                            <div>
-                                <strong class="text-sm">Sesión reciente</strong>
-                                <br>
-                                <span class="text-gray-700">2024-01-01 12:00:00</span>
-                            </div>
-                            <x-badge variant="success" label="Activa" />
-                        </x-card-element>
-                    @endfor
-                    {{-- <x-card-element class="flex justify-between items-center">
-                <div>
-                    <strong class="text-sm">Sesión anterior</strong>
-                    <br>
-                    <span class="text-gray-700">2023-12-31 11:00:00</span>
-                </div>
-                <x-badge variant="warning" label="Inactiva" />
-            </x-card-element> --}}
-                </x-card-elements-group>
+                <x-card-body-lists>
+                    @foreach ($user->sessions as $session)
+                        <x-card-body-list class="flex justify-between items-center">
+                            <ul class="text-sm text-gray-700">
+                                <li>{{ $session->device_info ?? 'No detecto el equipo' }}</li>
+                                <li>{{ $session->platform ?? 'No detecto la plataforma' }}</li>
+                            </ul>
+                            <x-diff-humans date="{{ $session->created_at }}" />
+                        </x-card-body-list>
+                    @endforeach
+                </x-card-body-lists>
             </x-card>
             {{-- @livewire('admin.users.components.user-sessions', ['user' => $user], key($user->id)) --}}
 

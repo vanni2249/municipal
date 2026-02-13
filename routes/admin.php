@@ -53,6 +53,8 @@ use App\Livewire\Admin\Logs\Show as AdminLogsShow;
 use App\Livewire\Admin\Settings\Index as AdminSettings;
 use App\Livewire\Admin\Settings\Show as AdminSettingsShow;
 
+use App\Livewire\Admin\Stripes\Index as AdminStripes;
+
 Route::prefix('admin')->name('admin.')->middleware(AuthAdmin::class)->group(function () {
         Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
@@ -127,4 +129,6 @@ Route::prefix('admin')->name('admin.')->middleware(AuthAdmin::class)->group(func
         // Settings
         Route::get('/settings', AdminSettings::class)->name('settings');
         Route::get('/settings/{setting}', AdminSettingsShow::class)->name('settings.show');
+
+        Route::get('/stripes', AdminStripes::class)->name('stripes');
 });

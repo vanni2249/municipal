@@ -3,11 +3,25 @@
 namespace App\Livewire\Admin\Dashboard;
 
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Lazy;
 use Livewire\Component;
 
+#[Lazy()]
 class Index extends Component
 {
     use \App\Traits\AccountTypeId;
+
+    public $labels;
+    public $data = [];
+
+    public function mount()
+    {
+        $this->labels = $this->labels();
+        $this->data = $this->data();
+
+        // dd($this->labels);
+        // $this->chartLabel = 'Aplicaciones por día';
+    }
 
     public function widgets()
     {
@@ -55,6 +69,38 @@ class Index extends Component
         ];
     }
 
+    public function labels()
+    {
+        // Get days of the current month
+        $days = range(1, now()->daysInMonth);
+        return collect($days)->map(function ($day) {
+            return now()->startOfMonth()->addDays($day - 1)->format('M d');
+        })->toArray();
+    }
+
+    // public function data()
+    // {
+    //     $data = [];
+    //     $days = range(1, now()->daysInMonth);
+    //     foreach ($days as $day) {
+    //         $count = \App\Models\Application::whereDay('created_at', $day)->count();
+    //         $data[] = $count;
+    //     }
+    //     return $data;
+    // }
+
+    public function data()
+    {
+        // freturn ake data for the current month
+        $data = [];
+        $days = range(1, now()->daysInMonth);
+        foreach ($days as $day) {
+            $count = \App\Models\Application::whereDay('created_at', $day)->count() + rand(10, 50);
+            $data[] = $count;
+        }
+        return $data;
+    }
+
     public function lists()
     {
         return [
@@ -77,6 +123,26 @@ class Index extends Component
                             'count' => number_format($serviceType->applications_count),
                         ];
                     }),
+                ],
+                [
+                    'title' => 'Tipos de negocio',
+                    'total' => number_format(\App\Models\BusinessType::withCount('businesses')->count()),
+                    'items' => \App\Models\BusinessType::withCount('businesses')->limit(5)->get()->map(function ($businessType) {
+                        return [
+                            'name' => $businessType->name,
+                            'count' => number_format($businessType->businesses_count),
+                        ];
+                    }),
+                ],
+                [
+                    'title' => 'Tipos de inspección',
+                    'total' => number_format(\App\Models\InspectionType::withCount('inspections')->count()),
+                    'items' => \App\Models\InspectionType::withCount('inspections')->limit(5)->get()->map(function ($inspectionType) {
+                        return [
+                            'name' => $inspectionType->name,
+                            'count' => number_format($inspectionType->inspections_count),
+                        ];
+                    }),
                 ]
 
             // [
@@ -90,12 +156,19 @@ class Index extends Component
         ];
     }
 
+    public function placeholder()
+    {
+        return view('placeholders.views.admins.dashboard');
+    }
+
     #[Layout('layouts.admin')]
     public function render()
     {
         return view('livewire.admin.dashboard.index', [
             'widgets' => $this->widgets(),
             'lists' => $this->lists(),
+            // 'labels' => $this->labels(),
+            // 'data' => $this->data(),
         ]);
     }
 }

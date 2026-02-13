@@ -35,10 +35,11 @@
     ];
 
     $sizes = [
-        'sm' => ' px-2 py-1.5 text-xs rounded-md font-semibold uppercase tracking-wider ',
-        'md' => ' px-4 py-2.5 text-xs rounded-md font-semibold uppercase tracking-wider ',
-        'lg' => ' px-6 py-3 text-base rounded-md font-semibold uppercase tracking-widest ',
-        'xl' => ' px-8 py-3.5 text-xl rounded-md font-semibold uppercase tracking-widest ',
+        'xs' => ' h-6 px-2 text-xs rounded-md font-semibold uppercase tracking-wider ',
+        'sm' => ' h-8 px-4 text-xs rounded-md font-semibold uppercase tracking-wider ',
+        'md' => ' h-10 px-6 text-xs rounded-md font-semibold uppercase tracking-wider ',
+        'lg' => ' px-12 py-3 text-base rounded-md font-semibold uppercase tracking-widest ',
+        'xl' => ' px-14 py-3.5 text-xl rounded-md font-semibold uppercase tracking-widest ',
     ];
 @endphp
 

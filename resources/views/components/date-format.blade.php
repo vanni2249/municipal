@@ -1,3 +1,3 @@
-@props(['date' => null, 'format' => 'F j, Y, g:i a'])
+@props(['date' => null, 'format' => 'd/M/Y H:i:s'])
 
 {{ \Carbon\Carbon::parse($date)->format($format) }}

@@ -78,7 +78,7 @@
 
         @foreach ($accountTypes as $type)
             <header class="mt-8 mb-4 px-1">
-                <h1 class="text-2xl font-bold text-gray-900 leading-3">
+                <h1 class="text-lg font-bold text-gray-900 leading-3">
                     Servicios del {{ $type->name }}
                 </h1>
             </header>

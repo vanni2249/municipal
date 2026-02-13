@@ -74,43 +74,43 @@
         </div>
     </section>
 
-    <section id="citizen-services" class="grid grid-cols-12 gap-2 lg:gap-4  max-w-7xl px-4 mx-auto py-4">
+    <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-4">
 
         @foreach ($accountTypes as $type)
-            <header class="col-span-full mt-8 mb-4 px-1">
+            <header class="mt-8 mb-4 px-1">
                 <h1 class="text-2xl font-bold text-gray-900 leading-3">
                     Servicios del {{ $type->name }}
                 </h1>
             </header>
-            <x-card id="{{ $type->slug }}" class="col-span-full">
-                <div class="grid grid-cols-12 gap-2">
+            <div id="{{ $type->slug }}" class="grid grid-cols-12 gap-2">
 
-                    @foreach ($type->services()->limit(6)->get() as $service)
-                        <div
-                            class="col-span-full md:col-span-6 lg:col-span-4 bg-gray-100 rounded-lg p-4 flex space-y-2 flex-col">
-                            <ul class="text-xs text-gray-700 uppercase font-bold tracking-wide">
-                                <li>
-                                    {{ $service->serviceType->name }}
-                                </li>
-                            </ul>
-                            <p class="font-bold">
-                                {{ $service->title }}
-                            </p>
-                            <span class="hidden lg:block text-sm text-gray-700 line-clamp-2">
+                @foreach ($type->services()->limit(4)->get() as $service)
+                    <div class="bg-white col-span-6 lg:col-span-3 p-2 md:p-4 rounded-xl border border-gray-200 space-x-4">
+                        <div class=" flex justify-center flex-col space-x-4">
+                            <div class="flex-1 flex flex-col items-center md:flex-row md:justify-start md:items-start  md:space-x-2">
+                                <div class="">
+                                    <x-icon icon="shirt-sport" height="44" width="44" />
+
+                                </div>
+                                <div class="text-center md:text-left">
+                                    <ul class="text-xs text-gray-700 uppercase font-bold tracking-wide">
+                                        <li>
+                                            {{ $service->serviceType->name }}
+                                        </li>
+                                    </ul>
+                                    <p class="text-xs md:text-sm md:text-left font-bold lg:mt-2">
+                                        {{ $service->title }}
+                                    </p>
+
+                                </div>
+                            </div>
+                            <p class="hidden md:block text-sm text-gray-700 line-clamp-2">
                                 {{ $service->description }}
-                            </span>
+                            </p>
                         </div>
-                        {{-- <div class="flex justify-between items-center mt-auto">
-                        <div class="text-sm text-gray-800">
-                       <x-money-format :amount="$service->amount" />
                     </div>
-                    <div class="flex justify-end">
-                        <x-link-button href="{{ route('businesses.services.show', $service->ulid) }}" variant="light">Aplicar</x-link-button>
-                    </div>
-                </div> --}}
-                    @endforeach
-                </div>
-            </x-card>
+                @endforeach
+            </div>
         @endforeach
 
         {{-- </div> --}}

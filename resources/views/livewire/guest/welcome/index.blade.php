@@ -85,28 +85,25 @@
             <div id="{{ $type->slug }}" class="grid grid-cols-12 gap-2">
 
                 @foreach ($type->services()->limit(4)->get() as $service)
-                    <div class="bg-white col-span-6 lg:col-span-3 p-2 md:p-4 rounded-xl border border-gray-200 space-x-4">
-                        <div class=" flex justify-center flex-col space-y-4 ">
-                            <div class="flex-1 flex flex-col items-center md:flex-row md:justify-start md:items-start  md:space-x-2">
+                    <div class="bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
+                        <div class=" flex justify-center flex-col">
+                            <div class="flex-1 flex flex-col items-center">
                                 <div class="">
                                     <x-icon icon="shirt-sport" height="44" width="44" />
 
                                 </div>
-                                <div class="text-center md:text-left">
-                                    <ul class="text-xs text-gray-700 uppercase font-bold tracking-wide">
-                                        <li>
-                                            {{ $service->serviceType->name }}
-                                        </li>
-                                    </ul>
-                                    <p class="text-sm md:text-left font-bold lg:mt-2">
+                                <div class="text-center">
+                                    <span class="py-2 text-xs text-gray-700 tracking-wide">
+                                        {{ $service->serviceType->name }}
+                                    </span>
+                                    <p class="text-sm font-bold text-gray-900">
                                         {{ $service->title }}
                                     </p>
-
                                 </div>
                             </div>
-                            <p class="hidden md:block text-sm text-gray-700 line-clamp-2">
+                            {{-- <p class="hidden md:block text-sm text-gray-700 line-clamp-2">
                                 {{ $service->description }}
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 @endforeach

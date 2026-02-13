@@ -1,6 +1,6 @@
 <div>
     <x-button variant="primary" class="flex items-center space-x-1"
-        @click="$dispatch('open-modal', 'accounts-modal')">
+        @click="$dispatch('open-modal', 'accounts-modal')" size="sm">
         {{-- <span class="md:hidden">
             <x-icon icon="replace" width="18" height="18" />
         </span> --}}

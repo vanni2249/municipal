@@ -17,7 +17,7 @@ class ServiceTypeSeeder extends Seeder
                 'slug' => 'application',
                 'name' => [
                     'en' => 'Application',
-                    'es' => 'Aplicación',
+                    'es' => 'Solicitud',
                 ]
             ],
             [

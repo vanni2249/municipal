@@ -25,4 +25,9 @@ class AccountType extends Model
     {
         return $this->hasMany(Account::class, 'account_type_id');
     }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

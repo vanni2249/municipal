@@ -10,13 +10,14 @@ class Service extends Model
 {
     use HasTranslations;
 
-    public array $translatable = ['title', 'description'];
+    public array $translatable = ['title', 'short_title', 'description', 'data'];
 
     public $fillable = [
         'ulid',
         'number',
         'slug',
         'title',
+        'icon',
         'description',
         'account_type_id',
         'service_type_id',

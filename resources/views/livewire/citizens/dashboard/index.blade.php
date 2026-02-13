@@ -18,40 +18,43 @@
         </header>
     </x-card>
     <!-- Services -->
-    <x-card>
-        <x-card-header class="flex justify-between items-center">
-            <x-h2 value="Servicios" />
-            <a href="{{ route('citizens.services') }}" class="text-sm text-gray-600 font-bold hover:underline"
-                wire:navigate>
-                Ver todos
-            </a>
-        </x-card-header>
-        <div class="grid grid-cols-1">
-            <div class="flex flex-row space-x-2 pb-1 overflow-x-auto no-scrollbar">
+    <div class="grid grid-cols-12 gap-2">
+        <x-card class="col-span-full">
 
-                @foreach ($services as $service)
-                    <a href="{{ route('citizens.services.create', $service->ulid) }}"
-                        class="flex-shrink-0 w-76 sm:w-80 md:w-84 lg:w-1/4" wire:navigate>
-                        <x-card-element class="flex flex-col hover:bg-gray-200 h-full" border="secondary">
-                            <div class="grow">
-                                <div>
-                                    <span class="text-gray-700 text-xs font-bold uppercase">
-                                        {{ $service->serviceType->name }}
-                                    </span>
-                                    <br>
-                                    <span
-                                        class="text-md font-bold text-gray-900 line-clamp-2">{{ $service->title }}</span>
-                                </div>
-                                <p class="text-sm text-gray-600 line-clamp-2 grow mb-2">
-                                    {{ $service->description }}
-                                </p>
-                            </div>
-                        </x-card-element>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    </x-card>
+            <header class="flex justify-between items-center">
+                <h1 class="text-lg font-bold text-gray-900 leading-3">
+                    Servicios
+                </h1>
+                <a href="{{ route('citizens.services') }}" class="text-sm text-blue-500 hover:underline">
+                    Ver todos
+                </a>
+            </header>
+        </x-card>
+
+
+        @foreach ($services as $service)
+            <a href="{{ route('citizens.services.create', $service->ulid) }}"
+                class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
+                <div class=" flex justify-center flex-col">
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="">
+                            <x-icon icon="{{ $service->icon }}" height="56" width="56"
+                                class="text-gray-800 stroke-1" />
+
+                        </div>
+                        <div class="text-center">
+                            <span class="py-2 text-xs text-gray-700 tracking-wide">
+                                {{ $service->serviceType->name }}
+                            </span>
+                            <p class="text-sm font-bold text-gray-900">
+                                {{ $service->title }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
     <div class="grid grid-cols-12 gap-2">
         <!-- Applications -->
         <x-card class="col-span-full lg:col-span-7">
@@ -106,8 +109,10 @@
             </x-card-header>
             <x-card-elements-group>
                 @forelse ($interactions as $interaction)
-                    <a href="{{ route('citizens.interactions.show', $interaction->ulid) }}" class="block" wire:navigate>
-                        <x-card-element class="hover:bg-gray-200" border="{{ $interaction->status->statusType->variant }}">
+                    <a href="{{ route('citizens.interactions.show', $interaction->ulid) }}" class="block"
+                        wire:navigate>
+                        <x-card-element class="hover:bg-gray-200"
+                            border="{{ $interaction->status->statusType->variant }}">
                             <div class="flex justify-between items-center space-x-2">
                                 <div class="flex-1 flex flex-col space-y-1">
                                     <span class="text-gray-700 font-bold uppercase text-xs">
@@ -118,7 +123,8 @@
                                     </span>
                                 </div>
                                 <div class="flex flex-col space-y-1 items-end">
-                                    <x-badge label="{{ $interaction->status->statusType->name }}" variant="{{ $interaction->status->statusType->variant }}" />
+                                    <x-badge label="{{ $interaction->status->statusType->name }}"
+                                        variant="{{ $interaction->status->statusType->variant }}" />
                                     <span class="text-sm text-gray-800 text-right">
                                         <x-date-format :date="$interaction->created_at" format="d/M/Y" />
                                     </span>

@@ -47,26 +47,26 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            {{-- <x-dropdown-link :href="route('users.login')">
+                            <x-dropdown-link :href="route('login')">
                                 Inicio de sesión
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('users.register')">
+                            <x-dropdown-link :href="route('register')">
                                 Registrarse
-                            </x-dropdown-link> --}}
+                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>
-                {{-- <div class="hidden md:flex justify-between items-center space-x-2">
-                    <a href="{{ route('users.login') }}"
-                        class="bg-gray-400 hover:bg-gray-300 hover:text-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase">iniciar
+                <div class="hidden md:flex justify-between items-center space-x-2">
+                    <a href="{{ route('login') }}"
+                        class="border border-transparent hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 py-2 px-4 rounded-xl text-xs font-bold uppercase">Iniciar
                         sesión</a>
-                    <a href="{{ route('users.register') }}"
-                        class="border border-gray-600 hover:bg-gray-600 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-300">Registrate</a>
-                </div> --}}
+                    <a href="{{ route('register') }}"
+                        class="border border-black bg-black hover:bg-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-100">Registrate</a>
+                </div>
             </div>
         </div>
     </nav>
-    <main class="flex-grow min-h-96">
+    <main class="flex-grow min-h-96 max-w-7xl w-full mx-auto px-4 ">
         {{ $slot }}
     </main>
     <footer class="max-w-7xl mx-auto p-4 w-full">

@@ -77,19 +77,21 @@
     <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-4">
 
         @foreach ($accountTypes as $type)
-            <header class="mt-8 mb-4 px-1">
+            <header class="mt-8 mb-4 px-1 flex justify-between items-center">
                 <h1 class="text-lg font-bold text-gray-900 leading-3">
                     Servicios del {{ $type->name }}
                 </h1>
+                <a href="{{ route('services.index', ['type' => $type->slug]) }}" class="text-sm text-blue-500 hover:underline">
+                    Ver todos
+                </a>
             </header>
-            <div id="{{ $type->slug }}" class="grid grid-cols-12 gap-2">
-
+            <div class="grid grid-cols-12 gap-2">
                 @foreach ($type->services()->limit(4)->get() as $service)
-                    <div class="bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
+                    <a href="{{ route('services.show', ['service' => $service->ulid]) }}" class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
                         <div class=" flex justify-center flex-col">
                             <div class="flex-1 flex flex-col items-center">
                                 <div class="">
-                                    <x-icon icon="shirt-sport" height="44" width="44" />
+                                    <x-icon icon="{{ $service->icon }}" height="56" width="56" class="text-gray-800 stroke-1" />
 
                                 </div>
                                 <div class="text-center">
@@ -101,17 +103,12 @@
                                     </p>
                                 </div>
                             </div>
-                            {{-- <p class="hidden md:block text-sm text-gray-700 line-clamp-2">
-                                {{ $service->description }}
-                            </p> --}}
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         @endforeach
-
-        {{-- </div> --}}
     </section>
 
-    <section class="bg-blue-400 p-4 mt-4"></section>
+    {{-- <section class="bg-blue-400 p-4 mt-4"></section> --}}
 </div>

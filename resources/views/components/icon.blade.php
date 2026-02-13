@@ -1,4 +1,4 @@
-@props(['variant' => 'primary', 'icon' => 'edit', 'width' => 24, 'height' => 24, 'size' => 6])
+@props(['variant' => 'primary', 'icon' => 'edit', 'width' => 24, 'height' => 24, 'stroke' => 2, 'size' => 6])
 
 <div class="">
 
@@ -6,8 +6,9 @@
         {{-- Tabler icons --}}
         @case('minus')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-minus">
+                fill="none" stroke="currentColor" stroke-width="{{ $stroke }}" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-minus']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l14 0" />
             </svg>
@@ -15,8 +16,9 @@
 
         @case('plus')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                fill="none" stroke="currentColor" stroke-width="{{ $stroke }}" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-plus']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 5l0 14" />
                 <path d="M5 12l14 0" />
@@ -25,8 +27,9 @@
 
         @case('edit')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-pencil">
+                fill="none" stroke="currentColor" stroke-width="{{ $stroke }}" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-pencil']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
                 <path d="M13.5 6.5l4 4" />
@@ -34,9 +37,10 @@
         @break
 
         @case('delete')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-x']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M18 6l-12 12" />
                 <path d="M6 6l12 12" />
@@ -44,9 +48,10 @@
         @break
 
         @case('eye')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-eye']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                 <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
@@ -55,8 +60,9 @@
 
         @case('phone')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-phone']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path
                     d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
@@ -65,8 +71,9 @@
 
         @case('message')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-message']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 9h8" />
                 <path d="M8 13h6" />
@@ -76,8 +83,9 @@
 
         @case('home')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-home']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
                 <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
@@ -87,8 +95,9 @@
 
         @case('x')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-x']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M18 6l-12 12" />
                 <path d="M6 6l12 12" />
@@ -97,8 +106,9 @@
 
         @case('arrow-narrow-left-dashed')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 12h6m3 0h1.5m3 0h.5" />
                 <path d="M5 12l4 4" />
@@ -108,7 +118,8 @@
 
         @case('replace')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-replace">
+                viewBox="0 0 24 24" fill="currentColor"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-filled icon-tabler-replace']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 2h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
                 <path d="M20 14h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
@@ -121,17 +132,19 @@
 
         @case('chevron-down')
             <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-chevron-down']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M6 9l6 6l6 -6" />
             </svg>
         @break
 
         @case('shirt-sport')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-shirt-sport">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-shirt-sport']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
                 <path d="M10.5 11h2.5l-1.5 5" />
@@ -139,8 +152,9 @@
         @break
 
         @case('calendar-event')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="currentColor"
-                class="icon icon-tabler icons-tabler-filled icon-tabler-calendar-event">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="currentColor"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-filled icon-tabler-calendar-event']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path
                     d="M16 2a1 1 0 0 1 .993 .883l.007 .117v1h1a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h1v-1a1 1 0 0 1 1.993 -.117l.007 .117v1h6v-1a1 1 0 0 1 1 -1m3 7h-14v9.625c0 .705 .386 1.286 .883 1.366l.117 .009h12c.513 0 .936 -.53 .993 -1.215l.007 -.16z" />
@@ -148,10 +162,40 @@
             </svg>
         @break
 
+        @case('calendar')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-calendar-check']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6" />
+                <path d="M16 3v4" />
+                <path d="M8 3v4" />
+                <path d="M4 11h16" />
+                <path d="M15 19l2 2l4 -4" />
+            </svg>
+        @break
+
+        @case('calendar-dollar')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-calendar-dollar']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M13 21h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
+                <path d="M16 3v4" />
+                <path d="M8 3v4" />
+                <path d="M4 11h12.5" />
+                <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
+                <path d="M19 21v1m0 -8v1" />
+            </svg>
+        @break
+
         @case('car-crane')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-car-crane">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-car-crane']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                 <path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -164,9 +208,10 @@
         @break
 
         @case('report')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-report">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-report']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697" />
                 <path d="M18 14v4h4" />
@@ -179,9 +224,10 @@
         @break
 
         @case('user-start')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-user-star">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-user-star']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                 <path d="M6 21v-2a4 4 0 0 1 4 -4h.5" />
@@ -191,18 +237,28 @@
         @break
 
         @case('barrier-block')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="currentColor"
-                class="icon icon-tabler icons-tabler-filled icon-tabler-barrier-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="{{ $stroke }}" stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-barrier-block']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                    d="M15 21a1 1 0 0 1 0 -2h1v-2h-8v2h1a1 1 0 0 1 0 2h-4a1 1 0 0 1 0 -2h1v-2h-1a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2h1v-1a1 1 0 1 1 2 0v1h8v-1a1 1 0 0 1 2 0v1h1a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-1v2h1a1 1 0 0 1 0 2zm-2.086 -13l-7 7h4.17l6.916 -7zm6.086 2.914l-4.086 4.086h4.086zm-10.916 -2.914h-3.084v3.084z" />
+                <path d="M4 8a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1l0 -7" />
+                <path d="M7 16v4" />
+                <path d="M7.5 16l9 -9" />
+                <path d="M13.5 16l6.5 -6.5" />
+                <path d="M4 13.5l6.5 -6.5" />
+                <path d="M17 16v4" />
+                <path d="M5 20h4" />
+                <path d="M15 20h4" />
+                <path d="M17 7v-2" />
+                <path d="M7 7v-2" />
             </svg>
         @break
 
         @case('trash')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-trash']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 7l16 0" />
                 <path d="M10 11l0 6" />
@@ -213,9 +269,10 @@
         @break
 
         @case('certificate-2')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-certificate-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-certificate-2']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M9 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                 <path d="M10 7h4" />
@@ -225,9 +282,10 @@
         @break
 
         @case('certificate')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-certificate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-certificate']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                 <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
@@ -238,10 +296,25 @@
             </svg>
         @break
 
+        @case('id')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-id']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -10" />
+                <path d="M7 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M15 8l2 0" />
+                <path d="M15 12l2 0" />
+                <path d="M7 16l10 0" />
+            </svg>
+        @break
+
         @case('recipt-tax')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-receipt-tax">
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-receipt-tax']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M9 14l6 -6" />
                 <path d="M9 8.5a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0" fill="currentColor" />

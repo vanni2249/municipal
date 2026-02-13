@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Guest\Welcome;
 
+use App\Models\Account;
+use App\Models\AccountType;
 use App\Models\Service;
 use App\Models\Type;
 use Livewire\Attributes\Layout;
@@ -19,6 +21,8 @@ class Index extends Component
     #[Layout('layouts.landing')]
     public function render()
     {
-        return view('livewire.guest.welcome.index');
+        return view('livewire.guest.welcome.index', [
+            'accountTypes' => AccountType::whereIn('slug', ['citizen', 'merchant'])->get(),
+        ]);
     }
 }

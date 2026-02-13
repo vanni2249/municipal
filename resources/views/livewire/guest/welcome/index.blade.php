@@ -86,7 +86,7 @@
 
                 @foreach ($type->services()->limit(4)->get() as $service)
                     <div class="bg-white col-span-6 lg:col-span-3 p-2 md:p-4 rounded-xl border border-gray-200 space-x-4">
-                        <div class=" flex justify-center flex-col space-x-4">
+                        <div class=" flex justify-center flex-col space-y-4 ">
                             <div class="flex-1 flex flex-col items-center md:flex-row md:justify-start md:items-start  md:space-x-2">
                                 <div class="">
                                     <x-icon icon="shirt-sport" height="44" width="44" />
@@ -98,7 +98,7 @@
                                             {{ $service->serviceType->name }}
                                         </li>
                                     </ul>
-                                    <p class="text-xs md:text-sm md:text-left font-bold lg:mt-2">
+                                    <p class="text-sm md:text-left font-bold lg:mt-2">
                                         {{ $service->title }}
                                     </p>
 

@@ -8,12 +8,12 @@
                 </ul>
             </div>
             <div class="flex flex-col items-end space-y-2">
+                <span class="text-sm text-gray-700">
+                    {{ $account->number }}
+                </span>
                 @if ($has_account_merchant && $account_has_businesses)
                     @livewire('users.accounts.components.modal-accounts')
                 @endif
-                <span class="text-xs text-gray-700">
-                    {{ $account->number }}
-                </span>
             </div>
         </header>
     </x-card>

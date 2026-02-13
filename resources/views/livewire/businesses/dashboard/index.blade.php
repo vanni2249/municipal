@@ -9,10 +9,10 @@
                 </ul>
             </div>
             <div class="flex flex-col items-end space-y-2">
-                @livewire('users.accounts.components.modal-accounts')
                 <span class="text-sm text-gray-700">
                     {{ $business->number }}
                 </span>
+                @livewire('users.accounts.components.modal-accounts')
             </div>
         </header>
     </x-card>

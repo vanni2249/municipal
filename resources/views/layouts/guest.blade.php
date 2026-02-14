@@ -30,11 +30,11 @@
                 ])>
                     MyApp's
                 </a>
-                <div class="flex lg:hidden text-white">
+                <div class="flex md:hidden text-white">
                     <x-dropdown>
                         <x-slot name="trigger">
                             <button
-                                class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600">
+                                class="flex items-center justify-center w-10 h-10 rounded-full text-black border border-gray-600 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"

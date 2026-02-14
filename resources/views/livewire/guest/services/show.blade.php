@@ -1,14 +1,16 @@
-<div>
-    <header class="flex justify-between items-center px-1 pt-4 pb-6">
-        <h1 class="text-lg font-bold text-gray-900 leading-3">
-            {{ $service->title }}
-        </h1>
-    </header>
+<div class="space-y-2">
+    <x-card>
+        <header class="flex justify-between items-center">
+            <h1 class="text-lg font-bold text-gray-900">
+                {{ $service->title }}
+            </h1>
+        </header>
+    </x-card>
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 lg:col-span-8 space-y-4">
             <x-card class="">
                 <div class=" flex items-center">
-                    <x-icon icon="shirt-sport" height="96" width="96" />
+                    <x-icon icon="{{ $service->icon }}" height="96" width="96" class="stroke-1" />
                     <ul>
                         <li>
                             <span class=" text-xs text-gray-700 tracking-wide">
@@ -36,35 +38,38 @@
                 </a>
             </x-card>
             <div class="grid grid-cols-12 gap-2">
-                <header class="col-span-full py-4" class="py-4">
-                    <h1 class="text-lg font-bold text-gray-900 leading-3">
-                        Otros servicios del {{ $service->accountType->name }}
-                    </h1>
-                </header>
-                @foreach ($type->services()->whereNot('id', $service->id)->get() as $service)
-                    <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                        class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
-                        <div class=" flex justify-center flex-col">
-                            <div class="flex-1 flex flex-col items-center">
-                                <div class="">
-                                    <x-icon icon="shirt-sport" height="48" width="48" />
+                <x-card class="col-span-full">
+                    <header class="col-span-full">
+                        <h1 class="text-lg font-bold text-gray-900 leading-3">
+                            Otros servicios del {{ $service->accountType->name }}
+                        </h1>
+                    </header>
+                </x-card>
+                @foreach ($services as $service)
+                     <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
+                            class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
+                            <div class=" flex justify-center flex-col">
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="">
+                                        <x-icon icon="{{ $service->icon }}" height="56" width="56"
+                                            class="text-gray-800 stroke-1" />
 
-                                </div>
-                                <div class="text-center">
-                                    <span class="py-2 text-xs text-gray-700 tracking-wide">
-                                        {{ $service->serviceType->name }}
-                                    </span>
-                                    <p class="text-sm font-bold text-gray-900">
-                                        {{ $service->title }}
-                                    </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="py-2 text-xs text-gray-700 tracking-wide">
+                                            {{ $service->serviceType->name }}
+                                        </span>
+                                        <p class="text-sm font-bold text-gray-900">
+                                            {{ $service->title }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                 @endforeach
             </div>
         </div>
-        <div class="col-span-full lg:col-span-4 space-y-4">
+        <div class="col-span-full lg:col-span-4 space-y-2">
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Noticias" />

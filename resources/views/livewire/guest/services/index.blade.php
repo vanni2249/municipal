@@ -1,9 +1,11 @@
-<div>
-    <header class="flex justify-between items-center px-1 pt-4 pb-8">
-        <h1 class="text-lg font-bold text-gray-900 leading-3">
-            Servicios del {{ $type->name }}
-        </h1>
-    </header>
+<div class="space-y-2">
+    <x-card>
+        <header class="flex justify-between items-center">
+            <h1 class="text-lg font-bold text-gray-900 leading-3">
+                Servicios del {{ $type->name }}
+            </h1>
+        </header>
+    </x-card>
     <div class="grid grid-cols-12 gap-2">
         @foreach ($type->services()->get() as $service)
             <a href="{{ route('services.show', ['service' => $service->ulid]) }}"

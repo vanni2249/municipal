@@ -237,8 +237,9 @@
         @break
 
         @case('barrier-block')
-            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="{{ $stroke }}" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $stroke }}"
+                stroke-linecap="round" stroke-linejoin="round"
                 {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-barrier-block']) }}>
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 8a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1l0 -7" />
@@ -323,7 +324,37 @@
             </svg>
         @break
 
-        {{-- Heroicons --}}
+        @case('map-pin')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="currentColor"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-filled icon-tabler-map-pin']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6" />
+            </svg>
+        @break
+
+        @case('clock')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}"
+                viewBox="0 0 24 24" fill="currentColor"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-filled icon-tabler-clock']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-5 2.66a1 1 0 0 0 -.993 .883l-.007 .117v5l.009 .131a1 1 0 0 0 .197 .477l.087 .1l3 3l.094 .082a1 1 0 0 0 1.226 0l.094 -.083l.083 -.094a1 1 0 0 0 0 -1.226l-.083 -.094l-2.707 -2.708v-4.585l-.007 -.117a1 1 0 0 0 -.993 -.883z" />
+            </svg>
+        @break
+
+        @case('user')
+            <svg xmlns="http://www.w3.org/2000/svg" width="{{ $width }}" height="{{ $height }}" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                {{ $attributes->merge(['class' => 'icon icon-tabler icons-tabler-outline icon-tabler-user']) }}>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+            </svg>
+        @break
+
+            {{-- Heroicons --}}
         @case('arrow-right')
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                 class="size-{{ $size }}">

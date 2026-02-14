@@ -1,7 +1,7 @@
 <div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-center">
-            <h1 class="text-lg font-bold text-gray-900 leading-3">
+            <h1 class="text-lg font-bold text-gray-900">
                 Servicios del {{ $type->name }}
             </h1>
         </header>

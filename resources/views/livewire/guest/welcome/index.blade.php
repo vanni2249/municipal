@@ -75,13 +75,13 @@
     </section>
 
     <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-4 space-y-4">
-        
+
         @foreach ($accountTypes as $type)
-        <div>
+            <div>
                 <x-card>
 
                     <header class="flex justify-between items-center">
-                        <h1 class="text-lg font-bold text-gray-900 leading-3">
+                        <h1 class="text-lg font-bold text-gray-900">
                             Servicios del {{ $type->name }}
                         </h1>
                         <a href="{{ route('services.index', ['type' => $type->slug]) }}"
@@ -93,7 +93,8 @@
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
                         <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                            class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4">
+                            class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                            wire:navigate>
                             <div class=" flex justify-center flex-col">
                                 <div class="flex-1 flex flex-col items-center">
                                     <div class="">
@@ -115,9 +116,88 @@
                     @endforeach
                 </div>
             </div>
-            @endforeach
+        @endforeach
 
     </section>
 
-    {{-- <section class="bg-blue-400 p-4 mt-4"></section> --}}
+    <section class="bg-gray-300 py-16">
+        <div class="max-w-7xl px-4 mx-auto space-y-2 mt-4">
+            <x-card>
+                <header class="flex justify-between items-center">
+                    <x-h3>
+                        Noticias
+                    </x-h3>
+                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                        Ver todas
+                    </a>
+                </header>
+            </x-card>
+    
+            <div class="grid grid-cols-12 gap-2">
+                @for ($i = 0; $i < 4; $i++)
+                    <x-card class="col-span-full lg:col-span-6 lg:p-8">
+                        <span class="text-xs text-gray-700">
+                            12 de Octubre de 2024
+                        </span>
+                        <p class="font-bold text-gray-950">
+                            Ultima noticia sobre los eventos administrativos relacionados con el servicio
+                        </p>
+                        <ul class="text-gray-800">
+                            <li class="flex space-x-1 items-start text-sm">
+                                <x-icon icon="user" height="16" width="16" class="text-gray-700 stroke-1 inline-block" />
+                                <span>
+                                    Autor: Juan Perez
+                                </span>
+                            </li>
+                        </ul>
+                    </x-card>
+                @endfor
+            </div>
+    
+        </div>
+    </section>
+    
+    <section>
+        <div class="max-w-7xl px-4 mx-auto space-y-2 mt-4">
+            <x-card>
+                <header class="flex justify-between items-center">
+                    <x-h3>
+                        Eventos
+                    </x-h3>
+                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                        Ver todas
+                    </a>
+                </header>
+            </x-card>
+    
+            <div class="grid grid-cols-12 gap-2">
+                @for ($i = 0; $i < 4; $i++)
+                    <x-card class="col-span-full lg:col-span-6 lg:p-8">
+                        <span class="text-xs text-gray-700">
+                            12 de Octubre de 2024
+                        </span>
+                        <p class="font-bold text-gray-950">
+                            La ultima information sobre los eventos administrativos relacionados con el servicio
+                        </p>
+                        <ul class="text-gray-800">
+                            <li class="flex space-x-1 items-start text-sm">
+                                <x-icon icon="clock" height="16" width="16" class="text-gray-700 stroke-1 inline-block" />
+                                <span>
+                                    Hora: 10:00 AM - 12:00 PM
+                                </span>
+                            </li>
+                            <li class="flex space-x-1 items-start text-sm">
+                                <x-icon icon="map-pin" height="16" width="16" class="text-gray-700 stroke-1 inline-block" />
+                                <span>
+                                    Ubicación: Oficina de Servicios Municipales 
+                                </span>
+                            </li>
+                        </ul>
+                    </x-card>
+                @endfor
+            </div>
+    
+        </div>
+
+    </section>
 </div>

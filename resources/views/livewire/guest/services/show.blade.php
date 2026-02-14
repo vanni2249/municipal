@@ -78,12 +78,12 @@
                     </a>
                 </header>
                 <x-card-body-lists>
-                    @for ($i = 0; $i < 3; $i++)
+                    @for ($i = 0; $i < 2; $i++)
                         <x-card-body-list>
                             <span class="text-xs text-gray-700">
                                 12 de Octubre de 2024
                             </span>
-                            <p class="text-sm">
+                            <p class="text-sm font-bold">
                                 La ultima informacion sobre los eventos admonistrativos relacionados con el servicio
 
                             </p>
@@ -99,12 +99,12 @@
                     </a>
                 </header>
                 <x-card-body-lists>
-                    @for ($i = 0; $i < 3; $i++)
+                    @for ($i = 0; $i < 2; $i++)
                         <x-card-body-list>
                             <span class="text-xs text-gray-700">
                                 12 de Octubre de 2024
                             </span>
-                            <p class="text-sm">
+                            <p class="text-sm font-bold">
                                 Fin de semanan habra una actividad informativa sobre el servicio
 
                             </p>

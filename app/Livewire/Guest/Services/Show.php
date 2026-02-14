@@ -18,7 +18,7 @@ class Show extends Component
     {
         return view('livewire.guest.services.show', [
             'service' => $this->service,
-            'services' => Service::where('account_type_id', $this->service->account_type_id)->whereNot('ulid', $this->service->ulid)->get(),    
+            'services' => Service::where('account_type_id', $this->service->account_type_id)->whereNot('ulid', $this->service->ulid)->limit(4)->get(),    
         ]);
     }
 }

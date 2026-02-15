@@ -24,6 +24,7 @@
             </div>
         </header>
     </x-card>
+    
     <!-- Accounts -->
     <x-card>
         <div class="grid grid-cols-1 gap-2">
@@ -160,7 +161,6 @@
     <!-- End accounts -->
 
     <!-- Modals -->
-
     <!-- Attach merchant account -->
     <x-modal name="attach-merchant-account-modal" title="Adjuntar cuenta de comerciante" size="md">
         <form wire:submit.prevent="attachMerchantAccount">

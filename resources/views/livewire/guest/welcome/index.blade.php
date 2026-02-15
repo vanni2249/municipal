@@ -76,10 +76,10 @@
     </section>
     <!-- End Hero Section -->
     <!-- Citizen Services Section -->
-    <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-2 space-y-2">
+    <section id="citizen-services" class="p-4 max-w-7xl mx-auto py-2 space-y-2">
         @foreach ($accountTypes as $type)
             <div>
-                <x-card>
+                <x-card class="border-b-4 border-blue-300">
                     <header class="flex justify-between items-center">
                         <h1 class="text-lg font-bold text-gray-900">
                             Servicios del {{ $type->name }}
@@ -123,7 +123,7 @@
     <!-- News Section -->
     <section class="bg-gray-300 py-2">
         <div class="max-w-7xl px-4 mx-auto space-y-2">
-            <x-card>
+            <x-card class="border-b-4 border-blue-300">
                 <header class="flex justify-between items-center">
                     <x-h3>
                         Noticias
@@ -163,7 +163,7 @@
     <!-- Events Section -->
     <section>
         <div class="max-w-7xl px-4 mx-auto space-y-2 mt-2">
-            <x-card>
+            <x-card class="border-b-4 border-blue-300">
                 <header class="flex justify-between items-center">
                     <x-h3>
                         Eventos

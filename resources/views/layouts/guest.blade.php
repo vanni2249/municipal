@@ -18,10 +18,34 @@
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
     <nav>
         <div class="max-w-7xl mx-auto px-2 md:px-4 pt-2 md:pt-4 pb-2">
-            <div @class(['bg-white flex justify-between items-center rounded-2xl p-4']) class="">
-                <a href="/" @class(['text-xl font-semibold']) wire:navigate>
-                    MyApp's
-                </a>
+            <div @class(['bg-white flex justify-between items-center rounded-2xl p-4'])>
+                <div class="flex items-center space-x-12">
+                    <a href="/" @class(['text-xl font-semibold']) wire:navigate>
+                        MyApp's
+                    </a>
+                    <ul class="text-sm hidden md:flex space-x-4 text-gray-800 font-bold hover:text-gray-900">
+                        <li class="hover:text-gray-700">
+                            <a href="{{ route('services.index', ['type' => 'citizen']) }}" wire:navigate>
+                                Ciudadanos
+                            </a>
+                        </li>
+                        <li class="hover:text-gray-700">
+                            <a href="{{ route('services.index', ['type' => 'merchant']) }}" wire:navigate>
+                                Comerciantes
+                            </a>
+                        </li>
+                        <li class="hover:text-gray-700">
+                            <a href="{{ route('news.index') }}" wire:navigate>
+                                Noticias
+                            </a>
+                        </li>
+                        <li class="hover:text-gray-700">
+                            <a href="{{ route('events.index') }}" wire:navigate>
+                                Eventos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="flex md:hidden text-white">
                     <x-dropdown>
                         <x-slot name="trigger">
@@ -39,10 +63,25 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('login')">
+                            <x-dropdown-link :href="route('welcome')" wire:navigate>
+                                Inicio
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('services.index', ['type' => 'citizen'])" wire:navigate>
+                                Ciudadanos
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('services.index', ['type' => 'merchant'])" wire:navigate>
+                                Comerciantes
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('news.index')" wire:navigate>
+                                Noticias
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('events.index')" wire:navigate>
+                                Eventos
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('login')" wire:navigate>
                                 Inicio de sesión
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('register')">
+                            <x-dropdown-link :href="route('register')" wire:navigate>
                                 Registrarse
                             </x-dropdown-link>
                         </x-slot>

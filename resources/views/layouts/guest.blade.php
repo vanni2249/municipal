@@ -66,7 +66,7 @@
     <main class="flex-grow min-h-96 max-w-7xl w-full mx-auto px-4 ">
         {{ $slot }}
     </main>
-    <footer class="max-w-7xl mx-auto p-4 w-full">
+    <footer class="max-w-7xl mx-auto px-4 pb-4 pt-2 w-full">
         <div class=" bg-gray-300 p-4 rounded-2xl">
 
             <ul class=" text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">

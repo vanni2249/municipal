@@ -67,7 +67,8 @@
                     </span>
                 </h1>
                 <p class="text-gray-100 text-sm text-center max-w-2xl py-4">
-                    Este sitio web es un esfuerzo por parte del gobierno municipal de la ciudad de {{ $city }} para
+                    Este sitio web es un esfuerzo por parte del gobierno municipal de la ciudad de {{ $city }}
+                    para
                     brindar a los ciudadanos acceso a información y servicios en línea.
                 </p>
             </div>
@@ -75,32 +76,24 @@
     </section>
     <!-- End Hero Section -->
     <!-- Citizen Services Section -->
-    <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-4 space-y-4">
+    <section id="citizen-services" class="p-4 max-w-7xl px-4 mx-auto py-2 space-y-2">
         @foreach ($accountTypes as $type)
             <div>
                 <x-card>
-
-                    <header class="">
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-lg font-bold text-gray-900">
-                                Servicios del {{ $type->name }}
-                            </h1>
-                            <a href="{{ route('services.index', ['type' => $type->slug]) }}"
-                                class="text-sm text-blue-500 hover:underline" wire:navigate>
-                                Ver todos
-                            </a>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-800">
-                                Explora los servicios disponibles para el {{ $type->name }}.
-                            </p>
-                        </div>
+                    <header class="flex justify-between items-center">
+                        <h1 class="text-lg font-bold text-gray-900">
+                            Servicios del {{ $type->name }}
+                        </h1>
+                        <a href="{{ route('services.index', ['type' => $type->slug]) }}"
+                            class="text-sm text-blue-500 hover:underline" wire:navigate>
+                            Ver todos
+                        </a>
                     </header>
                 </x-card>
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
                         <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                            class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                            class="block bg-white hover:shadow col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
                             wire:navigate>
                             <div class=" flex justify-center flex-col">
                                 <div class="flex-1 flex flex-col items-center">
@@ -128,22 +121,16 @@
     </section>
     <!-- End Citizen Services Section -->
     <!-- News Section -->
-    <section class="bg-gray-300 py-4">
+    <section class="bg-gray-300 py-2">
         <div class="max-w-7xl px-4 mx-auto space-y-2">
             <x-card>
-                <header class="">
-                    <div class="flex justify-between items-center">
-                        <x-h3>
-                            Noticias
-                        </x-h3>
-                        <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline"
-                            wire:navigate>
-                            Ver todas
-                        </a>
-                    </div>
-                    <p class="text-sm text-gray-800">
-                        Mantente informado sobre las últimas noticias del municipio.
-                    </p>
+                <header class="flex justify-between items-center">
+                    <x-h3>
+                        Noticias
+                    </x-h3>
+                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                        Ver todas
+                    </a>
                 </header>
             </x-card>
             <div class="grid grid-cols-12 gap-2">
@@ -175,21 +162,15 @@
     <!-- End News Section -->
     <!-- Events Section -->
     <section>
-        <div class="max-w-7xl px-4 mx-auto space-y-2 mt-4">
+        <div class="max-w-7xl px-4 mx-auto space-y-2 mt-2">
             <x-card>
-                <header class="">
-                    <div class="flex justify-between items-center">
-                        <x-h3>
-                            Eventos
-                        </x-h3>
-                        <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline"
-                            wire:navigate>
-                            Ver todas
-                        </a>
-                    </div>
-                    <p class="text-sm text-gray-800">
-                        Mantente informado sobre los próximos eventos del municipio.
-                    </p>
+                <header class="flex justify-between items-center">
+                    <x-h3>
+                        Eventos
+                    </x-h3>
+                    <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                        Ver todas
+                    </a>
                 </header>
             </x-card>
             <div class="grid grid-cols-12 gap-2">

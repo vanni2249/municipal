@@ -16,18 +16,10 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
-    <nav @class(['w-full', ' bg-black' => request()->routeIs('welcome')])>
-        <div class="max-w-7xl mx-auto p-4">
-            <div @class([
-                'flex justify-between items-center rounded-2xl p-4',
-                'bg-gray-800' => request()->routeIs('welcome'),
-                'bg-white' => !request()->routeIs('welcome'),
-            ]) class="">
-                <a href="/" @class([
-                    'text-xl font-semibold',
-                    'text-gray-200' => request()->routeIs('welcome'),
-                    'text-gray-800' => !request()->routeIs('welcome'),
-                ]) wire:navigate>
+    <nav>
+        <div class="max-w-7xl mx-auto px-4 pt-4 pb-2">
+            <div @class(['bg-white flex justify-between items-center rounded-2xl p-4']) class="">
+                <a href="/" @class(['text-xl font-semibold']) wire:navigate>
                     MyApp's
                 </a>
                 <div class="flex md:hidden text-white">

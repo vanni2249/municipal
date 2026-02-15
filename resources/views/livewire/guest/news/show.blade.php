@@ -1,5 +1,5 @@
 <div>
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full md:col-span-8">
             <x-card>
                 <header>

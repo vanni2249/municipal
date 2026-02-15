@@ -1,9 +1,12 @@
 <div class="space-y-2">
-    <x-card>
-        <header class="flex justify-between items-center">
+    <x-card class="border-b-4 border-blue-300">
+        <header class="">
             <h1 class="text-lg font-bold text-gray-900">
                 Servicios del {{ $type->name }}
             </h1>
+            <p class="text-sm text-gray-800">
+                Aquí puedes encontrar todos los servicios relacionados con {{ $type->name }}. Haz clic en cualquier servicio para obtener más detalles y acceder a sus funcionalidades.
+            </p>
         </header>
     </x-card>
     <div class="grid grid-cols-12 gap-2">

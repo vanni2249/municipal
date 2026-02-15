@@ -1,13 +1,13 @@
 <div class="space-y-2">
-    <x-card>
+    <x-card class="border-b-4 border-blue-300">
         <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold text-gray-900">
                 {{ $service->title }}
             </h1>
         </header>
     </x-card>
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 lg:col-span-8 space-y-4">
+    <div class="grid grid-cols-12 gap-2">
+        <div class="col-span-12 lg:col-span-8 space-y-2">
             <div class="space-y-2">
                 <x-card>
                     <div class=" flex items-center">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="grid grid-cols-12 gap-2">
-                <x-card class="col-span-full">
+                <x-card class="col-span-full border-b-4 border-blue-300">
                     <header class="col-span-full">
                         <h1 class="text-lg font-bold text-gray-900">
                             Otros servicios del {{ $service->accountType->name }}

@@ -14,6 +14,6 @@
         ];
     @endphp
 
-<div {{ $attributes->merge(['class' => ' ' . $borders[$border] . ' bg-gray-100 p-2 lg:p-4 rounded-md']) }}>
+<div {{ $attributes->merge(['class' => ' ' . $borders[$border] . ' bg-gray-100 p-2 rounded-md']) }}>
     {{ $slot }}
 </div>

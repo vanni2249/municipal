@@ -15,18 +15,13 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
+<body class="bg-gray-200 font-sans antialiased flex flex-row h-screen min-h-screen">
 
     <div id="main-content" class="flex-grow flex max-w-7xl mx-auto flex-col transition-all">
         <div class="px-2 pt-2">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
-                        {{-- <div class=" items-center justify-center">
-                            <button id="sidebar-toggle" class="cursor-pointer">
-                                <x-icon icon="bars-3" />
-                            </button>
-                        </div> --}}
                         <a href="{{ route('users.accounts.index') }}" class="font-bold ">MyCity</a>
                     </div>
                     <ul class="flex space-x-6 md:space-x-8">
@@ -43,7 +38,6 @@
             </nav>
         </div>
         <main class="flex-grow px-2 py-2">
-            {{-- @livewire('users.layout.header') --}}
             
             {{ $slot }}
         </main>

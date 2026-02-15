@@ -1,4 +1,5 @@
 <div class="space-y-2">
+    <!-- Header -->
     <x-card>
         <header class="flex justify-between items-start">
             <div>
@@ -24,7 +25,7 @@
             </div>
         </header>
     </x-card>
-    
+
     <!-- Accounts -->
     <x-card>
         <div class="grid grid-cols-1 gap-2">
@@ -40,7 +41,7 @@
                         </div>
 
                         <!-- Right Side buttons -->
-                        <div class="flex flex-col space-y-2 ">
+                        <div class="flex flex-col space-y-1">
                             <div>
                                 @if ($account->accountType->slug == 'citizen' && $account->status->statusType->slug == 'active')
                                     <!-- Citizen dashboard button -->
@@ -73,9 +74,9 @@
 
                     <!-- Businesses -->
                     @if ($account->accountType->slug == 'merchant' && $account->status->statusType->slug == 'active')
-                        <div class="mt-4 space-y-2">
+                        <div class="mt-4 space-y-1">
                             @forelse ($account->businesses as $business)
-                                <div class="p-2 md:p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                                <div class="p-2 bg-gray-50 border border-gray-200 rounded-lg">
                                     <div class="flex justify-between items-center">
                                         <!-- Business Info -->
                                         <div>
@@ -107,7 +108,7 @@
                                 </div>
                             @endforelse
                             <div
-                                class="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4 lg:flex lg:justify-between space-y-4 lg:space-y-0 lg:items-center">
+                                class="mt-4 bg-gray-50 border border-gray-200 rounded-lg p-2 lg:flex lg:justify-between space-y-4 lg:space-y-0 lg:items-center">
                                 <div>
                                     <p class="text-sm text-gray-700">
                                         Crear un nuevo comercio bajo esta cuenta de comerciante. Recuerda que cada comercio

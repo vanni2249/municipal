@@ -13,7 +13,7 @@
                     </p>
                 </header>
             </x-card>
-            <div class="space-y-1">
+            <div class="space-y-2">
                 @for ($i = 0; $i < 10; $i++)
                     <a href="{{ route('events.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
                         <x-card class="h-full hover:shadow">

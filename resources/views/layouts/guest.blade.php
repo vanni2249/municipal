@@ -27,14 +27,14 @@
                     'text-xl font-semibold',
                     'text-gray-200' => request()->routeIs('welcome'),
                     'text-gray-800' => !request()->routeIs('welcome'),
-                ])>
+                ]) wire:navigate>
                     MyApp's
                 </a>
                 <div class="flex md:hidden text-white">
                     <x-dropdown>
                         <x-slot name="trigger">
                             <button
-                                class="flex items-center justify-center w-10 h-10 rounded-full text-black border border-gray-600 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-600">
+                                class="flex items-center justify-center w-10 h-10 rounded-full text-black border border-gray-300 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -58,10 +58,15 @@
                 </div>
                 <div class="hidden md:flex justify-between items-center space-x-2">
                     <a href="{{ route('login') }}"
-                        class="border border-transparent hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 py-2 px-4 rounded-xl text-xs font-bold uppercase">Iniciar
-                        sesión</a>
+                        class="border border-transparent hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 py-2 px-4 rounded-xl text-xs font-bold uppercase"
+                        wire:navigate>
+                        Iniciar sesión
+                    </a>
                     <a href="{{ route('register') }}"
-                        class="border border-black bg-black hover:bg-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-100">Registrate</a>
+                        class="border border-black bg-black hover:bg-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-100"
+                        wire:navigate>
+                        Regístrate
+                    </a>
                 </div>
             </div>
         </div>

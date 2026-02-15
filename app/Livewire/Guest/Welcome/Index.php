@@ -11,11 +11,25 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $city = [];
     public $services;
 
     public function mount()
     {
         $this->services = Service::get();
+        // Get one random city from the list of cities
+        $this->city = $this->cities()[array_rand($this->cities())];
+
+    }
+
+    public function cities()
+    {
+        return [
+            'Villalba',
+            'Juana Diaz',
+            'Ponce',
+            'Santa Isabel',
+        ];
     }
 
     #[Layout('layouts.landing')]

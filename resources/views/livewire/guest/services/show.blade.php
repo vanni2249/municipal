@@ -33,10 +33,9 @@
                         que haya iniciado sesión, podrá acceder a la página de solicitud del servicio y completar el
                         formulario de solicitud. Asegúrese de proporcionar toda la información requerida.
                     </p>
-                    <a href="{{ route('login') }}">
-                        <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                            Iniciar sesión para solicitar
-                        </button>
+                    <a href="{{ route('login') }}"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer" wire:navigate>
+                        Iniciar sesión para solicitar
                     </a>
                 </x-card>
             </div>
@@ -51,7 +50,8 @@
                 </x-card>
                 @foreach ($services as $service)
                     <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                        class="block bg-white col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4" wire:navigate>
+                        class="block bg-white hover:shadow col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                        wire:navigate>
                         <div class=" flex justify-center flex-col">
                             <div class="flex-1 flex flex-col items-center">
                                 <div class="">
@@ -77,42 +77,45 @@
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Noticias" />
-                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
                 </header>
                 <x-card-body-lists>
                     @for ($i = 0; $i < 2; $i++)
-                        <x-card-body-list>
-                            <span class="text-xs text-gray-700">
-                                12 de Octubre de 2024
-                            </span>
-                            <p class="text-sm font-bold">
-                                La ultima informacion sobre los eventos admonistrativos relacionados con el servicio
+                        <a href="{{ route('news.show', $i) }}" class="block" wire:navigate>
+                            <x-card-body-list class="hover:bg-gray-200">
+                                <span class="text-xs text-gray-700">
+                                    12 de Octubre de 2024
+                                </span>
+                                <p class="text-sm font-bold">
+                                    La ultima informacion sobre los eventos admonistrativos relacionados con el servicio
 
-                            </p>
-                        </x-card-body-list>
+                                </p>
+                            </x-card-body-list>
+                        </a>
                     @endfor
                 </x-card-body-lists>
             </x-card>
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Eventos" />
-                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                    <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
                 </header>
                 <x-card-body-lists>
                     @for ($i = 0; $i < 2; $i++)
-                        <x-card-body-list>
-                            <span class="text-xs text-gray-700">
-                                12 de Octubre de 2024
-                            </span>
-                            <p class="text-sm font-bold">
-                                Fin de semanan habra una actividad informativa sobre el servicio
-
-                            </p>
-                        </x-card-body-list>
+                        <a href="{{ route('events.show', $i) }}" class="block" wire:navigate>
+                            <x-card-body-list class="hover:bg-gray-200">
+                                <span class="text-xs text-gray-700">
+                                    12 de Octubre de 2024
+                                </span>
+                                <p class="text-sm font-bold">
+                                    La ultima information sobre los eventos admonistrativos relacionados con el servicio
+                                </p>
+                            </x-card-body-list>
+                        </a>
                     @endfor
                 </x-card-body-lists>
             </x-card>

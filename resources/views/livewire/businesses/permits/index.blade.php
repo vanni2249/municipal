@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
@@ -14,7 +14,7 @@
                 Permisos emitidos
             </x-h3>
         </header>
-        <x-card-elements-group class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <x-card-elements-group class="grid grid-cols-1 lg:grid-cols-3 gap-2">
 
             @forelse ($permits as $permit)
                 <x-card-element>

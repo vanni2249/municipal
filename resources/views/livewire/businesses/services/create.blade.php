@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <x-card-header>
             <h1 class="font-bold text-lg text-gray-900 line-clamp-2">{{ $service->title }}</h1>

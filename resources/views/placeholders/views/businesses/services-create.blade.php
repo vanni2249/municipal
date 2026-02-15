@@ -1,4 +1,4 @@
-<div class="animate-pulse space-y-4">
+<div class="animate-pulse space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
@@ -7,7 +7,6 @@
                     <li>
                         <div class="h-4 bg-gray-300 rounded w-24"></div>
                     </li>
-                    {{-- <li>{{ $application->service->serviceType->name }}</li> --}}
                 </ul>
             </div>
         </header>

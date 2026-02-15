@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 gap-2">
         <x-card class="col-span-full">
             <header>
-                <x-h2>Servicios de ciudadano</x-h2>
+                <x-h1>Servicios de ciudadano</x-h1>
                 <span class="text-sm text-gray-700">
                     Explorar y solicitar los servicios disponibles del ciudadano.
                 </span>

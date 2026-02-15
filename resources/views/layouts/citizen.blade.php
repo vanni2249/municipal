@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
-    <div id="sidebar" class="z-50 fixed h-screen w-0 lg:w-64 transition-all py-2 lg:py-4 pl-2 lg:pl-4">
+    <div id="sidebar" class="z-50 fixed h-screen min-h-screen w-0 lg:w-64 transition-all py-2 pl-2">
         <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-hidden">
             <header class="h-16 flex items-center text-white px-6 border-b border-gray-900">
                 <div class="flex justify-between items-center w-full">
@@ -47,7 +47,7 @@
     </div>
 
     <div id="main-content" class="flex-grow flex lg:ml-64 flex-col transition-all">
-        <div class="px-2 md:px-4 pt-2 md:pt-4">
+        <div class="px-2 pt-2">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex items-center space-x-2">
@@ -74,10 +74,10 @@
                 </div>
             </nav>
         </div>
-        <main class="flex-grow min-h-96 px-2 py-4 md:p-4">
+        <main class="flex-grow min-h-96 px-2 p-2">
             {{ $slot }}
         </main>
-        <footer class="mx-auto px-2 md:px-4 pb-2 md:pb-4 w-full ">
+        <footer class="mx-auto px-2 pb-2 w-full ">
             <div class="bg-gray-300 rounded-xl">
 
                 <ul

@@ -1,8 +1,8 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
-                <x-h2 value="Aplicaciones" />
+                <x-h1 value="Aplicaciones" />
                 <span class="text-sm text-gray-700">Gestiona las aplicaciones enviadas por el ciudadano.</span>
             </div>
             <div>

@@ -1,12 +1,12 @@
-<div class="space-y-4">
+<div class="space-y-2">
 
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-2">
         <!-- Header -->
         <div class="col-span-full">
             <x-card>
                 <header class="flex justify-between items-start">
                     <div>
-                        <x-h2>{{ $application->service->title }}</x-h2>
+                        <x-h1>{{ $application->service->title }}</x-h1>
                         <ul class="flex space-x-4 text-sm text-gray-700 mt-1">
                             <li>{{ $application->number }}</li>
                             {{-- <li>{{ $application->service->serviceType->name }}</li> --}}
@@ -62,7 +62,7 @@
             </div>
         @endif
         <!-- Application detail & statuses -->
-        <div class="col-span-full lg:col-span-5 space-y-4">
+        <div class="col-span-full lg:col-span-5 space-y-2">
             <!-- Application detail -->
             <x-card>
                 <header>

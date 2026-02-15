@@ -1,8 +1,8 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
-                <x-h2 value="Bienvenido, {{ $account->user->name }}" />
+                <x-h1 value="Bienvenido, {{ $account->user->name }}" class="line-clamp-1"/>
                 <ul class="text-sm flex flex-col md:flex-row md:space-x-4 space-y-1 md:space-y-0 text-gray-800 mt-1">
                     <li>{{ $account->accountType->name }}</li>
                 </ul>
@@ -22,9 +22,9 @@
         <x-card class="col-span-full">
 
             <header class="flex justify-between items-center">
-                <h1 class="text-lg font-bold text-gray-900 leading-3">
+                <x-h2>
                     Servicios
-                </h1>
+                </x-h2>
                 <a href="{{ route('citizens.services') }}" class="text-sm text-blue-500 hover:underline">
                     Ver todos
                 </a>
@@ -59,7 +59,7 @@
         <!-- Applications -->
         <x-card class="col-span-full lg:col-span-7">
             <x-card-header class="flex justify-between items-center">
-                <x-h2 value="Últimas aplicaciones" />
+                <x-h3 value="Últimas aplicaciones" />
                 <a href="{{ route('citizens.applications') }}" class="text-sm text-gray-600 font-bold hover:underline"
                     wire:navigate>
                     Ver todas
@@ -102,7 +102,7 @@
         <!-- Interactions -->
         <x-card class="col-span-full lg:col-span-5">
             <x-card-header class="flex justify-between items-center">
-                <x-h2 value="Interacciones" />
+                <x-h3 value="Interacciones" />
                 <a href="#" class="text-sm text-gray-600 font-bold hover:underline" wire:navigate>
                     Ver todas
                 </a>

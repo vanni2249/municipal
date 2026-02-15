@@ -1,8 +1,8 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
-                <x-h2 value="Interacciones" />
+                <x-h1 value="Interacciones" />
                 <span class="text-sm text-gray-700">Gestiona las interacciones realizadas por el ciudadano.</span>
             </div>
         </header>

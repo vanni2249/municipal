@@ -17,7 +17,7 @@
 
 <body class="bg-gray-200 font-sans antialiased flex flex-col min-h-screen">
     <nav>
-        <div class="max-w-7xl mx-auto px-4 pt-4 pb-2">
+        <div class="max-w-7xl mx-auto px-2 md:px-4 pt-2 md:pt-4 pb-2">
             <div @class(['bg-white flex justify-between items-center rounded-2xl p-4']) class="">
                 <a href="/" @class(['text-xl font-semibold']) wire:navigate>
                     MyApp's
@@ -26,7 +26,7 @@
                     <x-dropdown>
                         <x-slot name="trigger">
                             <button
-                                class="flex items-center justify-center w-10 h-10 rounded-full text-black border border-gray-300 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-600">
+                                class="flex items-center justify-center w-10 h-10 rounded-full text-gray-900 border border-gray-900 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 cursor-pointer focus:outline-none focus:ring-1 focus:ring-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -63,10 +63,10 @@
             </div>
         </div>
     </nav>
-    <main class="flex-grow min-h-96 max-w-7xl w-full mx-auto px-4 ">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-2 md:px-4 ">
         {{ $slot }}
     </main>
-    <footer class="max-w-7xl mx-auto px-4 pb-4 pt-2 w-full">
+    <footer class="max-w-7xl mx-auto px-2 md:px-4 pb-2 md:pb-4 pt-2 w-full">
         <div class=" bg-gray-300 p-4 rounded-2xl">
 
             <ul class=" text-sm text-gray-700 flex flex-col items-center md:flex-row md:justify-between  space-y-1">

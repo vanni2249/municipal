@@ -1,26 +1,26 @@
 <div class="space-y-2">
     <x-card class="border-b-4 border-blue-300">
         <header class="flex justify-between items-center">
-            <h1 class="text-lg font-bold text-gray-900">
+            <x-h1>
                 {{ $service->title }}
-            </h1>
+            </x-h1>
         </header>
     </x-card>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-12 lg:col-span-8 space-y-2">
             <div class="space-y-2">
                 <x-card>
-                    <div class=" flex items-center">
-                        <x-icon icon="{{ $service->icon }}" height="96" width="96" class="stroke-1" />
+                    <div class=" flex items-start space-x-2">
+                        <x-icon icon="{{ $service->icon }}" height="96" width="96" class="stroke-1 bg-gray-100 p-0 rounded-md" />
                         <ul>
                             <li>
-                                <span class=" text-xs text-gray-700 tracking-wide">
-                                    {{ $service->serviceType->name }}
+                                <span class="font-bold">
+                                    {{ $service->description }}
                                 </span>
                             </li>
                             <li>
-                                <span class="text-sm font-bold tracking-wide">
-                                    {{ $service->description }}
+                                <span class=" text-xs text-gray-700 tracking-wide">
+                                    {{ $service->serviceType->name }}
                                 </span>
                             </li>
                         </ul>
@@ -31,7 +31,7 @@
                         Para solicitar este servicio, debe estar registrado en el sitio web y haber iniciado sesión. Una
                         vez
                         que haya iniciado sesión, podrá acceder a la página de solicitud del servicio y completar el
-                        formulario de solicitud. Asegúrese de proporcionar toda la información requerida.
+                        formulario de solicitud.
                     </p>
                     <a href="{{ route('login') }}"
                         class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer" wire:navigate>
@@ -43,9 +43,9 @@
             <div class="grid grid-cols-12 gap-2">
                 <x-card class="col-span-full border-b-4 border-blue-300">
                     <header class="col-span-full">
-                        <h1 class="text-lg font-bold text-gray-900">
+                        <x-h2>
                             Otros servicios del {{ $service->accountType->name }}
-                        </h1>
+                        </x-h2>
                     </header>
                 </x-card>
                 @foreach ($services as $service)

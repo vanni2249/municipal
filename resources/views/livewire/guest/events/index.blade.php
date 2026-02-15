@@ -4,9 +4,9 @@
             <x-card class="border-b-4 border-blue-300">
                 <header class="">
                     <div class="flex justify-between items-center">
-                        <x-h3>
+                        <x-h1>
                             Eventos
-                        </x-h3>
+                        </x-h1>
                     </div>
                     <p class="text-sm text-gray-800">
                         Mantente informado sobre los últimos eventos del municipio.
@@ -48,7 +48,7 @@
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Últimas Noticias" />
-                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline">
+                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
                 </header>

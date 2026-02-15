@@ -66,7 +66,7 @@
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Noticias" />
-                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline">
                         Ver todas
                     </a>
                 </header>
@@ -89,7 +89,7 @@
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Eventos" />
-                    <a href="#" class="text-sm text-blue-500 hover:underline">
+                    <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline">
                         Ver todas
                     </a>
                 </header>

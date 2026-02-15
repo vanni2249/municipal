@@ -4,16 +4,16 @@
             <x-card class="border-b-4 border-blue-300">
                 <header class="">
                     <div class="flex justify-between items-center">
-                        <x-h3>
+                        <x-h1>
                             Noticias
-                        </x-h3>
+                        </x-h1>
                     </div>
                     <p class="text-sm text-gray-800">
                         Mantente informado sobre las últimas noticias del municipio.
                     </p>
                 </header>
             </x-card>
-            <div class="space-y-1">
+            <div class="space-y-2">
 
                 @for ($i = 0; $i < 10; $i++)
                     <a href="{{ route('news.show', $i) }}" class="block" wire:navigate>
@@ -22,9 +22,9 @@
                                 <span class="text-xs text-gray-700">
                                     12 de Octubre de 2024
                                 </span>
-                                <x-h1>
+                                <x-h3>
                                     Ultima noticia sobre los eventos administrativos relacionados con el servicio
-                                </x-h1>
+                                </x-h3>
                                 <ul class="text-gray-800">
                                     <li class="flex space-x-1 items-start text-sm">
                                         <x-icon icon="user" height="16" width="16"
@@ -39,9 +39,7 @@
                     </a>
                 @endfor
             </div>
-            <x-card>
-
-            </x-card>
+            
         </div>
         <div class="col-span-full md:col-span-4 space-y-2">
             <x-card>

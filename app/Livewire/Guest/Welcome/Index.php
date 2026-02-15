@@ -29,6 +29,8 @@ class Index extends Component
             'Juana Diaz',
             'Ponce',
             'Santa Isabel',
+            'Salinas',
+            'Coamo',
         ];
     }
 

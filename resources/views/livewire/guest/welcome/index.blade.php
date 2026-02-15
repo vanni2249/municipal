@@ -3,7 +3,7 @@
     <section style="background-image: url('{{ asset('img/app/morro.webp') }}');"
         class="h-[30rem] flex flex-col border-0 bg-cover bg-center relative bg-transparent">
         <nav @class(['w-full', ' ' => request()->routeIs('welcome')])>
-            <div class="max-w-7xl mx-auto p-4">
+            <div class="max-w-7xl mx-auto p-2 md:p-4">
                 <div @class([
                     'flex justify-between items-center bg-white/10 backdrop-blur-md rounded-2xl p-4',
                     'border border-white/20',
@@ -76,14 +76,14 @@
     </section>
     <!-- End Hero Section -->
     <!-- Citizen Services Section -->
-    <section id="citizen-services" class="p-4 max-w-7xl mx-auto py-2 space-y-2">
+    <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-2 space-y-2">
         @foreach ($accountTypes as $type)
             <div>
                 <x-card class="border-b-4 border-blue-300">
                     <header class="flex justify-between items-center">
-                        <h1 class="text-lg font-bold text-gray-900">
+                        <x-h2 class="text-lg font-bold text-gray-900">
                             Servicios del {{ $type->name }}
-                        </h1>
+                        </x-h2>
                         <a href="{{ route('services.index', ['type' => $type->slug]) }}"
                             class="text-sm text-blue-500 hover:underline" wire:navigate>
                             Ver todos
@@ -122,12 +122,12 @@
     <!-- End Citizen Services Section -->
     <!-- News Section -->
     <section class="bg-gray-300 py-2">
-        <div class="max-w-7xl px-4 mx-auto space-y-2">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2">
             <x-card class="border-b-4 border-blue-300">
                 <header class="flex justify-between items-center">
-                    <x-h3>
+                    <x-h2>
                         Noticias
-                    </x-h3>
+                    </x-h2>
                     <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
@@ -137,21 +137,24 @@
                 @for ($i = 0; $i < 4; $i++)
                     <a href="{{ route('news.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
                         <x-card class="h-full hover:shadow lg:p-8">
-                            <span class="text-xs text-gray-700">
-                                12 de Octubre de 2024
-                            </span>
-                            <p class="font-bold text-gray-950">
-                                Ultima noticia sobre los eventos administrativos relacionados con el servicio
-                            </p>
-                            <ul class="text-gray-800">
-                                <li class="flex space-x-1 items-start text-sm">
-                                    <x-icon icon="user" height="16" width="16"
-                                        class="text-gray-700 stroke-1 inline-block" />
-                                    <span>
-                                        Autor: Juan Perez
-                                    </span>
-                                </li>
-                            </ul>
+                            <div>
+
+                                <span class="text-xs text-gray-700">
+                                    12 de Octubre de 2024
+                                </span>
+                                <p class="font-bold text-gray-950">
+                                    Ultima noticia sobre los eventos administrativos relacionados con el servicio
+                                </p>
+                                <ul class="text-gray-800">
+                                    <li class="flex space-x-1 items-center text-sm">
+                                        <x-icon icon="user" height="14" width="14"
+                                            class="text-white bg-gray-700 stroke-1 inline-block rounded" />
+                                        <span>
+                                            Autor: Juan Perez
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </x-card>
                     </a>
                 @endfor
@@ -162,12 +165,12 @@
     <!-- End News Section -->
     <!-- Events Section -->
     <section>
-        <div class="max-w-7xl px-4 mx-auto space-y-2 mt-2">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 mt-2">
             <x-card class="border-b-4 border-blue-300">
                 <header class="flex justify-between items-center">
-                    <x-h3>
+                    <x-h2>
                         Eventos
-                    </x-h3>
+                    </x-h2>
                     <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>

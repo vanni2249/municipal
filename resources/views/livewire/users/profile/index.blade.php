@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>

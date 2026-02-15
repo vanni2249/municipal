@@ -18,7 +18,7 @@
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
 
     <div id="main-content" class="flex-grow flex max-w-7xl mx-auto flex-col transition-all">
-        <div class="px-2 md:px-4 pt-2 md:pt-4">
+        <div class="px-2 pt-2">
             <nav class="bg-white h-16 px-4 w-full rounded-xl">
                 <div class="flex justify-between items-center h-full">
                     <div class="flex space-x-4">
@@ -42,12 +42,12 @@
                 </div>
             </nav>
         </div>
-        <main class="flex-grow min-h-96 px-2 py-4 md:p-4">
+        <main class="flex-grow px-2 py-2">
             {{-- @livewire('users.layout.header') --}}
             
             {{ $slot }}
         </main>
-        <footer class="mx-auto px-2 md:px-4 pb-2 md:pb-4 w-full ">
+        <footer class="mx-auto px-2 pb-2 w-full ">
             <div class="bg-gray-300 rounded-xl">
 
                 <ul

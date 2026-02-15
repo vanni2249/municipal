@@ -13,14 +13,13 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
 
-// #[Lazy()]
+#[Lazy()]
 class Index extends Component
 {
     use AccountUlid, AccountNumber, AccountTypeId, BusinessUlid, BusinessNumber, StatusId;
     public $user;
     public $merchant_account_number;
     public $merchant_account_code;
-
     public $business_type_id;
     public $business_name;
     public $business_address;
@@ -29,7 +28,6 @@ class Index extends Component
 
     public function mount()
     {
-        sleep(1);
         $this->user = auth()->user();
     }
 
@@ -114,7 +112,7 @@ class Index extends Component
 
     public function placeholder()
     {
-        return view('placeholders.views.users.account-index-skeleton');
+        return view('placeholders.views.users.account-index');
     }
 
     #[Layout('layouts.user')]

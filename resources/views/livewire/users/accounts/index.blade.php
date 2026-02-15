@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-start">
             <div>
@@ -130,7 +130,6 @@
                 </x-card-element>
             @endforelse
         </div>
-
         @if ($accounts->where('account_type_id', 2)->isEmpty())
             <div
                 class="mt-4 border border-dashed border-gray-400 p-6 rounded-lg flex flex-col justify-center items-center space-y-6">
@@ -161,6 +160,7 @@
     <!-- End accounts -->
 
     <!-- Modals -->
+
     <!-- Attach merchant account -->
     <x-modal name="attach-merchant-account-modal" title="Adjuntar cuenta de comerciante" size="md">
         <form wire:submit.prevent="attachMerchantAccount">
@@ -198,6 +198,7 @@
             </div>
         </form>
     </x-modal>
+
     <!-- Create merchant account -->
     <x-modal name="request-merchant-account-modal" title="Solicitar cuenta de comerciante" size="md">
 

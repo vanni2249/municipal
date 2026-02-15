@@ -12,7 +12,6 @@ class Index extends Component
 
     public function mount()
     {
-        sleep(1);
     }
 
     public function placeholder()

@@ -106,7 +106,7 @@
                 </header>
                 <x-card-elements-group>
                     @foreach ($application->statuses as $status)
-                        <x-card-element class="mb-4" border="{{ $status->statusType->variant }}">
+                        <x-card-element class="" border="{{ $status->statusType->variant }}">
                             <div class="flex justify-between items-start">
                                 <div>
                                     <p class="text-sm text-gray-600 mt-1">

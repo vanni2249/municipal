@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
-    <div id="sidebar" class="z-50 fixed h-screen min-h-screen w-0 lg:w-64 transition-all py-2 pl-2">
+    <div id="sidebar" class="z-50 inset-0 fixed h-screen min-h-screen w-0 lg:w-64 transition-all py-2 pl-2">
         <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-hidden">
             <header class="h-16 flex items-center text-white px-6 border-b border-gray-900">
                 <div class="flex justify-between items-center w-full">
@@ -42,7 +42,7 @@
     <!-- bgOpacity -->
     <div class="lg:hidden">
 
-        <div id="bg-opacity" class="hidden fixed inset-0 bg-black w-full h-full opacity-50"></div>
+        <div id="bg-opacity" class="hidden fixed z-40 bg-black w-full h-full opacity-50"></div>
 
     </div>
 

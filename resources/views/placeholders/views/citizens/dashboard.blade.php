@@ -6,7 +6,7 @@
                     <div class="h-4 bg-gray-300 rounded w-48"></div>
                     <div class="h-4 bg-gray-300 rounded w-24"></div>
                 </div>
-                <div class="space-y-2">
+                <div class="space-y-2 flex flex-col items-end">
                     <div class="h-4 bg-gray-300 rounded w-24"></div>
                     <div class="h-4 bg-gray-300 rounded w-12"></div>
                 </div>

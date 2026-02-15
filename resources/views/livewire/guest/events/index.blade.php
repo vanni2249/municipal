@@ -1,7 +1,7 @@
 <div>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full md:col-span-8 space-y-2">
-            <x-card>
+            <x-card class="border-b-4 border-blue-300">
                 <header class="">
                     <div class="flex justify-between items-center">
                         <x-h3>

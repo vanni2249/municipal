@@ -24,8 +24,8 @@
                                 </a>
                             </li>
                             <li class="hover:text-gray-400">
-                                <a href="{{ route('news.index') }}" wire:navigate>
-                                    Noticias
+                                <a href="{{ route('press-reales.index') }}" wire:navigate>
+                                    Comunicados
                                 </a>
                             </li>
                             <li class="hover:text-gray-400">
@@ -61,8 +61,8 @@
                                 <x-dropdown-link :href="route('services.index', ['type' => 'merchant'])" wire:navigate>
                                     Comerciantes
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('news.index')" wire:navigate>
-                                    Noticias
+                                <x-dropdown-link :href="route('press-reales.index')" wire:navigate>
+                                    Comunicados
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('events.index')" wire:navigate>
                                     Eventos
@@ -165,16 +165,16 @@
             <x-card class="border-b-4 border-blue-300">
                 <header class="flex justify-between items-center">
                     <x-h2>
-                        Noticias
+                        Comunicados
                     </x-h2>
-                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
                 </header>
             </x-card>
             <div class="grid grid-cols-12 gap-2">
                 @for ($i = 0; $i < 4; $i++)
-                    <a href="{{ route('news.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
+                    <a href="{{ route('press-reales.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
                         <x-card class="h-full hover:shadow lg:p-8">
                             <div>
 
@@ -182,7 +182,7 @@
                                     12 de Octubre de 2024
                                 </span>
                                 <p class="font-bold text-gray-950">
-                                    Ultima noticia sobre los eventos administrativos relacionados con el servicio
+                                    Última noticia sobre los eventos administrativos relacionados con el servicio
                                 </p>
                                 <ul class="text-gray-800">
                                     <li class="flex space-x-1 items-center text-sm">

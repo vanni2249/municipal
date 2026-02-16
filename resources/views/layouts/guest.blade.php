@@ -35,8 +35,8 @@
                             </a>
                         </li>
                         <li class="hover:text-gray-700">
-                            <a href="{{ route('news.index') }}" wire:navigate>
-                                Noticias
+                            <a href="{{ route('press-reales.index') }}" wire:navigate>
+                                Comunicados
                             </a>
                         </li>
                         <li class="hover:text-gray-700">
@@ -72,8 +72,8 @@
                             <x-dropdown-link :href="route('services.index', ['type' => 'merchant'])" wire:navigate>
                                 Comerciantes
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('news.index')" wire:navigate>
-                                Noticias
+                            <x-dropdown-link :href="route('press-reales.index')" wire:navigate>
+                                Comunicados
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('events.index')" wire:navigate>
                                 Eventos
@@ -89,12 +89,12 @@
                 </div>
                 <div class="hidden md:flex justify-between items-center space-x-2">
                     <a href="{{ route('login') }}"
-                        class="border border-transparent hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 py-2 px-4 rounded-xl text-xs font-bold uppercase"
+                        class="border border-transparent hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 py-2 px-4 rounded-md text-xs font-bold uppercase"
                         wire:navigate>
                         Iniciar sesión
                     </a>
                     <a href="{{ route('register') }}"
-                        class="border border-black bg-black hover:bg-gray-800 py-2 px-4 rounded-xl text-xs font-bold uppercase text-white hover:text-gray-100"
+                        class="border border-black bg-black hover:bg-gray-800 py-2 px-4 rounded-md text-xs font-bold uppercase text-white hover:text-gray-100"
                         wire:navigate>
                         Regístrate
                     </a>

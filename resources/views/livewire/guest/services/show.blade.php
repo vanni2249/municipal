@@ -11,7 +11,8 @@
             <div class="space-y-2">
                 <x-card>
                     <div class=" flex items-start space-x-2">
-                        <x-icon icon="{{ $service->icon }}" height="96" width="96" class="stroke-1 bg-gray-100 p-0 rounded-md" />
+                        <x-icon icon="{{ $service->icon }}" height="96" width="96"
+                            class="stroke-1 bg-gray-100 p-0 rounded-md" />
                         <ul>
                             <li>
                                 <span class="font-bold">
@@ -33,10 +34,24 @@
                         que haya iniciado sesión, podrá acceder a la página de solicitud del servicio y completar el
                         formulario de solicitud.
                     </p>
-                    <a href="{{ route('login') }}"
-                        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer" wire:navigate>
-                        Iniciar sesión para solicitar
-                    </a>
+                    <ul class="flex flex-row flex-nowrap">
+                        <li>
+
+                            <a href="{{ route('login') }}"
+                                class="block px-4 py-2 border border-black text-black rounded-md hover:bg-black hover:text-white cursor-pointer whitespace-nowrap"
+                                wire:navigate>
+                                Iniciar sesión para solicitar
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="{{ route('register') }}"
+                                class="block ml-2 px-4 py-2 bg-black border border-black text-white rounded-md hover:bg-gray-600 hover:border-gray-600 cursor-pointer whitespace-nowrap"
+                                wire:navigate>
+                                Registrarse
+                            </a>
+                        </li>
+                    </ul>
                 </x-card>
             </div>
 
@@ -76,20 +91,21 @@
         <div class="col-span-full lg:col-span-4 space-y-2">
             <x-card>
                 <header class="flex justify-between items-center">
-                    <x-h3 value="Noticias" />
-                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <x-h3 value="Comunicados" />
+                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline"
+                        wire:navigate>
                         Ver todas
                     </a>
                 </header>
                 <x-card-body-lists>
                     @for ($i = 0; $i < 2; $i++)
-                        <a href="{{ route('news.show', $i) }}" class="block" wire:navigate>
+                        <a href="{{ route('press-reales.show', $i) }}" class="block" wire:navigate>
                             <x-card-body-list class="hover:bg-gray-200">
                                 <span class="text-xs text-gray-700">
                                     12 de Octubre de 2024
                                 </span>
                                 <p class="text-sm font-bold">
-                                    La ultima informacion sobre los eventos admonistrativos relacionados con el servicio
+                                    La ultima informacion sobre los eventos administrativos relacionados con el servicio
 
                                 </p>
                             </x-card-body-list>

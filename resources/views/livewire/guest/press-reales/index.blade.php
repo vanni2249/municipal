@@ -5,18 +5,18 @@
                 <header class="">
                     <div class="flex justify-between items-center">
                         <x-h1>
-                            Noticias
+                            Comunicados del Municipio
                         </x-h1>
                     </div>
                     <p class="text-sm text-gray-800">
-                        Mantente informado sobre las últimas noticias del municipio.
+                        Mantente informado sobre los últimos comunicados del municipio.
                     </p>
                 </header>
             </x-card>
             <div class="space-y-2">
 
                 @for ($i = 0; $i < 10; $i++)
-                    <a href="{{ route('news.show', $i) }}" class="block" wire:navigate>
+                    <a href="{{ route('press-reales.show', $i) }}" class="block" wire:navigate>
                         <x-card class="hover:shadow">
                             <header>
                                 <span class="text-xs text-gray-700">
@@ -57,7 +57,7 @@
                                     12 de Octubre de 2024
                                 </span>
                                 <p class="text-sm font-bold">
-                                    Fin de semanan habra una actividad informativa sobre el servicio
+                                    Fin de semana habrá una actividad informativa sobre el servicio
 
                                 </p>
                             </x-card-body-list>

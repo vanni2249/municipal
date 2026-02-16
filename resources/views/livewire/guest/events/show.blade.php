@@ -47,7 +47,7 @@
                                     12 de Octubre de 2024
                                 </span>
                                 <p class="text-sm font-bold">
-                                    Fin de semanan habra una actividad informativa sobre el servicio
+                                    Fin de semana habrá una actividad informativa sobre el servicio
 
                                 </p>
                             </x-card-body-list>
@@ -57,14 +57,14 @@
             </x-card>
             <x-card>
                 <header class="flex justify-between items-center">
-                    <x-h3 value="Ultimas Noticias" />
-                    <a href="{{ route('news.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <x-h3 value="Últimos Comunicados" />
+                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
                         Ver todas
                     </a>
                 </header>
                 <x-card-body-lists>
                     @for ($i = 0; $i < 2; $i++)
-                        <a href="{{ route('news.show', $i) }}" class="block" wire:navigate>
+                        <a href="{{ route('press-reales.show', $i) }}" class="block" wire:navigate>
                             <x-card-body-list class="hover:bg-gray-200">
                                 <span class="text-xs text-gray-700">
                                     12 de Octubre de 2024

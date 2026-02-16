@@ -32,7 +32,7 @@ class Index extends Component
                 'value' => '$' . number_format(\App\Models\Invoice::sum('amount'), 2),
             ],
             [
-                'title' => 'Transacciones',
+                'title' => 'Transaxiones',
                 'subtitle' => number_format(\App\Models\Transaction::count()),
                 'value' => '$' . number_format(\App\Models\Transaction::sum('amount'), 2),
             ],
@@ -45,16 +45,16 @@ class Index extends Component
                 'value' => number_format(\App\Models\Account::count()),
             ],
             [
-                'title' => 'Total Negocios',
+                'title' => 'Negocios',
                 'value' => number_format(\App\Models\Business::count()),
 
             ],
             [
-                'title' => 'Total Permisos',
+                'title' => 'Permisos',
                 'value' => number_format(\App\Models\Permit::count()),
             ],
             [
-                'title' => 'Total Interacciones',
+                'title' => 'Interacciones',
                 'value' => number_format(\App\Models\Interaction::count()),
             ],
             [

@@ -1,17 +1,41 @@
 <div class="space-y-2">
-    <div class="grid grid-cols-12 xl:grid-cols-16 gap-2">
+    <x-card>
+        <x-card-header class="flex justify-between items-center">
+            <x-h1 value="Tablero" />
+            <div class="flex space-x-2 items-center">
+                <select class="text-xs border border-gray-300 rounded-lg p-2" wire:model.live="filter">
+                    <option value="year">Año</option>
+                    <option value="month">Mes</option>
+                </select>
+                @if ($years)
+                    <select class="text-xs border border-gray-300 rounded-lg p-2" wire:model="year">
+                        @foreach ($years as $key => $year)
+                            <option value="{{ $key }}">{{ $year }}</option>
+                        @endforeach
+                    </select>
+                @endif
+                @if ($months)
+                    <select class="text-xs border border-gray-300 rounded-lg p-2" wire:model="month">
+                        @foreach ($months as $key => $month)
+                            <option value="{{ $key }}">{{ $month }}</option>
+                        @endforeach
+                    </select>
+                @endif
+            </div>
+        </x-card-header>
+    </x-card>
+    <div class="grid grid-cols-12 gap-1">
         @foreach ($widgets as $widget)
-            <div class="col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-2">
-                <x-widget variant="success" title="{{ $widget['title'] }}"
-                    subtitle="{{ $widget['subtitle'] ?? '' }}"
-                    value="{{ $widget['value'] }}" />
+            <div class="col-span-6 md:col-span-3 lg:col-span-3">
+                <x-widget variant="{{ $widget['variant'] }}" title="{{ $widget['title'] }}"
+                    subtitle="{{ $widget['subtitle'] ?? '' }}" value="{{ $widget['value'] }}" />
             </div>
         @endforeach
     </div>
     <div class="col-span-12">
         <x-card class="">
             <x-card-header>
-                <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">Aplicaciones por día</h2>
+                <h2 class="text-xs text-gray-800 leading-3 font-bold uppercase">Aplicaciones por día</h2>
             </x-card-header>
             @livewire('admin.dashboard.components.chart-application', key('chart-application'))
             {{-- @livewire('component', ['user' => $user], key($user->id)) --}}
@@ -26,7 +50,7 @@
             <div class="col-span-full md:col-span-6 lg:col-span-3">
                 <x-card class="h-full">
                     <header class="flex justify-between items-center">
-                        <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">
+                        <h2 class="text-xs text-gray-800 leading-3 font-bold uppercase">
                             {{ $list['title'] }}
                         </h2>
                         <span class="text-xs text-gray-500 leading-3 font-medium">

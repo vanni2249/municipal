@@ -19,7 +19,7 @@ class Index extends Component
 
     public function placeholder()
     {
-        return view('placeholders.views.partials.header-table-skeleton');
+        return view('placeholders.views.admins.accounts-index');
     }
     
     #[Layout('layouts.admin')]

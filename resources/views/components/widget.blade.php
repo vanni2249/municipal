@@ -13,7 +13,7 @@
         'danger' => ' border-red-400',
         'warning' => ' border-yellow-400',
         'info' => ' border-teal-400',
-        'light' => ' border-gray-200',
+        'light' => ' border-gray-400',
         'dark' => ' border-gray-800',
     ]
 @endphp
@@ -22,7 +22,7 @@
     {{ $attributes->merge(['class' => $variants[$variant] . ' border-l-4 bg-white p-2 rounded-xl h-full']) }}>
     <div class="flex flex-col h-full">
         <header class="grow flex justify-between  items-center">
-            <h2 class="text-xs text-gray-600 font-bold">
+            <h2 class="text-xs text-gray-800 font-bold uppercase">
                 {{ $title }}
             </h2>
             <span class="text-xs text-gray-500 leading-3 font-medium">

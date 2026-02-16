@@ -1,8 +1,9 @@
-<div class="space-y-4">
-    <div class="grid grid-cols-12 gap-2">
+<div class="space-y-2">
+    <div class="grid grid-cols-12 xl:grid-cols-16 gap-2">
         @foreach ($widgets as $widget)
-            <div class="col-span-6 md:col-span-6 lg:col-span-3">
-                <x-widget variant="success" title="{{ $widget['title'] }}" subtitle="{{ $widget['subtitle'] ?? '' }}"
+            <div class="col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-2">
+                <x-widget variant="success" title="{{ $widget['title'] }}"
+                    subtitle="{{ $widget['subtitle'] ?? '' }}"
                     value="{{ $widget['value'] }}" />
             </div>
         @endforeach
@@ -23,7 +24,7 @@
 
         @foreach ($lists as $list)
             <div class="col-span-full md:col-span-6 lg:col-span-3">
-                <x-card class="">
+                <x-card class="h-full">
                     <header class="flex justify-between items-center">
                         <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">
                             {{ $list['title'] }}

@@ -1,4 +1,4 @@
-<div class="animate-pulse space-y-4">
+<div class="animate-pulse space-y-2">
     <header>
         <x-card>
             <header class="flex justify-between space-x-2 items-start">

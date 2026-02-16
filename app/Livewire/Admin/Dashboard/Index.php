@@ -28,22 +28,20 @@ class Index extends Component
         return [
             [
                 'title' => 'Facturas',
-                'subtitle' => number_format(\App\Models\Invoice::count()) . ' facturas',
-                'value' => number_format(\App\Models\Invoice::sum('amount')),
+                'subtitle' => number_format(\App\Models\Invoice::count()),
+                'value' => '$' . number_format(\App\Models\Invoice::sum('amount'), 2),
             ],
             [
                 'title' => 'Transacciones',
-                'subtitle' => number_format(\App\Models\Transaction::count()) . ' transacciones',
-                'value' => number_format(\App\Models\Transaction::sum('amount')),
+                'subtitle' => number_format(\App\Models\Transaction::count()),
+                'value' => '$' . number_format(\App\Models\Transaction::sum('amount'), 2),
             ],
             [
                 'title' => 'Usuarios',
-                'subtitle' => number_format(\App\Models\Account::count()) . ' cuentas',
                 'value' => number_format(\App\Models\User::count()),
             ],
             [
                 'title' => 'Cuentas',
-                'subtitle' => number_format(\App\Models\Account::count()) . ' cuentas',
                 'value' => number_format(\App\Models\Account::count()),
             ],
             [
@@ -61,9 +59,9 @@ class Index extends Component
             ],
             [
                 'title' => 'Aplicaciones',
-                'subtitle' => number_format(\App\Models\Application::whereHas('status', function ($query) {
-                    $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
-                })->count()) . ' pendientes',
+                // 'subtitle' => number_format(\App\Models\Application::whereHas('status', function ($query) {
+                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
+                // })->count()) . ' pendientes',
                 'value' => number_format(\App\Models\Application::count()),
             ],
         ];

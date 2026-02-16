@@ -1,4 +1,4 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold">Cuentas</h1>

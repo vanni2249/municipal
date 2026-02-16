@@ -1,4 +1,4 @@
-<div class="space-y-4 animate-pulse">
+<div class="space-y-2 animate-pulse">
     <x-card>
         @include('placeholders.components.header-secondary')
 

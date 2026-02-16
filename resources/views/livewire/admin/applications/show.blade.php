@@ -1,6 +1,6 @@
-<div class="space-y-4">
+<div>
 
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-2">
         <!-- Header -->
         <div class="col-span-full">
             <x-card>
@@ -19,7 +19,7 @@
             </x-card>
         </div>
         <!-- Application detail & statuses -->
-        <div class="col-span-full lg:col-span-5 space-y-4">
+        <div class="col-span-full lg:col-span-5 space-y-2">
             <!-- Application detail -->
             <x-card>
                 <x-card-header>
@@ -190,7 +190,7 @@
             @endif
         </div>
         <!-- Application includes -->
-        <div class="col-span-full lg:col-span-7">
+        {{-- <div class="col-span-full lg:col-span-7"> --}}
             {{-- @switch($application->service->slug)
                 @case('app-citizen-property-use')
                     @livewire('citizens.applications.app-citizen-property-use.show', [
@@ -230,7 +230,7 @@
 
                 @default
             @endswitch --}}
-        </div>
+        {{-- </div> --}}
     </div>
 
     <!-- Make payment modal -->

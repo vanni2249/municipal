@@ -1,4 +1,4 @@
-<div class="grid grid-cols-12 gap-4">
+<div class="grid grid-cols-12 gap-2">
     <div class="col-span-full lg:col-span-full">
         <x-card>
             <!-- Service Information -->

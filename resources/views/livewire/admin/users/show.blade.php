@@ -1,5 +1,5 @@
-<div class="space-y-4">
-    <div class="grid grid-cols-12 gap-4">
+<div class="space-y-2">
+    <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full lg:col-span-full">
             <x-card>
                 <!-- User Information -->
@@ -18,8 +18,8 @@
             {{-- @livewire('admin.users.components.user-header', ['user' => $user], key($user->id)) --}}
         </div>
     </div>
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-full lg:col-span-5 space-y-4">
+    <div class="grid grid-cols-12 gap-2">
+        <div class="col-span-full lg:col-span-5 space-y-2">
             <!-- User detail -->
             <x-card>
                 <x-card-header class="flex justify-between items-center">

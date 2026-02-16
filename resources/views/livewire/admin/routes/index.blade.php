@@ -1,8 +1,8 @@
-<div class="space-y-4">
+<div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold">Rutas</h1>
-            <x-button @click="$dispatch('open-modal','create-route-modal')" label="Crear Ruta" />
+            <x-button @click="$dispatch('open-modal','create-route-modal')" label="Crear Ruta" size="sm"/>
         </header>
     </x-card>
     <x-card class="h-full rounded-xl">

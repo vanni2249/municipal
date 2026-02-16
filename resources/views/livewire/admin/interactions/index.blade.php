@@ -1,8 +1,10 @@
-<div>
-    <x-card class="h-full rounded-xl">
-        <header class="flex justify-between items-center mb-4">
+<div class="space-y-2">
+     <x-card>
+        <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold">Interacciones</h1>
         </header>
+    </x-card>
+    <x-card class="h-full rounded-xl">
         <div class="md:flex md:justify-between space-y-2 md:space-y-0 items-center mb-2">
             <div class="">
                 <x-input placeholder="Buscar" class="w-full" />

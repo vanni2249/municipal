@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-200 font-sans antialiased flex flex-row min-h-screen">
-    <div id="sidebar" class="z-50 inset-0 fixed h-screen min-h-screen w-0 lg:w-64 transition-all py-2 pl-2">
+    <div id="sidebar" class="z-50 fixed h-screen min-h-screen w-0 lg:w-64 transition-all py-2 pl-2">
         <aside class="bg-black rounded-xl w-full h-full flex flex-col overflow-hidden">
             <header class="h-16 flex items-center text-white px-6 border-b border-gray-900">
                 <div class="flex justify-between items-center w-full">
@@ -32,9 +32,9 @@
                     </button>
                 </div>
             </header>
-            <ul class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
+            <div class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
                 @livewire('citizens.layout.sidebar')
-            </ul>
+            </div>
             <footer class="h-14 border-t border-gray-900"></footer>
         </aside>
     </div>

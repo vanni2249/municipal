@@ -19,16 +19,16 @@
 @endphp
 
 <div
-    {{ $attributes->merge(['class' => $variants[$variant] . ' border-l-4 bg-white p-2 md:p-4 rounded-xl ']) }}>
-    <div>
-        <header class="flex justify-between items-center">
-            <h2 class="text-xs text-gray-600 leading-3 font-bold uppercase">
+    {{ $attributes->merge(['class' => $variants[$variant] . ' border-l-4 bg-white p-2 rounded-xl h-full']) }}>
+    <div class="flex flex-col h-full">
+        <header class="grow flex justify-between  items-center">
+            <h2 class="text-xs text-gray-600 font-bold">
                 {{ $title }}
             </h2>
             <span class="hidden md:block text-xs text-gray-500 leading-3 font-medium">
                 {{ $subtitle }}
             </span>
         </header>
-        <div class="text-xl text-gray-800 font-bold mt-2">{{ $value }}</div>
+        <div class="text-sm lg:text-md text-gray-800 font-bold mt-1">{{ $value }}</div>
     </div>
 </div>

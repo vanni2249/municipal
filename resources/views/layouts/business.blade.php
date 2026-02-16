@@ -32,9 +32,9 @@
                     </button>
                 </div>
             </header>
-            <ul class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
+            <div class="grow text-white p-4 text-xs overflow-auto no-scrollbar font-bold uppercase space-y-1">
                 @livewire('businesses.layout.sidebar')
-            </ul>
+            </div>
             <footer class="h-14 border-t border-gray-900"></footer>
         </aside>
     </div>

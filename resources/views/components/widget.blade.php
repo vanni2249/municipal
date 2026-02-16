@@ -25,7 +25,7 @@
             <h2 class="text-xs text-gray-600 font-bold">
                 {{ $title }}
             </h2>
-            <span class="hidden md:block text-xs text-gray-500 leading-3 font-medium">
+            <span class="text-xs text-gray-500 leading-3 font-medium">
                 {{ $subtitle }}
             </span>
         </header>

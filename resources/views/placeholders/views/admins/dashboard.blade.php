@@ -1,20 +1,20 @@
-<div class="animate-pulse space-y-4">
+<div class="animate-pulse space-y-2">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
         @for ($i = 0; $i < 4; $i++)
             <x-card>
                 <header class="flex justify-between space-x-2 items-start">
                     <div class="space-y-2">
-                        <div class="h-4 bg-gray-300 rounded w-24"></div>
-                        <div class="h-4 bg-gray-300 rounded w-12"></div>
+                        <div class="h-2 bg-gray-300 rounded w-24"></div>
+                        <div class="h-2 bg-gray-300 rounded w-12"></div>
                     </div>
                     <div>
-                        <div class="h-4 bg-gray-300 rounded w-8"></div>
+                        <div class="h-2 bg-gray-300 rounded w-4"></div>
                     </div>
                 </header>
             </x-card>
         @endfor
     </div>
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-2">
         <x-card class="col-span-full lg:col-span-12">
             <header class="mb-8">
                 <div class="h-4 bg-gray-300 rounded w-32"></div>
@@ -31,7 +31,7 @@
             </div>
         </x-card>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
         @for ($i = 0; $i < 4; $i++)
             <x-card>
                 <header class="mb-4">

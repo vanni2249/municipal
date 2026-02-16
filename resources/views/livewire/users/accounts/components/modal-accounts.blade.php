@@ -1,6 +1,6 @@
 <div>
-    <x-button variant="primary" class="flex items-center space-x-1"
-        @click="$dispatch('open-modal', 'accounts-modal')" size="sm">
+    <x-button variant="primary" class="flex items-center space-x-1" @click="$dispatch('open-modal', 'accounts-modal')"
+        size="sm">
         {{-- <span class="md:hidden">
             <x-icon icon="replace" width="18" height="18" />
         </span> --}}
@@ -18,12 +18,23 @@
                         <span class="text-xs text-gray-600 font-bold uppercase">
                             Cuenta de {{ $item->accountType->name }}
                         </span>
-                        <a href="{{ route('citizens.set-session', $item->ulid) }}" class="block">
-                            <ul class="flex justify-between text-sm bg-gray-50 hover:bg-gray-200 space-y-1 p-2 rounded">
-                                <li class="font-bold text-gray-800">Ciudadano</li>
-                                <li>{{ $item->number }}</li>
-                            </ul>
-                        </a>
+                        <ul class="flex justify-between items-center text-sm bg-gray-50 space-y-1 p-2 rounded">
+                            <li class="flex flex-col text-sm">
+                                <span class="font-bold">
+                                    Ciudadano
+                                </span>
+                                <span class="text-xs">
+                                    {{ $item->number }}
+                                </span>
+                            </li>
+                            <li>
+                                <a href="{{ route('citizens.set-session', $item->ulid) }}"
+                                    class="block bg-black text-white px-3 py-1 rounded hover:bg-gray-800">
+                                    Ir al tablero
+                                </a>
+
+                            </li>
+                        </ul>
                     </div>
                 @elseif ($item->accountType->slug == 'merchant')
                     <div class="space-y-2">
@@ -31,12 +42,21 @@
                             Mi(s) comercio(s)
                         </span>
                         @foreach ($item->businesses as $business)
-                            <a href="{{ route('businesses.set-session', $business->ulid) }}" class="block">
-                                <ul class="flex justify-between text-sm bg-gray-50 hover:bg-gray-200 space-y-1 p-2 rounded">
-                                    <li class="font-bold text-gray-800">{{ $business->name }}</li>
-                                    <li>{{ $business->number }}</li>
-                                </ul>
-                            </a>
+                        <ul class="flex justify-between text-sm bg-gray-50 space-y-1 p-2 rounded">
+                            <li class="flex flex-col text-sm">
+                                <span class="font-bold">
+                                    {{ $business->name }}
+                                </span>
+                                <span class="text-xs">
+                                    {{ $business->number }}
+                                </span>
+                            </li>
+                            <li>
+                                <a href="{{ route('businesses.set-session', $business->ulid) }}" class="block bg-black text-white px-3 py-1 rounded hover:bg-gray-800">
+                                    Ir al tablero
+                                </a>
+                            </li>
+                        </ul>
                         @endforeach
                     </div>
                 @endif

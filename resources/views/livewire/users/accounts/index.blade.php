@@ -28,6 +28,9 @@
 
     <!-- Accounts -->
     <x-card>
+        <x-card-header>
+            <x-h3 value="Mis cuentas" />
+        </x-card-header>
         <div class="grid grid-cols-1 gap-2">
             @forelse ($accounts as $account)
                 <!-- Account item -->
@@ -71,59 +74,62 @@
                             </div>
                         </div>
                     </div>
+                </x-card-element>
 
-                    <!-- Businesses -->
-                    @if ($account->accountType->slug == 'merchant' && $account->status->statusType->slug == 'active')
-                        <div class="mt-4 space-y-1">
-                            @forelse ($account->businesses as $business)
-                                <div class="p-2 bg-gray-50 border border-gray-200 rounded-lg">
-                                    <div class="flex justify-between items-center">
-                                        <!-- Business Info -->
-                                        <div>
-                                            <strong class="text-sm">{{ $business->name }}</strong>
-                                            <br>
-                                            <span class="text-gray-700 text-sm">{{ $business->number }}</span>
-                                        </div>
+                <!-- Businesses -->
+                @if ($account->accountType->slug == 'merchant' && $account->status->statusType->slug == 'active')
+                    <header>
+                        <x-h3 value="Mis comercio(s)" />
+                    </header>
+                    <div class="space-y-1">
+                        @forelse ($account->businesses as $business)
+                            <div class="p-2 bg-gray-50 border border-gray-200 rounded-lg border-l-4 border-l-green-400">
+                                <div class="flex justify-between items-center">
+                                    <!-- Business Info -->
+                                    <div>
+                                        <strong class="text-sm">{{ $business->name }}</strong>
+                                        <br>
+                                        <span class="text-gray-700 text-sm">{{ $business->number }}</span>
+                                    </div>
 
-                                        <!-- Business Dashboard Button -->
-                                        <div>
-                                            @if ($business->status->statusType->slug == 'active')
-                                                <x-link-button
-                                                    href="{{ route('businesses.set-session', $business->ulid) }}"
-                                                    variant="primary">
-                                                    Ir al tablero
-                                                </x-link-button>
-                                            @else
-                                                <x-badge variant="{{ $business->status->statusType->variant }}"
-                                                    label="{{ $business->status->statusType->name }}" />
-                                            @endif
-                                        </div>
+                                    <!-- Business Dashboard Button -->
+                                    <div>
+                                        @if ($business->status->statusType->slug == 'active')
+                                            <x-link-button href="{{ route('businesses.set-session', $business->ulid) }}"
+                                                variant="primary">
+                                                Ir al tablero
+                                            </x-link-button>
+                                        @else
+                                            <x-badge variant="{{ $business->status->statusType->variant }}"
+                                                label="{{ $business->status->statusType->name }}" />
+                                        @endif
                                     </div>
                                 </div>
-                            @empty
-                                <div class="mt-4 p-4 bg-gray-200 rounded">
-                                    <p class="text-gray-700 text-sm text-center">
-                                        No tienes comercios asociados a esta cuenta.
-                                    </p>
-                                </div>
-                            @endforelse
-                            <div
-                                class="mt-4 bg-gray-50 border border-gray-200 rounded-lg p-2 lg:flex lg:justify-between space-y-4 lg:space-y-0 lg:items-center">
-                                <div>
-                                    <p class="text-sm text-gray-700">
-                                        Crear un nuevo comercio bajo esta cuenta de comerciante. Recuerda que cada comercio
-                                        puede tener su propia configuración y estado independiente.
-                                    </p>
-                                </div>
-                                <div>
-                                    <x-button variant="light" @click="$dispatch('open-modal', 'create-business-modal')">
-                                        Nuevo comercio
-                                    </x-button>
-                                </div>
+                            </div>
+                        @empty
+                            <div class="mt-4 p-4 bg-gray-200 rounded">
+                                <p class="text-gray-700 text-sm text-center">
+                                    No tienes comercios asociados a esta cuenta.
+                                </p>
+                            </div>
+                        @endforelse
+                        <div
+                            class="mt-4 bg-gray-50 border border-gray-200 rounded-lg p-2 lg:flex lg:justify-between space-y-4 lg:space-y-0 lg:items-center">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Crear un nuevo comercio bajo esta cuenta de comerciante. Recuerda que cada
+                                    comercio
+                                    puede tener su propia configuración y estado independiente.
+                                </p>
+                            </div>
+                            <div>
+                                <x-button variant="success" @click="$dispatch('open-modal', 'create-business-modal')">
+                                    Nuevo comercio
+                                </x-button>
                             </div>
                         </div>
-                    @endif
-                </x-card-element>
+                    </div>
+                @endif
             @empty
                 <x-card-element class="col-span-full">
                     <p class="text-gray-700 text-sm">
@@ -225,8 +231,11 @@
         {{-- {{ $accounts->where('account_type_id', 2)->first() }} --}}
         @if ($accounts->where('account_type_id', 2)->first()->businesses->last()->status->statusType->slug != 'active')
             <div class="mb-4 text-sm text-gray-700">
-                Haz solicitado la creación de un nuevo comercio. Tu solicitud está siendo revisada por el equipo administrativo.
-                Recibirás una notificación por correo electrónico una vez que tu comercio haya sido aprobado o rechazado. Mientras tanto, puedes revisar el estado de tu solicitud en la sección de cuentas de tu panel de usuario.
+                Haz solicitado la creación de un nuevo comercio. Tu solicitud está siendo revisada por el equipo
+                administrativo.
+                Recibirás una notificación por correo electrónico una vez que tu comercio haya sido aprobado o
+                rechazado. Mientras tanto, puedes revisar el estado de tu solicitud en la sección de cuentas de tu panel
+                de usuario.
             </div>
         @else
             <form wire:submit.prevent="createBusiness">

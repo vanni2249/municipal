@@ -1,31 +1,31 @@
 <div class="space-y-2">
-    <x-card class="border-b-4 border-blue-300">
-        <header class="flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="p-2 flex bg-blue-100 rounded-full">
+    {{-- <x-card class="border-b-4 border-blue-300"> --}}
+    <header class="flex justify-between items-center p-2">
+        <div class="flex items-center space-x-2">
+            <div class="p-2 flex bg-blue-300 rounded-full">
 
-                    <x-icon icon="{{ $service->icon }}" height="32" width="32" class="stroke-1" />
-                </div>
-                <x-h1 value=" {{ $service->title }}" />
+                <x-icon icon="{{ $service->icon }}" height="32" width="32" class="stroke-1" />
             </div>
+            <x-h1 value=" {{ $service->title }}" />
+        </div>
 
-        </header>
-    </x-card>
+    </header>
+    {{-- </x-card> --}}
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-12 lg:col-span-8 space-y-2">
             <div class="space-y-2">
                 <x-card>
-                    <div class=" space-y-4">
-                        <div class="">
-                            <x-h3 value="Descripción del servicio" />
-                            <span class="text-xs text-gray-800">
-                                Tipo de servicio:{{ $service->serviceType->name }}
+                    <div class="">
+                        <div class="flex justify-between items-center space-x-2 mb-2">
+                            <x-h3 value="Descripción" />
+                            <span class="text-xs font-bold uppercase text-gray-800">
+                                {{ $service->serviceType->name }}
                             </span>
-                            <p class="pt-2 text-sm text-gray-900">
-                                {{ $service->description }}
-                            </p>
                         </div>
-                        <div class="space-y-2 flex flex-col bg-gray-100 p-4 rounded-md">
+                        <p class=" text-gray-900">
+                            {{ $service->description }}
+                        </p>
+                        <div class="mt-4 space-y-2 flex flex-col bg-gray-100 p-4 rounded-md">
 
                             <p class="text-sm text-gray-700">
                                 Para solicitar este servicio, debe estar registrado en el sitio web y haber iniciado
@@ -58,21 +58,24 @@
                 </x-card>
             </div>
 
-            <div class="grid grid-cols-12 gap-2">
-                <x-card class="col-span-full border-b-4 border-blue-300">
+            <div>
+                <x-card class="">
                     <header class="col-span-full">
-                        <x-h2>
+                        <x-h3>
                             Otros servicios del {{ $service->accountType->name }}
-                        </x-h2>
+                        </x-h3>
                     </header>
+                    <div class="grid grid-cols-12 gap-2">
+
+                        @foreach ($services as $service)
+                            <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
+                                class="block bg-gray-100 hover:shadow col-span-6 md:col-span-6 p-2 md:p-4 rounded-xl space-x-4"
+                                wire:navigate>
+                                <x-card-service :service="$service" />
+                            </a>
+                        @endforeach
+                    </div>
                 </x-card>
-                @foreach ($services as $service)
-                    <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                        class="block bg-white hover:shadow col-span-6 md:col-span-6 p-2 md:p-4 rounded-xl space-x-4"
-                        wire:navigate>
-                        <x-card-service :service="$service" />
-                    </a>
-                @endforeach
             </div>
         </div>
         <div class="col-span-full lg:col-span-4 space-y-2">

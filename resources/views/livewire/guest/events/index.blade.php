@@ -1,18 +1,18 @@
 <div>
+    {{-- <x-card class="border-b-4 border-blue-300"> --}}
+    <header class="p-2">
+        <div class="flex justify-between items-center">
+            <x-h1>
+                Eventos
+            </x-h1>
+        </div>
+        <p class="text-sm text-gray-800">
+            Mantente informado sobre los últimos eventos del municipio.
+        </p>
+    </header>
+    {{-- </x-card> --}}
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full md:col-span-8 space-y-2">
-            <x-card class="border-b-4 border-blue-300">
-                <header class="">
-                    <div class="flex justify-between items-center">
-                        <x-h1>
-                            Eventos
-                        </x-h1>
-                    </div>
-                    <p class="text-sm text-gray-800">
-                        Mantente informado sobre los últimos eventos del municipio.
-                    </p>
-                </header>
-            </x-card>
             <div class="space-y-2">
                 @for ($i = 0; $i < 10; $i++)
                     <a href="{{ route('events.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
@@ -48,7 +48,8 @@
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Últimos Comunicados" />
-                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline"
+                        wire:navigate>
                         Ver todas
                     </a>
                 </header>

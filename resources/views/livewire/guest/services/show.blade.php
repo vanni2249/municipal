@@ -1,9 +1,14 @@
 <div class="space-y-2">
     <x-card class="border-b-4 border-blue-300">
         <header class="flex justify-between items-center">
-            <x-h1>
-                {{ $service->title }}
-            </x-h1>
+            <div class="flex items-center space-x-2">
+                <div class="p-2 flex bg-blue-100 rounded-full">
+
+                    <x-icon icon="{{ $service->icon }}" height="32" width="32" class="stroke-1" />
+                </div>
+                <x-h1 value=" {{ $service->title }}" />
+            </div>
+
         </header>
     </x-card>
     <div class="grid grid-cols-12 gap-2">
@@ -11,28 +16,18 @@
             <div class="space-y-2">
                 <x-card>
                     <div class=" space-y-4">
-                        <div class="flex items-start space-x-2">
-                            <div class="p-2 bg-gray-100 rounded-full">
-
-                                <x-icon icon="{{ $service->icon }}" height="56" width="56"
-                                    class="stroke-1" />
-                            </div>
-                            <ul>
-                                <li>
-                                    <span class="font-bold">
-                                        {{ $service->description }}
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class=" text-xs text-gray-700 tracking-wide">
-                                        {{ $service->serviceType->name }}
-                                    </span>
-                                </li>
-                            </ul>
+                        <div class="">
+                            <x-h3 value="Descripción del servicio" />
+                            <span class="text-xs text-gray-800">
+                                Tipo de servicio:{{ $service->serviceType->name }}
+                            </span>
+                            <p class="pt-2 text-sm text-gray-900">
+                                {{ $service->description }}
+                            </p>
                         </div>
-                        <div class="space-y-2">
+                        <div class="space-y-2 flex flex-col bg-gray-100 p-4 rounded-md">
 
-                            <p class="text-sm">
+                            <p class="text-sm text-gray-700">
                                 Para solicitar este servicio, debe estar registrado en el sitio web y haber iniciado
                                 sesión. Una
                                 vez
@@ -40,19 +35,19 @@
                                 completar el
                                 formulario de solicitud.
                             </p>
-                            <ul class="flex flex-row flex-nowrap">
-                                <li>
+                            <ul class="flex flex-col space-y-2 md:space-y-0 md:flex-row md:space-x-4">
+                                <li class="flex">
 
                                     <a href="{{ route('login') }}"
-                                        class="block px-4 py-2 border border-black text-black rounded-md hover:bg-black hover:text-white cursor-pointer whitespace-nowrap"
+                                        class="flex w-auto px-4 py-2 border border-black text-black rounded-md hover:bg-black hover:text-white cursor-pointer whitespace-nowrap"
                                         wire:navigate>
                                         Iniciar sesión para solicitar
                                     </a>
                                 </li>
-                                <li>
+                                <li class="flex">
 
                                     <a href="{{ route('register') }}"
-                                        class="block ml-2 px-4 py-2 bg-black border border-black text-white rounded-md hover:bg-gray-600 hover:border-gray-600 cursor-pointer whitespace-nowrap"
+                                        class="flex w-auto px-4 py-2 bg-black border border-black text-white rounded-md hover:bg-gray-600 hover:border-gray-600 cursor-pointer whitespace-nowrap"
                                         wire:navigate>
                                         Registrarse
                                     </a>

@@ -118,25 +118,25 @@
     <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-2 space-y-2">
         @foreach ($accountTypes as $type)
             <div>
-                {{-- <div class="border-b-4 border-blue-300"> --}}
-                    <header class="flex flex-col py-2 px-2">
-                        <div class="flex justify-between items-center space-x-2 pb-1">
+                {{-- <x-card class="border-b-4 border-blue-300"> --}}
+                    <header class="flex flex-row justify-between items-center py-2 px-2">
+                        <div class="">
                             <x-h2 class="text-lg font-bold text-gray-900">
                                 Servicios del {{ $type->name }}
                             </x-h2>
-                            <a href="{{ route('services.index', ['type' => $type->slug]) }}"
-                                class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
-                                Ver todos
-                            </a>
-
-                        </div>
-                        {{-- <div>
-                            <p class="text-sm text-gray-600">
+                            <p class="hidden lg:block text-sm text-gray-600">
                                 Aquí encontrarás los servicios disponibles para {{ $type->name }}. 
                             </p>
-                        </div> --}}
+                            
+                        </div>
+                        <div>
+                            <a href="{{ route('services.index', ['type' => $type->slug]) }}"
+                                class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
+                                Ver todos
+                            </a>
+                        </div>
                     </header>
-                {{-- </div> --}}
+                {{-- </x-card> --}}
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
                         <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
@@ -159,8 +159,8 @@
                     <x-h2>
                         Comunicados
                     </x-h2>
-                    <a href="{{ route('press-reales.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
-                        Ver todas
+                    <a href="{{ route('press-reales.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
+                        Ver todos
                     </a>
                 </header>
             {{-- </x-card> --}}
@@ -202,8 +202,8 @@
                     <x-h2>
                         Eventos
                     </x-h2>
-                    <a href="{{ route('events.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
-                        Ver todas
+                    <a href="{{ route('events.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
+                        Ver todos
                     </a>
                 </header>
             {{-- </x-card> --}}

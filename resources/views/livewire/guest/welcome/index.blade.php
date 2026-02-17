@@ -118,17 +118,25 @@
     <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-2 space-y-2">
         @foreach ($accountTypes as $type)
             <div>
-                <x-card class="border-b-4 border-blue-300">
-                    <header class="flex justify-between items-center">
-                        <x-h2 class="text-lg font-bold text-gray-900">
-                            Servicios del {{ $type->name }}
-                        </x-h2>
-                        <a href="{{ route('services.index', ['type' => $type->slug]) }}"
-                            class="text-sm text-blue-500 hover:underline" wire:navigate>
-                            Ver todos
-                        </a>
+                {{-- <div class="border-b-4 border-blue-300"> --}}
+                    <header class="flex flex-col py-2 px-2">
+                        <div class="flex justify-between items-center space-x-2 pb-1">
+                            <x-h2 class="text-lg font-bold text-gray-900">
+                                Servicios del {{ $type->name }}
+                            </x-h2>
+                            <a href="{{ route('services.index', ['type' => $type->slug]) }}"
+                                class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
+                                Ver todos
+                            </a>
+
+                        </div>
+                        {{-- <div>
+                            <p class="text-sm text-gray-600">
+                                Aquí encontrarás los servicios disponibles para {{ $type->name }}. 
+                            </p>
+                        </div> --}}
                     </header>
-                </x-card>
+                {{-- </div> --}}
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
                         <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
@@ -146,16 +154,16 @@
     <!-- News Section -->
     <section class="bg-gray-300 py-2">
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2">
-            <x-card class="border-b-4 border-blue-300">
-                <header class="flex justify-between items-center">
+            {{-- <x-card class="border-b-4 border-blue-300"> --}}
+                <header class="flex justify-between items-center p-2">
                     <x-h2>
                         Comunicados
                     </x-h2>
-                    <a href="{{ route('press-reales.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <a href="{{ route('press-reales.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
                         Ver todas
                     </a>
                 </header>
-            </x-card>
+            {{-- </x-card> --}}
             <div class="grid grid-cols-12 gap-2">
                 @for ($i = 0; $i < 4; $i++)
                     <a href="{{ route('press-reales.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
@@ -189,16 +197,16 @@
     <!-- Events Section -->
     <section>
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 mt-2">
-            <x-card class="border-b-4 border-blue-300">
-                <header class="flex justify-between items-center">
+            {{-- <x-card class="border-b-4 border-blue-300"> --}}
+                <header class="flex justify-between items-center p-2">
                     <x-h2>
                         Eventos
                     </x-h2>
-                    <a href="{{ route('events.index') }}" class="text-sm text-blue-500 hover:underline" wire:navigate>
+                    <a href="{{ route('events.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-500 uppercase hover:shadow whitespace-nowrap" wire:navigate>
                         Ver todas
                     </a>
                 </header>
-            </x-card>
+            {{-- </x-card> --}}
             <div class="grid grid-cols-12 gap-2">
                 @for ($i = 0; $i < 4; $i++)
                     <a href="{{ route('events.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>

@@ -41,7 +41,7 @@
     </div>
     <div class="grid grid-cols-12 gap-2">
         <!-- Applications -->
-        <x-card class="col-span-full lg:col-span-7">
+        <x-card class="col-span-full lg:col-span-6">
             <x-card-header class="flex justify-between items-center">
                 <x-h3 value="Últimas aplicaciones" />
                 <a href="{{ route('citizens.applications') }}" class="text-sm text-gray-600 font-bold hover:underline"
@@ -60,7 +60,7 @@
                                     <span class="text-gray-700 font-bold uppercase text-xs">
                                         {{ $application->number }}
                                     </span>
-                                    <span class="text-md font-bold text-gray-900 line-clamp-1">
+                                    <span class="text-md font-bold text-gray-900 lg:line-clamp-2">
                                         {{ $application->service->title }}
                                     </span>
                                 </div>
@@ -84,7 +84,7 @@
             </x-card-elements-group>
         </x-card>
         <!-- Interactions -->
-        <x-card class="col-span-full lg:col-span-5">
+        <x-card class="col-span-full lg:col-span-6">
             <x-card-header class="flex justify-between items-center">
                 <x-h3 value="Interacciones" />
                 <a href="#" class="text-sm text-gray-600 font-bold hover:underline" wire:navigate>
@@ -102,7 +102,7 @@
                                     <span class="text-gray-700 font-bold uppercase text-xs">
                                         {{ $interaction->number }}
                                     </span>
-                                    <span class="text-md font-bold text-gray-900 line-clamp-1">
+                                    <span class="text-md font-bold text-gray-900 lg:line-clamp-2">
                                         {{ $interaction->interactionable->service->title }}
                                     </span>
                                 </div>

@@ -10,48 +10,56 @@
         <div class="col-span-12 lg:col-span-8 space-y-2">
             <div class="space-y-2">
                 <x-card>
-                    <div class=" flex items-start space-x-2">
-                        <x-icon icon="{{ $service->icon }}" height="96" width="96"
-                            class="stroke-1 bg-gray-100 p-0 rounded-md" />
-                        <ul>
-                            <li>
-                                <span class="font-bold">
-                                    {{ $service->description }}
-                                </span>
-                            </li>
-                            <li>
-                                <span class=" text-xs text-gray-700 tracking-wide">
-                                    {{ $service->serviceType->name }}
-                                </span>
-                            </li>
-                        </ul>
+                    <div class=" space-y-4">
+                        <div class="flex items-start space-x-2">
+                            <div class="p-2 bg-gray-100 rounded-full">
+
+                                <x-icon icon="{{ $service->icon }}" height="56" width="56"
+                                    class="stroke-1" />
+                            </div>
+                            <ul>
+                                <li>
+                                    <span class="font-bold">
+                                        {{ $service->description }}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class=" text-xs text-gray-700 tracking-wide">
+                                        {{ $service->serviceType->name }}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+
+                            <p class="text-sm">
+                                Para solicitar este servicio, debe estar registrado en el sitio web y haber iniciado
+                                sesión. Una
+                                vez
+                                que haya iniciado sesión, podrá acceder a la página de solicitud del servicio y
+                                completar el
+                                formulario de solicitud.
+                            </p>
+                            <ul class="flex flex-row flex-nowrap">
+                                <li>
+
+                                    <a href="{{ route('login') }}"
+                                        class="block px-4 py-2 border border-black text-black rounded-md hover:bg-black hover:text-white cursor-pointer whitespace-nowrap"
+                                        wire:navigate>
+                                        Iniciar sesión para solicitar
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a href="{{ route('register') }}"
+                                        class="block ml-2 px-4 py-2 bg-black border border-black text-white rounded-md hover:bg-gray-600 hover:border-gray-600 cursor-pointer whitespace-nowrap"
+                                        wire:navigate>
+                                        Registrarse
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </x-card>
-                <x-card>
-                    <p class="text-sm">
-                        Para solicitar este servicio, debe estar registrado en el sitio web y haber iniciado sesión. Una
-                        vez
-                        que haya iniciado sesión, podrá acceder a la página de solicitud del servicio y completar el
-                        formulario de solicitud.
-                    </p>
-                    <ul class="flex flex-row flex-nowrap">
-                        <li>
-
-                            <a href="{{ route('login') }}"
-                                class="block px-4 py-2 border border-black text-black rounded-md hover:bg-black hover:text-white cursor-pointer whitespace-nowrap"
-                                wire:navigate>
-                                Iniciar sesión para solicitar
-                            </a>
-                        </li>
-                        <li>
-
-                            <a href="{{ route('register') }}"
-                                class="block ml-2 px-4 py-2 bg-black border border-black text-white rounded-md hover:bg-gray-600 hover:border-gray-600 cursor-pointer whitespace-nowrap"
-                                wire:navigate>
-                                Registrarse
-                            </a>
-                        </li>
-                    </ul>
                 </x-card>
             </div>
 
@@ -65,25 +73,9 @@
                 </x-card>
                 @foreach ($services as $service)
                     <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                        class="block bg-white hover:shadow col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                        class="block bg-white hover:shadow col-span-6 md:col-span-6 p-2 md:p-4 rounded-xl space-x-4"
                         wire:navigate>
-                        <div class=" flex justify-center flex-col">
-                            <div class="flex-1 flex flex-col items-center">
-                                <div class="">
-                                    <x-icon icon="{{ $service->icon }}" height="56" width="56"
-                                        class="text-gray-800 stroke-1" />
-
-                                </div>
-                                <div class="text-center">
-                                    <span class="py-2 text-xs text-gray-700 tracking-wide">
-                                        {{ $service->serviceType->name }}
-                                    </span>
-                                    <p class="text-sm font-bold text-gray-900">
-                                        {{ $service->title }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <x-card-service :service="$service" />
                     </a>
                 @endforeach
             </div>

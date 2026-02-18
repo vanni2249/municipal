@@ -119,23 +119,24 @@
         @foreach ($accountTypes as $type)
             <div>
                 {{-- <x-card class="border-b-4 border-blue-300"> --}}
-                    <header class="flex flex-row justify-between items-center py-2 px-2">
-                        <div class="">
-                            <x-h2 class="text-lg font-bold text-gray-900">
-                                Servicios del {{ $type->name }}
-                            </x-h2>
-                            <p class="hidden lg:block text-sm text-gray-600">
-                                Aquí encontrarás los servicios disponibles para {{ $type->name }}. 
-                            </p>
-                            
-                        </div>
-                        <div>
-                            <a href="{{ route('services.index', ['type' => $type->slug]) }}"
-                                class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
-                                Ver todos
-                            </a>
-                        </div>
-                    </header>
+                <header class="flex flex-row justify-between items-center py-2 px-2">
+                    <div class="">
+                        <x-h2 class="text-lg font-bold text-gray-900">
+                            Servicios del {{ $type->name }}
+                        </x-h2>
+                        <p class="hidden lg:block text-sm text-gray-600">
+                            Aquí encontrarás los servicios disponibles para {{ $type->name }}.
+                        </p>
+
+                    </div>
+                    <div>
+                        <a href="{{ route('services.index', ['type' => $type->slug]) }}"
+                            class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap"
+                            wire:navigate>
+                            Ver todos
+                        </a>
+                    </div>
+                </header>
                 {{-- </x-card> --}}
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
@@ -155,36 +156,46 @@
     <section class="bg-gray-300 py-2">
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2">
             {{-- <x-card class="border-b-4 border-blue-300"> --}}
-                <header class="flex justify-between items-center p-2">
-                    <x-h2>
-                        Comunicados
-                    </x-h2>
-                    <a href="{{ route('press-reales.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
-                        Ver todos
-                    </a>
-                </header>
+            <header class="flex justify-between items-center p-2">
+                <x-h2>
+                    Comunicados
+                </x-h2>
+                <a href="{{ route('press-reales.index') }}"
+                    class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap"
+                    wire:navigate>
+                    Ver todos
+                </a>
+            </header>
             {{-- </x-card> --}}
             <div class="grid grid-cols-12 gap-2">
                 @for ($i = 0; $i < 4; $i++)
-                    <a href="{{ route('press-reales.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
+                    <a href="{{ route('press-reales.show', $i) }}" class="block col-span-full lg:col-span-6"
+                        wire:navigate>
                         <x-card class="h-full hover:shadow lg:p-8">
-                            <div>
+                            <div class="flex space-x-4">
+                                {{-- <div class="flex jus shrink-0">
+                                    <div class="flex justify-start items-center h-[96px] w-[96px] rounded-xl">
+                                        <img src="{{ asset('img/news/2.png') }}" alt="lake" class="object-cover rounded">
+                                    </div>
 
-                                <span class="text-xs text-gray-700">
-                                    12 de Octubre de 2024
-                                </span>
-                                <p class="font-bold text-gray-950">
-                                    Última noticia sobre los eventos administrativos relacionados con el servicio
-                                </p>
-                                <ul class="text-gray-800">
-                                    <li class="flex space-x-1 items-center text-sm">
-                                        <x-icon icon="user" height="14" width="14"
-                                            class="text-white bg-gray-700 stroke-1 inline-block rounded" />
-                                        <span>
-                                            Autor: Juan Perez
-                                        </span>
-                                    </li>
-                                </ul>
+                                </div> --}}
+                                <div class="grow">
+                                    <span class="text-xs text-gray-700">
+                                        12 de Octubre de 2024
+                                    </span>
+                                    <p class="font-bold text-gray-950">
+                                        Última noticia sobre los eventos administrativos relacionados con el servicio
+                                    </p>
+                                    <ul class="text-gray-800">
+                                        <li class="flex space-x-1 items-center text-sm">
+                                            <x-icon icon="user" height="14" width="14"
+                                                class="text-white bg-gray-700 stroke-1 inline-block rounded" />
+                                            <span>
+                                                Autor: Juan Perez
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </x-card>
                     </a>
@@ -198,14 +209,16 @@
     <section>
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 mt-2">
             {{-- <x-card class="border-b-4 border-blue-300"> --}}
-                <header class="flex justify-between items-center p-2">
-                    <x-h2>
-                        Eventos
-                    </x-h2>
-                    <a href="{{ route('events.index') }}" class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap" wire:navigate>
-                        Ver todos
-                    </a>
-                </header>
+            <header class="flex justify-between items-center p-2">
+                <x-h2>
+                    Eventos
+                </x-h2>
+                <a href="{{ route('events.index') }}"
+                    class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap"
+                    wire:navigate>
+                    Ver todos
+                </a>
+            </header>
             {{-- </x-card> --}}
             <div class="grid grid-cols-12 gap-2">
                 @for ($i = 0; $i < 4; $i++)

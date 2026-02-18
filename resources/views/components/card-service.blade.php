@@ -2,7 +2,7 @@
 
 
 @if ($service)
-    <div class="flex-1 flex flex-col md:flex-row space-x-2 items-start">
+    <div class="flex-1 flex flex-col lg:flex-row space-x-2 items-start">
         <div class="flex w-full md:w-auto justify-between items-center">
             <div class="bg-blue-100 rounded-full p-2">
                 <x-icon icon="{{ $service->icon }}" height="32" width="32" class="text-gray-800 stroke-1" />
@@ -19,5 +19,11 @@
                 {{ $service->title }}
             </p>
         </div>
+    </div>
+    <div class="hidden md:block mt-2">
+        <p class="text-sm text-gray-700">
+            {{ $service->description }}
+        </p>
+
     </div>
 @endif

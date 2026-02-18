@@ -140,7 +140,7 @@
                 <div class="grid grid-cols-12 gap-2 mt-2">
                     @foreach ($type->services()->limit(4)->get() as $service)
                         <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                            class="block bg-white hover:shadow col-span-6 md:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                            class="block bg-white hover:shadow col-span-6 lg:col-span-3 p-2 md:p-4 lg:p-6 rounded-xl space-x-4"
                             wire:navigate>
                             <x-card-service :service="$service" />
                         </a>

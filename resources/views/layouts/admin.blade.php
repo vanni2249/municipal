@@ -27,6 +27,7 @@
                             MyCity
                         </span>
                         <span class="text-xs font-extrabold text-gray-600">
+                            {{ Auth::guard('admin')->user()->employee->name ?? Auth::guard('admin')->user()->username }}
                         </span>
                     </div>
                     <button id="sidebar-close-toggle" class=" lg:hidden cursor-pointer">

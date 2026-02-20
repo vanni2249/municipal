@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminDepartmetMiddleware;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard\Index as AdminDashboard;
@@ -16,6 +17,9 @@ use App\Livewire\Admin\Admins\Sessions\Index as AdminAdminsSessions;
 use App\Livewire\Admin\Admins\Sessions\Show as AdminAdminsSessionsShow;
 use App\Livewire\Admin\Admins\Statuses\Index as AdminAdminsStatuses;
 use App\Livewire\Admin\Admins\Statuses\Show as AdminAdminsStatusesShow;
+
+use App\Livewire\Admin\Employees\Index as AdminEmployees;
+use App\Livewire\Admin\Employees\Show as AdminEmployeesShow;
 
 use App\Livewire\Admin\Admins\Index as AdminAdmins;
 use App\Livewire\Admin\Admins\Show as AdminAdminsShow;
@@ -55,7 +59,7 @@ use App\Livewire\Admin\Settings\Show as AdminSettingsShow;
 
 use App\Livewire\Admin\Stripes\Index as AdminStripes;
 
-Route::prefix('admin')->name('admin.')->middleware(AuthAdmin::class)->group(function () {
+Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::class, AdminDepartmetMiddleware::class])->group(function () {
         Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
         // Users
@@ -74,7 +78,11 @@ Route::prefix('admin')->name('admin.')->middleware(AuthAdmin::class)->group(func
                 Route::get('/{status}', AdminUserStatusesShow::class)->name('index');
         });
 
-        // Administrators
+        // Employees
+        Route::get('/employees', AdminEmployees::class)->name('employees');
+        Route::get('/employees/{employee}', AdminEmployeesShow::class)->name('employees.show');
+
+        // Administrator Sessions and Statuses
         Route::get('/administrators', AdminAdmins::class)->name('administrators');
         Route::get('/administrators/{administrator}', AdminAdminsShow::class)->name('administrators.show');
         Route::prefix('administrators/{administrator}/sessions')->name('sessions.')->group(function () {

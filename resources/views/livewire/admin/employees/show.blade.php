@@ -5,17 +5,12 @@
                 <!-- Admin Information -->
                 <x-card-header>
                     <div class="flex justify-between items-start">
-                        <x-h1 :value="$administrator->employee->name . ' ' . $administrator->employee->last_name" />
-                        <x-badge :variant="$administrator->status->statusType->variant" :label="$administrator->status->statusType->name" />
+                        <x-h1 :value="$employee->name . ' ' . $employee->last_name" />
+                        {{-- <x-badge :variant="$employee->status->statusType->variant" :label="$employee->status->statusType->name" /> --}}
                     </div>
                     <ul class="hidden md:flex space-x-2 text-sm text-gray-700">
                         <li class="line-clamp-1">
-                            {{ $administrator->number }}
-                        </li>
-                        <li class="">|</li>
-                        <li class="line-clamp-1">
-                            Ultima conexión:
-                            {{ $administrator->session ? \Carbon\Carbon::parse($administrator->session->created_at)->diffForHumans() : '...' }}
+                            {{ $employee->number }}
                         </li>
                     </ul>
                 </x-card-header>
@@ -41,23 +36,23 @@
                 <x-app-elements>
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Número" />
-                        <x-app-element-value value="{{ $administrator->number ?? 'N/A' }}" />
+                        <x-app-element-value value="{{ $employee->number ?? 'N/A' }}" />
                     </x-app-element>
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Nombre completo" />
-                        <x-app-element-value value="{{ $administrator->employee->name }} {{ $administrator->employee->last_name }}" />
+                        <x-app-element-value value="{{ $employee->name }} {{ $employee->last_name }}" />
                     </x-app-element>
                     <x-app-element class="col-span-full">
                         <x-app-element-label label="Correo electrónico" />
-                        <x-app-element-value value="{{ $administrator->employee->email ?? 'N/A' }}" />
+                        <x-app-element-value value="{{ $employee->email ?? 'N/A' }}" />
                     </x-app-element>
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Teléfono" />
-                        <x-app-element-value value="{{ $administrator->phone ?? 'N/A' }}" />
+                        <x-app-element-value value="{{ $employee->phone ?? 'N/A' }}" />
                     </x-app-element>
                     <x-app-element class="col-span-full md:col-span-3">
                         <x-app-element-label label="Fecha de creación" />
-                        <x-app-element-value value="{{ $administrator->created_at ?? 'N/A' }}" />
+                        <x-app-element-value value="{{ $employee->created_at ?? 'N/A' }}" />
                     </x-app-element>
                 </x-app-elements>
             </x-card>
@@ -102,7 +97,7 @@
                         </x-slot>
                     </x-dropdown>
                 </x-card-header>
-                <x-card-elements-group>
+                {{-- <x-card-elements-group>
                     @foreach ($administrator->statuses as $status)
                         @for ($i = 0; $i < 3; $i++)
                             <x-card-element class="flex justify-between items-center">
@@ -115,7 +110,7 @@
                             </x-card-element>
                         @endfor
                     @endforeach
-                </x-card-elements-group>
+                </x-card-elements-group> --}}
             </x-card>
 
         </div>

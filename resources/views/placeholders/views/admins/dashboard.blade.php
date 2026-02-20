@@ -1,4 +1,13 @@
 <div class="animate-pulse space-y-2">
+    <x-card class="col-span-full lg:col-span-12">
+        <header class="flex justify-between items-center">
+            <div class="h-4 bg-gray-300 rounded w-32"></div>
+            <div class="flex space-x-2">
+                <div class="h-8 bg-gray-300 rounded w-12"></div>
+                <div class="h-8 bg-gray-300 rounded w-12"></div>
+            </div>
+        </header>
+    </x-card>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
         @for ($i = 0; $i < 4; $i++)
             <x-card>

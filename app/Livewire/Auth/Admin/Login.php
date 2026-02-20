@@ -60,10 +60,18 @@ class Login extends Component
                 ]);
             }
 
+            if ($admin->employee) {
+                $department = $admin->defaultPosition()->department->slug ?? 'developer';
+            } else {
+                $admin->exists() ? $department = 'developer' : abort(403, 'Unauthorized access to this department.');
+            }
+
+
             RateLimiter::clear($this->throttleKey());
             Session::regenerate();
 
-            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+
+            $this->redirectIntended(default: route('admin.dashboard', ['department' => $department], absolute: false), navigate: true);
         }
     }
 

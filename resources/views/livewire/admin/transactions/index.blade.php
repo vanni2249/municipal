@@ -67,8 +67,8 @@
                         <!-- Actions -->
                         <td class="p-2 flex space-x-2 justify-end">
                             <x-icon-link variant="light"
-                                href="{{ route('admin.transactions.show', ['transaction' => $transaction->ulid]) }}"
-                                icon="eye" wire:navigate />
+                                href="{{ route('admin.transactions.show', ['department' => request()->department(), 'transaction' => $transaction->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate />
                         </td>
                     </tr>
                 @empty

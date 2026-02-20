@@ -58,8 +58,8 @@
                         <!-- Actions -->
                         <td class="p-2 flex space-x-2 justify-end">
                                 <x-icon-link variant="light"
-                                    href="{{ route('admin.logs.show', ['log' => $log->ulid]) }}"
-                                    icon="eye" wire:navigate />
+                                    href="{{ route('admin.logs.show', ['department' => request()->department(), 'log' => $log->ulid]) }}"
+                                    icon="arrow-up-right" wire:navigate />
                         </td>
                     </tr>
                 @empty

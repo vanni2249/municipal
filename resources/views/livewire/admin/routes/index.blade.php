@@ -65,8 +65,8 @@
                             <x-badge label="{{ $route->status->statusType->name ?? '...' }}" variant="{{ $route->status->statusType->variant ?? 'secondary' }}" />
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.routes.show', ['route' => $route->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light" href="{{ route('admin.routes.show', ['department' => request()->department(), 'route' => $route->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty

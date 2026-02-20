@@ -76,8 +76,8 @@
                         </td>
                         <!-- Action -->
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light"
-                                href="{{ route('admin.invoices.show', ['invoice' => $invoice->ulid]) }}" icon="eye"
+                            <x-icon-link variant="light" icon="arrow-up-right"
+                                href="{{ route('admin.invoices.show', ['department' => request()->department(), 'invoice' => $invoice->ulid]) }}" icon="arrow-up-right"
                                 wire:navigate />
                         </td>
                     </tr>

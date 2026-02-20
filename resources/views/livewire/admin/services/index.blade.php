@@ -73,8 +73,8 @@
                             {{ $service->applications->count() ?? '0' }}
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.services.show', ['service' => $service->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light" href="{{ route('admin.services.show', ['department' => request()->department(), 'service' => $service->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty

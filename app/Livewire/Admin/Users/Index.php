@@ -13,8 +13,9 @@ class Index extends Component
 {
     use WithPagination;
 
-    public function mount()
+    public function boot()
     {
+       
     }
     public function placeholder()
     {

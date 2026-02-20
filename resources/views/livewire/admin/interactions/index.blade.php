@@ -77,8 +77,8 @@
                         <!-- Action -->
                         <td class="p-4 flex justify-end">
                             <x-icon-link
-                                href="{{ route('admin.interactions.show', ['interaction' => $interaction->ulid]) }}"
-                                icon="arrow-narrow-right-dashed" variant="light" wire:navigate />
+                                href="{{ route('admin.interactions.show', ['department' => request()->department(), 'interaction' => $interaction->ulid]) }}"
+                                icon="arrow-up-right" variant="light" wire:navigate />
                         </td>
                     </tr>
                 @empty

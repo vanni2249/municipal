@@ -46,21 +46,21 @@
                         <!-- Type -->
                         <td class="p-2 capitalize">
                             <span>
-                                {{ $admin->name ?? '...' }}
+                                {{ $admin->employee->name ?? '...' }}
                             </span>
                             <br>
                             <span>
-                                {{ $admin->lastname ?? '...' }}
+                                {{ $admin->employee->last_name ?? '...' }}
                             </span>
                         </td>
                         <!-- Email & phone -->
                         <td class="p-2">
                             <span>
-                                {{ $admin->email ?? '...' }}
+                                {{ $admin->employee->email ?? '...' }}
                             </span>
                             <br>
                             <span>
-                                {{ $admin->phone ?? '...' }}
+                                {{ $admin->employee->phone ?? '...' }}
                             </span>
                         </td>
                         <!-- Username -->
@@ -75,8 +75,9 @@
                             <x-badge :variant="$admin->status->statusType->variant" :label="$admin->status->statusType->name" />
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.administrators.show', ['administrator' => $admin->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light" 
+                            href="{{ route('admin.administrators.show', ['department' => request()->department(), 'administrator' => $admin->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty

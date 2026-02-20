@@ -64,8 +64,8 @@
                             <x-badge :variant="$account->status->statusType->variant" :label="$account->status->statusType->name" />
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.accounts.show', ['account' => $account->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light" href="{{ route('admin.accounts.show', ['department' => request()->department(), 'account' => $account->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty

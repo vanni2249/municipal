@@ -1,7 +1,7 @@
 <div class="space-y-2">
     <x-card>
         <header class="flex justify-between items-center">
-            <h1 class="text-lg font-bold">Usuarios</h1>
+            <h1 class="text-lg font-bold">Empleados</h1>
         </header>
     </x-card>
     <x-card class="h-full rounded-xl">
@@ -30,58 +30,60 @@
                     <th class="p-2 w-auto">Number</th>
                     <th class="p-2 w-auto">Name<br>Lastname</th>
                     <th class="p-2 w-auto">Email<br>Phone</th>
-                    <th class="p-2 w-auto">Last Connection</th>
-                    <th class="p-2 w-auto">Status</th>
-                    <th class="p-2 w-auto">Fecha</br>Registro</th>
+                    <th class="p-2 w-auto">Username</th>
+                    <th class="p-2 w-auto">Fecha<br/>Nacimiento</th>
+                    <th class="p-2 w-auto">Fecha<br/>Contratación</th>
                     <th class="p-2 w-24"></th>
                 </tr>
             </x-slot>
             <x-slot name="body">
-                @forelse ($users as $user)
+                @forelse ($employees as $employee)
                     <tr class="border-t border-gray-300">
                         <!-- Name -->
                         <td class="p-2">
-                            {{ $user->number ?? '...' }}
+                            {{ $employee->number ?? '...' }}
                         </td>
                         <!-- Type -->
                         <td class="p-2 capitalize">
                             <span>
-                                {{ $user->name ?? '...' }}
+                                {{ $employee->name ?? '...' }}
                             </span>
                             <br>
                             <span>
-                                {{ $user->lastname ?? '...' }}
+                                {{ $employee->last_name ?? '...' }}
                             </span>
                         </td>
                         <!-- Email & phone -->
                         <td class="p-2">
                             <span>
-                                {{ $user->email ?? '...' }}
+                                {{ $employee->email ?? '...' }}
                             </span>
                             <br>
                             <span>
-                                {{ $user->phone ?? '...' }}
+                                {{ $employee->phone ?? '...' }}
                             </span>
                         </td>
-                        <!-- Last Connection -->
+                        <!-- Username -->
                         <td class="p-2">
-                            {{ $user->session?->created_at ? $user->session->created_at->diffForHumans() : '...' }}
+                            {{ $employee->admin->username ?? '...' }}
                         </td>
+                        <!-- Birth Date -->
                         <td class="p-2">
-                            <x-badge :variant="$user->status->statusType->variant" :label="$user->status->statusType->name" />
+                            <x-date-format date="{{ $employee->birth_date }}" format="d/M/Y" />
                         </td>
+                        <!-- Hired At -->
                         <td class="p-2">
-                            <x-date-format date="{{ $user->created_at }}" format="d/m/Y" />
+                            <x-date-format date="{{ $employee->hired_at }}" format="d/M/Y" />
                         </td>
-                        <!-- Actions -->
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.users.show', ['department' => request()->department() ?? 'mayor-office', 'user' => $user->ulid]) }}"
+                            <x-icon-link variant="light" 
+                            href="{{ route('admin.employees.show', ['department' => request()->department(), 'employee' => $employee->ulid]) }}"
                                 icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4">No hay usuarios disponibles.</td>
+                        <td colspan="7" class="text-center py-4">No hay administradores disponibles.</td>
                     </tr>
                 @endforelse
             </x-slot>

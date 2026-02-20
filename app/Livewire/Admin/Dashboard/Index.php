@@ -63,7 +63,7 @@ class Index extends Component
                 if ($this->year == now()->year) {
                     $this->months = array_slice($monthNames, 0, now()->month, true);
                     $this->month = now()->month;
-                } else {    
+                } else {
                     $this->months = $monthNames;
                     $this->month = 1;
                 }
@@ -75,42 +75,42 @@ class Index extends Component
     {
         return [
             [
-                'title' => 'Facturas',
-                'subtitle' => number_format(\App\Models\Invoice::count()),
-                'value' => '$' . number_format(\App\Models\Invoice::sum('amount'), 2),
-                'variant' => 'primary',
-            ],
-            [
-                'title' => 'Transacciones',
-                'subtitle' => number_format(\App\Models\Transaction::count()),
-                'value' => '$' . number_format(\App\Models\Transaction::sum('amount'), 2),
-                'variant' => 'secondary',
-            ],
-            [
                 'title' => 'Usuarios',
                 'value' => number_format(\App\Models\User::count()),
                 'variant' => 'success',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        // 'finance-department',
+                        // 'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office'
+                        'developer'
+                    ]
+                ),
             ],
             [
                 'title' => 'Cuentas',
                 'value' => number_format(\App\Models\Account::count()),
                 'variant' => 'info',
-            ],
-            [
-                'title' => 'Negocios',
-                'value' => number_format(\App\Models\Business::count()),
-                'variant' => 'warning',
-
-            ],
-            [
-                'title' => 'Permisos',
-                'value' => number_format(\App\Models\Permit::count()),
-                'variant' => 'light',
-            ],
-            [
-                'title' => 'Interacciones',
-                'value' => number_format(\App\Models\Interaction::count()),
-                'variant' => 'warning',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
             ],
             [
                 'title' => 'Aplicaciones',
@@ -119,7 +119,199 @@ class Index extends Component
                 // })->count()) . ' pendientes',
                 'value' => number_format(\App\Models\Application::count()),
                 'variant' => 'secondary',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        'public-works-office',
+                        'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
             ],
+            [
+                'title' => 'Interacciones',
+                'value' => number_format(\App\Models\Interaction::count()),
+                'variant' => 'warning',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        'public-works-office',
+                        'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Inspecciones',
+                //  'subtitle' => number_format(\App\Models\Inspection::whereHas('status', function ($query) {
+                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
+                // })->count()) . ' pendientes',
+                'value' => number_format(\App\Models\Interaction::count()),
+                'variant' => 'warning',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        'public-works-office',
+                        'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Rutas',
+                //  'subtitle' => number_format(\App\Models\Inspection::whereHas('status', function ($query) {
+                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
+                // })->count()) . ' pendientes',
+                'value' => number_format(\App\Models\Route::count()),
+                'variant' => 'warning',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        // 'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        'public-works-office',
+                        'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Facturas',
+                'subtitle' => number_format(\App\Models\Invoice::count()),
+                'value' => '$' . number_format(\App\Models\Invoice::sum('amount'), 2),
+                'variant' => 'primary',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        // 'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Transacciones',
+                'subtitle' => number_format(\App\Models\Transaction::count()),
+                'value' => '$' . number_format(\App\Models\Transaction::sum('amount'), 2),
+                'variant' => 'secondary',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        // 'merchant-office',
+                        // 'citizen-office',
+                        'developer'
+                    ]
+                ),
+            ],
+
+            [
+                'title' => 'Negocios',
+                'value' => number_format(\App\Models\Business::count()),
+                'variant' => 'warning',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Patentes',
+                'value' => number_format(\App\Models\Patent::count()),
+                'variant' => 'light',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Permisos',
+                'value' => number_format(\App\Models\Permit::count()),
+                'variant' => 'light',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'title' => 'Tareas',
+                'value' => number_format(\App\Models\Task::count()),
+                'variant' => 'light',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        'finance-department',
+                        'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        'human-resources-office',
+                        'public-works-office',
+                        'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+
+
         ];
     }
 

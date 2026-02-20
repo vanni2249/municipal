@@ -59,8 +59,8 @@
                             <x-badge label="{{ $inspection->status->statusType->name ?? '...' }}" variant="{{ $inspection->status->statusType->variant ?? 'secondary' }}" />
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
-                            <x-icon-link variant="light" href="{{ route('admin.inspections.show', ['inspection' => $inspection->ulid]) }}"
-                                icon="eye" wire:navigate/>
+                            <x-icon-link variant="light" href="{{ route('admin.inspections.show', ['department' => request()->department(), 'inspection' => $inspection->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>
                 @empty

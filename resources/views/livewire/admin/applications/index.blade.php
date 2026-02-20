@@ -76,8 +76,8 @@
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
                             <x-icon-link variant="light"
-                                href="{{ route('admin.applications.show', ['application' => $application->ulid]) }}"
-                                icon="eye" wire:navigate />
+                                href="{{ route('admin.applications.show', ['department' => request()->department(), 'application' => $application->ulid]) }}"
+                                icon="arrow-up-right" wire:navigate />
                         </td>
                     </tr>
                     <tr class="border-dashed border-t border-gray-300">

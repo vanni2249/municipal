@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Livewire\Admin\Admins;
+namespace App\Livewire\Admin\Employees;
 
-use App\Models\Admin;
+use App\Models\Employee;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Lazy;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[Lazy()]
 class Index extends Component
 {
     use WithPagination;
@@ -24,9 +22,8 @@ class Index extends Component
     #[Layout('layouts.admin')]
     public function render()
     {
-        return view('livewire.admin.admins.index', [
-            'admins' => Admin::with('session', 'status', 'employee')
-                ->has('employee')
+        return view('livewire.admin.employees.index', [
+            'employees' => Employee::with('admin')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10),
         ]);

@@ -21,10 +21,6 @@ class Admin extends Authenticatable
     protected $fillable = [
         'ulid',
         'number',
-        'name',
-        'lastname',
-        'email',
-        'phone',
         'username',
         'password',
     ];
@@ -50,6 +46,32 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function positions()
+    {
+        return $this->belongsToMany(Position::class)->withTimestamps()->withPivot('assigned_at', 'removed_at', 'is_active', 'is_default');
+    }
+
+    public function defaultPosition()
+    {
+        return $this->belongsToMany(Position::class)->wherePivot('is_default', true)->first();
+    }
+
+    public function positionDepartment()
+    {
+        // Get the first active position of the admin, then access its department
+        return $this->positions()->first()->whereFirst('department_id', $this->positions()->first()->department_id)->wherePivot('is_active', true);
+    }
+
+    public function departmentPosition($departmentId)
+    {
+        return $this->belongsToMany(Position::class)->firstWhere('department_id', $departmentId)->wherePivot('is_active', true);
     }
 
     public function sessions()

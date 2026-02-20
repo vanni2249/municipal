@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             // LogUserTypeSeeder::class,
             // LogAdminTypeSeeder::class,
             StatusTypeSeeder::class,
+            DepartmentSeeder::class,
             UserSeeder::class,
+            EmployeeSeeder::class,
             AdminSeeder::class,
             PlaceTypeSeeder::class,
             PlaceSeeder::class,
@@ -38,6 +40,7 @@ class DatabaseSeeder extends Seeder
             TransactionMethodTypeSeeder::class,
             // ApplicationSeeder::class,
             RouteTypeSeeder::class,
+            TaskTypeSeeder::class,
             // RouteSeeder::class,
         ]);
 

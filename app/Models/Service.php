@@ -18,12 +18,18 @@ class Service extends Model
         'slug',
         'title',
         'icon',
+        'department_id',
         'description',
         'account_type_id',
         'service_type_id',
         'amount',
         'fee',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
 
     public function serviceType()
     {

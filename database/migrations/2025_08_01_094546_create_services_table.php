@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('icon')->nullable();
+            $table->foreignId('department_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('account_type_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_type_id')->constrained('service_type')->onDelete('cascade');
             $table->decimal('amount', 10, 2)->default(0);

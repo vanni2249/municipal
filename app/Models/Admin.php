@@ -55,23 +55,12 @@ class Admin extends Authenticatable
 
     public function positions()
     {
-        return $this->belongsToMany(Position::class)->withTimestamps()->withPivot('assigned_at', 'removed_at', 'is_active', 'is_default');
+        return $this->hasMany(AdminPosition::class);
     }
 
     public function defaultPosition()
     {
-        return $this->belongsToMany(Position::class)->wherePivot('is_default', true)->first();
-    }
-
-    public function positionDepartment()
-    {
-        // Get the first active position of the admin, then access its department
-        return $this->positions()->first()->whereFirst('department_id', $this->positions()->first()->department_id)->wherePivot('is_active', true);
-    }
-
-    public function departmentPosition($departmentId)
-    {
-        return $this->belongsToMany(Position::class)->firstWhere('department_id', $departmentId)->wherePivot('is_active', true);
+        return $this->hasMany(AdminPosition::class)->where('is_default', true)->first();
     }
 
     public function sessions()
@@ -88,35 +77,9 @@ class Admin extends Authenticatable
     {
         return $this->morphMany(Status::class, 'statusable');
     }
-
     public function status()
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
-
-    // public function getLastLogin(): ?string
-    // {
-    //     return $this->last_login_at ? \Carbon\Carbon::parse($this->last_login_at)->diffForHumans() : 'Nunca';
-    // }
-
-    // public function getCreatedAt(): string
-    // {
-    //     return \Carbon\Carbon::parse($this->created_at)->format('d/m/Y H:i:s');
-    // }
-
-    // public function getUpdatedAt(): string
-    // {
-    //     return \Carbon\Carbon::parse($this->updated_at)->format('d/m/Y H:i:s');
-    // }
-
-    // public function getBlocked(): string
-    // {
-    //     return $this->blocked_at ? 'Si' : 'No';
-    // }
-
-    // public function getBlockedAt(): string
-    // {
-    //     return $this->blocked_at ? \Carbon\Carbon::parse($this->blocked_at)->format('d/m/Y') : '...';
-    // }
 
 }

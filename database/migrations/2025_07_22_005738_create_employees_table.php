@@ -16,10 +16,11 @@ return new class extends Migration
             $table->ulid('ulid')->unique();
             $table->string('number')->unique();
             $table->string('name');
+            $table->date('birth_date')->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->date('birth_date')->nullable();
             $table->date('hired_at')->nullable();
             $table->date('terminated_at')->nullable();
             $table->timestamps();

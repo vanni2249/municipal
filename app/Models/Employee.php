@@ -11,10 +11,12 @@ class Employee extends Model
         'number',
         'name',
         'last_name',
+        'birth_date',
+        'gender',
         'email',
         'phone',
-        'birth_date',
         'hired_at',
+        'terminated_at',
     ];
 
     public function admin()

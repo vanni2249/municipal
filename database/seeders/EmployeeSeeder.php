@@ -43,7 +43,12 @@ class EmployeeSeeder extends Seeder
             'status_type_id' => $this->getStatusTypeId('active'),
         ]);
         
-        $admin->positions()->attach(1, ['assigned_at' => now(), 'is_default' => true]); // Attach position with ID 1 to the admin
+        $admin->positions()->create([
+            'position_id' => 1,
+            'assigned_at' => now(),
+            'is_active' => true,
+            'is_default' => true,
+        ]); // Attach position with ID 1 to the admin
 
         // Employee Angel and Admin
         $employee = Employee::create([
@@ -68,7 +73,12 @@ class EmployeeSeeder extends Seeder
             'status_type_id' => $this->getStatusTypeId('active'),
         ]);
 
-        $admin->positions()->attach(4, ['assigned_at' => now(), 'is_default' => true]); // Attach position with ID 1 to the admin
+        $admin->positions()->create([
+            'position_id' => 4,
+            'assigned_at' => now(),
+            'is_active' => true,
+            'is_default' => true,
+        ]); // Attach position with ID 4 to the admin
         
         // Employee Angel F and Admin
         $employee = Employee::create([
@@ -93,8 +103,17 @@ class EmployeeSeeder extends Seeder
             'status_type_id' => $this->getStatusTypeId('active'),
         ]);
 
-        $admin->positions()->attach(6, ['assigned_at' => now(), 'is_default' => true]); // Attach position with ID 1 to the admin
-        $admin->positions()->attach(8, ['assigned_at' => now()]); // Attach position with ID 1 to the admin
+        $admin->positions()->create([
+            'position_id' => 6,
+            'assigned_at' => now(),
+            'is_active' => true,
+            'is_default' => true,
+        ]); // Attach position with ID 6 to the admin
+        $admin->positions()->create([
+            'position_id' => 8,
+            'assigned_at' => now(),
+            'is_active' => true,
+        ]); // Attach position with ID 8 to the admin
         
         // Employee without Admin
         Employee::create([

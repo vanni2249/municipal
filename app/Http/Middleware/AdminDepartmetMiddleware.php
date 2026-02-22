@@ -17,9 +17,7 @@ class AdminDepartmetMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->route('department') == 'developer') {
-            return $next($request);
-        } else {
+        if (!$request->route('department') == 'developer') {
 
             $department = Department::where('slug', $request->route('department'))->first();
 
@@ -33,12 +31,12 @@ class AdminDepartmetMiddleware
 
                 if (!$position) {
                     abort(403, 'Unauthorized access to this department.');
-                } elseif ($position->pivot->is_active == false) {
+                } elseif ($position->is_active == false) {
                     abort(403, 'Your position in this department is inactive. Please contact the administrator.');
                 }
             }
 
-            return $next($request);
         }
+        return $next($request);
     }
 }

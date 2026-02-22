@@ -2,6 +2,9 @@
     <x-card>
         <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold">Empleados</h1>
+            <div>
+                <x-button label="Nuevo Empleado" @click="$dispatch('open-modal', 'create-employee-modal')" />
+            </div>
         </header>
     </x-card>
     <x-card class="h-full rounded-xl">
@@ -89,4 +92,10 @@
             </x-slot>
         </x-table>
     </x-card>
+
+
+    <!-- Create Employee Modal -->
+    <x-modal name="create-employee-modal" title="Nuevo Empleado">
+        @include('forms.employee-form')
+    </x-modal>
 </div>

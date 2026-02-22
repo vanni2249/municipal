@@ -61,7 +61,8 @@ class Login extends Component
             }
 
             if ($admin->employee) {
-                $department = $admin->defaultPosition()->department->slug ?? 'developer';
+                $department = $admin->defaultPosition()->position->department->slug ?? 'developer';
+
             } else {
                 $admin->exists() ? $department = 'developer' : abort(403, 'Unauthorized access to this department.');
             }

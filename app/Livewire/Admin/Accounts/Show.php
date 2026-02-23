@@ -10,14 +10,14 @@ use Livewire\Component;
 #[Lazy()]
 class Show extends Component
 {
-    public $accountUlid;
+    // public $accountUlid;
     public $account;
-    public $applications = [];
+    // public $applications = [];
 
 
     public function mount($account)
     {
-        $this->accountUlid = $account;
+        // $this->accountUlid = $account;
         $this->account = Account::where('ulid', $account)->with([
             'status.statusType',
             'statuses.statusType',
@@ -34,7 +34,7 @@ class Show extends Component
                 'applications.account.user',
             ]);
 
-            $this->applications = $this->account->applications->sortByDesc('created_at')->values();
+            // $this->applications = $this->account->applications->sortByDesc('created_at')->values();
         } elseif ($this->account->accountType->slug == 'merchant') {
             $this->account->load([
                 'businesses.applications' => fn($q) => $q->latest(),
@@ -42,9 +42,9 @@ class Show extends Component
                 'businesses.applications.status.statusType',
             ]);
 
-            $this->applications = $this->account->businesses->flatMap->applications->sortByDesc('created_at')->values();
+            // $this->applications = $this->account->businesses->flatMap->applications->sortByDesc('created_at')->values();
         } else {
-            $this->applications = [];
+            // $this->applications = [];
         }
     }
 
@@ -57,7 +57,6 @@ class Show extends Component
     {
         return view('livewire.admin.accounts.show', [
             'account' => $this->account,
-            'applications' => $this->applications,
         ]);
     }
 }

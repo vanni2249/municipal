@@ -5,7 +5,7 @@
         <header class="flex justify-between items-center">
             <h1 class="text-lg font-bold">Cuentas</h1>
             <div>
-                <x-button label="Crear cuenta" @click="$dispatch('open-modal', 'create-account-modal')" />
+                <livewire:admin.components.account-create />
             </div>
         </header>
     </x-card>
@@ -76,10 +76,6 @@
             </x-slot>
         </x-table>
     </x-card>
-
-    <!-- Crear cuenta modal -->
-    <x-modal name="create-account-modal" title="Crear cuenta">
-    </x-modal>
 
     <!-- Filter account modal -->
     <x-modal name="filter-account-modal" title="Filtrar cuentas">

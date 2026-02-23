@@ -1,6 +1,6 @@
-<div>
-    {{-- <x-card class="border-b-4 border-blue-300"> --}}
-    <header class="p-2">
+<div class="space-y-2">
+    <x-card class="border-b-4 border-blue-300">
+    <x-card-header>
         <div class="flex justify-between items-center">
             <x-h1>
                 Eventos
@@ -9,8 +9,8 @@
         <p class="text-sm text-gray-800">
             Mantente informado sobre los últimos eventos del municipio.
         </p>
-    </header>
-    {{-- </x-card> --}}
+    </x-card-header>
+    </x-card>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full md:col-span-8 space-y-2">
             <div class="space-y-2">

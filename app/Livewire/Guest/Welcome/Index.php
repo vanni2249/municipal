@@ -25,12 +25,12 @@ class Index extends Component
     public function cities()
     {
         return [
-            // 'Villalba',
+            'Villalba',
             'Juana Diaz',
-            // 'Ponce',
-            // 'Santa Isabel',
-            // 'Salinas',
-            // 'Coamo',
+            'Ponce',
+            'Santa Isabel',
+            'Salinas',
+            'Coamo',
         ];
     }
 

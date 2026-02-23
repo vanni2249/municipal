@@ -1,16 +1,16 @@
 <div class="space-y-2">
-    {{-- <x-card class="border-b-4 border-blue-300"> --}}
-    <header class="flex justify-between items-center p-2">
-        <div class="flex items-center space-x-2">
-            <div class="p-2 flex bg-blue-300 rounded-full">
+    <x-card class="border-b-4 border-blue-300">
+        <header class="flex justify-between items-center p-2">
+            <div class="flex items-center space-x-2">
+                <div class="p-2 flex bg-blue-100 rounded-full">
 
-                <x-icon icon="{{ $service->icon }}" height="32" width="32" class="stroke-1" />
+                    <x-icon icon="{{ $service->icon }}" height="32" width="32" class="stroke-1" />
+                </div>
+                <x-h1 value=" {{ $service->title }}" />
             </div>
-            <x-h1 value=" {{ $service->title }}" />
-        </div>
 
-    </header>
-    {{-- </x-card> --}}
+        </header>
+    </x-card>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-12 lg:col-span-8 space-y-2">
             <div class="space-y-2">

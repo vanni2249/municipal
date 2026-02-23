@@ -1,14 +1,14 @@
 <div class="space-y-2">
-    {{-- <x-card class="border-b-4 border-blue-300"> --}}
-        <header class="p-2">
+    <x-card class="border-b-4 border-blue-300">
+        <card-header>
             <x-h1>
                 Servicios del {{ $type->name }}
             </x-h1>
             <p class="text-sm text-gray-800">
                 Aquí puedes encontrar todos los servicios relacionados con {{ $type->name }}.
             </p>
-        </header>
-    {{-- </x-card> --}}
+        </card-header>
+    </x-card>
     <div class="grid grid-cols-12 gap-2">
         @foreach ($type->services()->get() as $service)
             <a href="{{ route('services.show', ['service' => $service->ulid]) }}"

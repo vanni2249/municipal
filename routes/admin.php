@@ -26,6 +26,10 @@ use App\Livewire\Admin\Admins\Show as AdminAdminsShow;
 
 use App\Livewire\Admin\Accounts\Index as AdminAccounts;
 use App\Livewire\Admin\Accounts\Show as AdminAccountShow;
+use App\Livewire\Admin\Accounts\Businesses\Index as AdminAccountBusinesses;
+use App\Livewire\Admin\Accounts\Businesses\Show as AdminAccountBusinessesShow;
+use App\Livewire\Admin\Accounts\Merges\Index as AdminAccountMerges;
+use App\Livewire\Admin\Accounts\Merges\Show as AdminAccountMergesShow;
 
 use App\Livewire\Admin\Services\Index as AdminServices;
 use App\Livewire\Admin\Services\Show as AdminServicesShow;
@@ -62,34 +66,19 @@ use App\Livewire\Admin\Stripes\Index as AdminStripes;
 Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::class, AdminDepartmetMiddleware::class])->group(function () {
         Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
-        // Users
-        Route::get('/users', AdminUsers::class)->name('users');
-        Route::get('/users/{user}', AdminUserShow::class)->name('users.show');
-        Route::prefix('users/{user}/sessions')->name('sessions.')->group(function () {
-                Route::get('/', AdminUserSessions::class)->name('index');
-                Route::get('/{session}', AdminUserSessionsShow::class)->name('index');
-        });
-        Route::prefix('users/{user}/members')->name('members.')->group(function () {
-                Route::get('/', AdminUserMembers::class)->name('index');
-                Route::get('/{member}', AdminUserMembersShow::class)->name('index');
-        });
-        Route::prefix('users/{user}/statuses')->name('statuses.')->group(function () {
-                Route::get('/', AdminUserStatuses::class)->name('index');
-                Route::get('/{status}', AdminUserStatusesShow::class)->name('index');
-        });
-
+        
         // Employees
         Route::get('/employees', AdminEmployees::class)->name('employees');
         Route::get('/employees/{employee}', AdminEmployeesShow::class)->name('employees.show');
 
         // Administrator Sessions and Statuses
         Route::get('/administrators', AdminAdmins::class)->name('administrators');
-        Route::get('/administrators/{administrator}', AdminAdminsShow::class)->name('administrators.show');
-        Route::prefix('administrators/{administrator}/sessions')->name('sessions.')->group(function () {
+        Route::get('/administrators/{admin}', AdminAdminsShow::class)->name('administrators.show');
+        Route::prefix('administrators/{admin}/sessions')->name('sessions.')->group(function () {
                 Route::get('/', AdminAdminsSessions::class)->name('index');
                 Route::get('/{session}', AdminAdminsSessionsShow::class)->name('index');
         });
-        Route::prefix('administrators/{administrator}/statuses')->name('statuses.')->group(function () {
+        Route::prefix('administrators/{admin}/statuses')->name('statuses.')->group(function () {
                 Route::get('/', AdminAdminsStatuses::class)->name('index');
                 Route::get('/{status}', AdminAdminsStatusesShow::class)->name('index');
         });
@@ -97,6 +86,30 @@ Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::clas
         // Accounts
         Route::get('/accounts', AdminAccounts::class)->name('accounts');
         Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');
+        Route::prefix('accounts/{account}/businesses')->name('accounts.businesses.')->group(function () {
+                Route::get('/', AdminAccountBusinesses::class)->name('index');
+                Route::get('/{business}', AdminAccountBusinessesShow::class)->name('show');
+        });
+        Route::prefix('accounts/{account}/merges')->name('accounts.merges.')->group(function () {
+                Route::get('/', AdminAccountMerges::class)->name('index');
+                Route::get('/{merge}', AdminAccountMergesShow::class)->name('show');
+        });
+
+        // Users
+        Route::get('/users', AdminUsers::class)->name('users');
+        Route::get('/users/{user}', AdminUserShow::class)->name('users.show');
+        // Route::prefix('users/{user}/sessions')->name('sessions.')->group(function () {
+        //         Route::get('/', AdminUserSessions::class)->name('index');
+        //         Route::get('/{session}', AdminUserSessionsShow::class)->name('index');
+        // });
+        // Route::prefix('users/{user}/members')->name('members.')->group(function () {
+        //         Route::get('/', AdminUserMembers::class)->name('index');
+        //         Route::get('/{member}', AdminUserMembersShow::class)->name('index');
+        // });
+        // Route::prefix('users/{user}/statuses')->name('statuses.')->group(function () {
+        //         Route::get('/', AdminUserStatuses::class)->name('index');
+        //         Route::get('/{status}', AdminUserStatusesShow::class)->name('index');
+        // });
 
         // Services
         Route::get('/services', AdminServices::class)->name('services');

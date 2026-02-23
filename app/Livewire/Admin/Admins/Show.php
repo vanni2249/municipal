@@ -11,11 +11,11 @@ use Livewire\Component;
 class Show extends Component
 {
     
-    public $administrator;
+    public $admin;
 
-    public function mount($administrator)
+    public function mount($admin)
     {
-        $this->administrator = Admin::where('ulid', $administrator)->firstOrFail();
+        $this->admin = Admin::where('ulid', $admin)->firstOrFail();
     }
 
     public function placeholder()
@@ -26,6 +26,8 @@ class Show extends Component
     #[Layout('layouts.admin')]
     public function render()
     {
-        return view('livewire.admin.admins.show');
+        return view('livewire.admin.admins.show', [
+            'admin' => $this->admin,
+        ]);
     }
 }

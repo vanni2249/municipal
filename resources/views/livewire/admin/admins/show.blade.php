@@ -5,118 +5,39 @@
                 <!-- Admin Information -->
                 <x-card-header>
                     <div class="flex justify-between items-start">
-                        <x-h1 :value="$administrator->employee->name . ' ' . $administrator->employee->last_name" />
-                        <x-badge :variant="$administrator->status->statusType->variant" :label="$administrator->status->statusType->name" />
+                        <x-h1 :value="$admin->employee->name . ' ' . $admin->employee->last_name" />
+                        <x-badge :variant="$admin->status->statusType->variant" :label="$admin->status->statusType->name" />
                     </div>
                     <ul class="hidden md:flex space-x-2 text-sm text-gray-700">
                         <li class="line-clamp-1">
-                            {{ $administrator->number }}
+                            {{ $admin->number }}
                         </li>
                         <li class="">|</li>
                         <li class="line-clamp-1">
                             Ultima conexión:
-                            {{ $administrator->session ? \Carbon\Carbon::parse($administrator->session->created_at)->diffForHumans() : '...' }}
+                            {{ $admin->session ? \Carbon\Carbon::parse($admin->session->created_at)->diffForHumans() : '...' }}
                         </li>
                     </ul>
                 </x-card-header>
-                
+
             </x-card>
+
         </div>
     </div>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full lg:col-span-5 space-y-2">
-            <!-- User detail -->
-            <x-card>
-                <x-card-header class="flex justify-between items-center">
-                    <x-h2 value="Información básica" />
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <x-icon-button icon="ellipsis-vertical" variant="light" />
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link href="#">Editar</x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                </x-card-header>
-                <x-app-elements>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Número" />
-                        <x-app-element-value value="{{ $administrator->number ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Nombre completo" />
-                        <x-app-element-value value="{{ $administrator->employee->name }} {{ $administrator->employee->last_name }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full">
-                        <x-app-element-label label="Correo electrónico" />
-                        <x-app-element-value value="{{ $administrator->employee->email ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Teléfono" />
-                        <x-app-element-value value="{{ $administrator->phone ?? 'N/A' }}" />
-                    </x-app-element>
-                    <x-app-element class="col-span-full md:col-span-3">
-                        <x-app-element-label label="Fecha de creación" />
-                        <x-app-element-value value="{{ $administrator->created_at ?? 'N/A' }}" />
-                    </x-app-element>
-                </x-app-elements>
-            </x-card>
+            <!-- Admin Detail -->
+            <livewire:admin.components.admin-detail :admin="$admin" />
 
-            <!-- Accounts -->
-            <x-card>
-                <x-card-header class="flex justify-between items-center">
-                    <x-h2 value="Roles" />
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <x-icon-button icon="ellipsis-vertical" variant="light" />
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link href="#">Agregar cuenta</x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                </x-card-header>
-                <x-card-elements-group>
-                    @for ($i = 0; $i < 3; $i++)
-                        <x-card-element class="flex justify-between items-center">
-                            <div>
-                                <strong class="text-sm">Role</strong>
-                                <br>
-                                <span class="text-gray-700">{{ now() }}</span>
-                            </div>
-                            <x-icon-button icon="ellipsis-vertical" variant="light" size="xs" />
-                        </x-card-element>
-                    @endfor
-                </x-card-elements-group>
-            </x-card>
 
-            <!-- Statues -->
-            <x-card>
-                <x-card-header class="flex justify-between items-center">
-                    <x-h2 value="Estados" />
-                    <x-dropdown>
-                        <x-slot name="trigger">
-                            <x-icon-button icon="ellipsis-vertical" variant="light" />
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link href="#">Editar</x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                </x-card-header>
-                <x-card-elements-group>
-                    @foreach ($administrator->statuses as $status)
-                        @for ($i = 0; $i < 3; $i++)
-                            <x-card-element class="flex justify-between items-center">
-                                <div>
-                                    <strong class="text-sm">{{ $status->statusType->name }}</strong>
-                                    <br>
-                                    <span class="text-gray-700">{{ $status->created_at }}</span>
-                                </div>
-                                <x-badge :variant="$status->statusType->variant" :label="$status->statusType->name" />
-                            </x-card-element>
-                        @endfor
-                    @endforeach
-                </x-card-elements-group>
-            </x-card>
+            <!-- Employee detail -->
+            <livewire:admin.components.employee-detail :employee="$admin->employee" />
+
+            <!-- Admin Positions -->
+            <livewire:admin.components.admin-positions :admin="$admin" />
+
+            <!-- Admin Statuses -->
+            <livewire:admin.components.admin-statuses :admin="$admin" />
 
         </div>
         <div class="col-span-full lg:col-span-7 space-y-2">

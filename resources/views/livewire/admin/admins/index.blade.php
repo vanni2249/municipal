@@ -76,7 +76,7 @@
                         </td>
                         <td class="p-2 flex space-x-2 justify-end">
                             <x-icon-link variant="light" 
-                            href="{{ route('admin.administrators.show', ['department' => request()->department(), 'administrator' => $admin->ulid]) }}"
+                            href="{{ route('admin.administrators.show', ['department' => request()->department(), 'admin' => $admin->ulid]) }}"
                                 icon="arrow-up-right" wire:navigate/>
                         </td>
                     </tr>

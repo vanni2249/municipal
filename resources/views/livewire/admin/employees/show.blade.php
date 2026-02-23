@@ -24,20 +24,24 @@
     </div>
     <div class="grid grid-cols-12 gap-2">
         <div class="col-span-full lg:col-span-5 space-y-2">
-            <!-- User detail -->
-           
-            <livewire:admin.employees.components.details :employee="$employee" />
+            <!-- Employee Detail    -->
+            <livewire:admin.components.employee-detail :employee="$employee" />
 
-            <!-- Accounts -->
-            <livewire:admin.employees.components.admin :employee="$employee" />
 
-            <!-- Positions -->
-            <livewire:admin.employees.components.positions :employee="$employee" />
+            @if ($employee->admin)
+                <!-- Admin Detail -->
+                <livewire:admin.components.admin-detail :admin="$employee->admin" />
 
-            <!-- Statuses -->
-            <livewire:admin.employees.components.statuses :employee="$employee" />
-           
-            
+                <!-- Admin Positions -->
+                <livewire:admin.components.admin-positions :admin="$employee->admin" />
+
+                <!-- Admin Statuses -->
+                <livewire:admin.components.admin-statuses :admin="$employee->admin" />
+            @else
+                <!-- Admin Create -->
+                <livewire:admin.components.admin-create :employee="$employee" />
+            @endif
+
         </div>
         <div class="col-span-full lg:col-span-7 space-y-2">
             <!-- Sessions -->
@@ -96,5 +100,5 @@
         </div>
     </div>
 
-   
+
 </div>

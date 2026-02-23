@@ -2,7 +2,7 @@
     <x-card>
         @if ($form->employee->admin)
             <x-card-header class="flex justify-between items-center">
-                <x-h2 value="Cuenta administrativa" />
+                <x-h2 value="Información administrador" />
             </x-card-header>
 
             <x-card-body-grids>

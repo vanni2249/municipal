@@ -2,13 +2,7 @@
 
 namespace App\Livewire\Admin\Employees;
 
-use App\Livewire\Forms\AdminStatusForm;
-use App\Livewire\Forms\AdminForm;
-use App\Livewire\Forms\EmployeeForm;
-use App\Models\Department;
 use App\Models\Employee;
-use App\Models\Position;
-use App\Models\StatusType;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\On;

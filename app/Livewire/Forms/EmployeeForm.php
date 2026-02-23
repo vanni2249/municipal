@@ -73,6 +73,7 @@ class EmployeeForm extends Form
         ]);
 
         $employee = Employee::findOrFail($this->employee);
+        
         $employee->update([
             'name' => $this->name,
             'last_name' => $this->last_name,

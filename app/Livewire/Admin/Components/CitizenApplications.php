@@ -20,6 +20,7 @@ class CitizenApplications extends Component
     public function createService($serviceSlug)
     {
         $this->service_slug = $serviceSlug;
+        $this->dispatch('close-modal', 'services-list-modal');
         $this->dispatch('open-modal', 'create-citizen-application-modal');
     }
 

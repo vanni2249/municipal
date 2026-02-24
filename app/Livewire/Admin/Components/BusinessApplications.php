@@ -16,9 +16,10 @@ class BusinessApplications extends Component
         $this->business = $business;
     }
 
-     public function createService($serviceSlug)
+    public function createService($serviceSlug)
     {
         $this->service_slug = $serviceSlug;
+        $this->dispatch('close-modal', 'services-list-modal');
         $this->dispatch('open-modal', 'create-business-application-modal');
     }
 

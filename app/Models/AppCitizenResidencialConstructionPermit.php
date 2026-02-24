@@ -12,7 +12,6 @@ class AppCitizenResidencialConstructionPermit extends Model
         'address_id',
         'owner_name',
         'description',
-        'expiry_date',
         'contractor_name',
     ];
 

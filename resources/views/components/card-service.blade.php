@@ -2,8 +2,8 @@
 
 
 @if ($service)
-    <div class="flex-1 flex flex-col lg:flex-row space-x-2 items-start">
-        <div class="flex w-full md:w-auto justify-between items-center">
+    <div class="flex-1 flex flex-col lg:flex-row space-x-2 items-start w-full">
+        <div class="flex w-full md:w-auto justify-between items-start">
             <div class="bg-blue-100 rounded-full p-2">
                 <x-icon icon="{{ $service->icon }}" height="32" width="32" class="text-gray-800 stroke-1" />
             </div>

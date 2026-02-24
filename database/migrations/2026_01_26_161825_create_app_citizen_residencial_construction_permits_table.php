@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('address_id')->constrained()->onDelete('cascade');
             $table->string('owner_name')->nullable();
             $table->string('description')->nullable();
-            $table->date('expiry_date')->nullable();
             $table->string('contractor_name')->nullable();
             $table->timestamps();
         });

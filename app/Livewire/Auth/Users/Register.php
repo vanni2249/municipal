@@ -146,7 +146,7 @@ class Register extends Component
             'session_id' => Session::getId(),
         ]);
 
-        $this->redirectIntended(route('citizens.set-session', ['account' => $this->user->accounts()->first()->ulid], absolute: false));
+        $this->redirectIntended(route('users.accounts.index',  absolute: false));
 
         // $this->redirectIntended(default: route('users.accounts.create', absolute: false), navigate: true);
     }

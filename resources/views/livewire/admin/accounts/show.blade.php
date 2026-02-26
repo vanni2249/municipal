@@ -32,6 +32,9 @@
             <!-- Account detail -->
             <livewire:admin.components.account-detail :account="$account" />
 
+            <!-- Account addresses -->
+            <livewire:admin.components.account-addresses :account="$account" />
+
             <!-- Account status -->
 
             @if ($account->user)

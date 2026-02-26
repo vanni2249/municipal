@@ -2,22 +2,22 @@
     @if ($merchant->status->statusType->slug == 'active')
 
         <x-card>
-            <x-card-header class="flex justify-between items-center">
-                <div>
+            <x-card-header class="">
+                <div class="flex justify-between items-start">
                     <x-h2 value="Mi(s) negocio(s)" />
-                    <p class="text-sm text-gray-700">
-                        Gestiona y navega entre los negocios asociados a tus cuentas de comerciante.
-                    </p>
+                    <div>
+                        @if ($businesses->isNotEmpty() ? $businesses->last()->status->statusType->slug != 'pending' : true)
+                            <x-button wire:click="$dispatch('open-modal', 'create-business-modal')" size="sm"
+                                variant="primary" class="whitespace-nowrap">
+                                Crear nuevo negocio
+                            </x-button>
+                        @endif
+                    </div>
+                </div>
 
-                </div>
-                <div>
-                    @if ($businesses->isNotEmpty() ? $businesses->last()->status->statusType->slug != 'pending' : true)
-                        <x-button wire:click="$dispatch('open-modal', 'create-business-modal')" size="sm"
-                            variant="primary">
-                            Crear nuevo negocio
-                        </x-button>
-                    @endif
-                </div>
+                <p class="text-sm text-gray-700">
+                    Gestiona y navega entre los negocios asociados a tus cuentas de comerciante.
+                </p>
             </x-card-header>
             @if ($businesses->isNotEmpty() && $businesses->last()->status->statusType->slug == 'pending' ?? false)
                 <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-sm border-l-4 border-l-yellow-400">

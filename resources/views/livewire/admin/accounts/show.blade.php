@@ -4,6 +4,13 @@
             <x-card>
                 <!-- Account Information -->
                 <x-card-header>
+                    <!-- Breadcrumb -->
+                    {{-- <div>
+                        <x-breadcrumb>
+                            <x-breadcrumb-item :href="route('admin.accounts.index')" label="Cuentas" />
+                            <x-breadcrumb-item :href="route('admin.accounts.show', $account)" :label="$account->number" />
+                        </x-breadcrumb>
+                    </div> --}}
                     <div class="flex justify-between items-start">
                         <x-h2 :value="$account->user_id
                             ? $account->user->name . ' ' . $account->user->lastname

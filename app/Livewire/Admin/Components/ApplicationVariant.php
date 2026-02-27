@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Livewire\Applications\Citizens\PropertyUse;
+namespace App\Livewire\Admin\Components;
 
 use Livewire\Component;
 
-class Show extends Component
+class ApplicationVariant extends Component
 {
     public $application;
+
     public function mount($application)
     {
         $this->application = $application;
@@ -14,6 +15,6 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.applications.citizens.property-use.show');
+        return view('livewire.admin.components.application-variant');
     }
 }

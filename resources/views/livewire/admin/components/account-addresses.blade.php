@@ -3,11 +3,11 @@
         <x-card-header class="flex justify-between items-center">
             <x-h2 value="Direcciones" />
             <div>
-                <x-button variant="light" label="Crear direccion" wire:click="create" size="sm"/>
+                <x-button variant="light" label="Crear direccion" wire:click="create" size="sm" />
             </div>
         </x-card-header>
         <x-card-body-lists>
-            @foreach ($addresses as $address)
+            @forelse ($addresses as $address)
                 <x-card-body-list class="flex justify-between items-center">
                     <ul>
                         <li class="text-sm text-gray-600">
@@ -22,11 +22,18 @@
                     </ul>
                     <ul class="text-sm text-gray-700">
                         <li>
-                            <x-button variant="light" label="Editar" size="xs" wire:click="edit({{ $address->id }})" />
+                            <x-button variant="light" label="Editar" size="xs"
+                                wire:click="edit({{ $address->id }})" />
                         </li>
                     </ul>
                 </x-card-body-list>
-            @endforeach
+            @empty
+                <x-card-body-list class="flex justify-between items-center">
+                    <p class="text-sm text-gray-600">
+                        No hay direcciones asociadas a esta cuenta.
+                    </p>
+                </x-card-body-list>
+            @endforelse
         </x-card-body-lists>
     </x-card>
 

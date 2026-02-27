@@ -26,8 +26,10 @@ use App\Livewire\Admin\Admins\Show as AdminAdminsShow;
 
 use App\Livewire\Admin\Accounts\Index as AdminAccounts;
 use App\Livewire\Admin\Accounts\Show as AdminAccountShow;
+use App\Livewire\Admin\Accounts\Applications\Show as AdminAccountApplicationShow;
 use App\Livewire\Admin\Accounts\Businesses\Index as AdminAccountBusinesses;
 use App\Livewire\Admin\Accounts\Businesses\Show as AdminAccountBusinessesShow;
+use App\Livewire\Admin\Accounts\Businesses\Applications\Show as AdminAccountBusinessesApplicationsShow;
 use App\Livewire\Admin\Accounts\Merges\Index as AdminAccountMerges;
 use App\Livewire\Admin\Accounts\Merges\Show as AdminAccountMergesShow;
 
@@ -86,9 +88,11 @@ Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::clas
         // Accounts
         Route::get('/accounts', AdminAccounts::class)->name('accounts');
         Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');
+        Route::get('/accounts/{account}/applications/{application}', AdminAccountApplicationShow::class)->name('accounts.applications.show');
         Route::prefix('accounts/{account}/businesses')->name('accounts.businesses.')->group(function () {
                 Route::get('/', AdminAccountBusinesses::class)->name('index');
                 Route::get('/{business}', AdminAccountBusinessesShow::class)->name('show');
+                Route::get('/{business}/applications/{application}', AdminAccountBusinessesApplicationsShow::class)->name('applications.show');
         });
         Route::prefix('accounts/{account}/merges')->name('accounts.merges.')->group(function () {
                 Route::get('/', AdminAccountMerges::class)->name('index');

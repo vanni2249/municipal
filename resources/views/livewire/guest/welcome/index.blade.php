@@ -268,8 +268,8 @@
     <!-- Departments Section -->
     <section class="bg-gray-300 py-4 lg:py-8">
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
-            <header class="flex justify-center items-center p-2">
-                <div class="text-center">
+            <header class="flex justify-start items-center p-2">
+                <div>
                     <x-h2>
                         Departamentos
                     </x-h2>
@@ -279,9 +279,9 @@
                     </p>
                 </div>
             </header>
-            <ul class="flex flex-wrap justify-center gap-4 text-gray-800">
+            <ul class="flex flex-wrap justify-start gap-2 lg:gap-4 text-gray-800">
                 @foreach ($departments as $department)
-                    <li class="bg-white rounded text-sm font-bold hover:shadow">
+                    <li class="bg-white rounded-full text-sm font-bold hover:shadow">
                         <a href="{{ route('departments.show', $department->slug) }}" class="p-2 block">
                             {{ $department->name }}
                         </a>
@@ -293,8 +293,8 @@
     <!-- Accountant Section -->
     <section>
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8 py-4 lg:py-8">
-            <header class="flex justify-center items-center p-2">
-                <div class="text-center">
+            <header class="flex justify-start items-center p-2">
+                <div>
                     <x-h2>
                         ¿Eres un contador y tienes clientes en la ciudad de {{ $city }}?
                     </x-h2>
@@ -304,7 +304,7 @@
                     </p>
                 </div>
             </header>
-           <div class="text-center">
+           <div>
                 <a href="{{ route('register') }}"
                     class="text-md font-bold bg-blue-500 px-8 py-2 rounded-full text-white hover:bg-blue-600 whitespace-nowrap"
                     wire:navigate>

@@ -151,7 +151,6 @@
         @endforeach
 
     </section>
-    <!-- End Citizen Services Section -->
     <!-- News Section -->
     <section class="bg-gray-300 py-4 lg:py-8">
         <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
@@ -161,7 +160,8 @@
                         Comunicados
                     </x-h2>
                     <p class="text-sm text-gray-700">
-                        Aquí encontrarás los últimos comunicados relacionados con el gobierno municipal de {{ $city }}.
+                        Aquí encontrarás los últimos comunicados relacionados con el gobierno municipal de
+                        {{ $city }}.
                     </p>
                 </div>
                 <a href="{{ route('press-reales.index') }}"
@@ -207,7 +207,6 @@
 
         </div>
     </section>
-    <!-- End News Section -->
     <!-- Events Section -->
     <section>
         <div class="max-w-7xl px-2 md:px-4 mx-auto  py-4 lg:py-8">
@@ -218,7 +217,8 @@
                         Eventos
                     </x-h2>
                     <p class="text-sm text-gray-700">
-                        Aquí encontrarás los próximos eventos relacionados con el gobierno municipal de {{ $city }} .
+                        Aquí encontrarás los próximos eventos relacionados con el gobierno municipal de
+                        {{ $city }} .
                     </p>
                 </div>
                 <a href="{{ route('events.index') }}"
@@ -265,5 +265,52 @@
             </div>
         </div>
     </section>
-    <!-- End Events Section -->
+    <!-- Departments Section -->
+    <section class="bg-gray-300 py-4 lg:py-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
+            <header class="flex justify-center items-center p-2">
+                <div class="text-center">
+                    <x-h2>
+                        Departamentos
+                    </x-h2>
+                    <p class="text-sm text-gray-700">
+                        Aquí encontrarás los departamentos relacionados con el gobierno municipal de
+                        {{ $city }}.
+                    </p>
+                </div>
+            </header>
+            <ul class="flex flex-wrap justify-center gap-4 text-gray-800">
+                @foreach ($departments as $department)
+                    <li class="bg-white rounded text-sm font-bold hover:shadow">
+                        <a href="{{ route('departments.show', $department->slug) }}" class="p-2 block">
+                            {{ $department->name }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
+    <!-- Accountant Section -->
+    <section>
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8 py-4 lg:py-8">
+            <header class="flex justify-center items-center p-2">
+                <div class="text-center">
+                    <x-h2>
+                        ¿Eres un contador y tienes clientes en la ciudad de {{ $city }}?
+                    </x-h2>
+                    <p class="text-sm text-gray-700">
+                        Si eres un contador y tienes clientes en la ciudad de {{ $city }}, puedes registrarte en
+                        nuestro sitio web para acceder a servicios exclusivos para contadores y sus clientes. Debes cominicarte con el soporte para validar tu cuenta como contador y así poder acceder a los servicios exclusivos para contadores y sus clientes.
+                    </p>
+                </div>
+            </header>
+           <div class="text-center">
+                <a href="{{ route('register') }}"
+                    class="text-md font-bold bg-blue-500 px-8 py-2 rounded-full text-white hover:bg-blue-600 whitespace-nowrap"
+                    wire:navigate>
+                    Regístrate
+                </a>
+           </div>
+        </div>
+    </section>
 </div>

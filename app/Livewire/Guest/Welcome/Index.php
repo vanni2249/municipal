@@ -4,6 +4,7 @@ namespace App\Livewire\Guest\Welcome;
 
 use App\Models\Account;
 use App\Models\AccountType;
+use App\Models\Department;
 use App\Models\Service;
 use App\Models\Type;
 use Livewire\Attributes\Layout;
@@ -39,6 +40,7 @@ class Index extends Component
     {
         return view('livewire.guest.welcome.index', [
             'accountTypes' => AccountType::whereIn('slug', ['citizen', 'merchant'])->get(),
+            'departments' => Department::all()
         ]);
     }
 }

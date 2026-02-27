@@ -115,7 +115,7 @@
     </section>
     <!-- End Hero Section -->
     <!-- Citizen Services Section -->
-    <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-2 space-y-2">
+    <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-4 lg:py-8 space-y-8 lg:space-y-8">
         @foreach ($accountTypes as $type)
             <div>
                 {{-- <x-card class="border-b-4 border-blue-300"> --}}
@@ -153,21 +153,24 @@
     </section>
     <!-- End Citizen Services Section -->
     <!-- News Section -->
-    <section class="bg-gray-300 py-2">
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2">
-            {{-- <x-card class="border-b-4 border-blue-300"> --}}
+    <section class="bg-gray-300 py-4 lg:py-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
             <header class="flex justify-between items-center p-2">
-                <x-h2>
-                    Comunicados
-                </x-h2>
+                <div>
+                    <x-h2>
+                        Comunicados
+                    </x-h2>
+                    <p class="text-sm text-gray-700">
+                        Aquí encontrarás los últimos comunicados relacionados con el gobierno municipal de {{ $city }}.
+                    </p>
+                </div>
                 <a href="{{ route('press-reales.index') }}"
                     class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap"
                     wire:navigate>
                     Ver todos
                 </a>
             </header>
-            {{-- </x-card> --}}
-            <div class="grid grid-cols-12 gap-2">
+            <div class="grid grid-cols-12 gap-2 mt-2">
                 @for ($i = 0; $i < 4; $i++)
                     <a href="{{ route('press-reales.show', $i) }}" class="block col-span-full lg:col-span-6"
                         wire:navigate>
@@ -183,7 +186,7 @@
                                     <span class="text-xs text-gray-700">
                                         12 de Octubre de 2024
                                     </span>
-                                    <p class="font-bold text-gray-950">
+                                    <p class="font-bold text-gray-950 py-2">
                                         Última noticia sobre los eventos administrativos relacionados con el servicio
                                     </p>
                                     <ul class="text-gray-800">
@@ -207,12 +210,17 @@
     <!-- End News Section -->
     <!-- Events Section -->
     <section>
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 mt-2">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto  py-4 lg:py-8">
             {{-- <x-card class="border-b-4 border-blue-300"> --}}
             <header class="flex justify-between items-center p-2">
-                <x-h2>
-                    Eventos
-                </x-h2>
+                <div>
+                    <x-h2>
+                        Eventos
+                    </x-h2>
+                    <p class="text-sm text-gray-700">
+                        Aquí encontrarás los próximos eventos relacionados con el gobierno municipal de {{ $city }} .
+                    </p>
+                </div>
                 <a href="{{ route('events.index') }}"
                     class="text-xs font-bold bg-white p-2 rounded-full text-gray-800 hover:shadow whitespace-nowrap"
                     wire:navigate>
@@ -220,7 +228,7 @@
                 </a>
             </header>
             {{-- </x-card> --}}
-            <div class="grid grid-cols-12 gap-2">
+            <div class="grid grid-cols-12 gap-2 mt-2">
                 @for ($i = 0; $i < 4; $i++)
                     <a href="{{ route('events.show', $i) }}" class="block col-span-full lg:col-span-6" wire:navigate>
                         <x-card class="h-full hover:shadow lg:p-8">
@@ -229,7 +237,7 @@
                                     <span class="text-xs text-gray-700">
                                         12 de Octubre de 2024
                                     </span>
-                                    <p class="font-bold text-gray-950">
+                                    <p class="font-bold text-gray-950 py-2">
                                         La ultima information sobre los eventos administrativos relacionados con el
                                         servicio
                                     </p>

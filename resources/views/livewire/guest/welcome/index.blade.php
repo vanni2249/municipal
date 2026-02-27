@@ -124,7 +124,7 @@
                         <x-h2 class="text-lg font-bold text-gray-900">
                             Servicios del {{ $type->name }}
                         </x-h2>
-                        <p class="hidden lg:block text-sm text-gray-600">
+                        <p class="text-sm text-gray-700">
                             Aquí encontrarás los servicios disponibles para {{ $type->name }}.
                         </p>
 
@@ -267,7 +267,7 @@
     </section>
     <!-- Departments Section -->
     <section class="bg-gray-300 py-4 lg:py-8">
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2">
             <header class="flex justify-start items-center p-2">
                 <div>
                     <x-h2>
@@ -279,38 +279,60 @@
                     </p>
                 </div>
             </header>
-            <ul class="flex flex-wrap justify-start gap-2 lg:gap-4 text-gray-800">
-                @foreach ($departments as $department)
-                    <li class="bg-white rounded-full text-sm font-bold hover:shadow">
-                        <a href="{{ route('departments.show', $department->slug) }}" class="p-2 block">
-                            {{ $department->name }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+            <div class="bg-white p-2 lg:p-8 rounded-2xl">
+
+                <ul class="flex flex-wrap justify-start gap-2 lg:gap-4 text-gray-800">
+                    @foreach ($departments as $department)
+                        <li
+                            class="bg-gray-200 rounded-full text-sm font-bold hover:bg-gray-300 transition-colors duration-200">
+                            <a href="{{ route('departments.show', $department->slug) }}"
+                                class="p-2 flex space-x-4 items-center" wire:navigate>
+                                <div>
+                                    {{ $department->name }}
+
+                                </div>
+                                <div>
+                                    <x-icon icon="arrow-up-right" height="16" width="16" />
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </section>
     <!-- Accountant Section -->
     <section>
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8 py-4 lg:py-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 py-4 lg:py-8">
             <header class="flex justify-start items-center p-2">
                 <div>
                     <x-h2>
-                        ¿Eres un contador y tienes clientes en la ciudad de {{ $city }}?
+                        Contadores
                     </x-h2>
                     <p class="text-sm text-gray-700">
-                        Si eres un contador y tienes clientes en la ciudad de {{ $city }}, puedes registrarte en
-                        nuestro sitio web para acceder a servicios exclusivos para contadores y sus clientes. Debes cominicarte con el soporte para validar tu cuenta como contador y así poder acceder a los servicios exclusivos para contadores y sus clientes.
+                        Control y gestión de servicios para contadores y sus clientes en el gobierno municipal de {{ $city }}.
                     </p>
                 </div>
             </header>
-           <div>
-                <a href="{{ route('register') }}"
-                    class="text-md font-bold bg-blue-500 px-8 py-2 rounded-full text-white hover:bg-blue-600 whitespace-nowrap"
-                    wire:navigate>
-                    Regístrate
-                </a>
-           </div>
+            <div class="bg-white p-2 lg:p-8 rounded-2xl space-y-2">
+                <x-h3 class="text-md font-bold text-gray-900">
+                    ¿Eres contador?
+                </x-h3>
+                <p class="text-sm text-gray-700">
+                    Si eres un contador y tienes clientes en la ciudad de {{ $city }}, puedes registrarte
+                    en
+                    nuestro sitio web para acceder a servicios exclusivos para contadores y sus clientes. Debes
+                    cominicarte con el soporte para validar tu cuenta como contador y así poder acceder a los
+                    servicios exclusivos para contadores y sus clientes.
+                </p>
+                <div>
+                    <a href="{{ route('register') }}"
+                        class="text-md font-bold bg-blue-500 px-8 py-2 rounded-full text-white hover:bg-blue-600 whitespace-nowrap"
+                        wire:navigate>
+                        Regístrate
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </div>

@@ -151,9 +151,9 @@
         @endforeach
 
     </section>
-    <!-- News Section -->
+    <!-- Press Releases Section -->
     <section class="bg-gray-300 py-4 lg:py-8">
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-4 lg:space-y-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto">
             <header class="flex justify-between items-center p-2">
                 <div>
                     <x-h2>
@@ -279,7 +279,7 @@
                     </p>
                 </div>
             </header>
-            <div class="bg-white p-2 lg:p-8 rounded-2xl">
+            <div class="bg-white p-4 lg:p-8 rounded-2xl">
 
                 <ul class="flex flex-wrap justify-start gap-2 lg:gap-4 text-gray-800">
                     @foreach ($departments as $department)
@@ -314,7 +314,7 @@
                     </p>
                 </div>
             </header>
-            <div class="bg-white p-2 lg:p-8 rounded-2xl space-y-2">
+            <div class="bg-white p-4 lg:p-8 rounded-2xl space-y-2">
                 <x-h3 class="text-md font-bold text-gray-900">
                     ¿Eres contador?
                 </x-h3>
@@ -325,7 +325,7 @@
                     cominicarte con el soporte para validar tu cuenta como contador y así poder acceder a los
                     servicios exclusivos para contadores y sus clientes.
                 </p>
-                <div>
+                <div class="py-6 lg:py-0 lg:pt-6">
                     <a href="{{ route('register') }}"
                         class="text-md font-bold bg-blue-500 px-8 py-2 rounded-full text-white hover:bg-blue-600 whitespace-nowrap"
                         wire:navigate>

@@ -303,7 +303,7 @@
     </section>
     <!-- Accountant Section -->
     <section>
-        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 py-4 lg:py-8">
+        <div class="max-w-7xl px-2 md:px-4 mx-auto space-y-2 py-4 lg:py-8 pb-2">
             <header class="flex justify-start items-center p-2">
                 <div>
                     <x-h2>

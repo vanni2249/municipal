@@ -17,6 +17,7 @@ class Sidebar extends Component
 
         $this->links = [
             [
+                'icon' => 'layout-dashboard',
                 'name' => 'Tablero',
                 'route' => route('admin.dashboard', ['department' => $this->segments[1]]),
                 'path' => 'dashboard',
@@ -36,6 +37,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'id-badge-2',
                 'name' => 'Empleados',
                 'route' => route('admin.employees', ['department' => $this->segments[1]]),
                 'path' => 'employees',
@@ -55,6 +57,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'device-desktop',
                 'name' => 'Administradores',
                 'route' => route('admin.administrators', ['department' => $this->segments[1]]),
                 'path' => 'administrators',
@@ -74,6 +77,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'user-check',
                 'name' => 'Cuentas',
                 'route' => route('admin.accounts', ['department' => $this->segments[1]]),
                 'path' => 'accounts',
@@ -93,6 +97,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'user',
                 'name' => 'Usuarios',
                 'route' => route('admin.users', ['department' => $this->segments[1]]),
                 'path' => 'users',
@@ -112,6 +117,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'layout-grid',
                 'name' => 'Servicios',
                 'route' => route('admin.services', ['department' => $this->segments[1]]),
                 'path' => 'services',
@@ -131,6 +137,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'file-invoice',
                 'name' => 'Aplicaciones',
                 'route' => route('admin.applications', ['department' => $this->segments[1]]),
                 'path' => 'applications',
@@ -150,6 +157,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'message-2',
                 'name' => 'Interacciones',
                 'route' => route('admin.interactions', ['department' => $this->segments[1]]),
                 'path' => 'interactions',
@@ -169,6 +177,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'clipboard-check',
                 'name' => 'Inspecciones',
                 'route' => route('admin.inspections', ['department' => $this->segments[1]]),
                 'path' => 'inspections',
@@ -188,6 +197,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'route',
                 'name' => 'Rutas',
                 'route' => route('admin.routes', ['department' => $this->segments[1]]),
                 'path' => 'routes',
@@ -207,6 +217,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'invoice',
                 'name' => 'Facturas',
                 'route' => route('admin.invoices', ['department' => $this->segments[1]]),
                 'path' => 'invoices',
@@ -226,6 +237,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'transaction-dollar',
                 'name' => 'Transacciones',
                 'route' => route('admin.transactions', ['department' => $this->segments[1]]),
                 'path' => 'transactions',
@@ -245,6 +257,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'clipboard-data',
                 'name' => 'Registros',
                 'route' => route('admin.logs', ['department' => $this->segments[1]]),
                 'path' => 'logs',
@@ -264,6 +277,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'list-details',
                 'name' => 'Listas',
                 'route' => route('admin.lists', ['department' => $this->segments[1]]),
                 'path' => 'lists',
@@ -283,6 +297,7 @@ class Sidebar extends Component
                 ),
             ],
             [
+                'icon' => 'settings',
                 'name' => 'Configuración',
                 'route' => route('admin.settings', ['department' => $this->segments[1]]),
                 'path' => 'settings',

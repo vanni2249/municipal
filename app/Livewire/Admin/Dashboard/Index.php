@@ -75,26 +75,12 @@ class Index extends Component
     {
         return [
             [
-                'title' => 'Usuarios',
-                'value' => number_format(\App\Models\User::count()),
-                'variant' => 'success',
-                'show' => in_array(
-                    request()->department(),
-                    [
-                        'mayor-office',
-                        // 'finance-department',
-                        // 'merchant-office',
-                        // 'citizen-office',
-                        'technology-office',
-                        // 'human-resources-office',
-                        // 'public-works-office',
-                        // 'recreation-sports-office'
-                        'developer'
-                    ]
-                ),
-            ],
-            [
+                'href' => route('admin.accounts', ['department' => request()->department()]),
+                'icon' => 'user-check',
                 'title' => 'Cuentas',
+                'subtitle' => 'Pendientes: ' . number_format(\App\Models\Account::whereHas('status', function ($query) {
+                    $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['pending']));
+                })->count()),
                 'value' => number_format(\App\Models\Account::count()),
                 'variant' => 'info',
                 'show' => in_array(
@@ -113,10 +99,34 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.users', ['department' => request()->department()]),
+                'icon' => 'user',
+                'title' => 'Usuarios',
+                'subtitle' => 'Usuarios Activos: ' . number_format(\App\Models\User::count()),
+                'value' => number_format(\App\Models\User::count()),
+                'variant' => 'success',
+                'show' => in_array(
+                    request()->department(),
+                    [
+                        'mayor-office',
+                        // 'finance-department',
+                        // 'merchant-office',
+                        // 'citizen-office',
+                        'technology-office',
+                        // 'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office'
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'href' => route('admin.applications', ['department' => request()->department()]),
+                'icon' => 'file-invoice',
                 'title' => 'Aplicaciones',
-                // 'subtitle' => number_format(\App\Models\Application::whereHas('status', function ($query) {
-                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
-                // })->count()) . ' pendientes',
+                'subtitle' => 'Pendientes: ' . number_format(\App\Models\Application::whereHas('status', function ($query) {
+                    $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
+                })->count()),
                 'value' => number_format(\App\Models\Application::count()),
                 'variant' => 'secondary',
                 'show' => in_array(
@@ -135,7 +145,10 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.interactions', ['department' => request()->department()]),
+                'icon' => 'message-2',
                 'title' => 'Interacciones',
+                'subtitle' => 'Interacciones abiertas: ' . number_format(\App\Models\Interaction::count()),
                 'value' => number_format(\App\Models\Interaction::count()),
                 'variant' => 'warning',
                 'show' => in_array(
@@ -154,10 +167,12 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.inspections', ['department' => request()->department()]),
+                'icon' => 'clipboard-check',
                 'title' => 'Inspecciones',
-                //  'subtitle' => number_format(\App\Models\Inspection::whereHas('status', function ($query) {
-                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
-                // })->count()) . ' pendientes',
+                'subtitle' => 'Pendientes: ' . number_format(\App\Models\Inspection::whereHas('status', function ($query) {
+                    $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['pending']));
+                })->count()),
                 'value' => number_format(\App\Models\Interaction::count()),
                 'variant' => 'warning',
                 'show' => in_array(
@@ -176,10 +191,12 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.routes', ['department' => request()->department()]),
+                'icon' => 'route',
                 'title' => 'Rutas',
-                //  'subtitle' => number_format(\App\Models\Inspection::whereHas('status', function ($query) {
-                //     $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
-                // })->count()) . ' pendientes',
+                'subtitle' => 'Sin realizar: ' . number_format(\App\Models\Inspection::whereHas('status', function ($query) {
+                    $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['pending']));
+                })->count()),
                 'value' => number_format(\App\Models\Route::count()),
                 'variant' => 'warning',
                 'show' => in_array(
@@ -198,8 +215,10 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.invoices', ['department' => request()->department()]),
+                'icon' => 'invoice',
                 'title' => 'Facturas',
-                'subtitle' => number_format(\App\Models\Invoice::count()),
+                'subtitle' => 'Total de facturas: ' . number_format(\App\Models\Invoice::count()),
                 'value' => '$' . number_format(\App\Models\Invoice::sum('amount'), 2),
                 'variant' => 'primary',
                 'show' => in_array(
@@ -218,8 +237,10 @@ class Index extends Component
                 ),
             ],
             [
+                'href' => route('admin.transactions', ['department' => request()->department()]),
+                'icon' => 'transaction-dollar',
                 'title' => 'Transacciones',
-                'subtitle' => number_format(\App\Models\Transaction::count()),
+                'subtitle' => 'Total de transacciones: ' . number_format(\App\Models\Transaction::count()),
                 'value' => '$' . number_format(\App\Models\Transaction::sum('amount'), 2),
                 'variant' => 'secondary',
                 'show' => in_array(
@@ -235,7 +256,12 @@ class Index extends Component
             ],
 
             [
+                // 'href' => route('admin.businesses', ['department' => request()->department()]),
+                'icon' => 'building-store',
                 'title' => 'Negocios',
+                'subtitle' => 'Negocios activos: ' . number_format(\App\Models\Business::whereHas('status', function ($query) {
+                    $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['active']));
+                })->count()),
                 'value' => number_format(\App\Models\Business::count()),
                 'variant' => 'warning',
                 'show' => in_array(
@@ -254,7 +280,10 @@ class Index extends Component
                 ),
             ],
             [
+                // 'href' => route('admin.patents', ['department' => request()->department()]),
+                'icon' => 'id',
                 'title' => 'Patentes',
+                'subtitle' => 'Patentes activas: ' . number_format(\App\Models\Patent::count()),
                 'value' => number_format(\App\Models\Patent::count()),
                 'variant' => 'light',
                 'show' => in_array(
@@ -273,7 +302,10 @@ class Index extends Component
                 ),
             ],
             [
+                // 'href' => route('admin.permits', ['department' => request()->department()]),
+                'icon' => 'certificate',
                 'title' => 'Permisos',
+                'subtitle' => 'Permisos activos: ' . number_format(\App\Models\Permit::count()),
                 'value' => number_format(\App\Models\Permit::count()),
                 'variant' => 'light',
                 'show' => in_array(
@@ -292,7 +324,10 @@ class Index extends Component
                 ),
             ],
             [
+                // 'href' => route('admin.tasks', ['department' => request()->department()]),
+                'icon' => 'list-numbers',
                 'title' => 'Tareas',
+                'subtitle' => 'Tareas activas: ' . number_format(\App\Models\Task::count()),
                 'value' => number_format(\App\Models\Task::count()),
                 'variant' => 'light',
                 'show' => in_array(

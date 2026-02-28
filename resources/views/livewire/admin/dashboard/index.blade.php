@@ -24,11 +24,11 @@
             </div>
         </x-card-header>
     </x-card>
-    <div class="grid grid-cols-12 gap-1">
+    <div class="grid grid-cols-12 gap-2">
         @foreach ($widgets as $widget)
             @if ($widget['show'] ?? true)
                 <div class="col-span-6 md:col-span-3 lg:col-span-3">
-                    <x-widget variant="{{ $widget['variant'] }}" title="{{ $widget['title'] }}"
+                    <x-widget href="{{ $widget['href'] ?? '#' }}" icon="{{ $widget['icon'] ?? 'minus' }}" variant="{{ $widget['variant'] }}" title="{{ $widget['title'] }}"
                         subtitle="{{ $widget['subtitle'] ?? '' }}" value="{{ $widget['value'] }}" />
                 </div>
             @endif

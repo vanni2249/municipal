@@ -24,7 +24,7 @@
 
             @foreach ($departments as $department)
                 <a href="{{ route('departments.show', ['department' => $department->slug]) }}"
-                    class="block bg-gray-100 hover:shadow col-span-6 md:col-span-4 lg:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
+                    class="block bg-gray-100 hover:shadow col-span-12 md:col-span-6 lg:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
                     wire:navigate>
                     <div class="flex items-start space-x-4">
                         <div class="rounded-full bg-gray-300 p-1.5">

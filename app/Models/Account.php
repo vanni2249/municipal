@@ -72,4 +72,13 @@ class Account extends Model
     {
         return $this->hasMany(Interaction::class);
     }
+
+    public function name()
+    {
+        if ($this->user_id) {
+            return $this->user->name . ' ' . $this->user->lastname;
+        } else {
+            return $this->name . ' ' . $this->lastname;
+        }
+    }
 }

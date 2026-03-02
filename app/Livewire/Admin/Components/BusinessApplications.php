@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Components;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class BusinessApplications extends Component
@@ -23,10 +24,11 @@ class BusinessApplications extends Component
         $this->dispatch('open-modal', 'create-business-application-modal');
     }
 
+    #[On('application-created')]
     public function render()
     {
         return view('livewire.admin.components.business-applications', [
-            'applications' => $this->account->applications->sortByDesc('created_at')->values(),
+            'applications' => $this->business->applications->sortByDesc('created_at')->values(),
             'services' => $this->account->accountType->services()->get(),
         ]);
     }

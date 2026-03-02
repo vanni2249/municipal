@@ -89,8 +89,9 @@ Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::clas
         Route::get('/accounts', AdminAccounts::class)->name('accounts');
         Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');
         Route::get('/accounts/{account}/applications/{application}', AdminAccountApplicationShow::class)->name('accounts.applications.show');
+
         Route::prefix('accounts/{account}/businesses')->name('accounts.businesses.')->group(function () {
-                Route::get('/', AdminAccountBusinesses::class)->name('index');
+                // Route::get('/', AdminAccountBusinesses::class)->name('index');
                 Route::get('/{business}', AdminAccountBusinessesShow::class)->name('show');
                 Route::get('/{business}/applications/{application}', AdminAccountBusinessesApplicationsShow::class)->name('applications.show');
         });

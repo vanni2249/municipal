@@ -2,10 +2,53 @@
 
 namespace App\Livewire\Applications\Businesses\RemoveTrash;
 
+use App\Models\AppBusinessRemoveTrash;
+use App\Traits\ApplicationNumber;
+use App\Traits\ApplicationUlid;
+use App\Traits\StatusTypeId;
 use Livewire\Component;
 
 class Create extends Component
 {
+    use ApplicationUlid, ApplicationNumber, StatusTypeId;
+    public $business;
+    public $service;
+    public $description;
+
+    public function mount($business)
+    {
+        $this->business = $business;
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'description' => 'required|string|max:255',
+            'business' => 'required',
+        ]);
+
+        $appBusinessRemoveTrash = AppBusinessRemoveTrash::create([
+            'description' => $this->description,
+        ]);
+
+        $app = $appBusinessRemoveTrash->applications()->create([
+            'ulid' => $this->createApplicationUlid(),
+            'number' => $this->createApplicationNumber(),
+            'business_id' => $this->business->id,
+            'service_id' => $this->service->id,
+        ]);
+
+        $app->statuses()->create([
+            'status_type_id' => $this->getStatusTypeId('pending'),
+        ]);
+
+        $this->reset(['description']);
+
+        $this->dispatch('close-modal', 'create-business-application-modal');
+
+        $this->dispatch('application-created');
+    }
+
     public function render()
     {
         return view('livewire.applications.businesses.remove-trash.create');

@@ -12,7 +12,7 @@
         </x-card-header>
     </x-card>
     <div class="grid grid-cols-12 gap-2">
-        <div class="col-span-12 lg:col-span-8 space-y-2">
+        <div class="col-span-12 space-y-2">
             <div class="space-y-2">
                 <x-card>
                     <div class="">
@@ -69,7 +69,7 @@
 
                         @foreach ($services as $service)
                             <a href="{{ route('services.show', ['service' => $service->ulid]) }}"
-                                class="block bg-gray-100 hover:shadow col-span-6 md:col-span-6 p-2 md:p-4 rounded-xl space-x-4"
+                                class="block bg-gray-100 hover:shadow col-span-6 md:col-span-4 lg:col-span-3 p-2 md:p-4 rounded-xl space-x-4"
                                 wire:navigate>
                                 <x-card-service :service="$service" />
                             </a>
@@ -78,7 +78,7 @@
                 </x-card>
             </div>
         </div>
-        <div class="col-span-full lg:col-span-4 space-y-2">
+        {{-- <div class="col-span-full lg:col-span-4 space-y-2">
             <x-card>
                 <header class="flex justify-between items-center">
                     <x-h3 value="Comunicados" />
@@ -125,6 +125,6 @@
                     @endfor
                 </x-card-body-lists>
             </x-card>
-        </div>
+        </div> --}}
     </div>
 </div>

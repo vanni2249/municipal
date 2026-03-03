@@ -27,11 +27,11 @@ class Index extends Component
     {
         return [
             'Villalba',
-            'Juana Diaz',
-            'Ponce',
-            'Santa Isabel',
-            'Salinas',
-            'Coamo',
+            // 'Juana Diaz',
+            // 'Ponce',
+            // 'Santa Isabel',
+            // 'Salinas',
+            // 'Coamo',
         ];
     }
 

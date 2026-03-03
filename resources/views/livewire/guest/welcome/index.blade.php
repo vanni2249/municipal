@@ -1,6 +1,6 @@
 <div>
     <!-- Hero Section -->
-    <section style="background-image: url('{{ asset('img/app/morro.webp') }}');"
+    <section style="background-image: url('{{ asset('img/app/lake.webp') }}');"
         class="h-[30rem] flex flex-col border-0 bg-cover bg-center relative bg-transparent">
         <nav @class(['w-full', ' ' => request()->routeIs('welcome')])>
             <div class="max-w-7xl mx-auto p-2 md:p-4">
@@ -31,6 +31,11 @@
                             <li class="hover:text-gray-400">
                                 <a href="{{ route('events.index') }}" wire:navigate>
                                     Eventos
+                                </a>
+                            </li>
+                            <li class="hover:text-gray-400">
+                                <a href="{{ route('departments.show', ['department' => 'mayor-office']) }}" wire:navigate>
+                                    Departamentos
                                 </a>
                             </li>
                         </ul>
@@ -100,7 +105,7 @@
                     </span>
                     <span class="text-[2.1rem] md:text-6xl font-bold text-white tracking-tighter">
                         Ciudad de
-                        <span class="text-blue-400">
+                        <span class="text-blue-800">
                             {{ $city }}.
                         </span>
                     </span>

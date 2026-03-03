@@ -77,10 +77,30 @@ class Sidebar extends Component
                 ),
             ],
             [
-                'icon' => 'user-check',
-                'name' => 'Cuentas',
+                'icon' => 'users-group',
+                'name' => 'Ciudadanos',
                 'route' => route('admin.accounts', ['department' => $this->segments[1]]),
-                'path' => 'accounts',
+                'path' => 'citizens',
+                'show' => in_array(
+                    $this->segments[1],
+                    [
+                        'mayor-office',
+                        // 'finance-department',
+                        // 'merchant-office',
+                        'citizen-office',
+                        'technology-office',
+                        'human-resources-office',
+                        // 'public-works-office',
+                        // 'recreation-sports-office',
+                        'developer'
+                    ]
+                ),
+            ],
+            [
+                'icon' => 'users',
+                'name' => 'Comerciantes',
+                'route' => route('admin.accounts', ['department' => $this->segments[1]]),
+                'path' => 'merchants',
                 'show' => in_array(
                     $this->segments[1],
                     [

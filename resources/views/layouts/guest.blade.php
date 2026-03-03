@@ -63,6 +63,11 @@
                                 Eventos
                             </a>
                         </li>
+                        <li class="hover:text-gray-700">
+                            <a href="{{ route('departments.show', ['department' => 'mayor-office']) }}" wire:navigate>
+                                Departamentos
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="flex md:hidden text-white">
@@ -96,6 +101,10 @@
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('events.index')" wire:navigate>
                                 Eventos
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('departments.show', ['department' => 'mayor-office'])"
+                                wire:navigate>
+                                Departamentos
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('login')" wire:navigate>
                                 Inicio de sesión

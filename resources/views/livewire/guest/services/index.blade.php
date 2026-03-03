@@ -5,11 +5,11 @@
                 <x-h1>
                     Servicios del {{ $type->name }}
                 </x-h1>
-            </div>
-            <div>
                 <p class="text-sm text-gray-800">
                     Aquí puedes encontrar todos los servicios relacionados con {{ $type->name }}.
                 </p>
+            </div>
+            <div>
             </div>
         </x-card-header>
     </x-card>

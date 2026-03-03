@@ -92,6 +92,10 @@
                                 <x-dropdown-link :href="route('events.index')" wire:navigate>
                                     Eventos
                                 </x-dropdown-link>
+                                <x-dropdown-link :href="route('departments.show', ['department' => 'mayor-office'])"
+                                    wire:navigate>
+                                    Departamentos
+                                </x-dropdown-link>
                                 <x-dropdown-link :href="route('login')" wire:navigate>
                                     Inicio de sesión
                                 </x-dropdown-link>

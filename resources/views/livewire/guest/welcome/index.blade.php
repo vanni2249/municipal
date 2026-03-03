@@ -10,6 +10,25 @@
                     <div class="flex items-center space-x-12">
 
                         <a href="/" @class(['text-xl font-semibold text-gray-200']) wire:navigate>
+                            {{-- <div>
+                                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 256 256"
+                                    class="w-8 h-8 mx-auto">
+                                    <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+                                    <defs>
+                                        <style>
+                                            .st0 {
+                                                fill: #dda931;
+                                            }
+                                        </style>
+                                    </defs>
+                                    <g id="LOGOV">
+                                        <path class="st0"
+                                            d="M116.63,226.55l.67-28.95c0-57.31-5.21-97.09-15.64-119.35-11.02-23.44-24.51-35.16-40.49-35.16-14.42,0-27.18,9.21-38.27,27.62l-5.66-3c16.42-25.51,34.35-38.27,53.79-38.27,46.44,0,69.66,53.28,69.66,159.83l35.53-55.57c21.54-33.64,32.31-54.68,32.31-63.11,0-2.81-3.33-4.22-9.99-4.22h-8.88l1.33-6.77h47.75l-1.44,6.77h-9.22l-99.81,157.39-11.65,2.77Z" />
+                                        <polygon class="st0"
+                                            points="162.33 42.7 167.16 70.61 185.68 58.91 173.99 77.43 195.36 82.26 173.99 87.09 185.68 105.61 167.16 93.91 162.33 144.17 157.51 93.91 138.98 105.61 150.68 87.09 129.31 82.26 150.68 77.43 138.98 58.91 157.51 70.61 162.33 42.7" />
+                                    </g>
+                                </svg>
+                            </div> --}}
                             MyApp's
                         </a>
                         <ul class="text-sm hidden md:flex space-x-4 text-gray-200 font-bold">
@@ -34,7 +53,8 @@
                                 </a>
                             </li>
                             <li class="hover:text-gray-400">
-                                <a href="{{ route('departments.show', ['department' => 'mayor-office']) }}" wire:navigate>
+                                <a href="{{ route('departments.show', ['department' => 'mayor-office']) }}"
+                                    wire:navigate>
                                     Departamentos
                                 </a>
                             </li>
@@ -119,6 +139,7 @@
         </div>
     </section>
     <!-- End Hero Section -->
+
     <!-- Citizen Services Section -->
     <section id="citizen-services" class="px-2 md:px-4 max-w-7xl mx-auto py-4 lg:py-8 space-y-8 lg:space-y-8">
         @foreach ($accountTypes as $type)
@@ -315,7 +336,8 @@
                         Contadores
                     </x-h2>
                     <p class="text-sm text-gray-700">
-                        Control y gestión de servicios para contadores y sus clientes en el gobierno municipal de {{ $city }}.
+                        Control y gestión de servicios para contadores y sus clientes en el gobierno municipal de
+                        {{ $city }}.
                     </p>
                 </div>
             </header>

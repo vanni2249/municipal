@@ -27,14 +27,14 @@ class Create extends Component
             'description' => 'required|string',
         ]);
 
-         // Create an AppCitizenResidencialConstructionPermit
+        // Create an AppCitizenResidencialConstructionPermit
         $appCitizenResidencialConstructionPermit = AppCitizenResidencialConstructionPermit::create([
             'address_id' => $this->address_id,
             'owner_name' => $this->owner_name,
             'contractor_name' => $this->contractor_name,
             'description' => $this->description,
         ]);
-        
+
         $app = $appCitizenResidencialConstructionPermit->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'account_id' => $this->account->id,
@@ -46,11 +46,14 @@ class Create extends Component
             'status_type_id' => $this->getStatusTypeId('pending'),
         ]);
 
-        $this->reset(['address_id', 'owner_name', 'contractor_name', 'description']);
-
-        $this->dispatch('close-modal', 'create-citizen-application-modal');
-
-        $this->dispatch('application-created');
+        $this->redirect(route(
+            'admin.citizens.applications.show',
+            [
+                'department' => request()->department(),
+                'citizen' => $this->account->ulid,
+                'application' => $app->ulid
+            ]
+        ), navigate: true);
     }
     public function render()
     {

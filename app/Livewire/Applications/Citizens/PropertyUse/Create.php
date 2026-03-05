@@ -26,13 +26,13 @@ class Create extends Component
             'description' => 'required|string',
         ]);
 
-         // Create an AppCitizenPropertyUse
+        // Create an AppCitizenPropertyUse
         $appCitizenPropertyUse = AppCitizenPropertyUse::create([
             'property_id' => $this->property_id,
             'use_date' => $this->use_date,
             'description' => $this->description,
         ]);
-        
+
         $app = $appCitizenPropertyUse->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'account_id' => $this->account->id,
@@ -44,11 +44,14 @@ class Create extends Component
             'status_type_id' => $this->getStatusTypeId('pending'),
         ]);
 
-        $this->reset(['property_id', 'use_date', 'description']);
-
-        $this->dispatch('close-modal', 'create-citizen-application-modal');
-
-        $this->dispatch('application-created');
+        $this->redirect(route(
+            'admin.citizens.applications.show',
+            [
+                'department' => request()->department(),
+                'citizen' => $this->account->ulid,
+                'application' => $app->ulid
+            ]
+        ), navigate: true);
 
     }
 

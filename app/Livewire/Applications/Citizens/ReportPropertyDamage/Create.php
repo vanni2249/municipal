@@ -26,12 +26,12 @@ class Create extends Component
             'description' => 'required|string',
         ]);
 
-         // Create an AppCitizenReportPropertyDamage
+        // Create an AppCitizenReportPropertyDamage
         $appCitizenReportPropertyDamage = AppCitizenReportPropertyDamage::create([
             'property_id' => $this->property_id,
             'description' => $this->description,
         ]);
-        
+
         $app = $appCitizenReportPropertyDamage->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'account_id' => $this->account->id,
@@ -43,11 +43,14 @@ class Create extends Component
             'status_type_id' => $this->getStatusTypeId('pending'),
         ]);
 
-        $this->reset(['property_id', 'description']);
-
-        $this->dispatch('close-modal', 'create-citizen-application-modal');
-
-        $this->dispatch('application-created');
+        $this->redirect(route(
+            'admin.citizens.applications.show',
+            [
+                'department' => request()->department(),
+                'citizen' => $this->account->ulid,
+                'application' => $app->ulid
+            ]
+        ), navigate: true);
     }
     public function render()
     {

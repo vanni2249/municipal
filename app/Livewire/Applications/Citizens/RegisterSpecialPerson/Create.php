@@ -47,7 +47,7 @@ class Create extends Component
             'is_active' => 'required|boolean',
         ]);
 
-         // Create an AppCitizenRegisterSpecialPerson
+        // Create an AppCitizenRegisterSpecialPerson
         $appCitizenRegisterSpecialPerson = AppCitizenRegisterSpecialPerson::create([
             'name' => $this->name,
             'last_name' => $this->last_name,
@@ -64,7 +64,7 @@ class Create extends Component
             'remarks' => $this->remarks,
             'is_active' => $this->is_active,
         ]);
-        
+
         $app = $appCitizenRegisterSpecialPerson->applications()->create([
             'ulid' => $this->createApplicationUlid(),
             'account_id' => $this->account->id,
@@ -76,11 +76,14 @@ class Create extends Component
             'status_type_id' => $this->getStatusTypeId('pending'),
         ]);
 
-        $this->reset(['name', 'last_name', 'birth_date', 'is_disabled', 'disability_type', 'is_veteran', 'relationship', 'contact_person', 'contact_phone', 'address', 'place_id', 'zip_code', 'remarks', 'is_active']);
-
-        $this->dispatch('close-modal', 'create-citizen-application-modal');
-
-        $this->dispatch('application-created');
+        $this->redirect(route(
+            'admin.citizens.applications.show',
+            [
+                'department' => request()->department(),
+                'citizen' => $this->account->ulid,
+                'application' => $app->ulid
+            ]
+        ), navigate: true);
     }
     public function render()
     {

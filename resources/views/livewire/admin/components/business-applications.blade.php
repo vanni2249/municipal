@@ -2,34 +2,38 @@
     <x-card>
         <x-card-header class="flex justify-between items-end">
             <x-h2 value="Aplicaciones del negocio" />
-            {{-- <x-dropdown>
+            <x-dropdown width="72">
                 <x-slot name="trigger">
-                    <x-icon-button icon="ellipsis-vertical" variant="light" />
+                    <x-icon-button variant="light" icon="ellipsis-vertical" />
                 </x-slot>
                 <x-slot name="content">
-                    @forelse ($services as $service)
-                        <x-dropdown-button wire:click="createService('{{ $service->slug }}')">
+                    @foreach ($services as $service)
+                        <x-dropdown-link
+                            href="{{ route('admin.merchants.businesses.applications.create', [
+                                'department' => request()->department(),
+                                'merchant' => $business->account->ulid,
+                                'business' => $business->ulid,
+                                'service' => $service->slug,
+                            ]) }}">
                             {{ $service->title }}
-                        </x-dropdown-button>
-                    @empty
-                        
-                    @endforelse
+                        </x-dropdown-link>
+                    @endforeach
                 </x-slot>
-            </x-dropdown> --}}
-            <x-button size="sm" variant="light" label="Crear nueva aplicación"
-                @click="$dispatch('open-modal', 'services-list-modal')" class="whitespace-nowrap" />
+            </x-dropdown>
+            {{-- <x-button size="sm" variant="light" label="Crear nueva aplicación"
+                @click="$dispatch('open-modal', 'services-list-modal')" class="whitespace-nowrap" /> --}}
         </x-card-header>
         <x-card-body-lists>
             @forelse ($applications as $application)
-                <x-card-body-list class="flex justify-between items-start hover:bg-gray-200 rounded"
-                    border="{{ $application->status->statusType->variant }}">
-                    <a href="{{ route('admin.accounts.businesses.applications.show', [
-                        'department' => request()->department(),
-                        'account' => $account->ulid,
-                        'business' => $business->ulid,
-                        'application' => $application->ulid,
-                    ]) }}"
-                        class="block" wire:navigate>
+                <a href="{{ route('admin.merchants.businesses.applications.show', [
+                    'department' => request()->department(),
+                    'merchant' => $account->ulid,
+                    'business' => $business->ulid,
+                    'application' => $application->ulid,
+                ]) }}"
+                    class="block" wire:navigate>
+                    <x-card-body-list class="flex justify-between items-start hover:bg-gray-200 rounded"
+                        border="{{ $application->status->statusType->variant }}">
 
                         <div>
                             <ul class="flex space-x-2 items-center">
@@ -60,9 +64,9 @@
                             <x-badge label="{{ $application->status->statusType->name }}"
                                 variant="{{ $application->status->statusType->variant }}" />
                         </div>
-                    </a>
 
-                </x-card-body-list>
+                    </x-card-body-list>
+                </a>
             @empty
                 <x-card-body-list class="flex justify-between items-center">
                     <p>

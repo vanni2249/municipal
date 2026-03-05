@@ -1,26 +1,27 @@
 <div>
-    <x-card>
+    <x-card class="min-h-96">
         <x-card-header class="flex justify-between items-start">
             <x-h2 value="Aplicaciones del ciudadano" />
-            {{-- <x-dropdown>
+            <x-dropdown>
                 <x-slot name="trigger">
-                    <x-icon-button icon="ellipsis-vertical" variant="light" />
+                    <x-icon-button variant="light" icon="ellipsis-vertical" />
                 </x-slot>
                 <x-slot name="content">
-                    @forelse ($services as $service)
-                        <x-dropdown-button wire:click="createService('{{ $service->slug }}')">
+                    @foreach ($services as $service)
+                        <x-dropdown-link
+                            href="{{ route('admin.citizens.applications.create', ['department' => request()->department(), 'citizen' => $account->ulid, 'service' => $service->slug]) }}">
                             {{ $service->title }}
-                        </x-dropdown-button>
-                    @empty
-                    @endforelse
+                        </x-dropdown-link>
+                    @endforeach
                 </x-slot>
-            </x-dropdown> --}}
-            <x-button size="sm" variant="light" label="Crear nueva aplicación"
-                @click="$dispatch('open-modal', 'services-list-modal')" class="whitespace-nowrap" />
+            </x-dropdown>
+            {{-- <x-button size="sm" variant="light" label="Crear nueva aplicación"
+                @click="$dispatch('open-modal', 'services-list-modal')" class="whitespace-nowrap" /> --}}
         </x-card-header>
         <x-card-body-lists>
             @forelse ($applications as $application)
-                <a href="{{ route('admin.accounts.applications.show', ['department' => request()->department(), 'account' => $application->account->ulid, 'application' => $application->ulid]) }}" class="block">
+                <a href="{{ route('admin.citizens.applications.show', ['department' => request()->department(), 'citizen' => $application->account->ulid, 'application' => $application->ulid]) }}"
+                    class="block">
 
                     <x-card-body-list class="flex justify-between items-start hover:bg-gray-200 transition rounded"
                         border="{{ $application->status->statusType->variant }}">
@@ -33,17 +34,7 @@
                             <p>
                                 {{ $application->service->title }}
                             </p>
-                            <ul class="text-xs text-gray-700 flex flex-col md:flex-row space-x-4">
-                                <li>
-                                    {{ $application->account_id ? $application->account->number : $application->business->number }}
-                                </li>
-                                <li>
-                                    {{ $application->account_id
-                                        ? ($application->account->user_id
-                                            ? $application->account->user->name . ' ' . $application->account->user->lastname
-                                            : $application->account->name . ' ' . $application->account->lastname)
-                                        : $application->business->name }}
-                                </li>
+                            <ul class="text-xs text-gray-500 flex flex-col md:flex-row space-x-4">
                                 <li>
                                     <x-date-format date="{{ $application->created_at }}" format="d/m/Y h:i a" />
                                 </li>

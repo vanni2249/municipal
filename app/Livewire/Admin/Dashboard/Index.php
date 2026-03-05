@@ -75,9 +75,9 @@ class Index extends Component
     {
         return [
             [
-                'href' => route('admin.accounts', ['department' => request()->department()]),
-                'icon' => 'user-check',
-                'title' => 'Cuentas',
+                'href' => route('admin.citizens', ['department' => request()->department()]),
+                'icon' => 'users',
+                'title' => 'Ciudadanos',
                 'subtitle' => 'Pendientes: ' . number_format(\App\Models\Account::whereHas('status', function ($query) {
                     $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['pending']));
                 })->count()),
@@ -86,7 +86,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         'citizen-office',
@@ -108,7 +108,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         // 'finance-department',
                         // 'merchant-office',
                         // 'citizen-office',
@@ -125,7 +125,7 @@ class Index extends Component
                 'icon' => 'file-invoice',
                 'title' => 'Aplicaciones',
                 'subtitle' => 'Pendientes: ' . number_format(\App\Models\Application::whereHas('status', function ($query) {
-                    $query->whereHas('statusType', fn ($query) => $query->whereIn('slug', ['pending']));
+                    $query->whereHas('statusType', fn($query) => $query->whereIn('slug', ['pending']));
                 })->count()),
                 'value' => number_format(\App\Models\Application::count()),
                 'variant' => 'secondary',
@@ -154,7 +154,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         'citizen-office',
@@ -202,7 +202,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         // 'merchant-office',
                         'citizen-office',
@@ -267,7 +267,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         // 'citizen-office',
@@ -289,7 +289,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         // 'citizen-office',
@@ -311,7 +311,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         // 'citizen-office',
@@ -333,7 +333,7 @@ class Index extends Component
                 'show' => in_array(
                     request()->department(),
                     [
-                        'mayor-office',
+                        // 'mayor-office',
                         'finance-department',
                         'merchant-office',
                         'citizen-office',
@@ -435,6 +435,7 @@ class Index extends Component
     {
         return view('livewire.admin.dashboard.index', [
             'widgets' => $this->widgets(),
+            // 'widgets' => array_slice($this->widgets(), 0, 4),
             'lists' => $this->lists(),
             // 'labels' => $this->labels(),
             // 'data' => $this->data(),

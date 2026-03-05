@@ -2,22 +2,17 @@
     <x-card>
         <x-card-header class="flex justify-between items-center">
             <x-h2 value="Negocio" />
-            <x-dropdown>
-                <x-slot name="trigger">
-                    <x-icon-button icon="ellipsis-vertical" variant="light" />
-                </x-slot>
-                <x-slot name="content">
-                    <x-dropdown-link href="#">Crear negocio</x-dropdown-link>
-                </x-slot>
-            </x-dropdown>
+
+            <livewire:admin.components.business-create :account="$account" />
         </x-card-header>
         <x-card-body-lists>
             @foreach ($businesses as $business)
-                <a href="{{ route('admin.accounts.businesses.show', [
-                        'department' => request()->department(),
-                        'account' => $business->account->ulid,
-                        'business' => $business->ulid,
-                    ]) }}" wire:navigate class="block">
+                <a href="{{ route('admin.merchants.businesses.show', [
+                    'department' => request()->department(),
+                    'merchant' => $business->account->ulid,
+                    'business' => $business->ulid,
+                ]) }}"
+                    wire:navigate class="block">
 
                     <x-card-body-list class="flex justify-between items-start hover:bg-gray-200">
                         <ul>

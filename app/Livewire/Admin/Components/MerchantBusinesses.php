@@ -6,11 +6,13 @@ use Livewire\Component;
 
 class MerchantBusinesses extends Component
 {
+    public $account;
     public $businesses;
 
-    public function mount($businesses)
+    public function mount($account)
     {
-        $this->businesses = $businesses;
+        $this->account = $account;
+        $this->businesses = $account->businesses;
     }
 
     public function render()

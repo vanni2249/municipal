@@ -2,7 +2,7 @@
     @csrf
     <x-form-elements>
         <!-- Account Type -->
-        <x-form-element class="col-span-full">
+        {{-- <x-form-element class="col-span-full">
             <x-label for="account_type" value="Tipo de cuenta" />
             <x-select id="account_type" @class([
                 'w-full',
@@ -16,7 +16,7 @@
             @error('form.account_type_id')
                 <x-error message={{ $message }}
             @enderror
-        </x-form-element>
+        </x-form-element> --}}
         <!-- Name -->
         <x-form-element class="col-span-6">
             <x-label for="name" value="Nombre" />

@@ -81,4 +81,22 @@ class Account extends Model
             return $this->name . ' ' . $this->lastname;
         }
     }
+
+    public function email()
+    {
+        if ($this->user_id) {
+            return $this->user->email;
+        } else {
+            return $this->email;
+        }
+    }
+
+    public function phone()
+    {
+        if ($this->user_id) {
+            return $this->user->phone;
+        } else {
+            return $this->phone;
+        }
+    }
 }

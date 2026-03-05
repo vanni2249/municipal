@@ -1,0 +1,1154 @@
+[33mcommit c2721ec78214097d385c3e9287e372602baf3542[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Thu Mar 5 11:23:02 2026 -0400
+
+    refactor: Remove unused Livewire components and associated views for cleaner codebase
+
+ delete mode 100644 app/Livewire/Admin/Components/AccountCreate.php
+ delete mode 100644 app/Livewire/Admin/Components/ApplicationCreate.php
+ delete mode 100644 app/Livewire/Admin/Components/ApplicationVariant.php
+ delete mode 100644 app/Livewire/Admin/Components/ServiceCreate.php
+ delete mode 100644 resources/views/livewire/admin/components/account-create.blade.php
+ delete mode 100644 resources/views/livewire/admin/components/application-create.blade.php
+ delete mode 100644 resources/views/livewire/admin/components/application-variant.blade.php
+ delete mode 100644 resources/views/livewire/admin/components/service-create.blade.php
+
+[33mcommit e6c40770d8b940244ba9d75d03a6fde433bd82db[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Tue Feb 24 15:17:41 2026 -0400
+
+    refactor: Remove unused Livewire components and views for construction permits
+
+ delete mode 100644 app/Livewire/Applications/Businesses/ContructionPermit/Create.php
+ delete mode 100644 app/Livewire/Applications/Businesses/ContructionPermit/Index.php
+ delete mode 100644 app/Livewire/Applications/Businesses/ContructionPermit/Show.php
+ delete mode 100644 resources/views/livewire/applications/businesses/contruction-permit/create.blade.php
+ delete mode 100644 resources/views/livewire/applications/businesses/contruction-permit/index.blade.php
+ delete mode 100644 resources/views/livewire/applications/businesses/contruction-permit/show.blade.php
+
+[33mcommit d0db9823760198576918bc58546d2a8d461e23b7[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Mon Feb 23 18:15:52 2026 -0400
+
+    refactor: streamline employee management components and update admin details display
+
+ delete mode 100644 resources/views/forms/employee-admin-form.blade.php
+
+[33mcommit bd95613846ab7b05feaa59d915392f02ce6a4f37[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Feb 15 01:17:09 2026 -0400
+
+    Remove guest views for events, facilities, news, releases, and services, and refactor welcome page to use Livewire components for improved performance and maintainability.
+
+ delete mode 100644 resources/views/guest/agencies/index.blade.php
+ delete mode 100644 resources/views/guest/agencies/show/citizens-help.blade.php
+ delete mode 100644 resources/views/guest/agencies/show/public-works.blade.php
+ delete mode 100644 resources/views/guest/announcements/index.blade.php
+ delete mode 100644 resources/views/guest/announcements/show.blade.php
+ delete mode 100644 resources/views/guest/events/index.blade.php
+ delete mode 100644 resources/views/guest/events/show.blade.php
+ delete mode 100644 resources/views/guest/facilities/index.blade.php
+ delete mode 100644 resources/views/guest/facilities/show/parque-ciudadela.blade.php
+ delete mode 100644 resources/views/guest/news/index.blade.php
+ delete mode 100644 resources/views/guest/news/show.blade.php
+ delete mode 100644 resources/views/guest/releases/index.blade.php
+ delete mode 100644 resources/views/guest/releases/show.blade.php
+ delete mode 100644 resources/views/guest/services/accountants.blade.php
+ delete mode 100644 resources/views/guest/services/menu.blade.php
+ delete mode 100644 resources/views/guest/services/merchants.blade.php
+ delete mode 100644 resources/views/guest/services/users.blade.php
+ delete mode 100644 resources/views/guest/types/index.blade.php
+ delete mode 100644 resources/views/guest/types/show.blade.php
+ delete mode 100644 resources/views/guest/welcome.blade.php
+
+[33mcommit fe16962047fd6617ea4286de97d138493d254283[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Wed Feb 11 08:11:22 2026 -0400
+
+    fix: remove cart-item component
+
+ delete mode 100644 resources/views/components/card-item.blade.php
+
+[33mcommit f7048436a9d6a2cf2da810e4434edce85045999a[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Mon Feb 9 23:38:49 2026 -0400
+
+    fix: Remove Puerto Rico image to streamline welcome page visuals
+
+ delete mode 100644 public/img/app/puerto-rico.jpg
+
+[33mcommit 6ff1d7613c19450282f99238a346b17486d5664c[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 31 16:14:22 2026 -0400
+
+    feat: remove unused breadcrumb placeholder component
+
+ delete mode 100644 resources/views/placeholders/components/breadcrump.blade.php
+
+[33mcommit 221d641e7d60df74fa562803906dfd02cd70394a[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 31 11:59:46 2026 -0400
+
+    feat: remove BusinessesList and AccountList components along with their views
+
+ delete mode 100644 app/Livewire/Users/Accounts/Businesses/BusinessesList.php
+ delete mode 100644 app/Livewire/Users/Accounts/Businesses/Components/BusinessesList.php
+ delete mode 100644 app/Livewire/Users/Accounts/Components/AccountList.php
+ delete mode 100644 resources/views/livewire/users/accounts/businesses/businesses-list.blade.php
+ delete mode 100644 resources/views/livewire/users/accounts/businesses/components/businesses-list.blade.php
+ delete mode 100644 resources/views/livewire/users/accounts/components/account-list.blade.php
+
+[33mcommit 60fc25a78c66dfb26c4c9843c67e99d4bee69cda[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Wed Jan 28 09:04:30 2026 -0400
+
+    feat: remove unused admin user accounts view file
+
+ delete mode 100644 resources/views/livewire/admin/users/accounts.blade.php
+
+[33mcommit 8946f6cc51afae784384fd4113f4d57ab023ea70[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Tue Jan 27 22:54:50 2026 -0400
+
+    feat: remove Log and LogType models along with their migrations
+
+ delete mode 100644 app/Models/Log.php
+ delete mode 100644 app/Models/LogType.php
+ delete mode 100644 database/migrations/2026_01_26_013750_create_log_types_table.php
+ delete mode 100644 database/migrations/2026_01_26_013759_create_logs_table.php
+
+[33mcommit 48872f25ebb7f319d78a31c248a8ef362b7b5cf5[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Tue Jan 27 22:43:54 2026 -0400
+
+    refactor: remove application_document migration for cleanup
+
+ delete mode 100644 database/migrations/2026_01_26_202908_create_application_document_table.php
+
+[33mcommit f1dd01c091406312aea069cf0688f267c81415b6[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Tue Jan 27 16:48:43 2026 -0400
+
+    refactor: remove Document model and associated migrations for cleanup
+
+ delete mode 100644 app/Models/Document.php
+ delete mode 100644 database/migrations/2026_01_26_200407_create_document_types_table.php
+ delete mode 100644 database/migrations/2026_01_26_200412_create_documents_table.php
+
+[33mcommit 292e0b2d7de79d612198cefd99084f5c279af40b[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Tue Jan 27 16:26:20 2026 -0400
+
+    refactor: remove AppBusinessReportTaxeIvu model and its associated migration
+
+ delete mode 100644 app/Models/AppBusinessReportTaxeIvu.php
+ delete mode 100644 database/migrations/2026_01_26_162258_create_app_business_report_taxe_ivus_table.php
+
+[33mcommit 7cd3aa793cc1653c0a5fcd9ce7b576881602bdf1[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Mon Jan 26 21:27:25 2026 -0400
+
+    refactor: remove unused migration for types table
+
+ delete mode 100644 database/migrations/0001_01_01_000000_create_types_table.php
+
+[33mcommit 8bb1ee8445445ca3d8f95c31cbc82b5b079d32c2[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Mon Jan 26 05:29:12 2026 -0400
+
+    refactor: remove unused status and seeder models for Account, Admin, Business, and User to clean up the codebase
+
+ delete mode 100644 app/Models/AccountStatus.php
+ delete mode 100644 app/Models/AccountStatusType.php
+ delete mode 100644 app/Models/AdminStatus.php
+ delete mode 100644 app/Models/AdminStatusType.php
+ delete mode 100644 app/Models/BusinessStatus.php
+ delete mode 100644 app/Models/BusinessStatusType.php
+ delete mode 100644 app/Models/UserStatus.php
+ delete mode 100644 app/Models/UserStatusType.php
+ delete mode 100644 database/migrations/0001_01_01_000015_create_user_status_types_table.php
+ delete mode 100644 database/migrations/0001_01_01_000020_create_user_statuses_table.php
+ delete mode 100644 database/migrations/2025_07_24_152335_create_admin_status_types_table.php
+ delete mode 100644 database/migrations/2025_07_24_152348_create_admin_statuses_table.php
+ delete mode 100644 database/migrations/2025_08_01_085650_create_account_status_types_table.php
+ delete mode 100644 database/migrations/2025_08_01_085651_create_account_statuses_table.php
+ delete mode 100644 database/migrations/2025_08_01_085666_create_business_status_types_table.php
+ delete mode 100644 database/migrations/2025_08_01_085668_create_business_statuses_table.php
+ delete mode 100644 database/seeders/AccountStatusTypeSeeder.php
+ delete mode 100644 database/seeders/AdminStatusTypeSeeder.php
+ delete mode 100644 database/seeders/BusinessStatusTypeSeeder.php
+ delete mode 100644 database/seeders/UserStatusTypeSeeder.php
+
+[33mcommit cf60867972739d4706930225b13578c684f8951f[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Jan 25 14:44:11 2026 -0400
+
+    feat: enhance Account model with statuses relationship and update seeder for initial status setup; remove unused AccountStatusSeeder
+
+ delete mode 100644 database/seeders/AccountStatusSeeder.php
+
+[33mcommit 51830d064d2e8a11b5ddd4d6ce6c7ba23a9c9ad5[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Jan 25 01:43:46 2026 -0400
+
+    Remove unused views for accountants, citizens, employees, merchants, and visitors in the admin panel to streamline the codebase and improve maintainability.
+
+ delete mode 100644 app/Livewire/Admin/Accountants/Businesses/Create.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Businesses/Edit.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Businesses/Show.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Create.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Edit.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Index.php
+ delete mode 100644 app/Livewire/Admin/Accountants/Show.php
+ delete mode 100644 app/Livewire/Admin/Citizens/Create.php
+ delete mode 100644 app/Livewire/Admin/Citizens/Edit.php
+ delete mode 100644 app/Livewire/Admin/Citizens/Index.php
+ delete mode 100644 app/Livewire/Admin/Citizens/Show.php
+ delete mode 100644 app/Livewire/Admin/Employees/Create.php
+ delete mode 100644 app/Livewire/Admin/Employees/Edit.php
+ delete mode 100644 app/Livewire/Admin/Employees/Index.php
+ delete mode 100644 app/Livewire/Admin/Employees/Show.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Businesses/Create.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Businesses/Edit.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Businesses/Show.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Create.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Edit.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Index.php
+ delete mode 100644 app/Livewire/Admin/Merchants/Show.php
+ delete mode 100644 app/Livewire/Admin/Visitors/Create.php
+ delete mode 100644 app/Livewire/Admin/Visitors/Edit.php
+ delete mode 100644 app/Livewire/Admin/Visitors/Index.php
+ delete mode 100644 app/Livewire/Admin/Visitors/Show.php
+ delete mode 100644 resources/views/livewire/admin/accountants/businesses/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/businesses/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/businesses/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/accountants/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/employees/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/employees/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/employees/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/employees/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/businesses/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/merchants/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/visitors/create.blade.php
+ delete mode 100644 resources/views/livewire/admin/visitors/edit.blade.php
+ delete mode 100644 resources/views/livewire/admin/visitors/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/visitors/show.blade.php
+
+[33mcommit 1d009cfceaf5dd01568bc1bfd05e400261abc6d3[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Jan 25 01:37:31 2026 -0400
+
+    feat: add Admin Accounts management with Index and Show components, update routes and sidebar links
+
+ delete mode 100644 resources/views/livewire/admin/members/show.blade.php
+
+[33mcommit 7bac1618a3b05e79c9c3d4463334bbc441224864[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Jan 25 01:20:11 2026 -0400
+
+    refactor: remove obsolete migration files to clean up the codebase
+
+ delete mode 100644 database/migrations/2025_06_11_205542_create_action_categories_table.php
+ delete mode 100644 database/migrations/2025_06_11_205543_create_actions_table.php
+ delete mode 100644 database/migrations/2025_07_20_134807_create_citizens_table.php
+ delete mode 100644 database/migrations/2025_07_21_182513_create_merchants_table.php
+ delete mode 100644 database/migrations/2025_07_28_113325_create_register_categories_table.php
+ delete mode 100644 database/migrations/2025_07_28_113326_create_registers_table.php
+ delete mode 100644 database/migrations/2025_08_11_205208_create_specialities_table.php
+ delete mode 100644 database/migrations/2025_08_13_001136_create_visitors_table.php
+ delete mode 100644 database/migrations/2025_08_25_061546_create_debris_types_table.php
+ delete mode 100644 database/migrations/2025_08_25_062239_create_debris_table.php
+ delete mode 100644 database/migrations/2025_08_25_155859_create_histories_table.php
+ delete mode 100644 database/migrations/2025_08_25_155914_create_debris_collections_table.php
+
+[33mcommit 461823a333fc3e60c597a09e3337ae57d48da2fb[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 24 16:14:12 2026 -0400
+
+    refactor: remove unused seeder and migration files to clean up the codebase
+
+ delete mode 100644 database/migrations/2026_01_24_152241_create_admin_sessions_table.php
+ delete mode 100644 database/migrations/2026_01_24_152335_create_admin_status_types_table.php
+ delete mode 100644 database/migrations/2026_01_24_152348_create_admin_statuses_table.php
+ delete mode 100644 database/seeders/AccountantSeeder.php
+ delete mode 100644 database/seeders/ActionCategorySeeder.php
+ delete mode 100644 database/seeders/ActionSeeder.php
+ delete mode 100644 database/seeders/CitizenSeeder.php
+ delete mode 100644 database/seeders/ContractorSeeder.php
+ delete mode 100644 database/seeders/DebrisSeeder.php
+ delete mode 100644 database/seeders/DebrisTypeSeeder.php
+ delete mode 100644 database/seeders/MerchantSeeder.php
+ delete mode 100644 database/seeders/RegisterCategorySeeder.php
+ delete mode 100644 database/seeders/RegisterSeeder.php
+ delete mode 100644 database/seeders/SpecialitySeeder.php
+ delete mode 100644 database/seeders/SupplierSeeder.php
+ delete mode 100644 database/seeders/TypeSeeder.php
+ delete mode 100644 database/seeders/VisitorSeeder.php
+
+[33mcommit 7612e75db28193c8aca74b37f091d2eae45df2dc[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 24 15:54:42 2026 -0400
+
+    refactor: remove unused model files to streamline the codebase
+
+ delete mode 100644 app/Models/Action.php
+ delete mode 100644 app/Models/ActionCategory.php
+ delete mode 100644 app/Models/Citizen.php
+ delete mode 100644 app/Models/Debris.php
+ delete mode 100644 app/Models/DebrisCollection.php
+ delete mode 100644 app/Models/DebrisType.php
+ delete mode 100644 app/Models/History.php
+ delete mode 100644 app/Models/Merchant.php
+ delete mode 100644 app/Models/Register.php
+ delete mode 100644 app/Models/RegisterCategory.php
+ delete mode 100644 app/Models/Speciality.php
+ delete mode 100644 app/Models/Type.php
+ delete mode 100644 app/Models/Visitor.php
+
+[33mcommit 6ba13f1a3d6d1a89995c9672315463634e432820[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 24 15:21:00 2026 -0400
+
+    refactor: remove unused model and migration files to clean up the codebase
+
+ delete mode 100644 app/Models/Action.php
+ delete mode 100644 app/Models/ActionCategory.php
+ delete mode 100644 app/Models/Address.php
+ delete mode 100644 app/Models/Admin.php
+ delete mode 100644 app/Models/Business.php
+ delete mode 100644 app/Models/BusinessCategory.php
+ delete mode 100644 app/Models/BusinessType.php
+ delete mode 100644 app/Models/Citizen.php
+ delete mode 100644 app/Models/Debris.php
+ delete mode 100644 app/Models/DebrisCollection.php
+ delete mode 100644 app/Models/DebrisType.php
+ delete mode 100644 app/Models/History.php
+ delete mode 100644 app/Models/Interaction.php
+ delete mode 100644 app/Models/InteractionMessage.php
+ delete mode 100644 app/Models/Merchant.php
+ delete mode 100644 app/Models/Place.php
+ delete mode 100644 app/Models/Register.php
+ delete mode 100644 app/Models/RegisterCategory.php
+ delete mode 100644 app/Models/Service.php
+ delete mode 100644 app/Models/ServiceCategory.php
+ delete mode 100644 app/Models/Speciality.php
+ delete mode 100644 app/Models/Type.php
+ delete mode 100644 app/Models/User.php
+ delete mode 100644 app/Models/UserSession.php
+ delete mode 100644 app/Models/UserStatus.php
+ delete mode 100644 app/Models/UserStatusType.php
+ delete mode 100644 app/Models/Visitor.php
+ delete mode 100644 database/migrations/2025_06_11_205542_create_action_categories_table.php
+ delete mode 100644 database/migrations/2025_06_11_205543_create_actions_table.php
+ delete mode 100644 database/migrations/2025_07_20_134807_create_citizens_table.php
+ delete mode 100644 database/migrations/2025_07_21_182513_create_merchants_table.php
+
+[33mcommit 15324573d9d5d6382dfb2c8319786b27845e3cff[m
+Author: Geovanni Colon Barrios <vanni2249@gmail.com>
+Date:   Sat Jan 24 15:17:23 2026 -0400
+
+    fix: remove deprecated admin and user route files; introduce new sidebar link component for navigation.
+
+ delete mode 100644 app/Data/Agency.php
+ delete mode 100644 app/Data/Application.php
+ delete mode 100644 app/Data/Equipment.php
+ delete mode 100644 app/Data/Facility.php
+ delete mode 100644 app/Data/Inspection.php
+ delete mode 100644 app/Data/Interaction.php
+ delete mode 100644 app/Data/Register.php
+ delete mode 100644 app/Data/Rent.php
+ delete mode 100644 app/Data/Route.php
+ delete mode 100644 app/Data/Service.php
+ delete mode 100644 app/Data/Services/Accountant.php
+ delete mode 100644 app/Data/Services/Contractor.php
+ delete mode 100644 app/Data/Services/Merchant.php
+ delete mode 100644 app/Data/Services/Supplier.php
+ delete mode 100644 app/Data/Services/User.php
+ delete mode 100644 app/Data/Services/Visitor.php
+ delete mode 100644 app/Data/Settlement.php
+ delete mode 100644 app/Data/Sidebar/Admin.php
+ delete mode 100644 app/Data/Sidebar/User.php
+ delete mode 100644 app/Livewire/Settlements/SettlementPermitContructionHome/Create.php
+ delete mode 100644 app/Livewire/Settlements/SettlementPermitContructionHome/Edit.php
+ delete mode 100644 app/Livewire/Users/Actions/Create.php
+ delete mode 100644 app/Livewire/Users/Actions/Edit.php
+ delete mode 100644 app/Livewire/Users/Actions/Index.php
+ delete mode 100644 app/Livewire/Users/Actions/Show.php
+ delete mode 100644 app/Livewire/Users/Applications/ConstructionPermitHome/Create.php
+ delete mode 100644 app/Livewire/Users/Applications/ConstructionPermitHome/Edit.php
+ delete mode 100644 app/Livewire/Users/Applications/ConstructionPermitHome/Index.php
+ delete mode 100644 app/Livewire/Users/Applications/ConstructionPermitHome/Show.php
+ delete mode 100644 app/Livewire/Users/Applications/Create.php
+ delete mode 100644 app/Livewire/Users/Applications/Debris/Create.php
+ delete mode 100644 app/Livewire/Users/Applications/Debris/Show.php
+ delete mode 100644 app/Livewire/Users/Applications/Edit.php
+ delete mode 100644 app/Livewire/Users/Applications/Index.php
+ delete mode 100644 app/Livewire/Users/Applications/Show.php
+ delete mode 100644 app/Livewire/Users/Businesses/Actions/Create.php
+ delete mode 100644 app/Livewire/Users/Businesses/Actions/Edit.php
+ delete mode 100644 app/Livewire/Users/Businesses/Actions/Index.php
+ delete mode 100644 app/Livewire/Users/Businesses/Actions/Show.php
+ delete mode 100644 app/Livewire/Users/Businesses/Create.php
+ delete mode 100644 app/Livewire/Users/Businesses/Edit.php
+ delete mode 100644 app/Livewire/Users/Businesses/Index.php
+ delete mode 100644 app/Livewire/Users/Businesses/Show.php
+ delete mode 100644 app/Livewire/Users/Dashboard/Index.php
+ delete mode 100644 app/Livewire/Users/Interactions/Create.php
+ delete mode 100644 app/Livewire/Users/Interactions/Index.php
+ delete mode 100644 app/Livewire/Users/Interactions/Show.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Actions/Create.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Actions/Edit.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Actions/Index.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Actions/Show.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Create.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Edit.php
+ delete mode 100644 app/Livewire/Users/Merchants/Businesses/Show.php
+ delete mode 100644 app/Livewire/Users/Merchants/Create.php
+ delete mode 100644 app/Livewire/Users/Merchants/Edit.php
+ delete mode 100644 app/Livewire/Users/Merchants/Index.php
+ delete mode 100644 app/Livewire/Users/Merchants/Show.php
+ delete mode 100644 app/Livewire/Users/Registers/Create.php
+ delete mode 100644 app/Livewire/Users/Registers/CreatePeopleDisability.php
+ delete mode 100644 app/Livewire/Users/Registers/CreateSeniorCitizen.php
+ delete mode 100644 app/Livewire/Users/Registers/Index.php
+ delete mode 100644 app/Livewire/Users/Registers/ListRegisters.php
+ delete mode 100644 app/Livewire/Users/Registers/Show.php
+ delete mode 100644 app/Livewire/Users/Registers/ShowRegister.php
+ delete mode 100644 app/Livewire/Users/Rents/Create.php
+ delete mode 100644 app/Livewire/Users/Rents/Edit.php
+ delete mode 100644 app/Livewire/Users/Rents/Index.php
+ delete mode 100644 app/Livewire/Users/Rents/ListRents.php
+ delete mode 100644 app/Livewire/Users/Rents/Show.php
+ delete mode 100644 app/Livewire/Users/Rents/ShowRent.php
+ delete mode 100644 app/Livewire/Users/Sections/Index.php
+ delete mode 100644 app/Livewire/Users/Services/Index.php
+ delete mode 100644 app/Livewire/Users/Settlements/Create.php
+ delete mode 100644 app/Livewire/Users/Settlements/Edit.php
+ delete mode 100644 app/Livewire/Users/Settlements/Index.php
+ delete mode 100644 app/Livewire/Users/Settlements/ListSettlements.php
+ delete mode 100644 app/Livewire/Users/Settlements/Show.php
+ delete mode 100644 app/Livewire/Users/Settlements/ShowSettlement.php
+ delete mode 100644 resources/views/admin/applications/index.blade.php
+ delete mode 100644 resources/views/admin/applications/show.blade.php
+ delete mode 100644 resources/views/admin/citizens/form.blade.php
+ delete mode 100644 resources/views/admin/dashboard/index.blade.php
+ delete mode 100644 resources/views/admin/dashboard/list.blade.php
+ delete mode 100644 resources/views/admin/dashboard/widgets.blade.php
+ delete mode 100644 resources/views/admin/employees/create.blade.php
+ delete mode 100644 resources/views/admin/employees/edit.blade.php
+ delete mode 100644 resources/views/admin/employees/form.blade.php
+ delete mode 100644 resources/views/admin/employees/index.blade.php
+ delete mode 100644 resources/views/admin/employees/show.blade.php
+ delete mode 100644 resources/views/admin/equipments/index.blade.php
+ delete mode 100644 resources/views/admin/equipments/show.blade.php
+ delete mode 100644 resources/views/admin/facilities/index.blade.php
+ delete mode 100644 resources/views/admin/facilities/show.blade.php
+ delete mode 100644 resources/views/admin/inspections/index.blade.php
+ delete mode 100644 resources/views/admin/inspections/show.blade.php
+ delete mode 100644 resources/views/admin/interactions/calls/index.blade.php
+ delete mode 100644 resources/views/admin/interactions/calls/show.blade.php
+ delete mode 100644 resources/views/admin/interactions/index.blade.php
+ delete mode 100644 resources/views/admin/interactions/messages/index.blade.php
+ delete mode 100644 resources/views/admin/interactions/messages/show.blade.php
+ delete mode 100644 resources/views/admin/invoices/index.blade.php
+ delete mode 100644 resources/views/admin/invoices/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/form.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/patents/periods/index.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/patents/periods/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/permits/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/settlements/index.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/settlements/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/admin/merchants/create.blade.php
+ delete mode 100644 resources/views/admin/merchants/edit.blade.php
+ delete mode 100644 resources/views/admin/merchants/form.blade.php
+ delete mode 100644 resources/views/admin/merchants/index.blade.php
+ delete mode 100644 resources/views/admin/merchants/show.blade.php
+ delete mode 100644 resources/views/admin/registers/form.blade.php
+ delete mode 100644 resources/views/admin/rents/index.blade.php
+ delete mode 100644 resources/views/admin/rents/show.blade.php
+ delete mode 100644 resources/views/admin/routes/index.blade.php
+ delete mode 100644 resources/views/admin/routes/show.blade.php
+ delete mode 100644 resources/views/admin/settlements/index.blade.php
+ delete mode 100644 resources/views/admin/settlements/show.blade.php
+ delete mode 100644 resources/views/admin/users/index.blade.php
+ delete mode 100644 resources/views/admin/users/show.blade.php
+ delete mode 100644 resources/views/admin/visitors/form.blade.php
+ delete mode 100644 resources/views/components/layouts/admin/index.blade.php
+ delete mode 100644 resources/views/components/layouts/auth/index.blade.php
+ delete mode 100644 resources/views/components/layouts/employees/footer.blade.php
+ delete mode 100644 resources/views/components/layouts/employees/header.blade.php
+ delete mode 100644 resources/views/components/layouts/employees/index.blade.php
+ delete mode 100644 resources/views/components/layouts/guest/index.blade.php
+ delete mode 100644 resources/views/components/layouts/users/index.blade.php
+ delete mode 100644 resources/views/components/layouts/welcome/index.blade.php
+ delete mode 100644 resources/views/livewire/settlements/settlement-permit-contruction-home/create.blade.php
+ delete mode 100644 resources/views/livewire/settlements/settlement-permit-contruction-home/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/actions/create.blade.php
+ delete mode 100644 resources/views/livewire/users/actions/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/actions/index.blade.php
+ delete mode 100644 resources/views/livewire/users/actions/show.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/construction-permit-home/create.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/construction-permit-home/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/construction-permit-home/index.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/construction-permit-home/show.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/create.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/debris/create.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/debris/show.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/index.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/list-applications.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/show-application.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/show.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/actions/create.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/actions/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/actions/index.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/actions/show.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/create.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/index.blade.php
+ delete mode 100644 resources/views/livewire/users/businesses/show.blade.php
+ delete mode 100644 resources/views/livewire/users/dashboard/index.blade.php
+ delete mode 100644 resources/views/livewire/users/interactions/create.blade.php
+ delete mode 100644 resources/views/livewire/users/interactions/index.blade.php
+ delete mode 100644 resources/views/livewire/users/interactions/show.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/actions/create.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/actions/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/actions/index.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/actions/show.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/create.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/index.blade.php
+ delete mode 100644 resources/views/livewire/users/merchants/show.blade.php
+ delete mode 100644 resources/views/livewire/users/registers/index.blade.php
+ delete mode 100644 resources/views/livewire/users/registers/show.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/create.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/index.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/list-rents.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/show-rent.blade.php
+ delete mode 100644 resources/views/livewire/users/rents/show.blade.php
+ delete mode 100644 resources/views/livewire/users/sections/index.blade.php
+ delete mode 100644 resources/views/livewire/users/services/index.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/create.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/index.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/list-settlements.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/show-settlement.blade.php
+ delete mode 100644 resources/views/livewire/users/settlements/show.blade.php
+ delete mode 100644 resources/views/users/applications/debris-collection-home-form.blade.php
+ delete mode 100644 resources/views/users/businesses/form.blade.php
+ delete mode 100644 resources/views/users/businesses/patents/create.blade.php
+ delete mode 100644 resources/views/users/businesses/patents/periods/show.blade.php
+ delete mode 100644 resources/views/users/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/users/businesses/permits/show.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/building-permit/create.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/building-permit/form.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/index.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/official-patent/create.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/official-patent/periods/create.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/official-patent/periods/show.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/show.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/temp-patent/create.blade.php
+ delete mode 100644 resources/views/users/businesses/settlements/use-permit/create.blade.php
+ delete mode 100644 resources/views/users/merchants/form.blade.php
+ delete mode 100644 resources/views/users/registers/form.blade.php
+ delete mode 100644 routes/admin/accountants.php
+ delete mode 100644 routes/admin/applications.php
+ delete mode 100644 routes/admin/citizens.php
+ delete mode 100644 routes/admin/dashboard.php
+ delete mode 100644 routes/admin/employees.php
+ delete mode 100644 routes/admin/equipments.php
+ delete mode 100644 routes/admin/facilities.php
+ delete mode 100644 routes/admin/inspections.php
+ delete mode 100644 routes/admin/interactions.php
+ delete mode 100644 routes/admin/invoices.php
+ delete mode 100644 routes/admin/merchants.php
+ delete mode 100644 routes/admin/registers.php
+ delete mode 100644 routes/admin/rents.php
+ delete mode 100644 routes/admin/routes.php
+ delete mode 100644 routes/admin/settlements.php
+ delete mode 100644 routes/admin/users.php
+ delete mode 100644 routes/admin/visitors.php
+ delete mode 100644 routes/partials/notifications.php
+ delete mode 100644 routes/users/actions.php
+ delete mode 100644 routes/users/applications.php
+ delete mode 100644 routes/users/businesses.php
+ delete mode 100644 routes/users/interactions.php
+ delete mode 100644 routes/users/merchants.php
+ delete mode 100644 routes/users/partials.php
+ delete mode 100644 routes/users/registers.php
+ delete mode 100644 routes/users/rents.php
+ delete mode 100644 routes/users/services.php
+ delete mode 100644 routes/users/settlements.php
+
+[33mcommit a53e24590562d194524fd9c6c3c5fa678208a8d0[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Fri Sep 26 23:24:35 2025 -0400
+
+    Update Welcome
+
+ delete mode 100644 app/Livewire/Users/Applications/DebrisCollectionHome/Create.php
+ delete mode 100644 app/Livewire/Users/Applications/DebrisCollectionHome/Edit.php
+ delete mode 100644 app/Livewire/Users/Applications/DebrisCollectionHome/Index.php
+ delete mode 100644 app/Livewire/Users/Applications/DebrisCollectionHome/Show.php
+ delete mode 100644 resources/views/livewire/users/applications/debris-collection-home/create.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/debris-collection-home/edit.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/debris-collection-home/index.blade.php
+ delete mode 100644 resources/views/livewire/users/applications/debris-collection-home/show.blade.php
+
+[33mcommit f4695e42ad3395b06dbc1cdc6a42e0982d81a0f1[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Tue Aug 26 16:53:35 2025 -0400
+
+    Update & Delete File Added Address Function to Register & Business
+
+ delete mode 100644 app/Livewire/Agencies/Businesses/DetailBusiness.php
+ delete mode 100644 app/Livewire/Agencies/Businesses/ListBusinesses.php
+ delete mode 100644 app/Livewire/Agencies/Merchants/DetailMerchant.php
+ delete mode 100644 app/Livewire/Agencies/Merchants/ListMerchants.php
+ delete mode 100644 app/Livewire/Agencies/Patents/DetailPatent.php
+ delete mode 100644 app/Livewire/Agencies/Patents/ListPatents.php
+ delete mode 100644 app/Livewire/Agencies/Periods/DetailPeriod.php
+ delete mode 100644 app/Livewire/Agencies/Periods/ListPeriods.php
+ delete mode 100644 app/Livewire/Agencies/Permits/DetailPermit.php
+ delete mode 100644 app/Livewire/Agencies/Permits/ListPermits.php
+ delete mode 100644 app/Livewire/Agencies/Settlements/DetailSettlement.php
+ delete mode 100644 app/Livewire/Agencies/Settlements/ListSettlements.php
+ delete mode 100644 app/Livewire/Applications/ApplicationDebrisCollectionBusiness/Create.php
+ delete mode 100644 app/Livewire/Applications/ApplicationDebrisCollectionBusiness/Edit.php
+ delete mode 100644 app/Livewire/Applications/ApplicationDebrisCollectionHome/Create.php
+ delete mode 100644 app/Livewire/Applications/ApplicationDebrisCollectionHome/Edit.php
+ delete mode 100644 app/Livewire/Forms/User.ApplicationDebrisCollectionHome.php
+ delete mode 100644 app/Livewire/Modules/Applications/CollectDebris/CreateCollectDebris.php
+ delete mode 100644 app/Livewire/Modules/Applications/Rents/CreateRent.php
+ delete mode 100644 app/Livewire/Modules/Applications/SportFacilities/CreateSportFacility.php
+ delete mode 100644 app/Livewire/Modules/Businesses/CreateBusiness.php
+ delete mode 100644 app/Livewire/Modules/Businesses/EditBusiness.php
+ delete mode 100644 app/Livewire/Modules/Businesses/ListBusinesses.php
+ delete mode 100644 app/Livewire/Modules/Businesses/ShowBusiness.php
+ delete mode 100644 app/Livewire/Modules/Invoices/ListInvoices.php
+ delete mode 100644 app/Livewire/Modules/Merchants/CreateMerchant.php
+ delete mode 100644 app/Livewire/Modules/Merchants/EditMerchant.php
+ delete mode 100644 app/Livewire/Modules/Merchants/ListMerchants.php
+ delete mode 100644 app/Livewire/Modules/Merchants/ShowMerchant.php
+ delete mode 100644 app/Livewire/Modules/Patents/CreatePatent.php
+ delete mode 100644 app/Livewire/Modules/Patents/EditPatent.php
+ delete mode 100644 app/Livewire/Modules/Patents/ListPatents.php
+ delete mode 100644 app/Livewire/Modules/Patents/ShowPatent.php
+ delete mode 100644 app/Livewire/Modules/Periods/CreatePeriod.php
+ delete mode 100644 app/Livewire/Modules/Periods/ListPeriods.php
+ delete mode 100644 app/Livewire/Modules/Periods/ShowPeriod.php
+ delete mode 100644 app/Livewire/Modules/Registers/PeopleDisabilities/CreateRegisterPeopleDisability.php
+ delete mode 100644 app/Livewire/Modules/Registers/SeniorCitizens/CreateRegisterSeniorCitizen.php
+ delete mode 100644 app/Livewire/Modules/Rents/ActivityFacilities/CreateRentActivityFacility.php
+ delete mode 100644 app/Livewire/Modules/Settlements/BuildingPermits/CreateSettlementBuildingPermit.php
+ delete mode 100644 app/Livewire/Modules/Settlements/OfficialPatents/CreateSettlementOfficialPatent.php
+ delete mode 100644 app/Livewire/Modules/Settlements/RenewPatents/CreateSettlementRenewPatent.php
+ delete mode 100644 app/Livewire/Modules/Settlements/TempPatents/CreateSettlementTempPatent.php
+ delete mode 100644 app/Livewire/Modules/Settlements/UsePermits/CreateSettlementUsePermit.php
+ delete mode 100644 app/Livewire/Modules/Users/ListUsers.php
+ delete mode 100644 app/Livewire/Modules/Users/ShowUser.php
+ delete mode 100644 app/Livewire/Users/Applications/ListApplications.php
+ delete mode 100644 app/Livewire/Users/Applications/ShowApplication.php
+ delete mode 100644 resources/views/livewire/applications/application-debris-collection-business/edit.blade.php
+ delete mode 100644 resources/views/livewire/applications/application-debris-collection-home/create.blade.php
+ delete mode 100644 resources/views/users/applications/collect-debris/create.blade.php
+ delete mode 100644 resources/views/users/applications/collect-debris/form.blade.php
+ delete mode 100644 resources/views/users/applications/create.blade.php
+ delete mode 100644 resources/views/users/applications/index.blade.php
+ delete mode 100644 resources/views/users/applications/show.blade.php
+ delete mode 100644 resources/views/users/applications/sport-facilities/create.blade.php
+ delete mode 100644 resources/views/users/businesses/create.blade.php
+ delete mode 100644 resources/views/users/businesses/index.blade.php
+ delete mode 100644 resources/views/users/businesses/show.blade.php
+ delete mode 100644 resources/views/users/citizens/dashboard.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/applications/collect-debris/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/applications/collect-debris/form.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/applications/index.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/applications/show.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/applications/sport-facilities/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/news/index.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/news/show.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/registers/index.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/registers/people-disabilities/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/registers/senior-citizens/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/registers/senior-citizens/form.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/registers/show.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/rents/activity-facilities/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/rents/index.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/rents/show.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/settlements/building-permits/create.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/settlements/building-permits/form.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/settlements/index.blade.php
+ delete mode 100644 resources/views/users/citizens/modules/settlements/show.blade.php
+ delete mode 100644 resources/views/users/citizens/services/index.blade.php
+ delete mode 100644 resources/views/users/citizens/services/show.blade.php
+ delete mode 100644 resources/views/users/contractors/dashboard.blade.php
+ delete mode 100644 resources/views/users/contractors/services/404.blade.php
+ delete mode 100644 resources/views/users/contractors/services/collection-debris.blade.php
+ delete mode 100644 resources/views/users/contractors/services/index.blade.php
+ delete mode 100644 resources/views/users/contractors/services/show.blade.php
+ delete mode 100644 resources/views/users/dashboard/index.blade.php
+ delete mode 100644 resources/views/users/employees/dashboard.blade.php
+ delete mode 100644 resources/views/users/interactions/calls/create.blade.php
+ delete mode 100644 resources/views/users/interactions/calls/show.blade.php
+ delete mode 100644 resources/views/users/interactions/index.blade.php
+ delete mode 100644 resources/views/users/interactions/messages/create.blade.php
+ delete mode 100644 resources/views/users/interactions/messages/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/form.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/index.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/patents/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/patents/periods/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/permits/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/building-permit/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/building-permit/form.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/index.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/official-patent/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/official-patent/periods/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/official-patent/periods/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/show.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/temp-patent/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/settlements/use-permit/create.blade.php
+ delete mode 100644 resources/views/users/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/applications/collect-debris/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/applications/index.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/applications/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/businesses/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/businesses/edit.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/businesses/index.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/businesses/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/interactions/calls/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/interactions/calls/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/interactions/index.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/interactions/messages/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/interactions/messages/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/news/index.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/news/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/building-permits/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/index.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/official-patents/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/renew-patents/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/show.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/temp-patents/create.blade.php
+ delete mode 100644 resources/views/users/merchants/modules/settlements/use-permits/create.blade.php
+ delete mode 100644 resources/views/users/merchants/notifications/index.blade.php
+ delete mode 100644 resources/views/users/merchants/partials/sidebar-box.blade.php
+ delete mode 100644 resources/views/users/merchants/services/index.blade.php
+ delete mode 100644 resources/views/users/notifications/index.blade.php
+ delete mode 100644 resources/views/users/partials/sidebar-box.blade.php
+ delete mode 100644 resources/views/users/profile/index.blade.php
+ delete mode 100644 resources/views/users/registers/index.blade.php
+ delete mode 100644 resources/views/users/registers/show.blade.php
+ delete mode 100644 resources/views/users/rents/facilities/create.blade.php
+ delete mode 100644 resources/views/users/rents/index.blade.php
+ delete mode 100644 resources/views/users/rents/show.blade.php
+ delete mode 100644 resources/views/users/services/index.blade.php
+ delete mode 100644 resources/views/users/settlements/building-permit/create.blade.php
+ delete mode 100644 resources/views/users/settlements/building-permit/form.blade.php
+ delete mode 100644 resources/views/users/settlements/create.blade.php
+ delete mode 100644 resources/views/users/settlements/index.blade.php
+ delete mode 100644 resources/views/users/settlements/show.blade.php
+ delete mode 100644 resources/views/users/settlements/use-permit/create.blade.php
+ delete mode 100644 resources/views/users/suppliers/dashboard.blade.php
+
+[33mcommit 47002a281476b92363cab59601971aeec22ea9f4[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Thu Aug 14 17:46:52 2025 -0400
+
+    Update User Business Function
+
+ delete mode 100644 app/Livewire/Forms/User/Merchant/BusinessForm.php
+ delete mode 100644 app/Livewire/Forms/User/Merchant/MerchantForm.php
+
+[33mcommit dca8f0a13bbfe71fba7d6024a1737efb5b1be0d6[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Tue Aug 12 23:23:55 2025 -0400
+
+    Update Admin Employee
+
+ delete mode 100644 app/Livewire/Forms/Admin.CitizenForm.php
+
+[33mcommit 638e489587e17347ffc5a226b86e86156d65fd8e[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Tue Aug 12 16:00:05 2025 -0400
+
+    Update Multiple Function Added Citizen Merchant Model
+
+ delete mode 100644 resources/views/admin/registers/create.blade.php
+ delete mode 100644 resources/views/admin/registers/index.blade.php
+ delete mode 100644 resources/views/admin/registers/show.blade.php
+
+[33mcommit 2a389a4ad64ea517757ca7cf153a4da62c044f82[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Mon Aug 11 10:40:27 2025 -0400
+
+    Update Merchant Function
+
+ delete mode 100644 resources/views/users/merchants/create.blade.php
+ delete mode 100644 resources/views/users/merchants/dashboard.blade.php
+ delete mode 100644 resources/views/users/merchants/index.blade.php
+ delete mode 100644 resources/views/users/merchants/show.blade.php
+
+[33mcommit 60dae16679df5a42f5f85e7e11f8bb152da4a3f2[m
+Author: vanni2249 <vanni2249@gmail.com>
+Date:   Sat Aug 9 14:51:05 2025 -0400
+
+    Update Merchant Register
+
+ delete mode 100644 app/Livewire/Forms/User/MerchantRegisterForm.php
+
+[33mcommit 097b1d7714fb139141d5ac3c753c5b7835eaa645[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Thu Aug 7 19:51:18 2025 -0400
+
+    Updated Citizen Register
+
+ delete mode 100644 app/Livewire/Users/Registers/CreatePeopleDisability.php
+ delete mode 100644 app/Livewire/Users/Registers/CreateSeniorCitizen.php
+ delete mode 100644 app/Livewire/Users/Registers/ListRegisters.php
+ delete mode 100644 app/Livewire/Users/Registers/ShowRegister.php
+ delete mode 100644 resources/views/livewire/users/registers/create-people-disability.blade.php
+ delete mode 100644 resources/views/livewire/users/registers/create-senior-citizen.blade.php
+ delete mode 100644 resources/views/livewire/users/registers/list-registers.blade.php
+ delete mode 100644 resources/views/livewire/users/registers/show-register.blade.php
+ delete mode 100644 resources/views/users/registers/people-disabilities/create.blade.php
+ delete mode 100644 resources/views/users/registers/senior-citizens/create.blade.php
+ delete mode 100644 resources/views/users/registers/senior-citizens/form.blade.php
+
+[33mcommit 39fdba4f830cd91310fc3664c079920f60009e80[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Aug 3 09:52:03 2025 -0400
+
+    Update function Service
+
+ delete mode 100644 database/seeders/UserCategorySeeder.php
+
+[33mcommit 94a1fea070db1e21ec68e7b79a856409aee2c4d4[m
+Author: vanni2249 <vanni2249@gmail.com>
+Date:   Wed Jul 30 12:48:33 2025 -0400
+
+    Update Register and stucture
+
+ delete mode 100644 resources/views/admin/registers/accountants/create.blade.php
+ delete mode 100644 resources/views/admin/registers/accountants/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/accountants/index.blade.php
+ delete mode 100644 resources/views/admin/registers/accountants/show.blade.php
+ delete mode 100644 resources/views/admin/registers/contractors/create.blade.php
+ delete mode 100644 resources/views/admin/registers/contractors/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/contractors/index.blade.php
+ delete mode 100644 resources/views/admin/registers/contractors/show.blade.php
+ delete mode 100644 resources/views/admin/registers/disabled-people/create.blade.php
+ delete mode 100644 resources/views/admin/registers/disabled-people/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/disabled-people/index.blade.php
+ delete mode 100644 resources/views/admin/registers/disabled-people/show.blade.php
+ delete mode 100644 resources/views/admin/registers/merchants/create.blade.php
+ delete mode 100644 resources/views/admin/registers/merchants/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/merchants/index.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/businesses/show.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/merchants/show.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/patents/show.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/periods/show.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/permits/show.blade.php
+ delete mode 100644 resources/views/admin/registers/partials/settlements/show.blade.php
+ delete mode 100644 resources/views/admin/registers/seniors/create.blade.php
+ delete mode 100644 resources/views/admin/registers/seniors/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/seniors/index.blade.php
+ delete mode 100644 resources/views/admin/registers/seniors/show.blade.php
+ delete mode 100644 resources/views/admin/registers/suppliers/create.blade.php
+ delete mode 100644 resources/views/admin/registers/suppliers/edit.blade.php
+ delete mode 100644 resources/views/admin/registers/suppliers/index.blade.php
+ delete mode 100644 resources/views/admin/registers/suppliers/show.blade.php
+
+[33mcommit 9a8a31f2167d6373e9b90888beb3d3de4a2e2a61[m
+Author: vanni2249 <vanni2249@gmail.com>
+Date:   Wed Jul 30 00:04:10 2025 -0400
+
+    Update Sructure
+
+ delete mode 100644 app/Livewire/Admin/Citizens/Index.php
+ delete mode 100644 app/Livewire/Admin/Citizens/Show.php
+ delete mode 100644 app/Models/Accountant.php
+ delete mode 100644 app/Models/Citizen.php
+ delete mode 100644 app/Models/Contractor.php
+ delete mode 100644 app/Models/Supplier.php
+ delete mode 100644 app/Models/Visitor.php
+ delete mode 100644 database/migrations/2025_07_21_182506_create_citizens_table.php
+ delete mode 100644 database/migrations/2025_07_21_182522_create_accountants_table.php
+ delete mode 100644 database/migrations/2025_07_21_182534_create_contractors_table.php
+ delete mode 100644 database/migrations/2025_07_21_182543_create_suppliers_table.php
+ delete mode 100644 database/migrations/2025_07_21_182551_create_visitors_table.php
+ delete mode 100644 resources/views/admin/accountants/create.blade.php
+ delete mode 100644 resources/views/admin/accountants/edit.blade.php
+ delete mode 100644 resources/views/admin/accountants/index.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/patents/periods/index.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/patents/periods/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/permits/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/settlements/index.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/settlements/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/index.blade.php
+ delete mode 100644 resources/views/admin/accountants/merchants/show.blade.php
+ delete mode 100644 resources/views/admin/accountants/show.blade.php
+ delete mode 100644 resources/views/admin/citizens/create.blade.php
+ delete mode 100644 resources/views/admin/citizens/edit.blade.php
+ delete mode 100644 resources/views/admin/citizens/form.blade.php
+ delete mode 100644 resources/views/admin/citizens/index.blade.php
+ delete mode 100644 resources/views/admin/citizens/show.blade.php
+ delete mode 100644 resources/views/admin/contractors/index.blade.php
+ delete mode 100644 resources/views/admin/contractors/show.blade.php
+ delete mode 100644 resources/views/admin/suppliers/index.blade.php
+ delete mode 100644 resources/views/admin/suppliers/show.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/index.blade.php
+ delete mode 100644 resources/views/livewire/admin/citizens/show.blade.php
+ delete mode 100644 resources/views/livewire/agencies/businesses/detail-business.blade.php
+ delete mode 100644 resources/views/livewire/agencies/businesses/list-businesses.blade.php
+ delete mode 100644 resources/views/livewire/agencies/merchants/detail-merchant.blade.php
+ delete mode 100644 resources/views/livewire/agencies/merchants/list-merchants.blade.php
+ delete mode 100644 resources/views/livewire/agencies/patents/detail-patent.blade.php
+ delete mode 100644 resources/views/livewire/agencies/patents/list-patents.blade.php
+ delete mode 100644 resources/views/livewire/agencies/periods/detail-period.blade.php
+ delete mode 100644 resources/views/livewire/agencies/periods/list-periods.blade.php
+ delete mode 100644 resources/views/livewire/agencies/permits/detail-permit.blade.php
+ delete mode 100644 resources/views/livewire/agencies/permits/list-permits.blade.php
+ delete mode 100644 resources/views/livewire/agencies/settlements/detail-settlement.blade.php
+ delete mode 100644 resources/views/livewire/agencies/settlements/list-settlements.blade.php
+ delete mode 100644 resources/views/livewire/modules/applications/collect-debris/create-collect-debris.blade.php
+ delete mode 100644 resources/views/livewire/modules/applications/rents/create-rent.blade.php
+ delete mode 100644 resources/views/livewire/modules/applications/sport-facilities/create-sport-facility.blade.php
+ delete mode 100644 resources/views/livewire/modules/businesses/create-business.blade.php
+ delete mode 100644 resources/views/livewire/modules/businesses/edit-business.blade.php
+ delete mode 100644 resources/views/livewire/modules/businesses/list-businesses.blade.php
+ delete mode 100644 resources/views/livewire/modules/businesses/show-business.blade.php
+ delete mode 100644 resources/views/livewire/modules/invoices/list-invoices.blade.php
+ delete mode 100644 resources/views/livewire/modules/merchants/create-merchant.blade.php
+ delete mode 100644 resources/views/livewire/modules/merchants/edit-merchant.blade.php
+ delete mode 100644 resources/views/livewire/modules/merchants/list-merchants.blade.php
+ delete mode 100644 resources/views/livewire/modules/merchants/show-merchant.blade.php
+ delete mode 100644 resources/views/livewire/modules/patents/create-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/patents/edit-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/patents/list-patents.blade.php
+ delete mode 100644 resources/views/livewire/modules/patents/show-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/periods/create-period.blade.php
+ delete mode 100644 resources/views/livewire/modules/periods/list-periods.blade.php
+ delete mode 100644 resources/views/livewire/modules/periods/show-period.blade.php
+ delete mode 100644 resources/views/livewire/modules/registers/people-disabilities/create-register-people-disability.blade.php
+ delete mode 100644 resources/views/livewire/modules/registers/senior-citizens/create-register-senior-citizen.blade.php
+ delete mode 100644 resources/views/livewire/modules/rents/activity-facilities/create-rent-activity-facility.blade.php
+ delete mode 100644 resources/views/livewire/modules/settlements/building-permits/create-settlement-building-permit.blade.php
+ delete mode 100644 resources/views/livewire/modules/settlements/official-patents/create-settlement-official-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/settlements/renew-patents/create-settlement-renew-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/settlements/temp-patents/create-settlement-temp-patent.blade.php
+ delete mode 100644 resources/views/livewire/modules/settlements/use-permits/create-settlement-use-permit.blade.php
+ delete mode 100644 resources/views/livewire/modules/users/list-users.blade.php
+ delete mode 100644 resources/views/livewire/modules/users/show-user.blade.php
+ delete mode 100644 routes/admin/accountants.php
+ delete mode 100644 routes/admin/citizens.php
+ delete mode 100644 routes/admin/contractors.php
+ delete mode 100644 routes/admin/suppliers.php
+
+[33mcommit 7fba6a5ffbcc2712ec2f8ce70409526c7140e5c3[m
+Author: vanni2249 <vanni2249@gmail.com>
+Date:   Tue Jul 22 23:03:05 2025 -0400
+
+    Update Auth function
+
+ delete mode 100644 app/Livewire/Users/Login.php
+ delete mode 100644 resources/views/livewire/users/login.blade.php
+
+[33mcommit 3a73669ee5f16ad5972beaf79da5a51db13a6e17[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Sun Jul 20 23:20:22 2025 -0400
+
+    Update admin file
+
+ delete mode 100644 resources/views/auth/accountants/login.blade.php
+ delete mode 100644 resources/views/auth/accountants/register.blade.php
+ delete mode 100644 resources/views/auth/citizens/login.blade.php
+ delete mode 100644 resources/views/auth/citizens/register.blade.php
+ delete mode 100644 resources/views/auth/contractors/login.blade.php
+ delete mode 100644 resources/views/auth/contractors/register.blade.php
+ delete mode 100644 resources/views/auth/employees/login.blade.php
+ delete mode 100644 resources/views/auth/employees/register.blade.php
+ delete mode 100644 resources/views/auth/merchants/login.blade.php
+ delete mode 100644 resources/views/auth/merchants/register.blade.php
+ delete mode 100644 resources/views/auth/suppliers/login.blade.php
+ delete mode 100644 resources/views/auth/suppliers/register.blade.php
+
+[33mcommit c4e9c96fcdf881a79da1ab8d2d12b7b093a87f25[m
+Author: vanni2249 <vanni2249@gmail.com>
+Date:   Thu Jul 17 17:17:05 2025 -0400
+
+    Update structure file
+
+ delete mode 100644 app/Data/Links/Navbar/Merchant.php
+ delete mode 100644 app/Data/Links/Navbar/User.php
+ delete mode 100644 app/Data/Links/Sidebar/Accountant.php
+ delete mode 100644 app/Data/Links/Sidebar/Agency.php
+ delete mode 100644 app/Data/Links/Sidebar/CitizenHelpOffice.php
+ delete mode 100644 app/Data/Links/Sidebar/FinanceDepartment.php
+ delete mode 100644 app/Data/Links/Sidebar/ItOffice.php
+ delete mode 100644 app/Data/Links/Sidebar/MayorOffice.php
+ delete mode 100644 app/Data/Links/Sidebar/PublicWorksDepartment.php
+ delete mode 100644 app/Data/Links/Sidebar/RecreationSportsDepartment.php
+ delete mode 100644 resources/views/agencies/equipments/show.blade.php
+ delete mode 100644 resources/views/agencies/modules/businesses/index.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/businesses/edit.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/businesses/patents/create.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/create.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/edit.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/index.blade.php
+ delete mode 100644 resources/views/agencies/modules/merchants/show.blade.php
+ delete mode 100644 resources/views/agencies/modules/patents/index.blade.php
+ delete mode 100644 resources/views/agencies/modules/users/index.blade.php
+ delete mode 100644 resources/views/agencies/registers/partials/periods/show.blade.php
+ delete mode 100644 resources/views/agencies/registers/partials/permits/show.blade.php
+ delete mode 100644 resources/views/agencies/registers/partials/settlements/show.blade.php
+ delete mode 100644 resources/views/agencies/registers/show.blade.php
+ delete mode 100644 resources/views/components/layouts/index.blade.php
+ delete mode 100644 resources/views/components/layouts/navbar.blade.php
+ delete mode 100644 resources/views/components/layouts/sidebar.blade.php
+ delete mode 100644 resources/views/forms/business.blade.php
+ delete mode 100644 resources/views/forms/merchant.blade.php
+ delete mode 100644 resources/views/forms/patent.blade.php
+ delete mode 100644 resources/views/forms/period.blade.php
+ delete mode 100644 resources/views/modules/applications/collect-debris/create.blade.php
+ delete mode 100644 resources/views/modules/applications/index.blade.php
+ delete mode 100644 resources/views/modules/applications/show.blade.php
+ delete mode 100644 resources/views/modules/businesses/create.blade.php
+ delete mode 100644 resources/views/modules/businesses/edit.blade.php
+ delete mode 100644 resources/views/modules/businesses/index.blade copy.php
+ delete mode 100644 resources/views/modules/businesses/index.blade.php
+ delete mode 100644 resources/views/modules/businesses/show.blade.php
+ delete mode 100644 resources/views/modules/equipments/index.blade.php
+ delete mode 100644 resources/views/modules/equipments/show.blade.php
+ delete mode 100644 resources/views/modules/facilities/index.blade.php
+ delete mode 100644 resources/views/modules/facilities/show.blade.php
+ delete mode 100644 resources/views/modules/inspections/index.blade.php
+ delete mode 100644 resources/views/modules/inspections/show.blade.php
+ delete mode 100644 resources/views/modules/interactions/index.blade.php
+ delete mode 100644 resources/views/modules/interactions/show.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/edit.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/patents/create.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/patents/edit.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/patents/periods/create.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/patents/periods/show.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/modules/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/modules/merchants/create.blade.php
+ delete mode 100644 resources/views/modules/merchants/edit.blade.php
+ delete mode 100644 resources/views/modules/merchants/index.blade.php
+ delete mode 100644 resources/views/modules/merchants/show.blade.php
+ delete mode 100644 resources/views/modules/patents/index.blade.php
+ delete mode 100644 resources/views/modules/registers/index.blade.php
+ delete mode 100644 resources/views/modules/registers/show.blade.php
+ delete mode 100644 resources/views/modules/rents/index.blade.php
+ delete mode 100644 resources/views/modules/rents/show.blade.php
+ delete mode 100644 resources/views/modules/routes/index.blade.php
+ delete mode 100644 resources/views/modules/routes/show.blade.php
+ delete mode 100644 resources/views/modules/settlements/index.blade.php
+ delete mode 100644 resources/views/modules/settlements/show.blade.php
+ delete mode 100644 resources/views/modules/users/index.blade.php
+ delete mode 100644 resources/views/modules/users/show.blade.php
+ delete mode 100644 routes/auth/accountants.php
+ delete mode 100644 routes/auth/contractors.php
+ delete mode 100644 routes/auth/employees.php
+ delete mode 100644 routes/auth/merchants.php
+ delete mode 100644 routes/auth/suppliers.php
+
+[33mcommit f94700eb5a977a9b50990f45b753aecc448245bd[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Thu Jul 17 11:39:00 2025 -0400
+
+    Update structure file
+
+ delete mode 100644 app/Livewire/Merchants/Interactions/Calls/CreateCall.php
+ delete mode 100644 app/Livewire/Merchants/Interactions/Messages/CreateMessage.php
+ delete mode 100644 resources/views/agencies/registers/merchants/show.blade.php
+ delete mode 100644 resources/views/livewire/merchants/interactions/calls/create-call.blade.php
+ delete mode 100644 resources/views/livewire/merchants/interactions/messages/create-message.blade.php
+ delete mode 100644 routes/agencies/applications.php
+ delete mode 100644 routes/agencies/dashboard.php
+ delete mode 100644 routes/agencies/equipments.php
+ delete mode 100644 routes/agencies/facilities.php
+ delete mode 100644 routes/agencies/inspections.php
+ delete mode 100644 routes/agencies/interactions.php
+ delete mode 100644 routes/agencies/registers.php
+ delete mode 100644 routes/agencies/rents.php
+ delete mode 100644 routes/agencies/routes.php
+ delete mode 100644 routes/agencies/settlements.php
+
+[33mcommit 967389f6e428d24797ff8c43ecf46bfe08e003f4[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Wed Jun 11 23:37:55 2025 -0400
+
+    Fixed Notification
+
+ delete mode 100644 resources/views/users/accountants/dashboard.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/businesses/index.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/businesses/create.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/businesses/edit.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/businesses/patents/create.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/businesses/patents/show.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/businesses/show.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/create.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/edit.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/index.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/merchants/show.blade.php
+ delete mode 100644 resources/views/users/accountants/modules/patents/index.blade.php
+
+[33mcommit 1d9601010c2d5adcd42855f6c3330efb1c99fe50[m
+Author: Geovanni Colon <vanni2249@gmail.com>
+Date:   Wed Jun 11 21:41:39 2025 -0400
+
+    Updated File Structors
+
+ delete mode 100644 resources/views/citizen-help-office/dashboard.blade.php
+ delete mode 100644 resources/views/components/layouts/accountants/index.blade.php
+ delete mode 100644 resources/views/components/layouts/citizen-help-office/index.blade.php
+ delete mode 100644 resources/views/components/layouts/finance-department/index.blade.php
+ delete mode 100644 resources/views/components/layouts/it-office/index.blade.php
+ delete mode 100644 resources/views/components/layouts/mayors-office/index.blade.php
+ delete mode 100644 resources/views/components/layouts/merchants/index.blade.php
+ delete mode 100644 resources/views/components/layouts/public-works-department/index.blade.php
+ delete mode 100644 resources/views/components/layouts/recreation-sports-department/index.blade.php
+ delete mode 100644 resources/views/finance-department/dashboard.blade.php
+ delete mode 100644 resources/views/mayors-office/dashboard.blade.php
+ delete mode 100644 resources/views/public-works-department/dashboard.blade.php
+ delete mode 100644 resources/views/recreation-sports-department/dashboard.blade.php
+ delete mode 100644 resources/views/users/citizens/partials/sidebar-box.blade.php
+ delete mode 100644 routes/accountants.php
+ delete mode 100644 routes/agencies/citizen-help-office.php
+ delete mode 100644 routes/agencies/finance-department.php
+ delete mode 100644 routes/agencies/it-office.php
+ delete mode 100644 routes/agencies/mayors-office.php
+ delete mode 100644 routes/agencies/municipal-administrators-office.php
+ delete mode 100644 routes/agencies/public-works-department.php
+ delete mode 100644 routes/agencies/recreation-sports-department.php
+ delete mode 100644 routes/citizens.php
+ delete mode 100644 routes/contractors.php
+ delete mode 100644 routes/merchants.php
+ delete mode 100644 routes/suppliers.php

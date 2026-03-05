@@ -24,6 +24,25 @@ use App\Livewire\Admin\Employees\Show as AdminEmployeesShow;
 use App\Livewire\Admin\Admins\Index as AdminAdmins;
 use App\Livewire\Admin\Admins\Show as AdminAdminsShow;
 
+use App\Livewire\Admin\Citizens\Index as AdminCitizens;
+use App\Livewire\Admin\Citizens\Show as AdminCitizenShow;
+use App\Livewire\Admin\Citizens\Applications\Index as AdminCitizenApplications;
+use App\Livewire\Admin\Citizens\Applications\Create as AdminCitizenApplicationCreate;
+use App\Livewire\Admin\Citizens\Applications\Show as AdminCitizenApplicationShow;
+
+use App\Livewire\Admin\Merchants\Index as AdminMerchants;
+use App\Livewire\Admin\Merchants\Show as AdminMerchantShow;
+use App\Livewire\Admin\Merchants\Businesses\Index as AdminMerchantBusinesses;
+use App\Livewire\Admin\Merchants\Businesses\Show as AdminMerchantBusinessShow;
+use App\Livewire\Admin\Merchants\Businesses\Applications\Index as AdminMerchantBusinessApplications;
+use App\Livewire\Admin\Merchants\Businesses\Applications\Create as AdminMerchantBusinessApplicationCreate;
+use App\Livewire\Admin\Merchants\Businesses\Applications\Show as AdminMerchantBusinessApplicationShow;
+
+use App\Livewire\Admin\Businesses\Index as AdminBusinesses;
+use App\Livewire\Admin\Businesses\Show as AdminBusinessShow;
+use App\Livewire\Admin\Businesses\Applications\Index as AdminBusinessApplications;
+use App\Livewire\Admin\Businesses\Applications\Show as AdminBusinessApplicationShow;
+
 use App\Livewire\Admin\Accounts\Index as AdminAccounts;
 use App\Livewire\Admin\Accounts\Show as AdminAccountShow;
 use App\Livewire\Admin\Accounts\Applications\Show as AdminAccountApplicationShow;
@@ -32,6 +51,8 @@ use App\Livewire\Admin\Accounts\Businesses\Show as AdminAccountBusinessesShow;
 use App\Livewire\Admin\Accounts\Businesses\Applications\Show as AdminAccountBusinessesApplicationsShow;
 use App\Livewire\Admin\Accounts\Merges\Index as AdminAccountMerges;
 use App\Livewire\Admin\Accounts\Merges\Show as AdminAccountMergesShow;
+
+
 
 use App\Livewire\Admin\Services\Index as AdminServices;
 use App\Livewire\Admin\Services\Show as AdminServicesShow;
@@ -73,7 +94,7 @@ Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::clas
         Route::get('/employees', AdminEmployees::class)->name('employees');
         Route::get('/employees/{employee}', AdminEmployeesShow::class)->name('employees.show');
 
-        // Administrator Sessions and Statuses
+        // Administrators
         Route::get('/administrators', AdminAdmins::class)->name('administrators');
         Route::get('/administrators/{admin}', AdminAdminsShow::class)->name('administrators.show');
         Route::prefix('administrators/{admin}/sessions')->name('sessions.')->group(function () {
@@ -85,6 +106,28 @@ Route::prefix('admin/{department}')->name('admin.')->middleware([AuthAdmin::clas
                 Route::get('/{status}', AdminAdminsStatusesShow::class)->name('index');
         });
 
+        // Citizens
+        Route::get('/citizens', AdminCitizens::class)->name('citizens');
+        Route::get('/citizens/{citizen}', AdminCitizenShow::class)->name('citizens.show');
+        // Route::get('/citizens/{citizen}/applications', AdminCitizenApplications::class)->name('citizens.applications');
+        Route::get('/citizens/{citizen}/applications/create/{service}', AdminCitizenApplicationCreate::class)->name('citizens.applications.create'); 
+        Route::get('/citizens/{citizen}/applications/{application}', AdminCitizenApplicationShow::class)->name('citizens.applications.show');
+
+        // Merchants
+        Route::get('/merchants', AdminMerchants::class)->name('merchants');
+        Route::get('/merchants/{merchant}', AdminMerchantShow::class)->name('merchants.show');
+        // Route::get('/merchants/{merchant}/businesses', AdminMerchantBusinesses::class)->name('merchants.businesses');
+        Route::get('/merchants/{merchant}/businesses/{business}', AdminMerchantBusinessShow::class)->name('merchants.businesses.show');
+        // Route::get('/merchants/{merchant}/businesses/{business}/applications', AdminMerchantBusinessApplications::class)->name('merchants.businesses.applications');
+        Route::get('/merchants/{merchant}/businesses/{business}/applications/create/{service}', AdminMerchantBusinessApplicationCreate::class)->name('merchants.businesses.applications.create');
+        Route::get('/merchants/{merchant}/businesses/{business}/applications/{application}', AdminMerchantBusinessApplicationShow::class)->name('merchants.businesses.applications.show');
+        
+        // Businesses
+        Route::get('/businesses', AdminBusinesses::class)->name('businesses');
+        Route::get('/businesses/{business}', AdminBusinessShow::class)->name('businesses.show');
+        Route::get('/businesses/{business}/applications', AdminBusinessApplications::class)->name('businesses.applications');
+        Route::get('/businesses/{business}/applications/{application}', AdminBusinessApplicationShow::class)->name('businesses.applications.show');
+        
         // Accounts
         Route::get('/accounts', AdminAccounts::class)->name('accounts');
         Route::get('/accounts/{account}', AdminAccountShow::class)->name('accounts.show');

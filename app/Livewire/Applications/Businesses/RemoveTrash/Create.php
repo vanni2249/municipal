@@ -42,11 +42,15 @@ class Create extends Component
             'status_type_id' => $this->getStatusTypeId('pending'),
         ]);
 
-        $this->reset(['description']);
-
-        $this->dispatch('close-modal', 'create-business-application-modal');
-
-        $this->dispatch('application-created');
+        $this->redirect(route(
+            'admin.merchants.businesses.applications.show',
+            [
+                'department' => request()->department(),
+                'merchant' => $this->business->account->ulid,
+                'business' => $this->business->ulid,
+                'application' => $app->ulid
+            ]
+        ), navigate: true);
     }
 
     public function render()
